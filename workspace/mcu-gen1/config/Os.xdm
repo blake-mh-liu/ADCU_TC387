@@ -156,14 +156,14 @@
                            value="ASPath:/Os/Os/Rte_Counter_Core0"/>
                   </d:lst>
                   <d:lst name="OsAppIsrRef">
+                    <d:ref type="REFERENCE" value="ASPath:/Os/Os/CAN0SR0_ISR"/>
+                    <d:ref type="REFERENCE" value="ASPath:/Os/Os/CAN0SR1_ISR"/>
+                    <d:ref type="REFERENCE" value="ASPath:/Os/Os/CAN0SR2_ISR"/>
+                    <d:ref type="REFERENCE" value="ASPath:/Os/Os/CAN0SR3_ISR"/>
                     <d:ref type="REFERENCE" value="ASPath:/Os/Os/CAN0SR4_ISR"/>
                     <d:ref type="REFERENCE" value="ASPath:/Os/Os/CAN0SR5_ISR"/>
                     <d:ref type="REFERENCE" value="ASPath:/Os/Os/CAN0SR6_ISR"/>
                     <d:ref type="REFERENCE" value="ASPath:/Os/Os/CAN0SR7_ISR"/>
-                    <d:ref type="REFERENCE" value="ASPath:/Os/Os/CAN0SR8_ISR"/>
-                    <d:ref type="REFERENCE" value="ASPath:/Os/Os/CAN0SR9_ISR"/>
-                    <d:ref type="REFERENCE" value="ASPath:/Os/Os/CAN0SR10_ISR"/>
-                    <d:ref type="REFERENCE" value="ASPath:/Os/Os/CAN0SR11_ISR"/>
                     <d:ref type="REFERENCE" value="ASPath:/Os/Os/CAN0SR12_ISR"/>
                     <d:ref type="REFERENCE" value="ASPath:/Os/Os/CAN0SR13_ISR"/>
                     <d:ref type="REFERENCE" value="ASPath:/Os/Os/CAN0SR14_ISR"/>
@@ -172,14 +172,6 @@
                     <d:ref type="REFERENCE" value="ASPath:/Os/Os/CAN1SR1_ISR"/>
                     <d:ref type="REFERENCE" value="ASPath:/Os/Os/CAN1SR2_ISR"/>
                     <d:ref type="REFERENCE" value="ASPath:/Os/Os/CAN1SR3_ISR"/>
-                    <d:ref type="REFERENCE" value="ASPath:/Os/Os/CAN1SR4_ISR"/>
-                    <d:ref type="REFERENCE" value="ASPath:/Os/Os/CAN1SR5_ISR"/>
-                    <d:ref type="REFERENCE" value="ASPath:/Os/Os/CAN1SR6_ISR"/>
-                    <d:ref type="REFERENCE" value="ASPath:/Os/Os/CAN1SR7_ISR"/>
-                    <d:ref type="REFERENCE" value="ASPath:/Os/Os/CAN1SR8_ISR"/>
-                    <d:ref type="REFERENCE" value="ASPath:/Os/Os/CAN1SR9_ISR"/>
-                    <d:ref type="REFERENCE" value="ASPath:/Os/Os/CAN1SR10_ISR"/>
-                    <d:ref type="REFERENCE" value="ASPath:/Os/Os/CAN1SR11_ISR"/>
                     <d:ref type="REFERENCE" value="ASPath:/Os/Os/CAN1SR12_ISR"/>
                     <d:ref type="REFERENCE" value="ASPath:/Os/Os/CAN1SR13_ISR"/>
                     <d:ref type="REFERENCE" value="ASPath:/Os/Os/CAN1SR14_ISR"/>
@@ -649,7 +641,7 @@
                     <a:a name="IMPORTER_INFO" value="@DEF"/>
                   </d:var>
                 </d:ctr>
-                <d:ctr name="CAN0SR4_ISR" type="IDENTIFIABLE">
+                <d:ctr name="CAN0SR0_ISR" type="IDENTIFIABLE">
                   <d:var name="OsIsrCategory" type="ENUMERATION" 
                          value="CATEGORY_2">
                     <a:a name="IMPORTER_INFO" value="@DEF"/>
@@ -717,6 +709,346 @@
                     <a:a name="IMPORTER_INFO" value="@DEF"/>
                   </d:var>
                   <d:var name="OsTricoreIrqLevel" type="INTEGER" value="180"/>
+                  <d:var name="OsTricoreVector" type="ENUMERATION" 
+                         value="CAN0INT0"/>
+                  <d:var name="OsIsrSafetyIdentifier" type="BOOLEAN" 
+                         value="false">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsIsrFastPartition" type="BOOLEAN" value="false">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsPswCallDepthCounting" type="BOOLEAN" 
+                         value="false">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsPswCallDepthCounter" type="INTEGER" >
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                </d:ctr>
+                <d:ctr name="CAN0SR1_ISR" type="IDENTIFIABLE">
+                  <d:var name="OsIsrCategory" type="ENUMERATION" 
+                         value="CATEGORY_2">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsIsrPeriod" type="FLOAT" >
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:lst name="OsIsrResourceRef"/>
+                  <d:ctr name="OsIsrTimingProtection" type="IDENTIFIABLE">
+                    <a:a name="ENABLE" value="false"/>
+                    <d:var name="OsIsrAllInterruptLockBudget" type="FLOAT" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                    <d:var name="OsIsrExecutionBudget" type="FLOAT" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                    <d:var name="OsIsrOsInterruptLockBudget" type="FLOAT" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                    <d:var name="OsIsrTimeFrame" type="FLOAT" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                    <d:lst name="OsIsrResourceLock" type="MAP"/>
+                    <d:var name="OsIsrCountLimit" type="INTEGER" value="1">
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ref name="OsMemoryMappingCodeLocationRef" type="REFERENCE" >
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:ref>
+                  <d:var name="OsMeasure_Max_Runtime" type="BOOLEAN" 
+                         value="false">
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsEnable_On_Startup" type="BOOLEAN" value="true">
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsStacksize" type="INTEGER" value="512"/>
+                  <d:lst name="OsIsrAccessingApplication"/>
+                  <d:var name="OsIsrMkCreateMemoryRegion" type="BOOLEAN" 
+                         value="true">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsIsrMkExcludeAppRegions" type="BOOLEAN" 
+                         value="false">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:lst name="OsIsrMkMemoryRegionRef"/>
+                  <d:var name="OsIsrMkThreadModeOverride" type="ENUMERATION" 
+                         value="USER">
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsIsrUse_Hw_Fp" type="BOOLEAN" value="false">
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsTricoreIrqLevel" type="INTEGER" value="181"/>
+                  <d:var name="OsTricoreVector" type="ENUMERATION" 
+                         value="CAN0INT1"/>
+                  <d:var name="OsIsrSafetyIdentifier" type="BOOLEAN" 
+                         value="false">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsIsrFastPartition" type="BOOLEAN" value="false">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsPswCallDepthCounting" type="BOOLEAN" 
+                         value="false">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsPswCallDepthCounter" type="INTEGER" >
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                </d:ctr>
+                <d:ctr name="CAN0SR2_ISR" type="IDENTIFIABLE">
+                  <d:var name="OsIsrCategory" type="ENUMERATION" 
+                         value="CATEGORY_2">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsIsrPeriod" type="FLOAT" >
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:lst name="OsIsrResourceRef"/>
+                  <d:ctr name="OsIsrTimingProtection" type="IDENTIFIABLE">
+                    <a:a name="ENABLE" value="false"/>
+                    <d:var name="OsIsrAllInterruptLockBudget" type="FLOAT" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                    <d:var name="OsIsrExecutionBudget" type="FLOAT" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                    <d:var name="OsIsrOsInterruptLockBudget" type="FLOAT" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                    <d:var name="OsIsrTimeFrame" type="FLOAT" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                    <d:lst name="OsIsrResourceLock" type="MAP"/>
+                    <d:var name="OsIsrCountLimit" type="INTEGER" value="1">
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ref name="OsMemoryMappingCodeLocationRef" type="REFERENCE" >
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:ref>
+                  <d:var name="OsMeasure_Max_Runtime" type="BOOLEAN" 
+                         value="false">
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsEnable_On_Startup" type="BOOLEAN" value="true">
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsStacksize" type="INTEGER" value="512"/>
+                  <d:lst name="OsIsrAccessingApplication"/>
+                  <d:var name="OsIsrMkCreateMemoryRegion" type="BOOLEAN" 
+                         value="true">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsIsrMkExcludeAppRegions" type="BOOLEAN" 
+                         value="false">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:lst name="OsIsrMkMemoryRegionRef"/>
+                  <d:var name="OsIsrMkThreadModeOverride" type="ENUMERATION" 
+                         value="USER">
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsIsrUse_Hw_Fp" type="BOOLEAN" value="false">
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsTricoreIrqLevel" type="INTEGER" value="182"/>
+                  <d:var name="OsTricoreVector" type="ENUMERATION" 
+                         value="CAN0INT2"/>
+                  <d:var name="OsIsrSafetyIdentifier" type="BOOLEAN" 
+                         value="false">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsIsrFastPartition" type="BOOLEAN" value="false">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsPswCallDepthCounting" type="BOOLEAN" 
+                         value="false">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsPswCallDepthCounter" type="INTEGER" >
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                </d:ctr>
+                <d:ctr name="CAN0SR3_ISR" type="IDENTIFIABLE">
+                  <d:var name="OsIsrCategory" type="ENUMERATION" 
+                         value="CATEGORY_2">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsIsrPeriod" type="FLOAT" >
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:lst name="OsIsrResourceRef"/>
+                  <d:ctr name="OsIsrTimingProtection" type="IDENTIFIABLE">
+                    <a:a name="ENABLE" value="false"/>
+                    <d:var name="OsIsrAllInterruptLockBudget" type="FLOAT" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                    <d:var name="OsIsrExecutionBudget" type="FLOAT" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                    <d:var name="OsIsrOsInterruptLockBudget" type="FLOAT" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                    <d:var name="OsIsrTimeFrame" type="FLOAT" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                    <d:lst name="OsIsrResourceLock" type="MAP"/>
+                    <d:var name="OsIsrCountLimit" type="INTEGER" value="1">
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ref name="OsMemoryMappingCodeLocationRef" type="REFERENCE" >
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:ref>
+                  <d:var name="OsMeasure_Max_Runtime" type="BOOLEAN" 
+                         value="false">
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsEnable_On_Startup" type="BOOLEAN" value="true">
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsStacksize" type="INTEGER" value="512"/>
+                  <d:lst name="OsIsrAccessingApplication"/>
+                  <d:var name="OsIsrMkCreateMemoryRegion" type="BOOLEAN" 
+                         value="true">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsIsrMkExcludeAppRegions" type="BOOLEAN" 
+                         value="false">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:lst name="OsIsrMkMemoryRegionRef"/>
+                  <d:var name="OsIsrMkThreadModeOverride" type="ENUMERATION" 
+                         value="USER">
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsIsrUse_Hw_Fp" type="BOOLEAN" value="false">
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsTricoreIrqLevel" type="INTEGER" value="183"/>
+                  <d:var name="OsTricoreVector" type="ENUMERATION" 
+                         value="CAN0INT3"/>
+                  <d:var name="OsIsrSafetyIdentifier" type="BOOLEAN" 
+                         value="false">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsIsrFastPartition" type="BOOLEAN" value="false">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsPswCallDepthCounting" type="BOOLEAN" 
+                         value="false">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsPswCallDepthCounter" type="INTEGER" >
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                </d:ctr>
+                <d:ctr name="CAN0SR4_ISR" type="IDENTIFIABLE">
+                  <d:var name="OsIsrCategory" type="ENUMERATION" 
+                         value="CATEGORY_2">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsIsrPeriod" type="FLOAT" >
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:lst name="OsIsrResourceRef"/>
+                  <d:ctr name="OsIsrTimingProtection" type="IDENTIFIABLE">
+                    <a:a name="ENABLE" value="false"/>
+                    <d:var name="OsIsrAllInterruptLockBudget" type="FLOAT" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                    <d:var name="OsIsrExecutionBudget" type="FLOAT" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                    <d:var name="OsIsrOsInterruptLockBudget" type="FLOAT" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                    <d:var name="OsIsrTimeFrame" type="FLOAT" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                    <d:lst name="OsIsrResourceLock" type="MAP"/>
+                    <d:var name="OsIsrCountLimit" type="INTEGER" value="1">
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ref name="OsMemoryMappingCodeLocationRef" type="REFERENCE" >
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:ref>
+                  <d:var name="OsMeasure_Max_Runtime" type="BOOLEAN" 
+                         value="false">
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsEnable_On_Startup" type="BOOLEAN" value="true">
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsStacksize" type="INTEGER" value="512"/>
+                  <d:lst name="OsIsrAccessingApplication"/>
+                  <d:var name="OsIsrMkCreateMemoryRegion" type="BOOLEAN" 
+                         value="true">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsIsrMkExcludeAppRegions" type="BOOLEAN" 
+                         value="false">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:lst name="OsIsrMkMemoryRegionRef"/>
+                  <d:var name="OsIsrMkThreadModeOverride" type="ENUMERATION" 
+                         value="USER">
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsIsrUse_Hw_Fp" type="BOOLEAN" value="false">
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="OsTricoreIrqLevel" type="INTEGER" value="184"/>
                   <d:var name="OsTricoreVector" type="ENUMERATION" 
                          value="CAN0INT4"/>
                   <d:var name="OsIsrSafetyIdentifier" type="BOOLEAN" 
@@ -801,7 +1133,7 @@
                     <a:a name="ENABLE" value="false"/>
                     <a:a name="IMPORTER_INFO" value="@DEF"/>
                   </d:var>
-                  <d:var name="OsTricoreIrqLevel" type="INTEGER" value="181"/>
+                  <d:var name="OsTricoreIrqLevel" type="INTEGER" value="185"/>
                   <d:var name="OsTricoreVector" type="ENUMERATION" 
                          value="CAN0INT5"/>
                   <d:var name="OsIsrSafetyIdentifier" type="BOOLEAN" 
@@ -886,7 +1218,7 @@
                     <a:a name="ENABLE" value="false"/>
                     <a:a name="IMPORTER_INFO" value="@DEF"/>
                   </d:var>
-                  <d:var name="OsTricoreIrqLevel" type="INTEGER" value="182"/>
+                  <d:var name="OsTricoreIrqLevel" type="INTEGER" value="186"/>
                   <d:var name="OsTricoreVector" type="ENUMERATION" 
                          value="CAN0INT6"/>
                   <d:var name="OsIsrSafetyIdentifier" type="BOOLEAN" 
@@ -971,349 +1303,9 @@
                     <a:a name="ENABLE" value="false"/>
                     <a:a name="IMPORTER_INFO" value="@DEF"/>
                   </d:var>
-                  <d:var name="OsTricoreIrqLevel" type="INTEGER" value="183"/>
-                  <d:var name="OsTricoreVector" type="ENUMERATION" 
-                         value="CAN0INT7"/>
-                  <d:var name="OsIsrSafetyIdentifier" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrFastPartition" type="BOOLEAN" value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsPswCallDepthCounting" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsPswCallDepthCounter" type="INTEGER" >
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                </d:ctr>
-                <d:ctr name="CAN0SR8_ISR" type="IDENTIFIABLE">
-                  <d:var name="OsIsrCategory" type="ENUMERATION" 
-                         value="CATEGORY_2">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrPeriod" type="FLOAT" >
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:lst name="OsIsrResourceRef"/>
-                  <d:ctr name="OsIsrTimingProtection" type="IDENTIFIABLE">
-                    <a:a name="ENABLE" value="false"/>
-                    <d:var name="OsIsrAllInterruptLockBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrExecutionBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrOsInterruptLockBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrTimeFrame" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:lst name="OsIsrResourceLock" type="MAP"/>
-                    <d:var name="OsIsrCountLimit" type="INTEGER" value="1">
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                  </d:ctr>
-                  <d:ref name="OsMemoryMappingCodeLocationRef" type="REFERENCE" >
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:ref>
-                  <d:var name="OsMeasure_Max_Runtime" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsEnable_On_Startup" type="BOOLEAN" value="true">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsStacksize" type="INTEGER" value="512"/>
-                  <d:lst name="OsIsrAccessingApplication"/>
-                  <d:var name="OsIsrMkCreateMemoryRegion" type="BOOLEAN" 
-                         value="true">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrMkExcludeAppRegions" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:lst name="OsIsrMkMemoryRegionRef"/>
-                  <d:var name="OsIsrMkThreadModeOverride" type="ENUMERATION" 
-                         value="USER">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrUse_Hw_Fp" type="BOOLEAN" value="false">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsTricoreIrqLevel" type="INTEGER" value="184"/>
-                  <d:var name="OsTricoreVector" type="ENUMERATION" 
-                         value="CAN0INT8"/>
-                  <d:var name="OsIsrSafetyIdentifier" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrFastPartition" type="BOOLEAN" value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsPswCallDepthCounting" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsPswCallDepthCounter" type="INTEGER" >
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                </d:ctr>
-                <d:ctr name="CAN0SR9_ISR" type="IDENTIFIABLE">
-                  <d:var name="OsIsrCategory" type="ENUMERATION" 
-                         value="CATEGORY_2">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrPeriod" type="FLOAT" >
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:lst name="OsIsrResourceRef"/>
-                  <d:ctr name="OsIsrTimingProtection" type="IDENTIFIABLE">
-                    <a:a name="ENABLE" value="false"/>
-                    <d:var name="OsIsrAllInterruptLockBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrExecutionBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrOsInterruptLockBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrTimeFrame" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:lst name="OsIsrResourceLock" type="MAP"/>
-                    <d:var name="OsIsrCountLimit" type="INTEGER" value="1">
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                  </d:ctr>
-                  <d:ref name="OsMemoryMappingCodeLocationRef" type="REFERENCE" >
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:ref>
-                  <d:var name="OsMeasure_Max_Runtime" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsEnable_On_Startup" type="BOOLEAN" value="true">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsStacksize" type="INTEGER" value="512"/>
-                  <d:lst name="OsIsrAccessingApplication"/>
-                  <d:var name="OsIsrMkCreateMemoryRegion" type="BOOLEAN" 
-                         value="true">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrMkExcludeAppRegions" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:lst name="OsIsrMkMemoryRegionRef"/>
-                  <d:var name="OsIsrMkThreadModeOverride" type="ENUMERATION" 
-                         value="USER">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrUse_Hw_Fp" type="BOOLEAN" value="false">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsTricoreIrqLevel" type="INTEGER" value="185"/>
-                  <d:var name="OsTricoreVector" type="ENUMERATION" 
-                         value="CAN0INT9"/>
-                  <d:var name="OsIsrSafetyIdentifier" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrFastPartition" type="BOOLEAN" value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsPswCallDepthCounting" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsPswCallDepthCounter" type="INTEGER" >
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                </d:ctr>
-                <d:ctr name="CAN0SR10_ISR" type="IDENTIFIABLE">
-                  <d:var name="OsIsrCategory" type="ENUMERATION" 
-                         value="CATEGORY_2">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrPeriod" type="FLOAT" >
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:lst name="OsIsrResourceRef"/>
-                  <d:ctr name="OsIsrTimingProtection" type="IDENTIFIABLE">
-                    <a:a name="ENABLE" value="false"/>
-                    <d:var name="OsIsrAllInterruptLockBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrExecutionBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrOsInterruptLockBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrTimeFrame" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:lst name="OsIsrResourceLock" type="MAP"/>
-                    <d:var name="OsIsrCountLimit" type="INTEGER" value="1">
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                  </d:ctr>
-                  <d:ref name="OsMemoryMappingCodeLocationRef" type="REFERENCE" >
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:ref>
-                  <d:var name="OsMeasure_Max_Runtime" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsEnable_On_Startup" type="BOOLEAN" value="true">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsStacksize" type="INTEGER" value="512"/>
-                  <d:lst name="OsIsrAccessingApplication"/>
-                  <d:var name="OsIsrMkCreateMemoryRegion" type="BOOLEAN" 
-                         value="true">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrMkExcludeAppRegions" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:lst name="OsIsrMkMemoryRegionRef"/>
-                  <d:var name="OsIsrMkThreadModeOverride" type="ENUMERATION" 
-                         value="USER">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrUse_Hw_Fp" type="BOOLEAN" value="false">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsTricoreIrqLevel" type="INTEGER" value="186"/>
-                  <d:var name="OsTricoreVector" type="ENUMERATION" 
-                         value="CAN0INT10"/>
-                  <d:var name="OsIsrSafetyIdentifier" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrFastPartition" type="BOOLEAN" value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsPswCallDepthCounting" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsPswCallDepthCounter" type="INTEGER" >
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                </d:ctr>
-                <d:ctr name="CAN0SR11_ISR" type="IDENTIFIABLE">
-                  <d:var name="OsIsrCategory" type="ENUMERATION" 
-                         value="CATEGORY_2">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrPeriod" type="FLOAT" >
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:lst name="OsIsrResourceRef"/>
-                  <d:ctr name="OsIsrTimingProtection" type="IDENTIFIABLE">
-                    <a:a name="ENABLE" value="false"/>
-                    <d:var name="OsIsrAllInterruptLockBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrExecutionBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrOsInterruptLockBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrTimeFrame" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:lst name="OsIsrResourceLock" type="MAP"/>
-                    <d:var name="OsIsrCountLimit" type="INTEGER" value="1">
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                  </d:ctr>
-                  <d:ref name="OsMemoryMappingCodeLocationRef" type="REFERENCE" >
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:ref>
-                  <d:var name="OsMeasure_Max_Runtime" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsEnable_On_Startup" type="BOOLEAN" value="true">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsStacksize" type="INTEGER" value="512"/>
-                  <d:lst name="OsIsrAccessingApplication"/>
-                  <d:var name="OsIsrMkCreateMemoryRegion" type="BOOLEAN" 
-                         value="true">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrMkExcludeAppRegions" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:lst name="OsIsrMkMemoryRegionRef"/>
-                  <d:var name="OsIsrMkThreadModeOverride" type="ENUMERATION" 
-                         value="USER">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrUse_Hw_Fp" type="BOOLEAN" value="false">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
                   <d:var name="OsTricoreIrqLevel" type="INTEGER" value="187"/>
                   <d:var name="OsTricoreVector" type="ENUMERATION" 
-                         value="CAN0INT11"/>
+                         value="CAN0INT7"/>
                   <d:var name="OsIsrSafetyIdentifier" type="BOOLEAN" 
                          value="false">
                     <a:a name="IMPORTER_INFO" value="@DEF"/>
@@ -2009,686 +2001,6 @@
                     <a:a name="IMPORTER_INFO" value="@DEF"/>
                   </d:var>
                 </d:ctr>
-                <d:ctr name="CAN1SR4_ISR" type="IDENTIFIABLE">
-                  <d:var name="OsIsrCategory" type="ENUMERATION" 
-                         value="CATEGORY_2">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrPeriod" type="FLOAT" >
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:lst name="OsIsrResourceRef"/>
-                  <d:ctr name="OsIsrTimingProtection" type="IDENTIFIABLE">
-                    <a:a name="ENABLE" value="false"/>
-                    <d:var name="OsIsrAllInterruptLockBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrExecutionBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrOsInterruptLockBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrTimeFrame" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:lst name="OsIsrResourceLock" type="MAP"/>
-                    <d:var name="OsIsrCountLimit" type="INTEGER" value="1">
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                  </d:ctr>
-                  <d:ref name="OsMemoryMappingCodeLocationRef" type="REFERENCE" >
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:ref>
-                  <d:var name="OsMeasure_Max_Runtime" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsEnable_On_Startup" type="BOOLEAN" value="true">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsStacksize" type="INTEGER" value="512"/>
-                  <d:lst name="OsIsrAccessingApplication"/>
-                  <d:var name="OsIsrMkCreateMemoryRegion" type="BOOLEAN" 
-                         value="true">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrMkExcludeAppRegions" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:lst name="OsIsrMkMemoryRegionRef"/>
-                  <d:var name="OsIsrMkThreadModeOverride" type="ENUMERATION" 
-                         value="USER">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrUse_Hw_Fp" type="BOOLEAN" value="false">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsTricoreIrqLevel" type="INTEGER" value="196"/>
-                  <d:var name="OsTricoreVector" type="ENUMERATION" 
-                         value="CAN1INT4"/>
-                  <d:var name="OsIsrSafetyIdentifier" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrFastPartition" type="BOOLEAN" value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsPswCallDepthCounting" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsPswCallDepthCounter" type="INTEGER" >
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                </d:ctr>
-                <d:ctr name="CAN1SR5_ISR" type="IDENTIFIABLE">
-                  <d:var name="OsIsrCategory" type="ENUMERATION" 
-                         value="CATEGORY_2">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrPeriod" type="FLOAT" >
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:lst name="OsIsrResourceRef"/>
-                  <d:ctr name="OsIsrTimingProtection" type="IDENTIFIABLE">
-                    <a:a name="ENABLE" value="false"/>
-                    <d:var name="OsIsrAllInterruptLockBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrExecutionBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrOsInterruptLockBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrTimeFrame" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:lst name="OsIsrResourceLock" type="MAP"/>
-                    <d:var name="OsIsrCountLimit" type="INTEGER" value="1">
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                  </d:ctr>
-                  <d:ref name="OsMemoryMappingCodeLocationRef" type="REFERENCE" >
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:ref>
-                  <d:var name="OsMeasure_Max_Runtime" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsEnable_On_Startup" type="BOOLEAN" value="true">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsStacksize" type="INTEGER" value="512"/>
-                  <d:lst name="OsIsrAccessingApplication"/>
-                  <d:var name="OsIsrMkCreateMemoryRegion" type="BOOLEAN" 
-                         value="true">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrMkExcludeAppRegions" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:lst name="OsIsrMkMemoryRegionRef"/>
-                  <d:var name="OsIsrMkThreadModeOverride" type="ENUMERATION" 
-                         value="USER">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrUse_Hw_Fp" type="BOOLEAN" value="false">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsTricoreIrqLevel" type="INTEGER" value="197"/>
-                  <d:var name="OsTricoreVector" type="ENUMERATION" 
-                         value="CAN1INT5"/>
-                  <d:var name="OsIsrSafetyIdentifier" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrFastPartition" type="BOOLEAN" value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsPswCallDepthCounting" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsPswCallDepthCounter" type="INTEGER" >
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                </d:ctr>
-                <d:ctr name="CAN1SR6_ISR" type="IDENTIFIABLE">
-                  <d:var name="OsIsrCategory" type="ENUMERATION" 
-                         value="CATEGORY_2">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrPeriod" type="FLOAT" >
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:lst name="OsIsrResourceRef"/>
-                  <d:ctr name="OsIsrTimingProtection" type="IDENTIFIABLE">
-                    <a:a name="ENABLE" value="false"/>
-                    <d:var name="OsIsrAllInterruptLockBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrExecutionBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrOsInterruptLockBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrTimeFrame" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:lst name="OsIsrResourceLock" type="MAP"/>
-                    <d:var name="OsIsrCountLimit" type="INTEGER" value="1">
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                  </d:ctr>
-                  <d:ref name="OsMemoryMappingCodeLocationRef" type="REFERENCE" >
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:ref>
-                  <d:var name="OsMeasure_Max_Runtime" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsEnable_On_Startup" type="BOOLEAN" value="true">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsStacksize" type="INTEGER" value="512"/>
-                  <d:lst name="OsIsrAccessingApplication"/>
-                  <d:var name="OsIsrMkCreateMemoryRegion" type="BOOLEAN" 
-                         value="true">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrMkExcludeAppRegions" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:lst name="OsIsrMkMemoryRegionRef"/>
-                  <d:var name="OsIsrMkThreadModeOverride" type="ENUMERATION" 
-                         value="USER">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrUse_Hw_Fp" type="BOOLEAN" value="false">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsTricoreIrqLevel" type="INTEGER" value="198"/>
-                  <d:var name="OsTricoreVector" type="ENUMERATION" 
-                         value="CAN1INT6"/>
-                  <d:var name="OsIsrSafetyIdentifier" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrFastPartition" type="BOOLEAN" value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsPswCallDepthCounting" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsPswCallDepthCounter" type="INTEGER" >
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                </d:ctr>
-                <d:ctr name="CAN1SR7_ISR" type="IDENTIFIABLE">
-                  <d:var name="OsIsrCategory" type="ENUMERATION" 
-                         value="CATEGORY_2">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrPeriod" type="FLOAT" >
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:lst name="OsIsrResourceRef"/>
-                  <d:ctr name="OsIsrTimingProtection" type="IDENTIFIABLE">
-                    <a:a name="ENABLE" value="false"/>
-                    <d:var name="OsIsrAllInterruptLockBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrExecutionBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrOsInterruptLockBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrTimeFrame" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:lst name="OsIsrResourceLock" type="MAP"/>
-                    <d:var name="OsIsrCountLimit" type="INTEGER" value="1">
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                  </d:ctr>
-                  <d:ref name="OsMemoryMappingCodeLocationRef" type="REFERENCE" >
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:ref>
-                  <d:var name="OsMeasure_Max_Runtime" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsEnable_On_Startup" type="BOOLEAN" value="true">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsStacksize" type="INTEGER" value="512"/>
-                  <d:lst name="OsIsrAccessingApplication"/>
-                  <d:var name="OsIsrMkCreateMemoryRegion" type="BOOLEAN" 
-                         value="true">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrMkExcludeAppRegions" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:lst name="OsIsrMkMemoryRegionRef"/>
-                  <d:var name="OsIsrMkThreadModeOverride" type="ENUMERATION" 
-                         value="USER">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrUse_Hw_Fp" type="BOOLEAN" value="false">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsTricoreIrqLevel" type="INTEGER" value="199"/>
-                  <d:var name="OsTricoreVector" type="ENUMERATION" 
-                         value="CAN1INT7"/>
-                  <d:var name="OsIsrSafetyIdentifier" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrFastPartition" type="BOOLEAN" value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsPswCallDepthCounting" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsPswCallDepthCounter" type="INTEGER" >
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                </d:ctr>
-                <d:ctr name="CAN1SR8_ISR" type="IDENTIFIABLE">
-                  <d:var name="OsIsrCategory" type="ENUMERATION" 
-                         value="CATEGORY_2">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrPeriod" type="FLOAT" >
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:lst name="OsIsrResourceRef"/>
-                  <d:ctr name="OsIsrTimingProtection" type="IDENTIFIABLE">
-                    <a:a name="ENABLE" value="false"/>
-                    <d:var name="OsIsrAllInterruptLockBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrExecutionBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrOsInterruptLockBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrTimeFrame" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:lst name="OsIsrResourceLock" type="MAP"/>
-                    <d:var name="OsIsrCountLimit" type="INTEGER" value="1">
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                  </d:ctr>
-                  <d:ref name="OsMemoryMappingCodeLocationRef" type="REFERENCE" >
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:ref>
-                  <d:var name="OsMeasure_Max_Runtime" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsEnable_On_Startup" type="BOOLEAN" value="true">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsStacksize" type="INTEGER" value="512"/>
-                  <d:lst name="OsIsrAccessingApplication"/>
-                  <d:var name="OsIsrMkCreateMemoryRegion" type="BOOLEAN" 
-                         value="true">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrMkExcludeAppRegions" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:lst name="OsIsrMkMemoryRegionRef"/>
-                  <d:var name="OsIsrMkThreadModeOverride" type="ENUMERATION" 
-                         value="USER">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrUse_Hw_Fp" type="BOOLEAN" value="false">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsTricoreIrqLevel" type="INTEGER" value="200"/>
-                  <d:var name="OsTricoreVector" type="ENUMERATION" 
-                         value="CAN1INT8"/>
-                  <d:var name="OsIsrSafetyIdentifier" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrFastPartition" type="BOOLEAN" value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsPswCallDepthCounting" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsPswCallDepthCounter" type="INTEGER" >
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                </d:ctr>
-                <d:ctr name="CAN1SR9_ISR" type="IDENTIFIABLE">
-                  <d:var name="OsIsrCategory" type="ENUMERATION" 
-                         value="CATEGORY_2">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrPeriod" type="FLOAT" >
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:lst name="OsIsrResourceRef"/>
-                  <d:ctr name="OsIsrTimingProtection" type="IDENTIFIABLE">
-                    <a:a name="ENABLE" value="false"/>
-                    <d:var name="OsIsrAllInterruptLockBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrExecutionBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrOsInterruptLockBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrTimeFrame" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:lst name="OsIsrResourceLock" type="MAP"/>
-                    <d:var name="OsIsrCountLimit" type="INTEGER" value="1">
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                  </d:ctr>
-                  <d:ref name="OsMemoryMappingCodeLocationRef" type="REFERENCE" >
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:ref>
-                  <d:var name="OsMeasure_Max_Runtime" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsEnable_On_Startup" type="BOOLEAN" value="true">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsStacksize" type="INTEGER" value="512"/>
-                  <d:lst name="OsIsrAccessingApplication"/>
-                  <d:var name="OsIsrMkCreateMemoryRegion" type="BOOLEAN" 
-                         value="true">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrMkExcludeAppRegions" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:lst name="OsIsrMkMemoryRegionRef"/>
-                  <d:var name="OsIsrMkThreadModeOverride" type="ENUMERATION" 
-                         value="USER">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrUse_Hw_Fp" type="BOOLEAN" value="false">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsTricoreIrqLevel" type="INTEGER" value="201"/>
-                  <d:var name="OsTricoreVector" type="ENUMERATION" 
-                         value="CAN1INT9"/>
-                  <d:var name="OsIsrSafetyIdentifier" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrFastPartition" type="BOOLEAN" value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsPswCallDepthCounting" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsPswCallDepthCounter" type="INTEGER" >
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                </d:ctr>
-                <d:ctr name="CAN1SR10_ISR" type="IDENTIFIABLE">
-                  <d:var name="OsIsrCategory" type="ENUMERATION" 
-                         value="CATEGORY_2">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrPeriod" type="FLOAT" >
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:lst name="OsIsrResourceRef"/>
-                  <d:ctr name="OsIsrTimingProtection" type="IDENTIFIABLE">
-                    <a:a name="ENABLE" value="false"/>
-                    <d:var name="OsIsrAllInterruptLockBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrExecutionBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrOsInterruptLockBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrTimeFrame" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:lst name="OsIsrResourceLock" type="MAP"/>
-                    <d:var name="OsIsrCountLimit" type="INTEGER" value="1">
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                  </d:ctr>
-                  <d:ref name="OsMemoryMappingCodeLocationRef" type="REFERENCE" >
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:ref>
-                  <d:var name="OsMeasure_Max_Runtime" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsEnable_On_Startup" type="BOOLEAN" value="true">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsStacksize" type="INTEGER" value="512"/>
-                  <d:lst name="OsIsrAccessingApplication"/>
-                  <d:var name="OsIsrMkCreateMemoryRegion" type="BOOLEAN" 
-                         value="true">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrMkExcludeAppRegions" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:lst name="OsIsrMkMemoryRegionRef"/>
-                  <d:var name="OsIsrMkThreadModeOverride" type="ENUMERATION" 
-                         value="USER">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrUse_Hw_Fp" type="BOOLEAN" value="false">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsTricoreIrqLevel" type="INTEGER" value="202"/>
-                  <d:var name="OsTricoreVector" type="ENUMERATION" 
-                         value="CAN1INT10"/>
-                  <d:var name="OsIsrSafetyIdentifier" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrFastPartition" type="BOOLEAN" value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsPswCallDepthCounting" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsPswCallDepthCounter" type="INTEGER" >
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                </d:ctr>
-                <d:ctr name="CAN1SR11_ISR" type="IDENTIFIABLE">
-                  <d:var name="OsIsrCategory" type="ENUMERATION" 
-                         value="CATEGORY_2">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrPeriod" type="FLOAT" >
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:lst name="OsIsrResourceRef"/>
-                  <d:ctr name="OsIsrTimingProtection" type="IDENTIFIABLE">
-                    <a:a name="ENABLE" value="false"/>
-                    <d:var name="OsIsrAllInterruptLockBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrExecutionBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrOsInterruptLockBudget" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:var name="OsIsrTimeFrame" type="FLOAT" >
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                    <d:lst name="OsIsrResourceLock" type="MAP"/>
-                    <d:var name="OsIsrCountLimit" type="INTEGER" value="1">
-                      <a:a name="ENABLE" value="false"/>
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
-                  </d:ctr>
-                  <d:ref name="OsMemoryMappingCodeLocationRef" type="REFERENCE" >
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:ref>
-                  <d:var name="OsMeasure_Max_Runtime" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsEnable_On_Startup" type="BOOLEAN" value="true">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsStacksize" type="INTEGER" value="512"/>
-                  <d:lst name="OsIsrAccessingApplication"/>
-                  <d:var name="OsIsrMkCreateMemoryRegion" type="BOOLEAN" 
-                         value="true">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrMkExcludeAppRegions" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:lst name="OsIsrMkMemoryRegionRef"/>
-                  <d:var name="OsIsrMkThreadModeOverride" type="ENUMERATION" 
-                         value="USER">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrUse_Hw_Fp" type="BOOLEAN" value="false">
-                    <a:a name="ENABLE" value="false"/>
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsTricoreIrqLevel" type="INTEGER" value="203"/>
-                  <d:var name="OsTricoreVector" type="ENUMERATION" 
-                         value="CAN1INT11"/>
-                  <d:var name="OsIsrSafetyIdentifier" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsIsrFastPartition" type="BOOLEAN" value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsPswCallDepthCounting" type="BOOLEAN" 
-                         value="false">
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                  <d:var name="OsPswCallDepthCounter" type="INTEGER" >
-                    <a:a name="IMPORTER_INFO" value="@DEF"/>
-                  </d:var>
-                </d:ctr>
                 <d:ctr name="CAN1SR12_ISR" type="IDENTIFIABLE">
                   <d:var name="OsIsrCategory" type="ENUMERATION" 
                          value="CATEGORY_2">
@@ -2756,7 +2068,7 @@
                     <a:a name="ENABLE" value="false"/>
                     <a:a name="IMPORTER_INFO" value="@DEF"/>
                   </d:var>
-                  <d:var name="OsTricoreIrqLevel" type="INTEGER" value="204"/>
+                  <d:var name="OsTricoreIrqLevel" type="INTEGER" value="196"/>
                   <d:var name="OsTricoreVector" type="ENUMERATION" 
                          value="CAN1INT12"/>
                   <d:var name="OsIsrSafetyIdentifier" type="BOOLEAN" 
@@ -2841,7 +2153,7 @@
                     <a:a name="ENABLE" value="false"/>
                     <a:a name="IMPORTER_INFO" value="@DEF"/>
                   </d:var>
-                  <d:var name="OsTricoreIrqLevel" type="INTEGER" value="205"/>
+                  <d:var name="OsTricoreIrqLevel" type="INTEGER" value="197"/>
                   <d:var name="OsTricoreVector" type="ENUMERATION" 
                          value="CAN1INT13"/>
                   <d:var name="OsIsrSafetyIdentifier" type="BOOLEAN" 
@@ -2926,7 +2238,7 @@
                     <a:a name="ENABLE" value="false"/>
                     <a:a name="IMPORTER_INFO" value="@DEF"/>
                   </d:var>
-                  <d:var name="OsTricoreIrqLevel" type="INTEGER" value="206"/>
+                  <d:var name="OsTricoreIrqLevel" type="INTEGER" value="198"/>
                   <d:var name="OsTricoreVector" type="ENUMERATION" 
                          value="CAN1INT14"/>
                   <d:var name="OsIsrSafetyIdentifier" type="BOOLEAN" 
@@ -3011,7 +2323,7 @@
                     <a:a name="ENABLE" value="false"/>
                     <a:a name="IMPORTER_INFO" value="@DEF"/>
                   </d:var>
-                  <d:var name="OsTricoreIrqLevel" type="INTEGER" value="207"/>
+                  <d:var name="OsTricoreIrqLevel" type="INTEGER" value="199"/>
                   <d:var name="OsTricoreVector" type="ENUMERATION" 
                          value="CAN1INT15"/>
                   <d:var name="OsIsrSafetyIdentifier" type="BOOLEAN" 
