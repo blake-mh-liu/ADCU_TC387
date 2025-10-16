@@ -1,0 +1,76 @@
+\#include <Ioc_ChCfg.h>
+/*
+ * MISRA-C:2012 Deviation List
+ *
+ * MISRAC2012-1) Deviated Rule: 5.6 (required)
+ * A typedef name shall be a unique identifier.
+ *
+ * Reason:
+ * The typedef is only used to construct a mechanism, which allows to make
+ * assertions at compile time. The defined types are never used to create objects.
+ *
+ *
+ * MISRAC2012-2) Deviated Rule: 2.3 (advisory)
+ * A project should not contain unused type declarations.
+ *
+ * Reason:
+ * The typedef is only used to construct a mechanism, which allows to make
+ * assertions at compile time. The defined types are never used to create objects.
+ *
+ *
+ * MISRAC2012-3) Deviated Rule: 12.4 (advisory)
+ * Evaluation of constant expressions should not lead to unsigned integer
+ * wrap-around.
+ *
+ * Reason:
+ * The wrap-around is used intentionally to check at compile time, that the size
+ * of a data element can be held by an ioc_ilength_t.
+ *
+ *
+ * MISRAC2012-4) Deviated Rule: 19.2 (advisory)
+ *  The union keyword should not be used.
+ *
+ * Reason:
+ *  The use of a union is mandated by the design.
+ *  For each instance of this union only one of the members is used,
+ *  depending on the type of the containing channel.
+ */
+
+\#include <private/Ioc_static_asserts.h>
+
+/*===================================================================
+ * Channel Buffers Senders
+ *==================================================================*/
+/* The following OS Objects need to have write access to this file:
+#if( $comm.isSenderTrapping() )
+#* *# * Kernel
+#else
+#* *##foreach( $sender in $comm.getSenders() )
+#*    *# * $sender.getSendingApp().getName()
+#* *##end
+#end
+ */
+
+/* If one of the following asserts fails, the given type is too large to be handled by the IOC.
+ * For further information see the "IOC limits" section of the IOC documentation.
+ */
+#foreach( $dataType in $comm.getUniqueDataTypeNames() )
+#* *##if( $foreach.index == 0 )
+#*    *#/* Deviation MISRAC2012-1 <START>, MISRAC2012-2 <START>, MISRAC2012-3 <START> */
+#* *##end
+#* *#IOC_DESIZEOF_ASSERT($dataType);
+#* *##if( !$foreach.hasNext )
+#* *#/* Deviation MISRAC2012-1 <STOP>, MISRAC2012-2 <STOP>, MISRAC2012-3 <STOP> */
+#* *##end
+#end
+
+Ioc_${comm.getChannelName()}_t Ioc_${comm.getChannelName()}_Buffer[$comm.getQueueSize()];
+/* Deviation MISRAC2012-4 <+1> */
+ioc_state_t Ioc_${comm.getChannelName()}_State_Sender;
+
+#if( $comm.isPlatformSpecificLockUsed() )
+#* *#$comm.getPlatformInterLockType() Ioc_${comm.getChannelName()}_lock;
+#end
+#if( $comm.hasInitData() )
+#* *#const $comm.getDataTypeList().get(0) $comm.getInitDataName() = $comm.getVariableInit();
+#end

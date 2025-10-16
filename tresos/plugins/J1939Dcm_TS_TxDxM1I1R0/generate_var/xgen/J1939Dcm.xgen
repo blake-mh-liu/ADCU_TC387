@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?module J1939Dcm?>
+
+<xgen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.elektrobit.com/2013/xgen" xmlns:xi="http://www.w3.org/2001/XInclude">
+[!CODE!]
+[!AUTOSPACING!]
+
+[!IF "var:defined('postBuildVariant')"!]
+[!/* Current PB variant Sufix
+*/!][!VAR "J1939DCM_VARIANT_SUFIX"="concat('_',$postBuildVariant,'_')"!]
+[!ELSE!]
+[!/* Current PB variant Sufix
+*/!][!VAR "J1939DCM_VARIANT_SUFIX"="string("_")"!]
+[!ENDIF!]
+[!IF "var:defined('postBuildVariant')"!]
+[!/* Current postbuild configuration name
+*/!][!VAR "initPredefinedCfgName"="concat('J1939Dcm_Config','_',$postBuildVariant)"!]
+[!ELSE!]
+[!/* Current postbuild name
+*/!][!VAR "initPredefinedCfgName"="string("J1939Dcm_Config_0")"!]
+[!ENDIF!]
+[!/* Current postbuild-c variant
+*/!][!VAR "J1939DCM_PBCFG_C_VARIANT"="concat('J1939Dcm',$J1939DCM_VARIANT_SUFIX,'PBcfg.c')"!]
+[!/* Current postbuild-h variant
+*/!][!VAR "J1939DCM_PBCFG_H_VARIANT"="concat('J1939Dcm',$J1939DCM_VARIANT_SUFIX,'PBcfg.h')"!]
+[!/* Current Config variant
+*/!][!VAR "J1939DCM_CONFIG_LAYOUT_VARIANT"="concat('J1939Dcm',$J1939DCM_VARIANT_SUFIX,'ConfigLayout')"!]
+[!/* Current Config Type variant based
+*/!][!VAR "J1939DCM_CONFIGLAYOUTTYPE_VARIANT"="concat('J1939Dcm',$J1939DCM_VARIANT_SUFIX,'ConfigLayoutType')"!]
+[!/* Current Const Config Type variant based
+*/!][!VAR "J1939DCM_CONSTCONFIGLAYOUTTYPE_VARIANT"="concat('J1939Dcm',$J1939DCM_VARIANT_SUFIX,'ConstConfigLayoutType')"!]
+
+[!VAR "DMsID"="'0'"!]
+[!VAR "SameComMChannelDetected"="'0'"!]
+[!VAR "NodeId" = "'0'"!]
+[!VAR "TotalTxDM" = "'0'"!]
+[!VAR "TotalRxDM" = "'0'"!]
+[!VAR "CurrentMessageIndex" = "'0'"!]
+[!VAR "NrOfConfigDcmChannels" = "'0'"!]
+
+<!--This section calculats the array size for J1939DcmConfiguredChannels and identifies for each node individually what unique channels the node operates on-->
+<!--Example : N1,Ch1,Ch2 ; N2 Ch1 Ch3 Ch1 ; N3 Ch1 Ch2 Ch2. Array size 6, Array contents [Ch1,Ch2; Ch1,Ch3 ; Ch1,Ch2]-->
+[!LOOP "as:modconf('J1939Dcm')[1]/J1939DcmConfigSet/eb-list::*[1]/J1939DcmNode/eb-list::*"!]
+  [!VAR "NodeId" = "$NodeId + 1"!]
+  [!VAR "DMsID"= "$DMsID + 1"!]
+  [!LOOP "as:modconf('J1939Dcm')[1]/J1939DcmConfigSet/eb-list::*[1]/J1939DcmNode/eb-list::*[num:i($NodeId)]/J1939DcmDiagnosticMessageSupport/eb-list::*"!]
+    [!VAR "CurrentMessageIndex" = "$CurrentMessageIndex + 1"!]
+    [!IF "node:exists(as:modconf('J1939Dcm')[1]/J1939DcmConfigSet/eb-list::*[1]/J1939DcmNode/eb-list::*[num:i($NodeId)]/J1939DcmDiagnosticMessageSupport/eb-list::*[num:i($DMsID)]/J1939DcmRxPdu)"!]
+      [!VAR "TotalRxDM" = "$TotalRxDM + 1"!]
+    [!ENDIF!]
+    [!IF "node:value(as:modconf('J1939Dcm')[1]/J1939DcmConfigSet/eb-list::*[1]/J1939DcmNode/eb-list::*[num:i($NodeId)]/J1939DcmDiagnosticMessageSupport/eb-list::*[num:i($DMsID)]/J1939DcmDmxSupport) != 'J1939DCM_DM13_SUPPORT'"!] <!--Dm13 is the only Rx DM, the rest are considered TX messages-->
+      [!VAR "TotalTxDM" = "$TotalTxDM + 1"!]
+    [!ENDIF!]
+    [!VAR "MessageIndex" = "'0'"!]
+	[!FOR "MessageIndex" = "1" TO "$CurrentMessageIndex"!]
+        [!IF "node:value(as:modconf('J1939Dcm')[1]/J1939DcmConfigSet/eb-list::*[1]/J1939DcmNode/eb-list::*[num:i($NodeId)]/J1939DcmDiagnosticMessageSupport/eb-list::*[num:i($MessageIndex)]/J1939DcmDiagnosticMessageSupportChannelRef) = node:value(as:modconf('J1939Dcm')[1]/J1939DcmConfigSet/eb-list::*[1]/J1939DcmNode/eb-list::*[num:i($NodeId)]/J1939DcmDiagnosticMessageSupport/eb-list::*[num:i($CurrentMessageIndex)]/J1939DcmDiagnosticMessageSupportChannelRef)"!]
+            [!VAR "SameComMChannelDetected" = "$SameComMChannelDetected + 1"!]
+	   [!ENDIF!]
+    [!ENDFOR!]
+	[!IF "num:i($SameComMChannelDetected) = '1'"!] 
+	     [!VAR "NrOfConfigDcmChannels" = "$NrOfConfigDcmChannels + 1"!]
+	[!ENDIF!]
+    [!VAR "DMsID"= "$DMsID + 1"!]
+	[!VAR "SameComMChannelDetected"="'0'"!]
+  [!ENDLOOP!]
+  [!VAR "CurrentMessageIndex" = "'0'"!]
+  [!VAR "DMsID"= "'0'"!]
+[!ENDLOOP!]
+
+<!-- This is the configuration of module J1939Dcm -->
+  <module name="J1939Dcm" version="[!"$moduleSoftwareVer"!]">
+     <configuration class="PreCompile">
+        [!IF "(variant:size() = 0) or (variant:all()[1] = variant:name())"!]
+        <?artifact directory="include" file="J1939Dcm_Types_Int.h" type="types-h" generate="yes"?>
+        [!ELSE!]
+        <?artifact directory="include" file="J1939Dcm_Types_Int.h" type="types-h" generate="no"?>
+        [!ENDIF!]
+
+        [!VAR "relocatable" = "'false'"!]
+        [!IF "node:contains(util:distinct(node:refs(as:modconf('PbcfgM')/PbcfgMBswModules/eb-list::*/PbcfgMBswModuleRef)), as:modconf('J1939Dcm'))"!]
+          [!IF "node:existsAndTrue(as:modconf('PbcfgM')/PbcfgMGeneral/PbcfgMRelocatableCfgEnable)"!]
+            [!VAR "relocatable" = "'true'"!]
+          [!ENDIF!]
+        [!ENDIF!]
+       <parameter name="relocatable-enable">
+          <boolean-value>[!"$relocatable"!]</boolean-value>
+       </parameter>
+        
+        <type name="J1939DcmRxPduConfigType">
+          <struct>
+            <member name="J1939DcmRxId"    type="PduIdType"/>
+            <member name="J1939DcmRxRefId" type="PduIdType"/>
+            <member name="J1939DcmNodeId"  type="uint8"/>
+            <member name="J1939DcmChannelIdx"  type="uint8"/>
+          </struct>
+        </type>
+
+        <type name="J1939DcmTxPduConfigType">
+          <struct>
+            <member name="J1939DcmTxId"    type="PduIdType"/>
+            <member name="J1939DcmTxRefId" type="PduIdType"/>
+            <member name="J1939DcmNodeId"  type="uint8"/>
+            <member name="J1939DcmChannelIdx"  type="uint8"/>
+          </struct>
+        </type>
+
+        <type name="J1939DcmNodeCfgType">
+          <struct> 
+            <member name="J1939DcmRmUserRef" type="uint8"/>
+          </struct>
+        </type>
+
+        <type name="J1939DcmChannelCfgType">
+          <struct>
+            <member name="ComMRefId" type="uint8"/>
+          </struct>
+        </type>
+        <!-- !LINKSTO J1939Dcm.SWS_J1939Dcm_00111,1 -->
+        <type name="J1939Dcm_ConfigType">
+          <struct>
+            <member name="PlatformSignature" type="uint32" comment="Used to validate the platform"/>
+            <member name="LcfgSignature" type="uint32" comment="Used to validate the post build configuration against the link time configuration"/>
+            <member name="CfgSignature" type="uint32" comment="Used to validate the post build configuration against the precompile time configuration"/>
+            <member name="PublicInfoSignature" type="uint32" comment="Used to validate the post build configuration against the precompile time published information configuration"/>
+            <member name="J1939DcmChannelRef" type="J1939DcmChannelCfgType">
+              <compiler-abstraction>
+                <ref2cfg/>
+              </compiler-abstraction>
+            </member>            
+            <member name="J1939DcmNodeRef" type="J1939DcmNodeCfgType">
+              <compiler-abstraction>
+                <ref2cfg/>
+              </compiler-abstraction>
+            </member>
+[!IF "num:i($TotalTxDM) != '0'"!]            
+            <member name="J1939DcmTxPduRef" type="J1939DcmTxPduConfigType">
+              <compiler-abstraction>
+                <ref2cfg/>
+              </compiler-abstraction>
+            </member>
+[!ENDIF!]            
+[!IF "num:i($TotalRxDM) != '0'"!]             
+            <member name="J1939DcmRxPduRef" type="J1939DcmRxPduConfigType">
+              <compiler-abstraction>
+                <ref2cfg/>
+              </compiler-abstraction>
+            </member>
+[!ENDIF!]
+          <member name="J1939DcmConfiguredChannels" type="uint8"              comment="Configured dcm channels per each node." >
+            <compiler-abstraction>
+              <ref2cfg />
+            </compiler-abstraction>
+          </member>                  
+          </struct>
+        </type>
+    </configuration>
+    <configuration class="PostBuild">
+      <?artifact directory="include" file="[!"$J1939DCM_PBCFG_H_VARIANT"!]" type="postbuild-h" ?>
+      <?artifact directory="src" file="[!"$J1939DCM_PBCFG_C_VARIANT"!]" type="postbuild-c" ?>
+      <type name="[!"$J1939DCM_CONFIGLAYOUTTYPE_VARIANT"!]">
+        <struct>
+          <member type="J1939Dcm_ConfigType" name="RootCfg"/>
+          <member type="J1939DcmChannelCfgType" name="J1939DcmChannelCfg" count="[!"num:i(count(as:modconf('J1939Dcm')[1]/J1939DcmConfigSet/eb-list::*[1]/J1939DcmChannel/eb-list::*))"!]"/>
+          <member type="J1939DcmNodeCfgType" name="J1939DcmNodeCfg" count="[!"num:i(count(as:modconf('J1939Dcm')[1]/J1939DcmConfigSet/eb-list::*[1]/J1939DcmNode/eb-list::*))"!]"/>
+[!IF "num:i($TotalTxDM) != '0'"!]                  
+          <member type="J1939DcmTxPduConfigType" name="J1939DcmTxPduCfg" count="[!"num:i($TotalTxDM)"!]"/>
+[!ENDIF!]          
+[!IF "num:i($TotalRxDM) != '0'"!]           
+          <member type="J1939DcmRxPduConfigType" name="J1939DcmRxPduCfg" count="[!"num:i($TotalRxDM)"!]"/>
+[!ENDIF!]     
+          <member type="uint8" name="J1939DcmConfiguredChannelsPbcfg" count="[!"num:i($NrOfConfigDcmChannels)"!]"/>     
+        </struct>
+      </type>
+      <type name="[!"$J1939DCM_CONSTCONFIGLAYOUTTYPE_VARIANT"!]">
+        <reference type="[!"$J1939DCM_CONFIGLAYOUTTYPE_VARIANT"!]">
+          <compiler-abstraction>
+            <const memory-class="J1939DCM_APPL_CONST" />
+          </compiler-abstraction>
+        </reference>
+      </type>
+      <memory-section name="CONFIG_DATA_UNSPECIFIED">
+        <instance type="[!"$J1939DCM_CONSTCONFIGLAYOUTTYPE_VARIANT"!]" 
+          name="[!"$J1939DCM_CONFIG_LAYOUT_VARIANT"!]">
+        <parameter name="postbuild-configuration-name">
+          <symbolic-value>[!"$initPredefinedCfgName"!]</symbolic-value>
+        </parameter>
+        [!IF "not(var:defined('postBuildVariant')) and not(node:name(J1939DcmConfigSet/eb-list::*[1]) = $initPredefinedCfgName)"!]
+        <parameter name="postbuild-configuration-name">
+          <symbolic-value>[!"node:name(J1939DcmConfigSet/eb-list::*[1])"!]</symbolic-value>
+        </parameter>
+        [!ENDIF!]
+          <field> <!-- RootConfig -->
+            <field><int>[!"asc:getPlatformSignature()"!]</int></field><!--Platform Signature-->
+            <field><int>[!"asc:getConfigSignature(as:modconf('J1939Dcm')[1]//eb-list::*[not(child::*) and (node:configclass() = 'Link')])"!]</int></field><!--Link Time Signature-->
+            <field><int>[!"asc:getConfigSignature(as:modconf('J1939Dcm')[1]//eb-list::*[not(child::*) and (node:configclass() = 'PreCompile') ])"!]</int></field><!--Pre Compile Signature-->
+            <field><int>[!"asc:getConfigSignature(node:difference(as:modconf('J1939Dcm')[1]/CommonPublishedInformation//eb-list::*[not(child::*) and (node:configclass() = 'PublishedInformation') ], as:modconf('J1939Dcm')[1]/CommonPublishedInformation/Release))"!]</int></field><!--Public Signature-->
+            <field>  
+              <ref>
+                <struct-field name="J1939DcmChannelCfg" />
+                <array-field index="0" />
+              </ref>
+            </field>            
+            <field>
+              <ref>
+                <struct-field name="J1939DcmNodeCfg" />
+                <array-field index="0" />
+              </ref>
+            </field>
+[!IF "num:i($TotalTxDM) != '0'"!]            
+            <field>
+              <ref>
+                <struct-field name="J1939DcmTxPduCfg" />
+                <array-field index="0" />
+              </ref>
+            </field>
+[!ENDIF!]            
+[!IF "num:i($TotalRxDM) != '0'"!]             
+            <field>
+              <ref>
+                <struct-field name="J1939DcmRxPduCfg" />
+                <array-field index="0" />
+              </ref>
+            </field>
+[!ENDIF!]
+          <field>
+              <ref>
+                <struct-field name="J1939DcmConfiguredChannelsPbcfg" />
+                <array-field index="0" />
+              </ref>
+            </field>                
+          </field>
+
+          <field> <!-- J1939DcmChannelCfg for -->
+[!LOOP "as:modconf('J1939Dcm')[1]/J1939DcmConfigSet/eb-list::*[1]/J1939DcmChannel/eb-list::*"!]
+[!VAR "ComMChannelIdValue" = "(as:ref(J1939DcmComMChannelRef)/ComMChannelId)"!]       
+            <field><!--Configuration for [!"as:name(.)"!]-->
+              <field><int>[!"num:i($ComMChannelIdValue)"!]</int></field><!--ComM Channel ID value-->     
+            </field>
+[!ENDLOOP!]          
+          </field>
+
+          <field> <!-- J1939DcmNodeCfg-->
+[!VAR "DM_ID_Count" = "'0'"!]
+[!LOOP "as:modconf('J1939Dcm')[1]/J1939DcmConfigSet/eb-list::*[1]/J1939DcmNode/eb-list::*"!]
+[!VAR "RmUserIdValue" = "(as:ref(J1939DcmNodeRmUserRef)/J1939RmUserId )"!]        
+            <field><!--Configuration for [!"as:name(.)"!]-->
+              <field><int>[!"num:i($RmUserIdValue)"!]</int></field><!--RmUserRef-->
+            </field>
+[!ENDLOOP!]
+          </field>
+
+[!IF "num:i($TotalTxDM) != '0'"!]
+          <field> <!--J1939DcmTxPduCfg-->
+[!VAR "NodeIdCount" = "'0'"!]
+[!LOOP "as:modconf('J1939Dcm')[1]/J1939DcmConfigSet/eb-list::*[1]/J1939DcmNode/eb-list::*"!]
+  [!VAR "NodeIdCount" = "$NodeIdCount+1"!]
+  [!VAR "DmNumbInNode" = "'0'"!]
+  [!VAR "NodeSymbolicName" = "(node:ref(J1939DcmNmNodeRef)/J1939NmNodeId)"!]
+  [!LOOP "as:modconf('J1939Dcm')[1]/J1939DcmConfigSet/eb-list::*[1]/J1939DcmNode/eb-list::*[num:i($NodeIdCount)]/J1939DcmDiagnosticMessageSupport/eb-list::*"!]
+    [!VAR "DmNumbInNode" = "$DmNumbInNode + 1"!]
+  [!ENDLOOP!]
+  [!FOR "i" = "1" TO "$DmNumbInNode"!]
+  [!IF "node:value(as:modconf('J1939Dcm')[1]/J1939DcmConfigSet/eb-list::*[1]/J1939DcmNode/eb-list::*[num:i($NodeIdCount)]/J1939DcmDiagnosticMessageSupport/eb-list::*[num:i($i)]/J1939DcmDmxSupport) != 'J1939DCM_DM13_SUPPORT'"!]
+    [!IF "node:value(as:modconf('J1939Dcm')[1]/J1939DcmConfigSet/eb-list::*[1]/J1939DcmNode/eb-list::*[num:i($NodeIdCount)]/J1939DcmDiagnosticMessageSupport/eb-list::*[num:i($i)]/J1939DcmDmxSupport) = 'J1939DCM_DM03_SUPPORT'"!]
+            <field><!--Configuration for [!"as:name(.)"!]-->
+               <field><int>0</int></field><!--No Need for TxPduID, this is DM03 Diagnostic Data Clear/Reset for Previously Active DTCs-->
+               <field><int>0</int></field><!--No Need for TxPduRef, this is DM03 Diagnostic Data Clear/Reset for Previously Active DTCs-->
+               <field><int>[!"num:i($NodeSymbolicName)"!]</int></field><!--NodeId of the node to whom the Pdu belongs to-->
+               <field><int>[!"num:i($DmChannel)"!]</int></field><!--Channel Index on which this DMTX is configured-->
+            </field>
+    [!ELSEIF "node:value(as:modconf('J1939Dcm')[1]/J1939DcmConfigSet/eb-list::*[1]/J1939DcmNode/eb-list::*[num:i($NodeIdCount)]/J1939DcmDiagnosticMessageSupport/eb-list::*[num:i($i)]/J1939DcmDmxSupport) = 'J1939DCM_DM11_SUPPORT'"!]
+           <field><!--Configuration for [!"as:name(.)"!]-->
+               <field><int>0</int></field><!--No Need for TxPduID, this is DM11 Diagnostic Data Clear/Reset for Active DTCs-->
+               <field><int>0</int></field><!--No Need for TxPduRef, this is DM11 Diagnostic Data Clear/Reset for Active DTCs-->
+               <field><int>[!"num:i($NodeSymbolicName)"!]</int></field><!--NodeId of the node to whom the DM belongs to-->
+               <field><int>[!"num:i($DmChannel)"!]</int></field><!--Channel Index on which this DMTX is configured-->
+            </field>
+    [!ELSE!]
+      [!VAR "TxPduID"="as:modconf('J1939Dcm')[1]/J1939DcmConfigSet/eb-list::*[1]/J1939DcmNode/eb-list::*[num:i($NodeIdCount)]/J1939DcmDiagnosticMessageSupport/eb-list::*[num:i($i)]/J1939DcmTxPdu/J1939DcmTxPduId"!]
+      [!VAR "TxPduRef"="as:ref(as:modconf('J1939Dcm')[1]/J1939DcmConfigSet/eb-list::*[1]/J1939DcmNode/eb-list::*[num:i($NodeIdCount)]/J1939DcmDiagnosticMessageSupport/eb-list::*[num:i($i)]/J1939DcmTxPdu/J1939DcmTxPduRef)/PduId"!]
+      [!VAR "DmChannel"="node:pos(as:ref(as:modconf('J1939Dcm')[1]/J1939DcmConfigSet/eb-list::*[1]/J1939DcmNode/eb-list::*[num:i($NodeIdCount)]/J1939DcmDiagnosticMessageSupport/eb-list::*[num:i($i)]/J1939DcmDiagnosticMessageSupportChannelRef))"!]  
+            <field><!--Configuration for [!"as:name(.)"!]-->
+               <field><int>[!"num:i($TxPduID)"!]</int></field><!--Tx Pdu Identifier-->
+               <field><int>[!"num:i($TxPduRef)"!]</int></field><!--Tx Pdu Reference-->
+               <field><int>[!"num:i($NodeSymbolicName)"!]</int></field><!--NodeId of the node to whom the DM belongs to-->
+               <field><int>[!"num:i($DmChannel)"!]</int></field><!--Channel Index on which this DMTX is configured-->
+            </field>
+     [!ENDIF!]
+    [!ENDIF!]
+  [!ENDFOR!]
+[!ENDLOOP!]
+          </field>
+[!ENDIF!]
+
+[!IF "num:i($TotalRxDM) != '0'"!] 
+          <field> <!--J1939DcmRxPduCfg-->
+[!VAR "NodeIdCount" = "'0'"!]
+[!LOOP "as:modconf('J1939Dcm')[1]/J1939DcmConfigSet/eb-list::*[1]/J1939DcmNode/eb-list::*"!]
+  [!VAR "NodeIdCount" = "$NodeIdCount+1"!]
+  [!VAR "DmNumbInNode" = "'0'"!]
+  [!VAR "NodeSymbolicName" = "(node:ref(J1939DcmNmNodeRef)/J1939NmNodeId)"!]
+  [!LOOP "as:modconf('J1939Dcm')[1]/J1939DcmConfigSet/eb-list::*[1]/J1939DcmNode/eb-list::*[num:i($NodeIdCount)]/J1939DcmDiagnosticMessageSupport/eb-list::*"!]
+    [!VAR "DmNumbInNode" = "$DmNumbInNode + 1"!]
+  [!ENDLOOP!]
+  [!FOR "i" = "1" TO "$DmNumbInNode"!]
+    [!IF "node:exists(as:modconf('J1939Dcm')[1]/J1939DcmConfigSet/eb-list::*[1]/J1939DcmNode/eb-list::*[num:i($NodeIdCount)]/J1939DcmDiagnosticMessageSupport/eb-list::*[num:i($i)]/J1939DcmRxPdu)"!]
+      [!VAR "RxPduID"="as:modconf('J1939Dcm')[1]/J1939DcmConfigSet/eb-list::*[1]/J1939DcmNode/eb-list::*[num:i($NodeIdCount)]/J1939DcmDiagnosticMessageSupport/eb-list::*[num:i($i)]/J1939DcmRxPdu/J1939DcmRxPduId"!]
+      [!VAR "RxPduRef"="as:ref(as:modconf('J1939Dcm')[1]/J1939DcmConfigSet/eb-list::*[1]/J1939DcmNode/eb-list::*[num:i($NodeIdCount)]/J1939DcmDiagnosticMessageSupport/eb-list::*[num:i($i)]/J1939DcmRxPdu/J1939DcmRxPduRef)/PduId"!]           
+      [!VAR "DmChannel"="node:pos(as:ref(as:modconf('J1939Dcm')[1]/J1939DcmConfigSet/eb-list::*[1]/J1939DcmNode/eb-list::*[num:i($NodeIdCount)]/J1939DcmDiagnosticMessageSupport/eb-list::*[num:i($i)]/J1939DcmDiagnosticMessageSupportChannelRef))"!]  	  
+            <field><!--Configuration for [!"as:name(.)"!]-->
+                <field><int>[!"num:i($RxPduID)"!]</int></field><!--Rx Pdu Identifier-->
+                <field><int>[!"num:i($RxPduRef)"!]</int></field><!--Rx Pdu Reference-->
+                <field><int>[!"num:i($NodeSymbolicName)"!]</int></field><!--NodeId of the Node to whom this pduId belongs to-->
+                <field><int>[!"num:i($DmChannel)"!]</int></field><!--Channel Index on which this DMRX is configured-->
+            </field>          
+    [!ENDIF!]        
+  [!ENDFOR!]
+[!ENDLOOP!]
+          </field>
+<!--This section generates the array J1939DcmConfiguredChannels and identifies for each node individually what unique channels the node operates on-->
+<!--Example : N1,Ch1,Ch2 ; N2 Ch1 Ch3 Ch1 ; N3 Ch1 Ch2 Ch2 Ch1. Array size 6, Array contents [Ch1,Ch2; Ch1,Ch3 ; Ch1,Ch2]-->
+[!ENDIF!]
+[!VAR "NodeId" = "'0'"!]
+[!VAR "CurrentMessageIndex" = "'0'"!]
+[!VAR "SameComMChannelDetected"="'0'"!]
+       <field> <!--J1939DcmConfiguredChannelsPbcfg-->
+[!LOOP "as:modconf('J1939Dcm')[1]/J1939DcmConfigSet/eb-list::*[1]/J1939DcmNode/eb-list::*"!]
+[!VAR "NodeId" = "$NodeId + 1"!]
+    <!--Configured channels for node [!"$NodeId"!] -->
+[!LOOP "as:modconf('J1939Dcm')[1]/J1939DcmConfigSet/eb-list::*[1]/J1939DcmNode/eb-list::*[num:i($NodeId)]/J1939DcmDiagnosticMessageSupport/eb-list::*"!]
+[!VAR "CurrentMessageIndex" = "$CurrentMessageIndex + 1"!]
+[!VAR "MessageIndex" = "'0'"!]
+[!FOR "MessageIndex" = "1" TO "$CurrentMessageIndex"!]
+[!IF "node:value(as:modconf('J1939Dcm')[1]/J1939DcmConfigSet/eb-list::*[1]/J1939DcmNode/eb-list::*[num:i($NodeId)]/J1939DcmDiagnosticMessageSupport/eb-list::*[num:i($MessageIndex)]/J1939DcmDiagnosticMessageSupportChannelRef) = node:value(as:modconf('J1939Dcm')[1]/J1939DcmConfigSet/eb-list::*[1]/J1939DcmNode/eb-list::*[num:i($NodeId)]/J1939DcmDiagnosticMessageSupport/eb-list::*[num:i($CurrentMessageIndex)]/J1939DcmDiagnosticMessageSupportChannelRef)"!]
+[!VAR "SameComMChannelDetected" = "$SameComMChannelDetected + 1"!]
+[!ENDIF!]
+[!ENDFOR!]
+[!IF "num:i($SameComMChannelDetected) = '1'"!]
+[!VAR "ComMChannelIdValue" = "(as:ref(as:ref(J1939DcmDiagnosticMessageSupportChannelRef)/J1939DcmComMChannelRef)/ComMChannelId)"!]     
+           <field><int>[!"num:i($ComMChannelIdValue)"!]</int></field><!--Com Channel Id-->
+[!ENDIF!]
+[!VAR "SameComMChannelDetected"="'0'"!]
+[!ENDLOOP!]
+[!VAR "CurrentMessageIndex" = "'0'"!]
+[!ENDLOOP!]
+       </field>            
+        </instance>
+      </memory-section>
+    </configuration>
+  </module>
+[!ENDCODE!]
+  <xi:include href="Base.xgen" xpointer="element(/1/1)" />
+</xgen>

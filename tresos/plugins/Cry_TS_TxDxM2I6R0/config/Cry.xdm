@@ -1,0 +1,2633 @@
+<?xml version='1.0'?>
+<datamodel version="7.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/16/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/16/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar" 
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd" 
+         xmlns:f="http://www.tresos.de/_projects/DataModel2/14/formulaexpr.xsd" 
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd" 
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd"  
+         xmlns:variant="http://www.tresos.de/_projects/DataModel2/11/variant.xsd">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="TS_TxDxM2I6R0" type="AR-PACKAGE">
+        <d:lst type="ELEMENTS">
+          <d:chc name="Cry" type="AR-ELEMENT" value="MODULE-DEF">
+            <v:ctr type="MODULE-DEF">
+              <a:a name="ADMIN-DATA" type="ADMIN-DATA">
+                <ad:ADMIN-DATA>
+                  <ad:DOC-REVISIONS>
+                    <ad:DOC-REVISION>
+                      <ad:REVISION-LABEL>0.1.0</ad:REVISION-LABEL>
+                      <ad:ISSUED-BY/>
+                    </ad:DOC-REVISION>
+                  </ad:DOC-REVISIONS>
+                </ad:ADMIN-DATA>
+              </a:a>
+              <a:a name="DESC" 
+                   value="EN: Configuration of the Cry (Cryptographic Library Module)."/>
+              <a:a name="LOWER-MULTIPLICITY" value="1"/>
+              <a:a name="RELEASE" value="asc:4.0"/>
+              <a:a name="UPPER-MULTIPLICITY" value="1"/>
+              <a:a name="UUID" value="505e4f69-8af3-4e02-8b8b-4f78165ec8dd"/>
+              <v:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>EN:
+                    &lt;html&gt;
+                      Common container, aggregated by all modules. It contains published information about vendor and versions.
+                  &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="Common Published Information"/>
+                <a:a name="UUID" 
+                     value="ECUC:a00be3e0-8783-9123-2d52-1eb616737ca6"/>
+                <v:var name="ArMajorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Major version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Major Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:948f3f2e-f129-4bc5-b4e1-7a7bdb8599e1"/>
+                  <a:da name="DEFAULT" value="1"/>
+                </v:var>
+                <v:var name="ArMinorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Minor version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Minor Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:2893b920-59d5-4ac2-b2c1-e23742e66d70"/>
+                  <a:da name="DEFAULT" value="2"/>
+                </v:var>
+                <v:var name="ArPatchVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Patch level version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Patch Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:6428eb9b-8790-488a-b9a3-0fba52d0f59e"/>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="SwMajorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Major version number of the vendor specific implementation of the module.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Major Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:605b18ae-3f9a-41d4-9225-67c9c5f6fc34"/>
+                  <a:da name="DEFAULT" value="2"/>
+                </v:var>
+                <v:var name="SwMinorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Minor version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Minor Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a7fe44dc-ea25-4b8d-8fad-9fbcae86d56f"/>
+                  <a:da name="DEFAULT" value="6"/>
+                </v:var>
+                <v:var name="SwPatchVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Patch Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a318d2d9-0e75-49da-ac43-e7e4e682e2f9"/>
+                  <a:da name="DEFAULT" value="6"/>
+                </v:var>
+                <v:var name="ModuleId" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Module ID of this module from Module List
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Numeric Module ID"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:78bc8362-080f-4253-b3da-804ab69a7154"/>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="VendorId" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Vendor ID"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:01b0f467-6943-4558-b4f2-3fa1fad28449"/>
+                  <a:da name="DEFAULT" value="1"/>
+                </v:var>
+                <v:var name="Release" type="STRING_LABEL">
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Release Information"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:1c68a547-f24e-4a4e-9540-69fbd533ec89"/>
+                  <a:da name="DEFAULT" value=""/>
+                </v:var>
+              </v:ctr>
+              <v:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                          &lt;p&gt;Select the configuration variant. Currently only PreCompile is supported.&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="Config Variant"/>
+                <a:a name="UUID" value="a11623fa-c3fe-4548-809f-007dd3b09dc5"/>
+                <a:da name="DEFAULT" value="VariantPreCompile"/>
+                <a:da name="ENABLE" value="false"/>
+                <a:da name="RANGE" value="VariantPreCompile"/>
+              </v:var>
+              <v:ctr name="CryGeneral" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                        &lt;p&gt;The general configuration&lt;/p&gt;
+                      &lt;/html&gt;</a:v>
+                </a:a>
+                <v:var name="CryLNAlgorithmImplementation" type="ENUMERATION">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;
+                            Selects the implementation variant of long number library.
+                          &lt;/p&gt;
+
+                          &lt;p&gt;Range:&lt;/p&gt;
+                          &lt;ul&gt;
+                            &lt;li&gt;
+                              &lt;code&gt;CRY_LN_MEMORY_OPTIMIZED&lt;/code&gt;
+                              &lt;p&gt;This implementation variant offers a trade-off between RAM usage
+                                 and processing time.
+                              &lt;/p&gt;
+                            &lt;/li&gt;
+
+                            &lt;li&gt;
+                              &lt;code&gt;CRY_LN_SPEED_OPTIMIZED&lt;/code&gt;
+                              &lt;p&gt;
+                                This implementation variant allocates RAM on the stack during
+                                the execution of long number functions to achieve a shorter
+                                processing time.
+                              &lt;/p&gt;
+                            &lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="LN algorithm implementation variant"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="__ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="CRY_LN_MEMORY_OPTIMIZED"/>
+                  <a:da name="RANGE">
+                    <a:v>CRY_LN_MEMORY_OPTIMIZED</a:v>
+                    <a:v>CRY_LN_SPEED_OPTIMIZED</a:v>
+                  </a:da>
+                </v:var>
+                <v:var name="CryInterruptableLN" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                        &lt;p&gt;
+                          If disabled, the Cry module will process all operations related to
+                          long numbers in a single main function call.
+
+                          This implementation variant trades CPU usage per main function call
+                          for achieving a smaller total processing time of the algorithm.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                          If enabled, the Cry module splits all operations related to
+                          long numbers across several main function calls.
+
+                          This implementation variant offers a trade-off between the total
+                          processing time of the algorithm and CPU usage per main function call.
+                        &lt;/p&gt;
+
+                        &lt;p&gt;
+                          Note: this configuration parameter is only available if the
+                          &quot;memory optimized&quot; long number library implementation variant is used
+                          (&lt;code&gt;CryLNAlgorithmImplementation&lt;/code&gt; = &lt;code&gt;CRY_LN_MEMORY_OPTIMIZED&lt;/code&gt;).
+                        &lt;/p&gt;
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Interruptable LN operations"/>
+                  <a:a name="__ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="true"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="((node:exists(as:modconf(&apos;Cry&apos;)/CryGeneral/CryLNAlgorithmImplementation)) and (as:modconf(&apos;Cry&apos;)/CryGeneral/CryLNAlgorithmImplementation = &apos;CRY_LN_MEMORY_OPTIMIZED&apos;))"/>
+                </v:var>
+                <v:var name="CryLNPlatformDoubleWordSupport" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                            &lt;p&gt;
+                              Switch to enable/disable support for double words (words having
+                              the length equal to double the platform size).
+                            &lt;/p&gt;
+
+                            &lt;ul&gt;
+                              &lt;li&gt;
+                                &lt;code&gt;FALSE&lt;/code&gt;: The Cry module uses single words for
+                                calculating partial results during long number operations by
+                                splitting the operands in lower/upper parts.
+                              &lt;/li&gt;
+
+                              &lt;li&gt;
+                                &lt;code&gt;TRUE&lt;/code&gt;: The Cry module uses double words for
+                                calculating partial results during long number operations.
+                              &lt;/li&gt;
+                            &lt;/ul&gt;
+
+                            &lt;p&gt;
+                              Note: this configuration parameter is only available if the
+                              &quot;speed optimized&quot; long number library implementation variant is used
+                              (&lt;code&gt;CryLNAlgorithmImplementation&lt;/code&gt; = &lt;code&gt;CRY_LN_SPEED_OPTIMIZED&lt;/code&gt;).
+                            &lt;/p&gt;
+                          &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Support for double words"/>
+                  <a:a name="__ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="((node:exists(as:modconf(&apos;Cry&apos;)/CryGeneral/CryLNAlgorithmImplementation)) and (as:modconf(&apos;Cry&apos;)/CryGeneral/CryLNAlgorithmImplementation = &apos;CRY_LN_SPEED_OPTIMIZED&apos;))"/>
+                </v:var>
+                <v:var name="CrySHAOneAndTwoImplementation" type="ENUMERATION">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;Selects the implementation variant of the SHA-1 and SHA-2 hashing algorithms.&lt;/p&gt;
+
+                          &lt;p&gt;Range:&lt;/p&gt;
+                          &lt;ul&gt;
+                            &lt;li&gt;
+                              &lt;code&gt;CRY_SHAONEANDTWO_INTERRUPTABLE&lt;/code&gt;
+                              &lt;p&gt;The Cry module splits SHA-1/SHA-2 hash computations across several main
+                                 function calls.
+                              &lt;/p&gt;
+                              &lt;p&gt;This implementation variant offers a trade-off between
+                                 the total processing time of the algorithm and CPU usage per
+                                 main function call.
+                              &lt;/p&gt;
+                            &lt;/li&gt;
+
+                            &lt;li&gt;
+                              &lt;code&gt;CRY_SHAONEANDTWO_FAST&lt;/code&gt;
+                              &lt;p&gt;The Cry module performs as many SHA-1/SHA-2 hash computations as
+                                 possible per main function call.
+                              &lt;/p&gt;
+                              &lt;p&gt;This implementation variant trades CPU usage per main function call
+                                 for achieving a smaller total processing time of the algorithm.
+                              &lt;/p&gt;
+                            &lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="SHA-1/SHA-2 implementation variant"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="__ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="CRY_SHAONEANDTWO_INTERRUPTABLE"/>
+                  <a:da name="RANGE">
+                    <a:v>CRY_SHAONEANDTWO_INTERRUPTABLE</a:v>
+                    <a:v>CRY_SHAONEANDTWO_FAST</a:v>
+                  </a:da>
+                </v:var>
+                <v:var name="CryCrcImplementationVariant" type="ENUMERATION">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                              Selects the implementation variant of crcTable.
+                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" 
+                       value="CRC algorithm implementation variant "/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="__ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="CRY_CRC_MEMORY_OPTIMIZED"/>
+                  <a:da name="RANGE">
+                    <a:v>CRY_CRC_SPEED_OPTIMIZED</a:v>
+                    <a:v>CRY_CRC_MEMORY_OPTIMIZED</a:v>
+                  </a:da>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="CrySHA1" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                        The configurations of SHA1
+                      &lt;/html&gt;</a:v>
+                </a:a>
+                <v:var name="CrySHA1ImmediateRestartEnabled" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                         Enable the cancelation of an ongoing calculation regardless of the configuration ID.
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" 
+                       value="Enable the cancelation of ongoing requests"/>
+                  <a:a name="__ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmHash/CsmHashImmediateRestart)" 
+                        true="true" false="false"/>
+                  <a:da name="INVALID" type="XPath" 
+                        expr="as:modconf(&apos;Csm&apos;)[1]/CsmHash/CsmHashImmediateRestart = &apos;false&apos; and . = true" 
+                        true="Immediate restart of ongoing requests is not enabled in the Csm module."/>
+                </v:var>
+                <v:lst name="CrySHA1Config" type="MAP">
+                  <a:a name="COLUMNS">
+                    <a:v>CrySHA1Type</a:v>
+                    <a:v>CrySHA1IterationsPerMain</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="SHA1 configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CrySHA1Config" type="IDENTIFIABLE">
+                    <v:var name="CrySHA1Type" type="ENUMERATION">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              Prime used
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Prime"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="CRY_SHA_1"/>
+                      <a:da name="RANGE" value="CRY_SHA_1"/>
+                    </v:var>
+                    <v:var name="CrySHA1IterationsPerMain" type="INTEGER">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                            &lt;p&gt;
+                              Defines the number of SHA1 algoritm iterations per
+                              Cry_SHA1MainFunction() call during the compression phase.
+                              This allows to fine tune the execution time per main function call
+                              and thus the number of calls. The value 0 means that the number of
+                              iterations shall not be limited.
+                            &lt;/p&gt;
+
+                            &lt;p&gt;
+                              Note: This configuration parameter is available only if SHA-1/SHA-2 interruptable
+                              code variant is used (&lt;code&gt;CrySHAOneAndTwoImplementation&lt;/code&gt; =
+                              &lt;code&gt;CRY_SHAONEANDTWO_INTERRUPTABLE&lt;/code&gt;)
+                            &lt;/p&gt;
+                          &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" 
+                           value="Number of iterations per MainFunction()"/>
+                      <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                      <a:da name="DEFAULT" value="1"/>
+                      <a:da name="ENABLE" type="XPath" 
+                            expr="as:modconf(&apos;Cry&apos;)/CryGeneral/CrySHAOneAndTwoImplementation = &apos;CRY_SHAONEANDTWO_INTERRUPTABLE&apos;"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=65535"/>
+                        <a:tst expr="&gt;=0"/>
+                      </a:da>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CrySHA2" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                        The configurations of SHA2
+                      &lt;/html&gt;</a:v>
+                </a:a>
+                <v:var name="CrySHA2ImmediateRestartEnabled" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                         Enable the cancelation of an ongoing calculation regardless of the configuration ID.
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" 
+                       value="Enable the cancelation of ongoing requests"/>
+                  <a:a name="__ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmHash/CsmHashImmediateRestart)" 
+                        true="true" false="false"/>
+                  <a:da name="INVALID" type="XPath" 
+                        expr="as:modconf(&apos;Csm&apos;)[1]/CsmHash/CsmHashImmediateRestart = &apos;false&apos; and . = true" 
+                        true="Immediate restart of ongoing requests is not enabled in the Csm module."/>
+                </v:var>
+                <v:lst name="CrySHA2Config" type="MAP">
+                  <a:a name="COLUMNS">
+                    <a:v>CrySHA2Type</a:v>
+                    <a:v>CrySHA2IterationsPerMain</a:v>
+                    <a:v>CrySHA2SupportRestart</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="SHA2 configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CrySHA2Config" type="IDENTIFIABLE">
+                    <v:var name="CrySHA2Type" type="ENUMERATION">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              Prime used
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Prime"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="CRY_SHA_256"/>
+                      <a:da name="INVALID" type="XPath">
+                        <a:tst 
+                               expr="(count(as:modconf(&apos;Cry&apos;)/CrySHA2/CrySHA2Config/*/CrySHA2Type[ . = &apos;CRY_SHA_224&apos; or . = &apos;CRY_SHA_256&apos;]) &gt; 0) and (count(as:modconf(&apos;Cry&apos;)/CrySHA2/CrySHA2Config/*/CrySHA2Type[ . = &apos;CRY_SHA_384&apos; or . = &apos;CRY_SHA_512&apos;]) &gt; 0)" 
+                               true="Configurations with both 224/256 and 384/512 digest sizes are not supported."/>
+                        <a:tst 
+                               expr="(count(as:modconf(&apos;Cry&apos;)/CrySHA1/CrySHA1Config/*/CrySHA1Type[ . = &apos;CRY_SHA_1&apos;]) &gt; 0) and (count(as:modconf(&apos;Cry&apos;)/CrySHA2/CrySHA2Config/*/CrySHA2Type[ . = &apos;CRY_SHA_384&apos; or . = &apos;CRY_SHA_512&apos;]) &gt; 0)" 
+                               true="Configurations with both SHA-1 and SHA-2 384/512 digest sizes are not supported."/>
+                      </a:da>
+                      <a:da name="RANGE">
+                        <a:v>CRY_SHA_224</a:v>
+                        <a:v>CRY_SHA_256</a:v>
+                        <a:v>CRY_SHA_384</a:v>
+                        <a:v>CRY_SHA_512</a:v>
+                      </a:da>
+                    </v:var>
+                    <v:var name="CrySHA2IterationsPerMain" type="INTEGER">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              &lt;p&gt;
+                                Defines the number of SHA-2 algoritm iterations per
+                                Cry_SHA2MainFunction() call during the compression phase.
+                                This allows to fine tune the execution time per main function call
+                                and thus the number of calls. The value 0 means that the number of
+                                iterations shall not be limited.
+                              &lt;/p&gt;
+
+                              &lt;p&gt;
+                                Note: This configuration parameter is available only if SHA-1/SHA-2 interruptable
+                                code variant is used (&lt;code&gt;CrySHAOneAndTwoImplementation&lt;/code&gt; =
+                                &lt;code&gt;CRY_SHAONEANDTWO_INTERRUPTABLE&lt;/code&gt;)
+                              &lt;/p&gt;
+                          &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" 
+                           value="Number of iterations per MainFunction()"/>
+                      <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                      <a:da name="DEFAULT" value="1"/>
+                      <a:da name="ENABLE" type="XPath" 
+                            expr="as:modconf(&apos;Cry&apos;)/CryGeneral/CrySHAOneAndTwoImplementation = &apos;CRY_SHAONEANDTWO_INTERRUPTABLE&apos;"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=65535"/>
+                        <a:tst expr="&gt;=0"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="CrySHA2SupportRestart" type="BOOLEAN">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                             If enabled, the restart feature of the service is enabled.&lt;br/&gt;
+                             &lt;b&gt;Important:&lt;/b&gt; If Cry_SHA2Start can interrupt Cry_SHA2MainFunction,
+                             a service should only be restarted after the last expected callback
+                             notification has been called. Otherwise, callback notifications
+                             related to the canceled calculation might be called.&lt;br/&gt;
+                             Please ensure that the corresponding parameter CsmHashEnableRestart
+                             in the CSM has the same value as this parameter.
+                          &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" 
+                           value="Enable the cancelation of ongoing requests"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="false"/>
+                      <a:da name="INVALID" type="XPath">
+                        <a:tst 
+                               expr="(node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmHash/CsmHashConfig/*[CsmHashPrimitiveName = &apos;SHA2&apos; and CsmHashInitConfiguration = node:name(node:current()/..)]/CsmHashEnableRestart) and (as:modconf(&apos;Csm&apos;)[1]/CsmHash/CsmHashConfig/*[CsmHashPrimitiveName = &apos;SHA2&apos; and CsmHashInitConfiguration = node:name(node:current()/..)]/CsmHashEnableRestart != .))" 
+                               true="The related Csm configuration has a different value for CsmHashEnableRestart. The Csm and Cry only work correctly if CsmHashEnableRestart and CrySHA2SupportRestart have the same value."/>
+                        <a:tst 
+                               expr="(node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmHash/CsmHashConfig/*[CsmHashPrimitiveName = &apos;SHA2&apos; and CsmHashInitConfiguration = node:name(node:current()/..)]) and not(node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmHash/CsmHashConfig/*[CsmHashPrimitiveName = &apos;SHA2&apos; and CsmHashInitConfiguration = node:name(node:current()/..)]/CsmHashEnableRestart)) and (node:value(.) = &apos;true&apos;))" 
+                               true="Cancelation of ongoing requests is not supported by the availabe Csm module."/>
+                      </a:da>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CrySHA3" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                        The configurations of SHA3
+                      &lt;/html&gt;</a:v>
+                </a:a>
+                <v:var name="CrySHA3ImmediateRestartEnabled" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                        Enable the cancelation of an ongoing calculation regardless of the configuration ID.
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" 
+                       value="Enable the cancelation of ongoing requests"/>
+                  <a:a name="__ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmHash/CsmHashImmediateRestart)" 
+                        true="true" false="false"/>
+                  <a:da name="INVALID" type="XPath" 
+                        expr="as:modconf(&apos;Csm&apos;)[1]/CsmHash/CsmHashImmediateRestart = &apos;false&apos; and . = true" 
+                        true="Immediate restart of ongoing requests is not enabled in the Csm module."/>
+                </v:var>
+                <v:lst name="CrySHA3Config" type="MAP">
+                  <a:a name="COLUMNS">
+                    <a:v>CrySHA3Type</a:v>
+                    <a:v>CrySHA3SupportRestart</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="SHA3 configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CrySHA3Config" type="IDENTIFIABLE">
+                    <v:var name="CrySHA3Type" type="ENUMERATION">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              Prime used
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Prime"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="CRY_SHA3_256"/>
+                      <a:da name="RANGE">
+                        <a:v>CRY_SHA3_224</a:v>
+                        <a:v>CRY_SHA3_256</a:v>
+                        <a:v>CRY_SHA3_384</a:v>
+                        <a:v>CRY_SHA3_512</a:v>
+                      </a:da>
+                    </v:var>
+                    <v:var name="CrySHA3SupportRestart" type="BOOLEAN">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                             If enabled, the restart feature of the service is enabled.&lt;br/&gt;
+                             &lt;b&gt;Important:&lt;/b&gt; If Cry_SHA3Start can interrupt Cry_SHA3MainFunction,
+                             a service should only be restarted after the last expected callback
+                             notification has been called. Otherwise, callback notifications
+                             related to the canceled calculation might be called.&lt;br/&gt;
+                             Please ensure that the corresponding parameter CsmHashEnableRestart
+                             in the CSM has the same value as this parameter.
+                          &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" 
+                           value="Enable the cancelation of ongoing requests"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="false"/>
+                      <a:da name="INVALID" type="XPath">
+                        <a:tst 
+                               expr="(node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmHash/CsmHashConfig/*[CsmHashPrimitiveName = &apos;SHA3&apos; and CsmHashInitConfiguration = node:name(node:current()/..)]/CsmHashEnableRestart) and (as:modconf(&apos;Csm&apos;)[1]/CsmHash/CsmHashConfig/*[CsmHashPrimitiveName = &apos;SHA3&apos; and CsmHashInitConfiguration = node:name(node:current()/..)]/CsmHashEnableRestart != .))" 
+                               true="The related Csm configuration has a different value for CsmHashEnableRestart. The Csm and Cry only work correctly if CsmHashEnableRestart and CrySHA3SupportRestart have the same value."/>
+                        <a:tst 
+                               expr="(node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmHash/CsmHashConfig/*[CsmHashPrimitiveName = &apos;SHA3&apos; and CsmHashInitConfiguration = node:name(node:current()/..)]) and not(node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmHash/CsmHashConfig/*[CsmHashPrimitiveName = &apos;SHA3&apos; and CsmHashInitConfiguration = node:name(node:current()/..)]/CsmHashEnableRestart)) and (node:value(.) = &apos;true&apos;))" 
+                               true="Cancelation of ongoing requests is not supported by the availabe Csm module."/>
+                      </a:da>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CryRsaSsaPssVerify" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                        The configurations of Signature RsaSsa PSS Verify
+                      &lt;/html&gt;</a:v>
+                </a:a>
+                <v:var name="CryRsaSsaPssVerifyImmediateRestartEnabled" 
+                       type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                         Enable the cancelation of an ongoing calculation regardless of the configuration ID.
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" 
+                       value="Enable the cancelation of ongoing requests"/>
+                  <a:a name="__ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmSignatureVerify/CsmSignatureVerifyImmediateRestart)" 
+                        true="true" false="false"/>
+                  <a:da name="INVALID" type="XPath" 
+                        expr="as:modconf(&apos;Csm&apos;)[1]/CsmSignatureVerify/CsmSignatureVerifyImmediateRestart = &apos;false&apos; and . = true" 
+                        true="Immediate restart of ongoing requests is not enabled in the Csm module."/>
+                </v:var>
+                <v:var name="CryRsaSsaPssVerifyUseTimeSlices" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                           If enabled, the signature verification is split into time slices.
+                           Specifically, the modular exponentiation performed during signature
+                           verification is split into several steps.
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" 
+                       value="Use time slicing for RSASSA-PSS signature verification."/>
+                  <a:a name="__ORIGIN" value="Elektrobit Automitive Software"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="EDITABLE" value="true"/>
+                  <a:da name="TOOLTIP" value=""/>
+                </v:var>
+                <v:var name="CryRsaSsaPssVerifyNumberOfTimeSlices" 
+                       type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                             The maximum number of steps of the modular exponentiation
+                             performed in one Cry main function call during the
+                             RSASSA-PSS signature verification.
+                             NOTE: This configuration parameter is disabled, when
+                             CryRsaSsaPssVerifyUseCbk configuration parameter is enabled.
+                          &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Number of RsaSsaPss time slices"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="__ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="1"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="as:modconf(&apos;Cry&apos;)[1]/CryRsaSsaPssVerify/CryRsaSsaPssVerifyUseTimeSlices = &apos;true&apos;  and                                (as:modconf(&apos;Cry&apos;)[1]/CryRsaSsaPssVerify/CryRsaSsaPssVerifyUseCbk = &apos;false&apos;)" 
+                        true="true" false="false"/>
+                  <a:da name="RANGE" type="Range">
+                    <a:tst expr="&gt;=1"/>
+                    <a:tst expr="&lt;=4294967295"/>
+                  </a:da>
+                </v:var>
+                <v:var name="CryRsaSsaPssVerifyUseCbk" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                           If enabled, the configuration parameter CryRsaSsaPssTimeSlicesCbk is
+                           enabled, to configure the name of a callback which returns the maximum
+                           number of time slices to be used during RSASSA-PSS signature verification.
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" 
+                       value="Use configured callback function which returns maximum number of time slices"/>
+                  <a:a name="__ORIGIN" value="Elektrobit Automitive Software"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="EDITABLE" value="true"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="as:modconf(&apos;Cry&apos;)[1]/CryRsaSsaPssVerify/CryRsaSsaPssVerifyUseTimeSlices = &apos;true&apos;" 
+                        true="true" false="false"/>
+                  <a:da name="TOOLTIP" value=""/>
+                </v:var>
+                <v:var name="CryRsaSsaPssTimeSlicesCbk" type="FUNCTION-NAME">
+                  <a:a name="DESC">
+                    <a:v>Optional configuration parameter which can be used to configure
+                         the name of the callback which returns the maximum number of
+                         time slices to be used during RSASSA-PSS signature verification.
+                         NOTE: This configuration parameter is enabled, only when
+                         CryRsaSsaPssVerifyUseCbk configuration parameter is enabled.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="CryRsaSsaPssTimeSlicesCbk"/>
+                  <a:a name="__ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="(as:modconf(&apos;Cry&apos;)[1]/CryRsaSsaPssVerify/CryRsaSsaPssVerifyUseTimeSlices = &apos;true&apos;) and                               (as:modconf(&apos;Cry&apos;)[1]/CryRsaSsaPssVerify/CryRsaSsaPssVerifyUseCbk = &apos;true&apos;)"/>
+                </v:var>
+                <v:lst name="CryRsaSsaPssVerifyConfig" type="MAP">
+                  <a:a name="COLUMNS">
+                    <a:v>CryRsaSsaPssVerifyHashCfgRef</a:v>
+                    <a:v>CryRsaSsaPssVerifyKeyLength</a:v>
+                    <a:v>CryRsaSsaPssVerifyB64Encoded</a:v>
+                    <a:v>CryRsaSsaPssVerifyUseBarrett</a:v>
+                    <a:v>CryRsaSsaPssVerifySupportRestart</a:v>
+                    <a:v>CryRsaSsaPssVerifySaltLength</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="RsaSsaPssVerify configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CryRsaSsaPssVerifyConfig" type="IDENTIFIABLE">
+                    <v:ref name="CryRsaSsaPssVerifyHashCfgRef" type="REFERENCE">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              Hash configuration used
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Hash configuration"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="INVALID" type="XPath">
+                        <a:tst expr="node:refvalid(.)" 
+                               false="must reference a valid Csm Hash configuration."/>
+                        <a:tst 
+                               expr="node:value(node:ref(.)/CsmCallbackHash) = &apos;Cry_RsaSsaPssVerifyCallback&apos;" 
+                               false="Parameter &apos;CsmCallbackHash&apos; of referenced Csm Hash configuration must have value &apos;Cry_RsaSsaPssVerifyCallback&apos;"/>
+                      </a:da>
+                      <a:da name="REF" 
+                            value="ASPathDataOfSchema:/AUTOSAR/Csm/CsmHash/CsmHashConfig"/>
+                    </v:ref>
+                    <v:var name="CryRsaSsaPssVerifyKeyLength" type="INTEGER">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              Key Length in bytes used in the signature verification
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Key Length"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="384"/>
+                      <a:da name="INVALID" type="Multi">
+                        <mt:range>
+                          <mt:tst expr="&gt;=0"/>
+                          <mt:tst expr="&lt;=4294967295"/>
+                        </mt:range>
+                        <mt:xpath 
+                                  true="Csm Signature Verify key size too small." 
+                                  expr="( ( (num:i(as:modconf(&apos;Csm&apos;)[1]/CsmSignatureVerify/CsmSignatureVerifyMaxKeySize) &lt; (((. + 4) * 3) + 4) ) and                                       (count(as:modconf(&apos;Cry&apos;)/CryRsaSsaPssVerify/CryRsaSsaPssVerifyConfig/*/CryRsaSsaPssVerifyUseBarrett[. = &apos;true&apos;]) &gt; 0)                                     ) or                                     (num:i(as:modconf(&apos;Csm&apos;)[1]/CsmSignatureVerify/CsmSignatureVerifyMaxKeySize) &lt; ((. + 4) * 2) )                                   )"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="CryRsaSsaPssVerifySaltLength" type="INTEGER">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              Salt Length in bytes used in the signature verification
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Salt Length"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="384"/>
+                      <a:da name="RANGE" type="Range">
+                        <a:tst expr="&gt;=0"/>
+                        <a:tst expr="&lt;=4294967295"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="CryRsaSsaPssVerifyB64Encoded" type="BOOLEAN">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                            The signature is Base64-encoded.
+                          &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Base64 Encoded"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="false"/>
+                    </v:var>
+                    <v:var name="CryRsaSsaPssVerifyUseBarrett" type="BOOLEAN">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                            If enabled, the Barret reduction is used to verify the signature.
+                          &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Barrett reduction"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="false"/>
+                    </v:var>
+                    <v:var name="CryRsaSsaPssVerifySupportRestart" 
+                           type="BOOLEAN">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                             If enabled, the restart feature of the service is enabled.&lt;br/&gt;
+                             &lt;b&gt;Important:&lt;/b&gt; If Cry_RsaSsaPssVerifyStart can interrupt
+                             Cry_RsaSsaPssVerifyMainFunction, a service should only be restarted
+                             after the last expected callback notification has been called.
+                             Otherwise, callback notifications related to the canceled calculation
+                             might be called.&lt;br/&gt;
+                             Please ensure that the corresponding parameter CsmSignatureVerifyEnableRestart
+                             in the CSM has the same value as this parameter.
+                          &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" 
+                           value="Enable the cancelation of ongoing requests"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="false"/>
+                      <a:da name="INVALID" type="XPath">
+                        <a:tst 
+                               expr="(node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmSignatureVerify/CsmSignatureVerifyConfig/*[CsmSignatureVerifyPrimitiveName = &apos;RsaSsaPssVerify&apos; and CsmSignatureVerifyInitConfiguration = node:name(node:current()/..)]/CsmSignatureVerifyEnableRestart) and (as:modconf(&apos;Csm&apos;)[1]/CsmSignatureVerify/CsmSignatureVerifyConfig/*[CsmSignatureVerifyPrimitiveName = &apos;RsaSsaPssVerify&apos; and CsmSignatureVerifyInitConfiguration = node:name(node:current()/..)]/CsmSignatureVerifyEnableRestart != .))" 
+                               true="The related Csm configuration has a different value for CsmSignatureVerifyEnableRestart. The Csm and Cry only work correctly if CsmSignatureVerifyEnableRestart and CryRsaSsaPssVerifySupportRestart have the same value."/>
+                        <a:tst 
+                               expr="(node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmSignatureVerify/CsmSignatureVerifyConfig/*[CsmSignatureVerifyPrimitiveName = &apos;RsaSsaPssVerify&apos; and CsmSignatureVerifyInitConfiguration = node:name(node:current()/..)]) and not(node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmSignatureVerify/CsmSignatureVerifyConfig/*[CsmSignatureVerifyPrimitiveName = &apos;RsaSsaPssVerify&apos; and CsmSignatureVerifyInitConfiguration = node:name(node:current()/..)]/CsmSignatureVerifyEnableRestart)) and (node:value(.) = &apos;true&apos;))" 
+                               true="Cancelation of ongoing requests is not enabled in the Csm module."/>
+                      </a:da>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CryRsaSsaV15Generate" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                        The configurations of RsaSsa V15(PKCS1) Signature Generate
+                      &lt;/html&gt;</a:v>
+                </a:a>
+                <v:lst name="CryRsaSsaV15GenerateConfig" type="MAP">
+                  <a:a name="COLUMNS">
+                    <a:v>CryRsaSsaV15GenerateHashCfgRef</a:v>
+                    <a:v>CryRsaSsaV15GenerateKeyLength</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="RsaSsaV15 generation configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CryRsaSsaV15GenerateConfig" type="IDENTIFIABLE">
+                    <v:ref name="CryRsaSsaV15GenerateHashCfgRef" 
+                           type="REFERENCE">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              Hash configuration used
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Hash configuration"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="INVALID" type="XPath">
+                        <a:tst expr="node:refvalid(.)" 
+                               false="must reference a valid Csm Hash configuration."/>
+                        <a:tst 
+                               expr="node:value(node:ref(.)/CsmCallbackHash) = &apos;Cry_RsaSsaV15GenCallback&apos;" 
+                               false="Parameter &apos;CsmCallbackHash&apos; of referenced Csm Hash configuration must have value &apos;Cry_RsaSsaV15GenCallback&apos;"/>
+                      </a:da>
+                      <a:da name="REF" 
+                            value="ASPathDataOfSchema:/AUTOSAR/Csm/CsmHash/CsmHashConfig"/>
+                    </v:ref>
+                    <v:var name="CryRsaSsaV15GenerateKeyLength" type="INTEGER">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              Key length in bytes used in the signature generation
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Key Length"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="384"/>
+                      <a:da name="INVALID" type="Multi">
+                        <mt:range>
+                          <mt:tst expr="&gt;=0"/>
+                          <mt:tst expr="&lt;=4294967295"/>
+                        </mt:range>
+                        <mt:xpath 
+                                  true="Csm Signature Generate key size too small." 
+                                  expr="(num:i(as:modconf(&apos;Csm&apos;)[1]/CsmSignatureGenerate/CsmSignatureGenerateMaxKeySize) &lt; ((. + 4) * 2))"/>
+                      </a:da>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CryRsaSsaV15Verify" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                        The configurations of Signature RsaSsa V15(PKCS1) Verify
+                      &lt;/html&gt;</a:v>
+                </a:a>
+                <v:var name="CryRsaSsaV15VerifyImmediateRestartEnabled" 
+                       type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                         Enable the cancelation of an ongoing calculation regardless of the configuration ID.
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" 
+                       value="Enable the cancelation of ongoing requests"/>
+                  <a:a name="__ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmSignatureVerify/CsmSignatureVerifyImmediateRestart)" 
+                        true="true" false="false"/>
+                  <a:da name="INVALID" type="XPath" 
+                        expr="as:modconf(&apos;Csm&apos;)[1]/CsmSignatureVerify/CsmSignatureVerifyImmediateRestart = &apos;false&apos; and . = true" 
+                        true="Immediate restart of ongoing requests is not enabled in the Csm module."/>
+                </v:var>
+                <v:var name="CryRsaSsaV15VerifyUseTimeSlices" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                           If enabled, the signature verification is split into time slices.
+                           Specifically, the modular exponentiation performed during
+                           RSASSA-PKCS1-v1_5 signature verification is split into several steps.
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" 
+                       value="Use time slices for RSASSA-PKCS1-v1_5 signature verification."/>
+                  <a:a name="__ORIGIN" value="Elektrobit Automitive Software"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="EDITABLE" value="true"/>
+                  <a:da name="TOOLTIP" value=""/>
+                </v:var>
+                <v:var name="CryRsaSsaV15VerifyNumberOfTimeSlices" 
+                       type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                             The maximum number of steps of the modular exponentiation
+                             performed in one Cry main function call during the
+                             RSASSA-PKCS1-v1_5 signature verification.
+                             NOTE: This configuration parameter is disabled, when
+                             CryRsaSsaV15VerifyUseCbk configuration parameter is enabled.
+                          &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Number of RsaSsaV15 time slices"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="__ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="1"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="(as:modconf(&apos;Cry&apos;)[1]/CryRsaSsaV15Verify/CryRsaSsaV15VerifyUseTimeSlices = &apos;true&apos;) and                                 (as:modconf(&apos;Cry&apos;)[1]/CryRsaSsaV15Verify/CryRsaSsaV15VerifyUseCbk = &apos;false&apos;)" 
+                        true="true" false="false"/>
+                  <a:da name="RANGE" type="Range">
+                    <a:tst expr="&gt;=1"/>
+                    <a:tst expr="&lt;=4294967295"/>
+                  </a:da>
+                </v:var>
+                <v:var name="CryRsaSsaV15VerifyUseCbk" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                           If enabled, the configuration parameter CryRsaSsaV15TimeSlicesCbk is
+                           enabled, to configure the name of a callback which returns the maximum
+                           number of time slices to be used during RSASSA-PKCS1-v1_5 signature
+                           verification.
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" 
+                       value="Use configured callback function which returns maximum number of time slices."/>
+                  <a:a name="__ORIGIN" value="Elektrobit Automitive Software"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="EDITABLE" value="true"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="(as:modconf(&apos;Cry&apos;)[1]/CryRsaSsaV15Verify/CryRsaSsaV15VerifyUseTimeSlices = &apos;true&apos;)" 
+                        true="true" false="false"/>
+                  <a:da name="TOOLTIP" value=""/>
+                </v:var>
+                <v:var name="CryRsaSsaV15TimeSlicesCbk" type="FUNCTION-NAME">
+                  <a:a name="DESC">
+                    <a:v>Optional configuration parameter which can be used to configure
+                         the name of the callback which returns the maximum number of
+                         time slices to be used during RSASSA-PKCS1-v1_5 signature verification.
+                         NOTE: This configuration parameter is enabled, only when
+                         CryRsaSsaV15VerifyUseCbk configuration parameter is enabled.</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="CryRsaSsaV15TimeSlicesCbk"/>
+                  <a:a name="__ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="(as:modconf(&apos;Cry&apos;)[1]/CryRsaSsaV15Verify/CryRsaSsaV15VerifyUseTimeSlices = &apos;true&apos;) and                               (as:modconf(&apos;Cry&apos;)[1]/CryRsaSsaV15Verify/CryRsaSsaV15VerifyUseCbk = &apos;true&apos;)"/>
+                </v:var>
+                <v:lst name="CryRsaSsaV15VerifyConfig" type="MAP">
+                  <a:a name="COLUMNS">
+                    <a:v>CryRsaSsaV15VerifyHashCfgRef</a:v>
+                    <a:v>CryRsaSsaV15VerifyKeyLength</a:v>
+                    <a:v>CryRsaSsaV15VerifyB64Encoded</a:v>
+                    <a:v>CryRsaSsaV15VerifyUseBarrett</a:v>
+                    <a:v>CryRsaSsaV15VerifySupportRestart</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="RsaSsaV15Verify configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CryRsaSsaV15VerifyConfig" type="IDENTIFIABLE">
+                    <v:ref name="CryRsaSsaV15VerifyHashCfgRef" type="REFERENCE">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              Hash configuration used
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Hash configuration"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="INVALID" type="XPath">
+                        <a:tst expr="node:refvalid(.)" 
+                               false="must reference a valid Csm Hash configuration."/>
+                        <a:tst 
+                               expr="node:value(node:ref(.)/CsmCallbackHash) = &apos;Cry_RsaSsaV15VerifyCallback&apos;" 
+                               false="Parameter &apos;CsmCallbackHash&apos; of referenced Csm Hash configuration must have value &apos;Cry_RsaSsaV15VerifyCallback&apos;"/>
+                      </a:da>
+                      <a:da name="REF" 
+                            value="ASPathDataOfSchema:/AUTOSAR/Csm/CsmHash/CsmHashConfig"/>
+                    </v:ref>
+                    <v:var name="CryRsaSsaV15VerifyKeyLength" type="INTEGER">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              Key Length in bytes used in the signature verification
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Key Length"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="384"/>
+                      <a:da name="INVALID" type="Multi">
+                        <mt:range>
+                          <mt:tst expr="&gt;=0"/>
+                          <mt:tst expr="&lt;=4294967295"/>
+                        </mt:range>
+                        <mt:xpath 
+                                  true="Csm Signature Verify key size too small." 
+                                  expr="(((num:i(as:modconf(&apos;Csm&apos;)[1]/CsmSignatureVerify/CsmSignatureVerifyMaxKeySize) &lt; (((. + 4) * 3) + 4) ) and                                   (count(as:modconf(&apos;Cry&apos;)/CryRsaSsaV15Verify/CryRsaSsaV15VerifyConfig/*/CryRsaSsaV15VerifyUseBarrett[. = &apos;true&apos;]) &gt; 0)) or                                   (num:i(as:modconf(&apos;Csm&apos;)[1]/CsmSignatureVerify/CsmSignatureVerifyMaxKeySize) &lt; ((. + 4) * 2) )                                   )"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="CryRsaSsaV15VerifyB64Encoded" type="BOOLEAN">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                            The signature is Base64-encoded.
+                          &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Base64 Encoded"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="false"/>
+                    </v:var>
+                    <v:var name="CryRsaSsaV15VerifyUseBarrett" type="BOOLEAN">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                            If enabled, the Barret reduction is used to verify the signature.
+                          &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Barrett reduction"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="false"/>
+                    </v:var>
+                    <v:var name="CryRsaSsaV15VerifySupportRestart" 
+                           type="BOOLEAN">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                             If enabled, the restart feature of the service is enabled.&lt;br/&gt;
+                             &lt;b&gt;Important:&lt;/b&gt; If Cry_RsaSsaV15VerifyStart can interrupt
+                             Cry_RsaSsaV15VerifyMainFunction, a service should only be restarted
+                             after the last expected callback notification has been called.
+                             Otherwise, callback notifications related to the canceled calculation
+                             might be called.&lt;br/&gt;
+                             Please ensure that the corresponding parameter CsmSignatureVerifyEnableRestart
+                             in the CSM has the same value as this parameter.
+                          &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" 
+                           value="Enable the cancelation of ongoing requests"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="false"/>
+                      <a:da name="INVALID" type="XPath">
+                        <a:tst 
+                               expr="(node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmSignatureVerify/CsmSignatureVerifyConfig/*[CsmSignatureVerifyPrimitiveName = &apos;RsaSsaV15Verify&apos; and CsmSignatureVerifyInitConfiguration = node:name(node:current()/..)]/CsmSignatureVerifyEnableRestart) and (as:modconf(&apos;Csm&apos;)[1]/CsmSignatureVerify/CsmSignatureVerifyConfig/*[CsmSignatureVerifyPrimitiveName = &apos;RsaSsaV15Verify&apos; and CsmSignatureVerifyInitConfiguration = node:name(node:current()/..)]/CsmSignatureVerifyEnableRestart != .))" 
+                               true="The related Csm configuration has a different value for CsmSignatureVerifyEnableRestart. The Csm and Cry only work correctly if CsmSignatureVerifyEnableRestart and CryRsaSsaV15VerifySupportRestart have the same value."/>
+                        <a:tst 
+                               expr="(node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmSignatureVerify/CsmSignatureVerifyConfig/*[CsmSignatureVerifyPrimitiveName = &apos;RsaSsaV15Verify&apos; and CsmSignatureVerifyInitConfiguration = node:name(node:current()/..)]) and not(node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmSignatureVerify/CsmSignatureVerifyConfig/*[CsmSignatureVerifyPrimitiveName = &apos;RsaSsaV15Verify&apos; and CsmSignatureVerifyInitConfiguration = node:name(node:current()/..)]/CsmSignatureVerifyEnableRestart)) and (node:value(.) = &apos;true&apos;))" 
+                               true="Cancelation of ongoing requests is not enabled in the Csm module."/>
+                      </a:da>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CryEdDSAVrfy" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                        The configurations of EdDSA verification with Ed25519ph curve
+                      &lt;/html&gt;</a:v>
+                </a:a>
+                <a:da name="INVALID" type="XPath" 
+                      expr="((count(as:modconf(&apos;Cry&apos;)/CryEdDSAVrfy/CryEdDSAVrfyConfig/*) &gt; 0) and (num:i(as:modconf(&apos;Csm&apos;)[1]/CsmSignatureVerify/CsmSignatureVerifyMaxKeySize) &lt; 32))" 
+                      true="CsmSignatureVerifyMaxKeySize must not be smaller than 32 bytes."/>
+                <v:var name="CryEdDSAVrfyImmediateRestartEnabled" 
+                       type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                         Enable the cancelation of an ongoing calculation regardless of the configuration ID.
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" 
+                       value="Enable the cancelation of ongoing requests"/>
+                  <a:a name="__ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmSignatureVerify/CsmSignatureVerifyImmediateRestart)" 
+                        true="true" false="false"/>
+                  <a:da name="INVALID" type="XPath" 
+                        expr="as:modconf(&apos;Csm&apos;)[1]/CsmSignatureVerify/CsmSignatureVerifyImmediateRestart = &apos;false&apos; and . = &apos;true&apos;" 
+                        true="Immediate restart of ongoing requests is not enabled in the Csm module."/>
+                </v:var>
+                <v:lst name="CryEdDSAVrfyConfig" type="MAP">
+                  <a:a name="COLUMNS">
+                    <a:v>CryEdDSAVrfyHashCfgRef</a:v>
+                    <a:v>CryEdDSAVrfySupportRestart</a:v>
+                    <a:v>CryEdDSAVrfyNumberOfTimeSlices</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="EdDSA verification configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CryEdDSAVrfyConfig" type="IDENTIFIABLE">
+                    <v:ref name="CryEdDSAVrfyHashCfgRef" type="REFERENCE">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              &lt;p&gt;
+                                Hash configuration used
+                              &lt;/p&gt;
+                              &lt;p&gt;
+                                A reference to SHA-512 is mandatory.
+                              &lt;/p&gt;
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Hash configuration"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="INVALID" type="XPath">
+                        <a:tst expr="node:refvalid(.)" 
+                               false="must reference a valid Csm Hash configuration."/>
+                        <a:tst 
+                               expr="node:value(node:ref(.)/CsmCallbackHash) = &apos;Cry_EdDSAVrfyCallback&apos;" 
+                               false="Parameter &apos;CsmCallbackHash&apos; of referenced Csm Hash configuration must have value &apos;Cry_EdDSAVrfyCallback&apos;"/>
+                      </a:da>
+                      <a:da name="REF" 
+                            value="ASPathDataOfSchema:/AUTOSAR/Csm/CsmHash/CsmHashConfig"/>
+                    </v:ref>
+                    <v:var name="CryEdDSAVrfySupportRestart" type="BOOLEAN">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                            If enabled, the restart feature of the service is enabled.&lt;br/&gt;
+                            &lt;b&gt;Important:&lt;/b&gt; If Cry_EdDSAVrfyStart can interrupt Cry_EdDSAVrfyMainFunction,
+                            a service should only be restarted after the last expected callback
+                            notification has been called. Otherwise, callback notifications
+                            related to the canceled calculation might be called.&lt;br/&gt;
+                            Please ensure that the corresponding parameter CsmHashEnableRestart
+                            in the CSM has the same value as this parameter.
+                         &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" 
+                           value="Enable the cancelation of ongoing requests"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="false"/>
+                      <a:da name="INVALID" type="XPath">
+                        <a:tst 
+                               expr="(node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmSignatureVerify/CsmSignatureVerifyConfig/*[CsmSignatureVerifyPrimitiveName = &apos;EdDSAVrfy&apos; and CsmSignatureVerifyInitConfiguration = node:name(node:current()/..)]/CsmSignatureVerifyEnableRestart) and (as:modconf(&apos;Csm&apos;)[1]/CsmSignatureVerify/CsmSignatureVerifyConfig/*[CsmSignatureVerifyPrimitiveName = &apos;EdDSAVrfy&apos; and CsmSignatureVerifyInitConfiguration = node:name(node:current()/..)]/CsmSignatureVerifyEnableRestart != .))" 
+                               true="The related Csm configuration has a different value for CsmSignatureVerifyEnableRestart. The Csm and Cry only work correctly if CsmSignatureVerifyEnableRestart and EdDSAVrfySupportRestart have the same value."/>
+                        <a:tst 
+                               expr="(node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmSignatureVerify/CsmSignatureVerifyConfig/*[CsmSignatureVerifyPrimitiveName = &apos;EdDSAVrfy&apos; and CsmSignatureVerifyInitConfiguration = node:name(node:current()/..)]) and not(node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmSignatureVerify/CsmSignatureVerifyConfig/*[CsmSignatureVerifyPrimitiveName = &apos;EdDSAVrfy&apos; and CsmSignatureVerifyInitConfiguration = node:name(node:current()/..)]/CsmSignatureVerifyEnableRestart)) and (node:value(.) = &apos;true&apos;))" 
+                               true="Cancelation of ongoing requests is not supported by the availabe Csm module."/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="CryEdDSAVrfyNumberOfTimeSlices" type="INTEGER">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              &lt;p&gt;
+                                The maximum number of steps of the point operations performed in
+                                one Cry main function call during the EdDSA signature verification.
+                              &lt;/p&gt;
+
+                              &lt;p&gt;
+                                Note: The value of this configuration parameter allows the integrator
+                                of the Cry module to achieve a balance between the total processing
+                                time of the algorithm and the CPU usage per main function call.
+                              &lt;/p&gt;
+                              &lt;ul&gt;
+                                &lt;li&gt;
+                                  &lt;code&gt;0&lt;/code&gt;: The Cry module does not limit the number of
+                                  time slices per &lt;code&gt;Cry_EdDSAVrfyMainFunction()&lt;/code&gt; function
+                                  call.
+                                &lt;/li&gt;
+                                &lt;li&gt;
+                                  &lt;code&gt;1&lt;/code&gt;: The Cry module processes a single time slice
+                                  (i.e. the slicing mechanism is disabled) per
+                                  &lt;code&gt;Cry_EdDSAVrfyMainFunction()&lt;/code&gt; function call.
+                                &lt;/li&gt;
+                                &lt;li&gt;
+                                  &lt;code&gt;&gt; 1&lt;/code&gt;: The Cry module processes the configured number
+                                  of slices &lt;code&gt;Cry_EdDSAVrfyMainFunction()&lt;/code&gt; function call.
+                                &lt;/li&gt;
+                              &lt;/ul&gt;
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" 
+                           value="Number of time slices for EdDSA signature verification"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="1"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&gt;=0"/>
+                        <a:tst expr="&lt;=65535"/>
+                      </a:da>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CryEdDSAGen" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                        The configurations of ECDSA generation with Ed25519ph curve
+                      &lt;/html&gt;</a:v>
+                </a:a>
+                <a:da name="INVALID" type="XPath" 
+                      expr="((count(as:modconf(&apos;Cry&apos;)/CryEdDSAGen/CryEdDSAGenConfig/*) &gt; 0) and (num:i(as:modconf(&apos;Csm&apos;)[1]/CsmSignatureGenerate/CsmSignatureGenerateMaxKeySize) &lt; 64))" 
+                      true="Signature generate key size must not be smaller than 64 bytes."/>
+                <v:var name="CryEdDSAGenImmediateRestartEnabled" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                         Enable the cancelation of an ongoing calculation regardless of the configuration ID.
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" 
+                       value="Enable the cancelation of ongoing requests"/>
+                  <a:a name="__ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmSignatureGenerate/CsmSignatureGenerateImmediateRestart)" 
+                        true="true" false="false"/>
+                  <a:da name="INVALID" type="XPath" 
+                        expr="as:modconf(&apos;Csm&apos;)[1]/CsmSignatureGenerate/CsmSignatureGenerateImmediateRestart = &apos;false&apos; and . = &apos;true&apos;" 
+                        true="Immediate restart of ongoing requests is not enabled in the Csm module."/>
+                </v:var>
+                <v:lst name="CryEdDSAGenConfig" type="MAP">
+                  <a:a name="COLUMNS">
+                    <a:v>CryEdDSAGenHashCfgRef</a:v>
+                    <a:v>CryEdDSAGenSupportRestart</a:v>
+                    <a:v>CryEdDSAGenNumberOfTimeSlices</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="EdDSA generation configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CryEdDSAGenConfig" type="IDENTIFIABLE">
+                    <v:ref name="CryEdDSAGenHashCfgRef" type="REFERENCE">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              &lt;p&gt;
+                                Hash configuration used
+                              &lt;/p&gt;
+                              &lt;p&gt;
+                                A reference to SHA-512 is mandatory.
+                              &lt;/p&gt;
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Hash configuration"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="INVALID" type="XPath">
+                        <a:tst expr="node:refvalid(.)" 
+                               false="must reference a valid Csm Hash configuration."/>
+                        <a:tst 
+                               expr="node:value(node:ref(.)/CsmCallbackHash) = &apos;Cry_EdDSAGenCallback&apos;" 
+                               false="Parameter &apos;CsmCallbackHash&apos; of referenced Csm Hash configuration must have value &apos;Cry_EdDSAGenCallback&apos;"/>
+                      </a:da>
+                      <a:da name="REF" 
+                            value="ASPathDataOfSchema:/AUTOSAR/Csm/CsmHash/CsmHashConfig"/>
+                    </v:ref>
+                    <v:var name="CryEdDSAGenSupportRestart" type="BOOLEAN">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                            If enabled, the restart feature of the service is enabled.&lt;br/&gt;
+                            &lt;b&gt;Important:&lt;/b&gt; If Cry_EdDSAGenStart can interrupt Cry_EdDSAGenMainFunction,
+                            a service should only be restarted after the last expected callback
+                            notification has been called. Otherwise, callback notifications
+                            related to the canceled calculation might be called.&lt;br/&gt;
+                            Please ensure that the corresponding parameter CsmHashEnableRestart
+                            in the CSM has the same value as this parameter.
+                         &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" 
+                           value="Enable the cancelation of ongoing requests"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="false"/>
+                      <a:da name="INVALID" type="XPath">
+                        <a:tst 
+                               expr="(node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmSignatureGenerate/CsmSignatureGenerateConfig/*[CsmSignatureGeneratePrimitiveName = &apos;EdDSAGen&apos; and CsmSignatureGenerateInitConfiguration = node:name(node:current()/..)]/CsmSignatureGenerateEnableRestart) and (as:modconf(&apos;Csm&apos;)[1]/CsmSignatureGenerate/CsmSignatureGenerateConfig/*[CsmSignatureGeneratePrimitiveName = &apos;EdDSAGen&apos; and CsmSignatureGenerateInitConfiguration = node:name(node:current()/..)]/CsmSignatureGenerateEnableRestart != .))" 
+                               true="The related Csm configuration has a different value for CsmSignatureGenerateEnableRestart. The Csm and Cry only work correctly if CsmSignatureGenerateEnableRestart and CryEdDSAGenSupportRestart have the same value."/>
+                        <a:tst 
+                               expr="(node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmSignatureGenerate/CsmSignatureGenerateConfig/*[CsmSignatureGeneratePrimitiveName = &apos;EdDSAGen&apos; and CsmSignatureGenerateInitConfiguration = node:name(node:current()/..)]) and not(node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmSignatureGenerate/CsmSignatureGenerateConfig/*[CsmSignatureGeneratePrimitiveName = &apos;EdDSAGen&apos; and CsmSignatureGenerateInitConfiguration = node:name(node:current()/..)]/CsmSignatureGenerateEnableRestart)) and (node:value(.) = &apos;true&apos;))" 
+                               true="Cancelation of ongoing requests is not supported by the availabe Csm module."/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="CryEdDSAGenNumberOfTimeSlices" type="INTEGER">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              &lt;p&gt;
+                                The maximum number of steps of the point operations performed in
+                                one Cry main function call during the EdDSA signature generation.
+                              &lt;/p&gt;
+
+                              &lt;p&gt;
+                                Note: The value of this configuration parameter allows the integrator
+                                of the Cry module to achieve a balance between the total processing
+                                time of the algorithm and the CPU usage per main function call.
+                              &lt;/p&gt;
+                              &lt;ul&gt;
+                                &lt;li&gt;
+                                  &lt;code&gt;0&lt;/code&gt;: The Cry module does not limit the number of
+                                  time slices per &lt;code&gt;Cry_EdDSAGenMainFunction()&lt;/code&gt; function
+                                  call.
+                                &lt;/li&gt;
+                                &lt;li&gt;
+                                  &lt;code&gt;1&lt;/code&gt;: The Cry module processes a single time slice
+                                  (i.e. the slicing mechanism is disabled) per
+                                  &lt;code&gt;Cry_EdDSAGenMainFunction()&lt;/code&gt; function call.
+                                &lt;/li&gt;
+                                &lt;li&gt;
+                                  &lt;code&gt;&gt; 1&lt;/code&gt;: The Cry module processes the configured number
+                                  of slices &lt;code&gt;Cry_EdDSAGenMainFunction()&lt;/code&gt; function call.
+                                &lt;/li&gt;
+                              &lt;/ul&gt;
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" 
+                           value="Number of time slices for EdDSA signature generation"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="1"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&gt;=0"/>
+                        <a:tst expr="&lt;=65535"/>
+                      </a:da>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CryMD5" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                        The configurations of MD5
+                      &lt;/html&gt;</a:v>
+                </a:a>
+                <v:var name="CryMD5ImmediateRestartEnabled" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                         Enable the cancelation of an ongoing calculation regardless of the configuration ID.
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" 
+                       value="Enable the cancelation of ongoing requests"/>
+                  <a:a name="__ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmHash/CsmHashImmediateRestart)" 
+                        true="true" false="false"/>
+                  <a:da name="INVALID" type="XPath" 
+                        expr="as:modconf(&apos;Csm&apos;)[1]/CsmHash/CsmHashImmediateRestart = &apos;false&apos; and . = true" 
+                        true="Immediate restart of ongoing requests is not enabled in the Csm module."/>
+                </v:var>
+                <v:lst name="CryMD5Config" type="MAP">
+                  <a:a name="LABEL" value="MD5 configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CryMD5Config" type="IDENTIFIABLE"/>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CryAESEncrypt" type="IDENTIFIABLE">
+                <a:a name="DESC" value="The configurations of AES encrypt"/>
+                <v:var name="PZ1ACryOptimEncry" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;Enables the possibility for interruption of the main function execution for the AES Encrypt algorithm.&lt;/p&gt;
+                          &lt;p&gt;If enabled, the execution of the main function is divided in small execution steps, allowing to have OS interruptions between them.
+                             As a consequence the total time execution of a Cry job will take longer, as it can be interupted by other running processes/tasks.
+                          &lt;/p&gt;
+                          &lt;p&gt;This is useful when processing large amount of data with Cry (which takes a long time), enabling non-blocking operation of other processes/tasks.
+                          &lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="PZ1A Cry Optimization"/>
+                  <a:a name="__ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="CryAESEncryptImplementation" type="ENUMERATION">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;Selects the implementation variant of the AES encryption algorithm.&lt;/p&gt;
+
+                          &lt;p&gt;Range:&lt;/p&gt;
+                          &lt;ul&gt;
+                            &lt;li&gt;&lt;code&gt;CRY_AES_ENCRYPT_RESOURCE_EFFICIENT&lt;/code&gt;
+                                &lt;p&gt;This implementation variant offers a trade-off between RAM usage
+                                   the number of CPU instructions.&lt;/p&gt;
+                                &lt;p&gt;Requires 1279 bytes for look-up tables, which are shared between
+                                   encryption and decryption.&lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;&lt;code&gt;CRY_AES_ENCRYPT_FAST&lt;/code&gt;
+                                &lt;p&gt;This implementation variant trades the number of CPU instructions
+                                   for RAM usage.&lt;/p&gt;
+                                &lt;p&gt;Requires 1064 bytes for look-up tables only for the encryption part
+                                   and an additional 512 bytes for tables shared between encryption
+                                   and decryption.&lt;/p&gt;
+                            &lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Cry AES Encrypt Implementation"/>
+                  <a:a name="OPTIONAL" value="false"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="__ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" 
+                        value="CRY_AES_ENCRYPT_RESOURCE_EFFICIENT"/>
+                  <a:da name="ENABLE" value="true"/>
+                  <a:da name="RANGE">
+                    <a:v>CRY_AES_ENCRYPT_RESOURCE_EFFICIENT</a:v>
+                    <a:v>CRY_AES_ENCRYPT_FAST</a:v>
+                  </a:da>
+                </v:var>
+                <v:lst name="CryAESEncryptConfig" type="MAP">
+                  <a:a name="COLUMNS" value="CryAESEncryptType"/>
+                  <a:a name="LABEL" value="AES_Encrypt"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CryAESEncryptConfig" type="IDENTIFIABLE">
+                    <v:var name="CryAESEncryptType" type="ENUMERATION">
+                      <a:a name="DESC" value="Key Length used"/>
+                      <a:a name="LABEL" value="Key Length"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="CRY_AES_KEY_256"/>
+                      <a:da name="RANGE">
+                        <a:v>CRY_AES_KEY_128</a:v>
+                        <a:v>CRY_AES_KEY_192</a:v>
+                        <a:v>CRY_AES_KEY_256</a:v>
+                      </a:da>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CryAESDecrypt" type="IDENTIFIABLE">
+                <a:a name="DESC" value="The configurations of AES decrypt"/>
+                <v:var name="PZ1ACryOptimDecry" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;Enables the possibility for interruption of the main function execution for the AES Decrypt algorithm.&lt;/p&gt;
+                          &lt;p&gt;If enabled, the execution of the main function is divided in small execution steps, allowing to have OS interruptions between them.
+                             As a consequence the total time execution of a Cry job will take longer, as it can be interupted by other running processes/tasks.
+                          &lt;/p&gt;
+                          &lt;p&gt;This is useful when processing large amount of data with Cry (which takes a long time), enabling non-blocking operation of other processes/tasks.
+                          &lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="PZ1A Cry Optimization"/>
+                  <a:a name="__ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="CryAESDecryptImplementation" type="ENUMERATION">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;Selects the implementation variant of the AES decryption algorithm.&lt;/p&gt;
+
+                          &lt;p&gt;Range:&lt;/p&gt;
+                          &lt;ul&gt;
+                            &lt;li&gt;&lt;code&gt;CRY_AES_DECRYPT_RESOURCE_EFFICIENT&lt;/code&gt;
+                                &lt;p&gt;This implementation variant offers a trade-off between RAM usage
+                                   the number of CPU instructions.&lt;/p&gt;
+                                &lt;p&gt;Requires 1279 bytes for look-up tables, which are shared between
+                                   decryption and encryption.&lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;&lt;code&gt;CRY_AES_DECRYPT_FAST&lt;/code&gt;
+                                &lt;p&gt;This implementation variant trades the number of CPU instructions
+                                   for RAM usage.&lt;/p&gt;
+                                &lt;p&gt;Requires 1064 bytes for look-up tables only for the decryption part
+                                   and an additional 512 bytes for tables shared between decryption
+                                   and encryption.&lt;/p&gt;
+                            &lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Cry AES Decrypt Implementation"/>
+                  <a:a name="OPTIONAL" value="false"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="__ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" 
+                        value="CRY_AES_DECRYPT_RESOURCE_EFFICIENT"/>
+                  <a:da name="ENABLE" value="true"/>
+                  <a:da name="RANGE">
+                    <a:v>CRY_AES_DECRYPT_RESOURCE_EFFICIENT</a:v>
+                    <a:v>CRY_AES_DECRYPT_FAST</a:v>
+                  </a:da>
+                </v:var>
+                <v:lst name="CryAESDecryptConfig" type="MAP">
+                  <a:a name="COLUMNS" value="CryAESDecryptType"/>
+                  <a:a name="LABEL" value="AES_Decrypt"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CryAESDecryptConfig" type="IDENTIFIABLE">
+                    <v:var name="CryAESDecryptType" type="ENUMERATION">
+                      <a:a name="DESC" value="Key Length used"/>
+                      <a:a name="LABEL" value="Key Length"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="CRY_AES_KEY_256"/>
+                      <a:da name="RANGE">
+                        <a:v>CRY_AES_KEY_128</a:v>
+                        <a:v>CRY_AES_KEY_192</a:v>
+                        <a:v>CRY_AES_KEY_256</a:v>
+                      </a:da>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CryCMACVrfy" type="IDENTIFIABLE">
+                <a:a name="DESC" value="The configurations of CMAC"/>
+                <v:lst name="CryCMACVrfyConfig" type="MAP">
+                  <a:a name="COLUMNS">
+                    <a:v>CryCMACVrfySymBlockEncryptCfgRef</a:v>
+                    <a:v>CryCMACVrfyType</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="CMACVrfy configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CryCMACVrfyConfig" type="IDENTIFIABLE">
+                    <v:ref name="CryCMACVrfySymBlockEncryptCfgRef" 
+                           type="REFERENCE">
+                      <a:a name="DESC" 
+                           value="SymBlockEncrypt configuration used"/>
+                      <a:a name="LABEL" value="SymBlockEncrypt configuration"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="INVALID" type="XPath">
+                        <a:tst expr="node:refvalid(.)" 
+                               false="must reference a valid Csm SymBlockEncrypt configuration."/>
+                        <a:tst 
+                               expr="node:value(node:ref(.)/CsmCallbackSymBlockEncrypt) = &apos;Cry_CMACVrfyCallback&apos;" 
+                               false="Parameter &apos;CsmCallbackSymBlockEncrypt&apos; of referenced Csm SymBlockEncrypt configuration must have value &apos;Cry_CMACVrfyCallback&apos;"/>
+                      </a:da>
+                      <a:da name="REF" 
+                            value="ASPathDataOfSchema:/AUTOSAR/Csm/CsmSymBlockEncrypt/CsmSymBlockEncryptConfig"/>
+                    </v:ref>
+                    <v:var name="CryCMACVrfyType" type="ENUMERATION">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                            Type of One-Key CBC MAC:
+                            &lt;p&gt;
+                              CMAC which is equivalent with OMAC1.
+                            &lt;/p&gt;
+                            &lt;p&gt;
+                              OMAC2
+                            &lt;/p&gt;
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="MAC Type"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="CMAC"/>
+                      <a:da name="RANGE">
+                        <a:v>CMAC</a:v>
+                        <a:v>OMAC2</a:v>
+                      </a:da>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CryCMACGen" type="IDENTIFIABLE">
+                <a:a name="DESC" value="The configurations of CMAC"/>
+                <v:lst name="CryCMACGenConfig" type="MAP">
+                  <a:a name="COLUMNS">
+                    <a:v>CryCMACGenSymBlockEncryptCfgRef</a:v>
+                    <a:v>CryCMACGenType</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="CMACGen configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CryCMACGenConfig" type="IDENTIFIABLE">
+                    <v:ref name="CryCMACGenSymBlockEncryptCfgRef" 
+                           type="REFERENCE">
+                      <a:a name="DESC" 
+                           value="SymBlockEncrypt configuration used"/>
+                      <a:a name="LABEL" value="SymBlockEncrypt configuration"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="INVALID" type="XPath">
+                        <a:tst expr="node:refvalid(.)" 
+                               false="must reference a valid Csm SymBlockEncrypt configuration."/>
+                        <a:tst 
+                               expr="node:value(node:ref(.)/CsmCallbackSymBlockEncrypt) = &apos;Cry_CMACGenCallback&apos;" 
+                               false="Parameter &apos;CsmCallbackSymBlockEncrypt&apos; of referenced Csm SymBlockEncrypt configuration must have value &apos;Cry_CMACGenCallback&apos;"/>
+                      </a:da>
+                      <a:da name="REF" 
+                            value="ASPathDataOfSchema:/AUTOSAR/Csm/CsmSymBlockEncrypt/CsmSymBlockEncryptConfig"/>
+                    </v:ref>
+                    <v:var name="CryCMACGenType" type="ENUMERATION">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                            Type of One-Key CBC MAC:
+                            &lt;p&gt;
+                              CMAC which is equivalent with OMAC1.
+                            &lt;/p&gt;
+                            &lt;p&gt;
+                              OMAC2
+                            &lt;/p&gt;
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="MAC Type"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="CMAC"/>
+                      <a:da name="RANGE">
+                        <a:v>CMAC</a:v>
+                        <a:v>OMAC2</a:v>
+                      </a:da>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CrySSGGenerate" type="IDENTIFIABLE">
+                <a:a name="DESC" 
+                     value="The configurations of the self shrinking generator"/>
+                <v:var name="CrySSGGenerateImmediateRestartEnabled" 
+                       type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                         Enable the cancelation of an ongoing calculation regardless of the configuration ID.
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" 
+                       value="Enable the cancelation of ongoing requests"/>
+                  <a:a name="__ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmRandomGenerate/CsmRandomGenerateImmediateRestart)" 
+                        true="true" false="false"/>
+                  <a:da name="INVALID" type="XPath" 
+                        expr="as:modconf(&apos;Csm&apos;)[1]/CsmRandomGenerate/CsmRandomGenerateImmediateRestart = &apos;false&apos; and . = true" 
+                        true="Immediate restart of ongoing requests is not enabled in the Csm module."/>
+                </v:var>
+                <v:lst name="CrySSGGenerateConfig" type="MAP">
+                  <a:a name="COLUMNS" value="CrySSGRandomStateRef"/>
+                  <a:a name="LABEL" value="SSGGenerate configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CrySSGGenerateConfig" type="IDENTIFIABLE">
+                    <v:ref name="CrySSGRandomStateRef" type="REFERENCE">
+                      <a:a name="DESC" value="Random state used"/>
+                      <a:a name="LABEL" value="Random state"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="INVALID" type="XPath" expr="node:refvalid(.)" 
+                            false="must reference a valid Csm Random state."/>
+                      <a:da name="REF" 
+                            value="ASPathDataOfSchema:/AUTOSAR/Cry/CrySSGState/CrySSGStateConfig"/>
+                    </v:ref>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CrySSGSeed" type="IDENTIFIABLE">
+                <a:a name="DESC" 
+                     value="The configurations of the self shrinking generator"/>
+                <v:var name="CrySSGSeedImmediateRestartEnabled" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                         Enable the cancelation of an ongoing calculation regardless of the configuration ID.
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" 
+                       value="Enable the cancelation of ongoing requests"/>
+                  <a:a name="__ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmRandomSeed/CsmRandomSeedImmediateRestart)" 
+                        true="true" false="false"/>
+                  <a:da name="INVALID" type="XPath" 
+                        expr="as:modconf(&apos;Csm&apos;)[1]/CsmRandomSeed/CsmRandomSeedImmediateRestart = &apos;false&apos; and . = true" 
+                        true="Immediate restart of ongoing requests is not enabled in the Csm module."/>
+                </v:var>
+                <v:lst name="CrySSGSeedConfig" type="MAP">
+                  <a:a name="COLUMNS" value="CrySSGRandomStateRef"/>
+                  <a:a name="LABEL" value="SSGSeed configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CrySSGSeedConfig" type="IDENTIFIABLE">
+                    <v:ref name="CrySSGRandomStateRef" type="REFERENCE">
+                      <a:a name="DESC" value="Random state used"/>
+                      <a:a name="LABEL" value="Random state"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="INVALID" type="XPath" expr="node:refvalid(.)" 
+                            false="must reference a valid Cry Random state."/>
+                      <a:da name="REF" 
+                            value="ASPathDataOfSchema:/AUTOSAR/Cry/CrySSGState/CrySSGStateConfig"/>
+                    </v:ref>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CrySSGState" type="IDENTIFIABLE">
+                <a:a name="DESC" 
+                     value="The configurations of the self shrinking generator"/>
+                <v:lst name="CrySSGStateConfig" type="MAP">
+                  <a:a name="COLUMNS" value="CrySSGStateSize"/>
+                  <a:a name="LABEL" value="SSG State configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CrySSGStateConfig" type="IDENTIFIABLE">
+                    <v:var name="CrySSGStateSize" type="INTEGER">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                                &lt;p&gt;
+                                  The size in bytes of the LFSR used during SSG Random Generate.
+                                &lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Random state size in bytes"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="1"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&gt;=1"/>
+                        <a:tst expr="&lt;=20"/>
+                      </a:da>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CryKeyExtractSym" type="IDENTIFIABLE">
+                <a:a name="DESC" 
+                     value="The configurations of symmmetrical key extract"/>
+                <v:var name="CryKeyExtractSymImmediateRestartEnabled" 
+                       type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                         Enable the cancelation of an ongoing calculation regardless of the configuration ID.
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" 
+                       value="Enable the cancelation of ongoing requests"/>
+                  <a:a name="__ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmSymKeyExtract/CsmSymKeyExtractImmediateRestart)" 
+                        true="true" false="false"/>
+                  <a:da name="INVALID" type="XPath" 
+                        expr="as:modconf(&apos;Csm&apos;)[1]/CsmSymKeyExtract/CsmSymKeyExtractImmediateRestart = &apos;false&apos; and . = true" 
+                        true="Immediate restart of ongoing requests is not enabled in the Csm module."/>
+                </v:var>
+                <v:lst name="CryKeyExtractSymConfig" type="MAP">
+                  <a:a name="COLUMNS" value="CryKeyExtractSymType"/>
+                  <a:a name="LABEL" value="KEY_SYM_Extract"/>
+                  <a:da name="MAX" value="8"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CryKeyExtractSymConfig" type="IDENTIFIABLE">
+                    <v:var name="CryKeyExtractSymType" type="ENUMERATION">
+                      <a:a name="DESC" value="Key Length used"/>
+                      <a:a name="LABEL" value="Key Length"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="CRY_KEY_SYM_256"/>
+                      <a:da name="RANGE">
+                        <a:v>CRY_KEY_SYM_128</a:v>
+                        <a:v>CRY_KEY_SYM_192</a:v>
+                        <a:v>CRY_KEY_SYM_256</a:v>
+                      </a:da>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CryCVCPublicKeyExtract" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                        The configurations of the CVC public key extract
+                      &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="CVCPublicKeyExtract configurations"/>
+                <v:lst name="CryCVCPublicKeyExtractConfig" type="MAP">
+                  <a:a name="COLUMNS">
+                    <a:v>CryCVCPublicKeyExtractCfgRef</a:v>
+                    <a:v>CryCVCRootCertificateLength</a:v>
+                    <a:v>CryCVCSigningCertificateLength</a:v>
+                    <a:v>CryCVCPublicKeyExtractLength</a:v>
+                    <a:v>CryCVCPublicKeyExtractEnableCertChain</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="CVCPublicKeyExtract configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CryCVCPublicKeyExtractConfig" 
+                         type="IDENTIFIABLE">
+                    <v:ref name="CryCVCPublicKeyExtractCfgRef" type="REFERENCE">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              Signature verify configuration which is used
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Signature verify configuration"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="ENABLE" type="XPath" 
+                            expr="../CryCVCPublicKeyExtractEnableCertChain = &apos;true&apos;" 
+                            true="true" false="false"/>
+                      <a:da name="INVALID" type="XPath">
+                        <a:tst expr="node:refvalid(.)" 
+                               false="must reference a valid Csm Signature Verify configuration."/>
+                        <a:tst 
+                               expr="node:value(node:ref(.)/CsmCallbackSignatureVerify) = &apos;Cry_CVCPublicKeyExtractCallback&apos;" 
+                               false="The parameter &apos;CsmCallbackSignatureVerify&apos; of the referenced Csm Signature Verify configuration must have value &apos;Cry_CVCPublicKeyExtractCallback&apos;"/>
+                      </a:da>
+                      <a:da name="REF" 
+                            value="ASPathDataOfSchema:/AUTOSAR/Csm/CsmSignatureVerify/CsmSignatureVerifyConfig"/>
+                    </v:ref>
+                    <v:var name="CryExtractCVCRootCertificateLength" 
+                           type="INTEGER">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              Length of the issuing certificate (in bytes) which is used
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" 
+                           value="Length of the issuing certificate (in bytes)"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="1"/>
+                      <a:da name="ENABLE" type="XPath" 
+                            expr="../CryCVCPublicKeyExtractEnableCertChain = &apos;true&apos;" 
+                            true="true" false="false"/>
+                      <a:da name="RANGE" type="Range">
+                        <a:tst expr="&gt;=1"/>
+                        <a:tst expr="&lt;=4294967295"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="CryExtractCVCSigCertificateLength" 
+                           type="INTEGER">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              Length of the key certificate (in bytes) which is used
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" 
+                           value="Length of the key certificate (in bytes)"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="1"/>
+                      <a:da name="RANGE" type="Range">
+                        <a:tst expr="&gt;=0"/>
+                        <a:tst expr="&lt;=4294967295"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="CryCVCPublicKeyExtractLength" type="INTEGER">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              Key Length used
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Key Length (in bytes)"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="1"/>
+                      <a:da name="INVALID" type="Multi">
+                        <mt:range>
+                          <mt:tst expr="&gt;=0"/>
+                          <mt:tst expr="&lt;=4294967295"/>
+                        </mt:range>
+                        <mt:xpath 
+                                  true="Csm AsymPublicKeyExtract key size too small." 
+                                  expr="(num:i(as:modconf(&apos;Csm&apos;)[1]/CsmAsymPublicKeyExtract/CsmAsymPublicKeyExtractMaxKeySize) &lt; ((. + 4) * 2))"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="CryCVCPublicKeyExtractEnableCertChain" 
+                           type="BOOLEAN">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                                This configuration parameter enables or disables the verification of the certificate chain.
+                                &lt;br/&gt;
+                                True: The key certificate is verified (i.e. its dates and signature) against the issuing certificate.
+                                &lt;br/&gt;
+                                False: The key is extracted from the key certificate without verifying the certificate against its issuing certificate
+                              &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" 
+                           value="Use certificate chain verification"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="true"/>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CryCbcPkcs7Encrypt" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                        The configurations of CBC encryption with PKCS#7 padding
+                      &lt;/html&gt;</a:v>
+                </a:a>
+                <v:lst name="CryCbcPkcs7EncryptConfig" type="MAP">
+                  <a:a name="COLUMNS" 
+                       value="CryCbcPkcs7EncryptSymBlockEncryptCfgRef"/>
+                  <a:a name="LABEL" value="CbcPkcs7Encrypt configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CryCbcPkcs7EncryptConfig" type="IDENTIFIABLE">
+                    <v:ref name="CryCbcPkcs7EncryptSymBlockEncryptCfgRef" 
+                           type="REFERENCE">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              Symmetrical block encryption configuration used
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="SymBlockEncrypt configuration"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="INVALID" type="XPath">
+                        <a:tst expr="node:refvalid(.)" 
+                               false="must reference a valid Csm SymBlockEncrypt configuration."/>
+                        <a:tst 
+                               expr="node:value(node:ref(.)/CsmCallbackSymBlockEncrypt) = &apos;Cry_CbcPkcs7EncryptCallback&apos;" 
+                               false="Parameter &apos;CsmCallbackSymBlockEncrypt&apos; of referenced Csm SymBlockEncrypt configuration must have value &apos;Cry_CbcPkcs7EncryptCallback&apos;"/>
+                      </a:da>
+                      <a:da name="REF" 
+                            value="ASPathDataOfSchema:/AUTOSAR/Csm/CsmSymBlockEncrypt/CsmSymBlockEncryptConfig"/>
+                    </v:ref>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CryCbcPkcs7Decrypt" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                        The configurations of CBC decryption with PKCS#7 padding
+                      &lt;/html&gt;</a:v>
+                </a:a>
+                <v:lst name="CryCbcPkcs7DecryptConfig" type="MAP">
+                  <a:a name="COLUMNS" 
+                       value="CryCbcPkcs7DecryptSymBlockDecryptCfgRef"/>
+                  <a:a name="LABEL" value="CbcPkcs7Decrypt configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CryCbcPkcs7DecryptConfig" type="IDENTIFIABLE">
+                    <v:ref name="CryCbcPkcs7DecryptSymBlockDecryptCfgRef" 
+                           type="REFERENCE">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              Symmetrical block decryption configuration used
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="SymBlockDecrypt configuration"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="INVALID" type="XPath">
+                        <a:tst expr="node:refvalid(.)" 
+                               false="must reference a valid Csm SymBlockDecrypt configuration."/>
+                        <a:tst 
+                               expr="node:value(node:ref(.)/CsmCallbackSymBlockDecrypt) = &apos;Cry_CbcPkcs7DecryptCallback&apos;" 
+                               false="Parameter &apos;CsmCallbackSymBlockDecrypt&apos; of referenced Csm SymBlockDecrypt configuration must have value &apos;Cry_CbcPkcs7DecryptCallback&apos;"/>
+                      </a:da>
+                      <a:da name="REF" 
+                            value="ASPathDataOfSchema:/AUTOSAR/Csm/CsmSymBlockDecrypt/CsmSymBlockDecryptConfig"/>
+                    </v:ref>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CryCcmEncrypt" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                        The configurations of Ccm encryption
+                      &lt;/html&gt;</a:v>
+                </a:a>
+                <v:lst name="CryCcmEncryptConfig" type="MAP">
+                  <a:a name="COLUMNS">
+                    <a:v>CryCcmEncryptSymBlockEncryptCfgRef</a:v>
+                    <a:v>CryCCMMacLength</a:v>
+                    <a:v>CryCCMLengthFieldSize</a:v>
+                    <a:v>CryCCMAdataLen</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="CcmEncrypt configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CryCcmEncryptConfig" type="IDENTIFIABLE">
+                    <v:ref name="CryCcmEncryptSymBlockEncryptCfgRef" 
+                           type="REFERENCE">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              Symmetrical block encryption configuration used
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="SymBlockEncrypt configuration"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="INVALID" type="XPath">
+                        <a:tst expr="node:refvalid(.)" 
+                               false="must reference a valid Csm SymBlockEncrypt configuration."/>
+                        <a:tst 
+                               expr="node:value(node:ref(.)/CsmCallbackSymBlockEncrypt) = &apos;Cry_CcmEncryptCallback&apos;" 
+                               false="Parameter &apos;CsmCallbackSymBlockEncrypt&apos; of referenced Csm SymBlockEncrypt configuration must have value &apos;Cry_CcmEncryptCallback&apos;"/>
+                      </a:da>
+                      <a:da name="REF" 
+                            value="ASPathDataOfSchema:/AUTOSAR/Csm/CsmSymBlockEncrypt/CsmSymBlockEncryptConfig"/>
+                    </v:ref>
+                    <v:var name="CryCCMMacLength" type="ENUMERATION">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              &lt;p&gt;
+                                The octet length of the MAC.
+                              &lt;/p&gt;
+                              &lt;p&gt;
+                                t parameter in the &quot;NIST Special Publication 800-38C&quot;.
+                              &lt;/p&gt;
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="MAC length"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="CRY_CCM_MAC_8_BYTES"/>
+                      <a:da name="RANGE">
+                        <a:v>CRY_CCM_MAC_4_BYTES</a:v>
+                        <a:v>CRY_CCM_MAC_6_BYTES</a:v>
+                        <a:v>CRY_CCM_MAC_8_BYTES</a:v>
+                        <a:v>CRY_CCM_MAC_10_BYTES</a:v>
+                        <a:v>CRY_CCM_MAC_12_BYTES</a:v>
+                        <a:v>CRY_CCM_MAC_14_BYTES</a:v>
+                        <a:v>CRY_CCM_MAC_16_BYTES</a:v>
+                      </a:da>
+                    </v:var>
+                    <v:var name="CryCCMLengthFieldSize" type="ENUMERATION">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                            &lt;p&gt;
+                              The octet length of the binary representation of the octet length of the payload.
+                            &lt;/p&gt;
+                            &lt;p&gt;
+                              q parameter in the &quot;NIST Special Publication 800-38C&quot;.
+                            &lt;/p&gt;
+                          &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Size of length field"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="CRY_CCM_LEN_FIELD_2_BYTES"/>
+                      <a:da name="RANGE">
+                        <a:v>CRY_CCM_LEN_FIELD_2_BYTES</a:v>
+                        <a:v>CRY_CCM_LEN_FIELD_3_BYTES</a:v>
+                        <a:v>CRY_CCM_LEN_FIELD_4_BYTES</a:v>
+                      </a:da>
+                    </v:var>
+                    <v:var name="CryCCMAdataLen" type="INTEGER">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              The length of the authenticated data
+                          &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Authenticated data length"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="8"/>
+                      <a:da name="RANGE" type="Range">
+                        <a:tst expr="&gt;=0"/>
+                        <a:tst expr="&lt;=4294967296"/>
+                      </a:da>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CryCcmDecrypt" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                        The configurations of Ccm decryption
+                      &lt;/html&gt;</a:v>
+                </a:a>
+                <v:lst name="CryCcmDecryptConfig" type="MAP">
+                  <a:a name="COLUMNS">
+                    <a:v>CryCcmEncryptSymBlockEncryptCfgRef</a:v>
+                    <a:v>CryCCMMacLength</a:v>
+                    <a:v>CryCCMLengthFieldSize</a:v>
+                    <a:v>CryCCMAdataLen</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="CcmDecrypt configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CryCcmDecryptConfig" type="IDENTIFIABLE">
+                    <v:ref name="CryCcmEncryptSymBlockEncryptCfgRef" 
+                           type="REFERENCE">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              Symmetrical block encryption configuration used
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="SymBlockEncrypt configuration"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="INVALID" type="XPath">
+                        <a:tst expr="node:refvalid(.)" 
+                               false="must reference a valid Csm SymBlockEncrypt configuration."/>
+                        <a:tst 
+                               expr="node:value(node:ref(.)/CsmCallbackSymBlockEncrypt) = &apos;Cry_CcmDecryptCallback&apos;" 
+                               false="Parameter &apos;CsmCallbackSymBlockEncrypt&apos; of referenced Csm SymBlockEncrypt configuration must have value &apos;Cry_CcmDecryptCallback&apos;"/>
+                      </a:da>
+                      <a:da name="REF" 
+                            value="ASPathDataOfSchema:/AUTOSAR/Csm/CsmSymBlockEncrypt/CsmSymBlockEncryptConfig"/>
+                    </v:ref>
+                    <v:var name="CryCCMMacLength" type="ENUMERATION">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              &lt;p&gt;
+                                The octet length of the MAC.
+                              &lt;/p&gt;
+                              &lt;p&gt;
+                                t parameter in the &quot;NIST Special Publication 800-38C&quot;.
+                              &lt;/p&gt;
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="MAC length"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="CRY_CCM_MAC_8_BYTES"/>
+                      <a:da name="RANGE">
+                        <a:v>CRY_CCM_MAC_4_BYTES</a:v>
+                        <a:v>CRY_CCM_MAC_6_BYTES</a:v>
+                        <a:v>CRY_CCM_MAC_8_BYTES</a:v>
+                        <a:v>CRY_CCM_MAC_10_BYTES</a:v>
+                        <a:v>CRY_CCM_MAC_12_BYTES</a:v>
+                        <a:v>CRY_CCM_MAC_14_BYTES</a:v>
+                        <a:v>CRY_CCM_MAC_16_BYTES</a:v>
+                      </a:da>
+                    </v:var>
+                    <v:var name="CryCCMLengthFieldSize" type="ENUMERATION">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                            &lt;p&gt;
+                              The octet length of the binary representation of the octet length of the payload.
+                            &lt;/p&gt;
+                            &lt;p&gt;
+                              q parameter in the &quot;NIST Special Publication 800-38C&quot;.
+                            &lt;/p&gt;
+                          &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Size of length field"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="CRY_CCM_LEN_FIELD_2_BYTES"/>
+                      <a:da name="RANGE">
+                        <a:v>CRY_CCM_LEN_FIELD_2_BYTES</a:v>
+                        <a:v>CRY_CCM_LEN_FIELD_3_BYTES</a:v>
+                        <a:v>CRY_CCM_LEN_FIELD_4_BYTES</a:v>
+                      </a:da>
+                    </v:var>
+                    <v:var name="CryCCMAdataLen" type="INTEGER">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              The length of the authenticated data
+                          &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Authenticated data length"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="8"/>
+                      <a:da name="RANGE" type="Range">
+                        <a:tst expr="&gt;=0"/>
+                        <a:tst expr="&lt;=4294967296"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="CryCCMMaxPayloadSize" type="INTEGER">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                            &lt;p&gt;
+                              The maximum payload data length in bytes.
+                            &lt;/p&gt;
+                            &lt;p&gt;
+                              Please note that the memory consumption of the algorithm is proportional with this value.
+                            &lt;/p&gt;
+                          &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Maximum payload length"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="8"/>
+                      <a:da name="RANGE" type="Range">
+                        <a:tst expr="&gt;=0"/>
+                        <a:tst expr="&lt;=4294967296"/>
+                      </a:da>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CryHMACVrfy" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                        The configurations of HMAC Verify
+                      &lt;/html&gt;</a:v>
+                </a:a>
+                <v:var name="CryHMACVrfyImmediateRestartEnabled" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                         Enable the cancelation of an ongoing calculation regardless of the configuration ID.
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" 
+                       value="Enable the cancelation of ongoing requests"/>
+                  <a:a name="__ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmMacVerify/CsmMacVerifyImmediateRestart)" 
+                        true="true" false="false"/>
+                  <a:da name="INVALID" type="XPath" 
+                        expr="as:modconf(&apos;Csm&apos;)[1]/CsmMacVerify/CsmMacVerifyImmediateRestart = &apos;false&apos; and . = true" 
+                        true="Immediate restart of ongoing requests is not enabled in the Csm module."/>
+                </v:var>
+                <v:lst name="CryHMACVrfyConfig" type="MAP">
+                  <a:a name="COLUMNS">
+                    <a:v>CryHMACVrfyHashCfgRef</a:v>
+                    <a:v>CryHMACKeyLength</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="HMAC verify configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CryHMACVrfyConfig" type="IDENTIFIABLE">
+                    <v:ref name="CryHMACVrfyHashCfgRef" type="REFERENCE">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              Hash configuration used
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Hash configuration"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="INVALID" type="XPath">
+                        <a:tst expr="node:refvalid(.)" 
+                               false="must reference a valid Csm Hash configuration."/>
+                        <a:tst 
+                               expr="node:value(node:ref(.)/CsmCallbackHash) = &apos;Cry_HMACVrfyCallback&apos;" 
+                               false="Parameter &apos;CsmCallbackHash&apos; of referenced Csm Hash configuration must have value &apos;Cry_HMACVrfyCallback&apos;"/>
+                      </a:da>
+                      <a:da name="REF" 
+                            value="ASPathDataOfSchema:/AUTOSAR/Csm/CsmHash/CsmHashConfig"/>
+                    </v:ref>
+                    <v:var name="CryHMACKeyLength" type="INTEGER">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              Key Length used in the HMAC verification
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Key Length"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="64"/>
+                      <a:da name="INVALID" type="Multi">
+                        <mt:range>
+                          <mt:tst expr="&gt;=0"/>
+                          <mt:tst expr="&lt;=4294967295"/>
+                        </mt:range>
+                        <mt:xpath/>
+                      </a:da>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CryHMACGen" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                        The configurations of HMAC Generate
+                      &lt;/html&gt;</a:v>
+                </a:a>
+                <v:var name="CryHMACGenImmediateRestartEnabled" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                         Enable the cancelation of an ongoing calculation regardless of the configuration ID.
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" 
+                       value="Enable the cancelation of ongoing requests"/>
+                  <a:a name="__ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmMacGenerate/CsmMacGenerateImmediateRestart)" 
+                        true="true" false="false"/>
+                  <a:da name="INVALID" type="XPath" 
+                        expr="as:modconf(&apos;Csm&apos;)[1]/CsmMacGenerate/CsmMacGenerateImmediateRestart = &apos;false&apos; and . = true" 
+                        true="Immediate restart of ongoing requests is not enabled in the Csm module."/>
+                </v:var>
+                <v:lst name="CryHMACGenConfig" type="MAP">
+                  <a:a name="COLUMNS">
+                    <a:v>CryHMACGenHashCfgRef</a:v>
+                    <a:v>CryHMACKeyLength</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="HMAC generation configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CryHMACGenConfig" type="IDENTIFIABLE">
+                    <v:ref name="CryHMACGenHashCfgRef" type="REFERENCE">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              Hash configuration used
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Hash configuration"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="INVALID" type="XPath">
+                        <a:tst expr="node:refvalid(.)" 
+                               false="must reference a valid Csm Hash configuration."/>
+                        <a:tst 
+                               expr="node:value(node:ref(.)/CsmCallbackHash) = &apos;Cry_HMACGenCallback&apos;" 
+                               false="Parameter &apos;CsmCallbackHash&apos; of referenced Csm Hash configuration must have value &apos;Cry_HMACGenCallback&apos;"/>
+                      </a:da>
+                      <a:da name="REF" 
+                            value="ASPathDataOfSchema:/AUTOSAR/Csm/CsmHash/CsmHashConfig"/>
+                    </v:ref>
+                    <v:var name="CryHMACKeyLength" type="INTEGER">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              Key Length used in the HMAC generation
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Key Length"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="64"/>
+                      <a:da name="INVALID" type="Multi">
+                        <mt:range>
+                          <mt:tst expr="&gt;=0"/>
+                          <mt:tst expr="&lt;=4294967295"/>
+                        </mt:range>
+                        <mt:xpath/>
+                      </a:da>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CryExtractRsaPublicKey" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                        The configurations of RSA public key extract
+                      &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="ExtractRsaPublicKey configurations"/>
+                <v:lst name="CryExtractRsaPublicKeyConfig" type="MAP">
+                  <a:a name="COLUMNS" value="CryExtractRsaPublicKeyLength"/>
+                  <a:a name="LABEL" value="ExtractRsaPublicKey configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CryExtractRsaPublicKeyConfig" 
+                         type="IDENTIFIABLE">
+                    <v:var name="CryExtractRsaPublicKeyLength" type="INTEGER">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              Key Length used
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Key Length"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="384"/>
+                      <a:da name="INVALID" type="Multi">
+                        <mt:range>
+                          <mt:tst expr="&gt;=0"/>
+                          <mt:tst expr="&lt;=4294967295"/>
+                        </mt:range>
+                        <mt:xpath 
+                                  true="Csm AsymPublicKeyExtract key size too small." 
+                                  expr="(num:i(as:modconf(&apos;Csm&apos;)[1]/CsmAsymPublicKeyExtract/CsmAsymPublicKeyExtractMaxKeySize) &lt; ((. + 4) * 2))"/>
+                      </a:da>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CryCrc" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                        The configurations of cyclic redundancy check
+                      &lt;/html&gt;</a:v>
+                </a:a>
+                <v:lst name="CryCrcConfig" type="MAP">
+                  <a:a name="COLUMNS">
+                    <a:v>CryCrcType</a:v>
+                    <a:v>CryCrcPoly</a:v>
+                    <a:v>CryCrcIputXor</a:v>
+                    <a:v>CryCrcOputXor</a:v>
+                    <a:v>CryCrcIputReflect</a:v>
+                    <a:v>CryCrcOputReflect</a:v>
+                    <a:v>CryCrcMaxBytesPerCycle</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="CRC"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CryCrcConfig" type="IDENTIFIABLE">
+                    <v:var name="CryCrcType" type="ENUMERATION">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              Order of polynom that is used for cyclic redundancy check
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Order of Polynom"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="CRY_CRC_32"/>
+                      <a:da name="RANGE">
+                        <a:v>CRY_CRC_8</a:v>
+                        <a:v>CRY_CRC_16</a:v>
+                        <a:v>CRY_CRC_32</a:v>
+                      </a:da>
+                    </v:var>
+                    <v:var name="CryCrcPoly" type="INTEGER">
+                      <a:a name="DEFAULT_RADIX" value="HEX"/>
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              Generator Polynom that is used for cyclic redundancy check
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Generator Polynom"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="1"/>
+                      <a:da name="RANGE" type="Range">
+                        <a:tst expr="&gt;=0"/>
+                        <a:tst expr="&lt;=4294967295"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="CryCrcIputXor" type="INTEGER">
+                      <a:a name="DEFAULT_RADIX" value="HEX"/>
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              Polynom with which the input data is XORed
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="XOR Input"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="0"/>
+                      <a:da name="RANGE" type="Range">
+                        <a:tst expr="&gt;=0"/>
+                        <a:tst expr="&lt;=4294967295"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="CryCrcOputXor" type="INTEGER">
+                      <a:a name="DEFAULT_RADIX" value="HEX"/>
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              Polynom with which the output data is XORed
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="XOR Output"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="0"/>
+                      <a:da name="RANGE" type="Range">
+                        <a:tst expr="&gt;=0"/>
+                        <a:tst expr="&lt;=4294967295"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="CryCrcIputReflect" type="BOOLEAN">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              Shall the input data be reflected?
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Reflect Input"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="false"/>
+                    </v:var>
+                    <v:var name="CryCrcOputReflect" type="BOOLEAN">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              Shall the output data be reflected?
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Reflect Output"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="false"/>
+                    </v:var>
+                    <v:var name="CryCrcMaxBytesPerCycle" type="INTEGER">
+                      <a:a name="DEFAULT_RADIX" value="DEC"/>
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              maximal number of Bytes given by set of Bytes by Csm_ChecksumUpdate that are processed during a single task cycle
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Bytes per Cycle"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="32"/>
+                      <a:da name="RANGE" type="Range">
+                        <a:tst expr="&gt;=1"/>
+                        <a:tst expr="&lt;=4294967295"/>
+                      </a:da>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CryExtractECPubKey" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                        The configurations of public elliptic key extract
+                      &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="ExtractECPubKey configurations"/>
+                <v:lst name="CryExtractECPubKeyConfig" type="MAP">
+                  <a:a name="COLUMNS" value="CryEllipticCurve"/>
+                  <a:a name="LABEL" value="ExtractECPubKey configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CryExtractECPubKeyConfig" type="IDENTIFIABLE">
+                    <v:var name="CryEllipticCurve" type="ENUMERATION">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              Elliptic curve used
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Elliptic Curve"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="__ORIGIN" 
+                           value="Elektrobit Automotive Software"/>
+                      <a:da name="DEFAULT" value="CRY_EDC_255"/>
+                      <a:da name="INVALID" type="XPath" 
+                            expr="((. = &apos;CRY_EDC_255&apos;) and (num:i(as:modconf(&apos;Csm&apos;)[1]/CsmSignatureGenerate/CsmSignatureGenerateMaxKeySize) &lt; 32))" 
+                            true="Signature generate key size must not be smaller than 32 bytes."/>
+                      <a:da name="RANGE" value="CRY_EDC_255"/>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="PublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>EN:
+                    &lt;html&gt;
+                      Additional published parameters not covered by CommonPublishedInformation container.
+                  &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="EB Published Information"/>
+                <a:a name="TAB" value="EB Published Information"/>
+                <a:a name="UUID" 
+                     value="ECUC:cb4128ed-26c1-4ddd-906e-854bed917e07"/>
+                <v:var name="PbcfgMSupport" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Specifies whether or not the Cry can use the PbcfgM module for post-build support.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="PbcfgM support"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:eb61002e-69c0-4f16-a910-c27adb75f6ee"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+              </v:ctr>
+            </v:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+
+</datamodel>

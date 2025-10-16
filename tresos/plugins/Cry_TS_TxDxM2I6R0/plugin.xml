@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+  <!--
+    AUTOSAR Cry_TS_TxDxM2I6R0 plugin
+    Project: EB tresos AutoCore
+
+    Copyright 2005-2020 by Elektrobit Automotive GmbH
+    All rights exclusively reserved for Elektrobit Automotive GmbH,
+    unless expressly agreed to otherwise.
+  -->
+
+  <extension point="dreisoft.tresos.launcher2.plugin.module"
+             id="Cry_TS_TxDxM2I6R0_ModuleId"
+             name="Cry_TS_TxDxM2I6R0 Module">
+
+    <module id="Cry_TS_TxDxM2I6R0"
+            label="Cry"
+            mandatory="false"
+            allowMultiple="false"
+            description="CRY: Cryptographic Primitives"
+            copyright="(c) 2005-2020 Elektrobit Automotive GmbH"
+            swVersionMajor="2"
+            swVersionMinor="6"
+            swVersionPatch="6"
+            swVersionSuffix="B402799"
+            specVersionMajor="1"
+            specVersionMinor="2"
+            specVersionPatch="0"
+            specVersionSuffix="0000"
+            relVersionMajor="4"
+            relVersionMinor="0"
+            relVersionPatch="3"
+            categoryType="Cry"
+            categoryLayer="System Services"
+            categoryCategory="System Services"
+            categoryComponent="ECUC">
+
+      <cluster name="Crypto"/>
+
+    </module>
+  </extension>
+
+
+  <extension point="dreisoft.tresos.launcher2.plugin.configuration"
+             id="Cry_TS_TxDxM2I6R0_ConfigId"
+             name="Cry_TS_TxDxM2I6R0 Configuration">
+    <configuration moduleId="Cry_TS_TxDxM2I6R0">
+      <schema>
+        <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarSchemaManager"/>
+        <resource value="config/Cry.xdm" type="xdm" id="res_default"/>
+      </schema>
+
+      <data>
+        <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarConfigManager"/>
+        <schemaNode path="ASPath:/TS_TxDxM2I6R0/Cry"/>
+      </data>
+
+      <editor id="Cry_TS_TxDxM2I6R0_EditorId"
+              label="Default"
+              tooltip="CRY: Cryptographic Primitives">
+        <class class="dreisoft.tresos.launcher2.editor.GenericConfigEditor">
+          <parameter name="schema" value="ASPath:/TS_TxDxM2I6R0/Cry"/>
+          <parameter name="title" value="Cry"/>
+          <parameter name="noTabs" value="false"/>
+          <parameter name="noLinks" value="true"/>
+          <parameter name="groupLinks" value="false"/>
+          <parameter name="groupContainers" value="false"/>
+          <parameter name="groupTables" value="true"/>
+          <parameter name="optionalGeneralTab" value="true"/>
+        </class>
+      </editor>
+    </configuration>
+  </extension>
+
+
+
+
+
+
+
+  <extension point="dreisoft.tresos.launcher2.plugin.generator"
+             id="Cry_TS_TxDxM2I6R0_GeneratorId"
+             name="Cry_TS_TxDxM2I6R0 Generator">
+    <generator class="dreisoft.tresos.launcher2.generator.TemplateBasedCodeGenerator"
+               id="Cry_TS_TxDxM2I6R0_TemplateBasedCodeGeneratorId"
+               moduleId="Cry_TS_TxDxM2I6R0">
+
+      <!-- common template path parameters -->
+      <parameter name="templates"
+                 mode="generate,verify" value="generate"/>
+
+      <!-- swcd modes and template path parameters -->
+      <parameter name="mode_type"
+                 mode="generate_swcd" value="generate"/>
+
+      <parameter name="mode_type"
+                 mode="verify_swcd" value="verify"/>
+
+      <parameter name="templates"
+                 mode="generate_swcd,verify_swcd" value="generate_swcd"/>
+
+
+
+
+    </generator>
+  </extension>
+
+
+
+
+
+
+
+  <extension point="org.eclipse.help.toc">
+    <toc file="anchors.xml" primary="true" />
+    <toc file="$nl$/toc.xml" primary="false"/>
+  </extension>
+
+
+
+
+
+
+
+</plugin>
+

@@ -1,0 +1,57 @@
+#parse("CommonVars.vm")
+#parse("CommonMkVars.vm")
+/* This file is generated automatically. DO NOT EDIT!!
+ *
+ * EB tresos AutoCore OS ${Version.getMajor()}.${Version.getMinor()}.${Version.getPatch()} ${Version.getTarget()}/${Version.getDerivate()}
+ * (Build ${Version.getBuild()})
+ *
+ * (c) 1998-${Version.getCurrentYear()} Elektrobit Automotive GmbH
+ * Am Wolfsmantel 46
+ * 91058 Erlangen
+ * GERMANY
+ *
+ * Date         : ${Version.getDate()}           !!!IGNORE-LINE!!!
+ */
+
+#ifndef MK_GEN_ADDONS_H
+\#define MK_GEN_ADDONS_H
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+## !LINKSTO Microkernel.Generator.OutputFiles.General.Header_Comment, 1
+/*
+ * MISRA-C:2012 Deviation List
+ *
+ * MISRAC2012-1) Deviated Rule: 20.1 (advisory)
+ * \#include statements in a file should only be preceded by
+ * preprocessor directives or comments.
+ *
+ * Reason:
+ * The C++ guards allow usage of the OS with a C++-compiler.
+ */
+
+/* Deviation MISRAC2012-1 <*> */
+
+#if( $IsMkVersionOlderThan21 )
+#* *#\#include <private/Mk_addon.h>
+#* *##foreach($addon in $MkConfig.getAddOns())
+#*    *#\#include <$addon.getMkAddOnDescriptorHeader()>
+#* *##end
+#end
+
+/*===================================================================
+ * Addons
+ *==================================================================*/
+#set( $mkAddOns = $MkConfig.getAddOns() )
+#foreach( $addOn in $MkConfig.getAddOns() )
+#* *##if( $foreach.index == 0 )
+#*    *#\#define MK_CFG_ADDONCONFIG   \
+#* *##end
+#* *#  /* $foreach.index */ &$addOn.getMkAddOnDescriptor()#if($foreach.hasNext), \\$newLine#end
+#end
+
+#ifdef __cplusplus
+}
+#endif
+#endif  /* MK_GEN_ADDONS_H */

@@ -1,0 +1,151 @@
+#parse("CommonVars.vm")
+#set($hashChars = '#####################################################################')
+# This file is generated automatically. DO NOT EDIT!!
+# 
+# EB tresos AutoCore OS ${Version.getMajor()}.${Version.getMinor()}.${Version.getPatch()} ${Version.getTarget()}/${Version.getDerivate()}
+# (Build ${Version.getBuild()})
+# 
+# (c) 1998-${Version.getCurrentYear()} Elektrobit Automotive GmbH
+# Am Wolfsmantel 46
+# 91058 Erlangen
+# GERMANY
+# 
+# Date         : ${Version.getDate()}           !!!IGNORE-LINE!!!
+
+## !LINKSTO Generator.Output.MakeInc, 1
+## !LINKSTO Generator.Output.MakeInc.Header, 1
+ifndef OS_OBJECTS_MAKE_INCLUDED
+OS_OBJECTS_MAKE_INCLUDED := 1
+
+#foreach ( $app in $AllApplicationsList )
+## !LINKSTO Generator.Output.app_gen_c, 1
+#* *#OS_GENERATED_APPL_FILES +=$(AutosarOS_OUTPUT_PATH)\src\\${app.getName()}_gen.c
+## !LINKSTO Generator.Output.MakeInc.CoreAssignment, 1
+#* *#OS_CORE_$app.getName() = $app.getPhyCoreAssignment()
+#end
+# OS_OPTIMIZED_LIB_ID tells the build process the name of the optimized library
+OS_OPTIMIZED_LIB_ID = $OsOptimize.getVariant()
+
+$hashChars#* ################################################################### *#
+# Advanced Logical Core Interface
+$hashChars#* #################################################################### *#
+## !LINKSTO Generator.Output.MakeInc.Alci, 1
+# OS_ALCI tells the build process whether to enable ALCI feature.
+OS_ALCI = $OsConfig.isAlciEnabledVtl()
+
+$hashChars#* ################################################################### *#
+# Applications
+$hashChars#* ################################################################### *#
+## !LINKSTO Generator.Output.MakeInc.Applications, 2
+# The APPLICATIONS macro tells the build process the names
+# of all the application objects
+APPLICATIONS =#foreach($app in $AllApplicationsList) $app.getName()#end$newLine
+# For each application XXX in the APPLICATIONS macro:
+# - the macro TASKS_XXX tells the build process the names of all the tasks
+#   that belong to the application XXX
+# - the macro ISRS_XXX tells the build process the names of all the ISRs
+#   that belong to the application XXX
+#foreach($app in $AllApplicationsList)
+#* *#${newLine}TASKS_$app.getName() =#foreach($task in $app.getRunnableTasks()) $task.getName()#end
+#* *#${newLine}ISRS_$app.getName() =#foreach($isr in $app.getRunnableInterrupts()) $isr.getName()#end
+#end$newLine
+$hashChars#* ################################################################### *#
+# Configured Modes
+$hashChars#* ################################################################### *#
+# OS_CONFIG_EXTENDED_STATUS tells the build process which error library to use.
+#if( $OsConfig.getStatus() == "EXTENDED" )
+OS_CONFIG_EXTENDED_STATUS = TRUE
+#else
+OS_CONFIG_EXTENDED_STATUS = FALSE
+#end
+# The OS TRACER is configured as follows:
+#if( $OsConfig.hasTrace() )
+#* *#OS_TRACE = TRUE
+#else
+#* *#OS_TRACE = FALSE
+#end
+
+$hashChars#* ################################################################### *#
+# Core Mapping
+$hashChars#* ################################################################### *#
+# OS_INITCORE tells the build process which core the OS uses (singlecore).
+OS_INITCORE = $OsConfig.getPhysicalInitCoreId()
+
+$hashChars#* ################################################################### *#
+# Counters
+$hashChars#* ################################################################### *#
+#if( $AllCountersList.getNumHwDrivenCounters() > 0 )
+OS_HAVE_TICKERS = TRUE
+#end
+
+$hashChars#* ################################################################### *#
+# Interrupts
+$hashChars#* ################################################################### *#
+## !LINKSTO Generator.Output.MakeInc.Isrs, 1
+# This variable tells the build process the number of stack slots that are generated
+# for the stack type kernStack
+OS_NUM_KERNSTACK_SLOTS = #foreach( $slot in $ClassOfAbstractStack.getNumStackSlotsPerCore( $AllInterruptsList.getStacks() ) )$slot#if($foreach.hasNext),#end#end$newLine
+$hashChars#* ################################################################### *#
+# Kernel Type
+$hashChars#* ################################################################### *#
+# Defines which trapping mechanism the OS shall use.
+OS_KERNEL_TYPE = $OsConfig.getKernelType()
+
+$hashChars#* ################################################################### *#
+# Memory Regions
+$hashChars#* ################################################################### *#
+#if( $OsModel.isMicroKernel() )
+#* *## The MK_MEMORYREGIONS macro tells the build process the names
+#* *## of the user configured memory regions
+#* *#MK_MEMORYREGIONS ?=#foreach($reg in $MkConfig.getUsedMemoryRegions() ) $reg.getName()#end$newLine
+#* *## For each memory region XXX in the MK_MEMORYREGIONS macro, the following
+#* *## macros are generated which define the names of the respective symbols:
+#* *## - MK_MR_START_XXX for the start address of the region
+#* *## - MK_MR_LIMIT_XXX for the limit address of the region
+#* *## - MK_MR_BSTART_XXX for the start of the implicitly initialized data
+#* *## - MK_MR_IDATA_XXX for the start address of the initialization data image
+#* *## (the last two are only generated if the region is initialized)
+#* *##foreach( $reg in $MkConfig.getUsedMemoryRegions() )
+#*    *#MK_MR_START_$reg.getName() ?= $reg.getStartSymbolName(false)
+#*    *#MK_MR_LIMIT_$reg.getName() ?= $reg.getLimitSymbolName(false)
+#*    *##if($reg.isInit() )
+#*       *#MK_MR_BSTART_$reg.getName() ?= $reg.getBStartSymbolName(false)
+#*       *#MK_MR_IDATA_$reg.getName() ?= $reg.getIDataSymbolName(false)
+#*    *##end
+#* *##end
+#end
+
+$hashChars#* ################################################################### *#
+# Multicore
+$hashChars#* ################################################################### *#
+# Defines the number of CPU cores assigned to EB tresos AutoCore OS.
+OS_N_CORES := $OsModel.getNumUsedCores()
+# Defines the maximum number of CPU cores supported.
+OS_N_CORES_MAX := $OsConfig.getNumCPUCoresMax()
+
+$hashChars#* ################################################################### *#
+# Optimization
+$hashChars#* ################################################################### *#
+# Defines if library shall be optimized according to configuration
+#if( $OsConfig.hasSourceOptimization() )
+#* *#OS_BUILD_OPTIMIZED_LIB_FROM_SOURCE = TRUE
+#else
+#* *#OS_BUILD_OPTIMIZED_LIB_FROM_SOURCE = FALSE
+#end
+
+$hashChars#* ################################################################### *#
+# Tasks
+$hashChars#* ################################################################### *#
+## !LINKSTO Generator.Output.MakeInc.Tasks, 1
+# This variable tells the build process the number of stack slots that are generated
+# for the stack type taskStack
+OS_NUM_TASKSTACK_SLOTS = #foreach( $slot in $ClassOfAbstractStack.getNumStackSlotsPerCore( $AllTasksList.getStacks() ) )$slot#if($foreach.hasNext),#end#end$newLine
+#if( $OsModel.isMicroKernel() )
+#* *#$hashChars#* ################################################################### *#
+#* *## Threads
+#* *#$hashChars#* ################################################################### *#
+#* *## This variable tells the build process the number of stack slots that are generated
+#* *## for the stack type threadStack
+#* *#MK_NUM_THREADSTACK_SLOTS = #foreach( $slot in $ClassOfAbstractStack.getNumStackSlotsPerCore( $OsModel.getAllMkStacks() ) )$slot#if($foreach.hasNext),#end#end
+#end
+

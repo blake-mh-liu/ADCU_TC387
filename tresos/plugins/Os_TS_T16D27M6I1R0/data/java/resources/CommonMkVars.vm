@@ -1,0 +1,18 @@
+#* *### Some common variables to be used in the Microkernel templates are added below
+#if( $OsModel.isMicroKernel() )
+#* *##set( $MkVersion = $OsModel.getMkVersion() )
+#* *##set( $IsMkVersionOlderThan21 = $ClassOfHelpers.isMkVersionOlderThan21($MkVersion) )
+#* *##set( $hasCtrSubRefactoring = $ClassOfHelpers.hasCtrSubRefactoring($OsModel) )
+#* *##if( $hasCtrSubRefactoring )
+#*    *##set( $MkCtrsubPrefix  = "CTRSUB" )
+#*    *##set( $MkCsPrefix      = "CS" )
+#* *##else
+#*    *##set( $MkCtrsubPrefix  = "QMOS" )
+#*    *##set( $MkCsPrefix      = "QM" )
+#* *##end
+#* *##if( $IsMkVersionOlderThan21 )
+#*    *##set( $MkCfgPrefix     = "" )
+#* *##else
+#*    *##set( $MkCfgPrefix     = "CFG_" )
+#* *##end
+#end

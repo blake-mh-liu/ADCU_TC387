@@ -1,0 +1,43 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Essentials Demo Wizard
+Bundle-SymbolicName: eb.tresos.oemas.essentialsdemo;singleton:=true
+Bundle-Version: 0.3.1.qualifier
+Bundle-Vendor: Elektrobit
+Automatic-Module-Name: oem_new_project_wizard
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ dreisoft.tresos.launcher2.plugin,
+ dreisoft.tresos.core.plugin,
+ dreisoft.tresos.lib2.plugin,
+ dreisoft.tresos.sysdimporter.plugin,
+ dreisoft.tresos.guidedconfig.api.plugin,
+ dreisoft.tresos.lib2.api.plugin,
+ dreisoft.tresos.tresosdb.api.plugin,
+ org.eclipse.core.resources,
+ org.eclipse.core.databinding,
+ org.eclipse.jface.databinding,
+ org.eclipse.core.databinding.property,
+ org.eclipse.core.databinding.beans,
+ org.eclipse.ui.views,
+ org.eclipse.osgi,
+ dreisoft.tresos.datamodel2.api.plugin,
+ eb.tresos.splitimex,
+ eb.tresos.oemas.lib,
+ plugin.OemApiLib;bundle-version="1.6.0",
+ dreisoft.tresos.application.launcher2.plugin
+Import-Package: dreisoft.tresos.launcher2.api.project,
+ org.eclipse.ui.dialogs
+X-Comment: Eclipse-BundleShape needs to be set to dir, otherwise
+ copying the project template won't work. File objects which are
+ currently used for copying do not work with files in JAR bundles.
+ Constructor File(URI) will throw an
+ IllegalArgumentException("URI is not hierarchical").
+Eclipse-BundleShape: dir
+Bundle-ClassPath: .,
+ plugin_classes.jar,
+ lib/commons-io-2.6/commons-io-2.6.jar,
+ lib/Saxon9HE/saxon9he.jar
+Export-Package: eb.tresos.oemas.essentialsdemo,
+ eb.tresos.oemas.essentialsdemo.model

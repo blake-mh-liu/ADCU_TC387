@@ -1,0 +1,34 @@
+#parse("CommonVars.vm")
+#if( $OsModel.isIoc() )
+#* *## Mappings between applications and object files. Should be used to link objects to
+#* *## respective data sections.
+#* *## Naming convention for user-mode data: IOC_OBJS_APP(__<application_name>)+
+#* *##   Where the <application_name> is appended for each application,
+#* *##   in the order, in which they appear in the configuration.
+#* *## Naming convention for kernel-mode data: IOC_OBJS_KERN(_<core_id>)+
+#* *##   Where the suffix is a list of all cores, which may write to the contained variables.
+#* *##   The core ids are decimal numbers, sorted in ascending order.
+#* *## Naming convention for user-mode data (deprecated):
+#* *## IOC_OBJS_APP<_application_id>+
+#* *## Naming convention for named user-mode data (deprecated):
+#* *## IOC_NM_OBJS_APP<_application_name>+
+#* *#
+#* *##foreach( $comm in $IocCommsList )
+#*    *##if( $comm.isSenderTrapping() )
+#*       *#IOC_OBJS_KERN#foreach( $coreId in $comm.getSendingCores() )_$coreId#end += $comm.getSenderFileName($IocCommsList).$(OBJ_FILE_SUFFIX)
+#*    *##else
+#*       *#IOC_OBJS_APP#foreach( $sender in $comm.getSenders() )__$sender.getSendingApp().getName()#end += $comm.getSenderFileName($IocCommsList).$(OBJ_FILE_SUFFIX)
+#*    *##end
+#*    *##if( $comm.isQueued() )
+#*       *#IOC_OBJS_APP#foreach( $receiver in $comm.getReceivers() )__$receiver.getReceivingApp().getName()#end += $comm.getReceiverFileName($IocCommsList).$(OBJ_FILE_SUFFIX)
+#*    *##end
+#* *##end
+#* *## List of generated files to be compiled
+#* *#Ioc_GEN_FILES += $(Ioc_OUTPUT_PATH)/src/Ioc_gen.c
+#* *##foreach( $comm in $IocCommsList )
+#*    *#Ioc_GEN_FILES += $(Ioc_OUTPUT_PATH)/src/$comm.getSenderFileName($IocCommsList)#* *#.c
+#*    *##if( $comm.isQueued() )
+#*       *#Ioc_GEN_FILES += $(Ioc_OUTPUT_PATH)/src/$comm.getReceiverFileName($IocCommsList)#* *#.c
+#*    *##end
+#* *##end
+#end

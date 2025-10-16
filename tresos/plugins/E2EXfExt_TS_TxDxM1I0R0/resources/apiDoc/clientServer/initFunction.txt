@@ -1,0 +1,21 @@
+/**
+ ** \brief E2EXf_Init_<TRANSFORMER_NAME> - This function initializes the protection state, check state and
+ **        the state machine used by the E2E transformer. It calls the following three functions:
+ **        E2E_PxxProtectInit, E2E_PxxCheckInit and E2E_SMCheckInit.
+ **
+ ** \param[in]  StatePtr Pointer to port/data communication state. It is of type E2EXf_PxxStatesType and is
+ **             forwarded to all three called functions: E2E_PxxProtectInit, E2E_PxxCheckInit and E2E_SMCheckInit.
+ ** \param[in]  ConfigPtr Pointer to configuration of the state machine. It is of type E2E_SMCheckStateType and is
+ **             forwarded to function E2E_SMCheckInit.
+ **
+ ** \return Function execution success status.
+ ** \retval 0x00 (E_OK) This means VALID_OK
+ ** \retval 0x13 (E2E_E_INPUTERR_NULL) At least one pointer parameter is a NULL pointer
+ **
+ ** \ServiceID{0xXX}: This functions forwards its input parameters to function E2E_SMCheckInit
+ **                   with service id 0x31 and functions E2E_PxxProtectInit and E2E_PxxCheckInit.
+ **                   Where the service ID of the latter two can not be directly specified since
+ **                   it depends on the configured profile.
+ ** \Reentrancy{Non Reentrant}
+ ** \Synchronicity{Synchronous}
+ **/

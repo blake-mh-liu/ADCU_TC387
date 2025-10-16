@@ -1,0 +1,31 @@
+#parse("CommonVars.vm")
+/* This file is generated automatically. DO NOT EDIT!!
+ * 
+ * EB tresos AutoCore OS ${Version.getMajor()}.${Version.getMinor()}.${Version.getPatch()} ${Version.getTarget()}/${Version.getDerivate()}
+ * (Build ${Version.getBuild()})
+ * 
+ * (c) 1998-${Version.getCurrentYear()} Elektrobit Automotive GmbH
+ * Am Wolfsmantel 46
+ * 91058 Erlangen
+ * GERMANY
+ * 
+ * Date         : ${Version.getDate()}           !!!IGNORE-LINE!!!
+ */
+
+## !LINKSTO Generator.Output.app_gen_c.Header, 1
+\#include <Os_config.h>
+\#include <Os_tool.h>
+
+\#if OS_GENERATION_ID_OS_H!=$OsGenerator.getGenId()
+#error "Build-Ids of src\\${app.getName()}_gen.c and include\Os_user.h did not match! Hint: A wrong include\Os_user.h was most probably included."
+#endif
+\#if OS_GENERATION_ID_OS_CONF_H!=$OsGenerator.getGenId()
+#error "Build-Ids of src\\${app.getName()}_gen.c and include\Os_config.h did not match! Hint: A wrong include\Os_config.h was most probably included."
+#endif
+\#if OS_GENERATION_ID_OS_KCONF_H!=$OsGenerator.getGenId()
+#error "Build-Ids of src\\${app.getName()}_gen.c and include\Os_kconfig.h did not match! Hint: A wrong include\Os_kconfig.h was most probably included."
+#endif
+
+## !LINKSTO Generator.Output.app_gen_c.Identification, 1
+const os_uint32_t OS_$app.getName()GenBuildId = $OsGenerator.getGenId();
+

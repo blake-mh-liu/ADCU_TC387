@@ -1,0 +1,167 @@
+/**
+ * \file
+ *
+ * \brief AUTOSAR ReProgMemM
+ *
+ * This file contains the implementation of the AUTOSAR
+ * module ReProgMemM.
+ *
+ * \version 1.13.0
+ *
+ * \author Elektrobit Automotive GmbH, 91058 Erlangen, Germany
+ *
+ * Copyright 2005 - 2024 Elektrobit Automotive GmbH
+ * All rights exclusively reserved for Elektrobit Automotive GmbH,
+ * unless expressly agreed to otherwise.
+ */
+
+#ifndef REPROGMEMM_INTERFACES_H
+#define REPROGMEMM_INTERFACES_H
+
+/*==[Includes]================================================================*/
+
+#include "Std_Types.h"               /* AUTOSAR standard types */
+#include "ReProgMemM_Version.h"
+[!IF "node:exists(as:modconf('FlsLoader'))"!]
+#include "FlsLoader.h"
+[!ENDIF!]
+
+/*==[Macros]==================================================================*/
+
+/*  Get the RAM address of the function */
+[!IF "General/Copy_ROM_To_RAM = 'true'"!]
+/*==[Types]===================================================================*/
+typedef uint32 (*ptFlsLoader_InRAM_Erase_Code)(uint32 ulAddress, uint32 ulSectorSize);
+typedef uint32 (*ptFlsLoader_InRAM_Write_Code)(uint32 ulAddress, uint32 ulNbOfPagesToWriteSize, uint8* pubDataPtr);
+[!ENDIF!]
+/*==[Constants with external linkage]=========================================*/
+
+/*==[Variables with external linkage]=========================================*/
+
+/*==[Definition of functions with external linkage]===========================*/
+
+/** \brief Init function
+ *
+ * This function
+ * returns the
+ *
+ * \param[in]
+ * \param[out]
+ * \pre xx is xx
+ * \post xx is xx
+ * \return Standard error code
+ * \retval E_OK Operation successful
+ * \retval E_NOT_OK Operation failed
+ *
+ * \par Side effects
+ * \li The
+ *
+ */
+#define REPROGMEMM_START_SEC_CALLOUT_CODE
+#include <ReProgMemM_MemMap.h>
+
+extern FUNC(Std_ReturnType, ReProgMemM_CODE) ReProgMemM_FlashInit
+(
+    VAR (uint8, ReProgMemM_VAR)  ubInternalFlashInit
+);
+
+[!IF "as:modconf('ReProgMemM')/General/Dual_Memory_Bank_Used = 'true'"!]
+/* !LINKSTO SwD.ReProgMemM.GetActiveBank.If,1 */
+extern FUNC(Std_ReturnType, ReProgMemM_CODE) ReProgMemM_CustomGetActiveBank
+(
+    P2VAR(uint8, AUTOMATIC, ReProgMemM_APPL_DATA)  ActiveBank
+);
+/* !LINKSTO SwD.ReProgMemM.GetInactiveBankAddrOffset.If,2 */
+extern FUNC(uint32,         ReProgMemM_CODE) ReProgMemM_CustomGetInactiveBankAddrOffset
+(
+    VAR (uint32, ReProgMemM_VAR) startAddress
+);
+[!ENDIF!]
+
+extern FUNC(uint32,         ReProgMemM_CODE) ReProgMemM_CustomGetOffset
+(
+    VAR (uint32, ReProgMemM_VAR) ulAddress
+);
+
+#if (REPROGMEMM_TOPO_FLASH_ENABLED == STD_ON)
+/* !LINKSTO SwD.ReProgMemM.FlashGetJobStatus.If,1 */
+extern FUNC(REPROGMEMM_JobStatus_t, ReProgMemM_CODE) ReProgMemM_FlsDriver_JobStatus(void);
+#endif
+#if (REPROGMEMM_TOPO_FLASHEXT_ENABLED == STD_ON)
+extern FUNC(REPROGMEMM_JobStatus_t, ReProgMemM_CODE) ReProgMemM_FlsExtDriver_JobStatus(void);
+#endif
+#if (REPROGMEMM_USE_MEMACC_ENABLE == STD_ON)
+extern FUNC(REPROGMEMM_JobStatus_t, ReProgMemM_CODE) ReProgMemM_MemAcc_JobStatus(void);
+#endif
+
+/* !LINKSTO SwD.ReProgMemM.FlashErase.If,1 */
+extern FUNC(Std_ReturnType, ReProgMemM_CODE) ReProgMemM_FlsDriver_Erase
+(
+    VAR (uint32, ReProgMemM_VAR) ulAddress,
+    VAR (uint32, ReProgMemM_VAR) ulSectorSize
+);
+
+extern FUNC(Std_ReturnType, ReProgMemM_CODE) ReProgMemM_FlsExtDriver_Erase
+(
+    VAR (uint32, ReProgMemM_VAR) ulAddress,
+    VAR (uint32, ReProgMemM_VAR) ulSectorSize
+);
+
+/* !LINKSTO SwD.ReProgMemM.FlashWrite.If,1 */
+extern FUNC(Std_ReturnType, ReProgMemM_CODE) ReProgMemM_FlsDriver_Write
+(
+    VAR   (uint32,            ReProgMemM_VAR) ulAddress,
+    VAR   (uint32,            ReProgMemM_VAR) ulNbOfPagesToWriteSize,
+    P2VAR (uint8,  AUTOMATIC, ReProgMemM_VAR) pubDataPtr
+);
+
+extern FUNC(Std_ReturnType, ReProgMemM_CODE) ReProgMemM_FlsExtDriver_Write
+(
+    VAR   (uint32,            ReProgMemM_VAR) ulAddress,
+    VAR   (uint32,            ReProgMemM_VAR) ulNbOfPagesToWriteSize,
+    P2VAR (uint8,  AUTOMATIC, ReProgMemM_VAR) pubDataPtr
+);
+
+/* !LINKSTO SwD.ReProgMemM.FlashRead.If,1 */
+extern FUNC(Std_ReturnType, ReProgMemM_CODE) ReProgMemM_FlsDriver_Read
+(
+    VAR   (uint32,            ReProgMemM_VAR) ulAddress,
+    VAR   (uint32,            ReProgMemM_VAR) ulLength,
+    P2VAR (uint8,  AUTOMATIC, ReProgMemM_VAR) pubDataPtr
+);
+
+[!IF "node:exists(as:modconf('FlsLoader'))"!]
+extern FUNC(FlsLoader_ReturnType, ReProgMemM_CODE) FlsLoader_Read
+(
+    CONST (FlsLoader_AddressType,          ReProgMemM_CONST) ulAddress,
+    CONST (FlsLoader_LengthType,           ReProgMemM_CONST) ulLength,
+    P2VAR (uint8,               AUTOMATIC, ReProgMemM_VAR)   pubDataPtr
+);
+[!ENDIF!]
+
+extern FUNC(Std_ReturnType, ReProgMemM_CODE) ReProgMemM_FlsExtDriver_Read
+(
+    VAR   (uint32,            ReProgMemM_VAR) ulAddress,
+    VAR   (uint32,            ReProgMemM_VAR) ulLength,
+    P2VAR (uint8,  AUTOMATIC, ReProgMemM_VAR) pubDataPtr
+);
+
+extern FUNC(void, ReProgMemM_CODE) ReProgMemM_CustomGetPhysicalToLogicalAddress
+(
+    VAR   (uint32,             ReProgMemM_VAR) ulPhysicalAddress,
+    P2VAR (uint32,  AUTOMATIC, ReProgMemM_VAR) pulLogicalAddress
+);
+
+#if (REPROGMEMM_DUALBANK_ENABLED == STD_ON)
+/* !LINKSTO SwD.OTA.DualBankInit.If,1 */
+extern FUNC(void, ReProgMemM_CODE) ReProgMemM_DualBank_Init(void);
+#endif
+
+#define REPROGMEMM_STOP_SEC_CALLOUT_CODE
+#include <ReProgMemM_MemMap.h>
+
+#endif /* #ifndef REPROGMEMM_INTERFACES_H */
+
+
+/*==================[end of file]=============================================*/
+

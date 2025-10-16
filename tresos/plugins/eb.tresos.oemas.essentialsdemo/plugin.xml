@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="dreisoft.tresos.category"
+            name="tresos Studio">
+      </category>
+      <!-- the finalPerspective attribute shall be set as soon as tresos Studio is our target platform -->
+      <wizard
+            category="dreisoft.tresos.category"
+            class="eb.tresos.oemas.essentialsdemo.EssentialsDemoWizard"
+            icon="icons/tresos.gif"
+            id="eb.tresos.oemas.simpledemo.next.rte.WIN32X86"
+            name="Essentials Demo"
+            project="true">
+      </wizard>
+   </extension>
+
+
+   <extension
+         point="dreisoft.tresos.application.core.plugin.argumenthandler">
+      <argument-handler
+            class="eb.tresos.oemas.essentialsdemo.cli.CreateNewProjectCommandLineArgHandler"
+            mode="cmd">
+         <argument
+               name="createProject">
+         </argument>
+      </argument-handler>
+   </extension>
+
+</plugin>

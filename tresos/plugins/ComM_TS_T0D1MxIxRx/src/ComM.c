@@ -1,0 +1,1652 @@
+/**EB_Automotive_C_Source_File */
+
+/*==[Includes]================================================================*/
+
+#include <EBStubs_Cfg.h>
+#include <ComStack_Types.h>
+#include <ComM.h>
+#include <ComM_Nm.h>
+#include <ComM_Dcm.h>
+#include <ComM_EcuMBswM.h>
+#include <ComM_BusSm.h>
+
+/*==[Macros]==================================================================*/
+
+/*==[Types]===================================================================*/
+
+#ifndef EBSTUBS_FUNCTION_TRACE
+#define EBSTUBS_FUNCTION_TRACE STD_OFF
+#endif /* EBSTUBS_FUNCTION_TRACE */
+
+#ifndef EBSTUBS_FUNCTION_TRACE_COMM
+#define EBSTUBS_FUNCTION_TRACE_COMM STD_ON
+#endif /* EBSTUBS_FUNCTION_TRACE_COMM */
+
+#ifndef EBSTUBS_FUNCTION_TRACE_COMM_BUSSM_BUSSLEEPMODE
+#define EBSTUBS_FUNCTION_TRACE_COMM_BUSSM_BUSSLEEPMODE EBSTUBS_FUNCTION_TRACE_COMM
+#endif /* EBSTUBS_FUNCTION_TRACE_COMM_BUSSM_BUSSLEEPMODE */
+
+#ifndef EBSTUBS_FUNCTION_TRACE_COMM_BUSSM_MODEINDICATION
+#define EBSTUBS_FUNCTION_TRACE_COMM_BUSSM_MODEINDICATION EBSTUBS_FUNCTION_TRACE_COMM
+#endif /* EBSTUBS_FUNCTION_TRACE_COMM_BUSSM_MODEINDICATION */
+
+#ifndef EBSTUBS_FUNCTION_TRACE_COMM_COMMUNICATIONALLOWED
+#define EBSTUBS_FUNCTION_TRACE_COMM_COMMUNICATIONALLOWED EBSTUBS_FUNCTION_TRACE_COMM
+#endif /* EBSTUBS_FUNCTION_TRACE_COMM_COMMUNICATIONALLOWED */
+
+#ifndef EBSTUBS_FUNCTION_TRACE_COMM_DCM_ACTIVEDIAGNOSTIC
+#define EBSTUBS_FUNCTION_TRACE_COMM_DCM_ACTIVEDIAGNOSTIC EBSTUBS_FUNCTION_TRACE_COMM
+#endif /* EBSTUBS_FUNCTION_TRACE_COMM_DCM_ACTIVEDIAGNOSTIC */
+
+#ifndef EBSTUBS_FUNCTION_TRACE_COMM_DCM_INACTIVEDIAGNOSTIC
+#define EBSTUBS_FUNCTION_TRACE_COMM_DCM_INACTIVEDIAGNOSTIC EBSTUBS_FUNCTION_TRACE_COMM
+#endif /* EBSTUBS_FUNCTION_TRACE_COMM_DCM_INACTIVEDIAGNOSTIC */
+
+#ifndef EBSTUBS_FUNCTION_TRACE_COMM_DEINIT
+#define EBSTUBS_FUNCTION_TRACE_COMM_DEINIT EBSTUBS_FUNCTION_TRACE_COMM
+#endif /* EBSTUBS_FUNCTION_TRACE_COMM_DEINIT */
+
+#ifndef EBSTUBS_FUNCTION_TRACE_COMM_ECUM_PNCWAKEUPINDICATION
+#define EBSTUBS_FUNCTION_TRACE_COMM_ECUM_PNCWAKEUPINDICATION EBSTUBS_FUNCTION_TRACE_COMM
+#endif /* EBSTUBS_FUNCTION_TRACE_COMM_ECUM_PNCWAKEUPINDICATION */
+
+#ifndef EBSTUBS_FUNCTION_TRACE_COMM_ECUM_WAKEUPINDICATION
+#define EBSTUBS_FUNCTION_TRACE_COMM_ECUM_WAKEUPINDICATION EBSTUBS_FUNCTION_TRACE_COMM
+#endif /* EBSTUBS_FUNCTION_TRACE_COMM_ECUM_WAKEUPINDICATION */
+
+#ifndef EBSTUBS_FUNCTION_TRACE_COMM_GETCURRENTCOMMODE
+#define EBSTUBS_FUNCTION_TRACE_COMM_GETCURRENTCOMMODE EBSTUBS_FUNCTION_TRACE_COMM
+#endif /* EBSTUBS_FUNCTION_TRACE_COMM_GETCURRENTCOMMODE */
+
+#ifndef EBSTUBS_FUNCTION_TRACE_COMM_GETINHIBITIONSTATUS
+#define EBSTUBS_FUNCTION_TRACE_COMM_GETINHIBITIONSTATUS EBSTUBS_FUNCTION_TRACE_COMM
+#endif /* EBSTUBS_FUNCTION_TRACE_COMM_GETINHIBITIONSTATUS */
+
+#ifndef EBSTUBS_FUNCTION_TRACE_COMM_GETMAXCOMMODE
+#define EBSTUBS_FUNCTION_TRACE_COMM_GETMAXCOMMODE EBSTUBS_FUNCTION_TRACE_COMM
+#endif /* EBSTUBS_FUNCTION_TRACE_COMM_GETMAXCOMMODE */
+
+#ifndef EBSTUBS_FUNCTION_TRACE_COMM_GETREQUESTEDCOMMODE
+#define EBSTUBS_FUNCTION_TRACE_COMM_GETREQUESTEDCOMMODE EBSTUBS_FUNCTION_TRACE_COMM
+#endif /* EBSTUBS_FUNCTION_TRACE_COMM_GETREQUESTEDCOMMODE */
+
+#ifndef EBSTUBS_FUNCTION_TRACE_COMM_GETSTATE
+#define EBSTUBS_FUNCTION_TRACE_COMM_GETSTATE EBSTUBS_FUNCTION_TRACE_COMM
+#endif /* EBSTUBS_FUNCTION_TRACE_COMM_GETSTATE */
+
+#ifndef EBSTUBS_FUNCTION_TRACE_COMM_GETSTATUS
+#define EBSTUBS_FUNCTION_TRACE_COMM_GETSTATUS EBSTUBS_FUNCTION_TRACE_COMM
+#endif /* EBSTUBS_FUNCTION_TRACE_COMM_GETSTATUS */
+
+#ifndef EBSTUBS_FUNCTION_TRACE_COMM_GETVERSIONINFO
+#define EBSTUBS_FUNCTION_TRACE_COMM_GETVERSIONINFO EBSTUBS_FUNCTION_TRACE_COMM
+#endif /* EBSTUBS_FUNCTION_TRACE_COMM_GETVERSIONINFO */
+
+#ifndef EBSTUBS_FUNCTION_TRACE_COMM_INIT
+#define EBSTUBS_FUNCTION_TRACE_COMM_INIT EBSTUBS_FUNCTION_TRACE_COMM
+#endif /* EBSTUBS_FUNCTION_TRACE_COMM_INIT */
+
+#ifndef EBSTUBS_FUNCTION_TRACE_COMM_ISVALIDCONFIG
+#define EBSTUBS_FUNCTION_TRACE_COMM_ISVALIDCONFIG EBSTUBS_FUNCTION_TRACE_COMM
+#endif /* EBSTUBS_FUNCTION_TRACE_COMM_ISVALIDCONFIG */
+
+#ifndef EBSTUBS_FUNCTION_TRACE_COMM_LIMITCHANNELTONOCOMMODE
+#define EBSTUBS_FUNCTION_TRACE_COMM_LIMITCHANNELTONOCOMMODE EBSTUBS_FUNCTION_TRACE_COMM
+#endif /* EBSTUBS_FUNCTION_TRACE_COMM_LIMITCHANNELTONOCOMMODE */
+
+#ifndef EBSTUBS_FUNCTION_TRACE_COMM_LIMITECUTONOCOMMODE
+#define EBSTUBS_FUNCTION_TRACE_COMM_LIMITECUTONOCOMMODE EBSTUBS_FUNCTION_TRACE_COMM
+#endif /* EBSTUBS_FUNCTION_TRACE_COMM_LIMITECUTONOCOMMODE */
+
+#ifndef EBSTUBS_FUNCTION_TRACE_COMM_NM_BUSSLEEPMODE
+#define EBSTUBS_FUNCTION_TRACE_COMM_NM_BUSSLEEPMODE EBSTUBS_FUNCTION_TRACE_COMM
+#endif /* EBSTUBS_FUNCTION_TRACE_COMM_NM_BUSSLEEPMODE */
+
+#ifndef EBSTUBS_FUNCTION_TRACE_COMM_NM_FORWARDSYNCHRONIZEDPNCSHUTDOWN
+#define EBSTUBS_FUNCTION_TRACE_COMM_NM_FORWARDSYNCHRONIZEDPNCSHUTDOWN EBSTUBS_FUNCTION_TRACE_COMM
+#endif /* EBSTUBS_FUNCTION_TRACE_COMM_NM_FORWARDSYNCHRONIZEDPNCSHUTDOWN */
+
+#ifndef EBSTUBS_FUNCTION_TRACE_COMM_NM_NETWORKMODE
+#define EBSTUBS_FUNCTION_TRACE_COMM_NM_NETWORKMODE EBSTUBS_FUNCTION_TRACE_COMM
+#endif /* EBSTUBS_FUNCTION_TRACE_COMM_NM_NETWORKMODE */
+
+#ifndef EBSTUBS_FUNCTION_TRACE_COMM_NM_NETWORKSTARTINDICATION
+#define EBSTUBS_FUNCTION_TRACE_COMM_NM_NETWORKSTARTINDICATION EBSTUBS_FUNCTION_TRACE_COMM
+#endif /* EBSTUBS_FUNCTION_TRACE_COMM_NM_NETWORKSTARTINDICATION */
+
+#ifndef EBSTUBS_FUNCTION_TRACE_COMM_NM_PREPAREBUSSLEEPMODE
+#define EBSTUBS_FUNCTION_TRACE_COMM_NM_PREPAREBUSSLEEPMODE EBSTUBS_FUNCTION_TRACE_COMM
+#endif /* EBSTUBS_FUNCTION_TRACE_COMM_NM_PREPAREBUSSLEEPMODE */
+
+#ifndef EBSTUBS_FUNCTION_TRACE_COMM_NM_RESTARTINDICATION
+#define EBSTUBS_FUNCTION_TRACE_COMM_NM_RESTARTINDICATION EBSTUBS_FUNCTION_TRACE_COMM
+#endif /* EBSTUBS_FUNCTION_TRACE_COMM_NM_RESTARTINDICATION */
+
+#ifndef EBSTUBS_FUNCTION_TRACE_COMM_PREVENTWAKEUP
+#define EBSTUBS_FUNCTION_TRACE_COMM_PREVENTWAKEUP EBSTUBS_FUNCTION_TRACE_COMM
+#endif /* EBSTUBS_FUNCTION_TRACE_COMM_PREVENTWAKEUP */
+
+#ifndef EBSTUBS_FUNCTION_TRACE_COMM_READINHIBITCOUNTER
+#define EBSTUBS_FUNCTION_TRACE_COMM_READINHIBITCOUNTER EBSTUBS_FUNCTION_TRACE_COMM
+#endif /* EBSTUBS_FUNCTION_TRACE_COMM_READINHIBITCOUNTER */
+
+#ifndef EBSTUBS_FUNCTION_TRACE_COMM_REQUESTCOMMODE
+#define EBSTUBS_FUNCTION_TRACE_COMM_REQUESTCOMMODE EBSTUBS_FUNCTION_TRACE_COMM
+#endif /* EBSTUBS_FUNCTION_TRACE_COMM_REQUESTCOMMODE */
+
+#ifndef EBSTUBS_FUNCTION_TRACE_COMM_RESETINHIBITCOUNTER
+#define EBSTUBS_FUNCTION_TRACE_COMM_RESETINHIBITCOUNTER EBSTUBS_FUNCTION_TRACE_COMM
+#endif /* EBSTUBS_FUNCTION_TRACE_COMM_RESETINHIBITCOUNTER */
+
+#ifndef EBSTUBS_FUNCTION_TRACE_COMM_SETECUGROUPCLASSIFICATION
+#define EBSTUBS_FUNCTION_TRACE_COMM_SETECUGROUPCLASSIFICATION EBSTUBS_FUNCTION_TRACE_COMM
+#endif /* EBSTUBS_FUNCTION_TRACE_COMM_SETECUGROUPCLASSIFICATION */
+
+#if (EBSTUBS_FUNCTION_TRACE == STD_ON)
+#include <EBStubs_Trace.h>
+#endif /* (EBSTUBS_FUNCTION_TRACE == STD_ON) */
+
+/*==[Declaration of functions with internal linkage]==========================*/
+
+/*==[Constants with internal linkage]=========================================*/
+
+/*==[Variables with internal linkage]=========================================*/
+
+/*==[Constants with external linkage]=========================================*/
+
+/*==[Variables with external linkage]=========================================*/
+
+#define EBSTUBS_START_SEC_VAR_CLEARED_UNSPECIFIED
+#include <EBStubs_MemMap.h>
+
+#if (EBSTUBS_FUNCENABLED_COMM_BUSSM_BUSSLEEPMODE == STD_ON)
+VAR(ComM_BusSM_BusSleepMode_StubType, EBSTUBS_VAR)
+   ComM_BusSM_BusSleepMode_Stub;
+#endif /* (EBSTUBS_FUNCENABLED_COMM_BUSSM_BUSSLEEPMODE == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_BUSSM_MODEINDICATION == STD_ON)
+VAR(ComM_BusSM_ModeIndication_StubType, EBSTUBS_VAR)
+   ComM_BusSM_ModeIndication_Stub;
+#endif /* (EBSTUBS_FUNCENABLED_COMM_BUSSM_MODEINDICATION == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_COMMUNICATIONALLOWED == STD_ON)
+VAR(ComM_CommunicationAllowed_StubType, EBSTUBS_VAR)
+   ComM_CommunicationAllowed_Stub;
+#endif /* (EBSTUBS_FUNCENABLED_COMM_COMMUNICATIONALLOWED == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_DCM_ACTIVEDIAGNOSTIC == STD_ON)
+VAR(ComM_DCM_ActiveDiagnostic_StubType, EBSTUBS_VAR)
+   ComM_DCM_ActiveDiagnostic_Stub;
+#endif /* (EBSTUBS_FUNCENABLED_COMM_DCM_ACTIVEDIAGNOSTIC == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_DCM_INACTIVEDIAGNOSTIC == STD_ON)
+VAR(ComM_DCM_InactiveDiagnostic_StubType, EBSTUBS_VAR)
+   ComM_DCM_InactiveDiagnostic_Stub;
+#endif /* (EBSTUBS_FUNCENABLED_COMM_DCM_INACTIVEDIAGNOSTIC == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_DEINIT == STD_ON)
+VAR(ComM_DeInit_StubType, EBSTUBS_VAR)
+   ComM_DeInit_Stub;
+#endif /* (EBSTUBS_FUNCENABLED_COMM_DEINIT == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_ECUM_PNCWAKEUPINDICATION == STD_ON)
+VAR(ComM_EcuM_PNCWakeUpIndication_StubType, EBSTUBS_VAR)
+   ComM_EcuM_PNCWakeUpIndication_Stub;
+#endif /* (EBSTUBS_FUNCENABLED_COMM_ECUM_PNCWAKEUPINDICATION == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_ECUM_WAKEUPINDICATION == STD_ON)
+VAR(ComM_EcuM_WakeUpIndication_StubType, EBSTUBS_VAR)
+   ComM_EcuM_WakeUpIndication_Stub;
+#endif /* (EBSTUBS_FUNCENABLED_COMM_ECUM_WAKEUPINDICATION == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_GETCURRENTCOMMODE == STD_ON)
+VAR(ComM_GetCurrentComMode_StubType, EBSTUBS_VAR)
+   ComM_GetCurrentComMode_Stub;
+#endif /* (EBSTUBS_FUNCENABLED_COMM_GETCURRENTCOMMODE == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_GETINHIBITIONSTATUS == STD_ON)
+VAR(ComM_GetInhibitionStatus_StubType, EBSTUBS_VAR)
+   ComM_GetInhibitionStatus_Stub;
+#endif /* (EBSTUBS_FUNCENABLED_COMM_GETINHIBITIONSTATUS == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_GETMAXCOMMODE == STD_ON)
+VAR(ComM_GetMaxComMode_StubType, EBSTUBS_VAR)
+   ComM_GetMaxComMode_Stub;
+#endif /* (EBSTUBS_FUNCENABLED_COMM_GETMAXCOMMODE == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_GETREQUESTEDCOMMODE == STD_ON)
+VAR(ComM_GetRequestedComMode_StubType, EBSTUBS_VAR)
+   ComM_GetRequestedComMode_Stub;
+#endif /* (EBSTUBS_FUNCENABLED_COMM_GETREQUESTEDCOMMODE == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_GETSTATE == STD_ON)
+VAR(ComM_GetState_StubType, EBSTUBS_VAR)
+   ComM_GetState_Stub;
+#endif /* (EBSTUBS_FUNCENABLED_COMM_GETSTATE == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_GETSTATUS == STD_ON)
+VAR(ComM_GetStatus_StubType, EBSTUBS_VAR)
+   ComM_GetStatus_Stub;
+#endif /* (EBSTUBS_FUNCENABLED_COMM_GETSTATUS == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_GETVERSIONINFO == STD_ON)
+VAR(ComM_GetVersionInfo_StubType, EBSTUBS_VAR)
+   ComM_GetVersionInfo_Stub;
+#endif /* (EBSTUBS_FUNCENABLED_COMM_GETVERSIONINFO == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_INIT == STD_ON)
+VAR(ComM_Init_StubType, EBSTUBS_VAR)
+   ComM_Init_Stub;
+#endif /* (EBSTUBS_FUNCENABLED_COMM_INIT == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_ISVALIDCONFIG == STD_ON)
+VAR(ComM_IsValidConfig_StubType, EBSTUBS_VAR)
+   ComM_IsValidConfig_Stub;
+#endif /* (EBSTUBS_FUNCENABLED_COMM_ISVALIDCONFIG == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_LIMITCHANNELTONOCOMMODE == STD_ON)
+VAR(ComM_LimitChannelToNoComMode_StubType, EBSTUBS_VAR)
+   ComM_LimitChannelToNoComMode_Stub;
+#endif /* (EBSTUBS_FUNCENABLED_COMM_LIMITCHANNELTONOCOMMODE == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_LIMITECUTONOCOMMODE == STD_ON)
+VAR(ComM_LimitECUToNoComMode_StubType, EBSTUBS_VAR)
+   ComM_LimitECUToNoComMode_Stub;
+#endif /* (EBSTUBS_FUNCENABLED_COMM_LIMITECUTONOCOMMODE == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_NM_BUSSLEEPMODE == STD_ON)
+VAR(ComM_Nm_BusSleepMode_StubType, EBSTUBS_VAR)
+   ComM_Nm_BusSleepMode_Stub;
+#endif /* (EBSTUBS_FUNCENABLED_COMM_NM_BUSSLEEPMODE == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_NM_FORWARDSYNCHRONIZEDPNCSHUTDOWN == STD_ON)
+VAR(ComM_Nm_ForwardSynchronizedPncShutdown_StubType, EBSTUBS_VAR)
+   ComM_Nm_ForwardSynchronizedPncShutdown_Stub;
+#endif /* (EBSTUBS_FUNCENABLED_COMM_NM_FORWARDSYNCHRONIZEDPNCSHUTDOWN == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_NM_NETWORKMODE == STD_ON)
+VAR(ComM_Nm_NetworkMode_StubType, EBSTUBS_VAR)
+   ComM_Nm_NetworkMode_Stub;
+#endif /* (EBSTUBS_FUNCENABLED_COMM_NM_NETWORKMODE == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_NM_NETWORKSTARTINDICATION == STD_ON)
+VAR(ComM_Nm_NetworkStartIndication_StubType, EBSTUBS_VAR)
+   ComM_Nm_NetworkStartIndication_Stub;
+#endif /* (EBSTUBS_FUNCENABLED_COMM_NM_NETWORKSTARTINDICATION == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_NM_PREPAREBUSSLEEPMODE == STD_ON)
+VAR(ComM_Nm_PrepareBusSleepMode_StubType, EBSTUBS_VAR)
+   ComM_Nm_PrepareBusSleepMode_Stub;
+#endif /* (EBSTUBS_FUNCENABLED_COMM_NM_PREPAREBUSSLEEPMODE == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_NM_RESTARTINDICATION == STD_ON)
+VAR(ComM_Nm_RestartIndication_StubType, EBSTUBS_VAR)
+   ComM_Nm_RestartIndication_Stub;
+#endif /* (EBSTUBS_FUNCENABLED_COMM_NM_RESTARTINDICATION == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_PREVENTWAKEUP == STD_ON)
+VAR(ComM_PreventWakeUp_StubType, EBSTUBS_VAR)
+   ComM_PreventWakeUp_Stub;
+#endif /* (EBSTUBS_FUNCENABLED_COMM_PREVENTWAKEUP == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_READINHIBITCOUNTER == STD_ON)
+VAR(ComM_ReadInhibitCounter_StubType, EBSTUBS_VAR)
+   ComM_ReadInhibitCounter_Stub;
+#endif /* (EBSTUBS_FUNCENABLED_COMM_READINHIBITCOUNTER == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_REQUESTCOMMODE == STD_ON)
+VAR(ComM_RequestComMode_StubType, EBSTUBS_VAR)
+   ComM_RequestComMode_Stub;
+#endif /* (EBSTUBS_FUNCENABLED_COMM_REQUESTCOMMODE == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_RESETINHIBITCOUNTER == STD_ON)
+VAR(ComM_ResetInhibitCounter_StubType, EBSTUBS_VAR)
+   ComM_ResetInhibitCounter_Stub;
+#endif /* (EBSTUBS_FUNCENABLED_COMM_RESETINHIBITCOUNTER == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_SETECUGROUPCLASSIFICATION == STD_ON)
+VAR(ComM_SetECUGroupClassification_StubType, EBSTUBS_VAR)
+   ComM_SetECUGroupClassification_Stub;
+#endif /* (EBSTUBS_FUNCENABLED_COMM_SETECUGROUPCLASSIFICATION == STD_ON) */
+
+#define EBSTUBS_STOP_SEC_VAR_CLEARED_UNSPECIFIED
+#include <EBStubs_MemMap.h>
+
+/*==[Definition of functions with external linkage]===========================*/
+
+#define EBSTUBS_START_SEC_CODE
+#include <EBStubs_MemMap.h>
+
+#if (EBSTUBS_FUNCENABLED_COMM_DEINIT == STD_ON)
+FUNC(void, EBSTUBS_CODE) ComM_DeInit
+(
+  void
+)
+{
+
+  if ( ComM_DeInit_Stub.Callout != NULL_PTR )
+  {
+    ComM_DeInit_Stub.Callout();
+  }
+  ComM_DeInit_Stub.Count++;
+
+#if ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_DEINIT == STD_ON))
+  EBSTUBS_TRACE_PUSH(ComM_DeInit);
+#endif /* ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_DEINIT == STD_ON)) */
+}
+#endif /* (EBSTUBS_FUNCENABLED_COMM_DEINIT == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_GETCURRENTCOMMODE == STD_ON)
+FUNC(Std_ReturnType, EBSTUBS_CODE) ComM_GetCurrentComMode
+(
+  ComM_UserHandleType User,
+  P2VAR(ComM_ModeType, AUTOMATIC, EBSTUBS_APPL_DATA) ComMode
+)
+{
+  Std_ReturnType result;
+
+#if (EBSTUBS_MAX_CALLS_COMM_GETCURRENTCOMMODE > 1)
+  uint32 count = ComM_GetCurrentComMode_Stub.Count;
+#endif /* (EBSTUBS_MAX_CALLS_COMM_GETCURRENTCOMMODE > 1) */
+
+  result = ComM_GetCurrentComMode_Stub.RetVal;
+  ComM_GetCurrentComMode_Stub.User = User;
+  *ComMode = ComM_GetCurrentComMode_Stub.ComMode_Out;
+
+#if (EBSTUBS_MAX_CALLS_COMM_GETCURRENTCOMMODE > 1)
+  if( count < EBSTUBS_MAX_CALLS_COMM_GETCURRENTCOMMODE )
+  {
+    ComM_GetCurrentComMode_Stub.User_Ary[count] = User;
+    *ComMode = ComM_GetCurrentComMode_Stub.ComMode_Out_Ary[count];
+    result = ComM_GetCurrentComMode_Stub.RetVal_Ary[count];
+  }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_GETCURRENTCOMMODE > 1) */
+
+  if ( ComM_GetCurrentComMode_Stub.Callout != NULL_PTR )
+  {
+    result = ComM_GetCurrentComMode_Stub.Callout(User, ComMode);
+  }
+  else
+  {
+
+#if (EBSTUBS_MAX_CALLS_COMM_GETCURRENTCOMMODE > 1)
+    if( count < EBSTUBS_MAX_CALLS_COMM_GETCURRENTCOMMODE )
+    {
+    }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_GETCURRENTCOMMODE > 1) */
+  }
+
+  ComM_GetCurrentComMode_Stub.Count++;
+
+#if ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_GETCURRENTCOMMODE == STD_ON))
+  EBSTUBS_TRACE_PUSH(ComM_GetCurrentComMode);
+#endif /* ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_GETCURRENTCOMMODE == STD_ON)) */
+
+  return result;
+}
+#endif /* (EBSTUBS_FUNCENABLED_COMM_GETCURRENTCOMMODE == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_GETINHIBITIONSTATUS == STD_ON)
+FUNC(Std_ReturnType, EBSTUBS_CODE) ComM_GetInhibitionStatus
+(
+  NetworkHandleType Channel,
+  P2VAR(ComM_InhibitionStatusType, AUTOMATIC, EBSTUBS_APPL_DATA) Status
+)
+{
+  Std_ReturnType result;
+
+#if (EBSTUBS_MAX_CALLS_COMM_GETINHIBITIONSTATUS > 1)
+  uint32 count = ComM_GetInhibitionStatus_Stub.Count;
+#endif /* (EBSTUBS_MAX_CALLS_COMM_GETINHIBITIONSTATUS > 1) */
+
+  result = ComM_GetInhibitionStatus_Stub.RetVal;
+  ComM_GetInhibitionStatus_Stub.Channel = Channel;
+  *Status = ComM_GetInhibitionStatus_Stub.Status_Out;
+
+#if (EBSTUBS_MAX_CALLS_COMM_GETINHIBITIONSTATUS > 1)
+  if( count < EBSTUBS_MAX_CALLS_COMM_GETINHIBITIONSTATUS )
+  {
+    ComM_GetInhibitionStatus_Stub.Channel_Ary[count] = Channel;
+    *Status = ComM_GetInhibitionStatus_Stub.Status_Out_Ary[count];
+    result = ComM_GetInhibitionStatus_Stub.RetVal_Ary[count];
+  }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_GETINHIBITIONSTATUS > 1) */
+
+  if ( ComM_GetInhibitionStatus_Stub.Callout != NULL_PTR )
+  {
+    result = ComM_GetInhibitionStatus_Stub.Callout(Channel, Status);
+  }
+  else
+  {
+
+#if (EBSTUBS_MAX_CALLS_COMM_GETINHIBITIONSTATUS > 1)
+    if( count < EBSTUBS_MAX_CALLS_COMM_GETINHIBITIONSTATUS )
+    {
+    }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_GETINHIBITIONSTATUS > 1) */
+  }
+
+  ComM_GetInhibitionStatus_Stub.Count++;
+
+#if ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_GETINHIBITIONSTATUS == STD_ON))
+  EBSTUBS_TRACE_PUSH(ComM_GetInhibitionStatus);
+#endif /* ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_GETINHIBITIONSTATUS == STD_ON)) */
+
+  return result;
+}
+#endif /* (EBSTUBS_FUNCENABLED_COMM_GETINHIBITIONSTATUS == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_GETMAXCOMMODE == STD_ON)
+FUNC(Std_ReturnType, EBSTUBS_CODE) ComM_GetMaxComMode
+(
+  ComM_UserHandleType User,
+  P2VAR(ComM_ModeType, AUTOMATIC, EBSTUBS_APPL_DATA) ComMode
+)
+{
+  Std_ReturnType result;
+
+#if (EBSTUBS_MAX_CALLS_COMM_GETMAXCOMMODE > 1)
+  uint32 count = ComM_GetMaxComMode_Stub.Count;
+#endif /* (EBSTUBS_MAX_CALLS_COMM_GETMAXCOMMODE > 1) */
+
+  result = ComM_GetMaxComMode_Stub.RetVal;
+  ComM_GetMaxComMode_Stub.User = User;
+  *ComMode = ComM_GetMaxComMode_Stub.ComMode_Out;
+
+#if (EBSTUBS_MAX_CALLS_COMM_GETMAXCOMMODE > 1)
+  if( count < EBSTUBS_MAX_CALLS_COMM_GETMAXCOMMODE )
+  {
+    ComM_GetMaxComMode_Stub.User_Ary[count] = User;
+    *ComMode = ComM_GetMaxComMode_Stub.ComMode_Out_Ary[count];
+    result = ComM_GetMaxComMode_Stub.RetVal_Ary[count];
+  }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_GETMAXCOMMODE > 1) */
+
+  if ( ComM_GetMaxComMode_Stub.Callout != NULL_PTR )
+  {
+    result = ComM_GetMaxComMode_Stub.Callout(User, ComMode);
+  }
+  else
+  {
+
+#if (EBSTUBS_MAX_CALLS_COMM_GETMAXCOMMODE > 1)
+    if( count < EBSTUBS_MAX_CALLS_COMM_GETMAXCOMMODE )
+    {
+    }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_GETMAXCOMMODE > 1) */
+  }
+
+  ComM_GetMaxComMode_Stub.Count++;
+
+#if ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_GETMAXCOMMODE == STD_ON))
+  EBSTUBS_TRACE_PUSH(ComM_GetMaxComMode);
+#endif /* ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_GETMAXCOMMODE == STD_ON)) */
+
+  return result;
+}
+#endif /* (EBSTUBS_FUNCENABLED_COMM_GETMAXCOMMODE == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_GETREQUESTEDCOMMODE == STD_ON)
+FUNC(Std_ReturnType, EBSTUBS_CODE) ComM_GetRequestedComMode
+(
+  ComM_UserHandleType User,
+  P2VAR(ComM_ModeType, AUTOMATIC, EBSTUBS_APPL_DATA) ComMode
+)
+{
+  Std_ReturnType result;
+
+#if (EBSTUBS_MAX_CALLS_COMM_GETREQUESTEDCOMMODE > 1)
+  uint32 count = ComM_GetRequestedComMode_Stub.Count;
+#endif /* (EBSTUBS_MAX_CALLS_COMM_GETREQUESTEDCOMMODE > 1) */
+
+  result = ComM_GetRequestedComMode_Stub.RetVal;
+  ComM_GetRequestedComMode_Stub.User = User;
+  *ComMode = ComM_GetRequestedComMode_Stub.ComMode_Out;
+
+#if (EBSTUBS_MAX_CALLS_COMM_GETREQUESTEDCOMMODE > 1)
+  if( count < EBSTUBS_MAX_CALLS_COMM_GETREQUESTEDCOMMODE )
+  {
+    ComM_GetRequestedComMode_Stub.User_Ary[count] = User;
+    *ComMode = ComM_GetRequestedComMode_Stub.ComMode_Out_Ary[count];
+    result = ComM_GetRequestedComMode_Stub.RetVal_Ary[count];
+  }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_GETREQUESTEDCOMMODE > 1) */
+
+  if ( ComM_GetRequestedComMode_Stub.Callout != NULL_PTR )
+  {
+    result = ComM_GetRequestedComMode_Stub.Callout(User, ComMode);
+  }
+  else
+  {
+
+#if (EBSTUBS_MAX_CALLS_COMM_GETREQUESTEDCOMMODE > 1)
+    if( count < EBSTUBS_MAX_CALLS_COMM_GETREQUESTEDCOMMODE )
+    {
+    }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_GETREQUESTEDCOMMODE > 1) */
+  }
+
+  ComM_GetRequestedComMode_Stub.Count++;
+
+#if ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_GETREQUESTEDCOMMODE == STD_ON))
+  EBSTUBS_TRACE_PUSH(ComM_GetRequestedComMode);
+#endif /* ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_GETREQUESTEDCOMMODE == STD_ON)) */
+
+  return result;
+}
+#endif /* (EBSTUBS_FUNCENABLED_COMM_GETREQUESTEDCOMMODE == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_GETSTATE == STD_ON)
+FUNC(Std_ReturnType, EBSTUBS_CODE) ComM_GetState
+(
+  NetworkHandleType Channel,
+  P2VAR(ComM_StateType, AUTOMATIC, EBSTUBS_APPL_DATA) State
+)
+{
+  Std_ReturnType result;
+
+#if (EBSTUBS_MAX_CALLS_COMM_GETSTATE > 1)
+  uint32 count = ComM_GetState_Stub.Count;
+#endif /* (EBSTUBS_MAX_CALLS_COMM_GETSTATE > 1) */
+
+  result = ComM_GetState_Stub.RetVal;
+  ComM_GetState_Stub.Channel = Channel;
+  *State = ComM_GetState_Stub.State_Out;
+
+#if (EBSTUBS_MAX_CALLS_COMM_GETSTATE > 1)
+  if( count < EBSTUBS_MAX_CALLS_COMM_GETSTATE )
+  {
+    ComM_GetState_Stub.Channel_Ary[count] = Channel;
+    *State = ComM_GetState_Stub.State_Out_Ary[count];
+    result = ComM_GetState_Stub.RetVal_Ary[count];
+  }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_GETSTATE > 1) */
+
+  if ( ComM_GetState_Stub.Callout != NULL_PTR )
+  {
+    result = ComM_GetState_Stub.Callout(Channel, State);
+  }
+  else
+  {
+
+#if (EBSTUBS_MAX_CALLS_COMM_GETSTATE > 1)
+    if( count < EBSTUBS_MAX_CALLS_COMM_GETSTATE )
+    {
+    }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_GETSTATE > 1) */
+  }
+
+  ComM_GetState_Stub.Count++;
+
+#if ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_GETSTATE == STD_ON))
+  EBSTUBS_TRACE_PUSH(ComM_GetState);
+#endif /* ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_GETSTATE == STD_ON)) */
+
+  return result;
+}
+#endif /* (EBSTUBS_FUNCENABLED_COMM_GETSTATE == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_GETSTATUS == STD_ON)
+FUNC(Std_ReturnType, EBSTUBS_CODE) ComM_GetStatus
+(
+  P2VAR(ComM_InitStatusType, AUTOMATIC, EBSTUBS_APPL_DATA) Status
+)
+{
+  Std_ReturnType result;
+
+#if (EBSTUBS_MAX_CALLS_COMM_GETSTATUS > 1)
+  uint32 count = ComM_GetStatus_Stub.Count;
+#endif /* (EBSTUBS_MAX_CALLS_COMM_GETSTATUS > 1) */
+
+  result = ComM_GetStatus_Stub.RetVal;
+  *Status = ComM_GetStatus_Stub.Status_Out;
+
+#if (EBSTUBS_MAX_CALLS_COMM_GETSTATUS > 1)
+  if( count < EBSTUBS_MAX_CALLS_COMM_GETSTATUS )
+  {
+    *Status = ComM_GetStatus_Stub.Status_Out_Ary[count];
+    result = ComM_GetStatus_Stub.RetVal_Ary[count];
+  }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_GETSTATUS > 1) */
+
+  if ( ComM_GetStatus_Stub.Callout != NULL_PTR )
+  {
+    result = ComM_GetStatus_Stub.Callout(Status);
+  }
+  else
+  {
+
+#if (EBSTUBS_MAX_CALLS_COMM_GETSTATUS > 1)
+    if( count < EBSTUBS_MAX_CALLS_COMM_GETSTATUS )
+    {
+    }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_GETSTATUS > 1) */
+  }
+
+  ComM_GetStatus_Stub.Count++;
+
+#if ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_GETSTATUS == STD_ON))
+  EBSTUBS_TRACE_PUSH(ComM_GetStatus);
+#endif /* ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_GETSTATUS == STD_ON)) */
+
+  return result;
+}
+#endif /* (EBSTUBS_FUNCENABLED_COMM_GETSTATUS == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_GETVERSIONINFO == STD_ON)
+FUNC(void, EBSTUBS_CODE) ComM_GetVersionInfo
+(
+  P2VAR(Std_VersionInfoType, AUTOMATIC, EBSTUBS_APPL_DATA) Versioninfo
+)
+{
+
+#if (EBSTUBS_MAX_CALLS_COMM_GETVERSIONINFO > 1)
+  uint32 count = ComM_GetVersionInfo_Stub.Count;
+#endif /* (EBSTUBS_MAX_CALLS_COMM_GETVERSIONINFO > 1) */
+
+  *Versioninfo = ComM_GetVersionInfo_Stub.Versioninfo_Out;
+
+#if (EBSTUBS_MAX_CALLS_COMM_GETVERSIONINFO > 1)
+  if( count < EBSTUBS_MAX_CALLS_COMM_GETVERSIONINFO )
+  {
+    *Versioninfo = ComM_GetVersionInfo_Stub.Versioninfo_Out_Ary[count];
+  }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_GETVERSIONINFO > 1) */
+
+  if ( ComM_GetVersionInfo_Stub.Callout != NULL_PTR )
+  {
+    ComM_GetVersionInfo_Stub.Callout(Versioninfo);
+  }
+  else
+  {
+
+#if (EBSTUBS_MAX_CALLS_COMM_GETVERSIONINFO > 1)
+    if( count < EBSTUBS_MAX_CALLS_COMM_GETVERSIONINFO )
+    {
+    }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_GETVERSIONINFO > 1) */
+  }
+
+  ComM_GetVersionInfo_Stub.Count++;
+
+#if ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_GETVERSIONINFO == STD_ON))
+  EBSTUBS_TRACE_PUSH(ComM_GetVersionInfo);
+#endif /* ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_GETVERSIONINFO == STD_ON)) */
+}
+#endif /* (EBSTUBS_FUNCENABLED_COMM_GETVERSIONINFO == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_INIT == STD_ON)
+FUNC(void, EBSTUBS_CODE) ComM_Init
+(
+  P2CONST(ComM_ConfigType, AUTOMATIC, EBSTUBS_APPL_CONST) ConfigPtr
+)
+{
+
+#if (EBSTUBS_MAX_CALLS_COMM_INIT > 1)
+  uint32 count = ComM_Init_Stub.Count;
+#endif /* (EBSTUBS_MAX_CALLS_COMM_INIT > 1) */
+
+  ComM_Init_Stub.ConfigPtr = ConfigPtr;
+
+#if (EBSTUBS_MAX_CALLS_COMM_INIT > 1)
+  if( count < EBSTUBS_MAX_CALLS_COMM_INIT )
+  {
+    ComM_Init_Stub.ConfigPtr_Ary[count] = ConfigPtr;
+  }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_INIT > 1) */
+
+  if ( ComM_Init_Stub.Callout != NULL_PTR )
+  {
+    ComM_Init_Stub.Callout(ConfigPtr);
+  }
+  else
+  {
+
+#if (EBSTUBS_MAX_CALLS_COMM_INIT > 1)
+    if( count < EBSTUBS_MAX_CALLS_COMM_INIT )
+    {
+    }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_INIT > 1) */
+  }
+
+  ComM_Init_Stub.Count++;
+
+#if ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_INIT == STD_ON))
+  EBSTUBS_TRACE_PUSH(ComM_Init);
+#endif /* ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_INIT == STD_ON)) */
+}
+#endif /* (EBSTUBS_FUNCENABLED_COMM_INIT == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_ISVALIDCONFIG == STD_ON)
+FUNC(Std_ReturnType, EBSTUBS_CODE) ComM_IsValidConfig
+(
+  P2CONST(void, AUTOMATIC, EBSTUBS_APPL_CONST) voidConfigPtr
+)
+{
+  Std_ReturnType result;
+
+#if (EBSTUBS_MAX_CALLS_COMM_ISVALIDCONFIG > 1)
+  uint32 count = ComM_IsValidConfig_Stub.Count;
+#endif /* (EBSTUBS_MAX_CALLS_COMM_ISVALIDCONFIG > 1) */
+
+  result = ComM_IsValidConfig_Stub.RetVal;
+  ComM_IsValidConfig_Stub.voidConfigPtr = voidConfigPtr;
+
+#if (EBSTUBS_MAX_CALLS_COMM_ISVALIDCONFIG > 1)
+  if( count < EBSTUBS_MAX_CALLS_COMM_ISVALIDCONFIG )
+  {
+    ComM_IsValidConfig_Stub.voidConfigPtr_Ary[count] = voidConfigPtr;
+    result = ComM_IsValidConfig_Stub.RetVal_Ary[count];
+  }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_ISVALIDCONFIG > 1) */
+
+  if ( ComM_IsValidConfig_Stub.Callout != NULL_PTR )
+  {
+    result = ComM_IsValidConfig_Stub.Callout(voidConfigPtr);
+  }
+  else
+  {
+
+#if (EBSTUBS_MAX_CALLS_COMM_ISVALIDCONFIG > 1)
+    if( count < EBSTUBS_MAX_CALLS_COMM_ISVALIDCONFIG )
+    {
+    }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_ISVALIDCONFIG > 1) */
+  }
+
+  ComM_IsValidConfig_Stub.Count++;
+
+#if ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_ISVALIDCONFIG == STD_ON))
+  EBSTUBS_TRACE_PUSH(ComM_IsValidConfig);
+#endif /* ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_ISVALIDCONFIG == STD_ON)) */
+
+  return result;
+}
+#endif /* (EBSTUBS_FUNCENABLED_COMM_ISVALIDCONFIG == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_LIMITCHANNELTONOCOMMODE == STD_ON)
+FUNC(Std_ReturnType, EBSTUBS_CODE) ComM_LimitChannelToNoComMode
+(
+  NetworkHandleType Channel,
+  boolean Status
+)
+{
+  Std_ReturnType result;
+
+#if (EBSTUBS_MAX_CALLS_COMM_LIMITCHANNELTONOCOMMODE > 1)
+  uint32 count = ComM_LimitChannelToNoComMode_Stub.Count;
+#endif /* (EBSTUBS_MAX_CALLS_COMM_LIMITCHANNELTONOCOMMODE > 1) */
+
+  result = ComM_LimitChannelToNoComMode_Stub.RetVal;
+  ComM_LimitChannelToNoComMode_Stub.Channel = Channel;
+  ComM_LimitChannelToNoComMode_Stub.Status = Status;
+
+#if (EBSTUBS_MAX_CALLS_COMM_LIMITCHANNELTONOCOMMODE > 1)
+  if( count < EBSTUBS_MAX_CALLS_COMM_LIMITCHANNELTONOCOMMODE )
+  {
+    ComM_LimitChannelToNoComMode_Stub.Channel_Ary[count] = Channel;
+    ComM_LimitChannelToNoComMode_Stub.Status_Ary[count] = Status;
+    result = ComM_LimitChannelToNoComMode_Stub.RetVal_Ary[count];
+  }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_LIMITCHANNELTONOCOMMODE > 1) */
+
+  if ( ComM_LimitChannelToNoComMode_Stub.Callout != NULL_PTR )
+  {
+    result = ComM_LimitChannelToNoComMode_Stub.Callout(Channel, Status);
+  }
+  else
+  {
+
+#if (EBSTUBS_MAX_CALLS_COMM_LIMITCHANNELTONOCOMMODE > 1)
+    if( count < EBSTUBS_MAX_CALLS_COMM_LIMITCHANNELTONOCOMMODE )
+    {
+    }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_LIMITCHANNELTONOCOMMODE > 1) */
+  }
+
+  ComM_LimitChannelToNoComMode_Stub.Count++;
+
+#if ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_LIMITCHANNELTONOCOMMODE == STD_ON))
+  EBSTUBS_TRACE_PUSH(ComM_LimitChannelToNoComMode);
+#endif /* ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_LIMITCHANNELTONOCOMMODE == STD_ON)) */
+
+  return result;
+}
+#endif /* (EBSTUBS_FUNCENABLED_COMM_LIMITCHANNELTONOCOMMODE == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_LIMITECUTONOCOMMODE == STD_ON)
+FUNC(Std_ReturnType, EBSTUBS_CODE) ComM_LimitECUToNoComMode
+(
+  boolean Status
+)
+{
+  Std_ReturnType result;
+
+#if (EBSTUBS_MAX_CALLS_COMM_LIMITECUTONOCOMMODE > 1)
+  uint32 count = ComM_LimitECUToNoComMode_Stub.Count;
+#endif /* (EBSTUBS_MAX_CALLS_COMM_LIMITECUTONOCOMMODE > 1) */
+
+  result = ComM_LimitECUToNoComMode_Stub.RetVal;
+  ComM_LimitECUToNoComMode_Stub.Status = Status;
+
+#if (EBSTUBS_MAX_CALLS_COMM_LIMITECUTONOCOMMODE > 1)
+  if( count < EBSTUBS_MAX_CALLS_COMM_LIMITECUTONOCOMMODE )
+  {
+    ComM_LimitECUToNoComMode_Stub.Status_Ary[count] = Status;
+    result = ComM_LimitECUToNoComMode_Stub.RetVal_Ary[count];
+  }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_LIMITECUTONOCOMMODE > 1) */
+
+  if ( ComM_LimitECUToNoComMode_Stub.Callout != NULL_PTR )
+  {
+    result = ComM_LimitECUToNoComMode_Stub.Callout(Status);
+  }
+  else
+  {
+
+#if (EBSTUBS_MAX_CALLS_COMM_LIMITECUTONOCOMMODE > 1)
+    if( count < EBSTUBS_MAX_CALLS_COMM_LIMITECUTONOCOMMODE )
+    {
+    }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_LIMITECUTONOCOMMODE > 1) */
+  }
+
+  ComM_LimitECUToNoComMode_Stub.Count++;
+
+#if ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_LIMITECUTONOCOMMODE == STD_ON))
+  EBSTUBS_TRACE_PUSH(ComM_LimitECUToNoComMode);
+#endif /* ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_LIMITECUTONOCOMMODE == STD_ON)) */
+
+  return result;
+}
+#endif /* (EBSTUBS_FUNCENABLED_COMM_LIMITECUTONOCOMMODE == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_PREVENTWAKEUP == STD_ON)
+FUNC(Std_ReturnType, EBSTUBS_CODE) ComM_PreventWakeUp
+(
+  NetworkHandleType Channel,
+  boolean Status
+)
+{
+  Std_ReturnType result;
+
+#if (EBSTUBS_MAX_CALLS_COMM_PREVENTWAKEUP > 1)
+  uint32 count = ComM_PreventWakeUp_Stub.Count;
+#endif /* (EBSTUBS_MAX_CALLS_COMM_PREVENTWAKEUP > 1) */
+
+  result = ComM_PreventWakeUp_Stub.RetVal;
+  ComM_PreventWakeUp_Stub.Channel = Channel;
+  ComM_PreventWakeUp_Stub.Status = Status;
+
+#if (EBSTUBS_MAX_CALLS_COMM_PREVENTWAKEUP > 1)
+  if( count < EBSTUBS_MAX_CALLS_COMM_PREVENTWAKEUP )
+  {
+    ComM_PreventWakeUp_Stub.Channel_Ary[count] = Channel;
+    ComM_PreventWakeUp_Stub.Status_Ary[count] = Status;
+    result = ComM_PreventWakeUp_Stub.RetVal_Ary[count];
+  }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_PREVENTWAKEUP > 1) */
+
+  if ( ComM_PreventWakeUp_Stub.Callout != NULL_PTR )
+  {
+    result = ComM_PreventWakeUp_Stub.Callout(Channel, Status);
+  }
+  else
+  {
+
+#if (EBSTUBS_MAX_CALLS_COMM_PREVENTWAKEUP > 1)
+    if( count < EBSTUBS_MAX_CALLS_COMM_PREVENTWAKEUP )
+    {
+    }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_PREVENTWAKEUP > 1) */
+  }
+
+  ComM_PreventWakeUp_Stub.Count++;
+
+#if ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_PREVENTWAKEUP == STD_ON))
+  EBSTUBS_TRACE_PUSH(ComM_PreventWakeUp);
+#endif /* ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_PREVENTWAKEUP == STD_ON)) */
+
+  return result;
+}
+#endif /* (EBSTUBS_FUNCENABLED_COMM_PREVENTWAKEUP == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_READINHIBITCOUNTER == STD_ON)
+FUNC(Std_ReturnType, EBSTUBS_CODE) ComM_ReadInhibitCounter
+(
+  P2VAR(uint16, AUTOMATIC, EBSTUBS_APPL_DATA) CounterValue
+)
+{
+  Std_ReturnType result;
+
+#if (EBSTUBS_MAX_CALLS_COMM_READINHIBITCOUNTER > 1)
+  uint32 count = ComM_ReadInhibitCounter_Stub.Count;
+#endif /* (EBSTUBS_MAX_CALLS_COMM_READINHIBITCOUNTER > 1) */
+
+  result = ComM_ReadInhibitCounter_Stub.RetVal;
+  *CounterValue = ComM_ReadInhibitCounter_Stub.CounterValue_Out;
+
+#if (EBSTUBS_MAX_CALLS_COMM_READINHIBITCOUNTER > 1)
+  if( count < EBSTUBS_MAX_CALLS_COMM_READINHIBITCOUNTER )
+  {
+    *CounterValue = ComM_ReadInhibitCounter_Stub.CounterValue_Out_Ary[count];
+    result = ComM_ReadInhibitCounter_Stub.RetVal_Ary[count];
+  }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_READINHIBITCOUNTER > 1) */
+
+  if ( ComM_ReadInhibitCounter_Stub.Callout != NULL_PTR )
+  {
+    result = ComM_ReadInhibitCounter_Stub.Callout(CounterValue);
+  }
+  else
+  {
+
+#if (EBSTUBS_MAX_CALLS_COMM_READINHIBITCOUNTER > 1)
+    if( count < EBSTUBS_MAX_CALLS_COMM_READINHIBITCOUNTER )
+    {
+    }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_READINHIBITCOUNTER > 1) */
+  }
+
+  ComM_ReadInhibitCounter_Stub.Count++;
+
+#if ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_READINHIBITCOUNTER == STD_ON))
+  EBSTUBS_TRACE_PUSH(ComM_ReadInhibitCounter);
+#endif /* ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_READINHIBITCOUNTER == STD_ON)) */
+
+  return result;
+}
+#endif /* (EBSTUBS_FUNCENABLED_COMM_READINHIBITCOUNTER == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_REQUESTCOMMODE == STD_ON)
+FUNC(Std_ReturnType, EBSTUBS_CODE) ComM_RequestComMode
+(
+  ComM_UserHandleType User,
+  ComM_ModeType ComMode
+)
+{
+  Std_ReturnType result;
+
+#if (EBSTUBS_MAX_CALLS_COMM_REQUESTCOMMODE > 1)
+  uint32 count = ComM_RequestComMode_Stub.Count;
+#endif /* (EBSTUBS_MAX_CALLS_COMM_REQUESTCOMMODE > 1) */
+
+  result = ComM_RequestComMode_Stub.RetVal;
+  ComM_RequestComMode_Stub.User = User;
+  ComM_RequestComMode_Stub.ComMode = ComMode;
+
+#if (EBSTUBS_MAX_CALLS_COMM_REQUESTCOMMODE > 1)
+  if( count < EBSTUBS_MAX_CALLS_COMM_REQUESTCOMMODE )
+  {
+    ComM_RequestComMode_Stub.User_Ary[count] = User;
+    ComM_RequestComMode_Stub.ComMode_Ary[count] = ComMode;
+    result = ComM_RequestComMode_Stub.RetVal_Ary[count];
+  }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_REQUESTCOMMODE > 1) */
+
+  if ( ComM_RequestComMode_Stub.Callout != NULL_PTR )
+  {
+    result = ComM_RequestComMode_Stub.Callout(User, ComMode);
+  }
+  else
+  {
+
+#if (EBSTUBS_MAX_CALLS_COMM_REQUESTCOMMODE > 1)
+    if( count < EBSTUBS_MAX_CALLS_COMM_REQUESTCOMMODE )
+    {
+    }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_REQUESTCOMMODE > 1) */
+  }
+
+  ComM_RequestComMode_Stub.Count++;
+
+#if ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_REQUESTCOMMODE == STD_ON))
+  EBSTUBS_TRACE_PUSH(ComM_RequestComMode);
+#endif /* ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_REQUESTCOMMODE == STD_ON)) */
+
+  return result;
+}
+#endif /* (EBSTUBS_FUNCENABLED_COMM_REQUESTCOMMODE == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_RESETINHIBITCOUNTER == STD_ON)
+FUNC(Std_ReturnType, EBSTUBS_CODE) ComM_ResetInhibitCounter
+(
+  void
+)
+{
+  Std_ReturnType result;
+
+#if (EBSTUBS_MAX_CALLS_COMM_RESETINHIBITCOUNTER > 1)
+  uint32 count = ComM_ResetInhibitCounter_Stub.Count;
+#endif /* (EBSTUBS_MAX_CALLS_COMM_RESETINHIBITCOUNTER > 1) */
+
+  result = ComM_ResetInhibitCounter_Stub.RetVal;
+
+#if (EBSTUBS_MAX_CALLS_COMM_RESETINHIBITCOUNTER > 1)
+  if( count < EBSTUBS_MAX_CALLS_COMM_RESETINHIBITCOUNTER )
+  {
+    result = ComM_ResetInhibitCounter_Stub.RetVal_Ary[count];
+  }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_RESETINHIBITCOUNTER > 1) */
+
+  if ( ComM_ResetInhibitCounter_Stub.Callout != NULL_PTR )
+  {
+    result = ComM_ResetInhibitCounter_Stub.Callout();
+  }
+  ComM_ResetInhibitCounter_Stub.Count++;
+
+#if ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_RESETINHIBITCOUNTER == STD_ON))
+  EBSTUBS_TRACE_PUSH(ComM_ResetInhibitCounter);
+#endif /* ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_RESETINHIBITCOUNTER == STD_ON)) */
+
+  return result;
+}
+#endif /* (EBSTUBS_FUNCENABLED_COMM_RESETINHIBITCOUNTER == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_SETECUGROUPCLASSIFICATION == STD_ON)
+FUNC(Std_ReturnType, EBSTUBS_CODE) ComM_SetECUGroupClassification
+(
+  ComM_InhibitionStatusType Status
+)
+{
+  Std_ReturnType result;
+
+#if (EBSTUBS_MAX_CALLS_COMM_SETECUGROUPCLASSIFICATION > 1)
+  uint32 count = ComM_SetECUGroupClassification_Stub.Count;
+#endif /* (EBSTUBS_MAX_CALLS_COMM_SETECUGROUPCLASSIFICATION > 1) */
+
+  result = ComM_SetECUGroupClassification_Stub.RetVal;
+  ComM_SetECUGroupClassification_Stub.Status = Status;
+
+#if (EBSTUBS_MAX_CALLS_COMM_SETECUGROUPCLASSIFICATION > 1)
+  if( count < EBSTUBS_MAX_CALLS_COMM_SETECUGROUPCLASSIFICATION )
+  {
+    ComM_SetECUGroupClassification_Stub.Status_Ary[count] = Status;
+    result = ComM_SetECUGroupClassification_Stub.RetVal_Ary[count];
+  }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_SETECUGROUPCLASSIFICATION > 1) */
+
+  if ( ComM_SetECUGroupClassification_Stub.Callout != NULL_PTR )
+  {
+    result = ComM_SetECUGroupClassification_Stub.Callout(Status);
+  }
+  else
+  {
+
+#if (EBSTUBS_MAX_CALLS_COMM_SETECUGROUPCLASSIFICATION > 1)
+    if( count < EBSTUBS_MAX_CALLS_COMM_SETECUGROUPCLASSIFICATION )
+    {
+    }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_SETECUGROUPCLASSIFICATION > 1) */
+  }
+
+  ComM_SetECUGroupClassification_Stub.Count++;
+
+#if ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_SETECUGROUPCLASSIFICATION == STD_ON))
+  EBSTUBS_TRACE_PUSH(ComM_SetECUGroupClassification);
+#endif /* ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_SETECUGROUPCLASSIFICATION == STD_ON)) */
+
+  return result;
+}
+#endif /* (EBSTUBS_FUNCENABLED_COMM_SETECUGROUPCLASSIFICATION == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_BUSSM_BUSSLEEPMODE == STD_ON)
+FUNC(void, EBSTUBS_CODE) ComM_BusSM_BusSleepMode
+(
+  NetworkHandleType Channel
+)
+{
+
+#if (EBSTUBS_MAX_CALLS_COMM_BUSSM_BUSSLEEPMODE > 1)
+  uint32 count = ComM_BusSM_BusSleepMode_Stub.Count;
+#endif /* (EBSTUBS_MAX_CALLS_COMM_BUSSM_BUSSLEEPMODE > 1) */
+
+  ComM_BusSM_BusSleepMode_Stub.Channel = Channel;
+
+#if (EBSTUBS_MAX_CALLS_COMM_BUSSM_BUSSLEEPMODE > 1)
+  if( count < EBSTUBS_MAX_CALLS_COMM_BUSSM_BUSSLEEPMODE )
+  {
+    ComM_BusSM_BusSleepMode_Stub.Channel_Ary[count] = Channel;
+  }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_BUSSM_BUSSLEEPMODE > 1) */
+
+  if ( ComM_BusSM_BusSleepMode_Stub.Callout != NULL_PTR )
+  {
+    ComM_BusSM_BusSleepMode_Stub.Callout(Channel);
+  }
+  else
+  {
+
+#if (EBSTUBS_MAX_CALLS_COMM_BUSSM_BUSSLEEPMODE > 1)
+    if( count < EBSTUBS_MAX_CALLS_COMM_BUSSM_BUSSLEEPMODE )
+    {
+    }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_BUSSM_BUSSLEEPMODE > 1) */
+  }
+
+  ComM_BusSM_BusSleepMode_Stub.Count++;
+
+#if ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_BUSSM_BUSSLEEPMODE == STD_ON))
+  EBSTUBS_TRACE_PUSH(ComM_BusSM_BusSleepMode);
+#endif /* ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_BUSSM_BUSSLEEPMODE == STD_ON)) */
+}
+#endif /* (EBSTUBS_FUNCENABLED_COMM_BUSSM_BUSSLEEPMODE == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_BUSSM_MODEINDICATION == STD_ON)
+FUNC(void, EBSTUBS_CODE) ComM_BusSM_ModeIndication
+(
+  NetworkHandleType Channel,
+  P2VAR(ComM_ModeType, AUTOMATIC, EBSTUBS_APPL_DATA) ComMode
+)
+{
+
+#if (EBSTUBS_MAX_CALLS_COMM_BUSSM_MODEINDICATION > 1)
+  uint32 count = ComM_BusSM_ModeIndication_Stub.Count;
+#endif /* (EBSTUBS_MAX_CALLS_COMM_BUSSM_MODEINDICATION > 1) */
+
+  ComM_BusSM_ModeIndication_Stub.Channel = Channel;
+  ComM_BusSM_ModeIndication_Stub.ComMode = ComMode;
+
+#if (EBSTUBS_MAX_CALLS_COMM_BUSSM_MODEINDICATION > 1)
+  if( count < EBSTUBS_MAX_CALLS_COMM_BUSSM_MODEINDICATION )
+  {
+    ComM_BusSM_ModeIndication_Stub.Channel_Ary[count] = Channel;
+    ComM_BusSM_ModeIndication_Stub.ComMode_Ary[count] = ComMode;
+  }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_BUSSM_MODEINDICATION > 1) */
+
+  if ( ComM_BusSM_ModeIndication_Stub.Callout != NULL_PTR )
+  {
+    ComM_BusSM_ModeIndication_Stub.Callout(Channel, ComMode);
+  }
+  else
+  {
+
+#if (EBSTUBS_MAX_CALLS_COMM_BUSSM_MODEINDICATION > 1)
+    if( count < EBSTUBS_MAX_CALLS_COMM_BUSSM_MODEINDICATION )
+    {
+    }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_BUSSM_MODEINDICATION > 1) */
+  }
+
+  ComM_BusSM_ModeIndication_Stub.Count++;
+
+#if ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_BUSSM_MODEINDICATION == STD_ON))
+  EBSTUBS_TRACE_PUSH(ComM_BusSM_ModeIndication);
+#endif /* ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_BUSSM_MODEINDICATION == STD_ON)) */
+}
+#endif /* (EBSTUBS_FUNCENABLED_COMM_BUSSM_MODEINDICATION == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_DCM_ACTIVEDIAGNOSTIC == STD_ON)
+FUNC(void, EBSTUBS_CODE) ComM_DCM_ActiveDiagnostic
+(
+  NetworkHandleType Channel
+)
+{
+
+#if (EBSTUBS_MAX_CALLS_COMM_DCM_ACTIVEDIAGNOSTIC > 1)
+  uint32 count = ComM_DCM_ActiveDiagnostic_Stub.Count;
+#endif /* (EBSTUBS_MAX_CALLS_COMM_DCM_ACTIVEDIAGNOSTIC > 1) */
+
+  ComM_DCM_ActiveDiagnostic_Stub.Channel = Channel;
+
+#if (EBSTUBS_MAX_CALLS_COMM_DCM_ACTIVEDIAGNOSTIC > 1)
+  if( count < EBSTUBS_MAX_CALLS_COMM_DCM_ACTIVEDIAGNOSTIC )
+  {
+    ComM_DCM_ActiveDiagnostic_Stub.Channel_Ary[count] = Channel;
+  }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_DCM_ACTIVEDIAGNOSTIC > 1) */
+
+  if ( ComM_DCM_ActiveDiagnostic_Stub.Callout != NULL_PTR )
+  {
+    ComM_DCM_ActiveDiagnostic_Stub.Callout(Channel);
+  }
+  else
+  {
+
+#if (EBSTUBS_MAX_CALLS_COMM_DCM_ACTIVEDIAGNOSTIC > 1)
+    if( count < EBSTUBS_MAX_CALLS_COMM_DCM_ACTIVEDIAGNOSTIC )
+    {
+    }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_DCM_ACTIVEDIAGNOSTIC > 1) */
+  }
+
+  ComM_DCM_ActiveDiagnostic_Stub.Count++;
+
+#if ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_DCM_ACTIVEDIAGNOSTIC == STD_ON))
+  EBSTUBS_TRACE_PUSH(ComM_DCM_ActiveDiagnostic);
+#endif /* ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_DCM_ACTIVEDIAGNOSTIC == STD_ON)) */
+}
+#endif /* (EBSTUBS_FUNCENABLED_COMM_DCM_ACTIVEDIAGNOSTIC == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_DCM_INACTIVEDIAGNOSTIC == STD_ON)
+FUNC(void, EBSTUBS_CODE) ComM_DCM_InactiveDiagnostic
+(
+  NetworkHandleType Channel
+)
+{
+
+#if (EBSTUBS_MAX_CALLS_COMM_DCM_INACTIVEDIAGNOSTIC > 1)
+  uint32 count = ComM_DCM_InactiveDiagnostic_Stub.Count;
+#endif /* (EBSTUBS_MAX_CALLS_COMM_DCM_INACTIVEDIAGNOSTIC > 1) */
+
+  ComM_DCM_InactiveDiagnostic_Stub.Channel = Channel;
+
+#if (EBSTUBS_MAX_CALLS_COMM_DCM_INACTIVEDIAGNOSTIC > 1)
+  if( count < EBSTUBS_MAX_CALLS_COMM_DCM_INACTIVEDIAGNOSTIC )
+  {
+    ComM_DCM_InactiveDiagnostic_Stub.Channel_Ary[count] = Channel;
+  }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_DCM_INACTIVEDIAGNOSTIC > 1) */
+
+  if ( ComM_DCM_InactiveDiagnostic_Stub.Callout != NULL_PTR )
+  {
+    ComM_DCM_InactiveDiagnostic_Stub.Callout(Channel);
+  }
+  else
+  {
+
+#if (EBSTUBS_MAX_CALLS_COMM_DCM_INACTIVEDIAGNOSTIC > 1)
+    if( count < EBSTUBS_MAX_CALLS_COMM_DCM_INACTIVEDIAGNOSTIC )
+    {
+    }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_DCM_INACTIVEDIAGNOSTIC > 1) */
+  }
+
+  ComM_DCM_InactiveDiagnostic_Stub.Count++;
+
+#if ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_DCM_INACTIVEDIAGNOSTIC == STD_ON))
+  EBSTUBS_TRACE_PUSH(ComM_DCM_InactiveDiagnostic);
+#endif /* ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_DCM_INACTIVEDIAGNOSTIC == STD_ON)) */
+}
+#endif /* (EBSTUBS_FUNCENABLED_COMM_DCM_INACTIVEDIAGNOSTIC == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_COMMUNICATIONALLOWED == STD_ON)
+FUNC(void, EBSTUBS_CODE) ComM_CommunicationAllowed
+(
+  NetworkHandleType Channel,
+  boolean Allowed
+)
+{
+
+#if (EBSTUBS_MAX_CALLS_COMM_COMMUNICATIONALLOWED > 1)
+  uint32 count = ComM_CommunicationAllowed_Stub.Count;
+#endif /* (EBSTUBS_MAX_CALLS_COMM_COMMUNICATIONALLOWED > 1) */
+
+  ComM_CommunicationAllowed_Stub.Channel = Channel;
+  ComM_CommunicationAllowed_Stub.Allowed = Allowed;
+
+#if (EBSTUBS_MAX_CALLS_COMM_COMMUNICATIONALLOWED > 1)
+  if( count < EBSTUBS_MAX_CALLS_COMM_COMMUNICATIONALLOWED )
+  {
+    ComM_CommunicationAllowed_Stub.Channel_Ary[count] = Channel;
+    ComM_CommunicationAllowed_Stub.Allowed_Ary[count] = Allowed;
+  }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_COMMUNICATIONALLOWED > 1) */
+
+  if ( ComM_CommunicationAllowed_Stub.Callout != NULL_PTR )
+  {
+    ComM_CommunicationAllowed_Stub.Callout(Channel, Allowed);
+  }
+  else
+  {
+
+#if (EBSTUBS_MAX_CALLS_COMM_COMMUNICATIONALLOWED > 1)
+    if( count < EBSTUBS_MAX_CALLS_COMM_COMMUNICATIONALLOWED )
+    {
+    }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_COMMUNICATIONALLOWED > 1) */
+  }
+
+  ComM_CommunicationAllowed_Stub.Count++;
+
+#if ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_COMMUNICATIONALLOWED == STD_ON))
+  EBSTUBS_TRACE_PUSH(ComM_CommunicationAllowed);
+#endif /* ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_COMMUNICATIONALLOWED == STD_ON)) */
+}
+#endif /* (EBSTUBS_FUNCENABLED_COMM_COMMUNICATIONALLOWED == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_ECUM_PNCWAKEUPINDICATION == STD_ON)
+FUNC(void, EBSTUBS_CODE) ComM_EcuM_PNCWakeUpIndication
+(
+  PNCHandleType PNCid
+)
+{
+
+#if (EBSTUBS_MAX_CALLS_COMM_ECUM_PNCWAKEUPINDICATION > 1)
+  uint32 count = ComM_EcuM_PNCWakeUpIndication_Stub.Count;
+#endif /* (EBSTUBS_MAX_CALLS_COMM_ECUM_PNCWAKEUPINDICATION > 1) */
+
+  ComM_EcuM_PNCWakeUpIndication_Stub.PNCid = PNCid;
+
+#if (EBSTUBS_MAX_CALLS_COMM_ECUM_PNCWAKEUPINDICATION > 1)
+  if( count < EBSTUBS_MAX_CALLS_COMM_ECUM_PNCWAKEUPINDICATION )
+  {
+    ComM_EcuM_PNCWakeUpIndication_Stub.PNCid_Ary[count] = PNCid;
+  }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_ECUM_PNCWAKEUPINDICATION > 1) */
+
+  if ( ComM_EcuM_PNCWakeUpIndication_Stub.Callout != NULL_PTR )
+  {
+    ComM_EcuM_PNCWakeUpIndication_Stub.Callout(PNCid);
+  }
+  else
+  {
+
+#if (EBSTUBS_MAX_CALLS_COMM_ECUM_PNCWAKEUPINDICATION > 1)
+    if( count < EBSTUBS_MAX_CALLS_COMM_ECUM_PNCWAKEUPINDICATION )
+    {
+    }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_ECUM_PNCWAKEUPINDICATION > 1) */
+  }
+
+  ComM_EcuM_PNCWakeUpIndication_Stub.Count++;
+
+#if ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_ECUM_PNCWAKEUPINDICATION == STD_ON))
+  EBSTUBS_TRACE_PUSH(ComM_EcuM_PNCWakeUpIndication);
+#endif /* ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_ECUM_PNCWAKEUPINDICATION == STD_ON)) */
+}
+#endif /* (EBSTUBS_FUNCENABLED_COMM_ECUM_PNCWAKEUPINDICATION == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_ECUM_WAKEUPINDICATION == STD_ON)
+FUNC(void, EBSTUBS_CODE) ComM_EcuM_WakeUpIndication
+(
+  NetworkHandleType Channel
+)
+{
+
+#if (EBSTUBS_MAX_CALLS_COMM_ECUM_WAKEUPINDICATION > 1)
+  uint32 count = ComM_EcuM_WakeUpIndication_Stub.Count;
+#endif /* (EBSTUBS_MAX_CALLS_COMM_ECUM_WAKEUPINDICATION > 1) */
+
+  ComM_EcuM_WakeUpIndication_Stub.Channel = Channel;
+
+#if (EBSTUBS_MAX_CALLS_COMM_ECUM_WAKEUPINDICATION > 1)
+  if( count < EBSTUBS_MAX_CALLS_COMM_ECUM_WAKEUPINDICATION )
+  {
+    ComM_EcuM_WakeUpIndication_Stub.Channel_Ary[count] = Channel;
+  }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_ECUM_WAKEUPINDICATION > 1) */
+
+  if ( ComM_EcuM_WakeUpIndication_Stub.Callout != NULL_PTR )
+  {
+    ComM_EcuM_WakeUpIndication_Stub.Callout(Channel);
+  }
+  else
+  {
+
+#if (EBSTUBS_MAX_CALLS_COMM_ECUM_WAKEUPINDICATION > 1)
+    if( count < EBSTUBS_MAX_CALLS_COMM_ECUM_WAKEUPINDICATION )
+    {
+    }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_ECUM_WAKEUPINDICATION > 1) */
+  }
+
+  ComM_EcuM_WakeUpIndication_Stub.Count++;
+
+#if ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_ECUM_WAKEUPINDICATION == STD_ON))
+  EBSTUBS_TRACE_PUSH(ComM_EcuM_WakeUpIndication);
+#endif /* ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_ECUM_WAKEUPINDICATION == STD_ON)) */
+}
+#endif /* (EBSTUBS_FUNCENABLED_COMM_ECUM_WAKEUPINDICATION == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_NM_BUSSLEEPMODE == STD_ON)
+FUNC(void, EBSTUBS_CODE) ComM_Nm_BusSleepMode
+(
+  NetworkHandleType Channel
+)
+{
+
+#if (EBSTUBS_MAX_CALLS_COMM_NM_BUSSLEEPMODE > 1)
+  uint32 count = ComM_Nm_BusSleepMode_Stub.Count;
+#endif /* (EBSTUBS_MAX_CALLS_COMM_NM_BUSSLEEPMODE > 1) */
+
+  ComM_Nm_BusSleepMode_Stub.Channel = Channel;
+
+#if (EBSTUBS_MAX_CALLS_COMM_NM_BUSSLEEPMODE > 1)
+  if( count < EBSTUBS_MAX_CALLS_COMM_NM_BUSSLEEPMODE )
+  {
+    ComM_Nm_BusSleepMode_Stub.Channel_Ary[count] = Channel;
+  }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_NM_BUSSLEEPMODE > 1) */
+
+  if ( ComM_Nm_BusSleepMode_Stub.Callout != NULL_PTR )
+  {
+    ComM_Nm_BusSleepMode_Stub.Callout(Channel);
+  }
+  else
+  {
+
+#if (EBSTUBS_MAX_CALLS_COMM_NM_BUSSLEEPMODE > 1)
+    if( count < EBSTUBS_MAX_CALLS_COMM_NM_BUSSLEEPMODE )
+    {
+    }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_NM_BUSSLEEPMODE > 1) */
+  }
+
+  ComM_Nm_BusSleepMode_Stub.Count++;
+
+#if ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_NM_BUSSLEEPMODE == STD_ON))
+  EBSTUBS_TRACE_PUSH(ComM_Nm_BusSleepMode);
+#endif /* ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_NM_BUSSLEEPMODE == STD_ON)) */
+}
+#endif /* (EBSTUBS_FUNCENABLED_COMM_NM_BUSSLEEPMODE == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_NM_FORWARDSYNCHRONIZEDPNCSHUTDOWN == STD_ON)
+FUNC(void, EBSTUBS_CODE) ComM_Nm_ForwardSynchronizedPncShutdown
+(
+  NetworkHandleType Channel,
+  P2CONST(uint8, AUTOMATIC, EBSTUBS_APPL_CONST) PncBitVectorPtr
+)
+{
+
+#if (EBSTUBS_MAX_CALLS_COMM_NM_FORWARDSYNCHRONIZEDPNCSHUTDOWN > 1)
+  uint32 count = ComM_Nm_ForwardSynchronizedPncShutdown_Stub.Count;
+#endif /* (EBSTUBS_MAX_CALLS_COMM_NM_FORWARDSYNCHRONIZEDPNCSHUTDOWN > 1) */
+
+  ComM_Nm_ForwardSynchronizedPncShutdown_Stub.Channel = Channel;
+  ComM_Nm_ForwardSynchronizedPncShutdown_Stub.PncBitVectorPtr = PncBitVectorPtr;
+
+#if (EBSTUBS_MAX_CALLS_COMM_NM_FORWARDSYNCHRONIZEDPNCSHUTDOWN > 1)
+  if( count < EBSTUBS_MAX_CALLS_COMM_NM_FORWARDSYNCHRONIZEDPNCSHUTDOWN )
+  {
+    ComM_Nm_ForwardSynchronizedPncShutdown_Stub.Channel_Ary[count] = Channel;
+    ComM_Nm_ForwardSynchronizedPncShutdown_Stub.PncBitVectorPtr_Ary[count] = PncBitVectorPtr;
+  }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_NM_FORWARDSYNCHRONIZEDPNCSHUTDOWN > 1) */
+
+  if ( ComM_Nm_ForwardSynchronizedPncShutdown_Stub.Callout != NULL_PTR )
+  {
+    ComM_Nm_ForwardSynchronizedPncShutdown_Stub.Callout(Channel, PncBitVectorPtr);
+  }
+  else
+  {
+
+#if (EBSTUBS_MAX_CALLS_COMM_NM_FORWARDSYNCHRONIZEDPNCSHUTDOWN > 1)
+    if( count < EBSTUBS_MAX_CALLS_COMM_NM_FORWARDSYNCHRONIZEDPNCSHUTDOWN )
+    {
+    }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_NM_FORWARDSYNCHRONIZEDPNCSHUTDOWN > 1) */
+  }
+
+  ComM_Nm_ForwardSynchronizedPncShutdown_Stub.Count++;
+
+#if ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_NM_FORWARDSYNCHRONIZEDPNCSHUTDOWN == STD_ON))
+  EBSTUBS_TRACE_PUSH(ComM_Nm_ForwardSynchronizedPncShutdown);
+#endif /* ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_NM_FORWARDSYNCHRONIZEDPNCSHUTDOWN == STD_ON)) */
+}
+#endif /* (EBSTUBS_FUNCENABLED_COMM_NM_FORWARDSYNCHRONIZEDPNCSHUTDOWN == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_NM_NETWORKMODE == STD_ON)
+FUNC(void, EBSTUBS_CODE) ComM_Nm_NetworkMode
+(
+  NetworkHandleType Channel
+)
+{
+
+#if (EBSTUBS_MAX_CALLS_COMM_NM_NETWORKMODE > 1)
+  uint32 count = ComM_Nm_NetworkMode_Stub.Count;
+#endif /* (EBSTUBS_MAX_CALLS_COMM_NM_NETWORKMODE > 1) */
+
+  ComM_Nm_NetworkMode_Stub.Channel = Channel;
+
+#if (EBSTUBS_MAX_CALLS_COMM_NM_NETWORKMODE > 1)
+  if( count < EBSTUBS_MAX_CALLS_COMM_NM_NETWORKMODE )
+  {
+    ComM_Nm_NetworkMode_Stub.Channel_Ary[count] = Channel;
+  }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_NM_NETWORKMODE > 1) */
+
+  if ( ComM_Nm_NetworkMode_Stub.Callout != NULL_PTR )
+  {
+    ComM_Nm_NetworkMode_Stub.Callout(Channel);
+  }
+  else
+  {
+
+#if (EBSTUBS_MAX_CALLS_COMM_NM_NETWORKMODE > 1)
+    if( count < EBSTUBS_MAX_CALLS_COMM_NM_NETWORKMODE )
+    {
+    }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_NM_NETWORKMODE > 1) */
+  }
+
+  ComM_Nm_NetworkMode_Stub.Count++;
+
+#if ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_NM_NETWORKMODE == STD_ON))
+  EBSTUBS_TRACE_PUSH(ComM_Nm_NetworkMode);
+#endif /* ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_NM_NETWORKMODE == STD_ON)) */
+}
+#endif /* (EBSTUBS_FUNCENABLED_COMM_NM_NETWORKMODE == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_NM_NETWORKSTARTINDICATION == STD_ON)
+FUNC(void, EBSTUBS_CODE) ComM_Nm_NetworkStartIndication
+(
+  NetworkHandleType Channel
+)
+{
+
+#if (EBSTUBS_MAX_CALLS_COMM_NM_NETWORKSTARTINDICATION > 1)
+  uint32 count = ComM_Nm_NetworkStartIndication_Stub.Count;
+#endif /* (EBSTUBS_MAX_CALLS_COMM_NM_NETWORKSTARTINDICATION > 1) */
+
+  ComM_Nm_NetworkStartIndication_Stub.Channel = Channel;
+
+#if (EBSTUBS_MAX_CALLS_COMM_NM_NETWORKSTARTINDICATION > 1)
+  if( count < EBSTUBS_MAX_CALLS_COMM_NM_NETWORKSTARTINDICATION )
+  {
+    ComM_Nm_NetworkStartIndication_Stub.Channel_Ary[count] = Channel;
+  }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_NM_NETWORKSTARTINDICATION > 1) */
+
+  if ( ComM_Nm_NetworkStartIndication_Stub.Callout != NULL_PTR )
+  {
+    ComM_Nm_NetworkStartIndication_Stub.Callout(Channel);
+  }
+  else
+  {
+
+#if (EBSTUBS_MAX_CALLS_COMM_NM_NETWORKSTARTINDICATION > 1)
+    if( count < EBSTUBS_MAX_CALLS_COMM_NM_NETWORKSTARTINDICATION )
+    {
+    }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_NM_NETWORKSTARTINDICATION > 1) */
+  }
+
+  ComM_Nm_NetworkStartIndication_Stub.Count++;
+
+#if ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_NM_NETWORKSTARTINDICATION == STD_ON))
+  EBSTUBS_TRACE_PUSH(ComM_Nm_NetworkStartIndication);
+#endif /* ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_NM_NETWORKSTARTINDICATION == STD_ON)) */
+}
+#endif /* (EBSTUBS_FUNCENABLED_COMM_NM_NETWORKSTARTINDICATION == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_NM_PREPAREBUSSLEEPMODE == STD_ON)
+FUNC(void, EBSTUBS_CODE) ComM_Nm_PrepareBusSleepMode
+(
+  NetworkHandleType Channel
+)
+{
+
+#if (EBSTUBS_MAX_CALLS_COMM_NM_PREPAREBUSSLEEPMODE > 1)
+  uint32 count = ComM_Nm_PrepareBusSleepMode_Stub.Count;
+#endif /* (EBSTUBS_MAX_CALLS_COMM_NM_PREPAREBUSSLEEPMODE > 1) */
+
+  ComM_Nm_PrepareBusSleepMode_Stub.Channel = Channel;
+
+#if (EBSTUBS_MAX_CALLS_COMM_NM_PREPAREBUSSLEEPMODE > 1)
+  if( count < EBSTUBS_MAX_CALLS_COMM_NM_PREPAREBUSSLEEPMODE )
+  {
+    ComM_Nm_PrepareBusSleepMode_Stub.Channel_Ary[count] = Channel;
+  }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_NM_PREPAREBUSSLEEPMODE > 1) */
+
+  if ( ComM_Nm_PrepareBusSleepMode_Stub.Callout != NULL_PTR )
+  {
+    ComM_Nm_PrepareBusSleepMode_Stub.Callout(Channel);
+  }
+  else
+  {
+
+#if (EBSTUBS_MAX_CALLS_COMM_NM_PREPAREBUSSLEEPMODE > 1)
+    if( count < EBSTUBS_MAX_CALLS_COMM_NM_PREPAREBUSSLEEPMODE )
+    {
+    }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_NM_PREPAREBUSSLEEPMODE > 1) */
+  }
+
+  ComM_Nm_PrepareBusSleepMode_Stub.Count++;
+
+#if ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_NM_PREPAREBUSSLEEPMODE == STD_ON))
+  EBSTUBS_TRACE_PUSH(ComM_Nm_PrepareBusSleepMode);
+#endif /* ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_NM_PREPAREBUSSLEEPMODE == STD_ON)) */
+}
+#endif /* (EBSTUBS_FUNCENABLED_COMM_NM_PREPAREBUSSLEEPMODE == STD_ON) */
+
+#if (EBSTUBS_FUNCENABLED_COMM_NM_RESTARTINDICATION == STD_ON)
+FUNC(void, EBSTUBS_CODE) ComM_Nm_RestartIndication
+(
+  NetworkHandleType Channel
+)
+{
+
+#if (EBSTUBS_MAX_CALLS_COMM_NM_RESTARTINDICATION > 1)
+  uint32 count = ComM_Nm_RestartIndication_Stub.Count;
+#endif /* (EBSTUBS_MAX_CALLS_COMM_NM_RESTARTINDICATION > 1) */
+
+  ComM_Nm_RestartIndication_Stub.Channel = Channel;
+
+#if (EBSTUBS_MAX_CALLS_COMM_NM_RESTARTINDICATION > 1)
+  if( count < EBSTUBS_MAX_CALLS_COMM_NM_RESTARTINDICATION )
+  {
+    ComM_Nm_RestartIndication_Stub.Channel_Ary[count] = Channel;
+  }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_NM_RESTARTINDICATION > 1) */
+
+  if ( ComM_Nm_RestartIndication_Stub.Callout != NULL_PTR )
+  {
+    ComM_Nm_RestartIndication_Stub.Callout(Channel);
+  }
+  else
+  {
+
+#if (EBSTUBS_MAX_CALLS_COMM_NM_RESTARTINDICATION > 1)
+    if( count < EBSTUBS_MAX_CALLS_COMM_NM_RESTARTINDICATION )
+    {
+    }
+#endif /* (EBSTUBS_MAX_CALLS_COMM_NM_RESTARTINDICATION > 1) */
+  }
+
+  ComM_Nm_RestartIndication_Stub.Count++;
+
+#if ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_NM_RESTARTINDICATION == STD_ON))
+  EBSTUBS_TRACE_PUSH(ComM_Nm_RestartIndication);
+#endif /* ((EBSTUBS_FUNCTION_TRACE == STD_ON) && (EBSTUBS_FUNCTION_TRACE_COMM_NM_RESTARTINDICATION == STD_ON)) */
+}
+#endif /* (EBSTUBS_FUNCENABLED_COMM_NM_RESTARTINDICATION == STD_ON) */
+
+#define EBSTUBS_STOP_SEC_CODE
+#include <EBStubs_MemMap.h>
+
+/*==[Definition of functions with internal linkage]===========================*/
+

@@ -1,0 +1,40 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: EB tresos AutoCore OS CodeGenerator Plug-in
+Bundle-SymbolicName: Os_TS_T16D27M6I1R0; singleton:=true
+Bundle-Version: 6.1.256.000_240603
+Bundle-Vendor: Elektrobit Automotive GmbH
+Bundle-ClassPath: .,
+ data/java/generators/AutosarOS_Generator_TRICORE.jar,
+ data/java/generators/AutosarOS_TngWrapper.jar,
+ data/java/resources,
+ data/java/libs/Velocity/velocity-1.7-dep.jar,
+ data/java/libs/Velocity/velocity-1.7-sources.jar,
+ data/java/libs/Velocity/velocity-1.7.jar
+Require-Bundle: dreisoft.tresos.generator.api.plugin,
+ dreisoft.tresos.datamodel2.api.plugin,
+ dreisoft.tresos.autosar2.api.plugin,
+ dreisoft.tresos.lib2.api.plugin,
+ dreisoft.tresos.launcher2.api.plugin,
+ dreisoft.tresos.autosar2.plugin,
+ dreisoft.tresos.launcher2.plugin,
+ dreisoft.tresos.oilparser.plugin,
+ dreisoft.tresos.lib2.plugin,
+ dreisoft.tresos.tresosdb.api.plugin,
+ org.eclipse.core.runtime,
+ org.eclipse.core.resources
+Eclipse-LazyStart: true
+Export-Package: com.elektrobit.asr.errorhandling.errorlog,
+ com.elektrobit.asr.errorhandling.operationstatus,
+ com.elektrobit.asr.modelapi.ecuc.conf,
+ com.elektrobit.asr.modelapi.ecuc.def,
+ com.elektrobit.asr.modelapi.ecuc.implementation,
+ com.elektrobit.asr.modelapi.generic,
+ com.elektrobit.asr.os.generated,
+ com.elektrobit.asr.os.generator,
+ com.elektrobit.asr.os.generator.base,
+ com.elektrobit.asr.os.generator.utils,
+ com.elektrobit.asr.validation,
+ com.elektrobit.asr.outputframework.generator,
+ com.elektrobit.asr.os.generator.tricore
+Bundle-Activator: com.elektrobit.asr.os.generator.OsActivator

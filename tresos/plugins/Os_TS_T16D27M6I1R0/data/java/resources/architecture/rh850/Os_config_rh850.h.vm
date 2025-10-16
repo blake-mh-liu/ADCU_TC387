@@ -1,0 +1,82 @@
+########### CORE PART OF THE TEMPLATE - START ###########
+## !LINKSTO Generator.Output.os_config_h, 2
+#parse("include/Os_config.h.vm")
+########### CORE PART OF THE TEMPLATE - END #############
+########### TARGET PART OF THE TEMPLATE - START ###########
+########### Arch specific velocimacros that can be called from the common code parts ###########
+#macro( VM_ArchOsApplication $application )
+## !LINKSTO Generator.Output.os_config_h.Applications.APPCONFIG.archapp, 2
+    OS_ARCHAPP_INIT(  \
+    )  \
+#end
+##
+##
+#macro( VM_ArchOsConfigDataInit $coreId )
+  {  /* arch_kerneldata$coreId */  \
+    #* *#  /* EIworkRegSpace */       {0u, 0u, 0u, 0u},  \
+    #* *#  /* FEworkRegSpace */       {0u, 0u, 0u, 0u}  \
+  },  \
+#end
+##
+##
+#macro( VM_ArchOsConfigInterruptInit )
+#* *#  /* inInterrupt */              1,  \
+#end
+##
+##
+#macro( VM_ArchOsConfigTimestampInit )
+#end
+##
+##
+#macro( VM_ArchOsTaskInit $task )
+## !LINKSTO Generator.Output.os_config_h.Tasks.TASKCONFIG.arch, 1
+    OS_ARCHTASK_INIT(  \
+      0  \
+    )  \
+#end
+##
+##
+#macro( VM_ArchOsHwTimerInit $timer )
+#end
+##
+##
+#macro( VM_ArchOsInterruptInit $interrupt )
+## !LINKSTO Generator.Output.os_config_h.Interrupts.ISRCONFIG.arch, 1
+#* *#    OS_ARCHISR_INIT(  \
+#*   *#      /* Control register */              &$interrupt.getControlReg(),  \
+#*   *#      /* Run priority */                  $interrupt.getCalcPriority()  \
+#* *#    )  \
+#end
+
+/*===================================================================
+ * RH850 Configured Modes
+ *==================================================================*/
+#if( $OsOptimize.isCat1DirectCall() )
+#* *#\#define OS_CAT1DIRECT_CALL  1
+#end
+
+/*===================================================================
+ * RH850 Interrupts
+ *==================================================================*/
+## !LINKSTO Generator.Output.os_config_h.Interrupts.Vectors, 1
+#foreach( $interrupt in $AllInterruptsList )
+#*  *##set( $vectorNumHex = $ClassOfHelpers.toHexString(2, $interrupt.getVectorNumber()) )
+#*  *##set( $phyCoreId    = $interrupt.getOwningApplication().getPhyCoreAssignment() )
+#*  *##if( $ArchProperties.getFastIntVectors() && $OsConfig.getNumCPUCoresMax() > 1 && $interrupt.isLowLatency() )
+#*    *##set( $irqPrefix    = "OS_IRQ${vectorNumHex}_C${phyCoreId}" )
+#*  *##else
+#*    *##set( $irqPrefix    = "OS_IRQ${vectorNumHex}" )
+#*  *##end
+#*  *##ifndef ${irqPrefix}_ISRID  
+#*    *#\#define ${irqPrefix}_ISRID    $interrupt.getName()
+#*    *#\#define ${irqPrefix}_TYPE     OS_VECTOR_TYPE_CAT$interrupt.getCategory().toString()
+#*  *#\#else
+#*    *##error "Redefined macro ${irqPrefix}_ISRID."
+#* *##endif
+
+#end
+
+#ifdef __cplusplus
+}
+#endif
+#endif  /* OS_CONFIG_H */

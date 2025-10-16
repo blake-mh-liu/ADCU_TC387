@@ -1,0 +1,157 @@
+#parse("CommonVars.vm")
+## !LINKSTO Generator.Output.os_libconfig_h.Prologue, 1
+/* This file is generated automatically. DO NOT EDIT!!
+ * 
+ * EB tresos AutoCore OS ${Version.getMajor()}.${Version.getMinor()}.${Version.getPatch()} ${Version.getTarget()}/${Version.getDerivate()}
+ * (Build ${Version.getBuild()})
+ * 
+ * (c) 1998-${Version.getCurrentYear()} Elektrobit Automotive GmbH
+ * Am Wolfsmantel 46
+ * 91058 Erlangen
+ * GERMANY
+ * 
+ * Date         : ${Version.getDate()}           !!!IGNORE-LINE!!!
+ * 
+ * The name of the optimized lib will be : OS_lib_$OsOptimize.getVariant()
+ */
+
+#ifndef OS_LIBCFG_H
+\#define OS_LIBCFG_H
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+## !LINKSTO Generator.Output.os_libconfig_h.Identification, 1
+\#define OS_GENERATION_ID_OS_LIBCONF_H  $OsGenerator.getGenId()
+
+\#define OS_AUTOSAROS_VER         $Version.getMajor()
+
+\#define OS_AUTOSAROS_REV         $Version.getMinor()
+
+\#define OS_AUTOSAROS_CORE_BUILD  $Version.getBuild()
+
+\#define OS_AUTOSAROS_ARCH_BUILD  $Version.getBuild()
+
+#if( $OsConfig.hasSourceOptimization() )
+#* *#\#define OS_USE_OPTIMIZATION_OPTIONS         1
+#else
+#* *#\#define OS_USE_OPTIMIZATION_OPTIONS         0
+#end
+\#if OS_USE_OPTIMIZATION_OPTIONS
+#if( $OsConfig.getSchedule() == "NON" )
+#* *#\#define OS_EXCLUDE_PREEMPTION               1
+#end
+#if( $OsConfig.getStatus() != "EXTENDED" )
+#* *#\#define OS_EXCLUDE_EXTENDED                 1
+#end
+#if( !$OsConfig.hasExtraRuntimeChecks() )
+#* *#\#define OS_EXCLUDE_EXTRA_CHECK              1
+#end
+#if( !$OsConfig.hasStackMonitoring() )
+#* *#\#define OS_EXCLUDE_STACKCHECK               1
+#end
+#if( $OsConfig.getDebugMemoryProtection() == "OFF" )
+#* *#\#define OS_EXCLUDE_PROTECTION               1
+#end
+#if( !$OsConfig.hasErrorHook() )
+#* *#\#define OS_EXCLUDE_ERRORHOOK                1
+#end
+#if( !$OsConfig.hasPreTaskHook() )
+#* *#\#define OS_EXCLUDE_PRETASKHOOK              1
+#end
+#if( !$OsConfig.hasPostTaskHook() )
+#* *#\#define OS_EXCLUDE_POSTTASKHOOK             1
+#end
+#if( !$OsConfig.hasStartupHook() )
+#* *#\#define OS_EXCLUDE_STARTUPHOOK              1
+#end
+#if( !$OsConfig.hasShutdownHook() )
+#* *#\#define OS_EXCLUDE_SHUTDOWNHOOK             1
+#end
+#if( !$OsConfig.hasPreISRHook() )
+#* *#\#define OS_EXCLUDE_PREISRHOOK               1
+#end
+#if( !$OsConfig.hasPostISRHook() )
+#* *#\#define OS_EXCLUDE_POSTISRHOOK              1
+#end
+#if( !$OsConfig.hasProtectionHook() )
+#* *#\#define OS_EXCLUDE_PROTECTIONHOOK           1
+#end
+#if( !$OsConfig.isTaskUsingAccounting() &&
+     !$OsConfig.isIsrUsingAccounting() )
+#* *#\#define OS_EXCLUDE_TIMINGPROTECTION         1
+#end
+#if( !$OsConfig.hasApplications() )
+#* *#\#define OS_EXCLUDE_APPLICATIONS             1
+#end
+#if( $AllRateMonitorsList.size() == 0 )
+#* *#\#define OS_EXCLUDE_RATEMONITORS             1
+#end
+#if( !$AllResourcesList.hasResourceOnIsrLevel() && !$AllSpinlocksList.spinlockNeedIsrLevel() )
+#* *#\#define OS_EXCLUDE_RESOURCEONISR            1
+#end
+#if( !$OsConfig.isUsingParameterAccess() )
+#* *#\#define OS_EXCLUDE_PARAMETERACCESS          1
+#end
+#if( !$AllApplicationsList.hasErrorHook() )
+#* *#\#define OS_EXCLUDE_ERRORHOOK_APP            1
+#end
+#if( !$OsConfig.hasCat2Interrupts() )
+#* *#\#define OS_EXCLUDE_CAT2ISR                  1
+#* *#\#define OS_EXCLUDE_KILLISR                  1
+#end
+#if( !$OsConfig.hasMultipleActivations() )
+#* *#\#define OS_EXCLUDE_MULTIPLE_ACTIVATIONS     1
+#end
+#if( !$OsConfig.hasExtendedTasks() )
+#* *#\#define OS_EXCLUDE_EVENTS                   1
+#end
+#if( !$OsConfig.usingHwFloatingPoint() )
+#* *#\#define OS_EXCLUDE_HW_FP                    1
+#end
+#if( $OsOptimize.getErrorHandling() == "AUTOSAR" )
+#* *#\#define OS_EXCLUDE_ERRORHANDLINGFORVOIDAPI  1
+#elseif( $OsOptimize.getErrorHandling() == "MINIMAL" )
+#* *#\#define OS_EXCLUDE_ERRORHANDLING            1
+#end
+#if( !$OsOptimize.isStrictServiceProtection() )
+#* *#\#define OS_EXCLUDE_CALLINGCONTEXTCHECK      1
+#end
+#if( $OsOptimize.getInterruptLockingChecks() == "MINIMAL" )
+#* *#\#define OS_EXCLUDE_INTSENABLEDCHECK         1
+#end
+#if( $OsOptimize.getCallIsr() != "VIA_WRAPPER" )
+#* *#\#define OS_EXCLUDE_KILLABLE_ISR             1
+#* *#\#define OS_EXCLUDE_KILLISR                  1
+#end
+#if( $OsOptimize.getCallAppErrorHook() != "VIA_WRAPPER" )
+#* *#\#define OS_EXCLUDE_KILLABLE_APPEHOOK        1
+#end
+#if( $OsOptimize.getCallAppStartupShutdownHook() != "VIA_WRAPPER" )
+#* *#\#define OS_EXCLUDE_KILLABLE_APPSHOOK        1
+#end
+#if( $AllTasksList.size() == 0 )
+#* *#\#define OS_EXCLUDE_KILLTASK                 1
+#end
+#if( $AllApplicationsList.size() == 0 || $AllAlarmsList.size() == 0 )
+#* *#\#define OS_EXCLUDE_KILLALARM                1
+#end
+#if( $OsOptimize.getUserTaskReturn() == "LOOP" )
+#* *#\#define OS_EXCLUDE_USERTASKRETURN           1
+#end
+#if( !$OsConfig.hasHWCounter() )
+#* *#\#define OS_EXCLUDE_HWCOUNTER                1
+#end
+#if( !$OsConfig.hasSWCounter() )
+#* *#\#define OS_EXCLUDE_SWCOUNTER                1
+#end
+#endif
+#if( !$OsOptimize.isExceptionHandling() )
+## !LINKSTO Kernel.Feature.Exception.MinimalHandling, 1
+#* *#\#define OS_EXCLUDE_EXCEPTIONS               1
+#end
+
+#ifdef __cplusplus
+}
+#endif
+#endif  /* OS_LIBCFG_H */

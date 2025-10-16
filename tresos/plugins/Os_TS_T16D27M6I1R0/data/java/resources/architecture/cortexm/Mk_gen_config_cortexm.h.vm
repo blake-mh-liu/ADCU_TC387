@@ -1,0 +1,43 @@
+########### CORE PART OF THE TEMPLATE - START ###########
+#parse("include/Mk_gen_config.h.vm")
+########### CORE PART OF THE TEMPLATE - END #############
+########### TARGET PART OF THE TEMPLATE - START ###########
+########### Arch specific velocimacros that can be called from the common code parts ###########
+#macro( VM_ArchOsConfigIncludeFiles )
+#* *#\#include <private/Mk_accounting.h>
+#end
+##
+##
+#macro( VM_ArchOsConfigDataInit )
+#end
+##
+##
+#macro( VM_ArchOsConfigInterruptInit )
+#end
+##
+##
+#macro( VM_ArchOsConfigTimestampInit )
+#end
+
+/*===================================================================
+ * CORTEXM data cache configuration
+ *==================================================================*/
+\#define MK_CORTEXM_DATA_CACHE_ENABLE $MkConfig.getDataCacheEnabled()
+
+#if( $ArchProperties.hasMpuV8() )
+/*===================================================================
+ * CORTEXM memory attributes for MK_GlobalRam
+ *==================================================================*/
+\#define MK_CORTEXM_GLOBALRAM_ATTR $MkConfig.getAttributesGlobalRam().toString()
+
+/*===================================================================
+ * CORTEXM shareability configuration for MK_GlobalRam
+ *==================================================================*/
+\#define MK_CORTEXM_GLOBALRAM_SHARE $MkConfig.getShareabilityGlobalRam().toString()
+
+#end
+
+#ifdef __cplusplus
+}
+#endif
+#endif  /* MK_GEN_CONFIG_H */

@@ -1,0 +1,103 @@
+########### CORE PART OF THE TEMPLATE - START ###########
+#parse("make/Os_objects.make.vm")
+########### CORE PART OF THE TEMPLATE - END #############
+########### TARGET PART OF THE TEMPLATE - START ###########
+########### Arch specific velocimacros that can be called from the common code parts ###########
+
+$hashChars#* ################################################################### *#
+# ARC memory protection: Sizes of global memory regions
+$hashChars#* ################################################################### *#
+#if( $OsGenerator.needMakeMemoryRegionSizes() )
+#* *#OS_ARC_GLBL_TEXT_REGION_SIZE  = 0x$ClassOfHelpers.toHexString($ArchProperties.getSectionSizeByMpuSize($OsConfig.getGlobalTextRegionSize()))
+#* *#OS_ARC_GLBL_CONST_REGION_SIZE = 0x$ClassOfHelpers.toHexString($ArchProperties.getSectionSizeByMpuSize($OsConfig.getGlobalConstRegionSize()))
+#* *#OS_ARC_GLBL_DATA_REGION_SIZE  = 0x$ClassOfHelpers.toHexString($ArchProperties.getSectionSizeByMpuSize($OsConfig.getGlobalDataRegionSize()))
+#end
+
+$hashChars#* ################################################################### *#
+# ARC memory region sizes for MPUv2
+$hashChars#* ################################################################### *#
+#if( $OsGenerator.needMakeMemoryRegionSizes() )
+#* *##foreach( $app in $AllApplicationsList )
+#*   *##if( !$app.getOwningApplication().isTrusted() || $OsModel.isMicroKernel() )
+#*     *#OS_ARC_REGION_SIZE_$app.getName() = 0x$ClassOfHelpers.toHexString($ArchProperties.getSectionSizeByMpuSize($app.getMpuSizeData()))
+#*   *##else
+#*     *#OS_ARC_REGION_SIZE_$app.getName() = 0x0
+#*   *##end
+#* *##end
+#* *##foreach( $task in $AllTasksList )
+#*   *##if( (!$task.getOwningApplication().isTrusted()) || ($OsModel.isMicroKernel()) )
+#*   *#OS_ARC_REGION_SIZE_$task.getName() = 0x$ClassOfHelpers.toHexString($ArchProperties.getSectionSizeByMpuSize($task.getMpuSizeData()))
+#*   *##else
+#*   *#OS_ARC_REGION_SIZE_$task.getName() = 0x0
+#*   *##end
+#* *##end
+#* *##foreach( $interrupt in $AllInterruptsList )
+#*   *##if( (!$interrupt.getOwningApplication().isTrusted()) || ($OsModel.isMicroKernel()) )
+#*   *#OS_ARC_REGION_SIZE_$interrupt.getName() = 0x$ClassOfHelpers.toHexString($ArchProperties.getSectionSizeByMpuSize($interrupt.getMpuSizeData()))
+#*   *##else
+#*   *#OS_ARC_REGION_SIZE_$interrupt.getName() = 0x0
+#*   *##end
+#* *##end
+#end
+
+$hashChars#* ################################################################### *#
+# ARC memory region sizes for MPU
+$hashChars#* ################################################################### *#
+#if( $OsGenerator.needMakeMemoryRegionSizes() )
+#* *##set( $sHooksStackSize = $AllApplicationsList.getSHooksStackSize() )
+#* *##if( $sHooksStackSize > 0 )
+#*   *##foreach( $coreId in $OsModel.getUsedCoreIds() )
+#*     *#OS_ARC_REGION_SIZE_os_kernstack${coreId}_shook = 0x$ClassOfHelpers.toHexString($ArchProperties.getSectionSizeByMpuSize($ArchProperties.getMpuMemorySize($sHooksStackSize)))
+#*   *##end
+#* *##end
+#* *##set( $eHooksStackSize = $AllApplicationsList.getEHooksStackSize() )
+#* *##if( $eHooksStackSize >0 )
+#*   *##foreach( $coreId in $OsModel.getUsedCoreIds() )
+#*     *#OS_ARC_REGION_SIZE_os_kernstack${coreId}_ehook = 0x$ClassOfHelpers.toHexString($ArchProperties.getSectionSizeByMpuSize($ArchProperties.getMpuMemorySize($eHooksStackSize)))
+#*   *##end
+#* *##end
+#* *##foreach( $stack in $AllTasksList.getStacks() )
+#*   *##foreach( $slot in $stack )
+#*     *##set( $slotName = $stack.getSlotVarName($slot).toLowerCase() )
+#*     *##if( $slot.isSlotNonTrustedAccessable() )
+#*       *#OS_ARC_REGION_SIZE_$slotName = 0x$ClassOfHelpers.toHexString($ArchProperties.getSectionSizeByMpuSize($ArchProperties.getMpuMemorySize($slot.getSlotSize())))
+#*     *##else
+#*       *#OS_ARC_REGION_SIZE_$slotName = 0x0
+#*     *##end
+#*   *##end
+#* *##end
+#* *##foreach( $stack in $AllInterruptsList.getStacks() )
+#*   *##foreach( $slot in $stack )
+#*     *##set( $slotName = $stack.getSlotVarName($slot).toLowerCase() )
+#*     *##if( $slot.isSlotNonTrustedAccessable() )
+#*       *#OS_ARC_REGION_SIZE_$slotName = 0x$ClassOfHelpers.toHexString($ArchProperties.getSectionSizeByMpuSize($ArchProperties.getMpuMemorySize($slot.getSlotSize())))
+#*     *##else
+#*       *#OS_ARC_REGION_SIZE_$slotName = 0x0
+#*     *##end
+#*   *##end
+#* *##end
+#end
+
+$hashChars#* ################################################################### *#
+# Stacks
+$hashChars#* ################################################################### *#
+#if( $OsGenerator.needMakeMemoryRegionSizes() )
+#* *##if( $AllApplicationsList.getSHooksStackSize() > 0 )
+#*   *## This variable tells the build process the name of the application shook stack sections.
+#*   *#OS_STACKS += #foreach( $coreId in $OsModel.getUsedCoreIds() ) os_kernstack${coreId}_shook#end$newLine
+#* *##end
+#* *##if( $AllApplicationsList.getEHooksStackSize() > 0 )
+#*   *## This variable tells the build process the name of the application ehook stack sections.
+#*   *#OS_STACKS += #foreach( $coreId in $OsModel.getUsedCoreIds() ) os_kernstack${coreId}_ehook#end$newLine
+#* *##end
+#* *## This variable tells the build process the name of the task stack sections.
+#* *##foreach( $stack in $AllTasksList.getStacks() )
+#*   *#OS_STACKS += #foreach( $slot in $stack ) $stack.getSlotVarName($slot).toLowerCase()#end$newLine
+#* *##end
+#* *## This variable tells the build process the name of the kernel/interrupt stack sections.
+#* *##foreach( $stack in $AllInterruptsList.getStacks() )
+#*   *#OS_STACKS += #foreach( $slot in $stack ) $stack.getSlotVarName($slot).toLowerCase()#end$newLine
+#* *##end
+#end
+
+endif

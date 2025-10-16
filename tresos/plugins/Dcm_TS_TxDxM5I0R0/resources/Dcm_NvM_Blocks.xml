@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nvm:blocks xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.tresos.de/_project/AutoCore/nvm.blocks_1.xsd"
+    xmlns:nvm="http://www.tresos.de/_project/AutoCore/nvm.blocks_1.xsd">
+
+    <!-- !LINKSTO Dcm.EB.NvMBlocks.CalculateServiceNeeds.UnconfiguredDcmDspDataBlockIdRef.CreateNvMBlockDescriptor,1 -->
+    <block name="NVM_BLOCK_DCM"
+        base="as:modconf('Dcm')[1]/DcmConfigSet/eb-list::*[1]/DcmDsp/DcmDspData/eb-list::*"
+        suffix="concat( '_', node:name(.) )">
+        <enable type="XPATH" value="./DcmDspDataUsePort='USE_BLOCK_ID' and
+          (not(node:refvalid(./DcmDspDataBlockIdRef)) or
+          (node:refvalid(./DcmDspDataBlockIdRef) and
+          node:name(node:ref(./DcmDspDataBlockIdRef)) = concat('NVM_BLOCK_DCM_', as:name(.))))"/>
+        <updateReference value="./DcmDspDataBlockIdRef" />
+        <type value="native" />
+        <length type="XPATH" value="num:i((./DcmDspDataSize+7) div 8)" />
+        <crc value="none" />
+        <calcRamBlockCrc value="false" />
+        <readonly value="false" />
+        <resistantToChangedSw value="false" />
+        <restoreAtStart value="false" />
+        <writeOnlyOnce value="false" />
+        <writingPriority value="0" />
+    </block>
+
+    <block name="NVM_BLOCK_DCM_ROE">
+      <updateReference value="as:modconf('Dcm')[1]/DcmConfigSet/eb-list::*[1]/DcmDsp/DcmDspRoe/DcmDspRoeBlockIdRef"/>
+      <enable type="XPATH" value="(node:exists(as:modconf('Dcm')[1]/DcmConfigSet/eb-list::*[1]/DcmDsl/DcmDslProtocol/DcmDslProtocolRow/eb-list::*/DcmDslConnection/eb-list::*[node:name(.) = 'DcmDslResponseOnEvent'])) and (node:exists(as:modconf('Dcm')[1]/DcmConfigSet/eb-list::*[1]/DcmDsd/DcmDsdServiceTable/eb-list::*/DcmDsdService/eb-list::*[DcmDsdSidTabServiceId = '134']))"/>
+      <type value="native" />
+      <length value="16" />
+      <crc value="none" />
+      <calcRamBlockCrc value="false" />
+      <ramBlockDataAddress value="&amp;Dcm_Dsl_RoeServices_Persistent_Data" />
+      <readonly value="false" />
+      <resistantToChangedSw value="false" />
+      <restoreAtStart value="true" />
+      <storeAtShutdown value="true" />
+      <writeOnlyOnce value="false" />
+      <writingPriority value="1" />
+    </block>
+
+    <!-- !LINKSTO Dcm.EB.NvMBlocks.CalculateServiceNeeds.DynamicallyDefineDataIdentifier.DcmDsdServiceUsedEnabled.DcmDDDIDStorageEnabled.CreateNvMBlockDescriptor,1 -->
+    <block name="NVM_BLOCK_DCM_DDDID">
+      <updateReference value="as:modconf('Dcm')[1]/DcmConfigSet/eb-list::*[1]/DcmGeneral/DcmDspDDDIDBlockIdRef"/>
+      <enable type="XPATH" value="((node:exists(as:modconf('Dcm')[1]/DcmConfigSet/eb-list::*[1]/DcmDsd/DcmDsdServiceTable/eb-list::*/DcmDsdService/eb-list::*[DcmDsdSidTabServiceId = '44' and node:existsAndTrue(DcmDsdServiceUsed)])) and
+                                    (node:existsAndTrue(as:modconf('Dcm')[1]/DcmConfigSet/eb-list::*[1]/DcmGeneral/DcmDDDIDStorage)))"/>
+      <type value="native" />
+      <nDataSets type="XPATH"
+            value="num:i(sum(util:distinct(node:refs(as:modconf('Dcm')[1]/DcmConfigSet/eb-list::*[1]/DcmDsp/DcmDspDid/eb-list::*[node:existsAndTrue(DcmDspDidUsed)]/DcmDspDidInfoRef))/DcmDspDDDIDMaxElements)" />
+      <length type="XPATH" value="num:i(sum(util:distinct(node:refs(as:modconf('Dcm')[1]/DcmConfigSet/eb-list::*[1]/DcmDsp/DcmDspDid/eb-list::*[node:existsAndTrue(DcmDspDidUsed)]/DcmDspDidInfoRef))/DcmDspDDDIDMaxElements) * 12)"/>
+      <crc value="none" />
+      <calcRamBlockCrc value="false" />
+      <ramBlockDataAddress value="&amp;Dcm_DDDidSrcTable" />
+      <readonly value="false" />
+      <resistantToChangedSw value="false" />
+      <restoreAtStart value="true" />
+      <storeAtShutdown value="true" />
+      <writeOnlyOnce value="false" />
+      <writingPriority value="1" />
+    </block>
+
+</nvm:blocks>

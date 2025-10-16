@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+  <!--
+    AUTOSAR SA_TS_TxDxM1I25R0 plugin
+    Project: EB tresos AutoCore
+
+    Copyright 2005-2024 by Elektrobit Automotive GmbH
+    All rights exclusively reserved for Elektrobit Automotive GmbH,
+    unless expressly agreed to otherwise.
+  -->
+  <extension point="dreisoft.tresos.launcher2.plugin.module"
+             id="SA_TS_TxDxM1I25R0_ModuleId"
+             name="SA_TS_TxDxM1I25R0 Module">
+    <module id="SA_TS_TxDxM1I25R0"
+            label="SA"
+            mandatory="false"
+            allowMultiple="false"
+            description="BL-Core: Bootloader Security Access Routine module"
+            copyright="(c) 2005-2024 Elektrobit Automotive GmbH"
+            swVersionMajor="1"
+            swVersionMinor="25"
+            swVersionPatch="0"
+            swVersionSuffix="BL3"
+            specVersionMajor="4"
+            specVersionMinor="0"
+            specVersionPatch="3"
+            specVersionSuffix="0000"
+            relVersionMajor="4"
+            relVersionMinor="0"
+            relVersionPatch="3"
+            categoryType="SA"
+            categoryLayer="System Services"
+            categoryCategory="Diagnostic"
+            categoryComponent="ECUC">
+      <cluster name="Diagnostic"/>
+    </module>
+  </extension>
+  <extension point="dreisoft.tresos.launcher2.plugin.configuration"
+             id="SA_TS_TxDxM1I25R0_ConfigId"
+             name="SA_TS_TxDxM1I25R0 Configuration">
+    <configuration moduleId="SA_TS_TxDxM1I25R0">
+      <schema>
+        <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarSchemaManager"/>
+        <resource value="config/SA.xdm" type="xdm" id="res_default"/>
+      </schema>
+
+      <data>
+        <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarConfigManager"/>
+        <schemaNode path="ASPath:/TS_TxDxM1I25R0/SA"/>
+      </data>
+
+      <editor id="SA_TS_TxDxM1I25R0_EditorId"
+              label="Default"
+              tooltip="BL-Core: Bootloader Security Access Routine module">
+        <class class="dreisoft.tresos.launcher2.editor.GenericConfigEditor">
+          <parameter name="schema" value="ASPath:/TS_TxDxM1I25R0/SA"/>
+          <parameter name="title" value="SA"/>
+          <parameter name="noTabs" value="false"/>
+          <parameter name="noLinks" value="true"/>
+          <parameter name="groupLinks" value="false"/>
+          <parameter name="groupContainers" value="false"/>
+          <parameter name="groupTables" value="true"/>
+          <parameter name="optionalGeneralTab" value="true"/>
+        </class>
+      </editor>
+    </configuration>
+  </extension>
+
+  <extension point="dreisoft.tresos.launcher2.plugin.generator"
+             id="SA_TS_TxDxM1I25R0_GeneratorId"
+             name="SA_TS_TxDxM1I25R0 Generator">
+    <generator class="dreisoft.tresos.launcher2.generator.TemplateBasedCodeGenerator"
+               id="SA_TS_TxDxM1I25R0_TemplateBasedCodeGeneratorId"
+               moduleId="SA_TS_TxDxM1I25R0">
+      <!-- common template path parameters -->
+      <parameter name="templates"
+                 mode="generate,verify" value="generate"/>
+    </generator>
+  </extension>
+</plugin>
+

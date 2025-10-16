@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<project name="SecOC" default="all" basedir=".">
+
+  <!-- include ant-contrib -->
+  <taskdef resource="net/sf/antcontrib/antlib.xml">
+    <classpath>
+      <fileset dir="../../dreisoft.tresos.generator.ng.api" />
+    </classpath>
+  </taskdef>
+
+  <!-- set properties -->
+  <ng.getgeneratorvar name="tresosBase"        property="genTresosBase"        />
+  <ng.getgeneratorvar name="module"            property="genModule"            />
+  <ng.getgeneratorvar name="pluginPath"        property="genPluginDir"         />
+  <ng.getgeneratorvar name="outputDir"         property="genOutputDir"         />
+  <ng.getgeneratorvar name="datetime"          property="genDateTime"          />
+  <ng.getgeneratorvar name="postBuildVariant"  property="genPostBuildVariant"  />
+  <ng.getgeneratorvar name="moduleSoftwareVer" property="genModuleSoftwareVer" />
+  <ng.getgeneratorvar name="project"           property="genProject"           />
+
+  <property environment="env"                                                   />
+  <property name="genPluginDirGenerateVar" value="${genPluginDir}/generate_var" />
+
+  <!-- process -->
+  <target name="all" depends="Process.Generate_Var,Process.Move" />
+
+  <target name="Process.Generate_Var">
+    <sequential>
+      <for list="include,xgen" param="dir">
+        <sequential>
+          <for param="file">
+            <path>
+              <fileset dir="${genPluginDirGenerateVar}/@{dir}/" excludes="*.m" />
+            </path>
+            <sequential>
+              <basename property="org.file.basename" file="@{file}" />
+              <echo level="info" message="FILE: @{file} // @{dir}/${org.file.basename}" />
+              <ng.tmplgen template="@{file}" file="@{dir}/${org.file.basename}" failonerror="true">
+                <include path="generate_var"    />
+                <include path="generate_macros" />
+                <variable name="postBuildVariant"  value="${genPostBuildVariant}"  />
+                <variable name="moduleSoftwareVer" value="${genModuleSoftwareVer}" />
+                <variable name="project"           value="${genProject}"           />
+              </ng.tmplgen>
+              <var name="org.file.basename" unset="true" />
+            </sequential>
+          </for>
+        </sequential>
+      </for>
+    </sequential>
+  </target>
+
+  <target name="Process.Move">
+    <ng.getgeneratorvar name="outputDir"        property="outputDirProp"        />
+    <ng.getgeneratorvar name="postBuildVariant" property="postBuildVariantProp" />
+    <move file="${outputDirProp}/xgen/SecOC.xgen"                             tofile="${outputDirProp}/xgen/SecOC${postBuildVariantProp}.xgen"                     />
+    <move file="${outputDirProp}/include/SecOC_SymbolicNames_Common_PBcfg.h"  tofile="${outputDirProp}/include/SecOC_SymbolicNames_PBcfg.h"                        />
+    <move file="${outputDirProp}/include/SecOC_Variant_SymbolicNames_PBcfg.h" tofile="${outputDirProp}/include/SecOC_SymbolicNames${postBuildVariantProp}_PBcfg.h" />
+  </target>
+
+</project>

@@ -1,0 +1,2195 @@
+<?xml version='1.0'?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-2-2.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>TS_TxDxM1I2R0</SHORT-NAME>
+      <ELEMENTS>
+        <ECUC-MODULE-DEF UUID="9777c536-095e-4cd0-9bfc-b917e4b28aca">
+          <SHORT-NAME>J1939Tp</SHORT-NAME>
+          <DESC>
+            <L-2 L="FOR-ALL">&lt;html&gt;
+                      &lt;p&gt;Configuration of the J1939Tp (J1939 Transport Protocol) module.&lt;/p&gt;
+                    &lt;/html&gt;</L-2>
+          </DESC>
+          <ADMIN-DATA>
+            <DOC-REVISIONS>
+              <DOC-REVISION>
+                <REVISION-LABEL>4.2.2</REVISION-LABEL>
+                <ISSUED-BY>AUTOSAR</ISSUED-BY>
+                <DATE>2014-10-31</DATE>
+              </DOC-REVISION>
+            </DOC-REVISIONS>
+          </ADMIN-DATA>
+          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+          <POST-BUILD-VARIANT-SUPPORT>true</POST-BUILD-VARIANT-SUPPORT>
+          <REFINED-MODULE-DEF-REF DEST="ECUC-MODULE-DEF">/AUTOSAR/EcucDefs/J1939Tp</REFINED-MODULE-DEF-REF>
+          <SUPPORTED-CONFIG-VARIANTS>
+            <SUPPORTED-CONFIG-VARIANT>VARIANT-POST-BUILD</SUPPORTED-CONFIG-VARIANT>
+            <SUPPORTED-CONFIG-VARIANT>VARIANT-PRE-COMPILE</SUPPORTED-CONFIG-VARIANT>
+          </SUPPORTED-CONFIG-VARIANTS>
+          <CONTAINERS>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="ECUC:cb4128ed-26c1-4ddd-906e-854bed917e07">
+              <SHORT-NAME>PublishedInformation</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">
+                    &lt;html&gt;
+                      Additional published parameters not covered by CommonPublishedInformation container.
+                  &lt;/html&gt;</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="ECUC:eb61002e-69c0-4f16-a910-c27adb75f6ee">
+                  <SHORT-NAME>PbcfgMSupport</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                      &lt;html&gt;
+                        Specifies whether or not the J1939Tp can use the PbcfgM module for post-build support.
+                    &lt;/html&gt;</L-2>
+                  </DESC>
+                  <MULTIPLICITY-CONFIG-CLASSES>
+                    <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                  </MULTIPLICITY-CONFIG-CLASSES>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>true</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+              </PARAMETERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="ECUC:a00be3e0-8783-9123-2d52-1eb616737ca6">
+              <SHORT-NAME>CommonPublishedInformation</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">
+                    &lt;html&gt;
+                      Common container, aggregated by all modules. It contains published information about vendor and versions.
+                  &lt;/html&gt;</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-INTEGER-PARAM-DEF UUID="ECUC:948f3f2e-f129-4bc5-b4e1-7a7bdb8599e1">
+                  <SHORT-NAME>ArMajorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                      &lt;html&gt;
+                        Major version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</L-2>
+                  </DESC>
+                  <MULTIPLICITY-CONFIG-CLASSES>
+                    <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                  </MULTIPLICITY-CONFIG-CLASSES>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>20</DEFAULT-VALUE>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="ECUC:2893b920-59d5-4ac2-b2c1-e23742e66d70">
+                  <SHORT-NAME>ArMinorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                      &lt;html&gt;
+                        Minor version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</L-2>
+                  </DESC>
+                  <MULTIPLICITY-CONFIG-CLASSES>
+                    <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                  </MULTIPLICITY-CONFIG-CLASSES>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>11</DEFAULT-VALUE>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="ECUC:6428eb9b-8790-488a-b9a3-0fba52d0f59e">
+                  <SHORT-NAME>ArPatchVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                      &lt;html&gt;
+                        Patch level version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</L-2>
+                  </DESC>
+                  <MULTIPLICITY-CONFIG-CLASSES>
+                    <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                  </MULTIPLICITY-CONFIG-CLASSES>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="ECUC:605b18ae-3f9a-41d4-9225-67c9c5f6fc34">
+                  <SHORT-NAME>SwMajorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                      &lt;html&gt;
+                        Major version number of the vendor specific implementation of the module.
+                    &lt;/html&gt;</L-2>
+                  </DESC>
+                  <MULTIPLICITY-CONFIG-CLASSES>
+                    <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                  </MULTIPLICITY-CONFIG-CLASSES>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="a7fe44dc-ea25-4b8d-8fad-9fbcae86d56f">
+                  <SHORT-NAME>SwMinorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                      &lt;html&gt;
+                        Minor version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                    &lt;/html&gt;</L-2>
+                  </DESC>
+                  <MULTIPLICITY-CONFIG-CLASSES>
+                    <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                  </MULTIPLICITY-CONFIG-CLASSES>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>2</DEFAULT-VALUE>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="a318d2d9-0e75-49da-ac43-e7e4e682e2f9">
+                  <SHORT-NAME>SwPatchVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                      &lt;html&gt;
+                        Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                    &lt;/html&gt;</L-2>
+                  </DESC>
+                  <MULTIPLICITY-CONFIG-CLASSES>
+                    <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                  </MULTIPLICITY-CONFIG-CLASSES>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>14</DEFAULT-VALUE>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="ECUC:78bc8362-080f-4253-b3da-804ab69a7154">
+                  <SHORT-NAME>ModuleId</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                      &lt;html&gt;
+                        Module ID of this module from Module List
+                    &lt;/html&gt;</L-2>
+                  </DESC>
+                  <MULTIPLICITY-CONFIG-CLASSES>
+                    <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                  </MULTIPLICITY-CONFIG-CLASSES>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>37</DEFAULT-VALUE>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="ECUC:01b0f467-6943-4558-b4f2-3fa1fad28449">
+                  <SHORT-NAME>VendorId</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                      &lt;html&gt;
+                        Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list
+                    &lt;/html&gt;</L-2>
+                  </DESC>
+                  <MULTIPLICITY-CONFIG-CLASSES>
+                    <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                  </MULTIPLICITY-CONFIG-CLASSES>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-STRING-PARAM-DEF UUID="ECUC:1c68a547-f24e-4a4e-9540-69fbd533ec89">
+                  <SHORT-NAME>Release</SHORT-NAME>
+                  <MULTIPLICITY-CONFIG-CLASSES>
+                    <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                  </MULTIPLICITY-CONFIG-CLASSES>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <ECUC-STRING-PARAM-DEF-VARIANTS>
+                    <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                      <DEFAULT-VALUE></DEFAULT-VALUE>
+                    </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                  </ECUC-STRING-PARAM-DEF-VARIANTS>
+                </ECUC-STRING-PARAM-DEF>
+              </PARAMETERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="e2accd84-119e-4dc5-84f7-6664fb0d1c4f">
+              <SHORT-NAME>J1939TpConfiguration</SHORT-NAME>
+              <DESC>
+                <L-2 L="FOR-ALL">&lt;html&gt;
+                          &lt;p&gt;Defines the configuration parameters and sub
+                            containers of the J1939Tp module that define the communication paths.&lt;/p&gt;
+                        &lt;/html&gt;</L-2>
+              </DESC>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF UUID="16037320-3130-46b8-a81e-cd187da021a2">
+                  <SHORT-NAME>J1939TpRxChannel</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                            &lt;p&gt;Defines the configuration of J1939Tp channels.&lt;/p&gt;
+                            &lt;p&gt;A channel referencing N-PDUs without MetaData is used for all N-SDUs
+                              that share the same source address (SA) and the same destination
+                              address (BAM: DA = 0xFF, CMDT: DA != 0xFF).&lt;/p&gt;
+                            &lt;p&gt;A channel with N-PDUs with MetaData is used for all possible source and
+                              destination addresses.&lt;/p&gt;
+                            &lt;p&gt;&lt;strong&gt;Optimization Effect:&lt;/strong&gt;&lt;/p&gt;
+                            &lt;ul&gt;
+                              &lt;li class=&quot;optimization.config.ram.reduction&quot;&gt;
+                                &lt;strong&gt;RAM reduction (config):&lt;/strong&gt;
+                                Configuring less J1939Tp channels reduces the RAM
+                                consumption of the module configuration.
+                              &lt;/li&gt;
+                              &lt;li class=&quot;optimization.config.rom.reduction&quot;&gt;
+                                &lt;strong&gt;ROM reduction (config):&lt;/strong&gt;
+                                Configuring less J1939Tp channels reduces the ROM
+                                consumption of the module configuration.
+                              &lt;/li&gt;
+                              &lt;li class=&quot;optimization.code.exetime.reduction&quot;&gt;
+                                &lt;strong&gt;Execution time reduction (code):&lt;/strong&gt;
+                                Configuring less J1939Tp channels reduces the
+                                execution time of the module code.
+                              &lt;/li&gt;
+                            &lt;/ul&gt;
+                          &lt;/html&gt;</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY-INFINITE>1</UPPER-MULTIPLICITY-INFINITE>
+                  <MULTIPLICITY-CONFIG-CLASSES>
+                    <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                  </MULTIPLICITY-CONFIG-CLASSES>
+                  <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                  <PARAMETERS>
+                    <ECUC-BOOLEAN-PARAM-DEF UUID="477c117e-8e36-4fde-a998-705518bd5160">
+                      <SHORT-NAME>J1939TpRxCancellationSupport</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                                &lt;p&gt;Enable the receive cancellation using the API
+                                  J1939Tp_CancelReceive() for this channel.&lt;/p&gt;
+                                &lt;p&gt;Disable the receive cancellation for this channel.&lt;/p&gt;
+                              &lt;/html&gt;</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <SCOPE>LOCAL</SCOPE>
+                      <MULTIPLICITY-CONFIG-CLASSES>
+                        <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      </MULTIPLICITY-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF UUID="23c83f2f-6767-4e80-a857-84ea22412938">
+                      <SHORT-NAME>J1939TpRxCanFDSupport</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                                &lt;p&gt;Enable only the CanFD message reception handling according to J1939-22 SAE on this channel.&lt;/p&gt;
+                                &lt;p&gt;Disable the CanFD message reception handling on this channel.&lt;/p&gt;
+                              &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SCOPE>LOCAL</SCOPE>
+                      <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="bb1ef5eb-85cc-4e12-9f65-21b4d2566c5b">
+                      <SHORT-NAME>J1939TpRxDa</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                                &lt;p&gt;Defines the destination address (DA) of this channel. This parameter
+                                  is only required for channels with fixed DA which use N-PDUs with
+                                  MetaData containing the DA.&lt;/p&gt;
+                              &lt;/html&gt;</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <SCOPE>LOCAL</SCOPE>
+                      <MULTIPLICITY-CONFIG-CLASSES>
+                        <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                        </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      </MULTIPLICITY-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <POST-BUILD-VARIANT-MULTIPLICITY>true</POST-BUILD-VARIANT-MULTIPLICITY>
+                      <POST-BUILD-VARIANT-VALUE>true</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <MAX>253</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF UUID="e90c65d0-f3ea-42df-856e-b90a872136f4">
+                      <SHORT-NAME>J1939TpRxDynamicBlockCalculation</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                                &lt;p&gt;Enable the dynamic calculation of &quot;number of packets that can be sent&quot;
+                                  value in TP.CM_CTS, based on the size of buffers in upper layers
+                                  reported via StartOfReception and PduR_J1939TpCopyRxData.&lt;/p&gt;
+                                &lt;p&gt;Disable the dynamic calculation of &quot;number of packets that can be sent&quot;
+                                  value in TP.CM_CTS, based on the size of buffers in upper layers
+                                  reported via StartOfReception and PduR_J1939TpCopyRxData.&lt;/p&gt;
+                              &lt;/html&gt;</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <SCOPE>LOCAL</SCOPE>
+                      <MULTIPLICITY-CONFIG-CLASSES>
+                        <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      </MULTIPLICITY-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="7a724e06-aafb-4f0f-b265-89e2d63a0e8c">
+                      <SHORT-NAME>J1939TpRxDynamicBufferRatio</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                                &lt;p&gt;Defines the Percentage of available buffer that shall be used for
+                                  retry.&lt;/p&gt;
+                                &lt;p&gt;This parameter is only applicable when &quot;J1939TpRxRetrySupport&quot;
+                                  and &quot;J1939TpRxDynamicBlockCalculation&quot; are enabled.&lt;/p&gt;
+                              &lt;/html&gt;</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <SCOPE>LOCAL</SCOPE>
+                      <MULTIPLICITY-CONFIG-CLASSES>
+                        <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      </MULTIPLICITY-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>80</DEFAULT-VALUE>
+                      <MAX>100</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="25c67839-4213-4c53-9cd7-bfd240439850">
+                      <SHORT-NAME>J1939TpRxPacketsPerBlock</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                                &lt;p&gt;Defines the number of TP.DT frames the receiving J1939Tp module
+                                  allows the sender to send before waiting for another TP.CM_CTS.
+                                  This parameter is transmitted in the TP.CM_CTS frame, and is thus
+                                  only relevant for reception of messages via CMDT. When
+                                  J1939TpRxDynamicBlockCalculation is enabled, this parameter
+                                  specifies a maximum for the calculated value.&lt;/p&gt;
+                              &lt;/html&gt;</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <SCOPE>LOCAL</SCOPE>
+                      <MULTIPLICITY-CONFIG-CLASSES>
+                        <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      </MULTIPLICITY-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>16</DEFAULT-VALUE>
+                      <MAX>255</MAX>
+                      <MIN>1</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="ca3b3ff9-fd9d-43ee-b6c3-32ebf7783b2a">
+                      <SHORT-NAME>J1939TpRxProtocolType</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                                &lt;p&gt;Defines the Protocol type used by this Rx channel. This parameter
+                                  is only required for channels with fixed destination address.&lt;/p&gt;
+                                &lt;p&gt;J1939TP_PROTOCOL_BAM: required for channels with global address.&lt;/p&gt;
+                                &lt;p&gt;J1939TP_PROTOCOL_CMDT: required for channels with fixed
+                                  destination address.&lt;/p&gt;
+                              &lt;/html&gt;</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <SCOPE>LOCAL</SCOPE>
+                      <MULTIPLICITY-CONFIG-CLASSES>
+                        <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      </MULTIPLICITY-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>J1939TP_PROTOCOL_BAM</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>J1939TP_PROTOCOL_CMDT</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF UUID="92d46c71-09ae-4eeb-bfc1-2ff58053eb5a">
+                      <SHORT-NAME>J1939TpRxRetrySupport</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                                &lt;p&gt;Enable the support for triggering repetition of failed transmission
+                                  using TP.CM_CTS with a packet number that has already been sent.
+                                  Retransmission is triggered when a sequence number is missing or a
+                                  timeout occurs during reception.&lt;/p&gt;
+                                &lt;p&gt;Disable the support for triggering repetition of failed
+                                  transmission.&lt;/p&gt;
+                              &lt;/html&gt;</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <SCOPE>LOCAL</SCOPE>
+                      <MULTIPLICITY-CONFIG-CLASSES>
+                        <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      </MULTIPLICITY-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="76fab2b4-6c95-484e-84d8-3c9d6e47769c">
+                      <SHORT-NAME>J1939TpRxSa</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                                &lt;p&gt;Defines Source address (SA) of this channel. This parameter is
+                                  only required for channels with fixed SA which use N-PDUs with
+                                  MetaData.&lt;/p&gt;
+                              &lt;/html&gt;</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <SCOPE>LOCAL</SCOPE>
+                      <MULTIPLICITY-CONFIG-CLASSES>
+                        <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                        </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      </MULTIPLICITY-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <POST-BUILD-VARIANT-MULTIPLICITY>true</POST-BUILD-VARIANT-MULTIPLICITY>
+                      <POST-BUILD-VARIANT-VALUE>true</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <MAX>253</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                  </PARAMETERS>
+                  <SUB-CONTAINERS>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="2f3cc8b2-3b32-4bf8-9300-10c25f293bbd">
+                      <SHORT-NAME>J1939TpRxCmNPdu</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                                &lt;p&gt;Defines the N-PDU represents the TP.CM frame of a J1939 transport
+                                  protocol session. TP.CM is used both by BAM and CMDT to initialize
+                                  the connection. For CMDT, it is also used to abort the connection.&lt;/p&gt;
+                              &lt;/html&gt;</L-2>
+                      </DESC>
+                      <PARAMETERS>
+                        <ECUC-INTEGER-PARAM-DEF UUID="8d93abf5-e820-4165-ad6c-ae1aa32f1081">
+                          <SHORT-NAME>J1939TpRxCmNPduId</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                  &lt;p&gt;Defines the configuration of the RxCmNPdu identifier used for
+                                    communication with CanIf.&lt;/p&gt;
+                                  &lt;p&gt;A symbolic value (preprocessor macro) is also generated for
+                                    each PDU ID.&lt;/p&gt;
+                                  &lt;p&gt;The J1939Tp&apos;s Rx(Dt,Cm,Fc,Direct)NPdu ids has to unique.&lt;/p&gt;
+                                  &lt;p&gt;Range: 0 .. 65535&lt;/p&gt;
+                                &lt;/html&gt;</L-2>
+                          </DESC>
+                          <SCOPE>ECU</SCOPE>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                          <VALUE-CONFIG-CLASSES>
+                            <ECUC-VALUE-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-VALUE-CONFIGURATION-CLASS>
+                          </VALUE-CONFIG-CLASSES>
+                          <SYMBOLIC-NAME-VALUE>true</SYMBOLIC-NAME-VALUE>
+                          <MAX>65535</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                      </PARAMETERS>
+                      <REFERENCES>
+                        <ECUC-REFERENCE-DEF UUID="a9e670c7-aea3-47bd-a4f3-ecb6939dc0ca">
+                          <SHORT-NAME>J1939TpRxCmNPduRef</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                &lt;p&gt;Reference to the external Rx PDU definition in the EcuC module.&lt;/p&gt;
+                                &lt;p&gt;Dependency on parameter(s):&lt;/p&gt;
+                                &lt;ul&gt;
+                                  &lt;li&gt;A valid reference to EcuC&apos;s &lt;code&gt;PDU&lt;/code&gt; parameters has to be provided.&lt;/li&gt;
+                                  &lt;li&gt;Uniq EcuC PDU has to be provided as reference for each J1939TpRxPDU.&lt;/li&gt;
+                                  &lt;li&gt;It is not allowed to configured bidirectional J1939Tp PDUs(the same PDU cannot be given
+                                      as reference for &lt;code&gt;J1939TpRxCmNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxCmNPdu&lt;/code&gt;,
+                                      &lt;code&gt;J1939TpRxDtNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxDtNPdu&lt;/code&gt;,
+                                      &lt;code&gt;J1939TpRxCmNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxCmNPdu&lt;/code&gt;,
+                                      &lt;code&gt;J1939TpRxDirectNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxDirectNPdu&lt;/code&gt;,
+                                      &lt;code&gt;J1939TpRxNSdu&lt;/code&gt;, &lt;code&gt;J1939TpTxNSdu&lt;/code&gt;,
+                                      &lt;code&gt;J1939TpRxFcNPdu&lt;/code&gt; and &lt;code&gt;J1939TpTxFcNPdu&lt;/code&gt;).&lt;/li&gt;
+                                &lt;/ul&gt;
+                                &lt;/html&gt;</L-2>
+                          </DESC>
+                          <SCOPE>LOCAL</SCOPE>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <POST-BUILD-VARIANT-VALUE>true</POST-BUILD-VARIANT-VALUE>
+                          <VALUE-CONFIG-CLASSES>
+                            <ECUC-VALUE-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                            </ECUC-VALUE-CONFIGURATION-CLASS>
+                          </VALUE-CONFIG-CLASSES>
+                          <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/EcuC/EcucPduCollection/Pdu</DESTINATION-REF>
+                        </ECUC-REFERENCE-DEF>
+                      </REFERENCES>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="9a26baed-dd1e-4195-88bc-3c85331e4366">
+                      <SHORT-NAME>J1939TpRxDtNPdu</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                                &lt;p&gt;Defines the N-PDU represents the TP.DT frame of a J1939 transport
+                                  protocol session. TP.DT is used both by BAM and CMDT to transfer
+                                  the contents of an N-SDU.&lt;/p&gt;
+                              &lt;/html&gt;</L-2>
+                      </DESC>
+                      <PARAMETERS>
+                        <ECUC-INTEGER-PARAM-DEF UUID="682a4a4b-a0db-4e3e-a6b2-da248aac65b5">
+                          <SHORT-NAME>J1939TpRxDtNPduId</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                  &lt;p&gt;Contains the configuration of the RxDtNPdu identifier used
+                                    for communication with CanIf.&lt;/p&gt;
+                                  &lt;p&gt;A symbolic value (preprocessor macro) is also generated for
+                                    each PDU ID.&lt;/p&gt;
+                                  &lt;p&gt;The J1939Tp&apos;s Rx(Dt,Cm,Fc,Direct)NPdu ids has to unique.&lt;/p&gt;
+                                  &lt;p&gt;Range: 0 .. 65535&lt;/p&gt;
+                                &lt;/html&gt;</L-2>
+                          </DESC>
+                          <SCOPE>ECU</SCOPE>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                          <VALUE-CONFIG-CLASSES>
+                            <ECUC-VALUE-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-VALUE-CONFIGURATION-CLASS>
+                          </VALUE-CONFIG-CLASSES>
+                          <SYMBOLIC-NAME-VALUE>true</SYMBOLIC-NAME-VALUE>
+                          <MAX>65535</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                      </PARAMETERS>
+                      <REFERENCES>
+                        <ECUC-REFERENCE-DEF UUID="d0e68e63-2200-411b-a821-676a79f30eaf">
+                          <SHORT-NAME>J1939TpRxDtNPduRef</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                &lt;p&gt;Reference to the external Rx PDU definition in the EcuC module.&lt;/p&gt;
+                                &lt;p&gt;Dependency on parameter(s):&lt;/p&gt;
+                                &lt;ul&gt;
+                                  &lt;li&gt;A valid reference to EcuC&apos;s &lt;code&gt;PDU&lt;/code&gt; parameters has to be provided.&lt;/li&gt;
+                                  &lt;li&gt;Uniq EcuC PDU has to be provided as reference for each J1939TpRxDtNPdu.&lt;/li&gt;
+                                  &lt;li&gt;It is not allowed to configured bidirectional J1939Tp PDUs(the same PDU cannot be given
+                                      as reference for &lt;code&gt;J1939TpRxCmNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxCmNPdu&lt;/code&gt;,
+                                      &lt;code&gt;J1939TpRxDtNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxDtNPdu&lt;/code&gt;,
+                                      &lt;code&gt;J1939TpRxCmNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxCmNPdu&lt;/code&gt;,
+                                      &lt;code&gt;J1939TpRxDirectNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxDirectNPdu&lt;/code&gt;,
+                                      &lt;code&gt;J1939TpRxNSdu&lt;/code&gt;, &lt;code&gt;J1939TpTxNSdu&lt;/code&gt;,
+                                      &lt;code&gt;J1939TpRxFcNPdu&lt;/code&gt; and &lt;code&gt;J1939TpTxFcNPdu&lt;/code&gt;).&lt;/li&gt;
+                                &lt;/ul&gt;
+                                &lt;/html&gt;</L-2>
+                          </DESC>
+                          <SCOPE>LOCAL</SCOPE>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <POST-BUILD-VARIANT-VALUE>true</POST-BUILD-VARIANT-VALUE>
+                          <VALUE-CONFIG-CLASSES>
+                            <ECUC-VALUE-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                            </ECUC-VALUE-CONFIGURATION-CLASS>
+                          </VALUE-CONFIG-CLASSES>
+                          <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/EcuC/EcucPduCollection/Pdu</DESTINATION-REF>
+                        </ECUC-REFERENCE-DEF>
+                      </REFERENCES>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="a99e592b-f82e-46d8-adfa-1476ba60ff9a">
+                      <SHORT-NAME>J1939TpRxPg</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                                  &lt;p&gt;Defines the Parameter group received by the J1939 transport layer.&lt;/p&gt;
+                                &lt;/html&gt;</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY-INFINITE>1</UPPER-MULTIPLICITY-INFINITE>
+                      <MULTIPLICITY-CONFIG-CLASSES>
+                        <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      </MULTIPLICITY-CONFIG-CLASSES>
+                      <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                      <PARAMETERS>
+                        <ECUC-BOOLEAN-PARAM-DEF UUID="7c6bc10f-d229-4d2a-a223-f84102ce293a">
+                          <SHORT-NAME>J1939TpRxPgDynLength</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                    &lt;p&gt;Enable the flag when the N-SDU refers to a PGN with variable
+                                      length.&lt;/p&gt;
+                                    &lt;p&gt;When this attribute is TRUE, the sub container
+                                      J1939TpRxDirectNPdu is required.&lt;/p&gt;
+                                    &lt;p&gt;Disable the flag when the N-SDU doesn&apos;t refers to a PGN with
+                                      variable length.&lt;/p&gt;
+                                  &lt;/html&gt;</L-2>
+                          </DESC>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                          <VALUE-CONFIG-CLASSES>
+                            <ECUC-VALUE-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-VALUE-CONFIGURATION-CLASS>
+                          </VALUE-CONFIG-CLASSES>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                        </ECUC-BOOLEAN-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="eb336bec-f0f2-4719-bc2d-c0004893f4eb">
+                          <SHORT-NAME>J1939TpRxPgPGN</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                    &lt;p&gt;Defines the PGN of the referenced N-SDUs.&lt;/p&gt;
+                                  &lt;/html&gt;</L-2>
+                          </DESC>
+                          <SCOPE>LOCAL</SCOPE>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                          <VALUE-CONFIG-CLASSES>
+                            <ECUC-VALUE-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-VALUE-CONFIGURATION-CLASS>
+                          </VALUE-CONFIG-CLASSES>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <MAX>262143</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                      </PARAMETERS>
+                      <SUB-CONTAINERS>
+                        <ECUC-PARAM-CONF-CONTAINER-DEF UUID="4670b8e9-53c8-4a34-952c-93f992443a3f">
+                          <SHORT-NAME>J1939TpRxDirectNPdu</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                    &lt;p&gt;Defines this N-PDU represents the short frame that is used
+                                      for a dynamic length PGN when it has a length of less than 8
+                                      bytes.&lt;/p&gt;
+                                  &lt;/html&gt;</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <MULTIPLICITY-CONFIG-CLASSES>
+                            <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                          </MULTIPLICITY-CONFIG-CLASSES>
+                          <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                          <PARAMETERS>
+                            <ECUC-INTEGER-PARAM-DEF UUID="2239d32e-0828-4b33-a27c-91d2fa37076e">
+                              <SHORT-NAME>J1939TpRxDirectNPduId</SHORT-NAME>
+                              <DESC>
+                                <L-2 L="FOR-ALL">&lt;html&gt;
+                                      &lt;p&gt;Defines the configuration of the RxDirectNPdu identifier
+                                        used for communication with CanIf.&lt;/p&gt;
+                                      &lt;p&gt;A symbolic value (preprocessor macro) is also generated for
+                                        each PDU ID.&lt;/p&gt;
+                                      &lt;p&gt;The J1939Tp&apos;s Rx(Dt,Cm,Fc,Direct)NPdu ids has to unique.&lt;/p&gt;
+                                      &lt;p&gt;Range: 0 .. 65535&lt;/p&gt;
+                                    &lt;/html&gt;</L-2>
+                              </DESC>
+                              <SCOPE>ECU</SCOPE>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                              <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                              <VALUE-CONFIG-CLASSES>
+                                <ECUC-VALUE-CONFIGURATION-CLASS>
+                                  <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                                  <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                                </ECUC-VALUE-CONFIGURATION-CLASS>
+                              </VALUE-CONFIG-CLASSES>
+                              <SYMBOLIC-NAME-VALUE>true</SYMBOLIC-NAME-VALUE>
+                              <MAX>65535</MAX>
+                              <MIN>0</MIN>
+                            </ECUC-INTEGER-PARAM-DEF>
+                          </PARAMETERS>
+                          <REFERENCES>
+                            <ECUC-REFERENCE-DEF UUID="ac162e73-7fbb-483b-970c-1a5ee8a233dd">
+                              <SHORT-NAME>J1939TpRxDirectNPduRef</SHORT-NAME>
+                              <DESC>
+                                <L-2 L="FOR-ALL">&lt;html&gt;
+                                    &lt;p&gt;Reference to the external Rx PDU definition in the EcuC module.&lt;/p&gt;
+                                    &lt;p&gt;Dependency on parameter(s):&lt;/p&gt;
+                                    &lt;ul&gt;
+                                      &lt;li&gt;A valid reference to EcuC&apos;s &lt;code&gt;PDU&lt;/code&gt; parameters has to be provided.&lt;/li&gt;
+                                      &lt;li&gt;Uniq EcuC PDU has to be provided as reference for each J1939TpRxDirectNPdu.&lt;/li&gt;
+                                      &lt;li&gt;It is not allowed to configured bidirectional J1939Tp PDUs(the same PDU cannot be given
+                                          as reference for &lt;code&gt;J1939TpRxCmNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxCmNPdu&lt;/code&gt;,
+                                          &lt;code&gt;J1939TpRxDtNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxDtNPdu&lt;/code&gt;,
+                                          &lt;code&gt;J1939TpRxCmNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxCmNPdu&lt;/code&gt;,
+                                          &lt;code&gt;J1939TpRxDirectNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxDirectNPdu&lt;/code&gt;,
+                                          &lt;code&gt;J1939TpRxNSdu&lt;/code&gt;, &lt;code&gt;J1939TpTxNSdu&lt;/code&gt;,
+                                          &lt;code&gt;J1939TpRxFcNPdu&lt;/code&gt; and &lt;code&gt;J1939TpTxFcNPdu&lt;/code&gt;).&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                    &lt;/html&gt;</L-2>
+                              </DESC>
+                              <SCOPE>LOCAL</SCOPE>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                              <POST-BUILD-VARIANT-VALUE>true</POST-BUILD-VARIANT-VALUE>
+                              <VALUE-CONFIG-CLASSES>
+                                <ECUC-VALUE-CONFIGURATION-CLASS>
+                                  <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                                  <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                                </ECUC-VALUE-CONFIGURATION-CLASS>
+                              </VALUE-CONFIG-CLASSES>
+                              <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/EcuC/EcucPduCollection/Pdu</DESTINATION-REF>
+                            </ECUC-REFERENCE-DEF>
+                          </REFERENCES>
+                        </ECUC-PARAM-CONF-CONTAINER-DEF>
+                        <ECUC-PARAM-CONF-CONTAINER-DEF UUID="2096ce81-b19c-4605-a607-ad0f75c38546">
+                          <SHORT-NAME>J1939TpRxNSdu</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                      &lt;p&gt;Defines the parameters that are relevant for the reception
+                                        of a specific N-SDU.&lt;/p&gt;
+                                    &lt;/html&gt;</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY-INFINITE>1</UPPER-MULTIPLICITY-INFINITE>
+                          <MULTIPLICITY-CONFIG-CLASSES>
+                            <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                          </MULTIPLICITY-CONFIG-CLASSES>
+                          <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                          <PARAMETERS>
+                            <ECUC-INTEGER-PARAM-DEF UUID="19f29d17-5d42-4f33-95f5-29b7059ff548">
+                              <SHORT-NAME>J1939TpRxNSduId</SHORT-NAME>
+                              <DESC>
+                                <L-2 L="FOR-ALL">&lt;html&gt;
+                                        &lt;p&gt;Defines the configuration of the RxNSdu identifier for a
+                                          received N-SDU. This Id is used in the CancelReceive and
+                                          ChangeParameter API call.&lt;/p&gt;
+                                        &lt;p&gt;A symbolic value (preprocessor macro) is also generated
+                                          for each PDU ID.&lt;/p&gt;
+                                        &lt;p&gt;The J1939Tp&apos;s RxNSdu ids has to be zero based and
+                                          consecutive.&lt;/p&gt;
+                                        &lt;p&gt;Range: 0 .. 65535&lt;/p&gt;
+                                      &lt;/html&gt;</L-2>
+                              </DESC>
+                              <SCOPE>ECU</SCOPE>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                              <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                              <VALUE-CONFIG-CLASSES>
+                                <ECUC-VALUE-CONFIGURATION-CLASS>
+                                  <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                                  <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                                </ECUC-VALUE-CONFIGURATION-CLASS>
+                              </VALUE-CONFIG-CLASSES>
+                              <SYMBOLIC-NAME-VALUE>true</SYMBOLIC-NAME-VALUE>
+                              <MAX>65535</MAX>
+                              <MIN>0</MIN>
+                            </ECUC-INTEGER-PARAM-DEF>
+                            <ECUC-ENUMERATION-PARAM-DEF UUID="d17f7028-7363-465a-8097-1a3de045d870">
+                              <SHORT-NAME>J1939TpRxAssuranceDataType</SHORT-NAME>
+                              <DESC>
+                                <L-2 L="FOR-ALL">&lt;html&gt;
+                                      &lt;p&gt;Type of the assurance data for CanFD reception.&lt;/p&gt;
+                                      &lt;p&gt;Enabled only if the Tx channel supports CanFD reception&lt;/p&gt;
+                                      &lt;ul&gt;
+                                        &lt;li&gt;J1939TP_NO_ASSURANCE_DATA: No assurance data for this NSDU.&lt;/li&gt;
+                                        &lt;li&gt;J1939TP_CYBERSECURITY_ASSURANCE_DATA: Cybersecurity assurance data for this NSDU.&lt;/li&gt;
+                                        &lt;li&gt;J1939TP_FUNCTIONAL_SAFETY_ASSURANCE_DATA: Functional safety assurance data for this NSDU.&lt;/li&gt;
+                                        &lt;li&gt;J1939TP_COMBINED_CYBERSECURITY_FUNCTIONAL_SAFETY_ASSURANCE_DATA: Combined assurance data for this NSDU.&lt;/li&gt;
+                                      &lt;/ul&gt;
+                                      &lt;/html&gt;</L-2>
+                              </DESC>
+                              <!-- @Calculated /TS_TxDxM1I2R0/J1939Tp/J1939TpConfiguration/J1939TpRxChannel/J1939TpRxPg/J1939TpRxNSdu/J1939TpRxAssuranceDataType: ENABLE(XPath: node:existsAndTrue(../../../../../J1939TpRxCanFDSupport))-->
+                              <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                              <!-- @CalculatedEnd -->
+                              <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                              <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                              <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                              <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                              <VALUE-CONFIG-CLASSES>
+                                <ECUC-VALUE-CONFIGURATION-CLASS>
+                                  <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                                  <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                                </ECUC-VALUE-CONFIGURATION-CLASS>
+                              </VALUE-CONFIG-CLASSES>
+                              <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                              <DEFAULT-VALUE>J1939TP_NO_ASSURANCE_DATA</DEFAULT-VALUE>
+                              <LITERALS>
+                                <ECUC-ENUMERATION-LITERAL-DEF>
+                                  <SHORT-NAME>J1939TP_NO_ASSURANCE_DATA</SHORT-NAME>
+                                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                                </ECUC-ENUMERATION-LITERAL-DEF>
+                                <ECUC-ENUMERATION-LITERAL-DEF>
+                                  <SHORT-NAME>J1939TP_CYBERSECURITY_ASSURANCE_DATA</SHORT-NAME>
+                                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                                </ECUC-ENUMERATION-LITERAL-DEF>
+                                <ECUC-ENUMERATION-LITERAL-DEF>
+                                  <SHORT-NAME>J1939TP_FUNCTIONAL_SAFETY_ASSURANCE_DATA</SHORT-NAME>
+                                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                                </ECUC-ENUMERATION-LITERAL-DEF>
+                                <ECUC-ENUMERATION-LITERAL-DEF>
+                                  <SHORT-NAME>J1939TP_COMBINED_CYBERSECURITY_FUNCTIONAL_SAFETY_ASSURANCE_DATA</SHORT-NAME>
+                                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                                </ECUC-ENUMERATION-LITERAL-DEF>
+                              </LITERALS>
+                            </ECUC-ENUMERATION-PARAM-DEF>
+                            <ECUC-INTEGER-PARAM-DEF UUID="3b3267af-3362-48f8-b454-4c2bc8d856a4">
+                              <SHORT-NAME>J1939TpRxAssuranceDataLength</SHORT-NAME>
+                              <DESC>
+                                <L-2 L="FOR-ALL">&lt;html&gt;
+                                      &lt;p&gt;Length of the assurance data for CanFD reception in the EOMS if supported for this NSDU.&lt;/p&gt;
+                                      &lt;p&gt;Enabled only if the Rx channel supports CanFD reception and the assurance data type isn&apos;t J1939TP_NO_ASSURANCE_DATA.&lt;/p&gt;
+                                      &lt;p&gt;If the enabling condition is met and the prameter is not configured, then the assurance data size is dynamic, and the PduR_J1939TpStartOfReception is called with PduLength zero.&lt;/p&gt;
+                                      &lt;/html&gt;</L-2>
+                              </DESC>
+                              <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                              <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                              <SCOPE>ECU</SCOPE>
+                              <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                              <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                              <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                              <VALUE-CONFIG-CLASSES>
+                                <ECUC-VALUE-CONFIGURATION-CLASS>
+                                  <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                                  <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                                </ECUC-VALUE-CONFIGURATION-CLASS>
+                              </VALUE-CONFIG-CLASSES>
+                              <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                              <MAX>52</MAX>
+                              <MIN>1</MIN>
+                            </ECUC-INTEGER-PARAM-DEF>
+                          </PARAMETERS>
+                          <REFERENCES>
+                            <ECUC-REFERENCE-DEF UUID="60135cbd-8a3e-4178-87c6-b3377e017c07">
+                              <SHORT-NAME>J1939TpRxNSduRef</SHORT-NAME>
+                              <DESC>
+                                <L-2 L="FOR-ALL">&lt;html&gt;
+                                      &lt;p&gt;Reference to the external Rx PDU definition in the EcuC module.&lt;/p&gt;
+                                      &lt;p&gt;Dependency on parameter(s):&lt;/p&gt;
+                                      &lt;ul&gt;
+                                        &lt;li&gt;A valid reference to EcuC&apos;s &lt;code&gt;PDU&lt;/code&gt; parameters has to be provided.&lt;/li&gt;
+                                        &lt;li&gt;Uniq EcuC PDU has to be provided as reference for each J1939TpRxNSdu.&lt;/li&gt;
+                                        &lt;li&gt;It is not allowed to configured bidirectional J1939Tp PDUs(the same PDU cannot be given
+                                            as reference for &lt;code&gt;J1939TpRxCmNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxCmNPdu&lt;/code&gt;,
+                                            &lt;code&gt;J1939TpRxDtNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxDtNPdu&lt;/code&gt;,
+                                            &lt;code&gt;J1939TpRxCmNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxCmNPdu&lt;/code&gt;,
+                                            &lt;code&gt;J1939TpRxDirectNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxDirectNPdu&lt;/code&gt;,
+                                            &lt;code&gt;J1939TpRxNSdu&lt;/code&gt;, &lt;code&gt;J1939TpTxNSdu&lt;/code&gt;,
+                                            &lt;code&gt;J1939TpRxFcNPdu&lt;/code&gt; and &lt;code&gt;J1939TpTxFcNPdu&lt;/code&gt;).&lt;/li&gt;
+                                      &lt;/ul&gt;
+                                      &lt;/html&gt;</L-2>
+                              </DESC>
+                              <SCOPE>LOCAL</SCOPE>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                              <POST-BUILD-VARIANT-VALUE>true</POST-BUILD-VARIANT-VALUE>
+                              <VALUE-CONFIG-CLASSES>
+                                <ECUC-VALUE-CONFIGURATION-CLASS>
+                                  <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                                  <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                                </ECUC-VALUE-CONFIGURATION-CLASS>
+                              </VALUE-CONFIG-CLASSES>
+                              <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/EcuC/EcucPduCollection/Pdu</DESTINATION-REF>
+                            </ECUC-REFERENCE-DEF>
+                          </REFERENCES>
+                        </ECUC-PARAM-CONF-CONTAINER-DEF>
+                      </SUB-CONTAINERS>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="db653d66-f4e5-4d1f-a973-7a984d10bf82">
+                      <SHORT-NAME>J1939TpTxFcNPdu</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                                &lt;p&gt;Defines this N-PDU represents the TP.CM frame that is used in
+                                  reverse direction for a J1939 transport protocol session using the
+                                  CMDT protocol type. TP.CM in reverse direction is used for
+                                  intermediate and final acknowledgement of received data and to
+                                  abort the connection.&lt;/p&gt;
+                              &lt;/html&gt;</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <MULTIPLICITY-CONFIG-CLASSES>
+                        <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      </MULTIPLICITY-CONFIG-CLASSES>
+                      <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                      <PARAMETERS>
+                        <ECUC-INTEGER-PARAM-DEF UUID="c58b1827-7367-46c7-813a-3d0ecfe78fa8">
+                          <SHORT-NAME>J1939TpTxFcNPduTxConfId</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                  &lt;p&gt;Defines the configuration of the TxFcNPduTxConf identifier for
+                                    a transmit N-SDU. This Id is used for Tx confirmation from
+                                    CanIf.&lt;/p&gt;
+                                  &lt;p&gt;A symbolic value (preprocessor macro) is also generated for
+                                    each PDU ID.&lt;/p&gt;
+                                  &lt;p&gt;The J1939Tp&apos;s Tx(Dt,Cm,Fc,Direct)NPduTxConf ids has to be unique .&lt;/p&gt;
+                                  &lt;p&gt;Range: 0 .. 65535&lt;/p&gt;
+                                &lt;/html&gt;</L-2>
+                          </DESC>
+                          <SCOPE>ECU</SCOPE>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                          <VALUE-CONFIG-CLASSES>
+                            <ECUC-VALUE-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-VALUE-CONFIGURATION-CLASS>
+                          </VALUE-CONFIG-CLASSES>
+                          <SYMBOLIC-NAME-VALUE>true</SYMBOLIC-NAME-VALUE>
+                          <MAX>65535</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                      </PARAMETERS>
+                      <REFERENCES>
+                        <ECUC-REFERENCE-DEF UUID="a0986985-1869-41ea-a98d-cbfe830e04b1">
+                          <SHORT-NAME>J1939TpTxFcNPduRef</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                &lt;p&gt;Reference to the external Tx PDU definition in the EcuC module.&lt;/p&gt;
+                                &lt;p&gt;Dependency on parameter(s):&lt;/p&gt;
+                                &lt;ul&gt;
+                                  &lt;li&gt;A valid reference to EcuC&apos;s &lt;code&gt;PDU&lt;/code&gt; parameters has to be provided.&lt;/li&gt;
+                                  &lt;li&gt;Uniq EcuC PDU has to be provided as reference for each J1939TpTxFcNPdu.&lt;/li&gt;
+                                  &lt;li&gt;It is not allowed to configured bidirectional J1939Tp PDUs(the same PDU cannot be given
+                                      as reference for &lt;code&gt;J1939TpRxCmNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxCmNPdu&lt;/code&gt;,
+                                      &lt;code&gt;J1939TpRxDtNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxDtNPdu&lt;/code&gt;,
+                                      &lt;code&gt;J1939TpRxCmNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxCmNPdu&lt;/code&gt;,
+                                      &lt;code&gt;J1939TpRxDirectNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxDirectNPdu&lt;/code&gt;,
+                                      &lt;code&gt;J1939TpRxNSdu&lt;/code&gt;, &lt;code&gt;J1939TpTxNSdu&lt;/code&gt;,
+                                      &lt;code&gt;J1939TpRxFcNPdu&lt;/code&gt; and &lt;code&gt;J1939TpTxFcNPdu&lt;/code&gt;).&lt;/li&gt;
+                                &lt;/ul&gt;
+                                &lt;/html&gt;</L-2>
+                          </DESC>
+                          <SCOPE>LOCAL</SCOPE>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <POST-BUILD-VARIANT-VALUE>true</POST-BUILD-VARIANT-VALUE>
+                          <VALUE-CONFIG-CLASSES>
+                            <ECUC-VALUE-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                            </ECUC-VALUE-CONFIGURATION-CLASS>
+                          </VALUE-CONFIG-CLASSES>
+                          <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/EcuC/EcucPduCollection/Pdu</DESTINATION-REF>
+                        </ECUC-REFERENCE-DEF>
+                      </REFERENCES>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                  </SUB-CONTAINERS>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+                <ECUC-PARAM-CONF-CONTAINER-DEF UUID="79e2e1e0-73de-4cfa-a0cb-c90339a3b283">
+                  <SHORT-NAME>J1939TpTxChannel</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                            &lt;p&gt;Defines the configuration of J1939Tp Tx channels.&lt;/p&gt;
+                            &lt;p&gt;A channel referencing N-PDUs without MetaData is used for all N-SDUs
+                              that share the same source address (SA) and the same destination
+                              address (BAM: DA = 0xFF, CMDT: DA != 0xFF).&lt;/p&gt;
+                            &lt;p&gt;A channel with N-PDUs with MetaData is used for all possible source
+                              and destination addresses.&lt;/p&gt;
+                          &lt;/html&gt;</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY-INFINITE>1</UPPER-MULTIPLICITY-INFINITE>
+                  <MULTIPLICITY-CONFIG-CLASSES>
+                    <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                  </MULTIPLICITY-CONFIG-CLASSES>
+                  <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                  <PARAMETERS>
+                    <ECUC-BOOLEAN-PARAM-DEF UUID="c846272c-e9cb-4b29-be42-681a51be7672">
+                      <SHORT-NAME>J1939TpTxCancellationSupport</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                                &lt;p&gt;Enable the transmit cancellation using the API
+                                  J1939Tp_CancelTransmit() for this channel.&lt;/p&gt;
+                                &lt;p&gt;Disable the transmit cancellation.&lt;/p&gt;
+                              &lt;/html&gt;</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <SCOPE>LOCAL</SCOPE>
+                      <MULTIPLICITY-CONFIG-CLASSES>
+                        <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      </MULTIPLICITY-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF UUID="87c80ea6-b6f9-4aad-9663-6f1da87b783d">
+                      <SHORT-NAME>J1939TpTxCanFDSupport</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                                &lt;p&gt;Enable only the CanFD message transmission handling according to J1939-22 SAE on this channel.&lt;/p&gt;
+                                &lt;p&gt;Disable the CanFD message transmission handling on this channel.&lt;/p&gt;
+                              &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SCOPE>LOCAL</SCOPE>
+                      <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="eb2e01c7-24a6-48dd-8732-1cb2e9991a89">
+                      <SHORT-NAME>J1939TpTxDa</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              &lt;p&gt;Defines the destination address (DA) of this channel.&lt;/p&gt;
+                              &lt;p&gt;This parameter is only required for channels with fixed DA which use
+                                N-PDUs with MetaData containing the DA.&lt;/p&gt;
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <SCOPE>LOCAL</SCOPE>
+                      <MULTIPLICITY-CONFIG-CLASSES>
+                        <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                        </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      </MULTIPLICITY-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <POST-BUILD-VARIANT-MULTIPLICITY>true</POST-BUILD-VARIANT-MULTIPLICITY>
+                      <POST-BUILD-VARIANT-VALUE>true</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <MAX>253</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF UUID="7cd35214-5d8d-4631-8100-db251f26c87f">
+                      <SHORT-NAME>J1939TpTxDynamicBlockCalculation</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                                &lt;p&gt;Enable the dynamic calculation of &quot;maximum number of packets that
+                                  can be sent&quot; value in TP.CM_RTS, based on the available amount of
+                                  data in upper layers reported via PduR_J1939TpCopyTxData.&lt;/p&gt;
+                                &lt;p&gt;Disable the dynamic calculation of &quot;maximum number of packets that
+                                  can be sent&quot; value in TP.CM_RTS.&lt;/p&gt;
+                              &lt;/html&gt;</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <SCOPE>LOCAL</SCOPE>
+                      <MULTIPLICITY-CONFIG-CLASSES>
+                        <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      </MULTIPLICITY-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="1ac64944-be60-41bd-bf34-17834e20b8b9">
+                      <SHORT-NAME>J1939TpTxMaxPacketsPerBlock</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              &lt;p&gt;Defines the maximum number of TP.DT frames the transmitting J1939Tp
+                                module is ready to send before waiting for another TP.CM_CTS.&lt;/p&gt;
+                              &lt;p&gt;This parameter is transmitted in the TP.CM_RTS frame, and is thus
+                                only relevant for transmission of messages via CMDT.&lt;/p&gt;
+                              &lt;p&gt;When J1939TpTxDynamicBlockCalculation is enabled, this parameter
+                                specifies a maximum for the calculated value.&lt;/p&gt;
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <SCOPE>LOCAL</SCOPE>
+                      <MULTIPLICITY-CONFIG-CLASSES>
+                        <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      </MULTIPLICITY-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>255</DEFAULT-VALUE>
+                      <MAX>255</MAX>
+                      <MIN>1</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="a71748b0-b487-43e0-8e88-938d49fe3b0e">
+                      <SHORT-NAME>J1939TpTxProtocolType</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                                &lt;p&gt;Defines the Protocol type used by this Tx channel. This parameter
+                                  is only required for channels with fixed destination address.&lt;/p&gt;
+                                &lt;p&gt;J1939TP_PROTOCOL_BAM: required for channels with global address.&lt;/p&gt;
+                                &lt;p&gt;J1939TP_PROTOCOL_CMDT: required for channels with fixed
+                                  destination address.&lt;/p&gt;
+                              &lt;/html&gt;</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <SCOPE>LOCAL</SCOPE>
+                      <MULTIPLICITY-CONFIG-CLASSES>
+                        <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      </MULTIPLICITY-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>J1939TP_PROTOCOL_BAM</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>J1939TP_PROTOCOL_CMDT</SHORT-NAME>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF UUID="0a570da7-639d-47b2-8275-b2b6054472d0">
+                      <SHORT-NAME>J1939TpTxRetrySupport</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                                &lt;p&gt;Enable the support for repetition of failed transmission using
+                                  TP.CM_CTS with a packet number that has already been sent.
+                                  Retransmission is handled via the retry feature of
+                                  PduR_J1939TpCopyTxData.&lt;/p&gt;
+                                &lt;p&gt;Disable the support for repetition of failed transmission using
+                                  TP.CM_CTS with a packet number that has already been sent.&lt;/p&gt;
+                              &lt;/html&gt;</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <SCOPE>LOCAL</SCOPE>
+                      <MULTIPLICITY-CONFIG-CLASSES>
+                        <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      </MULTIPLICITY-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="4dbadb1d-2915-443d-a1fa-a927ed5e1065">
+                      <SHORT-NAME>J1939TpTxSa</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              &lt;p&gt;Defines the Source address (SA) of this channel.&lt;/p&gt;
+                              &lt;p&gt;This parameter is only required for channels with fixed SA which use
+                                N-PDUs with MetaData.&lt;/p&gt;
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <SCOPE>LOCAL</SCOPE>
+                      <MULTIPLICITY-CONFIG-CLASSES>
+                        <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                        </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      </MULTIPLICITY-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <POST-BUILD-VARIANT-MULTIPLICITY>true</POST-BUILD-VARIANT-MULTIPLICITY>
+                      <POST-BUILD-VARIANT-VALUE>true</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <MAX>253</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                  </PARAMETERS>
+                  <SUB-CONTAINERS>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="14ca3d1c-a708-47df-b516-949ebc418a11">
+                      <SHORT-NAME>J1939TpRxFcNPdu</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              &lt;p&gt;Defines This N-PDU represents the TP.CM frame that is used in
+                                reverse direction for a J1939 transport protocol session using the
+                                CMDT protocol type. TP.CM in reverse direction is used for
+                                intermediate and final acknowledgement of received data and to abort
+                                the connection.&lt;/p&gt;
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <MULTIPLICITY-CONFIG-CLASSES>
+                        <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      </MULTIPLICITY-CONFIG-CLASSES>
+                      <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                      <PARAMETERS>
+                        <ECUC-INTEGER-PARAM-DEF UUID="0490314f-e5c5-43cb-80a2-12973d82b2cb">
+                          <SHORT-NAME>J1939TpRxFcNPduId</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                  &lt;p&gt;Defines the configuration of the RxFcNPdu identifier for a
+                                    recieve N-SDU. This N-PDU identifier used for communication with
+                                    CanIf.&lt;/p&gt;
+                                  &lt;p&gt;A symbolic value (preprocessor macro) is also generated for
+                                    each PDU ID.&lt;/p&gt;
+                                   &lt;p&gt;The J1939Tp&apos;s Rx(Dt,Cm,Fc,Direct)NPdu ids has to unique.&lt;/p&gt;
+                                  &lt;p&gt;Range: 0 .. 65535&lt;/p&gt;
+                                &lt;/html&gt;</L-2>
+                          </DESC>
+                          <SCOPE>ECU</SCOPE>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                          <VALUE-CONFIG-CLASSES>
+                            <ECUC-VALUE-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-VALUE-CONFIGURATION-CLASS>
+                          </VALUE-CONFIG-CLASSES>
+                          <SYMBOLIC-NAME-VALUE>true</SYMBOLIC-NAME-VALUE>
+                          <MAX>65535</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                      </PARAMETERS>
+                      <REFERENCES>
+                        <ECUC-REFERENCE-DEF UUID="5d727db1-405e-4824-a845-954633bc3658">
+                          <SHORT-NAME>J1939TpRxFcNPduRef</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                &lt;p&gt;Reference to the external Rx PDU definition in the EcuC module.&lt;/p&gt;
+                                &lt;p&gt;Dependency on parameter(s):&lt;/p&gt;
+                                &lt;ul&gt;
+                                  &lt;li&gt;A valid reference to EcuC&apos;s &lt;code&gt;PDU&lt;/code&gt; parameters has to be provided.&lt;/li&gt;
+                                  &lt;li&gt;Uniq EcuC PDU has to be provided as reference for each J1939TpRxFcNPdu.&lt;/li&gt;
+                                  &lt;li&gt;It is not allowed to configured bidirectional J1939Tp PDUs(the same PDU cannot be given
+                                      as reference for &lt;code&gt;J1939TpRxCmNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxCmNPdu&lt;/code&gt;,
+                                      &lt;code&gt;J1939TpRxDtNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxDtNPdu&lt;/code&gt;,
+                                      &lt;code&gt;J1939TpRxCmNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxCmNPdu&lt;/code&gt;,
+                                      &lt;code&gt;J1939TpRxDirectNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxDirectNPdu&lt;/code&gt;,
+                                      &lt;code&gt;J1939TpRxNSdu&lt;/code&gt;, &lt;code&gt;J1939TpTxNSdu&lt;/code&gt;,
+                                      &lt;code&gt;J1939TpRxFcNPdu&lt;/code&gt; and &lt;code&gt;J1939TpTxFcNPdu&lt;/code&gt;).&lt;/li&gt;
+                                &lt;/ul&gt;
+                                &lt;/html&gt;</L-2>
+                          </DESC>
+                          <SCOPE>LOCAL</SCOPE>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <POST-BUILD-VARIANT-VALUE>true</POST-BUILD-VARIANT-VALUE>
+                          <VALUE-CONFIG-CLASSES>
+                            <ECUC-VALUE-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                            </ECUC-VALUE-CONFIGURATION-CLASS>
+                          </VALUE-CONFIG-CLASSES>
+                          <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/EcuC/EcucPduCollection/Pdu</DESTINATION-REF>
+                        </ECUC-REFERENCE-DEF>
+                      </REFERENCES>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="df8446cf-d018-409a-bd2b-96fd4bf367ba">
+                      <SHORT-NAME>J1939TpTxCmNPdu</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              &lt;p&gt;Defines This N-PDU represents the TP.CM frame of a J1939 transport
+                                protocol session. TP.CM is used both by BAM and CMDT to initialize
+                                the connection. For CMDT, it is also used to abort the connection.&lt;/p&gt;
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <PARAMETERS>
+                        <ECUC-INTEGER-PARAM-DEF UUID="2aea8008-8b87-4c94-a96b-bd512941b86c">
+                          <SHORT-NAME>J1939TpTxCmNPduTxConfId</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                  &lt;p&gt;Defines the configuration of the TxCmNPduTxConf identifier for
+                                    a transmit N-PDU. This N-PDU identifier used for Tx confirmation
+                                    from CanIf.&lt;/p&gt;
+                                  &lt;p&gt;A symbolic value (preprocessor macro) is also generated for
+                                    each PDU ID.&lt;/p&gt;
+                                  &lt;p&gt;The J1939Tp&apos;s Tx(Dt,Cm,Fc,Direct)NPduTxConf ids has to be unique .&lt;/p&gt;
+                                  &lt;p&gt;Range: 0 .. 65535&lt;/p&gt;
+                                &lt;/html&gt;</L-2>
+                          </DESC>
+                          <SCOPE>ECU</SCOPE>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                          <VALUE-CONFIG-CLASSES>
+                            <ECUC-VALUE-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-VALUE-CONFIGURATION-CLASS>
+                          </VALUE-CONFIG-CLASSES>
+                          <SYMBOLIC-NAME-VALUE>true</SYMBOLIC-NAME-VALUE>
+                          <MAX>65535</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                      </PARAMETERS>
+                      <REFERENCES>
+                        <ECUC-REFERENCE-DEF UUID="ce474758-e034-4328-b34e-dc4f194d438d">
+                          <SHORT-NAME>J1939TpTxCmNPduRef</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                &lt;p&gt;Reference to the external Tx PDU definition in the EcuC module.&lt;/p&gt;
+                                &lt;p&gt;Dependency on parameter(s):&lt;/p&gt;
+                                &lt;ul&gt;
+                                  &lt;li&gt;A valid reference to EcuC&apos;s &lt;code&gt;PDU&lt;/code&gt; parameters has to be provided.&lt;/li&gt;
+                                  &lt;li&gt;Uniq EcuC PDU has to be provided as reference for each J1939TpTxCmNPdu.&lt;/li&gt;
+                                  &lt;li&gt;It is not allowed to configured bidirectional J1939Tp PDUs(the same PDU cannot be given
+                                      as reference for &lt;code&gt;J1939TpRxCmNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxCmNPdu&lt;/code&gt;,
+                                      &lt;code&gt;J1939TpRxDtNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxDtNPdu&lt;/code&gt;,
+                                      &lt;code&gt;J1939TpRxCmNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxCmNPdu&lt;/code&gt;,
+                                      &lt;code&gt;J1939TpRxDirectNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxDirectNPdu&lt;/code&gt;,
+                                      &lt;code&gt;J1939TpRxNSdu&lt;/code&gt;, &lt;code&gt;J1939TpTxNSdu&lt;/code&gt;,
+                                      &lt;code&gt;J1939TpRxFcNPdu&lt;/code&gt; and &lt;code&gt;J1939TpTxFcNPdu&lt;/code&gt;).&lt;/li&gt;
+                                &lt;/ul&gt;
+                                &lt;/html&gt;</L-2>
+                          </DESC>
+                          <SCOPE>LOCAL</SCOPE>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <POST-BUILD-VARIANT-VALUE>true</POST-BUILD-VARIANT-VALUE>
+                          <VALUE-CONFIG-CLASSES>
+                            <ECUC-VALUE-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                            </ECUC-VALUE-CONFIGURATION-CLASS>
+                          </VALUE-CONFIG-CLASSES>
+                          <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/EcuC/EcucPduCollection/Pdu</DESTINATION-REF>
+                        </ECUC-REFERENCE-DEF>
+                      </REFERENCES>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="9b287c0a-871d-42bc-81b2-d88b036c3249">
+                      <SHORT-NAME>J1939TpTxDtNPdu</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              &lt;p&gt;Defines this N-PDU represents the TP.DT frame of a J1939 transport
+                              protocol session. TP.DT is used both by BAM and CMDT to transfer the
+                              contents of an N-SDU.&lt;/p&gt;
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <PARAMETERS>
+                        <ECUC-INTEGER-PARAM-DEF UUID="4ba6a1bf-1b15-4b45-b0e4-08246e23a06f">
+                          <SHORT-NAME>J1939TpTxDtNPduTxConfId</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                  &lt;p&gt;Defines the configuration of the TxDtNPduTxConf identifier for
+                                    a transmit N-PDU. This N-PDU identifier used for Tx confirmation
+                                    from CanIf.&lt;/p&gt;
+                                  &lt;p&gt;A symbolic value (preprocessor macro) is also generated for
+                                    each PDU ID.&lt;/p&gt;
+                                  &lt;p&gt;The J1939Tp&apos;s Tx(Dt,Cm,Fc,Direct)NPduTxConf ids has to be unique .&lt;/p&gt;
+                                  &lt;p&gt;Range: 0 .. 65535&lt;/p&gt;
+                                &lt;/html&gt;</L-2>
+                          </DESC>
+                          <SCOPE>ECU</SCOPE>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                          <VALUE-CONFIG-CLASSES>
+                            <ECUC-VALUE-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-VALUE-CONFIGURATION-CLASS>
+                          </VALUE-CONFIG-CLASSES>
+                          <SYMBOLIC-NAME-VALUE>true</SYMBOLIC-NAME-VALUE>
+                          <MAX>65535</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                      </PARAMETERS>
+                      <REFERENCES>
+                        <ECUC-REFERENCE-DEF UUID="80161ce2-5442-4d17-8882-aa4fb5e8b445">
+                          <SHORT-NAME>J1939TpTxDtNPduRef</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                &lt;p&gt;Reference to the external Tx PDU definition in the EcuC module.&lt;/p&gt;
+                                &lt;p&gt;Dependency on parameter(s):&lt;/p&gt;
+                                &lt;ul&gt;
+                                  &lt;li&gt;A valid reference to EcuC&apos;s &lt;code&gt;PDU&lt;/code&gt; parameters has to be provided.&lt;/li&gt;
+                                  &lt;li&gt;Uniq EcuC PDU has to be provided as reference for each J1939TpTxDtNPdu.&lt;/li&gt;
+                                  &lt;li&gt;It is not allowed to configured bidirectional J1939Tp PDUs(the same PDU cannot be given
+                                      as reference for &lt;code&gt;J1939TpRxCmNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxCmNPdu&lt;/code&gt;,
+                                      &lt;code&gt;J1939TpRxDtNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxDtNPdu&lt;/code&gt;,
+                                      &lt;code&gt;J1939TpRxCmNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxCmNPdu&lt;/code&gt;,
+                                      &lt;code&gt;J1939TpRxDirectNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxDirectNPdu&lt;/code&gt;,
+                                      &lt;code&gt;J1939TpRxNSdu&lt;/code&gt;, &lt;code&gt;J1939TpTxNSdu&lt;/code&gt;,
+                                      &lt;code&gt;J1939TpRxFcNPdu&lt;/code&gt; and &lt;code&gt;J1939TpTxFcNPdu&lt;/code&gt;).&lt;/li&gt;
+                                &lt;/ul&gt;
+                                &lt;/html&gt;</L-2>
+                          </DESC>
+                          <SCOPE>LOCAL</SCOPE>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <POST-BUILD-VARIANT-VALUE>true</POST-BUILD-VARIANT-VALUE>
+                          <VALUE-CONFIG-CLASSES>
+                            <ECUC-VALUE-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                            </ECUC-VALUE-CONFIGURATION-CLASS>
+                          </VALUE-CONFIG-CLASSES>
+                          <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/EcuC/EcucPduCollection/Pdu</DESTINATION-REF>
+                        </ECUC-REFERENCE-DEF>
+                      </REFERENCES>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="a9e0f03e-9462-4d8b-a7fe-bd6369d5d1ba">
+                      <SHORT-NAME>J1939TpTxPg</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                                &lt;p&gt;Defines the Parameter group transmitted by the J1939 transport
+                                  layer.&lt;/p&gt;
+                              &lt;/html&gt;</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY-INFINITE>1</UPPER-MULTIPLICITY-INFINITE>
+                      <MULTIPLICITY-CONFIG-CLASSES>
+                        <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      </MULTIPLICITY-CONFIG-CLASSES>
+                      <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                      <PARAMETERS>
+                        <ECUC-BOOLEAN-PARAM-DEF UUID="9684f82c-2c93-456a-aa7a-1d26de0ac85b">
+                          <SHORT-NAME>J1939TpTxPgDynLength</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                    &lt;p&gt;Enable when the N-SDU refers to a PGN with variable length.&lt;/p&gt;
+                                    &lt;p&gt;Disable when the N-SDU refers to a PGN with variable length.&lt;/p&gt;
+                                  &lt;/html&gt;</L-2>
+                          </DESC>
+                          <SCOPE>LOCAL</SCOPE>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                          <VALUE-CONFIG-CLASSES>
+                            <ECUC-VALUE-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-VALUE-CONFIGURATION-CLASS>
+                          </VALUE-CONFIG-CLASSES>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                        </ECUC-BOOLEAN-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="e1694a3a-e424-4cfd-b9ff-3c24ac469c0a">
+                          <SHORT-NAME>J1939TpTxPgPGN</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                  &lt;p&gt;Defines the PGN of the referenced N-SDUs.&lt;/p&gt;
+                                &lt;/html&gt;</L-2>
+                          </DESC>
+                          <SCOPE>LOCAL</SCOPE>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                          <VALUE-CONFIG-CLASSES>
+                            <ECUC-VALUE-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-VALUE-CONFIGURATION-CLASS>
+                          </VALUE-CONFIG-CLASSES>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <MAX>262143</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                      </PARAMETERS>
+                      <SUB-CONTAINERS>
+                        <ECUC-PARAM-CONF-CONTAINER-DEF UUID="fadf316c-78ff-4983-b87c-05c59036dc8d">
+                          <SHORT-NAME>J1939TpTxDirectNPdu</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                  &lt;p&gt;Defines the N-PDU represents the short frame that is used for a
+                                    dynamic length PGN when it has a length of less that 8 bytes.&lt;/p&gt;
+                                &lt;/html&gt;</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <MULTIPLICITY-CONFIG-CLASSES>
+                            <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                          </MULTIPLICITY-CONFIG-CLASSES>
+                          <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                          <PARAMETERS>
+                            <ECUC-INTEGER-PARAM-DEF UUID="83cf82a0-3332-4250-aae0-2e00d19a2e47">
+                              <SHORT-NAME>J1939TpTxDirectNPduTxConfId</SHORT-NAME>
+                              <DESC>
+                                <L-2 L="FOR-ALL">&lt;html&gt;
+                                      &lt;p&gt;Defines the configuration of the TxDirectNPduTxConf
+                                        identifier for a transmit N-PDU. This N-PDU identifier used
+                                        for Tx confirmation from CanIf.&lt;/p&gt;
+                                      &lt;p&gt;A symbolic value (preprocessor macro) is also generated for
+                                        each PDU ID.&lt;/p&gt;
+                                      &lt;p&gt;The J1939Tp&apos;s Tx(Dt,Cm,Fc,Direct)NPduTxConf ids has to be unique .&lt;/p&gt;
+                                      &lt;p&gt;Range: 0 .. 65535&lt;/p&gt;
+                                    &lt;/html&gt;</L-2>
+                              </DESC>
+                              <SCOPE>ECU</SCOPE>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                              <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                              <VALUE-CONFIG-CLASSES>
+                                <ECUC-VALUE-CONFIGURATION-CLASS>
+                                  <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                                  <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                                </ECUC-VALUE-CONFIGURATION-CLASS>
+                              </VALUE-CONFIG-CLASSES>
+                              <SYMBOLIC-NAME-VALUE>true</SYMBOLIC-NAME-VALUE>
+                              <MAX>65535</MAX>
+                              <MIN>0</MIN>
+                            </ECUC-INTEGER-PARAM-DEF>
+                          </PARAMETERS>
+                          <REFERENCES>
+                            <ECUC-REFERENCE-DEF UUID="f4aa2015-3e08-4cb8-944e-be0a4d261bea">
+                              <SHORT-NAME>J1939TpTxDirectNPduRef</SHORT-NAME>
+                              <DESC>
+                                <L-2 L="FOR-ALL">&lt;html&gt;
+                                    &lt;p&gt;Reference to the external Tx PDU definition in the EcuC module.&lt;/p&gt;
+                                    &lt;p&gt;Dependency on parameter(s):&lt;/p&gt;
+                                    &lt;ul&gt;
+                                      &lt;li&gt;A valid reference to EcuC&apos;s &lt;code&gt;PDU&lt;/code&gt; parameters has to be provided.&lt;/li&gt;
+                                      &lt;li&gt;Uniq EcuC PDU has to be provided as reference for each J1939TpTxDirectNPdu.&lt;/li&gt;
+                                      &lt;li&gt;It is not allowed to configured bidirectional J1939Tp PDUs(the same PDU cannot be given
+                                          as reference for &lt;code&gt;J1939TpRxCmNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxCmNPdu&lt;/code&gt;,
+                                          &lt;code&gt;J1939TpRxDtNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxDtNPdu&lt;/code&gt;,
+                                          &lt;code&gt;J1939TpRxCmNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxCmNPdu&lt;/code&gt;,
+                                          &lt;code&gt;J1939TpRxDirectNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxDirectNPdu&lt;/code&gt;,
+                                          &lt;code&gt;J1939TpRxNSdu&lt;/code&gt;, &lt;code&gt;J1939TpTxNSdu&lt;/code&gt;,
+                                          &lt;code&gt;J1939TpRxFcNPdu&lt;/code&gt; and &lt;code&gt;J1939TpTxFcNPdu&lt;/code&gt;).&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                    &lt;/html&gt;</L-2>
+                              </DESC>
+                              <SCOPE>LOCAL</SCOPE>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                              <POST-BUILD-VARIANT-VALUE>true</POST-BUILD-VARIANT-VALUE>
+                              <VALUE-CONFIG-CLASSES>
+                                <ECUC-VALUE-CONFIGURATION-CLASS>
+                                  <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                                  <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                                </ECUC-VALUE-CONFIGURATION-CLASS>
+                              </VALUE-CONFIG-CLASSES>
+                              <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/EcuC/EcucPduCollection/Pdu</DESTINATION-REF>
+                            </ECUC-REFERENCE-DEF>
+                          </REFERENCES>
+                        </ECUC-PARAM-CONF-CONTAINER-DEF>
+                        <ECUC-PARAM-CONF-CONTAINER-DEF UUID="e5e6f40b-7a82-491d-91f2-68b5d8c0e0af">
+                          <SHORT-NAME>J1939TpTxNSdu</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                    &lt;p&gt;Defines the the parameters that are relevant for the
+                                      transmission of a specific N-SDU.&lt;/p&gt;
+                                  &lt;/html&gt;</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY-INFINITE>1</UPPER-MULTIPLICITY-INFINITE>
+                          <MULTIPLICITY-CONFIG-CLASSES>
+                            <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                          </MULTIPLICITY-CONFIG-CLASSES>
+                          <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                          <PARAMETERS>
+                            <ECUC-INTEGER-PARAM-DEF UUID="15e726b7-d2af-4d6a-a40c-e526c95b12c7">
+                              <SHORT-NAME>J1939TpTxNSduId</SHORT-NAME>
+                              <DESC>
+                                <L-2 L="FOR-ALL">&lt;html&gt;
+                                        &lt;p&gt;Defines the configuration of the TxNSdu identifier for a
+                                          transmit N-PDU. This N-SDU identifier used for
+                                          communication with PduR.&lt;/p&gt;
+                                        &lt;p&gt;A symbolic value (preprocessor macro) is also generated
+                                          for each PDU ID.&lt;/p&gt;
+                                        &lt;p&gt;The J1939Tp&apos;s TxNSdu ids has to be zero based and
+                                          consecutive.&lt;/p&gt;
+                                        &lt;p&gt;Range: 0 .. 65535&lt;/p&gt;
+                                      &lt;/html&gt;</L-2>
+                              </DESC>
+                              <SCOPE>ECU</SCOPE>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                              <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                              <VALUE-CONFIG-CLASSES>
+                                <ECUC-VALUE-CONFIGURATION-CLASS>
+                                  <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                                  <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                                </ECUC-VALUE-CONFIGURATION-CLASS>
+                              </VALUE-CONFIG-CLASSES>
+                              <SYMBOLIC-NAME-VALUE>true</SYMBOLIC-NAME-VALUE>
+                              <MAX>65535</MAX>
+                              <MIN>0</MIN>
+                            </ECUC-INTEGER-PARAM-DEF>
+                            <ECUC-ENUMERATION-PARAM-DEF UUID="3b7b4f11-bb2e-4578-8443-babe912fb248">
+                              <SHORT-NAME>J1939TpTxAssuranceDataType</SHORT-NAME>
+                              <DESC>
+                                <L-2 L="FOR-ALL">&lt;html&gt;
+                                      &lt;p&gt;Type of the assurance data for CanFD transmission.&lt;/p&gt;
+                                      &lt;p&gt;Enabled only if the Tx channel supports CanFD transmission&lt;/p&gt;
+                                      &lt;ul&gt;
+                                        &lt;li&gt;J1939TP_NO_ASSURANCE_DATA: No assurance data for this NSDU.&lt;/li&gt;
+                                        &lt;li&gt;J1939TP_CYBERSECURITY_ASSURANCE_DATA: Cybersecurity assurance data for this NSDU.&lt;/li&gt;
+                                        &lt;li&gt;J1939TP_FUNCTIONAL_SAFETY_ASSURANCE_DATA: Functional safety assurance data for this NSDU.&lt;/li&gt;
+                                        &lt;li&gt;J1939TP_COMBINED_CYBERSECURITY_FUNCTIONAL_SAFETY_ASSURANCE_DATA: Combined assurance data for this NSDU.&lt;/li&gt;
+                                      &lt;/ul&gt;
+                                      &lt;/html&gt;</L-2>
+                              </DESC>
+                              <!-- @Calculated /TS_TxDxM1I2R0/J1939Tp/J1939TpConfiguration/J1939TpTxChannel/J1939TpTxPg/J1939TpTxNSdu/J1939TpTxAssuranceDataType: ENABLE(XPath: node:existsAndTrue(../../../../../J1939TpTxCanFDSupport))-->
+                              <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                              <!-- @CalculatedEnd -->
+                              <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                              <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                              <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                              <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                              <VALUE-CONFIG-CLASSES>
+                                <ECUC-VALUE-CONFIGURATION-CLASS>
+                                  <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                                  <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                                </ECUC-VALUE-CONFIGURATION-CLASS>
+                              </VALUE-CONFIG-CLASSES>
+                              <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                              <DEFAULT-VALUE>J1939TP_NO_ASSURANCE_DATA</DEFAULT-VALUE>
+                              <LITERALS>
+                                <ECUC-ENUMERATION-LITERAL-DEF>
+                                  <SHORT-NAME>J1939TP_NO_ASSURANCE_DATA</SHORT-NAME>
+                                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                                </ECUC-ENUMERATION-LITERAL-DEF>
+                                <ECUC-ENUMERATION-LITERAL-DEF>
+                                  <SHORT-NAME>J1939TP_CYBERSECURITY_ASSURANCE_DATA</SHORT-NAME>
+                                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                                </ECUC-ENUMERATION-LITERAL-DEF>
+                                <ECUC-ENUMERATION-LITERAL-DEF>
+                                  <SHORT-NAME>J1939TP_FUNCTIONAL_SAFETY_ASSURANCE_DATA</SHORT-NAME>
+                                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                                </ECUC-ENUMERATION-LITERAL-DEF>
+                                <ECUC-ENUMERATION-LITERAL-DEF>
+                                  <SHORT-NAME>J1939TP_COMBINED_CYBERSECURITY_FUNCTIONAL_SAFETY_ASSURANCE_DATA</SHORT-NAME>
+                                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                                </ECUC-ENUMERATION-LITERAL-DEF>
+                              </LITERALS>
+                            </ECUC-ENUMERATION-PARAM-DEF>
+                            <ECUC-INTEGER-PARAM-DEF UUID="166887b5-3bab-4718-bdfd-3377cf087afb">
+                              <SHORT-NAME>J1939TpTxAssuranceDataLength</SHORT-NAME>
+                              <DESC>
+                                <L-2 L="FOR-ALL">&lt;html&gt;
+                                      &lt;p&gt;Length of the assurance data for CanFD transmission in the EOMS if supported for this NSDU.&lt;/p&gt;
+                                      &lt;p&gt;Enabled only if the Tx channel supports CanFD transmission and the assurance data type isn&apos;t J1939TP_NO_ASSURANCE_DATA.&lt;/p&gt;
+                                      &lt;/html&gt;</L-2>
+                              </DESC>
+                              <!-- @Calculated /TS_TxDxM1I2R0/J1939Tp/J1939TpConfiguration/J1939TpTxChannel/J1939TpTxPg/J1939TpTxNSdu/J1939TpTxAssuranceDataLength: ENABLE(XPath: (node:existsAndTrue(../../../../../J1939TpTxCanFDSupport)) and (../J1939TpTxAssuranceDataType != &apos;J1939TP_NO_ASSURANCE_DATA&apos;))-->
+                              <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                              <!-- @CalculatedEnd -->
+                              <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                              <SCOPE>ECU</SCOPE>
+                              <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                              <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                              <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                              <VALUE-CONFIG-CLASSES>
+                                <ECUC-VALUE-CONFIGURATION-CLASS>
+                                  <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                                  <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                                </ECUC-VALUE-CONFIGURATION-CLASS>
+                              </VALUE-CONFIG-CLASSES>
+                              <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                              <MAX>52</MAX>
+                              <MIN>1</MIN>
+                            </ECUC-INTEGER-PARAM-DEF>
+                          </PARAMETERS>
+                          <REFERENCES>
+                            <ECUC-REFERENCE-DEF UUID="a0fdbc88-365e-44d0-849e-086cb4753d4e">
+                              <SHORT-NAME>J1939TpTxNSduRef</SHORT-NAME>
+                              <DESC>
+                                <L-2 L="FOR-ALL">&lt;html&gt;
+                                      &lt;p&gt;Reference to the external Tx PDU definition in the EcuC module.&lt;/p&gt;
+                                      &lt;p&gt;Dependency on parameter(s):&lt;/p&gt;
+                                      &lt;ul&gt;
+                                        &lt;li&gt;A valid reference to EcuC&apos;s &lt;code&gt;PDU&lt;/code&gt; parameters has to be provided.&lt;/li&gt;
+                                        &lt;li&gt;Uniq EcuC PDU has to be provided as reference for each J1939TpTxNSdu.&lt;/li&gt;
+                                        &lt;li&gt;It is not allowed to configured bidirectional J1939Tp PDUs(the same PDU cannot be given
+                                            as reference for &lt;code&gt;J1939TpRxCmNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxCmNPdu&lt;/code&gt;,
+                                            &lt;code&gt;J1939TpRxDtNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxDtNPdu&lt;/code&gt;,
+                                            &lt;code&gt;J1939TpRxCmNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxCmNPdu&lt;/code&gt;,
+                                            &lt;code&gt;J1939TpRxDirectNPdu&lt;/code&gt;, &lt;code&gt;J1939TpTxDirectNPdu&lt;/code&gt;,
+                                            &lt;code&gt;J1939TpRxNSdu&lt;/code&gt;, &lt;code&gt;J1939TpTxNSdu&lt;/code&gt;,
+                                            &lt;code&gt;J1939TpRxFcNPdu&lt;/code&gt; and &lt;code&gt;J1939TpTxFcNPdu&lt;/code&gt;).&lt;/li&gt;
+                                      &lt;/ul&gt;
+                                      &lt;/html&gt;</L-2>
+                              </DESC>
+                              <SCOPE>LOCAL</SCOPE>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                              <POST-BUILD-VARIANT-VALUE>true</POST-BUILD-VARIANT-VALUE>
+                              <VALUE-CONFIG-CLASSES>
+                                <ECUC-VALUE-CONFIGURATION-CLASS>
+                                  <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                                  <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                                </ECUC-VALUE-CONFIGURATION-CLASS>
+                              </VALUE-CONFIG-CLASSES>
+                              <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/EcuC/EcucPduCollection/Pdu</DESTINATION-REF>
+                            </ECUC-REFERENCE-DEF>
+                          </REFERENCES>
+                        </ECUC-PARAM-CONF-CONTAINER-DEF>
+                      </SUB-CONTAINERS>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                  </SUB-CONTAINERS>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="cc7d6893-4caa-40af-98f2-0fec25f7d2d4">
+              <SHORT-NAME>J1939TpGeneral</SHORT-NAME>
+              <DESC>
+                <L-2 L="FOR-ALL">&lt;html&gt;
+                      &lt;p&gt;Defines the general configuration parameters of the J1939Tp  module.&lt;/p&gt;
+                    &lt;/html&gt;</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="c5e2a975-7735-4173-8613-892a921aec8b">
+                  <SHORT-NAME>J1939TpCancellationSupport</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                          &lt;p&gt;Enable transmit and receive cancellation.&lt;/p&gt;
+                          &lt;p&gt;Disable transmit and receive cancellation.&lt;/p&gt;
+                        &lt;/html&gt;</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <SCOPE>LOCAL</SCOPE>
+                  <MULTIPLICITY-CONFIG-CLASSES>
+                    <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                  </MULTIPLICITY-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="dc81d450-37d3-11e3-aa6e-0800200c9a66">
+                  <SHORT-NAME>J1939TpRelocatablePbcfgEnable</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                         Enables/disables support for relocatable postbuild configuration.
+                         &lt;ul&gt;
+                           &lt;li&gt;True: Postbuild configuration relocatable in memory.&lt;/li&gt;
+                           &lt;li&gt;False: Postbuild configuration not relocatable in memory.&lt;/li&gt;
+                         &lt;/ul&gt;
+                       &lt;/html&gt;</L-2>
+                  </DESC>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="5af7f270-4ec0-44f9-83c6-7ecf271c1934">
+                  <SHORT-NAME>J1939TpDevErrorDetect</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                          &lt;p&gt;Enable Switches the development error detection and notification ON.&lt;/p&gt;
+                          &lt;p&gt;Disable Switches the development error detection and notification OFF.&lt;/p&gt;
+                        &lt;/html&gt;</L-2>
+                  </DESC>
+                  <SCOPE>LOCAL</SCOPE>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="5af7f270-4ec0-44f9-83c6-7ecf271c1934">
+                  <SHORT-NAME>J1939TpMultipleConectionSameSaDa</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                         Allow multiple connections from the same sa/da using a queueue mechanism.
+                         This parameter is only relevant for classical CAN (not CAN FD)
+                       &lt;/html&gt;</L-2>
+                  </DESC>
+                  <SCOPE>LOCAL</SCOPE>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="bee9b07c-68f6-4be3-b221-7939a9945082">
+                  <SHORT-NAME>J1939TpReliableTxConfirmation</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                          &lt;p&gt;Enable Switches the reliable TxConfirmation ON.&lt;/p&gt;
+                          &lt;p&gt;Disable Switches the reliable TxConfirmation OFF.&lt;/p&gt;
+                          &lt;ul&gt;
+                            &lt;li&gt;If the CanFD is enabled for TxChannel and C-PGN is transmitted using the CanFD,&lt;/li&gt;
+                            &lt;li&gt;Then this parameter must be disabled as both the PduR and the IpduM don&apos;t support reliable TxConfirmation.&lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/html&gt;</L-2>
+                  </DESC>
+                  <SCOPE>LOCAL</SCOPE>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>true</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-FLOAT-PARAM-DEF UUID="9082917f-d1e7-4244-a307-d0c20f9f2908">
+                  <SHORT-NAME>J1939TpTxConfirmationTimeOut</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                        &lt;p&gt;Defines the time for the J1939TpTxConfirmationTimeOut (in seconds).&lt;/p&gt;
+                        &lt;p&gt;Enabled if the reliable TxConfirmation is switched OFF.&lt;/p&gt;
+                      &lt;/html&gt;</L-2>
+                  </DESC>
+                  <!-- @Calculated /TS_TxDxM1I2R0/J1939Tp/J1939TpGeneral/J1939TpTxConfirmationTimeOut: ENABLE(XPath: node:existsAndFalse(../J1939TpReliableTxConfirmation))-->
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <!-- @CalculatedEnd -->
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <SCOPE>ECU</SCOPE>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <MAX>65.535</MAX>
+                  <MIN>0.0</MIN>
+                </ECUC-FLOAT-PARAM-DEF>
+                <ECUC-FLOAT-PARAM-DEF UUID="fd889746-8354-4eae-92de-1d9e8b9acaad">
+                  <SHORT-NAME>J1939TpMainFunctionPeriod</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                        &lt;p&gt;Configure the time for the MainFunction (in seconds).&lt;/p&gt;
+                      &lt;/html&gt;</L-2>
+                  </DESC>
+                  <SCOPE>ECU</SCOPE>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <MAX>65.535</MAX>
+                  <MIN>0.0</MIN>
+                </ECUC-FLOAT-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="918e85c5-8e77-4276-8bd4-8633bc6cad36">
+                  <SHORT-NAME>J1939TpVersionInfoApi</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                          &lt;p&gt;Enable the Pre-processor switch for version info API support.&lt;/p&gt;
+                          &lt;p&gt;Diasable the Pre-processor switch for version info API support.&lt;/p&gt;
+                        &lt;/html&gt;</L-2>
+                  </DESC>
+                  <SCOPE>LOCAL</SCOPE>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-FLOAT-PARAM-DEF UUID="3f75b82c-24d2-11eb-adc1-0242ac120002">
+                  <SHORT-NAME>J1939TpTBAMMinTimeout</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                        &lt;p&gt;Configure the timeout in seconds for BAM data frames.&lt;/p&gt;
+                        &lt;p&gt;After this time the J1939Tp shall transmit the next data frame.&lt;/p&gt;
+                      &lt;/html&gt;</L-2>
+                  </DESC>
+                  <!-- @Calculated /TS_TxDxM1I2R0/J1939Tp/J1939TpGeneral/J1939TpTBAMMinTimeout: ENABLE(XPath: count(../../J1939TpConfiguration/eb-list::*/J1939TpTxChannel/eb-list::*[(not(node:empty(J1939TpTxProtocolType))) and (J1939TpTxProtocolType = &apos;J1939TP_PROTOCOL_BAM&apos;)]) &gt; 0)-->
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <!-- @CalculatedEnd -->
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <SCOPE>LOCAL</SCOPE>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <POST-BUILD-VARIANT-MULTIPLICITY>false</POST-BUILD-VARIANT-MULTIPLICITY>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>0.05</DEFAULT-VALUE>
+                  <MAX>0.2</MAX>
+                  <MIN>0.01</MIN>
+                </ECUC-FLOAT-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="8a30c545-1dd0-42f0-b055-211f6a797b52">
+                  <SHORT-NAME>J1939TpTxChannelHandling</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                          &lt;p&gt;Enabled it will allow parallel conections with same SA/DA on different channels, channels must be configured to map different CAN channels&lt;/p&gt;
+                          &lt;p&gt;Disabled it will not allow parallel conections with same SA/DA on different channels&lt;/p&gt;
+                        &lt;/html&gt;</L-2>
+                  </DESC>
+                  <SCOPE>LOCAL</SCOPE>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                  <VALUE-CONFIG-CLASSES>
+                    <ECUC-VALUE-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-VALUE-CONFIGURATION-CLASS>
+                  </VALUE-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+              </PARAMETERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+          </CONTAINERS>
+        </ECUC-MODULE-DEF>
+      </ELEMENTS>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

@@ -1,0 +1,12 @@
+########### CORE PART OF THE TEMPLATE - START ###########
+#parse("make/Os_objects.make.vm")
+########### CORE PART OF THE TEMPLATE - END #############
+########### TARGET PART OF THE TEMPLATE - START ###########
+########### Arch specific velocimacros that can be called from the common code parts ###########
+
+$hashChars#* ################################################################### *#
+# TRICORE CSAs
+$hashChars#* ################################################################### *#
+OS_TRICORE_NCSA_LIST = #foreach( $csaPerCore in $OsConfig.getPerCoreCSAs() )$csaPerCore.getValue()#if($foreach.hasNext),#end#end
+
+endif

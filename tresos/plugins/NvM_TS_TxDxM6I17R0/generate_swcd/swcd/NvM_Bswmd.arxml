@@ -1,0 +1,1859 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+[!AUTOSPACING!]
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-3-0.xsd">
+[!VAR "ApiCfgClass" = "NvMCommon/NvMApiConfigClass"!]
+[!IF "(node:exists(NvMCommon/NvMServiceAPI)) and (NvMCommon/NvMServiceAPI/NvMDefaultASRServiceAPI = 'AUTOSAR_32')"!]
+[!VAR "bswModuleEntryPackageName" = "'SwServices'"!]
+[!VAR "swComponentTypePackageName" = "'ComponentTypes'"!]
+[!ELSE!]
+[!VAR "bswModuleEntryPackageName" = "'BswModuleEntrys'"!]
+[!VAR "swComponentTypePackageName" = "'SwComponentTypes'"!]
+[!ENDIF!]
+[!VAR "MF_CycleTime" = "NvMCommon/NvMMainFunctionCycleTime"!]
+[!VAR "BSW_DISTRIBUTION_ENABLED" = "count(as:modconf('NvM')[1]/NvMCommon/NvMEcucPartitionRef/eb-list::*) > 1"!]
+[!IF "$BSW_DISTRIBUTION_ENABLED"!]
+[!VAR "MasterPartitionName" = "substring-after(as:modconf('NvM')[1]/NvMCommon/NvMMasterEcucPartitionRef,'EcucPartitionCollection/')"!][!//
+[!ELSE!][!//
+[!VAR "MasterPartitionName" = "'0'"!][!//
+[!ENDIF!]
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>AUTOSAR_NvM</SHORT-NAME>
+      <AR-PACKAGES>
+[!IF "node:existsAndTrue(NvMCommon/NvMRteUsage)"!]
+        <AR-PACKAGE>
+          <SHORT-NAME>SwcBswMappings</SHORT-NAME>
+          <ELEMENTS>
+            <SWC-BSW-MAPPING>
+              <SHORT-NAME>SwcBswMapping_0</SHORT-NAME>
+              <BSW-BEHAVIOR-REF DEST="BSW-INTERNAL-BEHAVIOR">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$MasterPartitionName"!]</BSW-BEHAVIOR-REF>
+              <RUNNABLE-MAPPINGS>
+                <SWC-BSW-RUNNABLE-MAPPING>
+                  <BSW-ENTITY-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$MasterPartitionName"!]/NvM_MainFunction</BSW-ENTITY-REF>
+                  <SWC-RUNNABLE-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_NvM/[!"$swComponentTypePackageName"!]/NvM/NvMIntBeh/RE_MainFunction</SWC-RUNNABLE-REF>
+                </SWC-BSW-RUNNABLE-MAPPING>
+              </RUNNABLE-MAPPINGS>
+              <SWC-BEHAVIOR-REF DEST="SWC-INTERNAL-BEHAVIOR">/AUTOSAR_NvM/[!"$swComponentTypePackageName"!]/NvM/NvMIntBeh</SWC-BEHAVIOR-REF>
+            </SWC-BSW-MAPPING>
+[!IF "$BSW_DISTRIBUTION_ENABLED"!]
+    [!VAR "PartitionCounter" = "0"!]
+    [!LOOP "as:modconf('NvM')[1]/NvMCommon/NvMEcucPartitionRef/eb-list::*"!]
+    [!IF "as:modconf('NvM')[1]/NvMCommon/NvMMasterEcucPartitionRef != (.)"!]
+      [!VAR "PartitionName" = "substring-after(name(),'EcucPartitionCollection/')"!]
+      [!VAR "PartitionCounter" = "$PartitionCounter + 1"!]
+            <SWC-BSW-MAPPING>
+              <SHORT-NAME>SwcBswMapping_[!"num:i($PartitionCounter)"!]</SHORT-NAME>
+              <BSW-BEHAVIOR-REF DEST="BSW-INTERNAL-BEHAVIOR">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$PartitionName"!]</BSW-BEHAVIOR-REF>
+              <RUNNABLE-MAPPINGS>
+                <SWC-BSW-RUNNABLE-MAPPING>
+                  <BSW-ENTITY-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$PartitionName"!]/NvM_1_[!"$PartitionName"!]_MainFunction</BSW-ENTITY-REF>
+                  <SWC-RUNNABLE-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_NvM/[!"$swComponentTypePackageName"!]/NvM_[!"$PartitionName"!]/NvMIntBeh/RE_[!"$PartitionName"!]_MainFunction</SWC-RUNNABLE-REF>
+                </SWC-BSW-RUNNABLE-MAPPING>
+              </RUNNABLE-MAPPINGS>
+              <SWC-BEHAVIOR-REF DEST="SWC-INTERNAL-BEHAVIOR">/AUTOSAR_NvM/[!"$swComponentTypePackageName"!]/NvM_[!"$PartitionName"!]/NvMIntBeh</SWC-BEHAVIOR-REF>
+            </SWC-BSW-MAPPING>
+    [!ENDIF!]
+    [!ENDLOOP!]   
+[!ENDIF!]
+          </ELEMENTS>
+        </AR-PACKAGE>
+[!ENDIF!]       
+        <AR-PACKAGE>
+          <SHORT-NAME>BswModuleDescriptions</SHORT-NAME>
+          <ELEMENTS>
+            <BSW-MODULE-DESCRIPTION>
+              <SHORT-NAME>NvM</SHORT-NAME>
+              <MODULE-ID>20</MODULE-ID>
+              <PROVIDED-ENTRYS>
+                <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                  <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/[!"$bswModuleEntryPackageName"!]/NvM_MainFunction</BSW-MODULE-ENTRY-REF>
+                </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+[!IF "$BSW_DISTRIBUTION_ENABLED"!]
+[!IF "($ApiCfgClass = 'NVM_API_CONFIG_CLASS_2') or ($ApiCfgClass = 'NVM_API_CONFIG_CLASS_3')"!]
+                <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                  <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_Dummy_SatelliteContext</BSW-MODULE-ENTRY-REF>
+                </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+[!ENDIF!]
+[!IF "$ApiCfgClass = 'NVM_API_CONFIG_CLASS_3'"!]
+                <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                  <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_Dummy_MasterContext</BSW-MODULE-ENTRY-REF>
+                </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                  <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR40_EraseNvBlock</BSW-MODULE-ENTRY-REF>
+                </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                  <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR40_InvalidateNvBlock</BSW-MODULE-ENTRY-REF>
+                </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+[!ENDIF!]
+[!IF "($ApiCfgClass = 'NVM_API_CONFIG_CLASS_2') or ($ApiCfgClass = 'NVM_API_CONFIG_CLASS_3')"!]
+                <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                  <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR40_ReadBlock</BSW-MODULE-ENTRY-REF>
+                </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                  <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR42_ReadPRAMBlock</BSW-MODULE-ENTRY-REF>
+                </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                  <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR40_RestoreBlockDefaults</BSW-MODULE-ENTRY-REF>
+                </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                  <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR42_RestorePRAMBlockDefaults</BSW-MODULE-ENTRY-REF>
+                </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                  <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR40_WriteBlock</BSW-MODULE-ENTRY-REF>
+                </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                  <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR42_WritePRAMBlock</BSW-MODULE-ENTRY-REF>
+                </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                  <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR40_CancelJobs</BSW-MODULE-ENTRY-REF>
+                </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+[!ENDIF!]
+                <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                  <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_SchM_JobFinished</BSW-MODULE-ENTRY-REF>
+                </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+[!ENDIF!]
+              </PROVIDED-ENTRYS>
+[!IF "$BSW_DISTRIBUTION_ENABLED"!]
+              <PROVIDED-CLIENT-SERVER-ENTRYS>
+              <!-- !LINKSTO NvM.BswDistribution.SchMCallService,1 -->
+              <!-- !LINKSTO NvM.BswDistribution.SchMCallJobEnd,1 -->
+    [!LOOP "as:modconf('NvM')[1]/NvMCommon/NvMEcucPartitionRef/eb-list::*"!]
+    [!IF "as:modconf('NvM')[1]/NvMCommon/NvMMasterEcucPartitionRef != (.)"!]
+      [!VAR "PartitionName" = "substring-after(name(),'EcucPartitionCollection/')"!]
+                <BSW-MODULE-CLIENT-SERVER-ENTRY>
+                   <SHORT-NAME>ProvidedCSEntry_NvM_1_[!"$PartitionName"!]_JobFinished</SHORT-NAME>
+                   <ENCAPSULATED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_SchM_JobFinished</ENCAPSULATED-ENTRY-REF>
+                   <IS-REENTRANT>true</IS-REENTRANT>
+                   <IS-SYNCHRONOUS>false</IS-SYNCHRONOUS>
+                </BSW-MODULE-CLIENT-SERVER-ENTRY>
+    [!ENDIF!]
+    [!ENDLOOP!]
+  [!IF "$ApiCfgClass = 'NVM_API_CONFIG_CLASS_3'"!]
+                <BSW-MODULE-CLIENT-SERVER-ENTRY>
+                   <SHORT-NAME>ProvidedCSEntry_NvM_EraseNvBlock</SHORT-NAME>
+                   <ENCAPSULATED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR40_EraseNvBlock</ENCAPSULATED-ENTRY-REF>
+                   <IS-REENTRANT>true</IS-REENTRANT>
+                   <IS-SYNCHRONOUS>false</IS-SYNCHRONOUS>
+                </BSW-MODULE-CLIENT-SERVER-ENTRY>
+                <BSW-MODULE-CLIENT-SERVER-ENTRY>
+                   <SHORT-NAME>ProvidedCSEntry_NvM_InvalidateNvBlock</SHORT-NAME>
+                   <ENCAPSULATED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR40_InvalidateNvBlock</ENCAPSULATED-ENTRY-REF>
+                   <IS-REENTRANT>true</IS-REENTRANT>
+                   <IS-SYNCHRONOUS>false</IS-SYNCHRONOUS>
+                </BSW-MODULE-CLIENT-SERVER-ENTRY>
+  [!ENDIF!]
+  [!IF "($ApiCfgClass = 'NVM_API_CONFIG_CLASS_2') or ($ApiCfgClass = 'NVM_API_CONFIG_CLASS_3')"!]
+                <BSW-MODULE-CLIENT-SERVER-ENTRY>
+                   <SHORT-NAME>ProvidedCSEntry_NvM_ReadBlock</SHORT-NAME>
+                   <ENCAPSULATED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR40_ReadBlock</ENCAPSULATED-ENTRY-REF>
+                   <IS-REENTRANT>true</IS-REENTRANT>
+                   <IS-SYNCHRONOUS>false</IS-SYNCHRONOUS>
+                </BSW-MODULE-CLIENT-SERVER-ENTRY>
+                <BSW-MODULE-CLIENT-SERVER-ENTRY>
+                   <SHORT-NAME>ProvidedCSEntry_NvM_ReadPRAMBlock</SHORT-NAME>
+                   <ENCAPSULATED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR42_ReadPRAMBlock</ENCAPSULATED-ENTRY-REF>
+                   <IS-REENTRANT>true</IS-REENTRANT>
+                   <IS-SYNCHRONOUS>false</IS-SYNCHRONOUS>
+                </BSW-MODULE-CLIENT-SERVER-ENTRY>
+                <BSW-MODULE-CLIENT-SERVER-ENTRY>
+                   <SHORT-NAME>ProvidedCSEntry_NvM_RestoreBlockDefaults</SHORT-NAME>
+                   <ENCAPSULATED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR40_RestoreBlockDefaults</ENCAPSULATED-ENTRY-REF>
+                   <IS-REENTRANT>true</IS-REENTRANT>
+                   <IS-SYNCHRONOUS>false</IS-SYNCHRONOUS>
+                </BSW-MODULE-CLIENT-SERVER-ENTRY>
+                <BSW-MODULE-CLIENT-SERVER-ENTRY>
+                   <SHORT-NAME>ProvidedCSEntry_NvM_RestorePRAMBlockDefaults</SHORT-NAME>
+                   <ENCAPSULATED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR42_RestorePRAMBlockDefaults</ENCAPSULATED-ENTRY-REF>
+                   <IS-REENTRANT>true</IS-REENTRANT>
+                   <IS-SYNCHRONOUS>false</IS-SYNCHRONOUS>
+                </BSW-MODULE-CLIENT-SERVER-ENTRY>
+                <BSW-MODULE-CLIENT-SERVER-ENTRY>
+                   <SHORT-NAME>ProvidedCSEntry_NvM_WriteBlock</SHORT-NAME>
+                   <ENCAPSULATED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR40_WriteBlock</ENCAPSULATED-ENTRY-REF>
+                   <IS-REENTRANT>true</IS-REENTRANT>
+                   <IS-SYNCHRONOUS>false</IS-SYNCHRONOUS>
+                </BSW-MODULE-CLIENT-SERVER-ENTRY>
+                <BSW-MODULE-CLIENT-SERVER-ENTRY>
+                   <SHORT-NAME>ProvidedCSEntry_NvM_WritePRAMBlock</SHORT-NAME>
+                   <ENCAPSULATED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR42_WritePRAMBlock</ENCAPSULATED-ENTRY-REF>
+                   <IS-REENTRANT>true</IS-REENTRANT>
+                   <IS-SYNCHRONOUS>false</IS-SYNCHRONOUS>
+                </BSW-MODULE-CLIENT-SERVER-ENTRY>
+                <BSW-MODULE-CLIENT-SERVER-ENTRY>
+                   <SHORT-NAME>ProvidedCSEntry_NvM_CancelJobs</SHORT-NAME>
+                   <ENCAPSULATED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR40_CancelJobs</ENCAPSULATED-ENTRY-REF>
+                   <IS-REENTRANT>true</IS-REENTRANT>
+                   <IS-SYNCHRONOUS>false</IS-SYNCHRONOUS>
+                </BSW-MODULE-CLIENT-SERVER-ENTRY>
+  [!ENDIF!]
+              </PROVIDED-CLIENT-SERVER-ENTRYS>
+              <REQUIRED-CLIENT-SERVER-ENTRYS>
+    [!LOOP "as:modconf('NvM')[1]/NvMCommon/NvMEcucPartitionRef/eb-list::*"!]
+    [!IF "as:modconf('NvM')[1]/NvMCommon/NvMMasterEcucPartitionRef != (.)"!]
+      [!VAR "PartitionName" = "substring-after(name(),'EcucPartitionCollection/')"!]
+                <BSW-MODULE-CLIENT-SERVER-ENTRY>
+                   <SHORT-NAME>RequiredCSEntry_NvM_1_[!"$PartitionName"!]_JobFinished</SHORT-NAME>
+                   <ENCAPSULATED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_SchM_JobFinished</ENCAPSULATED-ENTRY-REF>
+                   <IS-REENTRANT>true</IS-REENTRANT>
+                   <IS-SYNCHRONOUS>false</IS-SYNCHRONOUS>
+                </BSW-MODULE-CLIENT-SERVER-ENTRY>
+    [!ENDIF!]
+    [!ENDLOOP!]
+  [!IF "$ApiCfgClass = 'NVM_API_CONFIG_CLASS_3'"!]
+                <BSW-MODULE-CLIENT-SERVER-ENTRY>
+                  <SHORT-NAME>RequiredCSEntry_NvM_EraseNvBlock</SHORT-NAME>
+                  <ENCAPSULATED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR40_EraseNvBlock</ENCAPSULATED-ENTRY-REF>
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>false</IS-SYNCHRONOUS>
+                </BSW-MODULE-CLIENT-SERVER-ENTRY>
+                <BSW-MODULE-CLIENT-SERVER-ENTRY>
+                  <SHORT-NAME>RequiredCSEntry_NvM_InvalidateNvBlock</SHORT-NAME>
+                  <ENCAPSULATED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR40_InvalidateNvBlock</ENCAPSULATED-ENTRY-REF>
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>false</IS-SYNCHRONOUS>
+                </BSW-MODULE-CLIENT-SERVER-ENTRY>
+  [!ENDIF!]
+  [!IF "($ApiCfgClass = 'NVM_API_CONFIG_CLASS_2') or ($ApiCfgClass = 'NVM_API_CONFIG_CLASS_3')"!]
+                <BSW-MODULE-CLIENT-SERVER-ENTRY>
+                  <SHORT-NAME>RequiredCSEntry_NvM_ReadBlock</SHORT-NAME>
+                  <ENCAPSULATED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR40_ReadBlock</ENCAPSULATED-ENTRY-REF>
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>false</IS-SYNCHRONOUS>
+                </BSW-MODULE-CLIENT-SERVER-ENTRY>
+                <BSW-MODULE-CLIENT-SERVER-ENTRY>
+                  <SHORT-NAME>RequiredCSEntry_NvM_ReadPRAMBlock</SHORT-NAME>
+                  <ENCAPSULATED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR42_ReadPRAMBlock</ENCAPSULATED-ENTRY-REF>
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>false</IS-SYNCHRONOUS>
+                </BSW-MODULE-CLIENT-SERVER-ENTRY>
+                <BSW-MODULE-CLIENT-SERVER-ENTRY>
+                  <SHORT-NAME>RequiredCSEntry_NvM_RestoreBlockDefaults</SHORT-NAME>
+                  <ENCAPSULATED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR40_RestoreBlockDefaults</ENCAPSULATED-ENTRY-REF>
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>false</IS-SYNCHRONOUS>
+                </BSW-MODULE-CLIENT-SERVER-ENTRY>
+                <BSW-MODULE-CLIENT-SERVER-ENTRY>
+                  <SHORT-NAME>RequiredCSEntry_NvM_RestorePRAMBlockDefaults</SHORT-NAME>
+                  <ENCAPSULATED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR42_RestorePRAMBlockDefaults</ENCAPSULATED-ENTRY-REF>
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>false</IS-SYNCHRONOUS>
+                </BSW-MODULE-CLIENT-SERVER-ENTRY>
+                <BSW-MODULE-CLIENT-SERVER-ENTRY>
+                  <SHORT-NAME>RequiredCSEntry_NvM_WriteBlock</SHORT-NAME>
+                  <ENCAPSULATED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR40_WriteBlock</ENCAPSULATED-ENTRY-REF>
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>false</IS-SYNCHRONOUS>
+                </BSW-MODULE-CLIENT-SERVER-ENTRY>
+                <BSW-MODULE-CLIENT-SERVER-ENTRY>
+                  <SHORT-NAME>RequiredCSEntry_NvM_WritePRAMBlock</SHORT-NAME>
+                  <ENCAPSULATED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR42_WritePRAMBlock</ENCAPSULATED-ENTRY-REF>
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>false</IS-SYNCHRONOUS>
+                </BSW-MODULE-CLIENT-SERVER-ENTRY>
+                <BSW-MODULE-CLIENT-SERVER-ENTRY>
+                  <SHORT-NAME>RequiredCSEntry_NvM_CancelJobs</SHORT-NAME>
+                  <ENCAPSULATED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR40_CancelJobs</ENCAPSULATED-ENTRY-REF>
+                  <IS-REENTRANT>true</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>false</IS-SYNCHRONOUS>
+                </BSW-MODULE-CLIENT-SERVER-ENTRY>
+  [!ENDIF!]
+              </REQUIRED-CLIENT-SERVER-ENTRYS>  
+[!ENDIF!]   
+              <INTERNAL-BEHAVIORS>
+                <BSW-INTERNAL-BEHAVIOR>
+                  <SHORT-NAME>InternalBehavior_[!"$MasterPartitionName"!]</SHORT-NAME>
+                  <EXCLUSIVE-AREAS>
+                    <EXCLUSIVE-AREA>
+                      <SHORT-NAME>SCHM_NVM_EXCLUSIVE_AREA_0</SHORT-NAME>
+                    </EXCLUSIVE-AREA>
+                  </EXCLUSIVE-AREAS>
+                  <STATIC-MEMORYS>
+                    <VARIABLE-DATA-PROTOTYPE>
+                      <SHORT-NAME>NvM_GlobalWorkingStatus</SHORT-NAME>
+                        <ADMIN-DATA>
+                          <SDGS>
+                            <SDG GID="EB:DnT">
+                              <SD GID="StateGroup">NvM_GlobalWorkingStatus</SD>
+                              <SD GID="StateId">0</SD>
+                              <SD GID="EnableTracing">true</SD>
+                            </SDG>
+                          </SDGS>
+                        </ADMIN-DATA>
+                        <SW-DATA-DEF-PROPS>
+                          <SW-DATA-DEF-PROPS-VARIANTS>
+                            <SW-DATA-DEF-PROPS-CONDITIONAL>
+                              <SW-IMPL-POLICY>STANDARD</SW-IMPL-POLICY>
+                            </SW-DATA-DEF-PROPS-CONDITIONAL>
+                          </SW-DATA-DEF-PROPS-VARIANTS>
+                        </SW-DATA-DEF-PROPS>
+                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint16</TYPE-TREF>
+                    </VARIABLE-DATA-PROTOTYPE>
+                    <VARIABLE-DATA-PROTOTYPE>
+                      <SHORT-NAME>NvM_GlobalErrorStatus</SHORT-NAME>
+                        <ADMIN-DATA>
+                          <SDGS>
+                            <SDG GID="EB:DnT">
+                              <SD GID="StateGroup">NvM_GlobalErrorStatus</SD>
+                              <SD GID="StateId">0</SD>
+                              <SD GID="EnableTracing">true</SD>
+                            </SDG>
+                          </SDGS>
+                        </ADMIN-DATA>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <SW-IMPL-POLICY>STANDARD</SW-IMPL-POLICY>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</TYPE-TREF>
+                    </VARIABLE-DATA-PROTOTYPE>
+                    <VARIABLE-DATA-PROTOTYPE>
+                      <SHORT-NAME>NvM_GlobalGenericStatus</SHORT-NAME>
+                        <ADMIN-DATA>
+                          <SDGS>
+                            <SDG GID="EB:DnT">
+                              <SD GID="StateGroup">NvM_GlobalGenericStatus</SD>
+                              <SD GID="StateId">0</SD>
+                              <SD GID="EnableTracing">true</SD>
+                            </SDG>
+                          </SDGS>
+                        </ADMIN-DATA>
+                        <SW-DATA-DEF-PROPS>
+                          <SW-DATA-DEF-PROPS-VARIANTS>
+                            <SW-DATA-DEF-PROPS-CONDITIONAL>
+                              <SW-IMPL-POLICY>STANDARD</SW-IMPL-POLICY>
+                            </SW-DATA-DEF-PROPS-CONDITIONAL>
+                          </SW-DATA-DEF-PROPS-VARIANTS>
+                        </SW-DATA-DEF-PROPS>
+                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint16</TYPE-TREF>
+                    </VARIABLE-DATA-PROTOTYPE>
+                    <VARIABLE-DATA-PROTOTYPE>
+                      <SHORT-NAME>NvM_GlobalCallLevel</SHORT-NAME>
+                        <ADMIN-DATA>
+                          <SDGS>
+                            <SDG GID="EB:DnT">
+                              <SD GID="StateGroup">NvM_GlobalCallLevel</SD>
+                              <SD GID="StateId">0</SD>
+                              <SD GID="EnableTracing">true</SD>
+                            </SDG>
+                          </SDGS>
+                        </ADMIN-DATA>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <SW-IMPL-POLICY>STANDARD</SW-IMPL-POLICY>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</TYPE-TREF>
+                    </VARIABLE-DATA-PROTOTYPE>
+                  </STATIC-MEMORYS>
+[!IF "$BSW_DISTRIBUTION_ENABLED"!]
+                  <INTERNAL-TRIGGERING-POINTS>
+    [!LOOP "as:modconf('NvM')[1]/NvMCommon/NvMEcucPartitionRef/eb-list::*"!]
+    [!IF "as:modconf('NvM')[1]/NvMCommon/NvMMasterEcucPartitionRef != (.)"!]
+      [!VAR "PartitionName" = "substring-after(name(),'EcucPartitionCollection/')"!]
+                    <BSW-INTERNAL-TRIGGERING-POINT>
+                     <SHORT-NAME>NvM_TriggeringPoint_NvM_[!"$PartitionName"!]_SchM_JobFinished</SHORT-NAME>
+                    </BSW-INTERNAL-TRIGGERING-POINT>
+    [!ENDIF!]
+    [!ENDLOOP!]
+                  </INTERNAL-TRIGGERING-POINTS>
+[!ENDIF!]
+                  <ENTITYS>
+[!IF "$BSW_DISTRIBUTION_ENABLED"!]
+  [!IF "$ApiCfgClass = 'NVM_API_CONFIG_CLASS_3'"!]
+                    <BSW-CALLED-ENTITY>
+                     <SHORT-NAME>CalledEntity_NvM_SchM_EraseNvBlock</SHORT-NAME>
+                     <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                     <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR40_EraseNvBlock</IMPLEMENTED-ENTRY-REF>
+                    </BSW-CALLED-ENTITY>
+                    <BSW-CALLED-ENTITY>
+                     <SHORT-NAME>CalledEntity_NvM_SchM_InvalidateNvBlock</SHORT-NAME>
+                     <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                     <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR40_InvalidateNvBlock</IMPLEMENTED-ENTRY-REF>
+                    </BSW-CALLED-ENTITY>
+  [!ENDIF!]
+  [!IF "($ApiCfgClass = 'NVM_API_CONFIG_CLASS_2') or ($ApiCfgClass = 'NVM_API_CONFIG_CLASS_3')"!]
+                    <BSW-CALLED-ENTITY>
+                     <SHORT-NAME>CalledEntity_NvM_SchM_ReadBlock</SHORT-NAME>
+                     <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                     <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR40_ReadBlock</IMPLEMENTED-ENTRY-REF>
+                    </BSW-CALLED-ENTITY>
+                    <BSW-CALLED-ENTITY>
+                     <SHORT-NAME>CalledEntity_NvM_SchM_ReadPRAMBlock</SHORT-NAME>
+                     <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                     <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR42_ReadPRAMBlock</IMPLEMENTED-ENTRY-REF>
+                    </BSW-CALLED-ENTITY>
+                    <BSW-CALLED-ENTITY>
+                     <SHORT-NAME>CalledEntity_NvM_SchM_RestoreBlockDefaults</SHORT-NAME>
+                     <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                     <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR40_RestoreBlockDefaults</IMPLEMENTED-ENTRY-REF>
+                    </BSW-CALLED-ENTITY>
+                    <BSW-CALLED-ENTITY>
+                     <SHORT-NAME>CalledEntity_NvM_SchM_RestorePRAMBlockDefaults</SHORT-NAME>
+                     <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                     <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR42_RestorePRAMBlockDefaults</IMPLEMENTED-ENTRY-REF>
+                    </BSW-CALLED-ENTITY>
+                    <BSW-CALLED-ENTITY>
+                     <SHORT-NAME>CalledEntity_NvM_SchM_WriteBlock</SHORT-NAME>
+                     <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                     <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR40_WriteBlock</IMPLEMENTED-ENTRY-REF>
+                    </BSW-CALLED-ENTITY>
+                    <BSW-CALLED-ENTITY>
+                     <SHORT-NAME>CalledEntity_NvM_SchM_WritePRAMBlock</SHORT-NAME>
+                     <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                     <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR42_WritePRAMBlock</IMPLEMENTED-ENTRY-REF>
+                    </BSW-CALLED-ENTITY>
+                    <BSW-CALLED-ENTITY>
+                     <SHORT-NAME>CalledEntity_NvM_SchM_CancelJobs</SHORT-NAME>
+                     <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                     <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_ASR40_CancelJobs</IMPLEMENTED-ENTRY-REF>
+                    </BSW-CALLED-ENTITY>
+  [!ENDIF!]
+[!ENDIF!]
+                    <BSW-SCHEDULABLE-ENTITY>
+                      <SHORT-NAME>NvM_MainFunction</SHORT-NAME>
+                      <CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                        <CAN-ENTER-EXCLUSIVE-AREA-REF DEST="EXCLUSIVE-AREA">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$MasterPartitionName"!]/SCHM_NVM_EXCLUSIVE_AREA_0</CAN-ENTER-EXCLUSIVE-AREA-REF>
+                      </CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                      <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                      <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/[!"$bswModuleEntryPackageName"!]/NvM_MainFunction</IMPLEMENTED-ENTRY-REF>
+                    </BSW-SCHEDULABLE-ENTITY>
+[!IF "$BSW_DISTRIBUTION_ENABLED"!]
+                    <BSW-SCHEDULABLE-ENTITY>
+                      <SHORT-NAME>Entity_NvM_Dummy_MasterContext</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                      <CALL-POINTS>
+    [!LOOP "as:modconf('NvM')[1]/NvMCommon/NvMEcucPartitionRef/eb-list::*"!]
+    [!IF "as:modconf('NvM')[1]/NvMCommon/NvMMasterEcucPartitionRef != (.)"!]
+      [!VAR "PartitionName" = "substring-after(name(),'EcucPartitionCollection/')"!]
+                        <BSW-ASYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>AsynchCallPoint_NvM_[!"$PartitionName"!]_SchM_JobFinished</SHORT-NAME>
+                          <CALLED-ENTRY-REF DEST="BSW-MODULE-CLIENT-SERVER-ENTRY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/RequiredCSEntry_NvM_1_[!"$PartitionName"!]_JobFinished</CALLED-ENTRY-REF>
+                        </BSW-ASYNCHRONOUS-SERVER-CALL-POINT>
+    [!ENDIF!]
+    [!ENDLOOP!]
+                      </CALL-POINTS>
+                      <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_Dummy_MasterContext</IMPLEMENTED-ENTRY-REF>
+                    </BSW-SCHEDULABLE-ENTITY>
+[!ENDIF!]
+                  </ENTITYS>
+                  <EVENTS>
+[!IF "$BSW_DISTRIBUTION_ENABLED"!]
+  [!IF "$ApiCfgClass = 'NVM_API_CONFIG_CLASS_3'"!]
+                    <BSW-OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>OpInvokedEvent_NvM_SchM_EraseNvBlock</SHORT-NAME>
+                      <STARTS-ON-EVENT-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$MasterPartitionName"!]/CalledEntity_NvM_SchM_EraseNvBlock</STARTS-ON-EVENT-REF>
+                      <ENTRY-REF DEST="BSW-MODULE-CLIENT-SERVER-ENTRY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/ProvidedCSEntry_NvM_EraseNvBlock</ENTRY-REF>
+                    </BSW-OPERATION-INVOKED-EVENT>
+                    <BSW-OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>OpInvokedEvent_NvM_SchM_InvalidateNvBlock</SHORT-NAME>
+                      <STARTS-ON-EVENT-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$MasterPartitionName"!]/CalledEntity_NvM_SchM_InvalidateNvBlock</STARTS-ON-EVENT-REF>
+                      <ENTRY-REF DEST="BSW-MODULE-CLIENT-SERVER-ENTRY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/ProvidedCSEntry_NvM_InvalidateNvBlock</ENTRY-REF>
+                    </BSW-OPERATION-INVOKED-EVENT>
+  [!ENDIF!]
+  [!IF "($ApiCfgClass = 'NVM_API_CONFIG_CLASS_2') or ($ApiCfgClass = 'NVM_API_CONFIG_CLASS_3')"!]
+                    <BSW-OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>OpInvokedEvent_NvM_SchM_ReadBlock</SHORT-NAME>
+                      <STARTS-ON-EVENT-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$MasterPartitionName"!]/CalledEntity_NvM_SchM_ReadBlock</STARTS-ON-EVENT-REF>
+                      <ENTRY-REF DEST="BSW-MODULE-CLIENT-SERVER-ENTRY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/ProvidedCSEntry_NvM_ReadBlock</ENTRY-REF>
+                    </BSW-OPERATION-INVOKED-EVENT>
+                    <BSW-OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>OpInvokedEvent_NvM_SchM_ReadPRAMBlock</SHORT-NAME>
+                      <STARTS-ON-EVENT-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$MasterPartitionName"!]/CalledEntity_NvM_SchM_ReadPRAMBlock</STARTS-ON-EVENT-REF>
+                      <ENTRY-REF DEST="BSW-MODULE-CLIENT-SERVER-ENTRY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/ProvidedCSEntry_NvM_ReadPRAMBlock</ENTRY-REF>
+                    </BSW-OPERATION-INVOKED-EVENT>
+                    <BSW-OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>OpInvokedEvent_NvM_SchM_RestoreBlockDefaults</SHORT-NAME>
+                      <STARTS-ON-EVENT-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$MasterPartitionName"!]/CalledEntity_NvM_SchM_RestoreBlockDefaults</STARTS-ON-EVENT-REF>
+                      <ENTRY-REF DEST="BSW-MODULE-CLIENT-SERVER-ENTRY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/ProvidedCSEntry_NvM_RestoreBlockDefaults</ENTRY-REF>
+                    </BSW-OPERATION-INVOKED-EVENT>
+                    <BSW-OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>OpInvokedEvent_NvM_SchM_RestorePRAMBlockDefaults</SHORT-NAME>
+                      <STARTS-ON-EVENT-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$MasterPartitionName"!]/CalledEntity_NvM_SchM_RestorePRAMBlockDefaults</STARTS-ON-EVENT-REF>
+                      <ENTRY-REF DEST="BSW-MODULE-CLIENT-SERVER-ENTRY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/ProvidedCSEntry_NvM_RestorePRAMBlockDefaults</ENTRY-REF>
+                    </BSW-OPERATION-INVOKED-EVENT>
+                    <BSW-OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>OpInvokedEvent_NvM_SchM_WriteBlock</SHORT-NAME>
+                      <STARTS-ON-EVENT-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$MasterPartitionName"!]/CalledEntity_NvM_SchM_WriteBlock</STARTS-ON-EVENT-REF>
+                      <ENTRY-REF DEST="BSW-MODULE-CLIENT-SERVER-ENTRY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/ProvidedCSEntry_NvM_WriteBlock</ENTRY-REF>
+                    </BSW-OPERATION-INVOKED-EVENT>
+                    <BSW-OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>OpInvokedEvent_NvM_SchM_WritePRAMBlock</SHORT-NAME>
+                      <STARTS-ON-EVENT-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$MasterPartitionName"!]/CalledEntity_NvM_SchM_WritePRAMBlock</STARTS-ON-EVENT-REF>
+                      <ENTRY-REF DEST="BSW-MODULE-CLIENT-SERVER-ENTRY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/ProvidedCSEntry_NvM_WritePRAMBlock</ENTRY-REF>
+                    </BSW-OPERATION-INVOKED-EVENT>
+                    <BSW-OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>OpInvokedEvent_NvM_SchM_CancelJobs</SHORT-NAME>
+                      <STARTS-ON-EVENT-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$MasterPartitionName"!]/CalledEntity_NvM_SchM_CancelJobs</STARTS-ON-EVENT-REF>
+                      <ENTRY-REF DEST="BSW-MODULE-CLIENT-SERVER-ENTRY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/ProvidedCSEntry_NvM_CancelJobs</ENTRY-REF>
+                    </BSW-OPERATION-INVOKED-EVENT>
+  [!ENDIF!]
+    [!LOOP "as:modconf('NvM')[1]/NvMCommon/NvMEcucPartitionRef/eb-list::*"!]
+    [!IF "as:modconf('NvM')[1]/NvMCommon/NvMMasterEcucPartitionRef != (.)"!]
+      [!VAR "PartitionName" = "substring-after(name(),'EcucPartitionCollection/')"!]
+                    <BSW-INTERNAL-TRIGGER-OCCURRED-EVENT>
+                      <SHORT-NAME>IntTriggering_NvM_[!"$PartitionName"!]_SchM_JobFinished</SHORT-NAME>
+                      <STARTS-ON-EVENT-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$MasterPartitionName"!]/Entity_NvM_Dummy_MasterContext</STARTS-ON-EVENT-REF>
+                      <EVENT-SOURCE-REF DEST="BSW-INTERNAL-TRIGGERING-POINT">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$MasterPartitionName"!]/NvM_TriggeringPoint_NvM_[!"$PartitionName"!]_SchM_JobFinished</EVENT-SOURCE-REF>
+                    </BSW-INTERNAL-TRIGGER-OCCURRED-EVENT>
+    [!ENDIF!]
+    [!ENDLOOP!]
+[!ENDIF!]
+                    <BSW-TIMING-EVENT>
+                      <SHORT-NAME>TimingEvent_MainFunction</SHORT-NAME>
+                      <STARTS-ON-EVENT-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$MasterPartitionName"!]/NvM_MainFunction</STARTS-ON-EVENT-REF>
+                      <PERIOD>[!"$MF_CycleTime"!]</PERIOD>
+                    </BSW-TIMING-EVENT>
+                  </EVENTS>
+                </BSW-INTERNAL-BEHAVIOR>
+[!VAR "PartitionCounter" = "0"!]
+[!IF "$BSW_DISTRIBUTION_ENABLED"!]
+    [!LOOP "as:modconf('NvM')[1]/NvMCommon/NvMEcucPartitionRef/eb-list::*"!]
+    [!IF "as:modconf('NvM')[1]/NvMCommon/NvMMasterEcucPartitionRef != (.)"!]
+      [!VAR "PartitionName" = "substring-after(name(),'EcucPartitionCollection/')"!]
+        [!VAR "PartitionCounter" = "$PartitionCounter + 1"!]
+                <BSW-INTERNAL-BEHAVIOR>
+                  <SHORT-NAME>InternalBehavior_[!"$PartitionName"!]</SHORT-NAME>
+                  <EXCLUSIVE-AREAS>
+                    <EXCLUSIVE-AREA>
+                      <SHORT-NAME>SCHM_NVM_EXCLUSIVE_AREA</SHORT-NAME>
+                    </EXCLUSIVE-AREA>
+                  </EXCLUSIVE-AREAS>
+                  <INTERNAL-TRIGGERING-POINTS>
+  [!IF "$ApiCfgClass = 'NVM_API_CONFIG_CLASS_3'"!]
+                    <BSW-INTERNAL-TRIGGERING-POINT>
+                     <SHORT-NAME>NvM_TriggeringPoint_NvM_SchM_EraseNvBlock</SHORT-NAME>
+                    </BSW-INTERNAL-TRIGGERING-POINT>
+                    <BSW-INTERNAL-TRIGGERING-POINT>
+                     <SHORT-NAME>NvM_TriggeringPoint_NvM_SchM_InvalidateNvBlock</SHORT-NAME>
+                    </BSW-INTERNAL-TRIGGERING-POINT>
+  [!ENDIF!]
+  [!IF "($ApiCfgClass = 'NVM_API_CONFIG_CLASS_2') or ($ApiCfgClass = 'NVM_API_CONFIG_CLASS_3')"!]
+                    <BSW-INTERNAL-TRIGGERING-POINT>
+                     <SHORT-NAME>NvM_TriggeringPoint_NvM_SchM_ReadBlock</SHORT-NAME>
+                    </BSW-INTERNAL-TRIGGERING-POINT>
+                    <BSW-INTERNAL-TRIGGERING-POINT>
+                     <SHORT-NAME>NvM_TriggeringPoint_NvM_SchM_ReadPRAMBlock</SHORT-NAME>
+                    </BSW-INTERNAL-TRIGGERING-POINT>
+                    <BSW-INTERNAL-TRIGGERING-POINT>
+                     <SHORT-NAME>NvM_TriggeringPoint_NvM_SchM_RestoreBlockDefaults</SHORT-NAME>
+                    </BSW-INTERNAL-TRIGGERING-POINT>
+                    <BSW-INTERNAL-TRIGGERING-POINT>
+                     <SHORT-NAME>NvM_TriggeringPoint_NvM_SchM_RestorePRAMBlockDefaults</SHORT-NAME>
+                    </BSW-INTERNAL-TRIGGERING-POINT>
+                    <BSW-INTERNAL-TRIGGERING-POINT>
+                     <SHORT-NAME>NvM_TriggeringPoint_NvM_SchM_WriteBlock</SHORT-NAME>
+                    </BSW-INTERNAL-TRIGGERING-POINT>
+                    <BSW-INTERNAL-TRIGGERING-POINT>
+                     <SHORT-NAME>NvM_TriggeringPoint_NvM_SchM_WritePRAMBlock</SHORT-NAME>
+                    </BSW-INTERNAL-TRIGGERING-POINT>
+                    <BSW-INTERNAL-TRIGGERING-POINT>
+                     <SHORT-NAME>NvM_TriggeringPoint_NvM_SchM_CancelJobs</SHORT-NAME>
+                    </BSW-INTERNAL-TRIGGERING-POINT>
+  [!ENDIF!]
+                  </INTERNAL-TRIGGERING-POINTS>
+                  <ENTITYS>
+                    <BSW-SCHEDULABLE-ENTITY>
+                      <SHORT-NAME>NvM_1_[!"$PartitionName"!]_MainFunction</SHORT-NAME>
+                      <CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                        <CAN-ENTER-EXCLUSIVE-AREA-REF DEST="EXCLUSIVE-AREA">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$PartitionName"!]/SCHM_NVM_EXCLUSIVE_AREA</CAN-ENTER-EXCLUSIVE-AREA-REF>
+                      </CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                      <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                      <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/[!"$bswModuleEntryPackageName"!]/NvM_MainFunction</IMPLEMENTED-ENTRY-REF>
+                    </BSW-SCHEDULABLE-ENTITY>
+  [!IF "($ApiCfgClass = 'NVM_API_CONFIG_CLASS_2') or ($ApiCfgClass = 'NVM_API_CONFIG_CLASS_3')"!]
+                    <BSW-SCHEDULABLE-ENTITY>
+                      <SHORT-NAME>Entity_NvM_Dummy_[!"$PartitionName"!]_SatelliteContext</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                      <CALL-POINTS>
+	[!IF "$ApiCfgClass = 'NVM_API_CONFIG_CLASS_3'"!]
+                        <BSW-ASYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>AsynchCallPoint_NvM_SchM_EraseNvBlock</SHORT-NAME>
+                          <CALLED-ENTRY-REF DEST="BSW-MODULE-CLIENT-SERVER-ENTRY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/RequiredCSEntry_NvM_EraseNvBlock</CALLED-ENTRY-REF>
+                        </BSW-ASYNCHRONOUS-SERVER-CALL-POINT>
+                        <BSW-ASYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>AsynchCallPoint_NvM_SchM_InvalidateNvBlock</SHORT-NAME>
+                          <CALLED-ENTRY-REF DEST="BSW-MODULE-CLIENT-SERVER-ENTRY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/RequiredCSEntry_NvM_InvalidateNvBlock</CALLED-ENTRY-REF>
+                        </BSW-ASYNCHRONOUS-SERVER-CALL-POINT>
+    [!ENDIF!]
+                        <BSW-ASYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>AsynchCallPoint_NvM_SchM_ReadBlock</SHORT-NAME>
+                          <CALLED-ENTRY-REF DEST="BSW-MODULE-CLIENT-SERVER-ENTRY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/RequiredCSEntry_NvM_ReadBlock</CALLED-ENTRY-REF>
+                        </BSW-ASYNCHRONOUS-SERVER-CALL-POINT>
+                        <BSW-ASYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>AsynchCallPoint_NvM_SchM_ReadPRAMBlock</SHORT-NAME>
+                          <CALLED-ENTRY-REF DEST="BSW-MODULE-CLIENT-SERVER-ENTRY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/RequiredCSEntry_NvM_ReadPRAMBlock</CALLED-ENTRY-REF>
+                        </BSW-ASYNCHRONOUS-SERVER-CALL-POINT>
+                        <BSW-ASYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>AsynchCallPoint_NvM_SchM_RestoreBlockDefaults</SHORT-NAME>
+                          <CALLED-ENTRY-REF DEST="BSW-MODULE-CLIENT-SERVER-ENTRY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/RequiredCSEntry_NvM_RestoreBlockDefaults</CALLED-ENTRY-REF>
+                        </BSW-ASYNCHRONOUS-SERVER-CALL-POINT>
+                        <BSW-ASYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>AsynchCallPoint_NvM_SchM_RestorePRAMBlockDefaults</SHORT-NAME>
+                          <CALLED-ENTRY-REF DEST="BSW-MODULE-CLIENT-SERVER-ENTRY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/RequiredCSEntry_NvM_RestorePRAMBlockDefaults</CALLED-ENTRY-REF>
+                        </BSW-ASYNCHRONOUS-SERVER-CALL-POINT>
+                        <BSW-ASYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>AsynchCallPoint_NvM_SchM_WriteBlock</SHORT-NAME>
+                          <CALLED-ENTRY-REF DEST="BSW-MODULE-CLIENT-SERVER-ENTRY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/RequiredCSEntry_NvM_WriteBlock</CALLED-ENTRY-REF>
+                        </BSW-ASYNCHRONOUS-SERVER-CALL-POINT>
+                        <BSW-ASYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>AsynchCallPoint_NvM_SchM_WritePRAMBlock</SHORT-NAME>
+                          <CALLED-ENTRY-REF DEST="BSW-MODULE-CLIENT-SERVER-ENTRY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/RequiredCSEntry_NvM_WritePRAMBlock</CALLED-ENTRY-REF>
+                        </BSW-ASYNCHRONOUS-SERVER-CALL-POINT>
+                        <BSW-ASYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>AsynchCallPoint_NvM_SchM_CancelJobs</SHORT-NAME>
+                          <CALLED-ENTRY-REF DEST="BSW-MODULE-CLIENT-SERVER-ENTRY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/RequiredCSEntry_NvM_CancelJobs</CALLED-ENTRY-REF>
+                        </BSW-ASYNCHRONOUS-SERVER-CALL-POINT>
+                      </CALL-POINTS>
+                      <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_Dummy_SatelliteContext</IMPLEMENTED-ENTRY-REF>
+                    </BSW-SCHEDULABLE-ENTITY>
+  [!ENDIF!]
+                    <BSW-CALLED-ENTITY>
+                     <SHORT-NAME>CalledEntity_NvM_1_[!"$PartitionName"!]_SchM_JobFinished</SHORT-NAME>
+                     <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                     <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_NvM/BswModuleEntrys/NvM_SchM_JobFinished</IMPLEMENTED-ENTRY-REF>
+                    </BSW-CALLED-ENTITY>
+                  </ENTITYS>
+                  <EVENTS>
+                    <BSW-OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>OpInvokedEvent_NvM_SchM_Jobfinished</SHORT-NAME>
+                      <STARTS-ON-EVENT-REF DEST="BSW-CALLED-ENTITY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$PartitionName"!]/CalledEntity_NvM_1_[!"$PartitionName"!]_SchM_JobFinished</STARTS-ON-EVENT-REF>
+                      <ENTRY-REF DEST="BSW-MODULE-CLIENT-SERVER-ENTRY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/ProvidedCSEntry_NvM_1_[!"$PartitionName"!]_JobFinished</ENTRY-REF>
+                    </BSW-OPERATION-INVOKED-EVENT>
+                    <BSW-TIMING-EVENT>
+                      <SHORT-NAME>TimingEvent_MainFunction</SHORT-NAME>
+                      <STARTS-ON-EVENT-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$PartitionName"!]/NvM_1_[!"$PartitionName"!]_MainFunction</STARTS-ON-EVENT-REF>
+                      <PERIOD>[!"$MF_CycleTime"!]</PERIOD>
+                    </BSW-TIMING-EVENT>
+  [!IF "$ApiCfgClass = 'NVM_API_CONFIG_CLASS_3'"!]
+                    <BSW-INTERNAL-TRIGGER-OCCURRED-EVENT>
+                      <SHORT-NAME>IntTriggering_NvM_SchM_EraseNvBlock</SHORT-NAME>
+                      <STARTS-ON-EVENT-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$PartitionName"!]/Entity_NvM_Dummy_[!"$PartitionName"!]_SatelliteContext</STARTS-ON-EVENT-REF>
+                      <EVENT-SOURCE-REF DEST="BSW-INTERNAL-TRIGGERING-POINT">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$PartitionName"!]/NvM_TriggeringPoint_NvM_SchM_EraseNvBlock</EVENT-SOURCE-REF>
+                    </BSW-INTERNAL-TRIGGER-OCCURRED-EVENT>
+                    <BSW-INTERNAL-TRIGGER-OCCURRED-EVENT>
+                      <SHORT-NAME>IntTriggering_NvM_SchM_InvalidateNvBlock</SHORT-NAME>
+                      <STARTS-ON-EVENT-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$PartitionName"!]/Entity_NvM_Dummy_[!"$PartitionName"!]_SatelliteContext</STARTS-ON-EVENT-REF>
+                      <EVENT-SOURCE-REF DEST="BSW-INTERNAL-TRIGGERING-POINT">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$PartitionName"!]/NvM_TriggeringPoint_NvM_SchM_InvalidateNvBlock</EVENT-SOURCE-REF>
+                    </BSW-INTERNAL-TRIGGER-OCCURRED-EVENT>
+  [!ENDIF!]
+  [!IF "($ApiCfgClass = 'NVM_API_CONFIG_CLASS_2') or ($ApiCfgClass = 'NVM_API_CONFIG_CLASS_3')"!]
+                    <BSW-INTERNAL-TRIGGER-OCCURRED-EVENT>
+                      <SHORT-NAME>IntTriggering_NvM_SchM_ReadBlock</SHORT-NAME>
+                      <STARTS-ON-EVENT-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$PartitionName"!]/Entity_NvM_Dummy_[!"$PartitionName"!]_SatelliteContext</STARTS-ON-EVENT-REF>
+                      <EVENT-SOURCE-REF DEST="BSW-INTERNAL-TRIGGERING-POINT">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$PartitionName"!]/NvM_TriggeringPoint_NvM_SchM_ReadBlock</EVENT-SOURCE-REF>
+                    </BSW-INTERNAL-TRIGGER-OCCURRED-EVENT>
+                    <BSW-INTERNAL-TRIGGER-OCCURRED-EVENT>
+                      <SHORT-NAME>IntTriggering_NvM_SchM_ReadPRAMBlock</SHORT-NAME>
+                      <STARTS-ON-EVENT-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$PartitionName"!]/Entity_NvM_Dummy_[!"$PartitionName"!]_SatelliteContext</STARTS-ON-EVENT-REF>
+                      <EVENT-SOURCE-REF DEST="BSW-INTERNAL-TRIGGERING-POINT">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$PartitionName"!]/NvM_TriggeringPoint_NvM_SchM_ReadPRAMBlock</EVENT-SOURCE-REF>
+                    </BSW-INTERNAL-TRIGGER-OCCURRED-EVENT>
+                    <BSW-INTERNAL-TRIGGER-OCCURRED-EVENT>
+                      <SHORT-NAME>IntTriggering_NvM_SchM_RestoreBlockDefaults</SHORT-NAME>
+                      <STARTS-ON-EVENT-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$PartitionName"!]/Entity_NvM_Dummy_[!"$PartitionName"!]_SatelliteContext</STARTS-ON-EVENT-REF>
+                      <EVENT-SOURCE-REF DEST="BSW-INTERNAL-TRIGGERING-POINT">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$PartitionName"!]/NvM_TriggeringPoint_NvM_SchM_RestoreBlockDefaults</EVENT-SOURCE-REF>
+                    </BSW-INTERNAL-TRIGGER-OCCURRED-EVENT>
+                    <BSW-INTERNAL-TRIGGER-OCCURRED-EVENT>
+                      <SHORT-NAME>IntTriggering_NvM_SchM_RestorePRAMBlockDefaults</SHORT-NAME>
+                      <STARTS-ON-EVENT-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$PartitionName"!]/Entity_NvM_Dummy_[!"$PartitionName"!]_SatelliteContext</STARTS-ON-EVENT-REF>
+                      <EVENT-SOURCE-REF DEST="BSW-INTERNAL-TRIGGERING-POINT">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$PartitionName"!]/NvM_TriggeringPoint_NvM_SchM_RestorePRAMBlockDefaults</EVENT-SOURCE-REF>
+                    </BSW-INTERNAL-TRIGGER-OCCURRED-EVENT>
+                    <BSW-INTERNAL-TRIGGER-OCCURRED-EVENT>
+                      <SHORT-NAME>IntTriggering_NvM_SchM_WriteBlock</SHORT-NAME>
+                      <STARTS-ON-EVENT-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$PartitionName"!]/Entity_NvM_Dummy_[!"$PartitionName"!]_SatelliteContext</STARTS-ON-EVENT-REF>
+                      <EVENT-SOURCE-REF DEST="BSW-INTERNAL-TRIGGERING-POINT">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$PartitionName"!]/NvM_TriggeringPoint_NvM_SchM_WriteBlock</EVENT-SOURCE-REF>
+                    </BSW-INTERNAL-TRIGGER-OCCURRED-EVENT>
+                    <BSW-INTERNAL-TRIGGER-OCCURRED-EVENT>
+                      <SHORT-NAME>IntTriggering_NvM_SchM_WritePRAMBlock</SHORT-NAME>
+                      <STARTS-ON-EVENT-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$PartitionName"!]/Entity_NvM_Dummy_[!"$PartitionName"!]_SatelliteContext</STARTS-ON-EVENT-REF>
+                      <EVENT-SOURCE-REF DEST="BSW-INTERNAL-TRIGGERING-POINT">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$PartitionName"!]/NvM_TriggeringPoint_NvM_SchM_WritePRAMBlock</EVENT-SOURCE-REF>
+                    </BSW-INTERNAL-TRIGGER-OCCURRED-EVENT>
+                    <BSW-INTERNAL-TRIGGER-OCCURRED-EVENT>
+                      <SHORT-NAME>IntTriggering_NvM_SchM_CancelJobs</SHORT-NAME>
+                      <STARTS-ON-EVENT-REF DEST="BSW-SCHEDULABLE-ENTITY">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$PartitionName"!]/Entity_NvM_Dummy_[!"$PartitionName"!]_SatelliteContext</STARTS-ON-EVENT-REF>
+                      <EVENT-SOURCE-REF DEST="BSW-INTERNAL-TRIGGERING-POINT">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$PartitionName"!]/NvM_TriggeringPoint_NvM_SchM_CancelJobs</EVENT-SOURCE-REF>
+                    </BSW-INTERNAL-TRIGGER-OCCURRED-EVENT>
+  [!ENDIF!]
+                  </EVENTS>
+                </BSW-INTERNAL-BEHAVIOR>
+        [!ENDIF!]
+    [!ENDLOOP!]
+[!ENDIF!]
+              </INTERNAL-BEHAVIORS>
+            </BSW-MODULE-DESCRIPTION>
+          </ELEMENTS>
+        </AR-PACKAGE>
+[!IF "$BSW_DISTRIBUTION_ENABLED"!]
+        <AR-PACKAGE>
+          <SHORT-NAME>DataReferenceTypes</SHORT-NAME>
+          <ELEMENTS>
+            <IMPLEMENTATION-DATA-TYPE>
+              <SHORT-NAME>NvM_ASR40_BlockIdType</SHORT-NAME>
+              <CATEGORY>TYPE_REFERENCE</CATEGORY>
+              <SW-DATA-DEF-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <IMPLEMENTATION-DATA-TYPE-REF
+                      DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint16</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </SW-DATA-DEF-PROPS>
+            </IMPLEMENTATION-DATA-TYPE>
+            <IMPLEMENTATION-DATA-TYPE>
+              <SHORT-NAME>NvM_ASR42_BlockIdType</SHORT-NAME>
+              <CATEGORY>TYPE_REFERENCE</CATEGORY>
+              <SW-DATA-DEF-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <IMPLEMENTATION-DATA-TYPE-REF
+                      DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint16</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </SW-DATA-DEF-PROPS>
+            </IMPLEMENTATION-DATA-TYPE>
+            <IMPLEMENTATION-DATA-TYPE>
+              <SHORT-NAME>NvM_SchM_DstPtrType</SHORT-NAME>
+              <CATEGORY>DATA_REFERENCE</CATEGORY>
+              <SW-DATA-DEF-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                <SW-POINTER-TARGET-PROPS>
+                  <TARGET-CATEGORY>VALUE</TARGET-CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <BASE-TYPE-REF DEST="SW-BASE-TYPE">/AUTOSAR_Platform/BaseTypes/void</BASE-TYPE-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                </SW-POINTER-TARGET-PROPS>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </SW-DATA-DEF-PROPS>
+            </IMPLEMENTATION-DATA-TYPE>
+            <IMPLEMENTATION-DATA-TYPE>
+              <SHORT-NAME>NvM_SchM_SrcPtrType</SHORT-NAME>
+              <CATEGORY>DATA_REFERENCE</CATEGORY>
+              <SW-DATA-DEF-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                <SW-POINTER-TARGET-PROPS>
+                  <TARGET-CATEGORY>VALUE</TARGET-CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <BASE-TYPE-REF DEST="SW-BASE-TYPE">/AUTOSAR_Platform/BaseTypes/void</BASE-TYPE-REF>
+                         <SW-IMPL-POLICY>CONST</SW-IMPL-POLICY>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                  </SW-POINTER-TARGET-PROPS>
+                    </SW-DATA-DEF-PROPS-CONDITIONAL>
+                  </SW-DATA-DEF-PROPS-VARIANTS>
+                </SW-DATA-DEF-PROPS>
+            </IMPLEMENTATION-DATA-TYPE>
+          </ELEMENTS>
+        </AR-PACKAGE>
+[!ENDIF!]
+        <AR-PACKAGE>
+          <SHORT-NAME>[!"$bswModuleEntryPackageName"!]</SHORT-NAME>
+          <ELEMENTS>
+[!IF "$BSW_DISTRIBUTION_ENABLED"!]
+  [!IF "$ApiCfgClass = 'NVM_API_CONFIG_CLASS_3'"!]
+            <BSW-MODULE-ENTRY>
+              <SHORT-NAME>NvM_ASR40_EraseNvBlock</SHORT-NAME>
+              <ADMIN-DATA>
+               <SDGS>
+                <SDG GID="EB:DnT">
+                 <SD GID="FunctionGroup">Extern</SD>
+                 <SD GID="EnableTracing">true</SD>
+                </SDG>
+                </SDGS>
+              </ADMIN-DATA>
+              <SERVICE-ID>0x09</SERVICE-ID>
+              <IS-REENTRANT>false</IS-REENTRANT>
+              <IS-SYNCHRONOUS>false</IS-SYNCHRONOUS>
+              <CALL-TYPE>REGULAR</CALL-TYPE>
+              <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+              <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+              <BSW-ENTRY-KIND>ABSTRACT</BSW-ENTRY-KIND>
+              <RETURN-TYPE>
+                <SHORT-NAME>ReturnType</SHORT-NAME>
+                <SW-DATA-DEF-PROPS>
+                  <SW-DATA-DEF-PROPS-VARIANTS>
+                    <SW-DATA-DEF-PROPS-CONDITIONAL>
+                      <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Std/ImplementationDataTypes/Std_ReturnType</IMPLEMENTATION-DATA-TYPE-REF>
+                    </SW-DATA-DEF-PROPS-CONDITIONAL>
+                  </SW-DATA-DEF-PROPS-VARIANTS>
+                </SW-DATA-DEF-PROPS>
+              </RETURN-TYPE>
+              <ARGUMENTS>
+               <SW-SERVICE-ARG>
+                <SHORT-NAME>BlockId</SHORT-NAME>
+                <DIRECTION>IN</DIRECTION>
+                <SW-DATA-DEF-PROPS>
+                 <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                   <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_NvM/DataReferenceTypes/NvM_ASR40_BlockIdType</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                 </SW-DATA-DEF-PROPS-VARIANTS>
+                </SW-DATA-DEF-PROPS>
+               </SW-SERVICE-ARG>
+              </ARGUMENTS>
+            </BSW-MODULE-ENTRY>
+            <BSW-MODULE-ENTRY>
+              <SHORT-NAME>NvM_ASR40_InvalidateNvBlock</SHORT-NAME>
+              <ADMIN-DATA>
+               <SDGS>
+                <SDG GID="EB:DnT">
+                 <SD GID="FunctionGroup">Extern</SD>
+                 <SD GID="EnableTracing">true</SD>
+                </SDG>
+                </SDGS>
+              </ADMIN-DATA>
+              <SERVICE-ID>0x0b</SERVICE-ID>
+              <IS-REENTRANT>false</IS-REENTRANT>
+              <IS-SYNCHRONOUS>false</IS-SYNCHRONOUS>
+              <CALL-TYPE>REGULAR</CALL-TYPE>
+              <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+              <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+              <BSW-ENTRY-KIND>ABSTRACT</BSW-ENTRY-KIND>
+              <RETURN-TYPE>
+                <SHORT-NAME>ReturnType</SHORT-NAME>
+                <SW-DATA-DEF-PROPS>
+                  <SW-DATA-DEF-PROPS-VARIANTS>
+                    <SW-DATA-DEF-PROPS-CONDITIONAL>
+                      <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Std/ImplementationDataTypes/Std_ReturnType</IMPLEMENTATION-DATA-TYPE-REF>
+                    </SW-DATA-DEF-PROPS-CONDITIONAL>
+                  </SW-DATA-DEF-PROPS-VARIANTS>
+                </SW-DATA-DEF-PROPS>
+              </RETURN-TYPE>
+              <ARGUMENTS>
+               <SW-SERVICE-ARG>
+                <SHORT-NAME>BlockId</SHORT-NAME>
+                <DIRECTION>IN</DIRECTION>
+                <SW-DATA-DEF-PROPS>
+                 <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                   <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_NvM/DataReferenceTypes/NvM_ASR40_BlockIdType</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                 </SW-DATA-DEF-PROPS-VARIANTS>
+                </SW-DATA-DEF-PROPS>
+               </SW-SERVICE-ARG>
+              </ARGUMENTS>
+            </BSW-MODULE-ENTRY>
+  [!ENDIF!]
+  [!IF "($ApiCfgClass = 'NVM_API_CONFIG_CLASS_2') or ($ApiCfgClass = 'NVM_API_CONFIG_CLASS_3')"!]
+            <BSW-MODULE-ENTRY>
+              <SHORT-NAME>NvM_ASR40_ReadBlock</SHORT-NAME>
+              <ADMIN-DATA>
+               <SDGS>
+                <SDG GID="EB:DnT">
+                 <SD GID="FunctionGroup">Extern</SD>
+                 <SD GID="EnableTracing">true</SD>
+                </SDG>
+                </SDGS>
+              </ADMIN-DATA>
+              <SERVICE-ID>0x06</SERVICE-ID>
+              <IS-REENTRANT>false</IS-REENTRANT>
+              <IS-SYNCHRONOUS>false</IS-SYNCHRONOUS>
+              <CALL-TYPE>REGULAR</CALL-TYPE>
+              <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+              <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+              <BSW-ENTRY-KIND>ABSTRACT</BSW-ENTRY-KIND>
+              <RETURN-TYPE>
+                <SHORT-NAME>ReturnType</SHORT-NAME>
+                <SW-DATA-DEF-PROPS>
+                  <SW-DATA-DEF-PROPS-VARIANTS>
+                    <SW-DATA-DEF-PROPS-CONDITIONAL>
+                      <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Std/ImplementationDataTypes/Std_ReturnType</IMPLEMENTATION-DATA-TYPE-REF>
+                    </SW-DATA-DEF-PROPS-CONDITIONAL>
+                  </SW-DATA-DEF-PROPS-VARIANTS>
+                </SW-DATA-DEF-PROPS>
+              </RETURN-TYPE>
+              <ARGUMENTS>
+               <SW-SERVICE-ARG>
+                <SHORT-NAME>BlockId</SHORT-NAME>
+                <DIRECTION>IN</DIRECTION>
+                <SW-DATA-DEF-PROPS>
+                 <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                   <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_NvM/DataReferenceTypes/NvM_ASR40_BlockIdType</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                 </SW-DATA-DEF-PROPS-VARIANTS>
+                </SW-DATA-DEF-PROPS>
+               </SW-SERVICE-ARG>
+               <SW-SERVICE-ARG>
+                <SHORT-NAME>NvM_DstPtr</SHORT-NAME>
+                <DIRECTION>IN</DIRECTION>
+                <SW-DATA-DEF-PROPS>
+                 <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                   <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_NvM/DataReferenceTypes/NvM_SchM_DstPtrType</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                 </SW-DATA-DEF-PROPS-VARIANTS>
+                </SW-DATA-DEF-PROPS>
+               </SW-SERVICE-ARG>
+              </ARGUMENTS>
+            </BSW-MODULE-ENTRY>
+            <BSW-MODULE-ENTRY>
+              <SHORT-NAME>NvM_ASR42_ReadPRAMBlock</SHORT-NAME>
+              <ADMIN-DATA>
+               <SDGS>
+                <SDG GID="EB:DnT">
+                 <SD GID="FunctionGroup">Extern</SD>
+                 <SD GID="EnableTracing">true</SD>
+                </SDG>
+                </SDGS>
+              </ADMIN-DATA>
+              <SERVICE-ID>0x16</SERVICE-ID>
+              <IS-REENTRANT>false</IS-REENTRANT>
+              <IS-SYNCHRONOUS>false</IS-SYNCHRONOUS>
+              <CALL-TYPE>REGULAR</CALL-TYPE>
+              <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+              <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+              <BSW-ENTRY-KIND>ABSTRACT</BSW-ENTRY-KIND>
+              <RETURN-TYPE>
+                <SHORT-NAME>ReturnType</SHORT-NAME>
+                <SW-DATA-DEF-PROPS>
+                  <SW-DATA-DEF-PROPS-VARIANTS>
+                    <SW-DATA-DEF-PROPS-CONDITIONAL>
+                      <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Std/ImplementationDataTypes/Std_ReturnType</IMPLEMENTATION-DATA-TYPE-REF>
+                    </SW-DATA-DEF-PROPS-CONDITIONAL>
+                  </SW-DATA-DEF-PROPS-VARIANTS>
+                </SW-DATA-DEF-PROPS>
+              </RETURN-TYPE>
+              <ARGUMENTS>
+               <SW-SERVICE-ARG>
+                <SHORT-NAME>BlockId</SHORT-NAME>
+                <DIRECTION>IN</DIRECTION>
+                <SW-DATA-DEF-PROPS>
+                 <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                   <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_NvM/DataReferenceTypes/NvM_ASR42_BlockIdType</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                 </SW-DATA-DEF-PROPS-VARIANTS>
+                </SW-DATA-DEF-PROPS>
+               </SW-SERVICE-ARG>
+              </ARGUMENTS>
+            </BSW-MODULE-ENTRY>
+            <BSW-MODULE-ENTRY>
+              <SHORT-NAME>NvM_ASR40_RestoreBlockDefaults</SHORT-NAME>
+              <ADMIN-DATA>
+               <SDGS>
+                <SDG GID="EB:DnT">
+                 <SD GID="FunctionGroup">Extern</SD>
+                 <SD GID="EnableTracing">true</SD>
+                </SDG>
+                </SDGS>
+              </ADMIN-DATA>
+              <SERVICE-ID>0x08</SERVICE-ID>
+              <IS-REENTRANT>false</IS-REENTRANT>
+              <IS-SYNCHRONOUS>false</IS-SYNCHRONOUS>
+              <CALL-TYPE>REGULAR</CALL-TYPE>
+              <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+              <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+              <BSW-ENTRY-KIND>ABSTRACT</BSW-ENTRY-KIND>
+              <RETURN-TYPE>
+                <SHORT-NAME>ReturnType</SHORT-NAME>
+                <SW-DATA-DEF-PROPS>
+                  <SW-DATA-DEF-PROPS-VARIANTS>
+                    <SW-DATA-DEF-PROPS-CONDITIONAL>
+                      <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Std/ImplementationDataTypes/Std_ReturnType</IMPLEMENTATION-DATA-TYPE-REF>
+                    </SW-DATA-DEF-PROPS-CONDITIONAL>
+                  </SW-DATA-DEF-PROPS-VARIANTS>
+                </SW-DATA-DEF-PROPS>
+              </RETURN-TYPE>
+              <ARGUMENTS>
+               <SW-SERVICE-ARG>
+                <SHORT-NAME>BlockId</SHORT-NAME>
+                <DIRECTION>IN</DIRECTION>
+                <SW-DATA-DEF-PROPS>
+                 <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                   <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_NvM/DataReferenceTypes/NvM_ASR40_BlockIdType</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                 </SW-DATA-DEF-PROPS-VARIANTS>
+                </SW-DATA-DEF-PROPS>
+               </SW-SERVICE-ARG>
+               <SW-SERVICE-ARG>
+                <SHORT-NAME>NvM_DstPtr</SHORT-NAME>
+                <DIRECTION>IN</DIRECTION>
+                <SW-DATA-DEF-PROPS>
+                 <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                   <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_NvM/DataReferenceTypes/NvM_SchM_DstPtrType</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                 </SW-DATA-DEF-PROPS-VARIANTS>
+                </SW-DATA-DEF-PROPS>
+               </SW-SERVICE-ARG>
+              </ARGUMENTS>
+            </BSW-MODULE-ENTRY>
+            <BSW-MODULE-ENTRY>
+              <SHORT-NAME>NvM_ASR42_RestorePRAMBlockDefaults</SHORT-NAME>
+              <ADMIN-DATA>
+               <SDGS>
+                <SDG GID="EB:DnT">
+                 <SD GID="FunctionGroup">Extern</SD>
+                 <SD GID="EnableTracing">true</SD>
+                </SDG>
+                </SDGS>
+              </ADMIN-DATA>
+              <SERVICE-ID>0x18</SERVICE-ID>
+              <IS-REENTRANT>false</IS-REENTRANT>
+              <IS-SYNCHRONOUS>false</IS-SYNCHRONOUS>
+              <CALL-TYPE>REGULAR</CALL-TYPE>
+              <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+              <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+              <BSW-ENTRY-KIND>ABSTRACT</BSW-ENTRY-KIND>
+              <RETURN-TYPE>
+                <SHORT-NAME>ReturnType</SHORT-NAME>
+                <SW-DATA-DEF-PROPS>
+                  <SW-DATA-DEF-PROPS-VARIANTS>
+                    <SW-DATA-DEF-PROPS-CONDITIONAL>
+                      <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Std/ImplementationDataTypes/Std_ReturnType</IMPLEMENTATION-DATA-TYPE-REF>
+                    </SW-DATA-DEF-PROPS-CONDITIONAL>
+                  </SW-DATA-DEF-PROPS-VARIANTS>
+                </SW-DATA-DEF-PROPS>
+              </RETURN-TYPE>
+              <ARGUMENTS>
+               <SW-SERVICE-ARG>
+                <SHORT-NAME>BlockId</SHORT-NAME>
+                <DIRECTION>IN</DIRECTION>
+                <SW-DATA-DEF-PROPS>
+                 <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                   <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_NvM/DataReferenceTypes/NvM_ASR42_BlockIdType</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                 </SW-DATA-DEF-PROPS-VARIANTS>
+                </SW-DATA-DEF-PROPS>
+               </SW-SERVICE-ARG>
+              </ARGUMENTS>
+            </BSW-MODULE-ENTRY>
+            <BSW-MODULE-ENTRY>
+              <SHORT-NAME>NvM_ASR40_WriteBlock</SHORT-NAME>
+              <ADMIN-DATA>
+               <SDGS>
+                <SDG GID="EB:DnT">
+                 <SD GID="FunctionGroup">Extern</SD>
+                 <SD GID="EnableTracing">true</SD>
+                </SDG>
+                </SDGS>
+              </ADMIN-DATA>
+              <SERVICE-ID>0x07</SERVICE-ID>
+              <IS-REENTRANT>false</IS-REENTRANT>
+              <IS-SYNCHRONOUS>false</IS-SYNCHRONOUS>
+              <CALL-TYPE>REGULAR</CALL-TYPE>
+              <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+              <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+              <BSW-ENTRY-KIND>ABSTRACT</BSW-ENTRY-KIND>
+              <RETURN-TYPE>
+                <SHORT-NAME>ReturnType</SHORT-NAME>
+                <SW-DATA-DEF-PROPS>
+                  <SW-DATA-DEF-PROPS-VARIANTS>
+                    <SW-DATA-DEF-PROPS-CONDITIONAL>
+                      <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Std/ImplementationDataTypes/Std_ReturnType</IMPLEMENTATION-DATA-TYPE-REF>
+                    </SW-DATA-DEF-PROPS-CONDITIONAL>
+                  </SW-DATA-DEF-PROPS-VARIANTS>
+                </SW-DATA-DEF-PROPS>
+              </RETURN-TYPE>
+              <ARGUMENTS>
+               <SW-SERVICE-ARG>
+                <SHORT-NAME>BlockId</SHORT-NAME>
+                <DIRECTION>IN</DIRECTION>
+                <SW-DATA-DEF-PROPS>
+                 <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                   <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_NvM/DataReferenceTypes/NvM_ASR40_BlockIdType</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                 </SW-DATA-DEF-PROPS-VARIANTS>
+                </SW-DATA-DEF-PROPS>
+               </SW-SERVICE-ARG>
+               <SW-SERVICE-ARG>
+                <SHORT-NAME>NvM_SrcPtr</SHORT-NAME>
+                <DIRECTION>IN</DIRECTION>
+                <SW-DATA-DEF-PROPS>
+                 <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                   <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_NvM/DataReferenceTypes/NvM_SchM_SrcPtrType</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                 </SW-DATA-DEF-PROPS-VARIANTS>
+                </SW-DATA-DEF-PROPS>
+               </SW-SERVICE-ARG>
+              </ARGUMENTS>
+            </BSW-MODULE-ENTRY>
+            <BSW-MODULE-ENTRY>
+              <SHORT-NAME>NvM_ASR42_WritePRAMBlock</SHORT-NAME>
+              <ADMIN-DATA>
+               <SDGS>
+                <SDG GID="EB:DnT">
+                 <SD GID="FunctionGroup">Extern</SD>
+                 <SD GID="EnableTracing">true</SD>
+                </SDG>
+                </SDGS>
+              </ADMIN-DATA>
+              <SERVICE-ID>0x17</SERVICE-ID>
+              <IS-REENTRANT>false</IS-REENTRANT>
+              <IS-SYNCHRONOUS>false</IS-SYNCHRONOUS>
+              <CALL-TYPE>REGULAR</CALL-TYPE>
+              <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+              <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+              <BSW-ENTRY-KIND>ABSTRACT</BSW-ENTRY-KIND>
+              <RETURN-TYPE>
+                <SHORT-NAME>ReturnType</SHORT-NAME>
+                <SW-DATA-DEF-PROPS>
+                  <SW-DATA-DEF-PROPS-VARIANTS>
+                    <SW-DATA-DEF-PROPS-CONDITIONAL>
+                      <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Std/ImplementationDataTypes/Std_ReturnType</IMPLEMENTATION-DATA-TYPE-REF>
+                    </SW-DATA-DEF-PROPS-CONDITIONAL>
+                  </SW-DATA-DEF-PROPS-VARIANTS>
+                </SW-DATA-DEF-PROPS>
+              </RETURN-TYPE>
+              <ARGUMENTS>
+               <SW-SERVICE-ARG>
+                <SHORT-NAME>BlockId</SHORT-NAME>
+                <DIRECTION>IN</DIRECTION>
+                <SW-DATA-DEF-PROPS>
+                 <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                   <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_NvM/DataReferenceTypes/NvM_ASR42_BlockIdType</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                 </SW-DATA-DEF-PROPS-VARIANTS>
+                </SW-DATA-DEF-PROPS>
+               </SW-SERVICE-ARG>
+              </ARGUMENTS>
+            </BSW-MODULE-ENTRY>
+            <BSW-MODULE-ENTRY>
+              <SHORT-NAME>NvM_ASR40_CancelJobs</SHORT-NAME>
+              <ADMIN-DATA>
+               <SDGS>
+                <SDG GID="EB:DnT">
+                 <SD GID="FunctionGroup">Extern</SD>
+                 <SD GID="EnableTracing">true</SD>
+                </SDG>
+                </SDGS>
+              </ADMIN-DATA>
+              <SERVICE-ID>0x10</SERVICE-ID>
+              <IS-REENTRANT>false</IS-REENTRANT>
+              <IS-SYNCHRONOUS>false</IS-SYNCHRONOUS>
+              <CALL-TYPE>REGULAR</CALL-TYPE>
+              <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+              <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+              <BSW-ENTRY-KIND>ABSTRACT</BSW-ENTRY-KIND>
+              <RETURN-TYPE>
+                <SHORT-NAME>ReturnType</SHORT-NAME>
+                <SW-DATA-DEF-PROPS>
+                  <SW-DATA-DEF-PROPS-VARIANTS>
+                    <SW-DATA-DEF-PROPS-CONDITIONAL>
+                      <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Std/ImplementationDataTypes/Std_ReturnType</IMPLEMENTATION-DATA-TYPE-REF>
+                    </SW-DATA-DEF-PROPS-CONDITIONAL>
+                  </SW-DATA-DEF-PROPS-VARIANTS>
+                </SW-DATA-DEF-PROPS>
+              </RETURN-TYPE>
+              <ARGUMENTS>
+               <SW-SERVICE-ARG>
+                <SHORT-NAME>BlockId</SHORT-NAME>
+                <DIRECTION>IN</DIRECTION>
+                <SW-DATA-DEF-PROPS>
+                 <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                   <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_NvM/DataReferenceTypes/NvM_ASR40_BlockIdType</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                 </SW-DATA-DEF-PROPS-VARIANTS>
+                </SW-DATA-DEF-PROPS>
+               </SW-SERVICE-ARG>
+              </ARGUMENTS>
+            </BSW-MODULE-ENTRY>
+            <BSW-MODULE-ENTRY>
+             <SHORT-NAME>NvM_Dummy_SatelliteContext</SHORT-NAME>
+             <ADMIN-DATA>
+              <SDGS>
+               <SDG GID="EB:DnT">
+                <SD GID="FunctionGroup">Extern</SD>
+                <SD GID="EnableTracing">true</SD>
+               </SDG>
+               </SDGS>
+             </ADMIN-DATA>
+             <SERVICE-ID>0x97</SERVICE-ID>
+             <IS-REENTRANT>true</IS-REENTRANT>
+             <IS-SYNCHRONOUS>false</IS-SYNCHRONOUS>
+             <CALL-TYPE>SCHEDULED</CALL-TYPE>
+             <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+             <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+             <ARGUMENTS>
+              <SW-SERVICE-ARG>
+               <SHORT-NAME>BlockId</SHORT-NAME>
+               <DIRECTION>IN</DIRECTION>
+               <SW-DATA-DEF-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                 <SW-DATA-DEF-PROPS-CONDITIONAL>
+                  <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint16</IMPLEMENTATION-DATA-TYPE-REF>
+                 </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+               </SW-DATA-DEF-PROPS>
+              </SW-SERVICE-ARG>
+             </ARGUMENTS>
+            </BSW-MODULE-ENTRY>
+  [!ENDIF!]
+            <BSW-MODULE-ENTRY>
+             <SHORT-NAME>NvM_Dummy_MasterContext</SHORT-NAME>
+             <ADMIN-DATA>
+              <SDGS>
+               <SDG GID="EB:DnT">
+                <SD GID="FunctionGroup">Extern</SD>
+                <SD GID="EnableTracing">true</SD>
+               </SDG>
+               </SDGS>
+             </ADMIN-DATA>
+             <SERVICE-ID>0x098</SERVICE-ID>
+             <IS-REENTRANT>true</IS-REENTRANT>
+             <IS-SYNCHRONOUS>false</IS-SYNCHRONOUS>
+             <CALL-TYPE>SCHEDULED</CALL-TYPE>
+             <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+             <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+             <ARGUMENTS>
+              <SW-SERVICE-ARG>
+               <SHORT-NAME>BlockId</SHORT-NAME>
+               <DIRECTION>IN</DIRECTION>
+               <SW-DATA-DEF-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                 <SW-DATA-DEF-PROPS-CONDITIONAL>
+                  <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint16</IMPLEMENTATION-DATA-TYPE-REF>
+                 </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+               </SW-DATA-DEF-PROPS>
+              </SW-SERVICE-ARG>
+             </ARGUMENTS>
+            </BSW-MODULE-ENTRY>
+            <BSW-MODULE-ENTRY>
+              <SHORT-NAME>NvM_SchM_JobFinished</SHORT-NAME>
+              <ADMIN-DATA>
+               <SDGS>
+                <SDG GID="EB:DnT">
+                 <SD GID="FunctionGroup">Extern</SD>
+                 <SD GID="EnableTracing">true</SD>
+                </SDG>
+                </SDGS>
+              </ADMIN-DATA>
+              <SERVICE-ID>0x99</SERVICE-ID>
+              <IS-REENTRANT>false</IS-REENTRANT>
+              <IS-SYNCHRONOUS>false</IS-SYNCHRONOUS>
+              <CALL-TYPE>REGULAR</CALL-TYPE>
+              <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+              <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+              <BSW-ENTRY-KIND>ABSTRACT</BSW-ENTRY-KIND>
+              <ARGUMENTS>
+               <SW-SERVICE-ARG>
+                <SHORT-NAME>BlockIndex</SHORT-NAME>
+                <DIRECTION>IN</DIRECTION>
+                <SW-DATA-DEF-PROPS>
+                 <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                   <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint16</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                 </SW-DATA-DEF-PROPS-VARIANTS>
+                </SW-DATA-DEF-PROPS>
+               </SW-SERVICE-ARG>
+               <SW-SERVICE-ARG>
+                <SHORT-NAME>ServiceId</SHORT-NAME>
+                <DIRECTION>IN</DIRECTION>
+                <SW-DATA-DEF-PROPS>
+                 <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                   <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                 </SW-DATA-DEF-PROPS-VARIANTS>
+                </SW-DATA-DEF-PROPS>
+               </SW-SERVICE-ARG>
+               <SW-SERVICE-ARG>
+                <SHORT-NAME>ErrorStatus</SHORT-NAME>
+                <DIRECTION>IN</DIRECTION>
+                <SW-DATA-DEF-PROPS>
+                 <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                   <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                 </SW-DATA-DEF-PROPS-VARIANTS>
+                </SW-DATA-DEF-PROPS>
+               </SW-SERVICE-ARG>
+              </ARGUMENTS>
+            </BSW-MODULE-ENTRY>
+[!ENDIF!]       
+            <BSW-MODULE-ENTRY>
+              <SHORT-NAME>NvM_MainFunction</SHORT-NAME>
+              <SERVICE-ID>0x0e</SERVICE-ID>
+              <IS-REENTRANT>true</IS-REENTRANT>
+              <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+              <CALL-TYPE>SCHEDULED</CALL-TYPE>
+              <EXECUTION-CONTEXT>TASK</EXECUTION-CONTEXT>
+              <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+              <ARGUMENTS>
+              </ARGUMENTS>
+            </BSW-MODULE-ENTRY>
+          </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+    <AR-PACKAGE>
+      <SHORT-NAME>EB_NvM</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE>
+          <SHORT-NAME>Implementations</SHORT-NAME>
+          <ELEMENTS>
+            <BSW-IMPLEMENTATION>
+              <SHORT-NAME>BswImplementation_[!"$MasterPartitionName"!]</SHORT-NAME>
+              <CODE-DESCRIPTORS>
+                <CODE>
+                  <SHORT-NAME>Files</SHORT-NAME>
+                  <ARTIFACT-DESCRIPTORS>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::include::NvM.h</SHORT-LABEL>
+                      <CATEGORY>SWHDR</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::include::NvM_Api_Stc.h</SHORT-LABEL>
+                      <CATEGORY>SWHDR</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::include::NvM_BSW.h</SHORT-LABEL>
+                      <CATEGORY>SWHDR</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::include::NvM_BlockCheck.h</SHORT-LABEL>
+                      <CATEGORY>SWHDR</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::include::NvM_CalcCrc.h</SHORT-LABEL>
+                      <CATEGORY>SWHDR</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::include::NvM_Cbk.h</SHORT-LABEL>
+                      <CATEGORY>SWHDR</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::include::NvM_DataIntern.h</SHORT-LABEL>
+                      <CATEGORY>SWHDR</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::include::NvM_FunctionIntern.h</SHORT-LABEL>
+                      <CATEGORY>SWHDR</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::include::NvM_Int_Types.h</SHORT-LABEL>
+                      <CATEGORY>SWHDR</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::include::NvM_Queue.h</SHORT-LABEL>
+                      <CATEGORY>SWHDR</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::include::NvM_StateMachine.h</SHORT-LABEL>
+                      <CATEGORY>SWHDR</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::include::NvM_Trace.h</SHORT-LABEL>
+                      <CATEGORY>SWHDR</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::include::NvM_Trace_Internal.h</SHORT-LABEL>
+                      <CATEGORY>SWHDR</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::include::NvM_Version.h</SHORT-LABEL>
+                      <CATEGORY>SWHDR</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::include::NvM_Wrapper.h</SHORT-LABEL>
+                      <CATEGORY>SWHDR</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_ASR32_Rte.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_ASR40_Rte.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_ASR42_Rte.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_BlockCheck.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_CalcCrc.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_DataIntern.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_FirstInitAll.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_Queue.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_ReadAll.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_ReadBlock.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_RestoreBlockDefaults.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_Rte.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_StateMachine.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_ValidateAll.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_Wrapper.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_WriteAll.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_WriteBlock.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>make::NvM_defs.mak</SHORT-LABEL>
+                      <CATEGORY>SWMAKE</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>make::NvM_rules.mak</SHORT-LABEL>
+                      <CATEGORY>SWMAKE</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                  </ARTIFACT-DESCRIPTORS>
+                </CODE>
+              </CODE-DESCRIPTORS>
+              <PROGRAMMING-LANGUAGE>C</PROGRAMMING-LANGUAGE>
+              <RESOURCE-CONSUMPTION>
+                <SHORT-NAME>ResourceConsumption</SHORT-NAME>
+                <MEMORY-SECTIONS>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>CODE</SHORT-NAME>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/CODE</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>CODE_MC_SHARED</SHORT-NAME>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/CODE</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_POWER_ON_CLEARED_MC_SHARED_UNSPECIFIED</SHORT-NAME>
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_POWER_ON_CLEARED</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_CLEARED_MC_SHARED_UNSPECIFIED</SHORT-NAME>
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_CLEARED</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_INIT_MC_SHARED_16</SHORT-NAME>
+                    <ALIGNMENT>16</ALIGNMENT>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_INIT</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>CONFIG_DATA_MC_SHARED_UNSPECIFIED</SHORT-NAME>
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/CONFIG_DATA</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_CLEARED_MC_SHARED_16</SHORT-NAME> 
+                    <ALIGNMENT>16</ALIGNMENT> 
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_CLEARED</SW-ADDRMETHOD-REF> 
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_POWER_ON_CLEARED_8</SHORT-NAME>
+                    <ALIGNMENT>8</ALIGNMENT>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_POWER_ON_CLEARED</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_POWER_ON_CLEARED_UNSPECIFIED</SHORT-NAME>
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_POWER_ON_CLEARED</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_INIT_8</SHORT-NAME>
+                    <ALIGNMENT>8</ALIGNMENT>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_INIT</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_CLEARED_8</SHORT-NAME>
+                    <ALIGNMENT>8</ALIGNMENT>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_CLEARED</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_CLEARED_APPL_DATA_UNSPECIFIED</SHORT-NAME>
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_CLEARED</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_INIT_16</SHORT-NAME>
+                    <ALIGNMENT>16</ALIGNMENT>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_INIT</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_CLEARED_16</SHORT-NAME> 
+                    <ALIGNMENT>16</ALIGNMENT> 
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_CLEARED</SW-ADDRMETHOD-REF> 
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_CLEARED_32</SHORT-NAME> 
+                    <ALIGNMENT>32</ALIGNMENT> 
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_CLEARED</SW-ADDRMETHOD-REF> 
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_INIT_UNSPECIFIED</SHORT-NAME>
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_INIT</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_CLEARED_64</SHORT-NAME> 
+                    <ALIGNMENT>64</ALIGNMENT> 
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_CLEARED</SW-ADDRMETHOD-REF> 
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_CLEARED_UNSPECIFIED</SHORT-NAME> 
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT> 
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_CLEARED</SW-ADDRMETHOD-REF> 
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>CONFIG_DATA_8</SHORT-NAME>
+                    <ALIGNMENT>8</ALIGNMENT>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/CONFIG_DATA</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>CONFIG_DATA_16</SHORT-NAME>
+                    <ALIGNMENT>16</ALIGNMENT>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/CONFIG_DATA</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>CONFIG_DATA_UNSPECIFIED</SHORT-NAME>
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/CONFIG_DATA</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_INIT_32</SHORT-NAME>
+                    <ALIGNMENT>32</ALIGNMENT>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_INIT</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                </MEMORY-SECTIONS>
+              </RESOURCE-CONSUMPTION>
+              <SW-VERSION>6.17.36</SW-VERSION>
+[!IF "node:existsAndTrue(NvMCommon/NvMRteUsage)"!]
+              <SWC-BSW-MAPPING-REF DEST="SWC-BSW-MAPPING">/AUTOSAR_NvM/SwcBswMappings/SwcBswMapping_0</SWC-BSW-MAPPING-REF>
+[!ENDIF!]
+              <VENDOR-ID>1</VENDOR-ID>
+              <AR-RELEASE-VERSION>4.0.3</AR-RELEASE-VERSION>
+              <BEHAVIOR-REF DEST="BSW-INTERNAL-BEHAVIOR">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$MasterPartitionName"!]</BEHAVIOR-REF>
+              <VENDOR-SPECIFIC-MODULE-DEF-REFS>
+                <VENDOR-SPECIFIC-MODULE-DEF-REF DEST="ECUC-MODULE-DEF">/TS_TxDxM6I17R0/NvM</VENDOR-SPECIFIC-MODULE-DEF-REF>
+              </VENDOR-SPECIFIC-MODULE-DEF-REFS>
+            </BSW-IMPLEMENTATION>
+[!VAR "PartitionCounter" = "0"!]
+[!IF "$BSW_DISTRIBUTION_ENABLED"!]
+    [!LOOP "as:modconf('NvM')[1]/NvMCommon/NvMEcucPartitionRef/eb-list::*"!]
+    [!IF "as:modconf('NvM')[1]/NvMCommon/NvMMasterEcucPartitionRef != (.)"!]
+      [!VAR "PartitionName" = "substring-after(name(),'EcucPartitionCollection/')"!]
+        [!VAR "PartitionCounter" = "$PartitionCounter + 1"!]
+            <BSW-IMPLEMENTATION>
+              <SHORT-NAME>BswImplementation_[!"$PartitionName"!]</SHORT-NAME>
+              <CODE-DESCRIPTORS>
+                <CODE>
+                  <SHORT-NAME>Files</SHORT-NAME>
+                  <ARTIFACT-DESCRIPTORS>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::include::NvM.h</SHORT-LABEL>
+                      <CATEGORY>SWHDR</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::include::NvM_Api_Stc.h</SHORT-LABEL>
+                      <CATEGORY>SWHDR</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::include::NvM_BSW.h</SHORT-LABEL>
+                      <CATEGORY>SWHDR</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::include::NvM_BlockCheck.h</SHORT-LABEL>
+                      <CATEGORY>SWHDR</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::include::NvM_CalcCrc.h</SHORT-LABEL>
+                      <CATEGORY>SWHDR</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::include::NvM_Cbk.h</SHORT-LABEL>
+                      <CATEGORY>SWHDR</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::include::NvM_DataIntern.h</SHORT-LABEL>
+                      <CATEGORY>SWHDR</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::include::NvM_FunctionIntern.h</SHORT-LABEL>
+                      <CATEGORY>SWHDR</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::include::NvM_Int_Types.h</SHORT-LABEL>
+                      <CATEGORY>SWHDR</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::include::NvM_Queue.h</SHORT-LABEL>
+                      <CATEGORY>SWHDR</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::include::NvM_StateMachine.h</SHORT-LABEL>
+                      <CATEGORY>SWHDR</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::include::NvM_Trace.h</SHORT-LABEL>
+                      <CATEGORY>SWHDR</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::include::NvM_Trace_Internal.h</SHORT-LABEL>
+                      <CATEGORY>SWHDR</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::include::NvM_Version.h</SHORT-LABEL>
+                      <CATEGORY>SWHDR</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::include::NvM_Wrapper.h</SHORT-LABEL>
+                      <CATEGORY>SWHDR</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::include::NvM_Rte_[!"$PartitionName"!]_Lcfg.h</SHORT-LABEL>
+                      <CATEGORY>SWHDR</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::include::NvM_Cfg.h</SHORT-LABEL>
+                      <CATEGORY>SWHDR</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_ASR32_Rte.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_ASR40_Rte.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_ASR42_Rte.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_BlockCheck.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_CalcCrc.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_DataIntern.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_FirstInitAll.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_Queue.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_ReadAll.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_ReadBlock.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_RestoreBlockDefaults.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_Rte.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_StateMachine.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_ValidateAll.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_Wrapper.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_WriteAll.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_WriteBlock.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_Rte_[!"$PartitionName"!]_Lcfg.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>Autosar::src::NvM_Cfg.c</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>make::NvM_defs.mak</SHORT-LABEL>
+                      <CATEGORY>SWMAKE</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>make::NvM_rules.mak</SHORT-LABEL>
+                      <CATEGORY>SWMAKE</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                  </ARTIFACT-DESCRIPTORS>
+                </CODE>
+              </CODE-DESCRIPTORS>
+              <PROGRAMMING-LANGUAGE>C</PROGRAMMING-LANGUAGE>
+              <RESOURCE-CONSUMPTION>
+                <SHORT-NAME>ResourceConsumption</SHORT-NAME>
+                <MEMORY-SECTIONS>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>CODE</SHORT-NAME>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/CODE</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_POWER_ON_CLEARED_8</SHORT-NAME>
+                    <ALIGNMENT>8</ALIGNMENT>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_POWER_ON_CLEARED</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_POWER_ON_CLEARED_UNSPECIFIED</SHORT-NAME>
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_POWER_ON_CLEARED</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_INIT_8</SHORT-NAME>
+                    <ALIGNMENT>8</ALIGNMENT>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_INIT</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_CLEARED_8</SHORT-NAME>
+                    <ALIGNMENT>8</ALIGNMENT>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_CLEARED</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_CLEARED_APPL_DATA_UNSPECIFIED</SHORT-NAME>
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_CLEARED</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_INIT_16</SHORT-NAME>
+                    <ALIGNMENT>16</ALIGNMENT>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_INIT</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_CLEARED_16</SHORT-NAME> 
+                    <ALIGNMENT>16</ALIGNMENT> 
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_CLEARED</SW-ADDRMETHOD-REF> 
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_CLEARED_32</SHORT-NAME> 
+                    <ALIGNMENT>32</ALIGNMENT> 
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_CLEARED</SW-ADDRMETHOD-REF> 
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_INIT_UNSPECIFIED</SHORT-NAME>
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_INIT</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_CLEARED_64</SHORT-NAME> 
+                    <ALIGNMENT>64</ALIGNMENT> 
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_CLEARED</SW-ADDRMETHOD-REF> 
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_CLEARED_UNSPECIFIED</SHORT-NAME> 
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT> 
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_CLEARED</SW-ADDRMETHOD-REF> 
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>CONFIG_DATA_8</SHORT-NAME>
+                    <ALIGNMENT>8</ALIGNMENT>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/CONFIG_DATA</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>CONFIG_DATA_16</SHORT-NAME>
+                    <ALIGNMENT>16</ALIGNMENT>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/CONFIG_DATA</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>CONFIG_DATA_UNSPECIFIED</SHORT-NAME>
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/CONFIG_DATA</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_INIT_32</SHORT-NAME>
+                    <ALIGNMENT>32</ALIGNMENT>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_INIT</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                </MEMORY-SECTIONS>
+              </RESOURCE-CONSUMPTION>
+              <SW-VERSION>6.17.36</SW-VERSION>
+[!IF "node:existsAndTrue(NvMCommon/NvMRteUsage)"!]
+              <SWC-BSW-MAPPING-REF DEST="SWC-BSW-MAPPING">/AUTOSAR_NvM/SwcBswMappings/SwcBswMapping_[!"$PartitionName"!]</SWC-BSW-MAPPING-REF>
+[!ENDIF!]
+              <VENDOR-ID>1</VENDOR-ID>
+              <AR-RELEASE-VERSION>4.0.3</AR-RELEASE-VERSION>
+              <BEHAVIOR-REF DEST="BSW-INTERNAL-BEHAVIOR">/AUTOSAR_NvM/BswModuleDescriptions/NvM/InternalBehavior_[!"$PartitionName"!]</BEHAVIOR-REF>
+              <!-- Only defined for the satellites -->
+              <VENDOR-API-INFIX>[!"$PartitionName"!]</VENDOR-API-INFIX>
+              <VENDOR-SPECIFIC-MODULE-DEF-REFS>
+                <VENDOR-SPECIFIC-MODULE-DEF-REF DEST="ECUC-MODULE-DEF">/TS_TxDxM6I17R0/NvM</VENDOR-SPECIFIC-MODULE-DEF-REF>
+              </VENDOR-SPECIFIC-MODULE-DEF-REFS>
+            </BSW-IMPLEMENTATION>
+        [!ENDIF!]
+    [!ENDLOOP!]
+[!ENDIF!]
+          </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

@@ -1,0 +1,34 @@
+########### CORE PART OF THE TEMPLATE - START ###########
+#parse("include/Mk_gen_config.h.vm")
+########### CORE PART OF THE TEMPLATE - END #############
+########### TARGET PART OF THE TEMPLATE - START ###########
+########### Arch specific velocimacros that can be called from the common code parts ###########
+#macro( VM_ArchOsConfigIncludeFiles )
+#end
+##
+##
+#macro( VM_ArchOsConfigDataInit )
+#end
+##
+##
+#macro( VM_ArchOsConfigInterruptInit )
+#end
+##
+##
+#macro( VM_ArchOsConfigTimestampInit )
+#end
+
+/*===================================================================
+ * RH850 Memory Partitions
+ *==================================================================*/
+#foreach( $coreId in $OsModel.getUsedCoreIds() )
+#* *##if( $OsModel.isCoreInUse($coreId) )
+#*   *##set( $cMkGlobalPartition = $ArchProperties.getMkGlobalPartition($coreId) )
+#*   *#\#define MK_CFG_C${coreId}_GLOBAL_SIZE  $cMkGlobalPartition.size()
+#* *##end
+#end
+
+#ifdef __cplusplus
+}
+#endif
+#endif  /* MK_GEN_CONFIG_H */

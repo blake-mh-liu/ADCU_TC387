@@ -1,0 +1,161 @@
+[!AUTOSPACING!][!//
+[!SELECT "as:modconf('SaSrv')"!][!//
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-0-3.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>SaSrv</SHORT-NAME>
+      <AR-PACKAGES>
+        <!-- ASR:/SaSrv/DataConstraints -->
+        <AR-PACKAGE>
+          <SHORT-NAME>DataConstraints</SHORT-NAME>
+          <ELEMENTS>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <!-- ASR:/SaSrv/CompuMethods -->
+        <AR-PACKAGE>
+          <SHORT-NAME>CompuMethods</SHORT-NAME>
+          <ELEMENTS>
+            <!-- Csm -->
+            <!-- ASR:/SaSrv/CompuMethods/CM_SaSrv_Csm_CryptoVerifyResultType -->
+            <COMPU-METHOD>
+              <SHORT-NAME>CM_SaSrv_Csm_CryptoVerifyResultType</SHORT-NAME>
+              <CATEGORY>TEXTTABLE</CATEGORY>
+              <COMPU-INTERNAL-TO-PHYS>
+                <COMPU-SCALES>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>CRYPTO_E_VER_OK</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">1</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">1</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>CRYPTO_E_VER_NOT_OK</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                </COMPU-SCALES>
+              </COMPU-INTERNAL-TO-PHYS>
+            </COMPU-METHOD>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <!-- ASR:/SaSrv/ImplementationDataTypes -->
+        <AR-PACKAGE>
+          <SHORT-NAME>ImplementationDataTypes</SHORT-NAME>
+          <ELEMENTS>
+[!LOOP "SaSrvSecurityLevelConfig/*"!][!//
+            <!-- ASR:/SaSrv/ImplementationDataTypes/SaSrv_Csm_MacGenerateDataType_[!"node:name(.)"!] -->
+            <IMPLEMENTATION-DATA-TYPE>
+              <SHORT-NAME>SaSrv_Csm_MacGenerateDataType_[!"node:name(.)"!]</SHORT-NAME>
+              <CATEGORY>ARRAY</CATEGORY>
+              <SUB-ELEMENTS>
+                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  <SHORT-NAME>AuxCsm_MacGenerateDataType_[!"node:name(.)"!]</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <ARRAY-SIZE>[!"num:i(node:value(as:ref(as:ref(./SaSrvAuthenticationMethod/SaSrvMACGenerateRef)/CsmJobPrimitiveRef)/CsmMacGenerate/CsmMacGenerateConfig/CsmMacGenerateDataMaxLength))"!]</ARRAY-SIZE>
+                  <ARRAY-SIZE-SEMANTICS>FIXED-SIZE</ARRAY-SIZE-SEMANTICS>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+              </SUB-ELEMENTS>
+            </IMPLEMENTATION-DATA-TYPE>
+            <!-- ASR:/SaSrv/ImplementationDataTypes/SaSrv_Csm_MacGenerateResultType_[!"node:name(.)"!] -->
+            <IMPLEMENTATION-DATA-TYPE>
+              <SHORT-NAME>SaSrv_Csm_MacGenerateResultType_[!"node:name(.)"!]</SHORT-NAME>
+              <CATEGORY>ARRAY</CATEGORY>
+              <SUB-ELEMENTS>
+                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  <SHORT-NAME>AuxCsm_MacGenerateResultType_[!"node:name(.)"!]</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <ARRAY-SIZE>[!"num:i(node:value(as:ref(as:ref(./SaSrvAuthenticationMethod/SaSrvMACGenerateRef)/CsmJobPrimitiveRef)/CsmMacGenerate/CsmMacGenerateConfig/CsmMacGenerateResultLength))"!]</ARRAY-SIZE>
+                  <ARRAY-SIZE-SEMANTICS>FIXED-SIZE</ARRAY-SIZE-SEMANTICS>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+              </SUB-ELEMENTS>
+            </IMPLEMENTATION-DATA-TYPE>
+[!ENDLOOP!][!//
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <!-- ASR:/SaSrv/Interfaces -->
+        <AR-PACKAGE>
+          <SHORT-NAME>Interfaces</SHORT-NAME>
+          <ELEMENTS>
+[!LOOP "SaSrvSecurityLevelConfig/*"!][!//
+            <!-- !LINKSTO swdd.Csm_MacGenerate,1 -->
+            <!-- ASR:/SaSrv/Interfaces/MacGenerate[!"node:name(.)"!] -->
+            <CLIENT-SERVER-INTERFACE>
+              <SHORT-NAME>MacGenerate_[!"node:name(.)"!]</SHORT-NAME>
+              <IS-SERVICE>true</IS-SERVICE>
+              <OPERATIONS>
+                <!-- !LINKSTO swdd.Csm_MacGenerate,1 -->
+                <!-- ASR:/SaSrv/Interfaces/MacGenerate[!"node:name(.)"!]/MacGenerate -->
+                <CLIENT-SERVER-OPERATION>
+                  <SHORT-NAME>MacGenerate</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE>
+                      <SHORT-NAME>dataBuffer</SHORT-NAME>
+                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/SaSrv/ImplementationDataTypes/SaSrv_Csm_MacGenerateDataType_[!"node:name(.)"!]</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                    <ARGUMENT-DATA-PROTOTYPE>
+                      <SHORT-NAME>dataLength</SHORT-NAME>
+                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint32</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                    <ARGUMENT-DATA-PROTOTYPE>
+                      <SHORT-NAME>resultBuffer</SHORT-NAME>
+                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/SaSrv/ImplementationDataTypes/SaSrv_Csm_MacGenerateResultType_[!"node:name(.)"!]</TYPE-TREF>
+                      <DIRECTION>OUT</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                    <ARGUMENT-DATA-PROTOTYPE>
+                      <SHORT-NAME>resultLength</SHORT-NAME>
+                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint32</TYPE-TREF>
+                      <DIRECTION>INOUT</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <POSSIBLE-ERROR-REFS>
+                    <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/SaSrv/Interfaces/MacGenerate_[!"node:name(.)"!]/E_NOT_OK</POSSIBLE-ERROR-REF>
+                    <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/SaSrv/Interfaces/MacGenerate_[!"node:name(.)"!]/CSM_E_BUSY</POSSIBLE-ERROR-REF>
+                    <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/SaSrv/Interfaces/MacGenerate_[!"node:name(.)"!]/CSM_E_SMALL_BUFFER</POSSIBLE-ERROR-REF>
+                  </POSSIBLE-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+              </OPERATIONS>
+              <POSSIBLE-ERRORS>
+                <APPLICATION-ERROR>
+                  <SHORT-NAME>E_NOT_OK</SHORT-NAME>
+                  <ERROR-CODE>1</ERROR-CODE>
+                </APPLICATION-ERROR>
+                <APPLICATION-ERROR>
+                  <SHORT-NAME>CSM_E_BUSY</SHORT-NAME>
+                  <ERROR-CODE>2</ERROR-CODE>
+                </APPLICATION-ERROR>
+                <APPLICATION-ERROR>
+                  <SHORT-NAME>CSM_E_SMALL_BUFFER</SHORT-NAME>
+                  <ERROR-CODE>3</ERROR-CODE>
+                </APPLICATION-ERROR>
+              </POSSIBLE-ERRORS>
+            </CLIENT-SERVER-INTERFACE>
+[!ENDLOOP!][!//
+          </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>
+[!ENDSELECT!][!//

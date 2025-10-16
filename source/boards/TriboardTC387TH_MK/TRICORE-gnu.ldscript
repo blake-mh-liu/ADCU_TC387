@@ -1,0 +1,94 @@
+/*
+ * $Id: TRICORE-gnu.ldscript 40476 2020-07-09 13:03:39Z ache271795 $
+ *
+ * Partial linker script to define board memory layout.
+ *
+ * Copyright 1998-2016 Elektrobit Automotive GmbH
+ * All rights exclusively reserved for Elektrobit Automotive GmbH,
+ * unless expressly agreed to otherwise.
+*/
+
+/* The GENLD_csaCoreX_NCSA macros are replaced according to the configuration by the linker script generator */
+
+MEMORY
+{
+	/* Usage of flash:
+	 *
+	 * There's 3*3MiB flash in PF0 to PF2.
+	 * There's   1MiB flash in PF3.
+	 *
+	 * Note that some of this flash might be used by the HSM.
+	 * Sectors 0 to 64 of PF0 are located at 0x80000000 .. 0x800fffff.
+	 * Sector size is 0x4000 B = 16 kiB.
+	 * PF0 logical sectors S0 to S39 may be configured as "HSM_exclusive".
+	 * In this example we don't expect that this memory is reserved for HSM.
+	 *
+	 *
+	 * Note, that early versions of TC3XX have only 96k of int_ram_core[01],
+	 * while newer steppings will have 2*240k for core 0 and core 1.
+	*/
+
+	int_rom_vect  : org = 0x80000000, len = 80k
+	int_rom       : org = 0x80080000, len = 7680k
+	int_ram_core0 : org = 0x70000000, len = (96k - (GENLD_csaCore0_NCSA*64))
+	int_ram_core1 : org = 0x60000000, len = (96k - (GENLD_csaCore1_NCSA*64))
+	int_ram_core2 : org = 0x50000000, len = (96k - (GENLD_csaCore2_NCSA*64))
+	int_ram_core3 : org = 0x40000000, len = (96k - (GENLD_csaCore3_NCSA*64))
+}
+
+
+/* Define start/end of core-local RAMs
+ * This is used for defining default IOC input regions of applications.
+ * The local view of URAM_END is also the begin of the CSA area of the respective core.
+*/
+BOARD_C0_RAM_BEG = ORIGIN(int_ram_core0);
+BOARD_C1_RAM_BEG = ORIGIN(int_ram_core1);
+BOARD_C2_RAM_BEG = ORIGIN(int_ram_core2);
+BOARD_C3_RAM_BEG = ORIGIN(int_ram_core3);
+
+BOARD_C0_URAM_END = BOARD_C0_RAM_BEG + LENGTH(int_ram_core0);
+BOARD_C1_URAM_END = BOARD_C1_RAM_BEG + LENGTH(int_ram_core1);
+BOARD_C2_URAM_END = BOARD_C2_RAM_BEG + LENGTH(int_ram_core2);
+BOARD_C3_URAM_END = BOARD_C3_RAM_BEG + LENGTH(int_ram_core3);
+
+BOARD_C0_URAM_END_LOCAL = 0xd0000000 + LENGTH(int_ram_core0);
+BOARD_C1_URAM_END_LOCAL = 0xd0000000 + LENGTH(int_ram_core1);
+BOARD_C2_URAM_END_LOCAL = 0xd0000000 + LENGTH(int_ram_core2);
+BOARD_C3_URAM_END_LOCAL = 0xd0000000 + LENGTH(int_ram_core3);
+
+
+/* Where the CSA memory is located:
+ * MK_RSA_MK_Csa_Cx is the base of the CSA block of core x
+ * MK_RLA_MK_Csa_Cx is the first address beyond the CSA block of core x
+ *
+ * MK_RSA_MK_Csa_Cx must be aligned on a 64-byte boundary (lower 6 bits all zero)
+*/
+MK_RSA_MK_Csa_C0 = BOARD_C0_URAM_END_LOCAL;
+MK_RLA_MK_Csa_C0 = BOARD_C0_URAM_END_LOCAL + (GENLD_csaCore0_NCSA*64);
+
+MK_RSA_MK_Csa_C1 = BOARD_C1_URAM_END_LOCAL;
+MK_RLA_MK_Csa_C1 = BOARD_C1_URAM_END_LOCAL + (GENLD_csaCore1_NCSA*64);
+
+MK_RSA_MK_Csa_C2 = BOARD_C2_URAM_END_LOCAL;
+MK_RLA_MK_Csa_C2 = BOARD_C2_URAM_END_LOCAL + (GENLD_csaCore2_NCSA*64);
+
+MK_RSA_MK_Csa_C3 = BOARD_C3_URAM_END_LOCAL;
+MK_RLA_MK_Csa_C3 = BOARD_C3_URAM_END_LOCAL + (GENLD_csaCore3_NCSA*64);
+
+
+/* Symbols of memory regions not bound to any object file */
+MK_RSA_MK_Rom       = ORIGIN(int_rom_vect); /* Flash */
+MK_RLA_MK_Rom       = ORIGIN(int_rom) + LENGTH(int_rom);
+MK_RSA_MK_GlobalRam = ORIGIN(int_ram_core3);
+MK_RLA_MK_GlobalRam = ORIGIN(int_ram_core0) + LENGTH(int_ram_core0) + (GENLD_csaCore0_NCSA*64);
+MK_RSA_MK_Io        = 0xF0001000; /* I/O start at STM0, end after SRC regs */
+MK_RLA_MK_Io        = 0xF003A000;
+MK_RSA_MK_OsIo      = 0xF0001000; /* OS I/O (STM only!) */
+MK_RLA_MK_OsIo      = 0xF0001400;
+
+
+/* Symbols for the initialisation of private data areas. */
+MK_INITIAL_A0       = 0;
+MK_INITIAL_A1       = 0;
+MK_INITIAL_A8       = 0; /* reserved for OS use */
+

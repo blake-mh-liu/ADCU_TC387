@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?module J1939Tp?>
+
+<xgen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.elektrobit.com/2013/xgen" xmlns:xi="http://www.w3.org/2001/XInclude">
+[!CODE!]
+[!AUTOSPACING!]
+
+[!IF "var:defined('postBuildVariant')"!]
+[!/* Current PB variant Sufix
+*/!][!VAR "J1939TP_VARIANT_SUFIX"="concat('_',$postBuildVariant,'_')"!]
+[!ELSE!]
+[!/* Current PB variant Sufix
+*/!][!VAR "J1939TP_VARIANT_SUFIX"="string("_")"!]
+[!ENDIF!]
+[!IF "var:defined('postBuildVariant')"!]
+[!/* Current postbuild configuration name
+*/!][!VAR "initPredefinedCfgName"="concat('J1939Tp_Config','_',$postBuildVariant)"!]
+[!ELSE!]
+[!/* Current postbuild name
+*/!][!VAR "initPredefinedCfgName"="string("J1939Tp_Config_0")"!]
+[!ENDIF!]
+[!/* Current postbuild-c variant
+*/!][!VAR "J1939TP_PBCFG_C_VARIANT"="concat('J1939Tp',$J1939TP_VARIANT_SUFIX,'PBcfg.c')"!]
+[!/* Current postbuild-h variant
+*/!][!VAR "J1939TP_PBCFG_H_VARIANT"="concat('J1939Tp',$J1939TP_VARIANT_SUFIX,'PBcfg.h')"!]
+[!/* Current Config variant
+*/!][!VAR "J1939TP_CONFIG_LAYOUT_VARIANT"="concat('J1939Tp',$J1939TP_VARIANT_SUFIX,'ConfigLayout')"!]
+[!/* Current Config Type variant based
+*/!][!VAR "J1939TP_CONFIGLAYOUTTYPE_VARIANT"="concat('J1939Tp',$J1939TP_VARIANT_SUFIX,'ConfigLayoutType')"!]
+[!/* Current Const Config Type variant based
+*/!][!VAR "J1939TP_CONSTCONFIGLAYOUTTYPE_VARIANT"="concat('J1939Tp',$J1939TP_VARIANT_SUFIX,'ConstConfigLayoutType')"!]
+  
+  <module name="J1939Tp" version="[!"$moduleSoftwareVer"!]">
+    <configuration class="PreCompile">
+      [!IF "(variant:size() = 0) or (variant:all()[1] = variant:name())"!]
+      <?artifact directory="include" file="J1939Tp_Types_Int.h" type="types-h" generate="yes"?>
+      [!ELSE!]
+      <?artifact directory="include" file="J1939Tp_Types_Int.h" type="types-h" generate="no"?>
+      [!ENDIF!]
+[!VAR "relocatable" = "'false'"!]
+[!IF "node:contains(util:distinct(node:refs(as:modconf('PbcfgM')/PbcfgMBswModules/eb-list::*/PbcfgMBswModuleRef)), node:existsAndTrue(as:modconf('J1939Tp')))"!]
+  [!IF "node:exists(as:modconf('PbcfgM')/PbcfgMGeneral/PbcfgMRelocatableCfgEnable) and (node:existsAndTrue(as:modconf('PbcfgM')/PbcfgMGeneral/PbcfgMRelocatableCfgEnable))"!]
+    [!VAR "relocatable" = "'true'"!]
+  [!ENDIF!]
+[!ELSE!]
+    [!IF "node:existsAndTrue(J1939TpGeneral/J1939TpRelocatablePbcfgEnable)"!]
+      [!VAR "relocatable" = "'true'"!]
+    [!ENDIF!]
+[!ENDIF!]
+      <parameter name="relocatable-enable">
+        <boolean-value>[!"$relocatable"!]</boolean-value>
+      </parameter>
+      <type name="J1939Tp_RxNSduTypePbcfg">
+        <struct>
+          <member name="J1939TpRxNSduIdEcuCPbcfg" type="uint16" comment="EcuC ID for the referenced J1939TpRxNSdu." />
+        </struct>
+      </type>
+      <type name="J1939Tp_TxNSduTypePbcfg">
+        <struct>
+          <member name="J1939TpTxNSduIdEcuCPbcfg" type="uint16" comment="EcuC ID for the referenced J1939TpTxNSdu." />
+        </struct>
+      </type>
+      <type name="J1939Tp_RxPgTypePbcfg">
+        <struct>
+          <member name="J1939TpRxNSduPbcfg" type="J1939Tp_RxNSduTypePbcfg" comment="Reference to J1939TpRxNSduPbcfg." >
+            <compiler-abstraction>
+              <ref2cfg />
+            </compiler-abstraction>
+          </member>
+          <member name="J1939TpTxDirectNPduRxConfIdEcuCPbcfg" type="uint16" comment="EcuC Pdu ID for Receive the Direct PG" />
+        </struct>
+      </type>
+      <type name="J1939Tp_TxPgTypePbcfg">
+        <struct>
+         <member name="J1939TpTxNSduPbcfg" type="J1939Tp_TxNSduTypePbcfg" comment="Reference to J1939TpRxNSduPbcfg." >
+            <compiler-abstraction>
+              <ref2cfg />
+            </compiler-abstraction>
+          </member>
+          <member name="J1939TpTxDirectNPduTxConfIdEcuCPbcfg" type="uint16" comment="EcuC Pdu ID for Receive the Direct PG" />
+        </struct>
+      </type>
+      <type name="J1939Tp_RxChannelTypePbcfg">
+        <struct>
+          <member name="J1939TpRxPgPbcfg" type="J1939Tp_RxPgTypePbcfg" comment="Reference to J1939Tp_RxPgTypePbcfg structure" >
+            <compiler-abstraction>
+              <ref2cfg />
+            </compiler-abstraction>
+          </member>
+          <member name="J1939TpTxFcNPduRxConfIdEcuCPbcfg" type="uint16" comment="EcuC PduId of J1939TpRxFcNPdu" />
+          <member name="J1939TpRxCmNPduRxConfIdEcuCPbcfg" type="uint16" comment="EcuC PduId of J1939TpTxCmNPdu" />
+          <member name="J1939TpRxDtNPduRxConfIdEcuCPbcfg" type="uint16" comment="EcuC PduId of J1939TpTxDtNPdu" />
+          <member name="J1939TpRxDaPbcfg" type="uint8" comment="Destination address for RX channel" />
+          <member name="J1939TpRxSaPbcfg" type="uint8" comment="Source address for RX channel" />
+        </struct>
+      </type>
+       <type name="J1939Tp_TxChannelTypePbcfg">
+        <struct>
+          <member name="J1939TpTxPgPbcfg" type="J1939Tp_TxPgTypePbcfg" comment="Reference to J1939Tp_TxPgTypePbcfg structure" >
+            <compiler-abstraction>
+              <ref2cfg />
+            </compiler-abstraction>
+          </member>
+          <member name="J1939TpRxFcNPduTxConfIdEcuCPbcfg" type="uint16" comment="EcuC PduId of J1939TpRxFcNPdu" />
+          <member name="J1939TpTxCmNPduTxConfIdEcuCPbcfg" type="uint16" comment="EcuC PduId of J1939TpTxCmNPdu" />
+          <member name="J1939TpTxDtNPduTxConfIdEcuCPbcfg" type="uint16" comment="EcuC PduId of J1939TpTxDtNPdu" />
+          <member name="J1939TpTxDaPbcfg" type="uint8" comment="Destination address for TX channel" />
+          <member name="J1939TpTxSaPbcfg" type="uint8" comment="Source address for  TX channel" />
+        </struct>
+      </type>
+        <type name="J1939Tp_ConfigType">
+        <struct>
+          <member name="PlatformSignature" type="uint32" comment="Used to validate the platform"/>
+          <member name="LcfgSignature" type="uint32" comment="Used to validate the post build configuration against the link time configuration"/>
+          <member name="CfgSignature" type="uint32" comment="Used to validate the post build configuration against the precompile time configuration"/>
+          <member name="PublicInfoSignature" type="uint32" comment="Used to validate the post build configuration against the precompile time published information configuration"/>
+          <member name="J1939TpRxChannelPbcfg" type="J1939Tp_RxChannelTypePbcfg" comment="Refference to Rx channels" >
+            <compiler-abstraction>
+              <ref2cfg />
+            </compiler-abstraction>
+          </member>
+          <member name="J1939TpTxChannelPbcfg" type="J1939Tp_TxChannelTypePbcfg" comment="Refference to Tx channels" >
+            <compiler-abstraction>
+              <ref2cfg />
+            </compiler-abstraction>
+          </member>
+        </struct>
+      </type>
+      </configuration>
+                                     
+                                      <!-- POSTBUILD CONFIGURATION-->
+                                      <!-- POSTBUILD CONFIGURATION-->
+    <configuration class="PostBuild">
+      <?artifact directory="include" file="[!"$J1939TP_PBCFG_H_VARIANT"!]" type="postbuild-h" ?>
+      <?artifact directory="src" file="[!"$J1939TP_PBCFG_C_VARIANT"!]" type="postbuild-c" ?>
+
+      <type name="[!"$J1939TP_CONFIGLAYOUTTYPE_VARIANT"!]">
+        <struct>
+          <member type="J1939Tp_ConfigType" name="RootCfg" />
+[!IF "num:i(count(as:modconf('J1939Tp')[1]/J1939TpConfiguration/eb-list::*[1]/J1939TpRxChannel/eb-list::*)) > 0"!]
+          <member type="J1939Tp_RxChannelTypePbcfg" name="RxChanRef" count="[!"num:i(count(as:modconf('J1939Tp')[1]/J1939TpConfiguration/eb-list::*[1]/J1939TpRxChannel/eb-list::*))"!]" />
+[!ENDIF!]
+[!IF "num:i(count(as:modconf('J1939Tp')[1]/J1939TpConfiguration/eb-list::*[1]/J1939TpTxChannel/eb-list::*)) > 0"!]
+          <member type="J1939Tp_TxChannelTypePbcfg" name="TxChanRef" count="[!"num:i(count(as:modconf('J1939Tp')[1]/J1939TpConfiguration/eb-list::*[1]/J1939TpTxChannel/eb-list::*))"!]" />
+[!ENDIF!]
+[!IF "num:i(count(as:modconf('J1939Tp')[1]/J1939TpConfiguration/eb-list::*[1]/J1939TpRxChannel/eb-list::*/J1939TpRxPg/eb-list::*)) > 0"!]
+[!LOOP "util:distinct(node:order(as:modconf('J1939Tp')[1]/J1939TpConfiguration/eb-list::*[1]/J1939TpRxChannel/eb-list::*))"!] 
+          <member type="J1939Tp_RxPgTypePbcfg"  name="[!"node:name(../..)"!]_[!"node:name(.)"!]_Rx_Pg" count="[!"num:i(count(J1939TpRxPg/eb-list::*))"!]" />
+[!ENDLOOP!]
+[!ENDIF!]
+[!IF "num:i(count(as:modconf('J1939Tp')[1]/J1939TpConfiguration/eb-list::*[1]/J1939TpTxChannel/eb-list::*/J1939TpTxPg/eb-list::*)) > 0"!]
+[!LOOP "util:distinct(node:order(as:modconf('J1939Tp')[1]/J1939TpConfiguration/eb-list::*[1]/J1939TpTxChannel/eb-list::*))"!] 
+          <member type="J1939Tp_TxPgTypePbcfg"  name="[!"node:name(../..)"!]_[!"node:name(.)"!]_Tx_Pg" count="[!"num:i(count(J1939TpTxPg/eb-list::*))"!]" />
+[!ENDLOOP!]
+[!ENDIF!]
+[!IF "num:i(count(as:modconf('J1939Tp')[1]/J1939TpConfiguration/eb-list::*[1]/J1939TpRxChannel/eb-list::*/J1939TpRxPg/eb-list::*/J1939TpRxNSdu/eb-list::*)) > 0"!]
+[!LOOP "util:distinct(node:order(as:modconf('J1939Tp')[1]/J1939TpConfiguration/eb-list::*[1]/J1939TpRxChannel/eb-list::*))"!] 
+    [!LOOP "util:distinct(node:order(J1939TpRxPg/eb-list::*))"!]
+          <member type="J1939Tp_RxNSduTypePbcfg" name="[!"node:name(../../../..)"!]_[!"node:name(../..)"!]_[!"node:name(.)"!]_Rx_Nsdu" count="[!"num:i(count(J1939TpRxNSdu/eb-list::*))"!]" />
+    [!ENDLOOP!]
+[!ENDLOOP!] 
+[!ENDIF!]
+[!IF "num:i(count(as:modconf('J1939Tp')[1]/J1939TpConfiguration/eb-list::*[1]/J1939TpTxChannel/eb-list::*/J1939TpTxPg/eb-list::*/J1939TpTxNSdu/eb-list::*)) > 0"!]
+[!LOOP "util:distinct(node:order(as:modconf('J1939Tp')[1]/J1939TpConfiguration/eb-list::*[1]/J1939TpTxChannel/eb-list::*))"!] 
+    [!LOOP "util:distinct(node:order(J1939TpTxPg/eb-list::*))"!]
+          <member type="J1939Tp_TxNSduTypePbcfg" name="[!"node:name(../../../..)"!]_[!"node:name(../..)"!]_[!"node:name(.)"!]_Tx_Nsdu" count="[!"num:i(count(J1939TpTxNSdu/eb-list::*))"!]" />
+    [!ENDLOOP!]
+[!ENDLOOP!]
+[!ENDIF!]
+        </struct>
+      </type>
+
+      <type name="[!"$J1939TP_CONSTCONFIGLAYOUTTYPE_VARIANT"!]">
+        <reference type="[!"$J1939TP_CONFIGLAYOUTTYPE_VARIANT"!]">
+          <compiler-abstraction>
+            <const memory-class="J1939TP_APPL_CONST" />
+          </compiler-abstraction>
+        </reference>
+      </type>
+
+      <memory-section  name="CONFIG_DATA_UNSPECIFIED"> 
+        <instance type="[!"$J1939TP_CONSTCONFIGLAYOUTTYPE_VARIANT"!]" name="[!"$J1939TP_CONFIG_LAYOUT_VARIANT"!]">
+          <parameter name="postbuild-configuration-name">
+          <symbolic-value>[!"$initPredefinedCfgName"!]</symbolic-value>
+        </parameter>
+        [!IF "not(var:defined('postBuildVariant')) and not(node:name(J1939TpConfiguration/eb-list::*[1]) = $initPredefinedCfgName)"!]
+        <parameter name="postbuild-configuration-name">
+          <symbolic-value>[!"node:name(J1939TpConfiguration/eb-list::*[1])"!]</symbolic-value>
+        </parameter>
+        [!ENDIF!]
+        <field><!-- RootConfig BEGIN-->
+          <field>
+            <int>[!"asc:getPlatformSignature()"!]</int>
+          </field>
+          <field>
+            <int>[!"asc:getConfigSignature(as:modconf('J1939Tp')[1]//eb-list::*[not(child::*) and (node:configclass() = 'Link')])"!]</int>
+          </field>
+          <field>
+            <int>[!"asc:getConfigSignature(as:modconf('J1939Tp')[1]//eb-list::*[not(child::*) and (node:configclass() = 'PreCompile') ])"!]</int>
+          </field>
+          <field>
+            <int>[!"asc:getConfigSignature(node:difference(as:modconf('J1939Tp')[1]/CommonPublishedInformation//eb-list::*[not(child::*) and (node:configclass() = 'PublishedInformation') ], as:modconf('J1939Tp')[1]/CommonPublishedInformation/Release))"!]</int>
+          </field>
+[!IF "num:i(count(as:modconf('J1939Tp')[1]/J1939TpConfiguration/eb-list::*[1]/J1939TpRxChannel/eb-list::*)) > 0"!]
+          <field>
+              <ref>
+                <struct-field name="RxChanRef" />
+                <array-field index="0" />
+              </ref>
+          </field>
+ [!ELSE!]
+          <field><ref/></field>
+ [!ENDIF!]
+[!IF "num:i(count(as:modconf('J1939Tp')[1]/J1939TpConfiguration/eb-list::*[1]/J1939TpTxChannel/eb-list::*)) > 0"!]
+          <field>
+              <ref>
+                <struct-field name="TxChanRef" />
+                <array-field index="0" />
+              </ref>
+          </field>
+[!ELSE!]
+          <field><ref/></field>
+[!ENDIF!]
+     </field><!-- RootConfig  END-->
+
+[!IF "num:i(count(as:modconf('J1939Tp')[1]/J1939TpConfiguration/eb-list::*[1]/J1939TpRxChannel/eb-list::*)) > 0"!]
+     <field> <!-- J1939Tp_RxChannel BEGIN -->
+    [!LOOP "util:distinct(node:order(as:modconf('J1939Tp')[1]/J1939TpConfiguration/eb-list::*[1]/J1939TpRxChannel/eb-list::*))"!] 
+     <field>
+        <field>
+            <ref>
+               <struct-field name="[!"node:name(../..)"!]_[!"node:name(.)"!]_Rx_Pg" />
+               <array-field index="0" />
+             </ref>
+        </field>
+        <field>
+[!IF "node:exists(J1939TpTxFcNPdu)"!]
+     [!IF "not(node:empty(node:ref(J1939TpTxFcNPdu/J1939TpTxFcNPduRef)/MetaDataTypeRef))"!]
+          [!IF "not(node:empty(node:ref(J1939TpTxFcNPdu/J1939TpTxFcNPduRef)/PduId))"!]
+       <int>[!"node:ref(J1939TpTxFcNPdu/J1939TpTxFcNPduRef)/PduId"!]</int><!-- J1939TpTxFcNPduRef -->
+          [!ELSE!]
+          [!ERROR!]PduId is not configured for the reference EcuC Pdu "[!"node:name(as:ref(J1939TpTxFcNPdu/J1939TpTxFcNPduRef))"!]" of J1939TpTxFcNPdu "[!"as:name(.)"!]".[!ENDERROR!]
+          [!ENDIF!]
+    [!ELSE!]
+       <int> 65535</int><!-- J1939TpTxFcNPduRef not configured -->
+    [!ENDIF!]
+    [!ELSE!]
+       <int> 65535</int><!-- J1939TpTxFcNPduRef not configured -->
+[!ENDIF!]
+        </field>
+        <field>
+[!IF "node:exists(J1939TpRxCmNPdu)"!]
+      [!IF "not(node:empty(node:ref(J1939TpRxCmNPdu/J1939TpRxCmNPduRef)/MetaDataTypeRef))"!]
+          [!IF "not(node:empty(node:ref(J1939TpRxCmNPdu/J1939TpRxCmNPduRef)/PduId)) "!]
+           <int>[!"node:ref(J1939TpRxCmNPdu/J1939TpRxCmNPduRef)/PduId"!]</int><!-- J1939TpRxCmNPduRef -->
+            [!ELSE!]
+            [!ERROR!]PduId is not configured for the reference EcuC Pdu "[!"node:name(as:ref(J1939TpRxCmNPdu/J1939TpRxCmNPduRef))"!]" of J1939TpRxCmNPdu "[!"as:name(.)"!]".[!ENDERROR!]
+            [!ENDIF!]
+          [!ELSE!]
+          <int> 65535</int><!-- J1939TpRxCmNPduRef not configured-->
+         [!ENDIF!]
+      [!ELSE!]
+          <int> 65535</int><!-- J1939TpRxCmNPduRef not configured-->
+[!ENDIF!]
+        </field>
+        <field>
+[!IF "node:exists(J1939TpRxDtNPdu)"!]
+      [!IF "not(node:empty(node:ref(J1939TpRxDtNPdu/J1939TpRxDtNPduRef)/MetaDataTypeRef))"!]
+           [!IF "not(node:empty(node:ref(J1939TpRxDtNPdu/J1939TpRxDtNPduRef)/PduId))"!]
+          <int>[!"node:ref(J1939TpRxDtNPdu/J1939TpRxDtNPduRef)/PduId"!]</int><!-- J1939TpRxDtNPduRef -->
+          [!ELSE!]
+          [!ERROR!]PduId is not configured for the reference EcuC Pdu "[!"node:name(as:ref(J1939TpRxDtNPdu/J1939TpRxDtNPduRef))"!]" of J1939TpRxDtNPdu "[!"as:name(.)"!]".[!ENDERROR!]
+          [!ENDIF!]
+      [!ELSE!]
+          <int> 65535</int><!-- J1939TpRxDtNPduRef not configured-->
+      [!ENDIF!]
+      [!ELSE!]
+          <int> 65535</int><!-- J1939TpRxDtNPduRef not configured-->
+[!ENDIF!]
+      </field>
+        <field>
+    [!IF "(node:exists(J1939TpRxProtocolType))"!]
+      [!IF "node:value(J1939TpRxProtocolType) = 'J1939TP_PROTOCOL_CMDT'"!]
+        [!IF "(node:exists(J1939TpRxDa))"!]
+   <int> [!"node:value(J1939TpRxDa)"!]</int>
+        [!ELSE!]
+    <int>255</int>  <!-- MetaData configured,channel destination address will be ignored .-->
+        [!ENDIF!]
+      [!ELSE!]
+    <int>255</int> 
+      [!ENDIF!]
+    [!ELSE!]
+      [!IF "(node:exists(J1939TpRxDa))"!]
+    <int>[!"node:value(J1939TpRxDa)"!]</int> <!--  Destination address (DA) of this channel. This parameter is only required for channels with fixed DA. -->
+      [!ELSE!]
+    <int>255</int>  <!-- MetaData configured,channel destination address will be ignored .-->
+      [!ENDIF!]
+    [!ENDIF!]
+        </field>
+        <field>
+    [!IF "(node:exists(J1939TpRxSa))"!]
+    <int>[!"node:value(J1939TpRxSa)"!]</int> <!--  uint8, Source address (SA) of this channel. This parameter is only required for channels with fixed SA.  -->
+    [!ELSE!]
+    <int>255</int> <!--  For Generic channels (SA) is obtained from metadata-->
+    [!ENDIF!]
+        </field>
+      </field>
+[!ENDLOOP!]
+    </field><!--J1939Tp_RxChannel END -->
+
+[!ENDIF!]
+[!IF "num:i(count(as:modconf('J1939Tp')[1]/J1939TpConfiguration/eb-list::*[1]/J1939TpTxChannel/eb-list::*)) > 0"!]
+     <field> <!-- J1939Tp_TxChannel BEGIN -->
+     [!LOOP "util:distinct(node:order(as:modconf('J1939Tp')[1]/J1939TpConfiguration/eb-list::*[1]/J1939TpTxChannel/eb-list::*))"!] 
+        <field>
+           <field>
+              <ref>
+                <struct-field name="[!"node:name(../..)"!]_[!"node:name(.)"!]_Tx_Pg" />
+                <array-field index="0" />
+              </ref>
+           </field>
+           <field>
+[!IF "node:exists(J1939TpRxFcNPdu)"!]
+     [!IF "not(node:empty(node:ref(J1939TpRxFcNPdu/J1939TpRxFcNPduRef)/MetaDataTypeRef))"!]
+          [!IF "not(node:empty(node:ref(J1939TpRxFcNPdu/J1939TpRxFcNPduRef)/PduId))"!]
+               <int>[!"node:ref(J1939TpRxFcNPdu/J1939TpRxFcNPduRef)/PduId"!]</int><!-- J1939TpRxFcNPduRef -->
+          [!ELSE!]
+          [!ERROR!]PduId is not configured for the reference EcuC Pdu "[!"node:name(as:ref(J1939TpRxFcNPdu/J1939TpRxFcNPduRef))"!]" of J1939TpRxFcNPdu "[!"as:name(.)"!]".[!ENDERROR!]
+          [!ENDIF!]
+     [!ELSE!]
+               <int> 65535</int><!-- J1939TpRxFcNPduRef not configured-->
+    [!ENDIF!]
+[!ELSE!]
+               <int> 65535</int><!-- J1939TpRxFcNPduRef not configured-->
+[!ENDIF!]
+           </field>
+           <field>
+[!IF "node:exists(J1939TpTxCmNPdu)"!]
+     [!IF "not(node:empty(node:ref(J1939TpTxCmNPdu/J1939TpTxCmNPduRef)/MetaDataTypeRef))"!]
+         [!IF "not(node:empty(node:ref(J1939TpTxCmNPdu/J1939TpTxCmNPduRef)/PduId))"!]
+               <int>[!"node:ref(J1939TpTxCmNPdu/J1939TpTxCmNPduRef)/PduId"!]</int><!-- J1939TpTxCmNPduRef -->
+         [!ELSE!]
+         [!ERROR!]PduId is not configured for the reference EcuC Pdu "[!"node:name(as:ref(J1939TpTxCmNPdu/J1939TpTxCmNPduRef))"!]" of J1939TpTxCmNPdu "[!"as:name(.)"!]".[!ENDERROR!]
+         [!ENDIF!]
+    [!ELSE!]
+               <int> 65535</int><!-- J1939TpTxCmNPduRef not configured-->
+    [!ENDIF!]
+[!ELSE!]
+               <int> 65535</int><!-- J1939TpTxCmNPduRef not configured-->
+[!ENDIF!]
+           </field>
+           <field>
+    [!IF "node:exists(J1939TpTxDtNPdu)"!]
+        [!IF "not(node:empty(node:ref(J1939TpTxDtNPdu/J1939TpTxDtNPduRef)/MetaDataTypeRef))"!]
+            [!IF "not(node:empty(node:ref(J1939TpTxDtNPdu/J1939TpTxDtNPduRef)/PduId))"!]
+            <int>[!"node:ref(J1939TpTxDtNPdu/J1939TpTxDtNPduRef)/PduId"!]</int><!-- J1939TpTxDtNPduRef -->
+            [!ELSE!]
+            [!ERROR!]PduId is not configured for the reference EcuC Pdu "[!"node:name(as:ref(J1939TpTxDtNPdu/J1939TpTxDtNPduRef))"!]" of J1939TpTxDtNPdu "[!"as:name(.)"!]".[!ENDERROR!]
+            [!ENDIF!]
+        [!ELSE!]
+             <int> 65535</int><!-- J1939TpTxDtNPduRef not configured-->
+        [!ENDIF!]
+    [!ELSE!]
+             <int> 65535</int><!-- J1939TpTxDtNPduRef not configured-->
+    [!ENDIF!]
+           </field>
+          <field>
+    [!IF "(node:exists(J1939TpTxProtocolType))"!]
+      [!IF "node:value(J1939TpTxProtocolType) = 'J1939TP_PROTOCOL_CMDT'"!]
+        [!IF "(node:exists(J1939TpTxDa))"!]
+     <int>[!"node:value(J1939TpTxDa)"!]</int> <!-- Destination address (DA) of this channel. This parameter is only required for channels with fixed DA. -->
+        [!ELSE!]
+     <int>255</int> <!--MetaData configured,channel destination address will be ignored .-->
+        [!ENDIF!]
+      [!ELSE!]
+     <int>255</int>  <!--In case of BAM the destination address will be default value 0xFF. -->
+      [!ENDIF!]
+    [!ELSE!]
+      [!IF "(node:exists(J1939TpTxDa))"!]
+     <int>[!"node:value(J1939TpTxDa)"!]</int> <!-- Destination address (DA) of this channel. This parameter is only required for channels with fixed DA. -->
+      [!ELSE!]
+     <int>255</int><!--MetaData configured,channel destination address will be ignored . -->
+      [!ENDIF!]
+    [!ENDIF!]
+           </field>
+           <field>
+     [!IF "(node:exists(J1939TpTxSa))"!]
+    <int>[!"node:value(J1939TpTxSa)"!]</int><!-- Source address (SA) of this channel. This parameter is only required for channels with fixed SA. -->
+    [!ELSE!]
+    <int>255</int> <!-- For Generic channels (SA) is obtained from metadata . -->
+    [!ENDIF!]               
+           </field>
+        </field>
+    [!ENDLOOP!]
+    </field><!--J1939Tp_TxChannel END -->
+[!ENDIF!]
+
+[!IF "num:i(count(as:modconf('J1939Tp')[1]/J1939TpConfiguration/eb-list::*[1]/J1939TpRxChannel/eb-list::*/J1939TpRxPg/eb-list::*)) > 0"!]
+[!LOOP "util:distinct(node:order(as:modconf('J1939Tp')[1]/J1939TpConfiguration/eb-list::*[1]/J1939TpRxChannel/eb-list::*))"!]<!--  J1939Tp_RxPgType BEGIN-->
+   <field>
+    [!LOOP "util:distinct(node:order(J1939TpRxPg/eb-list::*))"!]
+
+      <field>
+          <field>
+            <ref>
+               <struct-field name="[!"node:name(../../../..)"!]_[!"node:name(../..)"!]_[!"node:name(.)"!]_Rx_Nsdu" />
+               <array-field index="0" />
+             </ref>
+          </field> 
+          <field>
+[!IF "node:exists(J1939TpRxDirectNPdu/J1939TpRxDirectNPduRef)"!]
+     [!IF "not(node:empty(node:ref(J1939TpRxDirectNPdu/J1939TpRxDirectNPduRef)/MetaDataTypeRef))"!]
+          [!IF "node:exists(node:ref(J1939TpRxDirectNPdu/J1939TpRxDirectNPduRef)/PduId)"!]
+              <int>[!"node:ref(J1939TpRxDirectNPdu/J1939TpRxDirectNPduRef)/PduId"!]</int><!-- J1939TpRxDirectNPduRef -->
+          [!ELSE!]
+          [!ENDIF!]
+     [!ELSE!]
+              <int> 65535</int><!-- J1939TpRxDirectNPduRef not configured -->
+     [!ENDIF!]
+[!ELSE!]
+              <int> 65535</int><!-- J1939TpRxDirectNPduRef not configured -->
+[!ENDIF!]
+         </field>
+      </field>
+
+    [!ENDLOOP!]
+    </field>
+    [!ENDLOOP!]<!--J1939Tp_RxPgType END -->
+[!ENDIF!]  
+  
+[!IF "num:i(count(as:modconf('J1939Tp')[1]/J1939TpConfiguration/eb-list::*[1]/J1939TpTxChannel/eb-list::*/J1939TpTxPg/eb-list::*)) > 0"!]
+[!LOOP "util:distinct(node:order(as:modconf('J1939Tp')[1]/J1939TpConfiguration/eb-list::*[1]/J1939TpTxChannel/eb-list::*))"!]<!--  J1939Tp_TxPgType BEGIN-->
+   <field>
+    [!LOOP "util:distinct(node:order(J1939TpTxPg/eb-list::*))"!]
+
+   <field>
+       <field>
+            <ref>
+               <struct-field name="[!"node:name(../../../..)"!]_[!"node:name(../..)"!]_[!"node:name(.)"!]_Tx_Nsdu" />
+               <array-field index="0" />
+             </ref>
+          </field> 
+      <field>
+    [!IF "node:exists(J1939TpTxDirectNPdu/J1939TpTxDirectNPduRef)"!]
+        [!IF "not(node:empty(node:ref(J1939TpTxDirectNPdu/J1939TpTxDirectNPduRef)/MetaDataTypeRef))"!]
+            [!IF "not(node:empty(node:ref(J1939TpTxDirectNPdu/J1939TpTxDirectNPduRef)/PduId))"!]
+    <int>[!"node:ref(J1939TpTxDirectNPdu/J1939TpTxDirectNPduRef)/PduId"!]</int><!-- J1939TpTxDirectNPduRef -->
+            [!ELSE!]
+            [!ERROR!]PduId is not configured for the reference EcuC Pdu "[!"node:name(as:ref(J1939TpTxDirectNPdu/J1939TpTxDirectNPduRef))"!]" of J1939TpTxDirectNPdu "[!"as:name(.)"!]".[!ENDERROR!]
+            [!ENDIF!]
+        [!ELSE!]
+    <int> 65535</int><!-- J1939TpTxDirectNPduRef not configured-->
+        [!ENDIF!]
+    [!ELSE!]
+    <int> 65535</int><!-- J1939TpTxDirectNPduRef not configured-->
+    [!ENDIF!]
+         </field>
+
+    </field>
+[!ENDLOOP!]
+         </field>
+[!ENDLOOP!]<!--J1939Tp_TxPgType END -->
+[!ENDIF!]  
+
+[!IF "num:i(count(as:modconf('J1939Tp')[1]/J1939TpConfiguration/eb-list::*[1]/J1939TpRxChannel/eb-list::*/J1939TpRxPg/eb-list::*/J1939TpRxNSdu/eb-list::*)) > 0"!]
+[!LOOP "util:distinct(node:order(as:modconf('J1939Tp')[1]/J1939TpConfiguration/eb-list::*[1]/J1939TpRxChannel/eb-list::*))"!]
+    [!LOOP "util:distinct(node:order(J1939TpRxPg/eb-list::*))"!]
+      <field>
+        [!LOOP "util:distinct(node:order(J1939TpRxNSdu/eb-list::*))"!]
+
+       <field>
+          <field>
+        [!IF "node:exists(J1939TpRxNSduRef)"!]
+          [!IF "not(node:empty(node:ref(J1939TpRxNSduRef)/MetaDataTypeRef))"!]
+              [!IF "not(node:empty(node:ref(J1939TpRxNSduRef)/PduId))"!]
+              <int> [!"node:ref(J1939TpRxNSduRef)/PduId"!]</int><!-- J1939TpRxNSduRef -->
+              [!ELSE!]
+              [!ERROR!]PduId is not configured for the reference EcuC Pdu "[!"node:name(as:ref(J1939TpRxNSduRef))"!]" of J1939TpRxNSdu "[!"as:name(.)"!]".[!ENDERROR!]
+              [!ENDIF!]
+          [!ELSE!]
+              <int> 65535</int><!-- J1939TpRxNSduRef not configured-->
+          [!ENDIF!]
+      [!ELSE!]
+              <int> 65535</int><!-- J1939TpRxNSduRef not configured-->
+      [!ENDIF!]
+      </field>
+      </field> 
+
+     [!ENDLOOP!]
+    </field>
+   [!ENDLOOP!]
+[!ENDLOOP!]
+[!ENDIF!] 
+
+[!IF "num:i(count(as:modconf('J1939Tp')[1]/J1939TpConfiguration/eb-list::*[1]/J1939TpTxChannel/eb-list::*/J1939TpTxPg/eb-list::*/J1939TpTxNSdu/eb-list::*)) > 0"!]
+[!LOOP "util:distinct(node:order(as:modconf('J1939Tp')[1]/J1939TpConfiguration/eb-list::*[1]/J1939TpTxChannel/eb-list::*))"!]
+    [!LOOP "util:distinct(node:order(J1939TpTxPg/eb-list::*))"!]
+   <field>
+       [!LOOP "util:distinct(node:order(J1939TpTxNSdu/eb-list::*))"!]
+       <field>
+          <field>
+[!IF "node:exists(J1939TpTxNSduRef)"!]
+     [!IF "not(node:empty(node:ref(J1939TpTxNSduRef)/MetaDataTypeRef))"!]
+          [!IF "not(node:empty(node:ref(J1939TpTxNSduRef)/PduId))"!]
+              <int> [!"node:ref(J1939TpTxNSduRef)/PduId"!]</int><!-- J1939TpTxNSduRef -->
+          [!ELSE!]
+          [!ERROR!]PduId is not configured for the reference EcuC Pdu "[!"node:name(as:ref(J1939TpTxNSduRef))"!]" of J1939TpTxNSdu "[!"as:name(.)"!]".[!ENDERROR!]
+          [!ENDIF!]
+     [!ELSE!]
+              <int> 65535</int><!-- J1939TpTxNSduRef not configured-->
+     [!ENDIF!]
+[!ELSE!]
+              <int> 65535</int><!-- J1939TpTxNSduRef not configured -->
+[!ENDIF!]
+          </field>
+       </field> 
+       [!ENDLOOP!]
+   </field>
+    [!ENDLOOP!]
+[!ENDLOOP!]
+[!ENDIF!] 
+    </instance>
+    </memory-section>
+    </configuration>
+  </module>
+[!ENDCODE!]
+  <xi:include href="Base.xgen" xpointer="element(/1/1)" />
+</xgen>

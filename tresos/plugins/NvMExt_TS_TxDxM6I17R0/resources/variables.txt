@@ -1,0 +1,36 @@
+
+#define  NVM_1_<Partition>_START_SEC_VAR_CLEARED_8
+#include "NvM_1_<Partition>_MemMap.h"
+
+STATIC VAR(boolean,NVM_APPL_DATA) NvM_<Partition>_MFReentrance;
+
+#define  NVM_1_<Partition>_STOP_SEC_VAR_CLEARED_8
+#include "NvM_1_<Partition>_MemMap.h"
+
+
+#define  NVM_1_<Partition>_START_SEC_CONFIG_DATA_UNSPECIFIED
+#include "NvM_1_<Partition>_MemMap.h"
+
+/* Inter-partition SchM client-server calls for each NvM satellite.
+ * NvM satellites send the received async jobs to NvM master for queuing through these calls. */
+CONST( NvM_SchMJobCallsType, NVM_CONST ) NvM_1_<Partition>_SchMJobCalls=
+{
+  /** brief Required SchM calls for the satellite mapped to partition. */
+#if (NVM_API_CONFIG_CLASS == NVM_API_CONFIG_CLASS_3)
+  &SchM_Call_NvM_1_<Partition>_RequiredCSEntry_NvM_EraseNvBlock,
+  &SchM_Call_NvM_1_<Partition>_RequiredCSEntry_NvM_InvalidateNvBlock,
+#endif
+#if (NVM_API_CONFIG_CLASS != NVM_API_CONFIG_CLASS_1)
+  &SchM_Call_NvM_1_<Partition>_RequiredCSEntry_NvM_ReadBlock,
+  &SchM_Call_NvM_1_<Partition>_RequiredCSEntry_NvM_ReadPRAMBlock,
+  &SchM_Call_NvM_1_<Partition>_RequiredCSEntry_NvM_RestoreBlockDefaults,
+  &SchM_Call_NvM_1_<Partition>_RequiredCSEntry_NvM_RestorePRAMBlockDefaults,
+  &SchM_Call_NvM_1_<Partition>_RequiredCSEntry_NvM_WriteBlock,
+  &SchM_Call_NvM_1_<Partition>_RequiredCSEntry_NvM_WritePRAMBlock,
+ #endif
+  &SchM_Call_NvM_1_<Partition>_RequiredCSEntry_NvM_CancelJobs
+};
+
+#define  NVM_1_<Partition>_STOP_SEC_CONFIG_DATA_UNSPECIFIED
+#include "NvM_1_<Partition>_MemMap.h"
+

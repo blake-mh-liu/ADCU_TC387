@@ -1,0 +1,861 @@
+<?xml version='1.0'?>
+<datamodel version="7.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/16/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/16/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar" 
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd" 
+         xmlns:f="http://www.tresos.de/_projects/DataModel2/14/formulaexpr.xsd" 
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd" 
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd"  
+         xmlns:variant="http://www.tresos.de/_projects/DataModel2/11/variant.xsd">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="TS_T0D1M1I0R0" type="AR-PACKAGE">
+        <d:lst type="ELEMENTS">
+          <d:chc name="Cry" type="AR-ELEMENT" value="MODULE-DEF">
+            <v:ctr type="MODULE-DEF">
+              <a:a name="ADMIN-DATA" type="ADMIN-DATA">
+                <ad:ADMIN-DATA>
+                  <ad:LANGUAGE>EN</ad:LANGUAGE>
+                  <ad:DOC-REVISIONS>
+                    <ad:DOC-REVISION>
+                      <ad:REVISION-LABEL>0.1.0</ad:REVISION-LABEL>
+                      <ad:ISSUED-BY/>
+                    </ad:DOC-REVISION>
+                  </ad:DOC-REVISIONS>
+                </ad:ADMIN-DATA>
+              </a:a>
+              <a:a name="DESC">
+                <a:v>&lt;html&gt;
+                    &lt;p&gt;
+                      EN: Configuration of the Cry module.
+                    &lt;/p&gt;
+                    &lt;p&gt;
+                      &lt;b&gt;This is a stub!&lt;/b&gt;
+                    &lt;/p&gt;
+                  &lt;/html&gt;</a:v>
+              </a:a>
+              <a:a name="LOWER-MULTIPLICITY" value="1"/>
+              <a:a name="RELEASE" value="asc:4.0"/>
+              <a:a name="UPPER-MULTIPLICITY" value="1"/>
+              <v:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>EN:
+                    &lt;html&gt;
+                      Common container, aggregated by all modules. It contains published information about vendor and versions.
+                  &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="Common Published Information"/>
+                <a:a name="UUID" 
+                     value="ECUC:a00be3e0-8783-9123-2d52-1eb616737ca6"/>
+                <v:var name="ArMajorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Major version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Major Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:948f3f2e-f129-4bc5-b4e1-7a7bdb8599e1"/>
+                  <a:da name="DEFAULT" value="1"/>
+                </v:var>
+                <v:var name="ArMinorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Minor version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Minor Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:2893b920-59d5-4ac2-b2c1-e23742e66d70"/>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="ArPatchVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Patch level version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Patch Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:6428eb9b-8790-488a-b9a3-0fba52d0f59e"/>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="SwMajorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Major version number of the vendor specific implementation of the module.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Major Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:605b18ae-3f9a-41d4-9225-67c9c5f6fc34"/>
+                  <a:da name="DEFAULT" value="1"/>
+                </v:var>
+                <v:var name="SwMinorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Minor version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Minor Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a7fe44dc-ea25-4b8d-8fad-9fbcae86d56f"/>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="SwPatchVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Patch Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a318d2d9-0e75-49da-ac43-e7e4e682e2f9"/>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="ModuleId" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Module ID of this module from Module List
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Numeric Module ID"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:78bc8362-080f-4253-b3da-804ab69a7154"/>
+                  <a:da name="DEFAULT" value="255"/>
+                </v:var>
+                <v:var name="VendorId" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Vendor ID"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:01b0f467-6943-4558-b4f2-3fa1fad28449"/>
+                  <a:da name="DEFAULT" value="1"/>
+                </v:var>
+                <v:var name="Release" type="STRING_LABEL">
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Release Information"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:1c68a547-f24e-4a4e-9540-69fbd533ec89"/>
+                  <a:da name="DEFAULT" value=""/>
+                </v:var>
+              </v:ctr>
+              <v:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                      &lt;p&gt;
+                        Select the configuration variant. Currently only PreCompile is supported.
+                      &lt;/p&gt;
+                    &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="Config Variant"/>
+                <a:da name="DEFAULT" value="VariantPreCompile"/>
+                <a:da name="EDITABLE" value="false"/>
+                <a:da name="RANGE" value="VariantPreCompile"/>
+              </v:var>
+              <v:ctr name="CryGeneral" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                      &lt;p&gt;
+                        This container contains the general configuration of the Cry module.
+                      &lt;/p&gt;
+                      &lt;p&gt;
+                        &lt;b&gt;This is a stub!&lt;/b&gt;
+                      &lt;/p&gt;
+                    &lt;/html&gt;</a:v>
+                </a:a>
+              </v:ctr>
+              <v:ctr name="CryAsymPrivateKeyWrapAsymConfig" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                      &lt;p&gt;
+                        Container for configuration of Cry primitive AsymPrivateKeyWrapAsym.
+                      &lt;/p&gt;
+                      &lt;p&gt;
+                        &lt;b&gt;This is a stub!&lt;/b&gt;
+                      &lt;/p&gt;
+                    &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="CryAsymPrivateKeyWrapAsymConfig"/>
+                <v:var name="CryAsymPrivateKeyWrapAsymParameter" 
+                       type="FUNCTION-NAME">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                        &lt;p&gt;
+                          Parameter for configuration of Cry primitive AsymPrivateKeyWrapAsym.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                          &lt;b&gt;This is a stub!&lt;/b&gt;
+                        &lt;/p&gt;
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="CryAsymPrivateKeyWrapAsym parameter"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="Cry_AsymPrivateKeyWrapAsymCfg"/>
+                  <a:da name="EDITABLE" value="false"/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="CryAsymPrivateKeyWrapSymConfig" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                      &lt;p&gt;
+                        Container for configuration of Cry primitive AsymPrivateKeyWrapSym.
+                      &lt;/p&gt;
+                      &lt;p&gt;
+                        &lt;b&gt;This is a stub!&lt;/b&gt;
+                      &lt;/p&gt;
+                    &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="CryAsymPrivateKeyWrapSymConfig"/>
+                <v:var name="CryAsymPrivateKeyWrapSymParameter" 
+                       type="FUNCTION-NAME">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                        &lt;p&gt;
+                          Parameter for configuration of Cry primitive AsymPrivateKeyWrapSym.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                          &lt;b&gt;This is a stub!&lt;/b&gt;
+                        &lt;/p&gt;
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="CryAsymPrivateKeyWrapSym parameter"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="Cry_AsymPrivateKeyWrapSymCfg"/>
+                  <a:da name="EDITABLE" value="false"/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="CryAsymPublicKeyExtractConfig" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                      &lt;p&gt;
+                        Container for configuration of Cry primitive AsymPublicKeyExtract.
+                      &lt;/p&gt;
+                      &lt;p&gt;
+                        &lt;b&gt;This is a stub!&lt;/b&gt;
+                      &lt;/p&gt;
+                    &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="CryAsymPublicKeyExtractConfig"/>
+                <v:var name="CryAsymPublicKeyExtractParameter" 
+                       type="FUNCTION-NAME">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                        &lt;p&gt;
+                          Parameter for configuration of Cry primitive AsymPublicKeyExtract.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                          &lt;b&gt;This is a stub!&lt;/b&gt;
+                        &lt;/p&gt;
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="CryAsymPublicKeyExtract parameter"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="Cry_AsymPublicKeyExtractCfg"/>
+                  <a:da name="EDITABLE" value="false"/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="CryChecksumConfig" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                      &lt;p&gt;
+                        Container for configuration of Cry primitive Checksum.
+                      &lt;/p&gt;
+                      &lt;p&gt;
+                        &lt;b&gt;This is a stub!&lt;/b&gt;
+                      &lt;/p&gt;
+                    &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="CryChecksumConfig"/>
+                <v:var name="CryChecksumParameter" type="FUNCTION-NAME">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                        &lt;p&gt;
+                          Parameter for configuration of Cry primitive Checksum.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                          &lt;b&gt;This is a stub!&lt;/b&gt;
+                        &lt;/p&gt;
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="CryChecksum parameter"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="Cry_ChecksumCfg"/>
+                  <a:da name="EDITABLE" value="false"/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="CryHashConfig" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                      &lt;p&gt;
+                        Container for configuration of Cry primitive Hash.
+                      &lt;/p&gt;
+                      &lt;p&gt;
+                        &lt;b&gt;This is a stub!&lt;/b&gt;
+                      &lt;/p&gt;
+                    &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="CryHashConfig"/>
+                <v:var name="CryHashParameter" type="FUNCTION-NAME">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                        &lt;p&gt;
+                          Parameter for configuration of Cry primitive Hash.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                          &lt;b&gt;This is a stub!&lt;/b&gt;
+                        &lt;/p&gt;
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="CryHash parameter"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="Cry_HashCfg"/>
+                  <a:da name="EDITABLE" value="false"/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="CryMacGenerateConfig" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                      &lt;p&gt;
+                        Container for configuration of Cry primitive MacGenerate.
+                      &lt;/p&gt;
+                      &lt;p&gt;
+                        &lt;b&gt;This is a stub!&lt;/b&gt;
+                      &lt;/p&gt;
+                    &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="CryMacGenerateConfig"/>
+                <v:var name="CryMacGenerateParameter" type="FUNCTION-NAME">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                        &lt;p&gt;
+                          Parameter for configuration of Cry primitive MacGenerate.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                          &lt;b&gt;This is a stub!&lt;/b&gt;
+                        &lt;/p&gt;
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="CryMacGenerate parameter"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="Cry_MacGenerateCfg"/>
+                  <a:da name="EDITABLE" value="false"/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="CryMacVerifyConfig" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                      &lt;p&gt;
+                        Container for configuration of Cry primitive MacVerify.
+                      &lt;/p&gt;
+                      &lt;p&gt;
+                        &lt;b&gt;This is a stub!&lt;/b&gt;
+                      &lt;/p&gt;
+                    &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="CryMacVerifyConfig"/>
+                <v:var name="CryMacVerifyParameter" type="FUNCTION-NAME">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                        &lt;p&gt;
+                          Parameter for configuration of Cry primitive MacVerify.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                          &lt;b&gt;This is a stub!&lt;/b&gt;
+                        &lt;/p&gt;
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="CryMacVerify parameter"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="Cry_MacVerifyCfg"/>
+                  <a:da name="EDITABLE" value="false"/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="CryRandomGenerateConfig" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                      &lt;p&gt;
+                        Container for configuration of Cry primitive RandomGenerate.
+                      &lt;/p&gt;
+                      &lt;p&gt;
+                        &lt;b&gt;This is a stub!&lt;/b&gt;
+                      &lt;/p&gt;
+                    &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="CryRandomGenerateConfig"/>
+                <v:var name="CryRandomGenerateParameter" type="FUNCTION-NAME">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                        &lt;p&gt;
+                          Parameter for configuration of Cry primitive RandomGenerate.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                          &lt;b&gt;This is a stub!&lt;/b&gt;
+                        &lt;/p&gt;
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="CryRandomGenerate parameter"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="Cry_RandomGenerateCfg"/>
+                  <a:da name="EDITABLE" value="false"/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="CryRandomSeedConfig" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                      &lt;p&gt;
+                        Container for configuration of Cry primitive RandomSeed.
+                      &lt;/p&gt;
+                      &lt;p&gt;
+                        &lt;b&gt;This is a stub!&lt;/b&gt;
+                      &lt;/p&gt;
+                    &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="CryRandomSeedConfig"/>
+                <v:var name="CryRandomSeedParameter" type="FUNCTION-NAME">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                        &lt;p&gt;
+                          Parameter for configuration of Cry primitive RandomSeed.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                          &lt;b&gt;This is a stub!&lt;/b&gt;
+                        &lt;/p&gt;
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="CryRandomSeed parameter"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="Cry_RandomSeedCfg"/>
+                  <a:da name="EDITABLE" value="false"/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="CrySignatureGenerateConfig" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                      &lt;p&gt;
+                        Container for configuration of Cry primitive SignatureGenerate.
+                      &lt;/p&gt;
+                      &lt;p&gt;
+                        &lt;b&gt;This is a stub!&lt;/b&gt;
+                      &lt;/p&gt;
+                    &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="CrySignatureGenerateConfig"/>
+                <v:var name="CrySignatureGenerateParameter" 
+                       type="FUNCTION-NAME">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                        &lt;p&gt;
+                          Parameter for configuration of Cry primitive SignatureGenerate.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                          &lt;b&gt;This is a stub!&lt;/b&gt;
+                        &lt;/p&gt;
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="CrySignatureGenerate parameter"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="Cry_SignatureGenerateCfg"/>
+                  <a:da name="EDITABLE" value="false"/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="CrySignatureVerifyConfig" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                      &lt;p&gt;
+                        Container for configuration of Cry primitive SignatureVerify.
+                      &lt;/p&gt;
+                      &lt;p&gt;
+                        &lt;b&gt;This is a stub!&lt;/b&gt;
+                      &lt;/p&gt;
+                    &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="CrySignatureVerifyConfig"/>
+                <v:var name="CrySignatureVerifyParameter" type="FUNCTION-NAME">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                        &lt;p&gt;
+                          Parameter for configuration of Cry primitive SignatureVerify.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                          &lt;b&gt;This is a stub!&lt;/b&gt;
+                        &lt;/p&gt;
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="CrySignatureVerify parameter"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="Cry_SignatureVerifyCfg"/>
+                  <a:da name="EDITABLE" value="false"/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="CrySymBlockEncryptConfig" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                      &lt;p&gt;
+                        Container for configuration of Cry primitive SymBlockEncrypt.
+                      &lt;/p&gt;
+                      &lt;p&gt;
+                        &lt;b&gt;This is a stub!&lt;/b&gt;
+                      &lt;/p&gt;
+                    &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="CrySymBlockEncryptConfig"/>
+                <v:var name="CrySymBlockEncryptParameter" type="FUNCTION-NAME">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                        &lt;p&gt;
+                          Parameter for configuration of Cry primitive SymBlockEncrypt.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                          &lt;b&gt;This is a stub!&lt;/b&gt;
+                        &lt;/p&gt;
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="CrySymBlockEncrypt parameter"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="Cry_SymBlockEncryptCfg"/>
+                  <a:da name="EDITABLE" value="false"/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="CrySymBlockDecryptConfig" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                      &lt;p&gt;
+                        Container for configuration of Cry primitive SymBlockDecrypt.
+                      &lt;/p&gt;
+                      &lt;p&gt;
+                        &lt;b&gt;This is a stub!&lt;/b&gt;
+                      &lt;/p&gt;
+                    &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="CrySymBlockDecryptConfig"/>
+                <v:var name="CrySymBlockDecryptParameter" type="FUNCTION-NAME">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                        &lt;p&gt;
+                          Parameter for configuration of Cry primitive SymBlockDecrypt.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                          &lt;b&gt;This is a stub!&lt;/b&gt;
+                        &lt;/p&gt;
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="CrySymBlockDecrypt parameter"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="Cry_SymBlockDecryptCfg"/>
+                  <a:da name="EDITABLE" value="false"/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="CrySymEncryptConfig" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                      &lt;p&gt;
+                        Container for configuration of Cry primitive SymEncrypt.
+                      &lt;/p&gt;
+                      &lt;p&gt;
+                        &lt;b&gt;This is a stub!&lt;/b&gt;
+                      &lt;/p&gt;
+                    &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="CrySymEncryptConfig"/>
+                <v:var name="CrySymEncryptParameter" type="FUNCTION-NAME">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                        &lt;p&gt;
+                          Parameter for configuration of Cry primitive SymEncrypt.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                          &lt;b&gt;This is a stub!&lt;/b&gt;
+                        &lt;/p&gt;
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="CrySymEncrypt parameter"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="Cry_SymEncryptCfg"/>
+                  <a:da name="EDITABLE" value="false"/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="CrySymDecryptConfig" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                      &lt;p&gt;
+                        Container for configuration of Cry primitive SymDecrypt.
+                      &lt;/p&gt;
+                      &lt;p&gt;
+                        &lt;b&gt;This is a stub!&lt;/b&gt;
+                      &lt;/p&gt;
+                    &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="CrySymDecryptConfig"/>
+                <v:var name="CrySymDecryptParameter" type="FUNCTION-NAME">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                        &lt;p&gt;
+                          Parameter for configuration of Cry primitive SymDecrypt.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                          &lt;b&gt;This is a stub!&lt;/b&gt;
+                        &lt;/p&gt;
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="CrySymDecrypt parameter"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="Cry_SymDecryptCfg"/>
+                  <a:da name="EDITABLE" value="false"/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="CrySymKeyExtractConfig" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                      &lt;p&gt;
+                        Container for configuration of Cry primitive SymKeyExtract.
+                      &lt;/p&gt;
+                      &lt;p&gt;
+                        &lt;b&gt;This is a stub!&lt;/b&gt;
+                      &lt;/p&gt;
+                    &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="CrySymKeyExtractConfig"/>
+                <v:var name="CrySymKeyExtractParameter" type="FUNCTION-NAME">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                        &lt;p&gt;
+                          Parameter for configuration of Cry primitive SymKeyExtract.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                          &lt;b&gt;This is a stub!&lt;/b&gt;
+                        &lt;/p&gt;
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="CrySymKeyExtract parameter"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="Cry_SymKeyExtractCfg"/>
+                  <a:da name="EDITABLE" value="false"/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="CrySymKeyWrapAsymConfig" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                      &lt;p&gt;
+                        Container for configuration of Cry primitive SymKeyWrapAsym.
+                      &lt;/p&gt;
+                      &lt;p&gt;
+                        &lt;b&gt;This is a stub!&lt;/b&gt;
+                      &lt;/p&gt;
+                    &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="CrySymKeyWrapAsymConfig"/>
+                <v:var name="CrySymKeyWrapAsymParameter" type="FUNCTION-NAME">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                        &lt;p&gt;
+                          Parameter for configuration of Cry primitive SymKeyWrapAsym.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                          &lt;b&gt;This is a stub!&lt;/b&gt;
+                        &lt;/p&gt;
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="CrySymKeyWrapAsym parameter"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="Cry_SymKeyWrapAsymCfg"/>
+                  <a:da name="EDITABLE" value="false"/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="CrySymKeyWrapSymConfig" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                      &lt;p&gt;
+                        Container for configuration of Cry primitive SymKeyWrapSym.
+                      &lt;/p&gt;
+                      &lt;p&gt;
+                        &lt;b&gt;This is a stub!&lt;/b&gt;
+                      &lt;/p&gt;
+                    &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="CrySymKeyWrapSymConfig"/>
+                <v:var name="CrySymKeyWrapSymParameter" type="FUNCTION-NAME">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                        &lt;p&gt;
+                          Parameter for configuration of Cry primitive SymKeyWrapSym.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                          &lt;b&gt;This is a stub!&lt;/b&gt;
+                        &lt;/p&gt;
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="CrySymKeyWrapSym parameter"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive Software"/>
+                  <a:da name="DEFAULT" value="Cry_SymKeyWrapSymCfg"/>
+                  <a:da name="EDITABLE" value="false"/>
+                </v:var>
+              </v:ctr>
+              <d:ref type="REFINED_MODULE_DEF" 
+                     value="ASPath:/AUTOSAR/EcucDefs/Cry"/>
+              <v:ctr name="PublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>EN:
+                    &lt;html&gt;
+                      Additional published parameters not covered by CommonPublishedInformation container.
+                  &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="EB Published Information"/>
+                <a:a name="TAB" value="EB Published Information"/>
+                <a:a name="UUID" 
+                     value="ECUC:cb4128ed-26c1-4ddd-906e-854bed917e07"/>
+                <v:var name="PbcfgMSupport" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Specifies whether or not the Cry can use the PbcfgM module for post-build support.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="PbcfgM support"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:eb61002e-69c0-4f16-a910-c27adb75f6ee"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+              </v:ctr>
+            </v:ctr>
+          </d:chc>
+          <d:chc name="myEcuParameterDefinition" type="AR-ELEMENT" 
+                 value="ECU_PARAMETER_DEFINITION">
+            <d:ctr type="AR-ELEMENT">
+              <a:a name="DEF" 
+                   value="ASPath:/AR_PACKAGE_SCHEMA/ECU_PARAMETER_DEFINITION"/>
+              <d:lst name="MODULE_REF">
+                <d:ref type="MODULE_REF" value="ASPath:/TS_T0D1M1I0R0/Cry"/>
+              </d:lst>
+            </d:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+
+</datamodel>

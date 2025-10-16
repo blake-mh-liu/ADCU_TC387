@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-0-3.xsd">
+[!/* do not generate this file if RTE is not used */!]
+[!IF "SecOCEbGeneral/SecOCRteUsage = 'false'"!]
+  [!SKIPFILE!][!//
+[!ELSE!]
+[!AUTOSPACING!]
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>AUTOSAR_SecOC</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE>
+          <SHORT-NAME>SwComponentTypes</SHORT-NAME>
+          <ELEMENTS>
+[!IF "num:i(count(SecOCMainFunctionRx/*)) = 0 and num:i(count(SecOCMainFunctionTx/*)) = 0"!]
+            <SERVICE-SW-COMPONENT-TYPE>
+              <SHORT-NAME>SecOC</SHORT-NAME>
+              <PORTS>
+  [!IF "count(SecOCRxPduProcessing/*) > 0"!]
+                <!-- RX related -->
+    [!IF "node:value(SecOCGeneral/SecOCQueryFreshnessValue) = 'RTE'"!]
+                <!-- !LINKSTO SecOC.ASR430.Rx.SWS_SecOC_91001,4 -->
+                <R-PORT-PROTOTYPE>
+                  <SHORT-NAME>PS_RxFreshnessManagement</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_SecOC/PortInterfaces/RxFreshnessManagement</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+    [!ENDIF!]
+    [!IF "node:value(SecOCEbGeneral/SecOCEbPropagateVerificationStatusApiVersion) != 'NONE'"!]
+                <!-- !LINKSTO SecOC.ASR430.Rx.SWS_SecOC_00148,3 -->
+                <P-PORT-PROTOTYPE>
+                  <SHORT-NAME>PS_VerificationStatus</SHORT-NAME>
+                  <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/AUTOSAR_SecOC/PortInterfaces/VerificationStatus</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+    [!ENDIF!]
+    [!IF "node:value(SecOCEbGeneral/SecOCEbClientServerPropagateVerificationStatusApiVersion) != 'NONE'"!]
+                <!-- !LINKSTO SecOC.ASR20-11.Rx.SWS_SecOC_91015,1 -->
+                <R-PORT-PROTOTYPE>
+                  <SHORT-NAME>PS_VerificationStatusIndication</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_SecOC/PortInterfaces/VerificationStatusIndication</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+    [!ENDIF!]
+                <!-- !LINKSTO SecOC.ASR20-11.Rx.SWS_SecOC_91022,1 -->
+                <P-PORT-PROTOTYPE>
+                  <SHORT-NAME>PS_VerifyStatusConfiguration</SHORT-NAME>
+                  <PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_SecOC/PortInterfaces/VerifyStatusConfiguration</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+  [!ENDIF!]
+  [!IF "count(SecOCTxPduProcessing/*) > 0"!]
+                <!-- TX related -->
+    [!IF "'true' = node:exists(SecOCGeneral/SecOCDefaultAuthenticationInformationPattern)"!]
+                <!-- !LINKSTO SecOC.ASR20-11.Tx.SWS_SecOC_91020,1 -->
+                <P-PORT-PROTOTYPE>
+                  <SHORT-NAME>PS_SendDefaultAuthenticationInformation</SHORT-NAME>
+                  <PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_SecOC/PortInterfaces/SendDefaultAuthenticationInformation</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+    [!ENDIF!]
+    [!IF "node:value(SecOCGeneral/SecOCQueryFreshnessValue) = 'RTE'"!]
+                <!-- !LINKSTO SecOC.ASR430.Tx.SWS_SecOC_91001,4 -->
+                <R-PORT-PROTOTYPE>
+                  <SHORT-NAME>PS_TxFreshnessManagement</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_SecOC/PortInterfaces/TxFreshnessManagement</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+    [!ENDIF!]
+    [!IF "count(SecOCTxPduProcessing/*[node:value(SecOCMacGenerateStatusPropagationMode) != 'NONE']) > 0"!]
+                <P-PORT-PROTOTYPE>
+                  <SHORT-NAME>PS_MacGenerateStatus</SHORT-NAME>
+                  <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/AUTOSAR_SecOC/PortInterfaces/MacGenerateStatus</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+    [!ENDIF!]
+  [!ENDIF!]
+              </PORTS>
+              <INTERNAL-BEHAVIORS>
+                <SWC-INTERNAL-BEHAVIOR>
+                  <SHORT-NAME>SecOCInternalBehavior</SHORT-NAME>
+                  <EVENTS>
+  [!IF "count(SecOCRxPduProcessing/*) > 0"!]
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_VerifyStatusOverride</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_SecOC/SwComponentTypes/SecOC/SecOCInternalBehavior/RE_VerifyStatusOverride</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_SecOC/SwComponentTypes/SecOC/PS_VerifyStatusConfiguration</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_SecOC/PortInterfaces/VerifyStatusConfiguration/VerifyStatusOverride</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+  [!ENDIF!]
+  [!IF "'true' = node:exists(SecOCGeneral/SecOCDefaultAuthenticationInformationPattern)"!]
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_SendDefaultAuthenticationInformation</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_SecOC/SwComponentTypes/SecOC/SecOCInternalBehavior/RE_SendDefaultAuthenticationInformation</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_SecOC/SwComponentTypes/SecOC/PS_SendDefaultAuthenticationInformation</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_SecOC/PortInterfaces/SendDefaultAuthenticationInformation/SendDefaultAuthenticationInformation</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+  [!ENDIF!]
+                  </EVENTS>
+                  <HANDLE-TERMINATION-AND-RESTART>NO-SUPPORT</HANDLE-TERMINATION-AND-RESTART>
+                  <RUNNABLES>
+  [!IF "count(SecOCRxPduProcessing/*) > 0"!]
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_VerifyStatusOverride</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+    [!IF "node:value(SecOCEbGeneral/SecOCEbVerifyStatusOverrideApiVersion)= 'SECOC_API_VERSION_20_11'"!]
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>ValueId</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+    [!ELSE!]
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>freshnessValueId</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+    [!ENDIF!]
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>overrideStatus</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>numberOfMessagesToOverride</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>SecOC_VerifyStatusOverride</SYMBOL>
+                    </RUNNABLE-ENTITY>
+  [!ENDIF!]
+  [!IF "'true' = node:exists(SecOCGeneral/SecOCDefaultAuthenticationInformationPattern)"!]
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_SendDefaultAuthenticationInformation</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>FreshnessValueID</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>sendDefaultAuthenticationInformation</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>SecOC_SendDefaultAuthenticationInformation</SYMBOL>
+                    </RUNNABLE-ENTITY>
+  [!ENDIF!]
+  [!IF "count(SecOCRxPduProcessing/*) > 0"!]
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_MainFunctionRx</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+    [!IF "node:value(SecOCEbGeneral/SecOCEbPropagateVerificationStatusApiVersion) != 'NONE'"!]
+                      <DATA-SEND-POINTS>
+                        <VARIABLE-ACCESS>
+                          <SHORT-NAME>DSP_VerificationStatus</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_SecOC/SwComponentTypes/SecOC/PS_VerificationStatus</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/AUTOSAR_SecOC/PortInterfaces/VerificationStatus/verificationStatus</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                      </DATA-SEND-POINTS>
+    [!ENDIF!]
+    [!IF "node:value(SecOCGeneral/SecOCQueryFreshnessValue) = 'RTE' or node:value(SecOCEbGeneral/SecOCEbClientServerPropagateVerificationStatusApiVersion) != 'NONE'"!]
+                      <SERVER-CALL-POINTS>
+      [!IF "node:value(SecOCGeneral/SecOCQueryFreshnessValue) = 'RTE'"!]
+        [!IF "count(SecOCRxPduProcessing/*[SecOCUseAuthDataFreshness = 'false']) > 0"!]
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>SSCP_GetRxFreshness</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/AUTOSAR_SecOC/SwComponentTypes/SecOC/PS_RxFreshnessManagement</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_SecOC/PortInterfaces/RxFreshnessManagement/GetRxFreshness</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+        [!ENDIF!]
+        [!IF "count(SecOCRxPduProcessing/*[SecOCUseAuthDataFreshness = 'true']) > 0"!]
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>SSCP_GetRxFreshnessAuthData</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/AUTOSAR_SecOC/SwComponentTypes/SecOC/PS_RxFreshnessManagement</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_SecOC/PortInterfaces/RxFreshnessManagement/GetRxFreshnessAuthData</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+        [!ENDIF!]
+      [!ENDIF!]
+      [!IF "node:value(SecOCEbGeneral/SecOCEbClientServerPropagateVerificationStatusApiVersion) != 'NONE'"!]
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>SSCP_VerificationStatusIndication</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/AUTOSAR_SecOC/SwComponentTypes/SecOC/PS_VerificationStatusIndication</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_SecOC/PortInterfaces/VerificationStatusIndication/VerifyStatus</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+      [!ENDIF!]
+                      </SERVER-CALL-POINTS>
+    [!ENDIF!]
+                      <SYMBOL>SecOC_MainFunctionRx</SYMBOL>
+                    </RUNNABLE-ENTITY>
+  [!ENDIF!]
+  [!IF "count(SecOCTxPduProcessing/*) > 0"!]
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_MainFunctionTx</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+    [!IF "count(SecOCTxPduProcessing/*[node:value(SecOCMacGenerateStatusPropagationMode) != 'NONE']) > 0"!]
+                      <DATA-SEND-POINTS>
+                        <VARIABLE-ACCESS>
+                          <SHORT-NAME>DSP_MacGenerateStatus</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_SecOC/SwComponentTypes/SecOC/PS_MacGenerateStatus</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/AUTOSAR_SecOC/PortInterfaces/MacGenerateStatus/macGenerateStatus</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                      </DATA-SEND-POINTS>
+    [!ENDIF!]
+    [!IF "node:value(SecOCGeneral/SecOCQueryFreshnessValue) = 'RTE'"!]
+                      <SERVER-CALL-POINTS>
+      [!IF "count(SecOCTxPduProcessing/*[SecOCProvideTxTruncatedFreshnessValue = 'false']) > 0"!]
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>SSCP_GetTxFreshness</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/AUTOSAR_SecOC/SwComponentTypes/SecOC/PS_TxFreshnessManagement</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_SecOC/PortInterfaces/TxFreshnessManagement/GetTxFreshness</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+      [!ENDIF!]
+      [!IF "count(SecOCTxPduProcessing/*[SecOCProvideTxTruncatedFreshnessValue = 'true']) > 0"!]
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>SSCP_GetTxFreshnessTruncData</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/AUTOSAR_SecOC/SwComponentTypes/SecOC/PS_TxFreshnessManagement</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_SecOC/PortInterfaces/TxFreshnessManagement/GetTxFreshnessTruncData</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+      [!ENDIF!]
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>SSCP_SPduTxConfirmation</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/AUTOSAR_SecOC/SwComponentTypes/SecOC/PS_TxFreshnessManagement</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_SecOC/PortInterfaces/TxFreshnessManagement/SPduTxConfirmation</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+                      </SERVER-CALL-POINTS>
+    [!ENDIF!]
+                      <SYMBOL>SecOC_MainFunctionTx</SYMBOL>
+                    </RUNNABLE-ENTITY>
+  [!ENDIF!]
+                  </RUNNABLES>
+                  <SUPPORTS-MULTIPLE-INSTANTIATION>false</SUPPORTS-MULTIPLE-INSTANTIATION>
+                </SWC-INTERNAL-BEHAVIOR>
+              </INTERNAL-BEHAVIORS>
+            </SERVICE-SW-COMPONENT-TYPE>
+[!ENDIF!]
+[!LOOP "node:refs(as:modconf('SecOC')/SecOCMainFunctionRx/*/SecOCMainFunctionRxPartitionRef | as:modconf('SecOC')/SecOCMainFunctionTx/*/SecOCMainFunctionTxPartitionRef)"!]
+  [!VAR "ecucPartition" = "node:name(.)"!]
+            <SERVICE-SW-COMPONENT-TYPE>
+              <SHORT-NAME>SecOC_[!"string($ecucPartition)"!]</SHORT-NAME>
+              <PORTS>
+                <!-- RX related -->
+  [!LOOP "as:modconf('SecOC')/SecOCMainFunctionRx/*[node:name(node:ref(./SecOCMainFunctionRxPartitionRef)) = $ecucPartition]"!]
+    [!VAR "mainFuncName" = "node:name(.)"!]
+    [!IF "node:value(../../SecOCGeneral/SecOCQueryFreshnessValue) = 'RTE'"!]
+                <R-PORT-PROTOTYPE>
+                  <SHORT-NAME>PS_RxFreshnessManagement_[!"string($mainFuncName)"!]</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_SecOC/PortInterfaces/RxFreshnessManagement_[!"string($mainFuncName)"!]</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+    [!ENDIF!]
+                <P-PORT-PROTOTYPE>
+                  <SHORT-NAME>PS_VerifyStatusConfiguration_[!"string($mainFuncName)"!]</SHORT-NAME>
+                  <PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_SecOC/PortInterfaces/VerifyStatusConfiguration_[!"string($mainFuncName)"!]</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+    [!IF "node:value(../../SecOCEbGeneral/SecOCEbPropagateVerificationStatusApiVersion) != 'NONE'"!]
+                <!-- !LINKSTO SecOC.ASR430.Rx.SWS_SecOC_00148,3 -->
+                <P-PORT-PROTOTYPE>
+                  <SHORT-NAME>PS_VerificationStatus_[!"string($mainFuncName)"!]</SHORT-NAME>
+                  <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/AUTOSAR_SecOC/PortInterfaces/VerificationStatus_[!"string($mainFuncName)"!]</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+    [!ENDIF!]
+    [!IF "node:value(../../SecOCEbGeneral/SecOCEbClientServerPropagateVerificationStatusApiVersion) != 'NONE'"!]
+                <R-PORT-PROTOTYPE>
+                  <SHORT-NAME>PS_VerificationStatusIndication_[!"string($mainFuncName)"!]</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_SecOC/PortInterfaces/VerificationStatusIndication_[!"string($mainFuncName)"!]</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+    [!ENDIF!]
+  [!ENDLOOP!]
+                <!-- TX related -->
+  [!LOOP "as:modconf('SecOC')/SecOCMainFunctionTx/*[node:name(node:ref(./SecOCMainFunctionTxPartitionRef)) = $ecucPartition]"!]
+    [!VAR "mainFuncName" = "node:name(.)"!]
+    [!IF "count(../../SecOCTxPduProcessing/*[node:name(node:ref(./SecOCTxPduMainFunctionRef)) = $mainFuncName and node:value(./SecOCMacGenerateStatusPropagationMode) != 'NONE']) > 0"!]
+                <P-PORT-PROTOTYPE>
+                  <SHORT-NAME>PS_MacGenerateStatus_[!"string($mainFuncName)"!]</SHORT-NAME>
+                  <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE">/AUTOSAR_SecOC/PortInterfaces/MacGenerateStatus_[!"string($mainFuncName)"!]</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+    [!ENDIF!]
+    [!IF "node:value(../../SecOCGeneral/SecOCQueryFreshnessValue) = 'RTE'"!]
+                <R-PORT-PROTOTYPE>
+                  <SHORT-NAME>PS_TxFreshnessManagement_[!"string($mainFuncName)"!]</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_SecOC/PortInterfaces/TxFreshnessManagement_[!"string($mainFuncName)"!]</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+    [!ENDIF!]
+    [!IF "'true' = node:exists(../../SecOCGeneral/SecOCDefaultAuthenticationInformationPattern)"!]
+                <!-- !LINKSTO SecOC.ASR20-11.Tx.SWS_SecOC_91020,1 -->
+                <P-PORT-PROTOTYPE>
+                  <SHORT-NAME>PS_SendDefaultAuthenticationInformation_[!"string($mainFuncName)"!]</SHORT-NAME>
+                  <PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_SecOC/PortInterfaces/SendDefaultAuthenticationInformation_[!"string($mainFuncName)"!]</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+    [!ENDIF!]
+  [!ENDLOOP!]
+              </PORTS>
+              <INTERNAL-BEHAVIORS>
+                <SWC-INTERNAL-BEHAVIOR>
+                  <SHORT-NAME>SecOCInternalBehavior_[!"string($ecucPartition)"!]</SHORT-NAME>
+                  <EVENTS>
+  [!LOOP "as:modconf('SecOC')/SecOCMainFunctionRx/*[node:name(node:ref(./SecOCMainFunctionRxPartitionRef)) = $ecucPartition]"!]
+    [!VAR "mainFuncName" = "node:name(.)"!]
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_VerifyStatusOverride_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_SecOC/SwComponentTypes/SecOC_[!"string($ecucPartition)"!]/SecOCInternalBehavior_[!"string($ecucPartition)"!]/RE_VerifyStatusOverride_[!"string($mainFuncName)"!]</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_SecOC/SwComponentTypes/SecOC_[!"string($ecucPartition)"!]/PS_VerifyStatusConfiguration_[!"string($mainFuncName)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_SecOC/PortInterfaces/VerifyStatusConfiguration_[!"string($mainFuncName)"!]/VerifyStatusOverride</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+  [!ENDLOOP!]
+  [!LOOP "as:modconf('SecOC')/SecOCMainFunctionTx/*[node:name(node:ref(./SecOCMainFunctionTxPartitionRef)) = $ecucPartition]"!]
+    [!VAR "mainFuncName" = "node:name(.)"!]
+    [!IF "'true' = node:exists(../../SecOCGeneral/SecOCDefaultAuthenticationInformationPattern)"!]
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_SendDefaultAuthenticationInformation_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_SecOC/SwComponentTypes/SecOC_[!"string($ecucPartition)"!]/SecOCInternalBehavior_[!"string($ecucPartition)"!]/RE_SendDefaultAuthenticationInformation_[!"string($mainFuncName)"!]</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_SecOC/SwComponentTypes/SecOC_[!"string($ecucPartition)"!]/PS_SendDefaultAuthenticationInformation_[!"string($mainFuncName)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_SecOC/PortInterfaces/SendDefaultAuthenticationInformation_[!"string($mainFuncName)"!]/SendDefaultAuthenticationInformation</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+    [!ENDIF!]
+  [!ENDLOOP!]
+                  </EVENTS>
+                  <HANDLE-TERMINATION-AND-RESTART>NO-SUPPORT</HANDLE-TERMINATION-AND-RESTART>
+                  <RUNNABLES>
+  [!LOOP "as:modconf('SecOC')/SecOCMainFunctionRx/*[node:name(node:ref(./SecOCMainFunctionRxPartitionRef)) = $ecucPartition]"!]
+    [!VAR "mainFuncName" = "node:name(.)"!]
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_VerifyStatusOverride_[!"string($mainFuncName)"!]</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+    [!IF "node:value(../../SecOCEbGeneral/SecOCEbVerifyStatusOverrideApiVersion)= 'SECOC_API_VERSION_20_11'"!]
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>ValueId</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+    [!ELSE!]
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>freshnessValueId</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+    [!ENDIF!]
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>overrideStatus</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>numberOfMessagesToOverride</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>SecOC_VerifyStatusOverride_[!"string($mainFuncName)"!]</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_MainFunctionRx_[!"string($mainFuncName)"!]</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+    [!IF "node:value(../../SecOCEbGeneral/SecOCEbPropagateVerificationStatusApiVersion) != 'NONE'"!]
+                      <DATA-SEND-POINTS>
+                        <VARIABLE-ACCESS>
+                          <SHORT-NAME>DSP_VerificationStatus_[!"string($mainFuncName)"!]</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_SecOC/SwComponentTypes/SecOC_[!"string($ecucPartition)"!]/PS_VerificationStatus_[!"string($mainFuncName)"!]</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/AUTOSAR_SecOC/PortInterfaces/VerificationStatus_[!"string($mainFuncName)"!]/verificationStatus</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                      </DATA-SEND-POINTS>
+    [!ENDIF!]
+    [!IF "node:value(../../SecOCGeneral/SecOCQueryFreshnessValue) = 'RTE' or node:value(../../SecOCEbGeneral/SecOCEbClientServerPropagateVerificationStatusApiVersion) != 'NONE'"!]
+                      <SERVER-CALL-POINTS>
+      [!IF "node:value(../../SecOCGeneral/SecOCQueryFreshnessValue) = 'RTE'"!]
+        [!IF "count(../../SecOCRxPduProcessing/*[node:name(node:ref(./SecOCRxPduMainFunctionRef)) = $mainFuncName and node:value(./SecOCUseAuthDataFreshness) = 'false']) > 0"!]
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>SSCP_GetRxFreshness_[!"string($mainFuncName)"!]</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/AUTOSAR_SecOC/SwComponentTypes/SecOC_[!"string($ecucPartition)"!]/PS_RxFreshnessManagement_[!"string($mainFuncName)"!]</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_SecOC/PortInterfaces/RxFreshnessManagement_[!"string($mainFuncName)"!]/GetRxFreshness</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+        [!ENDIF!]
+        [!IF "count(../../SecOCRxPduProcessing/*[node:name(node:ref(./SecOCRxPduMainFunctionRef)) = $mainFuncName and node:value(./SecOCUseAuthDataFreshness) = 'true']) > 0"!]
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>SSCP_GetRxFreshnessAuthData_[!"string($mainFuncName)"!]</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/AUTOSAR_SecOC/SwComponentTypes/SecOC_[!"string($ecucPartition)"!]/PS_RxFreshnessManagement_[!"string($mainFuncName)"!]</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_SecOC/PortInterfaces/RxFreshnessManagement_[!"string($mainFuncName)"!]/GetRxFreshnessAuthData</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+        [!ENDIF!]
+      [!ENDIF!]
+      [!IF "node:value(../../SecOCEbGeneral/SecOCEbClientServerPropagateVerificationStatusApiVersion) != 'NONE'"!]
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>SSCP_VerificationStatusIndication_[!"string($mainFuncName)"!]</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/AUTOSAR_SecOC/SwComponentTypes/SecOC_[!"string($ecucPartition)"!]/PS_VerificationStatusIndication_[!"string($mainFuncName)"!]</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_SecOC/PortInterfaces/VerificationStatusIndication_[!"string($mainFuncName)"!]/VerifyStatus</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+      [!ENDIF!]
+                      </SERVER-CALL-POINTS>
+    [!ENDIF!]
+                      <SYMBOL>SecOC_MainFunctionRx_[!"string($mainFuncName)"!]</SYMBOL>
+                    </RUNNABLE-ENTITY>
+  [!ENDLOOP!]
+  [!LOOP "as:modconf('SecOC')/SecOCMainFunctionTx/*[node:name(node:ref(./SecOCMainFunctionTxPartitionRef)) = $ecucPartition]"!]
+    [!VAR "mainFuncName" = "node:name(.)"!]
+    [!IF "'true' = node:exists(../../SecOCGeneral/SecOCDefaultAuthenticationInformationPattern)"!]
+                      <RUNNABLE-ENTITY>
+                        <SHORT-NAME>RE_SendDefaultAuthenticationInformation_[!"string($mainFuncName)"!]</SHORT-NAME>
+                        <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                        <ARGUMENTS>
+                          <RUNNABLE-ENTITY-ARGUMENT>
+                            <SYMBOL>FreshnessValueID</SYMBOL>
+                          </RUNNABLE-ENTITY-ARGUMENT>
+                          <RUNNABLE-ENTITY-ARGUMENT>
+                            <SYMBOL>sendDefaultAuthenticationInformation</SYMBOL>
+                          </RUNNABLE-ENTITY-ARGUMENT>
+                        </ARGUMENTS>
+                        <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                        <SYMBOL>SecOC_SendDefaultAuthenticationInformation_[!"string($mainFuncName)"!]</SYMBOL>
+                      </RUNNABLE-ENTITY>
+    [!ENDIF!]
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_MainFunctionTx_[!"string($mainFuncName)"!]</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+    [!IF "count(../../SecOCTxPduProcessing/*[node:name(node:ref(./SecOCTxPduMainFunctionRef)) = $mainFuncName and node:value(SecOCMacGenerateStatusPropagationMode) != 'NONE']) > 0"!]
+                      <DATA-SEND-POINTS>
+                        <VARIABLE-ACCESS>
+                          <SHORT-NAME>DSP_MacGenerateStatus_[!"string($mainFuncName)"!]</SHORT-NAME>
+                          <ACCESSED-VARIABLE>
+                            <AUTOSAR-VARIABLE-IREF>
+                              <PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_SecOC/SwComponentTypes/SecOC_[!"string($ecucPartition)"!]/PS_MacGenerateStatus_[!"string($mainFuncName)"!]</PORT-PROTOTYPE-REF>
+                              <TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE">/AUTOSAR_SecOC/PortInterfaces/MacGenerateStatus_[!"string($mainFuncName)"!]/macGenerateStatus</TARGET-DATA-PROTOTYPE-REF>
+                            </AUTOSAR-VARIABLE-IREF>
+                          </ACCESSED-VARIABLE>
+                        </VARIABLE-ACCESS>
+                      </DATA-SEND-POINTS>
+  [!ENDIF!]
+  [!IF "node:value(../../SecOCGeneral/SecOCQueryFreshnessValue) = 'RTE'"!]
+                      <SERVER-CALL-POINTS>
+    [!IF "count(../../SecOCTxPduProcessing/*[node:name(node:ref(./SecOCTxPduMainFunctionRef)) = $mainFuncName and node:value(./SecOCProvideTxTruncatedFreshnessValue) = 'false']) > 0"!]
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>SSCP_GetTxFreshness_[!"string($mainFuncName)"!]</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/AUTOSAR_SecOC/SwComponentTypes/SecOC_[!"string($ecucPartition)"!]/PS_TxFreshnessManagement_[!"string($mainFuncName)"!]</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_SecOC/PortInterfaces/TxFreshnessManagement_[!"string($mainFuncName)"!]/GetTxFreshness</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+    [!ENDIF!]
+    [!IF "count(../../SecOCTxPduProcessing/*[node:name(node:ref(./SecOCTxPduMainFunctionRef)) = $mainFuncName and node:value(./SecOCProvideTxTruncatedFreshnessValue) = 'true']) > 0"!]
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>SSCP_GetTxFreshnessTruncData_[!"string($mainFuncName)"!]</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/AUTOSAR_SecOC/SwComponentTypes/SecOC_[!"string($ecucPartition)"!]/PS_TxFreshnessManagement_[!"string($mainFuncName)"!]</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_SecOC/PortInterfaces/TxFreshnessManagement_[!"string($mainFuncName)"!]/GetTxFreshnessTruncData</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+    [!ENDIF!]
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>SSCP_SPduTxConfirmation_[!"string($mainFuncName)"!]</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/AUTOSAR_SecOC/SwComponentTypes/SecOC_[!"string($ecucPartition)"!]/PS_TxFreshnessManagement_[!"string($mainFuncName)"!]</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_SecOC/PortInterfaces/TxFreshnessManagement_[!"string($mainFuncName)"!]/SPduTxConfirmation</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+                      </SERVER-CALL-POINTS>
+  [!ENDIF!]
+                      <SYMBOL>SecOC_MainFunctionTx_[!"string($mainFuncName)"!]</SYMBOL>
+                    </RUNNABLE-ENTITY>
+[!ENDLOOP!]
+                  </RUNNABLES>
+                  <SUPPORTS-MULTIPLE-INSTANTIATION>false</SUPPORTS-MULTIPLE-INSTANTIATION>
+                </SWC-INTERNAL-BEHAVIOR>
+              </INTERNAL-BEHAVIORS>
+            </SERVICE-SW-COMPONENT-TYPE>
+[!ENDLOOP!]
+          </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+    <AR-PACKAGE>
+      <SHORT-NAME>EB_SecOC</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE>
+          <SHORT-NAME>SwcImplementations</SHORT-NAME>
+          <ELEMENTS>
+[!IF "num:i(count(SecOCMainFunctionRx/*)) = 0 and num:i(count(SecOCMainFunctionTx/*)) = 0"!]
+            <SWC-IMPLEMENTATION>
+              <SHORT-NAME>SecOCImpl</SHORT-NAME>
+              <CODE-DESCRIPTORS>
+                <CODE>
+                  <SHORT-NAME>SecOCCode</SHORT-NAME>
+                  <ARTIFACT-DESCRIPTORS>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>EngObject</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                  </ARTIFACT-DESCRIPTORS>
+                </CODE>
+              </CODE-DESCRIPTORS>
+              <PROGRAMMING-LANGUAGE>C</PROGRAMMING-LANGUAGE>
+              <RESOURCE-CONSUMPTION>
+                <SHORT-NAME>Resources</SHORT-NAME>
+                <MEMORY-SECTIONS>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>CODE</SHORT-NAME>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/CODE</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                </MEMORY-SECTIONS>
+              </RESOURCE-CONSUMPTION>
+              <SW-VERSION>2.8.14</SW-VERSION>
+              <VENDOR-ID>1</VENDOR-ID>
+              <BEHAVIOR-REF DEST="SWC-INTERNAL-BEHAVIOR">/AUTOSAR_SecOC/SwComponentTypes/SecOC/SecOCInternalBehavior</BEHAVIOR-REF>
+            </SWC-IMPLEMENTATION>
+[!ENDIF!]
+[!LOOP "node:refs(as:modconf('SecOC')/SecOCMainFunctionRx/*/SecOCMainFunctionRxPartitionRef | as:modconf('SecOC')/SecOCMainFunctionTx/*/SecOCMainFunctionTxPartitionRef)"!]
+  [!VAR "ecucPartition" = "node:name(.)"!]
+            <SWC-IMPLEMENTATION>
+              <SHORT-NAME>SecOCImpl_[!"string($ecucPartition)"!]</SHORT-NAME>
+              <CODE-DESCRIPTORS>
+                <CODE>
+                  <SHORT-NAME>SecOCCode</SHORT-NAME>
+                  <ARTIFACT-DESCRIPTORS>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>EngObject</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                  </ARTIFACT-DESCRIPTORS>
+                </CODE>
+              </CODE-DESCRIPTORS>
+              <PROGRAMMING-LANGUAGE>C</PROGRAMMING-LANGUAGE>
+              <RESOURCE-CONSUMPTION>
+                <SHORT-NAME>Resources</SHORT-NAME>
+                <MEMORY-SECTIONS>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>CODE</SHORT-NAME>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/CODE</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                </MEMORY-SECTIONS>
+              </RESOURCE-CONSUMPTION>
+              <SW-VERSION>2.8.14</SW-VERSION>
+              <VENDOR-ID>1</VENDOR-ID>
+              <BEHAVIOR-REF DEST="SWC-INTERNAL-BEHAVIOR">/AUTOSAR_SecOC/SwComponentTypes/SecOC_[!"string($ecucPartition)"!]/SecOCInternalBehavior_[!"string($ecucPartition)"!]</BEHAVIOR-REF>
+            </SWC-IMPLEMENTATION>
+[!ENDLOOP!]
+          </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>
+[!ENDIF!]

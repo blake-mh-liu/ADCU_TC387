@@ -1,0 +1,78 @@
+/*
+ * $Id: TRICORE-diab.ldscript 23786 2016-06-17 13:46:29Z mist8519 $
+ *
+ * Partial linker script to define board memory layout.
+ *
+ * Copyright 1998-2016 Elektrobit Automotive GmbH
+ * All rights exclusively reserved for Elektrobit Automotive GmbH,
+ * unless expressly agreed to otherwise.
+*/
+
+/* The GENLD_csaCoreX_NCSA macros are replaced according to the configuration by the linker script generator */
+
+MEMORY
+{
+	/* usage of the first 512k of flash:
+	 *	(1) 80k  regular use
+	 *	(2) 16k  tuning protection
+	 *	(3) 16k  HSM (regular use if no HSM available)
+	 *	(4) 272k regular use
+	 *	(5) 128k HSM (regular use if no HSM available)
+	 *	(6) remaining flash regular use
+	 *
+	 *	We use (1) for code parts of fixed and known size (reset code, vector tables),
+	 *	don't use (2)-(5), and use the rest (6) for all other flash needs.
+	*/
+
+	int_rom_vect  : org = 0x80000000, len = 80k
+	int_rom       : org = 0x80080000, len = 7680k
+	int_ram_core0 : org = 0x70000000, len = (120k - (GENLD_csaCore0_NCSA*64))
+	int_ram_core1 : org = 0x60000000, len = (240k - (GENLD_csaCore1_NCSA*64))
+	int_ram_core2 : org = 0x50000000, len = (240k - (GENLD_csaCore2_NCSA*64))
+}
+
+/* Calculate the end addresses (in segment 0xd) of those parts of the DSPRs, which are used for BSS and DATA.
+ * These symbols are used to calculate the CSA limit symbols.
+*/
+TMPL_INT_RAM_CORE0_END_D = 0xd0000000 + SIZEOF(int_ram_core0);
+TMPL_INT_RAM_CORE1_END_D = 0xd0000000 + SIZEOF(int_ram_core1);
+TMPL_INT_RAM_CORE2_END_D = 0xd0000000 + SIZEOF(int_ram_core2);
+
+/* Where the CSA memory is located:
+ * MK_RSA_MK_Csa_Cx is the base of the CSA block of core x
+ * MK_RLA_MK_Csa_Cx is the first address beyond the CSA block of core x
+ *
+ * MK_RSA_MK_Csa_Cx must be aligned on a 64-byte boundary (lower 6 bits all zero)
+ */
+MK_RSA_MK_Csa_C0  = TMPL_INT_RAM_CORE0_END_D;
+MK_RLA_MK_Csa_C0  = TMPL_INT_RAM_CORE0_END_D + (GENLD_csaCore0_NCSA*64);
+
+MK_RSA_MK_Csa_C1  = TMPL_INT_RAM_CORE1_END_D;
+MK_RLA_MK_Csa_C1  = TMPL_INT_RAM_CORE1_END_D + (GENLD_csaCore1_NCSA*64);
+
+MK_RSA_MK_Csa_C2  = TMPL_INT_RAM_CORE2_END_D;
+MK_RLA_MK_Csa_C2  = TMPL_INT_RAM_CORE2_END_D + (GENLD_csaCore2_NCSA*64);
+
+/* define start/end of core-local RAMs, used for defining default IOC input regions per application */
+BOARD_C0_RAM_BEG = ADDR(int_ram_core0);
+BOARD_C1_RAM_BEG = ADDR(int_ram_core1);
+BOARD_C2_RAM_BEG = ADDR(int_ram_core2);
+BOARD_C0_URAM_END = BOARD_C0_RAM_BEG + SIZEOF(int_ram_core0);
+BOARD_C1_URAM_END = BOARD_C1_RAM_BEG + SIZEOF(int_ram_core1);
+BOARD_C2_URAM_END = BOARD_C2_RAM_BEG + SIZEOF(int_ram_core2);
+
+/* Symbols of memory regions not bound to any object file */
+MK_RSA_MK_Rom       = ADDR(int_rom_vect); /* Flash */
+MK_RLA_MK_Rom       = ADDR(int_rom) + SIZEOF(int_rom);
+MK_RSA_MK_GlobalRam = ADDR(int_ram_core2);
+MK_RLA_MK_GlobalRam = ADDR(int_ram_core0) + SIZEOF(int_ram_core0) + (GENLD_csaCore0_NCSA*64);
+MK_RSA_MK_Io        = 0xF0000000; /* I/O */
+MK_RLA_MK_Io        = 0xFF120000;
+MK_RSA_MK_OsIo      = 0xF0000000; /* OS I/O (STM only!!!) */
+MK_RLA_MK_OsIo      = 0xF0000300;
+
+/* Symbols for the initialisation of private data areas. */
+MK_INITIAL_A0       = 0;
+MK_INITIAL_A1       = 0;
+MK_INITIAL_A8       = 0; /* reserved for OS use */
+

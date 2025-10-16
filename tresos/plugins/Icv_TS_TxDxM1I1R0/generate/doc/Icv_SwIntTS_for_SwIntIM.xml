@@ -1,0 +1,47 @@
+[!SKIPFILE "as:modconf('Icv')[1]/IcvConfigSet/*[1]/GenerateReport = 'false'"!][!//
+/**
+ * \file
+ *
+ * \brief SwIntTS for SwIntIM
+ *
+ * This file contains the test specification of the SwIntIM.
+ *
+ * \author Elektrobit Automotive GmbH, 91058 Erlangen, Germany
+ *
+ * Copyright 2005 - 2013 Elektrobit Automotive GmbH
+ * All rights exclusively reserved for Elektrobit Automotive GmbH,
+ * unless expressly agreed to otherwise.
+ */
+ 
+
+[!LOOP "as:modconf('Icv')[1]/IcvConfigSet/*[1]/Group/*"!][!//
+[!IF "GroupEnabled = 'true'"!][!//
+[!VAR "Modulename" = "name(.)"!][!//
+/**
+ **  Testspec Objects for [!"$Modulename"!]
+ **/x
+[!LOOP "Rule/*"!][!//
+[!IF "RulesEnabled = 'true'"!]
+/*
+ * !LINKSTO          (FulfilledRequirementID not implemented) [!//[!"FulfilledRequirementID"!] ,0.0.1
+ * !id               (TestCaseRequirementID not implemented) [!//[!"TestCaseRequirementID"!]
+ * !description      This testcase [!"name(.)"!] tests the accuracy of the SwIntIM
+ * !                 configuration requirements.
+ * !                 (RequirementInfo not implemented) [!//[!"RequirementInfo"!]
+ * !testin
+ * !testexec         The test is supposed verify the configuration
+ * !                 Test Procedure (XPath expressions):
+ * ! [!LOOP "XPathExpressionList/*"!][!IF "RuleEnabled = 'true'"!]
+ * !                 Evaluate [!"name(.)"!]: [!"XPathExpression"!][!//
+[!ENDIF!][!ENDLOOP!]
+ * !testout          The tresos project is able to generate, because no requirement is violated.
+ * !
+ * !testpasscrit     The configuration could be loaded without errors.
+ * !doctype          (TestCaseDoctype not implemented)[!//[!"TestCaseDoctype"!] 
+ */
+[!ENDIF!][!ENDLOOP!]
+/**
+ ******************************************************************************
+ **/
+[!ENDIF!]
+[!ENDLOOP!]

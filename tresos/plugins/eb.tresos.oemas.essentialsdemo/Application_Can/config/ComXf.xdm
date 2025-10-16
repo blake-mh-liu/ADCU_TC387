@@ -1,0 +1,232 @@
+<?xml version='1.0'?>
+<datamodel version="7.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/16/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/16/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar" 
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd" 
+         xmlns:f="http://www.tresos.de/_projects/DataModel2/14/formulaexpr.xsd" 
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd" 
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd"  
+         xmlns:variant="http://www.tresos.de/_projects/DataModel2/11/variant.xsd">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="ComXf" type="AR-PACKAGE">
+        <d:lst type="ELEMENTS">
+          <d:chc name="Xfrm" type="AR-ELEMENT" value="MODULE-CONFIGURATION">
+            <d:ctr type="MODULE-CONFIGURATION">
+              <a:a name="DEF" value="ASPath:/ComXf_TS_TxDxM1I0R0/Xfrm"/>
+              <d:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION" 
+                     value="VariantPreCompile">
+                <a:a name="IMPORTER_INFO" value="@DEF"/>
+              </d:var>
+              <d:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                <d:var name="ArMajorVersion" type="INTEGER" value="4">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="ArMinorVersion" type="INTEGER" value="2">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="ArPatchVersion" type="INTEGER" value="1">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="SwMajorVersion" type="INTEGER" value="1">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="SwMinorVersion" type="INTEGER" value="0">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="SwPatchVersion" type="INTEGER" value="33"/>
+                <d:var name="ModuleId" type="INTEGER" value="175">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="VendorId" type="INTEGER" value="1">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="Release" type="STRING" value="">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+              </d:ctr>
+              <d:ctr name="PublishedInformation" type="IDENTIFIABLE">
+                <d:var name="PbcfgMSupport" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+              </d:ctr>
+              <d:ctr name="XfrmGeneral" type="IDENTIFIABLE">
+                <d:var name="XfrmDevErrorDetect" type="BOOLEAN" value="true">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="XfrmBufferLengthType" type="ENUMERATION" 
+                       value="UINT16">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="XfrmVersionInfoApi" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+              </d:ctr>
+              <d:lst name="XfrmImplementationMapping" type="MAP">
+                <d:ctr name="ComXf_9D7FDE5D5F414438C76F1B9E84FCBFC8" 
+                       type="IDENTIFIABLE">
+                  <a:a name="IMPORTER_INFO" 
+                       value="@CALC(SvcAs,comxf.mappings,1)"/>
+                  <d:ref name="XfmTransformationBswModuleEntryRef" 
+                         type="REFERENCE" >
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:ref>
+                  <d:ref name="XfrmTransformerBswModuleEntryRef" 
+                         type="REFERENCE" 
+                         value="ASPath:/AUTOSAR_ComXf/BswModuleEntrys/ComXf_9D7FDE5D5F414438C76F1B9E84FCBFC8">
+                    <a:a name="ENABLE" value="TRUE"/>
+                    <a:a name="IMPORTER_INFO" 
+                         value="@CALC(SvcAs,comxf.mappings,1)"/>
+                  </d:ref>
+                  <d:ref name="XfrmInvTransformerBswModuleEntryRef" 
+                         type="REFERENCE" >
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:ref>
+                  <d:ref name="XfrmTransformationTechnologyRef" 
+                         type="REFERENCE" 
+                         value="ASPath:/DataTransformations/DATATRANSFORMATION_SET/ComBasedTransformer">
+                    <a:a name="IMPORTER_INFO" 
+                         value="@CALC(SvcAs,comxf.mappings,1)"/>
+                  </d:ref>
+                  <d:var name="XfrmIsSafetyTransformer" type="BOOLEAN" 
+                         value="false">
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:ref name="XfrmOsApplicationRef" type="REFERENCE" >
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:ref>
+                  <d:ctr name="XfrmVariableDataPrototypeInstanceRef" 
+                         type="INSTANCE">
+                    <d:ref name="TARGET" type="REFERENCE" >
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:lst name="CONTEXT"/>
+                  </d:ctr>
+                  <d:ctr name="XfrmDemEventParameterRefs" type="IDENTIFIABLE">
+                    <d:ref name="XFRM_E_MALFORMED_MESSAGE" type="REFERENCE" >
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                  </d:ctr>
+                  <d:ctr name="XfrmSignal" type="IDENTIFIABLE">
+                    <d:chc name="XfrmSignalChoice" type="IDENTIFIABLE" 
+                           value="XfrmISignalGroupRefChoice">
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      <d:ctr name="XfrmISignalGroupRefChoice" 
+                             type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" 
+                             value="@CALC(SvcAs,comxf.mappings,1)"/>
+                        <d:ref name="XfrmISignalGroupRef" type="REFERENCE" 
+                               value="ASPath:/CanSystem/ISIGNALGROUPS/sigGroup_E2EProt_DataOut">
+                          <a:a name="IMPORTER_INFO" 
+                               value="@CALC(SvcAs,comxf.mappings,1)"/>
+                        </d:ref>
+                      </d:ctr>
+                      <d:ctr name="XfrmISignalRefChoice" type="IDENTIFIABLE">
+                        <d:ref name="XfrmISignalRef" type="REFERENCE" >
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:ref>
+                      </d:ctr>
+                    </d:chc>
+                  </d:ctr>
+                </d:ctr>
+                <d:ctr 
+                       name="ComXf_Inv_520AB6FCDD97019CD777879A4674C0ED_DF484B1EBB580D89DBA52DABCC7DEFEC_F01A0E3D96E0654D01BEA3CFC0D9035A" 
+                       type="IDENTIFIABLE">
+                  <a:a name="IMPORTER_INFO" 
+                       value="@CALC(SvcAs,comxf.mappings,1)"/>
+                  <d:ref name="XfmTransformationBswModuleEntryRef" 
+                         type="REFERENCE" >
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:ref>
+                  <d:ref name="XfrmTransformerBswModuleEntryRef" 
+                         type="REFERENCE" >
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:ref>
+                  <d:ref name="XfrmInvTransformerBswModuleEntryRef" 
+                         type="REFERENCE" 
+                         value="ASPath:/AUTOSAR_ComXf/BswModuleEntrys/ComXf_Inv_520AB6FCDD97019CD777879A4674C0ED_DF484B1EBB580D89DBA52DABCC7DEFEC_F01A0E3D96E0654D01BEA3CFC0D9035A">
+                    <a:a name="ENABLE" value="TRUE"/>
+                    <a:a name="IMPORTER_INFO" 
+                         value="@CALC(SvcAs,comxf.mappings,1)"/>
+                  </d:ref>
+                  <d:ref name="XfrmTransformationTechnologyRef" 
+                         type="REFERENCE" 
+                         value="ASPath:/DataTransformations/DATATRANSFORMATION_SET/ComBasedTransformer">
+                    <a:a name="IMPORTER_INFO" 
+                         value="@CALC(SvcAs,comxf.mappings,1)"/>
+                  </d:ref>
+                  <d:var name="XfrmIsSafetyTransformer" type="BOOLEAN" 
+                         value="false">
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:ref name="XfrmOsApplicationRef" type="REFERENCE" >
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:ref>
+                  <d:ctr name="XfrmVariableDataPrototypeInstanceRef" 
+                         type="INSTANCE">
+                    <d:ref name="TARGET" type="REFERENCE" 
+                           value="ASPath:/DemoApplication/PortInterfaces/E2EProt_Data/E2EProt_Data">
+                      <a:a name="IMPORTER_INFO" 
+                           value="@CALC(SvcAs,comxf.mappings,1)"/>
+                    </d:ref>
+                    <d:lst name="CONTEXT">
+                      <d:ref type="REFERENCE" 
+                             value="ASPath:/EcuExtract/TopLevelComposition/SWC_E2ESafety">
+                        <a:a name="IMPORTER_INFO" 
+                             value="@CALC(SvcAs,comxf.mappings,1)"/>
+                      </d:ref>
+                      <d:ref type="REFERENCE" 
+                             value="ASPath:/DemoApplication/SwcImplementations/SWC_E2ESafety/R_E2E_SafeData">
+                        <a:a name="IMPORTER_INFO" 
+                             value="@CALC(SvcAs,comxf.mappings,1)"/>
+                      </d:ref>
+                    </d:lst>
+                  </d:ctr>
+                  <d:ctr name="XfrmDemEventParameterRefs" type="IDENTIFIABLE">
+                    <d:ref name="XFRM_E_MALFORMED_MESSAGE" type="REFERENCE" >
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                  </d:ctr>
+                  <d:ctr name="XfrmSignal" type="IDENTIFIABLE">
+                    <d:chc name="XfrmSignalChoice" type="IDENTIFIABLE" 
+                           value="XfrmISignalGroupRefChoice">
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      <d:ctr name="XfrmISignalGroupRefChoice" 
+                             type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" 
+                             value="@CALC(SvcAs,comxf.mappings,1)"/>
+                        <d:ref name="XfrmISignalGroupRef" type="REFERENCE" 
+                               value="ASPath:/CanSystem/ISIGNALGROUPS/sigGroup_E2EProt_DataIn">
+                          <a:a name="IMPORTER_INFO" 
+                               value="@CALC(SvcAs,comxf.mappings,1)"/>
+                        </d:ref>
+                      </d:ctr>
+                      <d:ctr name="XfrmISignalRefChoice" type="IDENTIFIABLE">
+                        <d:ref name="XfrmISignalRef" type="REFERENCE" >
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:ref>
+                      </d:ctr>
+                    </d:chc>
+                  </d:ctr>
+                </d:ctr>
+              </d:lst>
+            </d:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+
+</datamodel>

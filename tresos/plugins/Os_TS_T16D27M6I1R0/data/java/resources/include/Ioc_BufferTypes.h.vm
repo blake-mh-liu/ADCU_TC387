@@ -1,0 +1,52 @@
+#parse("CommonVars.vm")
+#ifndef IOC_BUFFERTYPES_H
+\#define IOC_BUFFERTYPES_H
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/*
+ * MISRA-C:2012 Deviation List
+ *
+ * MISRAC2012-1) Deviated Rule: 5.1 (required)
+ * External identifiers shall be unique.
+ *
+ * Reason:
+ * These identifiers depend on the channel names chosen by the user.
+ *
+ * MISRAC2012-2) Deviated Rule: 20.1 (advisory)
+ * \#include directives should only be preceded by preprocessor directives
+ * or comments.
+ *
+ * Reason:
+ * The C++ guards allow usage of the OS with a C++-compiler.
+ */
+
+/* Deviation MISRAC2012-1, MISRAC2012-2 <*> */
+
+\#include <public/Ioc_public_api.h>
+#foreach( $includeFileName in $IocCommsList.getDataTypeIncludes() )
+#* *#\#include <$includeFileName>
+#end
+
+/*===================================================================
+ * Typedefs for Buffers
+ *==================================================================*/
+#foreach( $comm in $IocCommsList)
+#* *#typedef struct Ioc_${comm.getName()}_s Ioc_${comm.getName()}_t;
+#* *#struct Ioc_${comm.getName()}_s {
+## !LINKSTO Generator.Output.ioc_gen_c.UnqueuedBuffer.Ext, 1
+#* *##if( $comm.isExtendedCommunication() )
+#*   *#  ioc_ilength_t lengths[$comm.getIocDataTypeList().size()];
+#* *##end
+## !LINKSTO Generator.Output.ioc_gen_c.UnqueuedBuffer, 2
+#* *##foreach( $dataType in $comm.getIocDataTypeList() )
+#*   *#  $dataType.toString() $dataType.getCIdentifier();
+#* *##end
+#* *#};
+#end
+
+#ifdef __cplusplus
+}
+#endif
+#endif  /* IOC_BUFFERTYPES_H */

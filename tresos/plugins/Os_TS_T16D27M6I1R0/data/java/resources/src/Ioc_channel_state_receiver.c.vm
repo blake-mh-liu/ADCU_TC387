@@ -1,0 +1,25 @@
+\#include <Ioc_ChCfg.h>
+/*
+ * MISRA-C:2012 Deviation List
+ *
+ * MISRAC2012-1) Deviated Rule: 19.2 (advisory)
+ *  The union keyword should not be used.
+ *
+ * Reason:
+ *  The use of a union is mandated by the design.
+ *  For each instance of this union only one of the members is used,
+ *  depending on the type of the containing channel.
+ */
+
+/*===================================================================
+ * Channel Buffers Receivers
+ *==================================================================*/
+/* The following OS Objects need to have write access to this file:
+#foreach( $receiver in $comm.getReceivers() )
+#* *# * $receiver.getReceivingApp().getName()
+#end
+ */
+#if( $comm.isQueued() )
+#* *#/* Deviation MISRAC2012-1 <+1> */
+#* *#ioc_state_t Ioc_$comm.getChannelName()_State_Receiver;
+#end

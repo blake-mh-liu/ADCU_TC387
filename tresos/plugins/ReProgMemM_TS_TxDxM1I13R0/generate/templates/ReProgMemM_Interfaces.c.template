@@ -1,0 +1,360 @@
+/**
+ * \file
+ *
+ * \brief AUTOSAR ReProgMemM
+ *
+ * This file contains the implementation of the AUTOSAR
+ * module ReProgMemM.
+ *
+ * \version 1.13.0
+ *
+ * \author Elektrobit Automotive GmbH, 91058 Erlangen, Germany
+ *
+ * Copyright 2005 - 2024 Elektrobit Automotive GmbH
+ * All rights exclusively reserved for Elektrobit Automotive GmbH,
+ * unless expressly agreed to otherwise.
+ */
+
+/*==[Includes]================================================================*/
+
+#include "ReProgMemM_Interfaces.h"
+#include "TSAutosar.h"
+
+
+/*==[Macros]==================================================================*/
+
+/*==[Declaration of functions with internal linkage]==========================*/
+
+
+/*==[Constants with internal linkage]=========================================*/
+
+/*==[Variables with internal linkage]=========================================*/
+
+
+/*==[Constants with external linkage]=========================================*/
+
+/*==[Variables with external linkage]=========================================*/
+
+/*==[Definition of functions with external linkage]===========================*/
+
+#define REPROGMEMM_START_SEC_CALLOUT_CODE
+#include <ReProgMemM_MemMap.h>
+
+/** \brief ReProgMemM_FlashInit function
+ **
+ ** \param[in] ubInternalFlashInit boolean to know if the internal Flash is being initialized
+ **
+ ** \return Result of lower layer initialization
+ ** \retval E_OK Lower layer driver has been initialized correctly
+ ** \retval E_NOT_OK Lower layer driver has not been correctly initialized
+ **/
+FUNC(Std_ReturnType, ReProgMemM_CODE) ReProgMemM_FlashInit
+(
+    VAR (uint8, ReProgMemM_VAR) ubInternalFlashInit
+)
+{
+    TS_PARAM_UNUSED(ubInternalFlashInit);
+
+    return E_OK;
+}
+
+[!IF "as:modconf('ReProgMemM')/General/Dual_Memory_Bank_Used = 'true'"!]
+/** \brief ReProgMemM_CustomGetActiveBank function
+ **
+ ** \param[out] ActiveBank: value of the current active bank 
+ ** 
+ ** \return Result of the operation
+ ** \retval E_OK operation successfull
+ ** \retval E_NOT_OK operation failed
+ **/
+FUNC(Std_ReturnType, ReProgMemM_CODE) ReProgMemM_CustomGetActiveBank
+(
+    P2VAR(uint8, AUTOMATIC, ReProgMemM_APPL_DATA)  ActiveBank
+)
+{
+    TS_PARAM_UNUSED(ActiveBank);    
+
+    return E_OK;
+}
+
+/** \brief ReProgMemM_CustomGetInactiveBankAddrOffset function
+ **
+ ** \param[in] startAddress used to determine the offset according to the address range
+ **
+ ** \return Inactive bank address offset
+ **/
+FUNC(uint32, ReProgMemM_CODE) ReProgMemM_CustomGetInactiveBankAddrOffset
+(
+    VAR (uint32, ReProgMemM_VAR) startAddress
+)
+{
+    TS_PARAM_UNUSED(startAddress);
+    return 0x00000000;
+}
+[!ENDIF!]
+
+/** \brief ReProgMemM_CustomGetOffset function
+ **
+ ** \param[in] ulAddress address on which an offset is given
+ **
+ ** \return Custom address offset
+ **/
+FUNC(uint32, ReProgMemM_CODE) ReProgMemM_CustomGetOffset
+(
+    VAR (uint32, ReProgMemM_VAR) ulAddress
+)
+{
+    TS_PARAM_UNUSED(ulAddress);
+    return 0x00000000;
+}
+
+#if (REPROGMEMM_TOPO_FLASH_ENABLED == STD_ON)
+/** \brief ReProgMemM_FlsDriver_JobStatus function
+ **
+ ** \return Lower layer flash driver job status
+ ** \retval REPROGMEMM_JOB_STATUS_NO_ERROR Lower layer driver job status is ok
+ ** \retval REPROGMEMM_JOB_STATUS_ERROR Lower layer driver job status is not ok
+ ** \retval REPROGMEMM_JOB_STATUS_BUSY Lower layer driver job status is busy
+ **/
+FUNC(REPROGMEMM_JobStatus_t, ReProgMemM_CODE) ReProgMemM_FlsDriver_JobStatus(void)
+{
+    return REPROGMEMM_JOB_STATUS_NO_ERROR;
+}
+#endif
+
+/** \brief ReProgMemM_FlsDriver_Erase function
+ **
+ ** \param[in] ulAddress Start address used for the erase operation
+ ** \param[in] ulSectorSize Length to be erased
+ **
+ ** \return Result of the lower layer driver erase operation
+ ** \retval E_OK Lower layer driver erase operation terminated successfully
+ ** \retval E_NOT_OK Lower layer driver erase operation terminated unsuccessfully
+ **/
+FUNC(Std_ReturnType, ReProgMemM_CODE) ReProgMemM_FlsDriver_Erase
+(
+    VAR (uint32, ReProgMemM_VAR) ulAddress,
+    VAR (uint32, ReProgMemM_VAR) ulSectorSize
+)
+{
+    TS_PARAM_UNUSED(ulAddress);
+    TS_PARAM_UNUSED(ulSectorSize);
+
+    return E_OK;
+}
+
+/** \brief ReProgMemM_FlsDriver_Write function
+ **
+ ** \param[in] ulAddress Start address used for the write operation
+ ** \param[in] ulNbOfPagesToWriteSize Length to be written
+ ** \param[in] pubDataPtr Pointer to the data to be written
+ **
+ ** \return Result of the lower layer driver write operation
+ ** \retval E_OK Lower layer driver write operation terminated successfully
+ ** \retval E_NOT_OK Lower layer driver write operation terminated unsuccessfully
+ **/
+FUNC(Std_ReturnType, ReProgMemM_CODE) ReProgMemM_FlsDriver_Write
+(
+    VAR   (uint32,            ReProgMemM_VAR) ulAddress,
+    VAR   (uint32,            ReProgMemM_VAR) ulNbOfPagesToWriteSize,
+    P2VAR (uint8,  AUTOMATIC, ReProgMemM_VAR) pubDataPtr
+)
+{
+    TS_PARAM_UNUSED(ulAddress);
+    TS_PARAM_UNUSED(ulNbOfPagesToWriteSize);
+    TS_PARAM_UNUSED(pubDataPtr);
+
+    return E_OK;
+}
+
+/** \brief ReProgMemM_FlsDriver_Read function
+ **
+ ** \param[in]  ulAddress Start address used for the read operation
+ ** \param[in]  ulLength Length to be read
+ ** \param[out] pubDataPtr Pointer to the data to be read
+ **
+ ** \return Result of lower layer driver read operation
+ ** \retval E_OK Lower layer driver read operation terminated successfully
+ ** \retval E_NOT_OK Lower layer driver read operation terminated unsuccessfully
+ **/
+FUNC(Std_ReturnType, ReProgMemM_CODE) ReProgMemM_FlsDriver_Read
+(
+    VAR   (uint32,            ReProgMemM_VAR) ulAddress,
+    VAR   (uint32,            ReProgMemM_VAR) ulLength,
+    P2VAR (uint8,  AUTOMATIC, ReProgMemM_VAR) pubDataPtr
+)
+{
+    TS_PARAM_UNUSED(ulAddress);
+    TS_PARAM_UNUSED(ulLength);
+    TS_PARAM_UNUSED(pubDataPtr);
+
+    return E_OK;
+}
+
+[!IF "node:exists(as:modconf('FlsLoader'))"!]
+/** \brief FlsLoader_Read function
+ **
+ ** \param[in]  ulAddress Start address used for the read operation
+ ** \param[in]  ulLength Length to be read
+ ** \param[out] pubDataPtr Pointer to the data to be read
+ **
+ ** called in ReProgMemM_FlsDriver_Read since FlsLoader does not
+ ** \return Result of the read operation
+ ** \retval E_OK read operation terminated successfully
+ ** \retval E_NOT_OK read operation terminated unsuccessfully
+ **/
+FUNC(FlsLoader_ReturnType, ReProgMemM_CODE)  FlsLoader_Read
+(
+    CONST (FlsLoader_AddressType,            ReProgMemM_CONST) ulAddress,
+    CONST (FlsLoader_LengthType,             ReProgMemM_CONST) ulLength,
+    P2VAR (uint8,                 AUTOMATIC, ReProgMemM_VAR)   pubDataPtr
+)
+{
+    TS_PARAM_UNUSED(ulAddress);
+    TS_PARAM_UNUSED(ulLength);
+    TS_PARAM_UNUSED(pubDataPtr);
+
+    return E_OK;
+}
+[!ENDIF!]
+
+/** \brief ReProgMemM_CustomGetPhysicalToLogicalAddress function
+ ** Provide the logical address associated to the given physical address
+ **
+ ** \param[in]  ulPhysicalAddress physical address provided
+ ** \param[out] pulLogicalAddress pointer to the converted logical address
+ **
+ **/
+FUNC (void, ReProgMemM_CODE) ReProgMemM_CustomGetPhysicalToLogicalAddress
+(
+    VAR   (uint32,             ReProgMemM_VAR) ulPhysicalAddress,
+    P2VAR (uint32,  AUTOMATIC, ReProgMemM_VAR) pulLogicalAddress
+)
+{
+    TS_PARAM_UNUSED(ulPhysicalAddress);
+    TS_PARAM_UNUSED(pulLogicalAddress);
+}
+
+/** \brief ReProgMemM_FlsExtDriver_Erase function
+ **
+ ** Handles the external Flash driver erase operation by calling the lower layer
+ **
+ ** \param[in] ulAddress Start address used for the erase operation
+ ** \param[in] ulSectorSize Length to be erased
+ **
+ ** \return Result of lower layer initialization
+ ** \retval E_OK Lower layer driver has been initialized correctly
+ ** \retval E_NOT_OK Lower layer driver has not been correctly initialized
+ **/
+FUNC(Std_ReturnType, ReProgMemM_CODE) ReProgMemM_FlsExtDriver_Erase
+(
+    VAR (uint32, ReProgMemM_VAR) ulAddress,
+    VAR (uint32, ReProgMemM_VAR) ulSectorSize
+)
+{
+    TS_PARAM_UNUSED(ulAddress);
+    TS_PARAM_UNUSED(ulSectorSize);
+
+    return E_OK;
+}
+
+#if (REPROGMEMM_TOPO_FLASHEXT_ENABLED == STD_ON)
+/** \brief ReProgMemM_FlsExtDriver_JobStatus function
+ **
+ ** Handles the external Flash driver job status by calling the lower layer
+
+ ** \return Lower layer external flash driver job status
+ ** \retval REPROGMEMM_JOB_STATUS_NO_ERROR Lower layer driver job status is ok
+ ** \retval REPROGMEMM_JOB_STATUS_ERROR Lower layer driver job status is not ok
+ ** \retval REPROGMEMM_JOB_STATUS_BUSY Lower layer driver job status is busy
+ **/
+FUNC(REPROGMEMM_JobStatus_t, ReProgMemM_CODE) ReProgMemM_FlsExtDriver_JobStatus(void)
+{
+    return REPROGMEMM_JOB_STATUS_NO_ERROR;
+}
+#endif
+
+/** \brief ReProgMemM_FlsExtDriver_Write function
+ **
+ ** Handles the external Flash driver write operation by calling the lower layer
+ **
+ ** \param[in] ulAddress Start address used for the write operation
+ ** \param[in] ulNbOfPagesToWriteSize Length to be written
+ ** \param[in] pubDataPtr Pointer to the data to be written
+ **
+ ** \return Result of lower layer initialization
+ ** \retval E_OK Lower layer driver has been initialized correctly
+ ** \retval E_NOT_OK Lower layer driver has not been correctly initialized
+ **/
+FUNC(Std_ReturnType, ReProgMemM_CODE) ReProgMemM_FlsExtDriver_Write
+(
+    VAR   (uint32,            ReProgMemM_VAR) ulAddress,
+    VAR   (uint32,            ReProgMemM_VAR) ulNbOfPagesToWriteSize,
+    P2VAR (uint8,  AUTOMATIC, ReProgMemM_VAR) pubDataPtr
+)
+{
+    TS_PARAM_UNUSED(ulAddress);
+    TS_PARAM_UNUSED(ulNbOfPagesToWriteSize);
+    TS_PARAM_UNUSED(pubDataPtr);
+
+    return E_OK;
+}
+
+/** \brief ReProgMemM_FlsExtDriver_Read function
+ **
+ ** Handles the external Flash driver read operation by calling the lower layer
+ **
+ ** \param[in]  ulAddress Start address used for the read operation
+ ** \param[in]  ulLength Length to be read
+ ** \param[out] pubDataPtr Pointer to the data to be read
+ **
+ ** \return Result of lower layer initialization
+ ** \retval E_OK Lower layer driver has been initialized correctly
+ ** \retval E_NOT_OK Lower layer driver has not been correctly initialized
+ **/
+FUNC(Std_ReturnType, ReProgMemM_CODE) ReProgMemM_FlsExtDriver_Read
+(
+    VAR   (uint32,            ReProgMemM_VAR) ulAddress,
+    VAR   (uint32,            ReProgMemM_VAR) ulLength,
+    P2VAR (uint8,  AUTOMATIC, ReProgMemM_VAR) pubDataPtr
+)
+{
+    TS_PARAM_UNUSED(ulAddress);
+    TS_PARAM_UNUSED(ulLength);
+    TS_PARAM_UNUSED(pubDataPtr);
+
+    return E_OK;
+}
+
+#if (REPROGMEMM_USE_MEMACC_ENABLE == STD_ON)
+/** \brief ReProgMemM_MemAcc_JobStatus function
+ **
+ ** Handles the MemAcc job status 
+
+ ** \return MemAcc job status
+ ** \retval REPROGMEMM_JOB_STATUS_NO_ERROR MemAcc job status is ok
+ ** \retval REPROGMEMM_JOB_STATUS_ERROR MemAcc job status is not ok
+ ** \retval REPROGMEMM_JOB_STATUS_BUSY MemAcc job status is busy
+ **/
+FUNC(REPROGMEMM_JobStatus_t, ReProgMemM_CODE) ReProgMemM_MemAcc_JobStatus(void)
+{
+    return REPROGMEMM_JOB_STATUS_NO_ERROR;
+}
+#endif
+
+#if (REPROGMEMM_DUALBANK_ENABLED == STD_ON)
+/** \brief ReProgMemM_DualBank_Init function
+ **
+ ** Handles the initialisation of the DualBank processus
+ **
+ **/
+FUNC(void, ReProgMemM_CODE) ReProgMemM_DualBank_Init(void)
+{
+
+}
+#endif
+
+#define REPROGMEMM_STOP_SEC_CALLOUT_CODE
+#include <ReProgMemM_MemMap.h>
+
+/*==================[end of file]===========================================*/

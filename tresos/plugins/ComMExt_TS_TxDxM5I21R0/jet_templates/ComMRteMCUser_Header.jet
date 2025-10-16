@@ -1,0 +1,44 @@
+<%@ jet
+    package="com.elektrobit.comm.generated.templates"
+    class="ComMRteMCUserlHeader"
+    imports="java.io.IOException
+             dreisoft.tresos.generator.ng.api.ant.JavaGenContext
+             com.elektrobit.comm.generator.ComMGenContext
+             com.elektrobit.comm.generator.ComMJetContext" %>
+<%
+    JavaGenContext javaGenContext = (JavaGenContext) argument;
+    ComMGenContext comMGenContext = (ComMGenContext) javaGenContext.gen.getVariable(ComMGenContext.COMM_GEN_CONTEXT, ComMGenContext.class, null);
+    comMGenContext.getWriter().startRedirect(stringBuffer);
+    ComMJetContext comMJetContext = comMGenContext.getComMJetContext();
+%><%@ include file="file-comment.c.txt" %>
+
+#ifndef ComM_Rte_MC_User_<%=comMJetContext.getOsAppNameForUser()%>_H
+#define ComM_Rte_MC_User_<%=comMJetContext.getOsAppNameForUser()%>_H
+
+#define COMM_START_SEC_CODE
+#include <ComM_MemMap.h>
+
+<%
+    for(String userName : comMJetContext.getUsers())
+    {
+%>
+extern FUNC(Std_ReturnType, COMM_CODE) ComM_Wrapper_Switch_ComM_User_<%=comMJetContext.getOsAppNameForUser()%>_UM_<%=userName%>_currentMode (uint8 mode);
+<%
+    }
+%>
+
+#define COMM_STOP_SEC_CODE
+#include <ComM_MemMap.h>
+
+#endif /*ComM_Rte_MC_User_<%=comMJetContext.getOsAppNameForUser()%>_H*/
+
+<%
+    try
+    {
+        comMGenContext.getWriter().stopRedirected(false);
+    }
+    catch (IOException e)
+    {
+        e.printStackTrace();
+    }
+%>

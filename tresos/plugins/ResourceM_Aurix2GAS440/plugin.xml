@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+*   @file    plugin.xml
+*   @version 1.0.0
+*
+*   @brief   AUTOSAR ResourceM_Aurix2GAS440 - tresos Studio plugin configuration file.
+*   @details This file contains the configuration for the ResourceM_Aurix2GAS440 tresos Studio plugin.
+-->
+<!--
+====================================================================================================
+*   Project              : M4_DESCRIPTION
+*   Platform             : TRICORE
+*   Peripheral           : TC38XQ
+*   Dependencies         : none
+*
+*   This file is part of MCAL integration. Elektrobit included or updated extentions.
+*   (c) 2005-2024 Elektrobit Automotive GmbH
+*   All rights exclusively reserved for Elektrobit Automotive GmbH,
+*   unless expressly agreed to otherwise.
+====================================================================================================
+====================================================================================================
+====================================================================================================
+-->
+
+<plugin>
+
+
+   
+  <!--
+  ** Start of  ResourceM_Aurix2GAS440 plugin
+  -->
+
+  <extension point="dreisoft.tresos.launcher2.plugin.module"
+          id="ResourceM_Aurix2GAS440_ModuleId"
+          name="ResourceM_Aurix2GAS440 Driver PlugIn with a TemplateGenerator">
+          <module id="ResourceM_Aurix2GAS440"
+            label="ResourceM"
+            mandatory="true"
+            allowMultiple="false"
+            description="ResourceM Driver"
+            copyright="(c) 2023 Infineon Technologies"
+            swVersionMajor="20"
+            swVersionMinor="25"
+            swVersionPatch="0"
+            swVersionSuffix=""
+            specVersionMajor="4"
+            specVersionMinor="4"
+            specVersionPatch="0"
+            specVersionSuffix=""
+            relVersionMajor="4"
+            relVersionMinor="4"
+            relVersionPatch="0"
+            categoryType="ResourceM"
+            categoryLayer="MCAL"
+            categoryCategory="MCAL"
+            categoryComponent="ECUC">
+
+           <ecuType target="TRICORE" derivate="TC3EXQ"/>
+           <ecuType target="TRICORE" derivate="TC32XL"/>
+           <ecuType target="TRICORE" derivate="TC33XL"/>
+           <ecuType target="TRICORE" derivate="TC35XT"/>
+           <ecuType target="TRICORE" derivate="TC36XD"/>
+           <ecuType target="TRICORE" derivate="TC37XT"/>
+           <ecuType target="TRICORE" derivate="TC38XQ"/>
+           <ecuType target="TRICORE" derivate="TC38XT"/>
+           <ecuType target="TRICORE" derivate="TC39XX"/>
+       </module>
+   </extension>
+
+   <!--
+     This extension is used to register configuration specific information:
+
+     - Schemas (including pre-configuration and recommended configuration)
+     - Editors
+   -->
+   <extension point="dreisoft.tresos.launcher2.plugin.configuration"
+              id="ResourceM_Aurix2GAS440_ConfigId"
+              name="ResourceM_Aurix2GAS440 Configuration">
+    <configuration moduleId="ResourceM_Aurix2GAS440">
+
+           <!--
+             Register the files from which schemas and pre- an
+             recommended configuration is loaded. For Autosar Modules
+             this is normally dreisoft.tresos.autosar2.resourcehandling.AutosarSchemaManager
+           -->
+      <schema>
+        <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarSchemaManager"/>
+          <!-- Define the file(s) from which to load the schemas -->
+          <resource value="config/ResourceM.xdm"  type="xdm"/>
+       </schema>
+
+      <data>
+        <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarConfigManager"/>
+        <schemaNode path="ASPath:/AURIX2G/EcucDefs/ResourceM"/>
+      </data>
+
+      <editor id="ResourceM_Aurix2GAS440_EditorId"
+              label="Default"
+              tooltip="ResourceM Driver">
+        <class class="dreisoft.tresos.launcher2.editor.GenericConfigEditor">
+          <parameter name="schema" value="ASPath:/AURIX2G/EcucDefs/ResourceM"/>
+          <parameter name="title" value="ResourceM_Aurix2GAS440"/>
+          <parameter name="noTabs" value="false"/>
+          <parameter name="noLinks" value="true"/>
+          <parameter name="groupLinks" value="false"/>
+          <parameter name="groupContainers" value="false"/>
+          <parameter name="groupTables" value="true"/>
+          <parameter name="optionalGeneralTab" value="true"/>
+        </class>
+      </editor>
+    </configuration>
+  </extension>
+
+  <extension point="dreisoft.tresos.launcher2.plugin.generator"
+             id="EPCGenerator"
+             name="EPC Generator">
+    <generator moduleId="ResourceM_Aurix2GAS440"
+               id="ResourceM_Aurix2GAS440"
+               class="dreisoft.tresos.autosar2.generator.EPCFileGenerator">
+      <parameter name="variantAware" value="true"/> 
+      <parameter name="cfgFilePath" value="output"/>
+      <parameter name="generateAllModules" value="false"/>
+      <parameter name="generateIntoOneFile" value="false"/>
+      <parameter name="contentType" value="asc:4.4.0"/>
+   </generator>
+ </extension>
+ 
+   
+
+ <extension point="dreisoft.tresos.autosar2.api.plugin.ecuresource">
+    <ecuresource
+      target="TRICORE"
+      derivate="TC3EXQ"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC3EXA/AURIX2G_TC3E7.properties">
+      <parameter name="derivative" value="AURIX2G_TC3E7"/>
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC38XQ"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC38XA/AURIX2G_TC387.properties">
+      <parameter name="derivative" value="AURIX2G_TC387"/>
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC38XQ"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC38XA/AURIX2G_TC389.properties">
+      <parameter name="derivative" value="AURIX2G_TC389"/>
+    </ecuresource>
+        <ecuresource
+      target="TRICORE"
+      derivate="TC38XT"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC38XA/AURIX2G_TC387.properties">
+      <parameter name="derivative" value="AURIX2G_TC387"/>
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC38XT"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC38XA/AURIX2G_TC389.properties">
+      <parameter name="derivative" value="AURIX2G_TC389"/>
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC39XX"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC39XB/AURIX2G_TC397.properties">
+      <parameter name="derivative" value="AURIX2G_TC397"/>
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC39XX"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC39XB/AURIX2G_TC397_ADAS.properties">
+      <parameter name="derivative" value="AURIX2G_TC397_ADAS"/>
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC39XX"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC39XB/AURIX2G_TC399.properties">
+      <parameter name="derivative" value="AURIX2G_TC399"/>
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC35XT"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC35XA/AURIX2G_TC357_ADAS.properties">
+      <parameter name="derivative" value="AURIX2G_TC357_ADAS"/>
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC35XT"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC35XA/AURIX2G_TC356_ADAS.properties">
+      <parameter name="derivative" value="AURIX2G_TC356_ADAS"/>
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC37XT"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC37XA/AURIX2G_TC375.properties">
+      <parameter name="derivative" value="AURIX2G_TC375"/>
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC37XT"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC37XA/AURIX2G_TC377.properties">
+      <parameter name="derivative" value="AURIX2G_TC377"/>
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC37XT"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC37XA_ED/AURIX2G_TC374_ED.properties">
+      <parameter name="derivative" value="AURIX2G_TC374_ED"/>
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC37XT"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC37XA_ED/AURIX2G_TC375_ED.properties">
+      <parameter name="derivative" value="AURIX2G_TC375_ED"/>
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC37XT"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC37XA_ED/AURIX2G_TC377_ED.properties">
+      <parameter name="derivative" value="AURIX2G_TC377_ED"/>
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC37XT"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC37XA_ED/AURIX2G_TC377_ED_EX.properties">
+      <parameter name="derivative" value="AURIX2G_TC377_ED_EX"/>
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC36XD"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC36XA/AURIX2G_TC364_LQFP.properties">
+      <parameter name="derivative" value="AURIX2G_TC364_LQFP"/>
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC36XD"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC36XA/AURIX2G_TC364_TQFP.properties">
+      <parameter name="derivative" value="AURIX2G_TC364_TQFP"/>
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC36XD"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC36XA/AURIX2G_TC365.properties">
+      <parameter name="derivative" value="AURIX2G_TC365"/>
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC36XD"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC36XA/AURIX2G_TC366.properties">
+      <parameter name="derivative" value="AURIX2G_TC366"/>
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC36XD"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC36XA/AURIX2G_TC367.properties">
+      <parameter name="derivative" value="AURIX2G_TC367"/>
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC33XL"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC33XA/AURIX2G_TC332.properties">
+      <parameter name="derivative" value="AURIX2G_TC332"/>
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC33XL"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC33XA/AURIX2G_TC333.properties">
+      <parameter name="derivative" value="AURIX2G_TC333"/>
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC33XL"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC33XA/AURIX2G_TC334.properties">
+      <parameter name="derivative" value="AURIX2G_TC334"/>
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC33XL"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC33XA/AURIX2G_TC336.properties">
+      <parameter name="derivative" value="AURIX2G_TC336"/>
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC33XL"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC33XA/AURIX2G_TC337.properties">
+      <parameter name="derivative" value="AURIX2G_TC337"/>
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC33XL"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC33XA_ED/AURIX2G_TC336_ED_ADAS.properties">
+      <parameter name="derivative" value="AURIX2G_TC336_ED_ADAS"/>
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC33XL"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC33XA_ED/AURIX2G_TC337_ED_ADAS.properties">
+      <parameter name="derivative" value="AURIX2G_TC337_ED_ADAS"/>
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC32XL"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC32XA/AURIX2G_TC322.properties">
+      <parameter name="derivative" value="AURIX2G_TC322"/>
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC32XL"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC32XA/AURIX2G_TC323.properties">
+      <parameter name="derivative" value="AURIX2G_TC323"/>
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC32XL"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC32XA/AURIX2G_TC324.properties">
+      <parameter name="derivative" value="AURIX2G_TC324"/>
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC32XL"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC32XA/AURIX2G_TC327.properties">
+      <parameter name="derivative" value="AURIX2G_TC327"/>
+    </ecuresource>
+
+    <ecuresource
+      target="TRICORE"
+      derivate="TC3EXQ"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC3EXQ/canwizard.properties">
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC3EXQ"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC3EXQ/cangeneraltypesmapping.properties">
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC32XL"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC32XL/canwizard.properties">
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC32XL"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC32XL/cangeneraltypesmapping.properties">
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC33XL"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC33XL/canwizard.properties">
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC33XL"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC33XL/cangeneraltypesmapping.properties">
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC35XT"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC35XT/canwizard.properties">
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC35XT"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC35XT/cangeneraltypesmapping.properties">
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC36XD"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC36XD/canwizard.properties">
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC36XD"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC36XD/cangeneraltypesmapping.properties">
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC37XT"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC37XT/canwizard.properties">
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC37XT"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC37XT/cangeneraltypesmapping.properties">
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC38XQ"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC38XQ/canwizard.properties">
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC38XQ"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC38XQ/cangeneraltypesmapping.properties">
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC38XT"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC38XT/canwizard.properties">
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC38XT"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC38XT/cangeneraltypesmapping.properties">
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC39XX"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC39XX/canwizard.properties">
+    </ecuresource>
+    <ecuresource
+      target="TRICORE"
+      derivate="TC39XX"
+      moduleId="ResourceM_Aurix2GAS440"
+      file="resources/TC39XX/cangeneraltypesmapping.properties">
+    </ecuresource>
+   </extension>
+
+     
+      <extension point="dreisoft.tresos.autosar2.api.plugin.ecuresourcefinder">
+    <ecuresourcefinder>
+      <finder class="dreisoft.tresos.autosar2.api.ecuresource.DefaultEcuResourceFinder">
+      <parameter name="name" value="derivative"/>
+        <parameter name="path" value="ASPath:/AURIX2G/EcucDefs/ResourceM/ResourceMGeneral/ResourceDerivative"/>        
+      </finder>
+	</ecuresourcefinder>
+  </extension>
+     <extension point="org.eclipse.help.toc">
+    <toc file="anchors.xml" primary="true"/>
+  </extension>
+  </plugin>

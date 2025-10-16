@@ -1,0 +1,984 @@
+<?xml version='1.0'?>
+<!--
+/*******************************************************************************
+**                                                                            **
+** Copyright (C) Infineon Technologies (2021)                                 **
+**                                                                            **
+** All rights reserved.                                                       **
+**                                                                            **
+** This document contains proprietary information belonging to Infineon       **
+** Technologies. Passing on and copying of this document, and communication   **
+** of its contents is not permitted without prior written authorization.      **
+**                                                                            **
+********************************************************************************
+**                                                                            **
+**  FILENAME  : Ocu.xdm                                                       **
+**                                                                            **
+**  VERSION   : 6.0.0                                                         **
+**                                                                            **
+**  DATE      : 2021-09-06                                                    **
+**                                                                            **
+**  VARIANT   : Variant PB                                                    **
+**                                                                            **
+**  PLATFORM  : Infineon AURIX2G                                              **
+**                                                                            **
+**  AUTHOR    : DL-AUTOSAR-Engineering                                        **
+**                                                                            **
+**  VENDOR    : Infineon Technologies                                         **
+**                                                                            **
+**  TRACEABILITY : [cover parentID={E1274DF0-7122-4cf1-BE6C-E49E33ABC0A3}]    **
+**                                                                            **
+**  DESCRIPTION  : XML data model for Ocu driver                              **
+**                                                                            **
+**  [/cover]                                                                  **
+**                                                                            **
+**  SPECIFICATION(S) : Specification of Ocu Driver, AUTOSAR Release 4.4.0     **
+**                                                                            **
+**  MAY BE CHANGED BY USER : no                                               **
+**                                                                            **
+*******************************************************************************/
+-->
+<datamodel version="7.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/16/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/16/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar" 
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd" 
+         xmlns:f="http://www.tresos.de/_projects/DataModel2/14/formulaexpr.xsd" 
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd" 
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd"  
+         xmlns:variant="http://www.tresos.de/_projects/DataModel2/11/variant.xsd">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="AURIX2G" type="AR-PACKAGE">
+        <a:a name="UUID" value="ECUC:AUTOSAR"/>
+        <d:lst type="TOP-LEVEL-PACKAGES">
+          <d:ctr name="EcucDefs" type="AR-PACKAGE">
+            <a:a name="UUID" value="ECUC:ECUCDEFS"/>
+            <d:lst type="ELEMENTS">
+             <!-- [cover parentID={0AF21BCA-816D-40d5-81DC-C06DB552BC20}] Ocu Module [/cover] -->
+              <d:chc name="Ocu" type="AR-ELEMENT" value="MODULE-DEF">
+                <v:ctr type="MODULE-DEF">
+                  <a:a name="ADMIN-DATA" type="ADMIN-DATA">
+                    <ad:ADMIN-DATA>
+                      <ad:DOC-REVISIONS>
+                        <ad:DOC-REVISION>
+                          <ad:REVISION-LABEL>4.4.0</ad:REVISION-LABEL>
+                          <ad:ISSUED-BY>AUTOSAR</ad:ISSUED-BY>
+                        </ad:DOC-REVISION>
+                      </ad:DOC-REVISIONS>
+                    </ad:ADMIN-DATA>
+                  </a:a>
+                  <a:a name="DESC" 
+                       value="EN: Configuration of Ocu (Output Compare Unit) module."/>
+                  <a:a name="LOWER-MULTIPLICITY" value="0"/>
+                  <a:a name="POSTBUILDVARIANTSUPPORT" value="true"/>
+                  <a:a name="RELEASE" value="asc:4.4.0"/>
+                  <d:ref type="REFINED_MODULE_DEF" value="ASPath:/AUTOSAR/EcucDefs/Ocu"/>
+                  <a:a name="UPPER-MULTIPLICITY" value="1"/>
+                  <a:a name="UUID" 
+                       value="ECUC:0af21bca-816d-40d5-81dc-c06db552bc20"/>
+                  <v:var name="POST_BUILD_VARIANT_USED" type="BOOLEAN">
+                    <a:a name="DESC" 
+                         value="Indicates whether a module implementation has or plans to have (i.e., introduced at link or post-build time) new post-build variation points."/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Post Build Variant Used"/>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="false"/>
+                    <a:da name="READONLY" value="FALSE"/>
+                    <a:da name="TOOLTIP" 
+                          value="Indicates whether a module implementation has or plans to have (i.e., introduced at link or post-build time) new post-build variation points."/>
+                  </v:var>
+                  <v:var name="IMPLEMENTATION_CONFIG_VARIANT" 
+                         type="ENUMERATION">
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Config Variant"/>
+                    <a:da name="DEFAULT" value="VariantPostBuild"/>
+                    <a:da name="RANGE">
+                      <a:v>VariantPostBuild</a:v>
+                    </a:da>
+                  </v:var>
+                  <!-- [cover parentID={708B6105-962D-46a4-86E6-92D896D5ECDE}] OcuConfigSet [/cover] -->
+                  <v:ctr name="OcuConfigSet" type="IDENTIFIABLE">
+                    <a:a name="DESC" 
+                         value="EN: This container is the base of a Configuration Set, which contains the configured OCU channels. This way, different configuration sets can be defined for post-build process."/>
+                    <a:a name="UUID" 
+                         value="ECUC:708b6105-962d-46a4-86e6-92d896d5ecde"/>
+                    <v:lst name="OcuCountdirection">
+                      <a:da name="MAX" value="1"/>
+                      <!-- [cover parentID={C2BBB410-5753-45e3-A775-DF91CB2517DE}] OcuCountdirection [/cover] -->
+                      <v:var name="OcuCountdirection" type="ENUMERATION">
+                        <a:a name="DESC" 
+                             value="EN: This parameter indicates the count direction for the whole OCU driver."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                          <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="true"/>
+                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="ECUC:c2bbb410-5753-45e3-a775-df91cb2517de"/>
+                        <a:da name="DEFAULT" value="OCU_UPCOUNTING"/>
+                        <a:da name="RANGE">
+                          <a:v>OCU_UPCOUNTING</a:v>
+                        </a:da>
+                      </v:var>
+                    </v:lst>
+                    <!-- [cover parentID={E88A1D0F-132B-4956-9864-707D68DA3489}] OcuChannel [/cover] -->
+                    <v:lst name="OcuChannel" type="MAP">
+                      <a:da name="MIN" value="1"/>
+                      <v:ctr name="OcuChannel" type="IDENTIFIABLE">
+                        <a:a name="DESC" 
+                             value="EN: Configuration of an individual OCU channel."/>
+                        <a:a name="UUID" 
+                             value="ECUC:e88a1d0f-132b-4956-9864-707d68da3489"/>
+                        <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="false"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v mclass="PreCompile">VariantPostBuild</icc:v>
+                        </a:a>
+                        <!-- [cover parentID={9C795CA1-61BA-4c2d-827E-36DE73C8BB13}] OcuAssignedHardwareChannel [/cover] -->
+                        <v:var name="OcuAssignedHardwareChannel" type="INTEGER">
+                          <a:a name="DESC" 
+                               value="EN: The physical hardware channel that is assigned to this logical channel. This parameter is not-editable or not used. Hardware Channel is configured through GtmTimerUsed(../GtmTimerOutputModuleConfiguration/..)"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" 
+                               value="ECUC:9c795ca1-61ba-4c2d-827e-36de73c8bb13"/>
+                         <a:da name="DEFAULT" value="0"/>
+                         <a:da name="EDITABLE" value="false"/>
+                          <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=15"/>
+                            <a:tst expr="&gt;=0"/>
+                          </a:da>
+                        </v:var>
+                        <!-- [cover parentID={886C0D42-B594-4a74-9900-EE040E4FC513}] OcuChannelId [/cover] -->
+                        <v:var name="OcuChannelId" type="INTEGER">
+                          <a:a name="DESC" 
+                               value="EN: Channel Id of the OCU channel. This value will be assigned to the symbolic name derived from the OcuChannel container short name. It defines the assignment of the channel to the physical OCU hardware channel."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                          <a:a name="UUID" 
+                               value="ECUC:886c0d42-b594-4a74-9900-ee040e4fc513"/>
+                          <a:da name="DEFAULT" type="XPath" expr="node:fallback(node:current()/../@index,'0')"/>
+                          <a:da name="RANGE" type="XPath">
+                            <a:tst expr="(.&gt;= 0 ) and (.&lt; num:i(count(node:current()/../../*)))"
+                             false="Value out of range: must be in range 0 to N-1 (N is number of configured channels)."/>
+                            <a:tst expr="text:uniq(../../*/OcuChannelId,.)"  false="Duplicated value, OcuChannelId must be unique across all channels."/>
+                          </a:da>
+                          <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=65535"/>
+                            <a:tst expr="&gt;=0"/>
+                          </a:da>
+                        </v:var>
+                        <!-- [cover parentID={2A5C5BB3-5B7F-495b-BB9D-51402D46ACB5}] OcuChannelTickDuration [/cover] -->
+                        <v:var name="OcuChannelTickDuration" type="INTEGER">
+                          <a:a name="DESC" 
+                               value="EN: Specifies the tick duration of the counter of the channel. This parameter is the number of the input clock edges (rising edges or falling edges exclusively) counted each time to increase the counter by one unit.Note: This parameter is not-used,not editable and default value is set to 1"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" 
+                               value="ECUC:2a5c5bb3-5b7f-495b-bb9d-51402d46acb5"/>
+                          <a:da name="DEFAULT" value="1"/>
+                          <a:da name="EDITABLE" value="false"/>
+                          <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=32768"/>
+                            <a:tst expr="&gt;=1"/>
+                          </a:da>
+                        </v:var>
+                        <!-- [cover parentID={1720E99C-A652-4c42-9BF1-79676C4151A5}] OcuDefaultThreshold [/cover] -->
+                        <v:var name="OcuDefaultThreshold" type="INTEGER">
+                          <a:a name="DESC" 
+                               value="EN: Value of comparison threshold used for Initialization."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" 
+                               value="ECUC:1720e99c-a652-4c42-9bf1-79676c4151a5"/>
+                          <a:da name="DEFAULT" value="0"/>
+                          <a:da name="INVALID" type="XPath">
+                            <a:tst expr="(../GtmTimerOutputModuleConfiguration/*[1]/GtmTimerClockSelect != 'GTM_TBU_TS0') and (../GtmTimerOutputModuleConfiguration/*[1]/GtmTimerClockSelect != 'GTM_TBU_TS1') and (../GtmTimerOutputModuleConfiguration/*[1]/GtmTimerClockSelect != 'GTM_TBU_TS2') and ((. > ../OcuMaxCounterValue))" true="Invalid threshold value. Threshold cannot be larger than maximum counter value."/>
+                            <a:tst expr="(node:fallback(substring-after(substring-after(substring-after(substring-before(../GtmTimerOutputModuleConfiguration/*[1]/GtmTimerUsed,'ChannelAllocationConf_'),'/McuGtm'),'/McuGtm'),'/McuGtm'),'Tom') = 'Tom') and (. > 65535)" true="Invalid threshold value. (Channel Tick duration should be less than 0xFFFF for a TOM channel)"/>
+                            <a:tst expr="(node:fallback(substring-after(substring-after(substring-after(substring-before(../GtmTimerOutputModuleConfiguration/*[1]/GtmTimerUsed,'ChannelAllocationConf_'),'/McuGtm'),'/McuGtm'),'/McuGtm'),'Atom') = 'Atom') and (. > 16777215)" true="Invalid threshold value. ( Channel Tick duration should be less than 0xFFFFFF for an ATOM channel)"/>
+                          </a:da>
+                          <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=4294967295"/>
+                            <a:tst expr="&gt;=0"/>
+                          </a:da>
+                        </v:var>
+                        <!-- [cover parentID={954FD7BC-A2B9-4561-913E-E7F64009C0F9}] OcuHardwareTriggeredAdc [/cover] -->
+                        <v:lst name="OcuHardwareTriggeredAdc">
+                          <a:da name="MIN" value="0"/>
+                          <a:da name="MAX" value="1"/>
+                          <v:var name="OcuHardwareTriggeredAdc" type="INTEGER">
+                            <a:a name="DESC" 
+                                 value="EN: This parameter is used to allow the OCU channel to trigger an ADC channel upon compare match. The value of the parameter represents the ADC physical channel to trigger."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                              <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="POSTBUILDVARIANTMULTIPLICITY" 
+                                 value="true"/>
+                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                            <a:a name="SCOPE" value="LOCAL"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="ECUC:954fd7bc-a2b9-4561-913e-e7f64009c0f9"/>
+                            <a:da name="DEFAULT" value="0"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=383"/>
+                              <a:tst expr="&gt;=0"/>
+                            </a:da>
+                          </v:var>
+                            <a:da name="EDITABLE" type="XPath">
+                               <a:tst expr="(node:fallback(../GtmTimerOutputModuleConfiguration/*[1]/GtmTimerClockSelect,'GTM_TBU_TS0') = 'GTM_TBU_TS0') or (node:fallback(../GtmTimerOutputModuleConfiguration/*[1]/GtmTimerClockSelect,'GTM_TBU_TS1') = 'GTM_TBU_TS1') or (node:fallback(../GtmTimerOutputModuleConfiguration/*[1]/GtmTimerClockSelect,'GTM_TBU_TS2') = 'GTM_TBU_TS2')"/>
+                            </a:da>
+                        </v:lst>
+                        <!-- [cover parentID={13FD5615-EBE0-4355-BBB7-C463A8D0CBCA}] OcuHardwareTriggeredDMA [/cover] -->
+                        <v:lst name="OcuHardwareTriggeredDMA">
+                          <a:da name="MIN" value="0"/>
+                          <a:da name="MAX" value="1"/>
+                          <v:var name="OcuHardwareTriggeredDMA" type="INTEGER">
+                            <a:a name="DESC" 
+                                 value="EN: This parameter is used to allow the OCU channel to trigger a DMA channel upon compare match. The value of the parameter represents the DMA physical channel to trigger."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                              <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="POSTBUILDVARIANTMULTIPLICITY" 
+                                 value="true"/>
+                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                            <a:a name="SCOPE" value="LOCAL"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="ECUC:13fd5615-ebe0-4355-bbb7-c463a8d0cbca"/>
+                            <a:da name="DEFAULT" value="0"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=127"/>
+                              <a:tst expr="&gt;=0"/>
+                            </a:da>
+                            <a:da name="INVALID" type="XPath">
+                              <a:tst expr="text:uniq(../../../*/OcuHardwareTriggeredDMA/*,.)" false="DMA channel is not unique"/>
+                            </a:da>
+                          </v:var>
+                            <a:da name="EDITABLE" type="XPath">
+                              <a:tst expr="(node:fallback(../GtmTimerOutputModuleConfiguration/*[1]/GtmTimerClockSelect,'NONE') != 'GTM_TBU_TS0') and (node:fallback(../GtmTimerOutputModuleConfiguration/*[1]/GtmTimerClockSelect,'NONE') != 'GTM_TBU_TS1') and (node:fallback(../GtmTimerOutputModuleConfiguration/*[1]/GtmTimerClockSelect,'NONE') != 'GTM_TBU_TS2')"/> 
+                            </a:da>
+                        </v:lst>
+                        <!-- [cover parentID={BDFEF2E5-45DD-4d48-87D0-E1803B9CCC3D}] OcuMaxCounterValue [/cover] -->
+                        <v:var name="OcuMaxCounterValue" type="INTEGER">
+                          <a:a name="DESC" 
+                               value="EN: Maximum value in ticks, the counter of the OCU channel is able to count."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" 
+                               value="ECUC:bdfef2e5-45dd-4d48-87d0-e1803b9ccc3d"/>
+                          <a:da name="DEFAULT" value="1"/>
+                          <a:da name="EDITABLE" type="XPath">
+                          <a:tst expr="(../GtmTimerOutputModuleConfiguration/*[1]/GtmTimerClockSelect != 'GTM_TBU_TS0') and (../GtmTimerOutputModuleConfiguration/*[1]/GtmTimerClockSelect != 'GTM_TBU_TS1') and (../GtmTimerOutputModuleConfiguration/*[1]/GtmTimerClockSelect != 'GTM_TBU_TS2')"/>
+                          </a:da> 
+                          <a:da name="INVALID" type="XPath">
+                            <a:tst expr="(node:fallback(substring-after(substring-after(substring-after(substring-before(../GtmTimerOutputModuleConfiguration/*[1]/GtmTimerUsed,'ChannelAllocationConf_'),'/McuGtm'),'/McuGtm'),'/McuGtm'),'Tom') = 'Tom') and (.  > 65535)" true="Invalid max counter value. (Max Counter should be less than 0xFFFF for a TOM channel"/>
+                            <a:tst expr="(node:fallback(substring-after(substring-after(substring-after(substring-before(../GtmTimerOutputModuleConfiguration/*[1]/GtmTimerUsed,'ChannelAllocationConf_'),'/McuGtm'),'/McuGtm'),'/McuGtm'),'Atom') = 'Atom') and (. > 16777215)" true="Invalid max counter value. (Max Counter should be less than 0xFFFFFF for an ATOM channel"/>
+                          </a:da>
+                          <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=4294967295"/>
+                            <a:tst expr="&gt;=1"/>
+                          </a:da>
+                        </v:var>
+                        <!-- [cover parentID={FA8B80E7-80AF-46d6-AB00-4B4824F11CE6}] OcuNotification [/cover] -->
+                        <v:lst name="OcuNotification">
+                          <a:da name="MIN" value="0"/>
+                          <a:da name="MAX" value="1"/>
+                          <v:var name="OcuNotification" type="FUNCTION-NAME">
+                            <a:a name="DESC" 
+                                 value="EN: Definition of a function pointer to a Callback function."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                              <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="POSTBUILDVARIANTMULTIPLICITY" 
+                                 value="true"/>
+                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                            <a:a name="SCOPE" value="LOCAL"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="ECUC:fa8b80e7-80af-46d6-ab00-4b4824f11ce6"/>
+                          <a:da name="DEFAULT" value="NULL"/>
+                          </v:var>
+                           <a:da name="EDITABLE" type="XPath">
+                             <a:tst expr="(node:fallback(../../../../OcuConfigurationOfOptionalApis/OcuNotificationSupported,'true') = 'true') and num:i(count(node:fallback(../OcuHardwareTriggeredDMA/*,' '))) = 0"/>
+                           </a:da>
+                        </v:lst>
+                        <!-- [cover parentID={6E816ECB-78D9-4084-8954-6C4AEB5DE2E2}] OcuOuptutPinUsed [/cover] -->
+                        <v:var name="OcuOuptutPinUsed" type="BOOLEAN">
+                          <a:a name="DESC" 
+                               value="EN: Information about the usage of an output pin on this channel."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" 
+                               value="ECUC:6e816ecb-78d9-4084-8954-6c4aeb5de2e2"/>
+                          <a:da name="DEFAULT" value="false"/>
+                          <a:da name="INVALID" type="XPath">
+                            <a:tst expr=". = 'true' and (../GtmTimerOutputModuleConfiguration/*[1]/GtmTimerClockSelect != 'GTM_TBU_TS0') and (../GtmTimerOutputModuleConfiguration/*[1]/GtmTimerClockSelect != 'GTM_TBU_TS1') and (../GtmTimerOutputModuleConfiguration/*[1]/GtmTimerClockSelect != 'GTM_TBU_TS2')" true="Pin functionality supported only for a channel with shared counter(i.e, channel using ATOM with TBU_TSx as timer"/>
+                          </a:da>
+                        </v:var>
+                    <v:lst name="GtmTimerOutputModuleConfiguration" type="MAP">
+                      <a:da name="MIN" value="1"/>
+                      <a:da name="MAX" value="1"/>
+                      <!-- [cover parentID={7C42AEE8-A29F-4839-A96C-85E9BC11936C}] GtmTimerOutputModuleConfiguration [/cover] -->
+                      <v:ctr name="GtmTimerOutputModuleConfiguration" type="IDENTIFIABLE">
+                        <a:a name="DESC" 
+                             value="EN: Choose GTM TOM/ATOM channel which will be used by this OCU Channel.
+                             Referred timer channel in MCU should have TomChannelUsage/ AtomChannelUsage as USED_BY_OCU_DRIVER"/>
+                        <a:a name="UUID" 
+                             value="ECUC:c2253a76-e1d8-4a8f-b303-ce80ffc0e870"/>
+                    <!-- [cover parentID={E14E460E-990E-439a-BAB0-50780AD8F5EE}] GtmTimerUsed [/cover] -->
+                    <v:ref name="GtmTimerUsed" type="CHOICE-REFERENCE">
+                      <a:a name="DESC" 
+                           value="EN: This parameter lists all the GTM timer channels (TOM/ATOM)."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                       <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                      </a:a>
+                      <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                      <a:a name="SCOPE" value="ECU"/>
+                      <a:a name="UUID" 
+                           value="ECUC:c945dd5e-1l5b-4bcc-a8ab-0a4d19ec3585"/>
+                       <a:da name="REF">
+                        <a:v>ASPathDataOfSchema:/AURIX2G/EcucDefs/Mcu/McuHardwareResourceAllocationConf/McuGtmAllocationConf/McuGtmTomAllocationConf/McuGtmTomChannelAllocationConf</a:v>
+                        <a:v>ASPathDataOfSchema:/AURIX2G/EcucDefs/Mcu/McuHardwareResourceAllocationConf/McuGtmAllocationConf/McuGtmAtomAllocationConf/McuGtmAtomChannelAllocationConf</a:v>
+                      </a:da>
+                      <a:da name="INVALID" type="XPath">
+                         <a:tst expr="node:refvalid(.)"  false="The configured node does not exist or may not be referenced."/>
+                         <a:tst expr="text:uniq(/AUTOSAR/TOP-LEVEL-PACKAGES/Ocu/ELEMENTS/Ocu/OcuConfigSet/OcuChannel/*/GtmTimerOutputModuleConfiguration/*/GtmTimerUsed,.)"  false="The configured node is used by multiple OCU channels."/>
+                         <a:tst expr="(node:ref(.)/McuGtmAtomChannelAllocationConf = 'GTM_ATOM_CHANNEL_USED_BY_OCU') or (node:ref(.)/McuGtmTomChannelAllocationConf = 'GTM_TOM_CHANNEL_USED_BY_OCU')"  false="The configured TOM/ATOM channel is not allocted for OCU driver"/>
+                      </a:da>
+                    </v:ref>
+                    <!-- [cover parentID={5CDCBC8F-8CFF-4705-8CD2-A783B81746D6}] GtmTimerClockSelect [/cover] -->
+                    <v:var name="GtmTimerClockSelect" type="ENUMERATION">
+                      <a:a name="DESC" value="EN: This parameter decides the Clock Source for TOM/ATOM timer."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                       <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                      </a:a>
+                      <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="ECUC:31505abb-3296-4c09-bdb7-d0909f1440f2"/>
+                      <a:da name="DEFAULT" value="GTM_FIXED_CLOCK_0"/>
+                      <a:da name="RANGE" type="XPath" expr="ecu:list(concat('Gtm.ClockSelect_',substring-before(substring-after(node:fallback(../GtmTimerUsed,'McuGtmAllocationConf_0/McuGtmBMDAll'),'McuGtmAllocationConf_0/McuGtm'),'All'),'_OCU'))"/>                                        
+                    </v:var>
+                      </v:ctr>
+                    </v:lst>
+                    <!-- [cover parentID={3CB6C8A7-1CFE-4a65-9F85-402D00D8688E}] OcuOutputPinDefaultState [/cover] -->
+                        <v:lst name="OcuOutputPinDefaultState">
+                          <a:da name="MIN" value="0"/>
+                          <a:da name="MAX" value="1"/>
+                          <v:var name="OcuOutputPinDefaultState" 
+                                 type="ENUMERATION">
+                            <a:a name="DESC" 
+                                 value="EN: The parameter OcuOutputPinDefaultState represents the state that a pin associated with a channel shall be set to after initialisation."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                              <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="POSTBUILDVARIANTMULTIPLICITY" 
+                                 value="true"/>
+                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                            <a:a name="SCOPE" value="LOCAL"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="ECUC:3cb6c8a7-1cfe-4a65-9f85-402d00d8688e"/>
+                            <a:da name="DEFAULT" value="OCU_LOW"/>
+                            <a:da name="RANGE">
+                              <a:v>OCU_HIGH</a:v>
+                              <a:v>OCU_LOW</a:v>
+                            </a:da>
+                          </v:var>
+                            <a:da name="EDITABLE" type="XPath">
+                               <a:tst expr="node:fallback(../OcuOuptutPinUsed,'true') = 'true'"/>
+                            </a:da>
+                        </v:lst>
+                        <!-- [cover parentID={8D84DFE6-F0E6-4024-80BE-399A30D0AB8F}] OcuChannelEcucPartitionRef [/cover] -->
+                        <v:lst name="OcuChannelEcucPartitionRef">
+                          <v:ref name="OcuChannelEcucPartitionRef" 
+                                 type="REFERENCE">
+                            <a:a name="DESC">
+                              <a:v>EN: Maps an OCU channel to zero or multiple ECUC partitions to limit the access to this channel. The ECUC partitions referenced are a subset of the ECUC partitions where the OCU driver is mapped to.</a:v>
+                              <a:v>EN: Tags: atp.Status=draft</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v mclass="PreCompile">VariantPostBuild</icc:v>
+                              <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="POSTBUILDVARIANTMULTIPLICITY" 
+                                 value="true"/>
+                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                            <a:a name="SCOPE" value="ECU"/>
+                            <a:da name="EDITABLE" value="false"/> 
+                            <a:a name="UUID" 
+                                 value="ECUC:14986ac3-28d4-452c-86bf-bfc130df8ab2"/>    
+                            <a:da name="REF" 
+                                  value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/EcuC/EcucPartitionCollection/EcucPartition"/>
+                          </v:ref>
+                        </v:lst>
+                      </v:ctr>
+                    </v:lst>
+                    <!-- [cover parentID={DCEA9EE9-4968-40fe-9EE6-BD4F9BEA8E81}] OcuHWSpecificSettings [/cover] -->
+                    <v:lst name="OcuHWSpecificSettings" type="MAP">
+                      <a:da name="MAX" value="1"/>
+                      <v:ctr name="OcuHWSpecificSettings" type="IDENTIFIABLE">
+                        <a:a name="DESC" 
+                             value="EN: This container contains Ocu-specific parameters for selecting the clock source and setting optional prescalers if supported by hardware."/>
+                        <a:a name="UUID" 
+                             value="ECUC:dcea9ee9-4968-40fe-9ee6-bd4f9bea8e81"/>
+                              <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="false"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v mclass="PreCompile">VariantPostBuild</icc:v>
+                            </a:a>
+                        <!-- [cover parentID={CAC98A9B-63C8-4156-85D9-BB801075E1B9}] OcuClockSource [/cover] -->
+                        <v:lst name="OcuClockSource">
+                          <a:da name="MAX" value="1"/>
+                          <v:var name="OcuClockSource" type="ENUMERATION">
+                            <a:a name="DESC" 
+                                 value="EN: The OCU driver specific clock input for the unit can statically be configured to select different clock sources if provided by hardware. Enumeration literals are defined vendor specific."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                              <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="POSTBUILDVARIANTMULTIPLICITY" 
+                                 value="true"/>
+                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                            <a:a name="SCOPE" value="LOCAL"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="EDITABLE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="ECUC:cac98a9b-63c8-4156-85d9-bb801075e1b9"/>
+                            <a:da name="DEFAULT" value="UNUSED"/>
+                            <a:da name="RANGE">
+                              <a:v>UNUSED</a:v>
+                            </a:da>
+                          </v:var>
+                        </v:lst>
+                        <!-- [cover parentID={52E0DE61-EEAF-49f2-ADA4-5E69B1B341A5}] OcuPrescale [/cover] -->
+                        <v:lst name="OcuPrescale">
+                          <a:da name="MAX" value="1"/>
+                          <v:var name="OcuPrescale" type="ENUMERATION">
+                            <a:a name="DESC" 
+                                 value="EN: Optional OCU driver specific clock prescale factor, if supported by hardware. Implementation is defined vendor specific."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                              <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="POSTBUILDVARIANTMULTIPLICITY" 
+                                 value="true"/>
+                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                            <a:a name="SCOPE" value="LOCAL"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="EDITABLE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="ECUC:52e0de61-eeaf-49f2-ada4-5e69b1b341a5"/>
+                            <a:da name="DEFAULT" value="UNUSED"/>
+                            <a:da name="RANGE">
+                              <a:v>UNUSED</a:v>
+                            </a:da>
+                          </v:var>
+                        </v:lst>
+                      </v:ctr>
+                    </v:lst>
+                  </v:ctr>
+                  <!-- [cover parentID={3B497CDA-E5BE-4ddd-A1EB-B03026591A87}] OcuConfigurationOfOptionalApis [/cover] -->
+                  <v:ctr name="OcuConfigurationOfOptionalApis" 
+                         type="IDENTIFIABLE">
+                    <a:a name="DESC" value="EN: Configuration of optional APIs."/>
+                    <a:a name="UUID" 
+                         value="ECUC:3b497cda-e5be-4ddd-a1eb-b03026591a87"/>
+                    <!-- [cover parentID={ECE1E485-7112-4cc3-AF64-F9E7D1C5F761}] OcuDeInitApi [/cover] -->
+                    <v:var name="OcuDeInitApi" type="BOOLEAN">
+                      <a:a name="DESC" 
+                           value="EN: Adds / removes the service Ocu_DeInit() from the code."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="ECUC:ece1e485-7112-4cc3-af64-f9e7d1c5f761"/>
+                      <a:da name="DEFAULT" value="false"/>
+                    </v:var>
+                    <!-- [cover parentID={2B6A491C-9F49-4ce5-8BB5-EBC72F7ACD8A}] OcuGetCounterApi [/cover] -->
+                    <v:var name="OcuGetCounterApi" type="BOOLEAN">
+                      <a:a name="DESC" 
+                           value="EN: Adds / removes the service Ocu_GetCounter() from the code."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="ECUC:2b6a491c-9f49-4ce5-8bb5-ebc72f7acd8a"/>
+                      <a:da name="DEFAULT" value="false"/>
+                    </v:var>
+                    <!-- [cover parentID={A078C655-6060-433b-8E43-E007388C733B}] OcuNotificationSupported [/cover] -->
+                    <v:var name="OcuNotificationSupported" type="BOOLEAN">
+                      <a:a name="DESC" 
+                           value="EN: Adds / removes the services Ocu_EnableNotification() and Ocu_DisableNotification() from the code."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="ECUC:a078c655-6060-433b-8e43-e007388c733b"/>
+                      <a:da name="DEFAULT" value="false"/>
+                    </v:var>
+                    <!-- [cover parentID={1D04356B-A77F-4adc-B124-141CD519AD93}] OcuSetAbsoluteThresholdApi [/cover] -->
+                    <v:var name="OcuSetAbsoluteThresholdApi" type="BOOLEAN">
+                      <a:a name="DESC" 
+                           value="EN: Adds / removes the service Ocu_SetAbsoluteThreshold() from the code."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="ECUC:1d04356b-a77f-4adc-b124-141cd519ad93"/>
+                      <a:da name="DEFAULT" value="false"/>
+                    </v:var>
+                    <!-- [cover parentID={FCAB4421-8EDA-4da4-9C69-24801273FAB7}] OcuSetPinActionApi [/cover] -->
+                    <v:var name="OcuSetPinActionApi" type="BOOLEAN">
+                      <a:a name="DESC" 
+                           value="EN: Adds / removes the service Ocu_SetPinAction() from the code."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="ECUC:fcab4421-8eda-4da4-9c69-24801273fab7"/>
+                      <a:da name="DEFAULT" value="false"/>
+                      <a:da name="INVALID" type="XPath">
+                        <a:tst expr="(. = 'true') and num:i(count(../../OcuConfigSet/OcuChannel/*[OcuOuptutPinUsed = 'true'])) = 0" true="No OCU channel uses pin. SetPinAction API cannot be used."/> 
+                      </a:da>
+                    </v:var>
+                    <!-- [cover parentID={C36E8660-4995-4cbe-B664-645A361723C9}] OcuSetPinStateApi [/cover] -->
+                    <v:var name="OcuSetPinStateApi" type="BOOLEAN">
+                      <a:a name="DESC" 
+                           value="EN: Adds / removes the service Ocu_SetPinState() from the code."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="ECUC:c36e8660-4995-4cbe-b664-645a361723c9"/>
+                      <a:da name="DEFAULT" value="false"/>
+                      <a:da name="INVALID" type="XPath">
+                        <a:tst expr="(. = 'true') and num:i(count(../../OcuConfigSet/OcuChannel/*[OcuOuptutPinUsed = 'true'])) = 0" true="No OCU channel uses pin. SetPinState API cannot be used."/> 
+                      </a:da>
+                    </v:var>
+                    <!-- [cover parentID={AA3DF9F3-F48B-402f-B1A2-E05546637C64}] OcuSetRelativeThresholdApi [/cover] -->
+                    <v:var name="OcuSetRelativeThresholdApi" type="BOOLEAN">
+                      <a:a name="DESC" 
+                           value="EN: Adds / removes the service Ocu_SetRelativeThreshold() from the code."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="ECUC:aa3df9f3-f48b-402f-b1a2-e05546637c64"/>
+                      <a:da name="DEFAULT" value="false"/>
+                    </v:var>
+                    <!-- [cover parentID={AECE3736-8FED-4937-8FA3-90F560DC6B2C}] OcuVersionInfoApi [/cover] -->
+                    <v:var name="OcuVersionInfoApi" type="BOOLEAN">
+                      <a:a name="DESC" 
+                           value="EN: Switch to indicate that the Ocu_GetVersionInfo() is supported."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="ECUC:aece3736-8fed-4937-8fa3-90f560dc6b2c"/>
+                      <a:da name="DEFAULT" value="false"/>
+                    </v:var>
+                    <!-- [cover parentID={E9F700F5-9004-4381-A0F7-0B631B697C35}] OcuInitCheckApi [/cover] -->
+                    <v:var name="OcuInitCheckApi" type="BOOLEAN">
+                      <a:a name="DESC">
+                        <a:v>EN: Adds / removes the service Ocu_InitCheck() from the code.
+                            true: Ocu_InitCheck() can be used.
+                            false: Ocu_InitCheck() can not be used.</a:v>
+                      </a:a>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                      </a:a>
+                      <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="ECUC:4d3911ac-2595-4dc7-a69e-66453109d78a"/>
+                      <a:da name="DEFAULT" value="false"/>
+                    </v:var>
+                  </v:ctr>
+                  <!-- [cover parentID={95EB7FD8-BE1A-4fc7-B857-A748A2BA401D}] OcuGeneral [/cover] -->
+                  <v:ctr name="OcuGeneral" type="IDENTIFIABLE">
+                    <a:a name="DESC" 
+                         value="EN: This container contains the module-wide configuration parameters of the OCU Driver."/>
+                    <a:a name="UUID" 
+                         value="ECUC:95eb7fd8-be1a-4fc7-b857-a748a2ba401d"/>
+                    <!-- [cover parentID={FA74E280-1309-474e-A17F-06568B6C5212}] OcuDevErrorDetect [/cover] -->
+                    <v:var name="OcuDevErrorDetect" type="BOOLEAN">
+                      <a:a name="DESC" 
+                           value="EN: Switches the Default Error Tracer (Det) detection and notification ON or OFF."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="ECUC:fa74e280-1309-474e-a17f-06568b6c5212"/>
+                      <a:da name="DEFAULT" value="false"/>
+                    </v:var>
+                    <!-- [cover parentID={A4F84937-E5A1-4703-A42A-43123C077A7C}] OcuMultiCoreErrorDetect [/cover] -->
+                    <v:var name="OcuMultiCoreErrorDetect" type="BOOLEAN">
+                      <a:a name="DESC">
+                        <a:v>EN: Switches the MultiCore Development Error Detection on or off. true: Enabled. false: Disabled.</a:v>
+                      </a:a>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                      </a:a>
+                      <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="ECUC:7224bf75-cdc8-408f-1111-9e7118a84"/>
+                      <a:da name="DEFAULT" value="false"/>
+                      <a:da name="INVALID" type="XPath">
+                        <a:tst expr="(. = 'true') and ../OcuDevErrorDetect = 'false'" true="Multi core error detection cannot be enable with Dev Error detect disabled."/> 
+                        <a:tst expr="ecu:get('Mcu.NoOfCoreAvailable') = '1'  and .='true'" 
+                            true="Muticore error detection is enabled in the configuration for the single core device. User shall disable parameter OcuMultiCoreErrorDetect"/>
+                      </a:da>
+                    </v:var>
+                    <!-- [cover parentID={B340287D-F04A-45f7-BB5A-60A81E8C4D57}] OcuSafetyEnable [/cover] -->
+                    <v:var name="OcuSafetyEnable" type="BOOLEAN">
+                      <a:a name="DESC">
+                        <a:v>EN: Switch for enabling/Disabling OcuSafetyEnable</a:v>
+                      </a:a>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                          type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" value="be837339-bdd5-4cda-123w-54e2011c110a"/>
+                      <a:da name="DEFAULT" value="true"/>
+                    </v:var>
+                    <!-- [cover parentID={B9C310BE-F61C-43c3-B400-33CFB7863EDA}] OcuEcucPartitionRef [/cover] -->
+                    <v:lst name="OcuEcucPartitionRef">
+                      <v:ref name="OcuEcucPartitionRef" type="REFERENCE">
+                        <a:a name="DESC">
+                          <a:v>EN: Maps the OCU driver to zero or multiple ECUC partitions to make the driver API available in the according partition.</a:v>
+                          <a:v>EN: Tags: atp.Status=draft</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v mclass="PreCompile">VariantPostBuild</icc:v>
+                          <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="true"/>
+                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                        <a:a name="SCOPE" value="ECU"/>
+                        <a:da name="EDITABLE" value="false"/>
+                        <a:a name="UUID" 
+                             value="ECUC:04ffb3b6-0333-4ed2-864e-d3710423c86f"/>
+                        <a:da name="REF" 
+                              value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/EcuC/EcucPartitionCollection/EcucPartition"/>
+                      </v:ref>
+                    </v:lst>
+                    <!-- [cover parentID={331AF1F4-2251-453d-B42A-4DAA2E13366B}] OcuKernelEcucPartitionRef [/cover] -->
+                    <v:lst name="OcuKernelEcucPartitionRef">
+                      <a:da name="MAX" value="1"/>
+                      <v:ref name="OcuKernelEcucPartitionRef" type="REFERENCE">
+                        <a:a name="DESC">
+                          <a:v>EN: Maps the OCU kernel to zero or one ECUC partitions to assign the driver kernel to a certain core. The ECUC partition referenced is a subset of the ECUC partitions where the OCU driver is mapped to.</a:v>
+                          <a:v>EN: Tags: atp.Status=draft</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v mclass="PreCompile">VariantPostBuild</icc:v>
+                          <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="true"/>
+                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                        <a:a name="SCOPE" value="ECU"/>
+                        <a:da name="EDITABLE" value="false"/>
+                        <a:a name="UUID" 
+                             value="ECUC:a25d816c-e8fc-43cf-a0c8-d060b93164bf"/>
+                        <a:da name="REF" 
+                              value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/EcuC/EcucPartitionCollection/EcucPartition"/>
+                      </v:ref>
+                    </v:lst>
+                  </v:ctr>
+                  <!-- [cover parentID={6882DCC6-4A9F-420f-A99B-DEF592DDEAA3}] CommonPublishedInformation [/cover] -->
+               <v:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC" value="EN: Common container, aggregated by all modules. It contains published information about vendor and versions."/>
+                <a:a name="UUID" value="492f8482-3e2c-4bf1-b27f-01fd7ac35788"/>
+                <!-- [cover parentID={9FCE1B00-A93E-4626-B408-5A4945927401}] ArMajorVersion [/cover] -->
+                <v:var name="ArMajorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Major version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="SCOPE" value="LOCAL"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="bd0a8d38-4d8c-4ee9-88fe-1166b258bb8a"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=255"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="4"/>
+                </v:var>
+                <!-- [cover parentID={0B850ADB-3A5F-402c-815E-631843A79E18}] ArMinorVersion [/cover] -->
+                <v:var name="ArMinorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Minor version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="SCOPE" value="LOCAL"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="73f87c7f-e230-4178-bff0-eb2704aae656"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=255"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="4"/>
+                </v:var>
+                <!-- [cover parentID={4762437C-803E-45af-A540-CBADD910DA71}] ArPatchVersion [/cover] -->
+                <v:var name="ArPatchVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Patch level version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="SCOPE" value="LOCAL"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="2380135d-6778-417a-a34b-e10017d4dd54"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=255"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <!-- [cover parentID={269236D8-19E4-4037-93C7-41FBADFCD250}] SwMajorVersion [/cover] -->
+                <v:var name="SwMajorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Major version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="SCOPE" value="LOCAL"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="fca015e3-5f28-4cbe-8949-8f4b87d86827"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=255"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="20"/>
+                </v:var>
+                <!-- [cover parentID={C65BCBF7-266F-4f91-AABE-05E75C467049}] SwMinorVersion [/cover] -->
+                <v:var name="SwMinorVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Minor version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="SCOPE" value="LOCAL"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="14ab81e0-3d80-43dc-8b92-247e5a542df9"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=255"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="10"/>
+                </v:var>
+                <!-- [cover parentID={117195D3-7AF7-4fea-857B-9AB5BBC6252A}] SwPatchVersion [/cover] -->
+                <v:var name="SwPatchVersion" type="INTEGER">
+                  <a:a name="DESC" value="EN: Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="SCOPE" value="LOCAL"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="32e37bfd-18b6-41d1-9248-a81dbe0fe4c5"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=255"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <!-- [cover parentID={A9E8E966-2E10-4812-979E-1FF4E56A17F0}] ModuleId [/cover] -->
+                <v:var name="ModuleId" type="INTEGER">
+                  <a:a name="DESC" value="EN: Module ID of this module from Module List"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="SCOPE" value="LOCAL"/>
+                  <a:a name="UUID" value="3b407478-6902-4f80-b7cf-f33b0854e638"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="125"/>
+                </v:var>
+                <!-- [cover parentID={833E5E34-6B66-4b6f-A26A-CF6E01C6063F}] Vendor ID [/cover] -->
+                <v:var name="VendorId" type="INTEGER">
+                  <a:a name="DESC" value="EN: Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="SCOPE" value="LOCAL"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="7d650b2d-4adb-41f0-a68e-5f0c416501d1"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="17"/>
+                </v:var>
+                <!-- [cover parentID={F4960BBA-14C9-46ca-AE22-88AE7F91BB37}] Release [/cover] -->
+                <v:var name="Release" type="STRING">
+                  <a:a name="DESC" value="EN: Aurix derivative used for the implementation"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="3b407478-6902-4f40-b7cf-f33b0854e638"/>
+                  <a:da name="DEFAULT" type="XPath" expr="ecu:get('Rel.Derivate')"/>
+                </v:var>
+              </v:ctr>
+                </v:ctr>
+              </d:chc>
+            </d:lst>
+          </d:ctr>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+
+</datamodel>

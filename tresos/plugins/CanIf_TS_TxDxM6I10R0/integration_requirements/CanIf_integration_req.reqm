@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<specdocument>
+  <specobjects doctype="lim">
+    <specobject>
+      
+      <id>lim.CanIf.EB_INTREQ_CanIf_0001</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+      Data copying mechanism in Rx indication code
+      <code>CanIf_RxIndication()</code> does not copy the data
+      provided by the CAN driver. Instead the data pointer is directly
+      propagated to the upper layer.<pre>
+NOTE:
+For dynamic length PDU reception, upper layers might expect that
+always a buffer with the maximum possible PDU size is provided.
+Since CanIf does not perform buffering it is the Can drivers
+responsibility to fulfil this requirement.</pre>
+      </description>
+      <rationale>
+      The data is copied in the different upper layers. The CanIf does not
+      copy it as well to reduce runtime overhead.
+      </rationale>
+      
+    </specobject>
+
+    
+    <specobject>
+      <id>lim.CanIf.EB_INTREQ_CanIf_0002</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+      <code>CanIf_CheckWakeup()</code> must not preempt or be preempted by
+      <code>CanIf_SetControllerMode()</code>
+      The integrator must assure that <code>CanIf_SetControllerMode()</code> cannot
+      preempt <code>CanIf_CheckWakeup()</code>. The integrator also must assure that
+      <code>CanIf_CheckWakeup()</code> does not preempt
+      <code>CanIf_SetControllerMode()</code>.
+      </description>
+      <rationale>
+      This limitation reduces code size and execution time by eliminating the need for extensive
+      use of exclusive areas.
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>lim.CanIf.EB_INTREQ_CanIf_0003</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        CanIf controller mode might differ from Can controller hardware mode
+        The CanIf software controller mode is always changed if an according event on the
+        hardware is detected.
+        These events are the following:<pre>
+-  Call of CanIf_ControllerModeIndication() (CANIF_CS_STOPPED, CANIF_CS_STA-
+RTED, CANIF_CS_SLEEP)
+-  Call of CanIf_ControllerBusOff() (CANIF_CS_STOPPED)
+-  Wakeup detection by calling Can_CheckWakeup() (CANIF_CS_STOPPED)
+        </pre>
+        The state is always set to the latest detected/reported event. The result
+        therefore is strongly dependent from the actual Can driver module behavior.
+        Possible inconsistencies:<pre>
+-  Can_SetControllerMode(CAN_T_START) (current state is CANIF_CS_STARTED)
+-  CanIf_ControllerBusOff() -&gt; controller mode is changed to CANIF_CS_STOPPED 
+both in CanIF SW and HW.
+-  CanIf_ControllerModeIndication(CANIF_CS_STARTED) -&gt; controller mode is cha-
+nged to CANIF_CS_STARTED in CanIf SW although hardware stays stopped.
+-  Can_SetControllerMode(CAN_T_SLEEP) (current state is CANIF_CS_STOPPED)
+-  CanIf_CheckWakeup() reports wakeup event -&gt; controller mode is changed to 
+CANIF_CS_STOPPED both in CanIf SW and HW.
+-  CanIf_ControllerModeIndication(CAN_T_SLEEP) -&gt; controller mode is changed to
+CAN_T_SLEEP in CanIf SW although hardware stays stopped.</pre>
+      </description>
+      <rationale/>
+      
+    </specobject>
+
+    <specobject>
+      <id>lim.CanIf.EB_INTREQ_CanIf_0004</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        When the support for Bus Mirroring is enabled the signature of the 
+      functions <code>CanIf_GetTrcvMode()</code> and <code>CanIf_GetControllerMode()</code>
+      is according to the AR4.4 specs.
+      As these are called from integration code / CDDs, the correct order and type of the
+      parameters has to be ensured.
+      </description>
+      <rationale>
+      Changing the signature of the functions guarantees interoperability with the Bus Mirroring
+      module while maintaining backwards compatibility when the feature is off.
+      </rationale>
+    </specobject>
+
+    <specobject>
+      <id>lim.CanIf.EB_INTREQ_CanIf_0005</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Starting with ACG-8.7.2, CanIf supports compatibility with CAN driver ASR 4.3 and 4.4.
+      During this development, CanIfEnableCanRel422Compatibility and CanIfEnableCanRev2Compatibility
+      were removed and replaced with CanIfCanDriverCompatibility. After updating to this ACG version,
+      replacing the obsolete parameters with the new one shall be taken into account. This will make
+      the tests that used both CanIfEnableCanRel422Compatibility and CanIfEnableCanRev2Compatibility
+      unusable, considering that a driver cannot be ASR 4.2.2 and ASR 4.0.2 at the same time anyway.
+      </description>
+      <rationale>
+      Using this new paramenter CanIfCanDriverCompatibility, it is easier to specify the version of
+      CAN driver the CAN Interface will be referring to.
+      </rationale>
+    </specobject>
+
+    <specobject>
+      <id>lim.CanIf.EB_INTREQ_CanIf_0006</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        When the support for Multicore is enabled, the CDD callbacks (defined via
+      CanIfNumberOfEnqueuedRxPdusApiName, CanIfNumberOfRxPdusExceedingQueueApiName,
+      CanIfNumberOfEnqueuedTxPdusApiName or CanIfNumberOfTxPdusExceedingQueueApiName parameters) for
+      Decoupled processing queue size measurement support must be concurrently callable from different
+      partitions/cores for different MainFunction Ids.
+      </description>
+      <rationale>
+      Assuring that the CDD callbacks can operate on Multicore processors.
+      </rationale>
+    </specobject>
+
+    <specobject>
+      <id>lim.CanIf.EB_INTREQ_CanIf_0007</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        When the support for Multicore is enabled, the CDD callbacks (defined via
+      CanIfHookOnReceptionFunctionName parameter) for the Custom Hook support must be concurrently callable
+      from different partitions/cores for different PDU Ids.
+      </description>
+      <rationale>
+      Assuring that the CDD callbacks can operate on Multicore processors.
+      </rationale>
+    </specobject>
+
+    <specobject>
+      <id>lim.CanIf.EB_INTREQ_CanIf_0008</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        When the support for Multicore is enabled, all PDUs corresponding to the J1939 stack must be mapped
+      on the same core (the same one on which the J1939 stack is located) if the CAN stack is Multi-core distributed
+      along network boundaries. This includes all the resources corresponding to those PDUs: interrupts, main
+      functions, etc.
+      </description>
+      <rationale>
+      The J1939 stack has no Multicore distribution capabilities.
+      </rationale>
+    </specobject>
+
+    <specobject>
+      <id>lim.CanIf.EB_INTREQ_CanIf_0009</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        When the support for Multicore is enabled, the CDD RxIndication callback (defined via
+      CanIfRxPduUserRxIndicationName parameter) must be concurrently callable from different
+      partitions/cores for different PDU Ids.
+      </description>
+      <rationale>
+      Assuring that the CDD callback can operate on Multicore processors.
+      </rationale>
+    </specobject>
+
+    <specobject>
+      <id>lim.CanIf.EB_INTREQ_CanIf_0010</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        When the support for Multicore is enabled, the CDD TxConfirmation callback (defined via
+      CanIfTxPduUserTxConfirmationName parameter) must be concurrently callable from different
+      partitions/cores for different PDU Ids.
+      </description>
+      <rationale>
+      Assuring that the CDD callback can operate on Multicore processors.
+      </rationale>
+    </specobject>
+
+    <specobject>
+      <id>lim.CanIf.EB_INTREQ_CanIf_0011</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        When the support for Multicore is enabled, the <code>Can_SetControllerMode()</code>,
+      <code>Can_SetBaudrate()</code> and <code>Can_CheckWakeup()</code> APIs must be concurrently
+      callable from different partitions/cores for different controller Ids.
+      </description>
+      <rationale>
+      Assuring that the MCAL driver can operate on Multicore processors.
+      </rationale>
+    </specobject>
+
+    <specobject>
+      <id>lim.CanIf.EB_INTREQ_CanIf_0012</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        When the support for Multicore is enabled, the <code>Can_Write()</code> API must be concurrently
+      callable from different partitions/cores for different hardware objects.
+      </description>
+      <rationale>
+      Assuring that the MCAL driver can operate on Multicore processors.
+      </rationale>
+    </specobject>
+
+    <specobject>
+      <id>lim.CanIf.EB_INTREQ_CanIf_0013</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        When the support for Multicore is enabled, the <code>CanTrcv_SetOpMode()</code>,
+      <code>CanTrcv_GetOpMode()</code>, <code>CanTrcv_GetBusWuReason()</code>,
+      <code>CanTrcv_SetWakeupMode()</code>, <code>CanTrcv_CheckWakeup()</code> and <code>CanTrcv_CheckWakeFlag()</code>
+      APIs must be concurrently callable from different partitions/cores for different transceiver Ids.
+      </description>
+      <rationale>
+      Assuring that the transceiver driver can operate on Multicore processors.
+      </rationale>
+    </specobject>
+
+    <specobject>
+      <id>lim.CanIf.EB_INTREQ_CanIf_0014</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        When the support for Multicore is enabled, the CDD ControllerBusOff callback (defined via
+      CanIfDispatchUserCtrlBusOffName parameter) must be concurrently callable from different
+      partitions/cores for different controller Ids.
+      </description>
+      <rationale>
+      Assuring that the CDD callback can operate on Multicore processors.
+      </rationale>
+    </specobject>
+
+    <specobject>
+      <id>lim.CanIf.EB_INTREQ_CanIf_0015</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        When the support for Multicore is enabled, the CDD ControllerModeIndication callback (defined via
+      CanIfDispatchUserCtrlModeIndicationName parameter) must be concurrently callable from different
+      partitions/cores for different controller Ids.
+      </description>
+      <rationale>
+      Assuring that the CDD callback can operate on Multicore processors.
+      </rationale>
+    </specobject>
+
+    <specobject>
+      <id>lim.CanIf.EB_INTREQ_CanIf_0016</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        When the support for Multicore is enabled, the CDD TransceiverModeIndication callback (defined via
+      CanIfDispatchUserTrcvModeIndicationName parameter) must be concurrently callable from different
+      partitions/cores for different transceiver Ids.
+      </description>
+      <rationale>
+      Assuring that the CDD callback can operate on Multicore processors.
+      </rationale>
+    </specobject>
+
+    <specobject>
+      <id>lim.CanIf.EB_INTREQ_CanIf_0017</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        When the support for Multicore is enabled, the CDD ConfirmPnAvailability callback (defined via
+      CanIfDispatchUserConfirmPnAvailabilityName parameter) must be concurrently callable from different
+      partitions/cores for different transceiver Ids.
+      </description>
+      <rationale>
+      Assuring that the CDD callback can operate on Multicore processors.
+      </rationale>
+    </specobject>
+
+    <specobject>
+      <id>lim.CanIf.EB_INTREQ_CanIf_0018</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        When the support for Multicore is enabled, the CDD ClearTrcvWufFlagIndication callback (defined via
+      CanIfDispatchUserClearTrcvWufFlagIndicationName parameter) must be concurrently callable from different
+      partitions/cores for different transceiver Ids.
+      </description>
+      <rationale>
+      Assuring that the CDD callback can operate on Multicore processors.
+      </rationale>
+    </specobject>
+
+    <specobject>
+      <id>lim.CanIf.EB_INTREQ_CanIf_0019</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        When the support for Multicore is enabled, the CDD CheckTransceiverWakeFlagIndication callback (defined via
+      CanIfDispatchUserCheckTrcvWakeFlagIndicationName parameter) must be concurrently callable from different
+      partitions/cores for different transceiver Ids.
+      </description>
+      <rationale>
+      Assuring that the CDD callback can operate on Multicore processors.
+      </rationale>
+    </specobject>
+
+    <specobject>
+      <id>lim.CanIf.EB_INTREQ_CanIf_0020</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        When the support for Multicore is enabled, the <code>Can_GetControllerTxErrorCounter()</code>,
+      and <code>Can_GetControllerErrorState()</code> APIs must be concurrently
+      callable from different partitions/cores for different controller Ids.
+      </description>
+      <rationale>
+      Assuring that the MCAL driver can operate on Multicore processors.
+      </rationale>
+    </specobject>
+
+  </specobjects>
+</specdocument>

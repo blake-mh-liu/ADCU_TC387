@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+  <!--
+    AUTOSAR Cpl_TS_T0D1M1I0R0 plugin
+    Project: EB tresos AutoCore
+
+    Copyright 2005-2013 by Elektrobit Automotive GmbH
+    All rights exclusively reserved for Elektrobit Automotive GmbH,
+    unless expressly agreed to otherwise.
+  -->
+
+  <extension point="dreisoft.tresos.launcher2.plugin.module"
+             id="Cpl_TS_T0D1M1I0R0_ModuleId"
+             name="Cpl_TS_T0D1M1I0R0 Module">
+
+    <module id="Cpl_TS_T0D1M1I0R0"
+            label="Cpl"
+            mandatory="false"
+            allowMultiple="false"
+            description="ACG-CAL: AUTOSAR stub to replace Cpl module in tests"
+            copyright="(c) 2005-2013 Elektrobit Automotive GmbH"
+            swVersionMajor="1"
+            swVersionMinor="0"
+            swVersionPatch="0"
+            swVersionSuffix="B117106"
+            specVersionMajor="1"
+            specVersionMinor="2"
+            specVersionPatch="0"
+            specVersionSuffix="0000"
+            relVersionMajor="4"
+            relVersionMinor="0"
+            relVersionPatch="3"
+            categoryType="Cpl"
+            categoryLayer="Stub"
+            categoryCategory="Stub"
+            categoryComponent="ECUC">
+
+
+      <cluster name="Stubs"/>
+      
+
+
+    </module>
+  </extension>
+
+
+
+  <extension point="dreisoft.tresos.launcher2.plugin.configuration"
+             id="Cpl_TS_T0D1M1I0R0_ConfigId"
+             name="Cpl_TS_T0D1M1I0R0 Configuration">
+    <configuration moduleId="Cpl_TS_T0D1M1I0R0">
+      <schema>
+        <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarSchemaManager"/>
+        <resource value="config/Cpl.xdm" type="xdm" id="res_default"/>
+      </schema>
+
+      <data>
+        <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarConfigManager"/>
+        <schemaNode path="ASPath:/TS_T0D1M1I0R0/Cpl"/>
+      </data>
+
+      <editor id="Cpl_TS_T0D1M1I0R0_EditorId"
+              label="Default"
+              tooltip="ACG-CAL: AUTOSAR stub to replace Cpl module in tests">
+        <class class="dreisoft.tresos.launcher2.editor.GenericConfigEditor">
+          <parameter name="schema" value="ASPath:/TS_T0D1M1I0R0/Cpl"/>
+          <parameter name="title" value="Cpl"/>
+          <parameter name="noTabs" value="false"/>
+          <parameter name="noLinks" value="true"/>
+          <parameter name="groupLinks" value="false"/>
+          <parameter name="groupContainers" value="false"/>
+          <parameter name="groupTables" value="true"/>
+          <parameter name="optionalGeneralTab" value="true"/>
+        </class>
+      </editor>
+    </configuration>
+  </extension>
+
+
+
+
+
+
+  <extension point="dreisoft.tresos.launcher2.plugin.generator"
+              id="Cpl_TS_T0D1M1I0R0_GeneratorId"
+              name="Cpl_TS_T0D1M1I0R0 Generator">
+    <generator moduleId="Cpl_TS_T0D1M1I0R0"
+               class="dreisoft.tresos.launcher2.generator.TemplateBasedCodeGenerator">
+
+      <!-- common template path parameters -->
+      <parameter name="templates"
+                 mode="generate,verify" value="generate"/>
+
+
+
+
+    </generator>
+  </extension>
+
+
+
+
+
+
+
+
+
+
+</plugin>
+

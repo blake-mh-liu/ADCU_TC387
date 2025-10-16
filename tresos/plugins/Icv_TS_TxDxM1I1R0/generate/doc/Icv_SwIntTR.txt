@@ -1,0 +1,74 @@
+[!SKIPFILE "as:modconf('Icv')[1]/IcvConfigSet/*[1]/GenerateReport = 'false'"!]
+[!AUTOSPACING!]
+/**
+ * \file
+ *
+ * \brief Icv SwIntTR
+ *
+ * This file contains the Icv software integration test report.
+ *
+ * \author Elektrobit Automotive GmbH, 91058 Erlangen, Germany
+ *
+ * Copyright 2005 - 2016 Elektrobit Automotive GmbH
+ * All rights exclusively reserved for Elektrobit Automotive GmbH,
+ * unless expressly agreed to otherwise.
+ */
+  [!LOOP "as:modconf('Icv')[1]/IcvConfigSet/*[1]/Group/*"!][!//
+    [!IF "GroupEnabled = 'true' and count(Rule/*[RulesEnabled='true' and State!='rejected'])>0"!][!//
+/**
+      [!IF "normalize-space(Variant) = ''"!][!//
+ * SwIntTR specobjects for [!"name(.)"!] - [!"Id"!]
+      [!ELSE!][!//
+ * SwIntTR specobjects for [!"name(.)"!] - [!"Id"!] ([!"Variant"!])
+      [!ENDIF!][!//
+      [!LOOP "./Rule/*"!][!//
+        [!IF "RulesEnabled = 'true' and State != 'rejected'"!][!//
+          [!VAR "testFailed" = "false()"!][!//
+          [!VAR "noEnabledRuleExists" = "true()"!][!//
+          [!LOOP "./XPathExpressionList/*"!][!//
+            [!IF "RuleEnabled = 'true'"!][!//
+              [!VAR "noEnabledRuleExists" = "false()"!][!//
+              [!SELECT "./XPathExpression"!][!//
+                [!IF "SWICV:ExecuteXPathFunction(.)"!][!//
+                [!ELSE!][!//
+                  [!VAR "testFailed" = "true()"!][!//
+                  [!BREAK!][!//
+                [!ENDIF!][!//
+              [!ENDSELECT!][!//
+            [!ENDIF!][!//
+          [!ENDLOOP!][!//
+          [!IF "$noEnabledRuleExists"!][!//
+            [!VAR "status" = "'draft'"!][!//
+            [!VAR "description" = "'No enabled rule exists in the XPath expression list!'"!][!//
+            [!VAR "tag" = "'test_error'"!][!//
+          [!ELSEIF "$testFailed"!][!//
+            [!VAR "status" = "'rejected'"!][!//
+            [!VAR "description" = "'Evaluation of XPath expression(s) failed!'"!][!//
+            [!VAR "tag" = "'test_failed'"!][!//
+          [!ELSE!]
+            [!VAR "status" = "'approved'"!][!//
+            [!VAR "description" = "'Evaluation of XPath expression(s) passed!'"!][!//
+            [!VAR "tag" = "'test_success'"!][!//
+          [!ENDIF!][!//
+ *
+ * !SPECOBJECT
+ * !id               [!"text:replace(Id,'SwIntTS','SwIntTR')"!]
+          [!IF "normalize-space(Variant) = ''"!][!//
+            [!VAR "vers" = "'unversioned'"!][!//
+          [!ELSE!][!//
+            [!VAR "vers" = "normalize-space(Variant)"!][!//
+          [!ENDIF!][!//
+ * !version          [!"$vers"!]
+ * !status           [!"$status"!]
+ * !description      [!"$description"!]
+          [!IF "$status = 'rejected'"!][!//
+ * !rationale        Test failed
+          [!ENDIF!][!//
+ * !tag              [!"$tag"!]
+ * !doctype          SwIntTR
+        [!ENDIF!][!//
+      [!ENDLOOP!][!//
+ */
+
+    [!ENDIF!][!//
+  [!ENDLOOP!][!//

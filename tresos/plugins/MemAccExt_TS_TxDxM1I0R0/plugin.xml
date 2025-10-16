@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<?eclipse version="3.2"?>
+<plugin>
+  <!-- Generator -->
+  <extension
+    id="MemAcc_TS_TxDxM1I0R0_Generator"
+    point="dreisoft.tresos.generator.api.plugin.generator">
+    <generator
+      class="eb.tresos.memacc.generators.MemAccGenerator"
+      id="MemAcc_TS_TxDxM1I0R0_ModuleGen"
+      moduleId="MemAcc_TS_TxDxM1I0R0">
+    </generator>
+  </extension>
+
+  <extension id="MemAccXPath_TS_TxDxM1I0R0"
+    point="dreisoft.tresos.datamodel2.api.plugin.xpathregistration">
+    <xpathfunction>
+      <classregistration
+        class="eb.tresos.memacc.xpath.XPathFunctions"
+              description="xpath functions to verify configurations"
+              namespace="asc_MemAcc"/>
+    </xpathfunction>
+  </extension>
+
+</plugin>

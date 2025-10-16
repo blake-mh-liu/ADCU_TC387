@@ -1,0 +1,1034 @@
+<?xml version='1.0'?>
+<datamodel version="8.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/18/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/18/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar" 
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:ce="http://www.tresos.de/_projects/DataModel2/18/childenable.xsd" 
+         xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd" 
+         xmlns:f="http://www.tresos.de/_projects/DataModel2/14/formulaexpr.xsd" 
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd" 
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd"  
+         xmlns:variant="http://www.tresos.de/_projects/DataModel2/11/variant.xsd">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="TS_TxDxM1I25R0" type="AR-PACKAGE">
+        <d:lst type="ELEMENTS">
+          <d:chc name="SA" type="AR-ELEMENT" value="MODULE-DEF">
+            <v:ctr type="MODULE-DEF">
+              <a:a name="ADMIN-DATA" type="ADMIN-DATA">
+                <ad:ADMIN-DATA>
+                  <ad:LANGUAGE>EN</ad:LANGUAGE>
+                  <ad:DOC-REVISIONS>
+                    <ad:DOC-REVISION>
+                      <ad:REVISION-LABEL>4.0.3</ad:REVISION-LABEL>
+                      <ad:ISSUED-BY>AUTOSAR</ad:ISSUED-BY>
+                    </ad:DOC-REVISION>
+                    <ad:DOC-REVISION>
+                      <ad:REVISION-LABEL>1.25.0</ad:REVISION-LABEL>
+                      <ad:ISSUED-BY>Elektrobit Automotive GmbH</ad:ISSUED-BY>
+                      <ad:DATE>2024-05-02T23:59:59Z</ad:DATE>
+                    </ad:DOC-REVISION>
+                  </ad:DOC-REVISIONS>
+                </ad:ADMIN-DATA>
+              </a:a>
+              <a:a name="DESC">
+                <a:v>EN:&lt;html&gt;
+                                Configuration of the SA module.
+                                &lt;/html&gt;</a:v>
+              </a:a>
+              <a:a name="LOWER-MULTIPLICITY" value="1"/>
+              <a:a name="RELEASE" value="asc:4.0"/>
+              <a:a name="UPPER-MULTIPLICITY" value="1"/>
+              <a:a name="UUID" value="3d92ddc5-303e-4648-927e-0d2f27850c98"/>
+              <v:ctr name="PublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>EN:
+                    &lt;html&gt;
+                      Additional published parameters not covered by CommonPublishedInformation container.
+                  &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="EB Published Information"/>
+                <a:a name="TAB" value="EB Published Information"/>
+                <a:a name="UUID" 
+                     value="ECUC:cb4128ed-26c1-4ddd-906e-854bed917e07"/>
+                <v:var name="PbcfgMSupport" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Specifies whether or not the SA can use the PbcfgM module for post-build support.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="PbcfgM support"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:eb61002e-69c0-4f16-a910-c27adb75f6ee"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>EN:
+                    &lt;html&gt;
+                      Common container, aggregated by all modules. It contains published information about vendor and versions.
+                  &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="Common Published Information"/>
+                <a:a name="UUID" 
+                     value="ECUC:a00be3e0-8783-9123-2d52-1eb616737ca6"/>
+                <v:var name="ArMajorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Major version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Major Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:948f3f2e-f129-4bc5-b4e1-7a7bdb8599e1"/>
+                  <a:da name="DEFAULT" value="4"/>
+                </v:var>
+                <v:var name="ArMinorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Minor version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Minor Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:2893b920-59d5-4ac2-b2c1-e23742e66d70"/>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="ArPatchVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Patch level version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Patch Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:6428eb9b-8790-488a-b9a3-0fba52d0f59e"/>
+                  <a:da name="DEFAULT" value="3"/>
+                </v:var>
+                <v:var name="SwMajorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Major version number of the vendor specific implementation of the module.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Major Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:605b18ae-3f9a-41d4-9225-67c9c5f6fc34"/>
+                  <a:da name="DEFAULT" value="1"/>
+                </v:var>
+                <v:var name="SwMinorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Minor version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Minor Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a7fe44dc-ea25-4b8d-8fad-9fbcae86d56f"/>
+                  <a:da name="DEFAULT" value="25"/>
+                </v:var>
+                <v:var name="SwPatchVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Patch Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a318d2d9-0e75-49da-ac43-e7e4e682e2f9"/>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="ModuleId" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Module ID of this module from Module List
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Numeric Module ID"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:78bc8362-080f-4253-b3da-804ab69a7154"/>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="VendorId" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Vendor ID"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:01b0f467-6943-4558-b4f2-3fa1fad28449"/>
+                  <a:da name="DEFAULT" value="1"/>
+                </v:var>
+                <v:var name="Release" type="STRING_LABEL">
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Release Information"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:1c68a547-f24e-4a4e-9540-69fbd533ec89"/>
+                  <a:da name="DEFAULT" value=""/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="General" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                                        This container describes the general properties of the node.
+                                        &lt;/html&gt;</a:v>
+                </a:a>
+                <v:var name="MANAGE_PERIOD" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                                Period of the periodical SA task.&lt;br/&gt;
+                                                This period must be multiple of EB periodical value in EB module configuration.
+                                              &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="SA Manage Period"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="INVALID" type="Range" expr="&gt;=1"/>
+                </v:var>
+                <v:var name="Seed_Type" type="ENUMERATION">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                                &lt;p&gt;Specify the type of seed that should be used.&lt;/p&gt;
+                                                &lt;ul&gt;
+                                                  &lt;li&gt;Case Standard: Seed is free timer based.&lt;/li&gt;
+                                                  &lt;li&gt;Case Cryptographic_Random: Seed is generated using cryptographic random.&lt;/li&gt;
+                                                  &lt;li&gt;Case Cryptographic_PUN: Seed is PUN based.&lt;/li&gt;
+                                                &lt;/ul&gt;
+                                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Seed Type"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="TAB" value="Seed Management"/>
+                  <a:da name="DEFAULT" value="Standard"/>
+                  <a:da name="INVALID" type="XPath" 
+                        expr="((node:exists(../SA_AM_TYPE)) and (../SA_AM_TYPE = &apos;Authentication Method 0001&apos;)) and not(. =&apos;Cryptographic_Random&apos;)" 
+                        true="Please select &apos;Cryptographic_Random&apos; when using Authentication Method 0001 for SA Authentication."/>
+                  <a:da name="RANGE">
+                    <a:v>Standard</a:v>
+                    <a:v>Cryptographic_Random</a:v>
+                    <a:v>Cryptographic_PUN</a:v>
+                  </a:da>
+                </v:var>
+                <v:var name="Security_Algorithm_Type" type="ENUMERATION">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                                &lt;p&gt;Specify the security algorithm that should be used.&lt;/p&gt;
+                                                &lt;ul&gt;
+                                                  &lt;li&gt;Case Standard: Standard security algorithm of the OEM will be used.&lt;/li&gt;
+                                                  &lt;li&gt;Case Custom: custom algorithm implemented by the user in a callback will be sed.&lt;/li&gt;
+                                                &lt;/ul&gt;
+                                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Security Algorithm Type"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="TAB" value="Seed Management"/>
+                  <a:da name="DEFAULT" value="Standard"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="(../Seed_Type = &apos;Standard&apos; or (node:exists(as:modconf(&apos;ProgJLR&apos;)) and ../Seed_Type = &apos;Cryptographic_Random&apos;)) or ((../Seed_Type = &apos;Standard&apos;)and (not(node:exists(../SA_AM_TYPE)) or (../SA_AM_TYPE = &apos;Authentication Method Disable&apos;))) or (../Seed_Type = &apos;Standard&apos; or (node:exists(as:modconf(&apos;ProgFord&apos;)) and ../Seed_Type = &apos;Cryptographic_Random&apos;))"/>
+                  <a:da name="INVALID" type="XPath" 
+                        expr="(not(node:exists(as:modconf(&apos;ProgVCC&apos;))                                                     or (node:exists(as:modconf(&apos;ProgJLR&apos;)))                                                     or (node:exists(as:modconf(&apos;ProgFord&apos;))))                                                    and (. =&apos;Standard&apos;))" 
+                        true="Standard algorithm is not available for this OEM"/>
+                  <a:da name="RANGE">
+                    <a:v>Standard</a:v>
+                    <a:v>Custom</a:v>
+                  </a:da>
+                </v:var>
+                <v:var name="Custom_OEM_callback_for_Comparekey" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                                &lt;p&gt;Used to enable the customer specific Compare Key function.&lt;/p&gt;
+                                                &lt;ul&gt;
+                                                  &lt;li&gt;Case false: Use EB API&apos;s to perform the compare key operation.&lt;/li&gt;
+                                                  &lt;li&gt;Case true: Use FORD specific Compare key function.&lt;/li&gt;
+                                                &lt;/ul&gt;
+                                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Custom OEM callback for Comparekey"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="TAB" value="Key Management"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="(node:exists(as:modconf(&apos;ProgFord&apos;)))"/>
+                </v:var>
+                <v:ctr name="CsmRandomGenerate" type="IDENTIFIABLE">
+                  <a:a name="TAB" value="Seed Management"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="(../Seed_Type = &apos;Cryptographic_Random&apos; or ../Seed_Type = &apos;Cryptographic_PUN&apos;)"/>
+                  <v:ref name="CsmRandomGenerateConfigId" type="REFERENCE">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+																 &lt;p&gt;Reference a &lt;em&gt;CsmRandomGenerate&lt;/em&gt;&lt;/p&gt;
+																 &lt;p&gt;Dependencies:&lt;/p&gt;
+																 &lt;ul&gt;
+																	&lt;li&gt;Reference shall be valid&lt;/li&gt;
+																 &lt;/ul&gt;
+															  &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" value="CsmRandomGenerateConfigId"/>
+                    <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                    <a:a name="TAB" value="Seed Management"/>
+                    <a:da name="INVALID" type="XPath" expr="node:refvalid(.)" 
+                          false="Invalid reference."/>
+                    <a:da name="REF">
+                      <a:v>ASPathDataOfSchema:/AUTOSAR/EcucDefs/Csm/CsmJobs/CsmJob</a:v>
+                      <a:v>ASPathDataOfSchema:/AUTOSAR/EcucDefs/Csm/CsmRandomGenerate/CsmRandomGenerateConfig</a:v>
+                    </a:da>
+                  </v:ref>
+                </v:ctr>
+                <v:ctr name="CsmRandomSeed" type="IDENTIFIABLE">
+                  <a:a name="TAB" value="Seed Management"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="(../Seed_Type = &apos;Cryptographic_Random&apos; or ../Seed_Type = &apos;Cryptographic_PUN&apos;)or ((node:exists(../SA_AM_TYPE)) and (../SA_AM_TYPE = &apos;Authentication Method 0001&apos;))"/>
+                  <v:ref name="CsmRandomSeedConfigId" type="REFERENCE">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+																 &lt;p&gt;Reference a &lt;em&gt;CsmRandomSeed&lt;/em&gt;&lt;/p&gt;
+																 &lt;p&gt;Dependencies:&lt;/p&gt;
+																 &lt;ul&gt;
+																	&lt;li&gt;Reference shall be valid&lt;/li&gt;
+																 &lt;/ul&gt;
+															  &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" value="CsmRandomSeedConfigId"/>
+                    <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                    <a:a name="TAB" value="Seed Management"/>
+                    <a:da name="INVALID" type="XPath" expr="node:refvalid(.)" 
+                          false="Invalid reference."/>
+                    <a:da name="REF">
+                      <a:v>ASPathDataOfSchema:/AUTOSAR/EcucDefs/Csm/CsmJobs/CsmJob</a:v>
+                      <a:v>ASPathDataOfSchema:/AUTOSAR/EcucDefs/Csm/CsmRandomSeed/CsmRandomSeedConfig</a:v>
+                    </a:da>
+                  </v:ref>
+                  <v:var name="Allow2Cancel_OngoingJobs" type="BOOLEAN">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+																		   &lt;p&gt;If enabled, any ongoing or active Crypto job operations shall be cancelled at the start of this job operation.&lt;/p&gt;
+																		   &lt;p&gt;This option is applicable only for the integration of Crypto ASR 4.3 or higher versions, for older version this feature 
+																		   is realized using &apos;Enable the cancelation of ongoing requests&apos; in the Csm/Cry modules.&lt;/p&gt;
+																	   &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" 
+                         value="Allow cancellation of any ongoing Crypto job"/>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:a name="TAB" value="Seed Management"/>
+                    <a:da name="DEFAULT" value="true"/>
+                    <a:da name="ENABLE" type="XPath" 
+                          expr="node:exists(as:modconf(&apos;CryIf&apos;))and node:exists(../CsmRandomSeedConfigId)"/>
+                  </v:var>
+                </v:ctr>
+                <v:var name="Security_Access_Seed_Length" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                                &lt;p&gt;Specify the size of the seed for SecurityAccess service.&lt;/p&gt;
+                                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Security Access Seed Length"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="TAB" value="Seed Management"/>
+                  <a:da name="DEFAULT" value="3"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="(not(node:exists(../SA_AM_TYPE)) or (../SA_AM_TYPE = &apos;Authentication Method Disable&apos;))"/>
+                </v:var>
+                <v:var name="Enable_Static_Seed" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                                                &lt;p&gt;Specify if the Static Seed should be used.&lt;/p&gt;
+                                                                &lt;ul&gt;
+                                                                  &lt;li&gt;Case Disabled: A new Seed is generated on each time a GetSeed request is received.&lt;/li&gt;
+                                                                  &lt;li&gt;Case Enabled: A new Seed is generated only if the precedent one was used by the tester
+                                                                  to generate a key and send an  request. Else the last generated seed is returned as response to the GetSeed request.&lt;/li&gt;
+                                                                &lt;/ul&gt;
+                                                             &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Enable Static Seed"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="TAB" value="Seed Management"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="(not(node:exists(../SA_AM_TYPE)) or (../SA_AM_TYPE = &apos;Authentication Method Disable&apos;))"/>
+                </v:var>
+                <v:var name="Compare_Key_Type" type="ENUMERATION">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                                &lt;p&gt;Specify the type of key comparison that should be used.&lt;/p&gt;
+                                                &lt;ul&gt;
+                                                  &lt;li&gt;Case Standard: Byte to byte key compare.&lt;/li&gt;
+                                                  &lt;li&gt;Case Custom: Incase customer wants to use his own compare key logic.used with Custom_OEM_callback_for_Comparekey Set &lt;/li&gt;
+                                                  &lt;li&gt;Case Verify_Signature: Key signature verification.&lt;/li&gt;
+                                                  &lt;li&gt;Case SA_AM_0001: When SA Authentication Method 0001 feature is enabled.&lt;/li&gt;
+                                                  &lt;li&gt;Case PUN: PUN extracted from received key compared with stored PUN.&lt;/li&gt;
+                                                &lt;/ul&gt;
+                                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Compare Key Type"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="TAB" value="Key Management"/>
+                  <a:da name="DEFAULT" value="Standard"/>
+                  <a:da name="INVALID" type="XPath" 
+                        expr="((node:exists(../SA_AM_TYPE)) and (../SA_AM_TYPE = &apos;Authentication Method 0001&apos;)) and not(. =&apos;SA_AM_0001&apos;)" 
+                        true="Please select &apos;SA_AM_0001&apos; when using Authentication Method 0001 for SA Authentication."/>
+                  <a:da name="RANGE">
+                    <a:v>Standard</a:v>
+                    <a:v>Custom</a:v>
+                    <a:v>Verify_Signature</a:v>
+                    <a:v>SA_AM_0001</a:v>
+                    <a:v>PUN</a:v>
+                  </a:da>
+                </v:var>
+                <v:ctr name="SignatureVerify" type="IDENTIFIABLE">
+                  <a:a name="TAB" value="Key Management"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="(../Compare_Key_Type = &apos;Verify_Signature&apos;) and (not(node:exists(../SA_AM_TYPE)) or (../SA_AM_TYPE = &apos;Authentication Method Disable&apos;))"/>
+                  <v:ref name="CsmSignatureVerifyConfigId" type="REFERENCE">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+																 &lt;p&gt;Reference a &lt;em&gt;CsmSignatureVerify&lt;/em&gt;&lt;/p&gt;
+																 &lt;p&gt;Dependencies:&lt;/p&gt;
+																 &lt;ul&gt;
+																	&lt;li&gt;Reference shall be valid&lt;/li&gt;
+																 &lt;/ul&gt;
+															  &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" value="CsmSignatureVerifyConfigId"/>
+                    <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                    <a:a name="TAB" value="Key Management"/>
+                    <a:da name="INVALID" type="XPath" expr="node:refvalid(.)" 
+                          false="Invalid reference."/>
+                    <a:da name="REF">
+                      <a:v>ASPathDataOfSchema:/AUTOSAR/EcucDefs/Csm/CsmJobs/CsmJob</a:v>
+                      <a:v>ASPathDataOfSchema:/AUTOSAR/EcucDefs/Csm/CsmSignatureVerify/CsmSignatureVerifyConfig</a:v>
+                    </a:da>
+                  </v:ref>
+                  <v:var name="Allow2CustomCsmStartPreprocess" type="BOOLEAN">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+																		   &lt;p&gt;This will allow the integrator to perform the encoding (eg. Base64, DER etc.) on the Key stored at the host side at the start of the Crypto operation&lt;/p&gt;
+																		   &lt;p&gt;This option is applicable only for the integration of Crypto ASR 4.3 or higher versions.&lt;/p&gt;
+																		   &lt;p&gt;Note: The key encoding shall be performed only if the Crypto driver expects the key to be encoded in an expected format.&lt;/p&gt;
+																	   &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Custom CSM start pre-processing"/>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="false"/>
+                    <a:da name="ENABLE" type="XPath" 
+                          expr="node:exists(as:modconf(&apos;CryIf&apos;)) and node:exists(../CsmSignatureVerifyConfigId)"/>
+                  </v:var>
+                </v:ctr>
+                <v:var name="Security_Access_Key_Length" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                                &lt;p&gt;Specify the size of the key for SecurityAccess service.&lt;/p&gt;
+                                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Security Access Key Length"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="TAB" value="Key Management"/>
+                  <a:da name="DEFAULT" value="3"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="(not(node:exists(../SA_AM_TYPE)) or (../SA_AM_TYPE = &apos;Authentication Method Disable&apos;))"/>
+                </v:var>
+                <v:var name="Security_Access_Rs_Delay_Timer" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                                &lt;p&gt;Specify the value of the Request Seed Delay Timer SecurityAccess service. If the value is greater than 0, the feature is enabled. Else, the feature is disabled.&lt;/p&gt;
+                                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Security Access RS Delay Timer"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="Enable_Antiscanning" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                                &lt;p&gt;Specify if the Anti-scanning is enabled.&lt;/p&gt;
+                                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Enable Antiscanning"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="Enable_Request_Seed_Limit" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                                &lt;p&gt;Specify if the number of Request Seed requests shall be limited within a period of time.&lt;/p&gt;
+                                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Enable Request Seed Limit"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="Security_Access_As_Timer" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                                &lt;p&gt;Specify the value of the Anti-scanning Lock Timer SecurityAccess service.&lt;/p&gt;
+                                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Security Access As Timer"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="10000"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="../Enable_Antiscanning = &apos;true&apos;"/>
+                </v:var>
+                <v:var name="Security_Access_As_Retry_Counter" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                                &lt;p&gt;Specify the value of the Anti-scanning Retry Counter for SecurityAccess service.&lt;/p&gt;
+                                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Security Access As Retry Counter"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="3"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="../Enable_Antiscanning = &apos;true&apos;"/>
+                </v:var>
+                <v:var name="Security_Access_RS_Retry_Counter" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                                &lt;p&gt;Specify the value of the Request Seed limit Counter for SecurityAccess service.&lt;/p&gt;
+                                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Security Access RS Retry Counter"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="2"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="../Enable_Request_Seed_Limit = &apos;true&apos;"/>
+                </v:var>
+                <v:var name="Security_Access_RS_Timer" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                                &lt;p&gt;Specify the value in milliseconds of the Request seed limit Timer for SecurityAccess service.&lt;/p&gt;
+                                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Security_Access_RS_Timer"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="5000"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="../Enable_Request_Seed_Limit = &apos;true&apos;"/>
+                </v:var>
+                <v:var name="Decomp_Out_Buffer_size" type="INTEGER">
+                  <a:a name="DEFAULT_RADIX" value="HEX"/>
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                            &lt;p&gt;Size of the Output decompression buffer.&lt;/p&gt;
+                                            &lt;p&gt;This buffer is used to store the data decompressed and will be used for write operation.&lt;/p&gt;
+                                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Decompression Output Buffer Size"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="TAB" value="Decompression"/>
+                  <a:da name="DEFAULT" value="0x400"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="as:modconf(&apos;Prog&apos;)/General/Enable_Compression = &apos;true&apos;"/>
+                  <a:da name="INVALID" type="Range" expr="&gt;=0"/>
+                </v:var>
+                <v:var name="Static_Key_0" type="INTEGER">
+                  <a:a name="DEFAULT_RADIX" value="HEX"/>
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                        First byte of the constant security key.
+                                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="TAB" value="Key Management"/>
+                  <a:da name="DEFAULT" value="0x04"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="(node:exists(as:modconf(&apos;ProgJLR&apos;)) or node:exists(as:modconf(&apos;ProgVCC&apos;)) or node:exists(as:modconf(&apos;ProgFord&apos;))) and (not(node:exists(../SA_AM_TYPE)) or (../SA_AM_TYPE = &apos;Authentication Method Disable&apos;))"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&gt;=0"/>
+                    <a:tst expr="&lt;=255"/>
+                  </a:da>
+                </v:var>
+                <v:var name="Static_Key_1" type="INTEGER">
+                  <a:a name="DEFAULT_RADIX" value="HEX"/>
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                        Second byte of the constant security key.
+                                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="TAB" value="Key Management"/>
+                  <a:da name="DEFAULT" value="0x03"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="(node:exists(as:modconf(&apos;ProgJLR&apos;)) or node:exists(as:modconf(&apos;ProgVCC&apos;)) or node:exists(as:modconf(&apos;ProgFord&apos;))) and (not(node:exists(../SA_AM_TYPE)) or (../SA_AM_TYPE = &apos;Authentication Method Disable&apos;))"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&gt;=0"/>
+                    <a:tst expr="&lt;=255"/>
+                  </a:da>
+                </v:var>
+                <v:var name="Static_Key_2" type="INTEGER">
+                  <a:a name="DEFAULT_RADIX" value="HEX"/>
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                        Third byte of the constant security key.
+                                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="TAB" value="Key Management"/>
+                  <a:da name="DEFAULT" value="0x02"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="(node:exists(as:modconf(&apos;ProgJLR&apos;)) or node:exists(as:modconf(&apos;ProgVCC&apos;)) or node:exists(as:modconf(&apos;ProgFord&apos;))) and (not(node:exists(../SA_AM_TYPE)) or (../SA_AM_TYPE = &apos;Authentication Method Disable&apos;))"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&gt;=0"/>
+                    <a:tst expr="&lt;=255"/>
+                  </a:da>
+                </v:var>
+                <v:var name="Static_Key_3" type="INTEGER">
+                  <a:a name="DEFAULT_RADIX" value="HEX"/>
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                        Fouth byte of the constant security key.
+                                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="TAB" value="Key Management"/>
+                  <a:da name="DEFAULT" value="0x01"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="(node:exists(as:modconf(&apos;ProgJLR&apos;)) or node:exists(as:modconf(&apos;ProgVCC&apos;))or node:exists(as:modconf(&apos;ProgFord&apos;))) and (not(node:exists(../SA_AM_TYPE)) or (../SA_AM_TYPE = &apos;Authentication Method Disable&apos;))"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&gt;=0"/>
+                    <a:tst expr="&lt;=255"/>
+                  </a:da>
+                </v:var>
+                <v:var name="Static_Key_4" type="INTEGER">
+                  <a:a name="DEFAULT_RADIX" value="HEX"/>
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                        Fifth byte of the constant security key.
+                                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="TAB" value="Key Management"/>
+                  <a:da name="DEFAULT" value="0x00"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="(node:exists(as:modconf(&apos;ProgJLR&apos;)) or node:exists(as:modconf(&apos;ProgVCC&apos;))or node:exists(as:modconf(&apos;ProgFord&apos;))) and (not(node:exists(../SA_AM_TYPE)) or (../SA_AM_TYPE = &apos;Authentication Method Disable&apos;))"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&gt;=0"/>
+                    <a:tst expr="&lt;=255"/>
+                  </a:da>
+                </v:var>
+                <v:var name="SA_AM_TYPE" type="ENUMERATION">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                                &lt;p&gt;Specify the Security Authentication Method that shall be used for the Security Access Authentication.&lt;/p&gt;
+                                                &lt;p&gt;Note: Currently Bootloader shall support only SA Authentication Method 0001.&lt;/p&gt;
+                                                &lt;ul&gt;
+                                                  &lt;li&gt;Case Authentication Method 0001: Enables the use of SA Authentication Method 0001 procedure for the Security Access Authentication.&lt;/li&gt;
+                                                  &lt;li&gt;Case Authentication Method Disable: Disables the SA Authetication Method usage.&lt;/li&gt;
+                                                &lt;/ul&gt;
+                                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" 
+                       value="Security Access Authentication Method Type"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="TAB" value="SA Authentication Method"/>
+                  <a:da name="DEFAULT" value="Authentication Method Disable"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="(node:exists(as:modconf(&apos;ProgVCC&apos;)))"/>
+                  <a:da name="RANGE">
+                    <a:v>Authentication Method 0001</a:v>
+                    <a:v>Authentication Method Disable</a:v>
+                  </a:da>
+                </v:var>
+                <v:ctr name="CsmMACVerification_MsgAuth" type="IDENTIFIABLE">
+                  <a:a name="TAB" value="SA Authentication Method"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="((node:exists(../SA_AM_TYPE)) and (../SA_AM_TYPE = &apos;Authentication Method 0001&apos;))"/>
+                  <v:ref name="CsmMACVerification_MsgAuthConfigId" 
+                         type="REFERENCE">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+												 &lt;p&gt;Reference a &lt;em&gt;CsmMacVerifyConfig &lt;/em&gt; for the Verification of Proof of Ownership.&lt;/p&gt;
+												 &lt;p&gt;Dependencies:&lt;/p&gt;
+												 &lt;ul&gt;
+													&lt;li&gt;Reference shall be valid&lt;/li&gt;
+												 &lt;/ul&gt;
+											  &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" value="CsmMacVerify_MsgAuthConfigId"/>
+                    <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                    <a:a name="TAB" value="SA Authentication Method"/>
+                    <a:da name="INVALID" type="XPath" expr="node:refvalid(.)" 
+                          false="Invalid reference."/>
+                    <a:da name="REF">
+                      <a:v>ASPathDataOfSchema:/AUTOSAR/EcucDefs/Csm/CsmJobs/CsmJob</a:v>
+                      <a:v>ASPathDataOfSchema:/AUTOSAR/EcucDefs/Csm/CsmMacVerify/CsmMacVerifyConfig</a:v>
+                    </a:da>
+                  </v:ref>
+                  <v:var name="Allow2Cancel_OngoingJobs" type="BOOLEAN">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                                           &lt;p&gt;If enabled, any ongoing or active Crypto job operations shall be cancelled at the start of this job operation.&lt;/p&gt;
+                                                           &lt;p&gt;This option is applicable only for the integration of Crypto ASR 4.3 or higher versions, for older version this feature 
+                                                           is realized using &apos;Enable the cancelation of ongoing requests&apos; in the Csm/Cry modules.&lt;/p&gt;
+                                                       &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" 
+                         value="Allow cancellation of any ongoing Crypto job"/>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="true"/>
+                    <a:da name="ENABLE" type="XPath" 
+                          expr="node:exists(as:modconf(&apos;CryIf&apos;))and node:exists(../CsmMACVerification_MsgAuthConfigId)"/>
+                  </v:var>
+                  <v:var name="Allow2SetCryptoKey" type="BOOLEAN">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                                           &lt;p&gt;This will allow the integrator to pass the desired key and its elements at the start of the Crypto operation. &lt;/p&gt;
+                                                           &lt;p&gt;This option is applicable only for the integration of Crypto ASR 4.3 or higher versions.&lt;/p&gt;
+                                                       &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Allow to fetch the stored Key"/>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="true"/>
+                    <a:da name="ENABLE" type="XPath" 
+                          expr="node:exists(as:modconf(&apos;CryIf&apos;)) and node:exists(../CsmMACVerification_MsgAuthConfigId)"/>
+                  </v:var>
+                </v:ctr>
+                <v:ctr name="CsmMACGenerate_MsgAuth" type="IDENTIFIABLE">
+                  <a:a name="TAB" value="SA Authentication Method"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="((node:exists(../SA_AM_TYPE)) and (../SA_AM_TYPE = &apos;Authentication Method 0001&apos;))"/>
+                  <v:ref name="CsmMACGenerate_MsgAuthConfigId" type="REFERENCE">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+												 &lt;p&gt;Reference a &lt;em&gt;CsmMacGenerateConfig &lt;/em&gt;for the Generation of Mac SA Message Authentication Code.&lt;/p&gt;
+												 &lt;p&gt;Dependencies:&lt;/p&gt;
+												 &lt;ul&gt;
+													&lt;li&gt;Reference shall be valid&lt;/li&gt;
+												 &lt;/ul&gt;
+											  &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" value="CsmMacGen_MsgAuthConfigId"/>
+                    <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                    <a:a name="TAB" value="SA Authentication Method"/>
+                    <a:da name="INVALID" type="XPath" expr="node:refvalid(.)" 
+                          false="Invalid reference."/>
+                    <a:da name="REF">
+                      <a:v>ASPathDataOfSchema:/AUTOSAR/EcucDefs/Csm/CsmJobs/CsmJob</a:v>
+                      <a:v>ASPathDataOfSchema:/AUTOSAR/EcucDefs/Csm/CsmMacGenerate/CsmMacGenerateConfig</a:v>
+                    </a:da>
+                  </v:ref>
+                  <v:var name="Allow2SetCryptoKey" type="BOOLEAN">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                                           &lt;p&gt;This will allow the integrator to pass the desired key and its elements at the start of the Crypto operation. &lt;/p&gt;
+                                                           &lt;p&gt;This option is applicable only for the integration of Crypto ASR 4.3 or higher versions.&lt;/p&gt;
+                                                       &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Allow to fetch the stored Key"/>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="true"/>
+                    <a:da name="ENABLE" type="XPath" 
+                          expr="node:exists(as:modconf(&apos;CryIf&apos;)) and node:exists(../CsmMACGenerate_MsgAuthConfigId)"/>
+                  </v:var>
+                </v:ctr>
+                <v:ctr name="CsmAES_Encryption" type="IDENTIFIABLE">
+                  <a:a name="TAB" value="SA Authentication Method"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="((node:exists(../SA_AM_TYPE)) and (../SA_AM_TYPE = &apos;Authentication Method 0001&apos;))"/>
+                  <v:ref name="CsmAES_EncryptionConfigId" type="REFERENCE">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+												 &lt;p&gt;Reference a &lt;em&gt;CsmSymEncrypt &lt;/em&gt; for the Encryption of Proof of Ownership.&lt;/p&gt;
+												 &lt;p&gt;Dependencies:&lt;/p&gt;
+												 &lt;ul&gt;
+													&lt;li&gt;Reference shall be valid&lt;/li&gt;
+												 &lt;/ul&gt;
+											  &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" value="CsmAES_EncryptionConfigId"/>
+                    <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                    <a:a name="TAB" value="SA Authentication Method"/>
+                    <a:da name="INVALID" type="XPath" expr="node:refvalid(.)" 
+                          false="Invalid reference."/>
+                    <a:da name="REF">
+                      <a:v>ASPathDataOfSchema:/AUTOSAR/EcucDefs/Csm/CsmJobs/CsmJob</a:v>
+                      <a:v>ASPathDataOfSchema:/AUTOSAR/EcucDefs/Csm/CsmSymEncrypt/CsmSymEncryptConfig</a:v>
+                    </a:da>
+                  </v:ref>
+                  <v:var name="AllowECB2CTR" type="BOOLEAN">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                                           &lt;p&gt;This will allow the integrator to enable ECB2CTR conversion. &lt;/p&gt;
+                                                           &lt;p&gt;This option is applicable only for the integration of Crypto ASR 4.3 or higher versions.&lt;/p&gt;
+                                                       &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Enable ECB2CTR Conversion"/>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="true"/>
+                    <a:da name="ENABLE" type="XPath" 
+                          expr="node:exists(as:modconf(&apos;CryIf&apos;)) and node:exists(../CsmAES_EncryptionConfigId)"/>
+                  </v:var>
+                  <v:var name="Allow2SetCryptoKey" type="BOOLEAN">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                                           &lt;p&gt;This will allow the integrator to pass the desired key and its elements at the start of the Crypto operation. &lt;/p&gt;
+                                                           &lt;p&gt;This option is applicable only for the integration of Crypto ASR 4.3 or higher versions.&lt;/p&gt;
+                                                       &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Allow to fetch the stored Key"/>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="true"/>
+                    <a:da name="ENABLE" type="XPath" 
+                          expr="node:exists(as:modconf(&apos;CryIf&apos;)) and node:exists(../CsmAES_EncryptionConfigId)"/>
+                  </v:var>
+                </v:ctr>
+                <v:ctr name="CsmAES_Decryption" type="IDENTIFIABLE">
+                  <a:a name="TAB" value="SA Authentication Method"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="((node:exists(../SA_AM_TYPE)) and (../SA_AM_TYPE = &apos;Authentication Method 0001&apos;))"/>
+                  <v:ref name="CsmAES_DecryptionConfigId" type="REFERENCE">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+												 &lt;p&gt;Reference a &lt;em&gt;CsmSymDecrypt &lt;/em&gt; for the Decryption of Proof of Ownership.&lt;/p&gt;
+												 &lt;p&gt;Dependencies:&lt;/p&gt;
+												 &lt;ul&gt;
+													&lt;li&gt;Reference shall be valid&lt;/li&gt;
+												 &lt;/ul&gt;
+											  &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" value="CsmAES_DecryptionConfigId"/>
+                    <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                    <a:a name="TAB" value="SA Authentication Method"/>
+                    <a:da name="INVALID" type="XPath" expr="node:refvalid(.)" 
+                          false="Invalid reference."/>
+                    <a:da name="REF">
+                      <a:v>ASPathDataOfSchema:/AUTOSAR/EcucDefs/Csm/CsmJobs/CsmJob</a:v>
+                      <a:v>ASPathDataOfSchema:/AUTOSAR/EcucDefs/Csm/CsmSymDecrypt/CsmSymDecryptConfig</a:v>
+                    </a:da>
+                  </v:ref>
+                  <v:var name="AllowECB2CTR" type="BOOLEAN">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                                           &lt;p&gt;This will allow the integrator to enable ECB2CTR conversion. &lt;/p&gt;
+                                                           &lt;p&gt;This option is applicable only for the integration of Crypto ASR 4.3 or higher versions.&lt;/p&gt;
+                                                       &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Enable ECB2CTR Conversion"/>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="true"/>
+                    <a:da name="ENABLE" type="XPath" 
+                          expr="node:exists(as:modconf(&apos;CryIf&apos;)) and node:exists(../CsmAES_DecryptionConfigId)"/>
+                  </v:var>
+                  <v:var name="Allow2SetCryptoKey" type="BOOLEAN">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                                           &lt;p&gt;This will allow the integrator to pass the desired key and its elements at the start of the Crypto operation. &lt;/p&gt;
+                                                           &lt;p&gt;This option is applicable only for the integration of Crypto ASR 4.3 or higher versions.&lt;/p&gt;
+                                                       &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Allow to fetch the stored Key"/>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="true"/>
+                    <a:da name="ENABLE" type="XPath" 
+                          expr="node:exists(as:modconf(&apos;CryIf&apos;)) and node:exists(../CsmAES_DecryptionConfigId)"/>
+                  </v:var>
+                </v:ctr>
+                <v:ctr name="CsmMACVerification_Poo" type="IDENTIFIABLE">
+                  <a:a name="TAB" value="SA Authentication Method"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="((node:exists(../SA_AM_TYPE)) and (../SA_AM_TYPE = &apos;Authentication Method 0001&apos;))"/>
+                  <v:ref name="CsmMACVerification_PooConfigId" type="REFERENCE">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+												 &lt;p&gt;Reference a &lt;em&gt;CsmMacVerifyConfig &lt;/em&gt; for the Verification of Proof of Ownership.&lt;/p&gt;
+												 &lt;p&gt;Dependencies:&lt;/p&gt;
+												 &lt;ul&gt;
+													&lt;li&gt;Reference shall be valid&lt;/li&gt;
+												 &lt;/ul&gt;
+											  &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" value="CsmMacVerify_PooConfigId"/>
+                    <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                    <a:a name="TAB" value="SA Authentication Method"/>
+                    <a:da name="INVALID" type="XPath" expr="node:refvalid(.)" 
+                          false="Invalid reference."/>
+                    <a:da name="REF">
+                      <a:v>ASPathDataOfSchema:/AUTOSAR/EcucDefs/Csm/CsmJobs/CsmJob</a:v>
+                      <a:v>ASPathDataOfSchema:/AUTOSAR/EcucDefs/Csm/CsmMacVerify/CsmMacVerifyConfig</a:v>
+                    </a:da>
+                  </v:ref>
+                  <v:var name="Allow2Cancel_OngoingJobs" type="BOOLEAN">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                                           &lt;p&gt;If enabled, any ongoing or active Crypto job operations shall be cancelled at the start of this job operation.&lt;/p&gt;
+                                                           &lt;p&gt;This option is applicable only for the integration of Crypto ASR 4.3 or higher versions, for older version this feature 
+                                                           is realized using &apos;Enable the cancelation of ongoing requests&apos; in the Csm/Cry modules.&lt;/p&gt;
+                                                       &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" 
+                         value="Allow cancellation of any ongoing Crypto job"/>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="true"/>
+                    <a:da name="ENABLE" type="XPath" 
+                          expr="node:exists(as:modconf(&apos;CryIf&apos;))and node:exists(../CsmMACVerification_PooConfigId)"/>
+                  </v:var>
+                  <v:var name="Allow2SetCryptoKey" type="BOOLEAN">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                                           &lt;p&gt;This will allow the integrator to pass the desired key and its elements at the start of the Crypto operation. &lt;/p&gt;
+                                                           &lt;p&gt;This option is applicable only for the integration of Crypto ASR 4.3 or higher versions.&lt;/p&gt;
+                                                       &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Allow to fetch the stored Key"/>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="true"/>
+                    <a:da name="ENABLE" type="XPath" 
+                          expr="node:exists(as:modconf(&apos;CryIf&apos;)) and node:exists(../CsmMACVerification_PooConfigId)"/>
+                  </v:var>
+                </v:ctr>
+                <v:ctr name="CsmMACGenerate_Poo" type="IDENTIFIABLE">
+                  <a:a name="TAB" value="SA Authentication Method"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="((node:exists(../SA_AM_TYPE)) and (../SA_AM_TYPE = &apos;Authentication Method 0001&apos;))"/>
+                  <v:ref name="CsmMACGenerate_PooConfigId" type="REFERENCE">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+												 &lt;p&gt;Reference a &lt;em&gt;CsmMacGenerateConfig &lt;/em&gt; for the Generation of Proof of Ownership.&lt;/p&gt;
+												 &lt;p&gt;Dependencies:&lt;/p&gt;
+												 &lt;ul&gt;
+													&lt;li&gt;Reference shall be valid&lt;/li&gt;
+												 &lt;/ul&gt;
+											  &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" value="CsmMacGen_PooConfigId"/>
+                    <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                    <a:a name="TAB" value="SA Authentication Method"/>
+                    <a:da name="INVALID" type="XPath" expr="node:refvalid(.)" 
+                          false="Invalid reference."/>
+                    <a:da name="REF">
+                      <a:v>ASPathDataOfSchema:/AUTOSAR/EcucDefs/Csm/CsmJobs/CsmJob</a:v>
+                      <a:v>ASPathDataOfSchema:/AUTOSAR/EcucDefs/Csm/CsmMacGenerate/CsmMacGenerateConfig</a:v>
+                    </a:da>
+                  </v:ref>
+                  <v:var name="Allow2SetCryptoKey" type="BOOLEAN">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                                           &lt;p&gt;This will allow the integrator to pass the desired key and its elements at the start of the Crypto operation. &lt;/p&gt;
+                                                           &lt;p&gt;This option is applicable only for the integration of Crypto ASR 4.3 or higher versions.&lt;/p&gt;
+                                                       &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Allow to fetch the stored Key"/>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="true"/>
+                    <a:da name="ENABLE" type="XPath" 
+                          expr="node:exists(as:modconf(&apos;CryIf&apos;)) and node:exists(../CsmMACGenerate_PooConfigId)"/>
+                  </v:var>
+                </v:ctr>
+                <v:var name="SA2_Awaiting_MaxTime" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                                Max allowed time for sending the SA2 request after the transmission of the SA1 response.&lt;br/&gt;
+                                                This time unit and the actual SA2 wait time shall depend on &apos;SA Manage Period&apos;.&lt;br/&gt;
+												(Formula: Actual SA2 Wait time = Wait time entered in the field &apos;SA2 Awaiting Time&apos;  * SA Manage Period). 
+                                              &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="SA2 Awaiting Time"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="TAB" value="SA Authentication Method"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="((node:exists(../SA_AM_TYPE)) and (../SA_AM_TYPE = &apos;Authentication Method 0001&apos;))"/>
+                  <a:da name="INVALID" type="Range" expr="&gt;=1"/>
+                </v:var>
+              </v:ctr>
+            </v:ctr>
+          </d:chc>
+          <d:chc name="myEcuParameterDefinition" type="AR-ELEMENT" 
+                 value="ECU_PARAMETER_DEFINITION">
+            <d:ctr type="AR-ELEMENT">
+              <a:a name="DEF" 
+                   value="ASPath:/AR_PACKAGE_SCHEMA/ECU_PARAMETER_DEFINITION"/>
+              <d:lst name="MODULE_REF">
+                <d:ref type="MODULE_REF" value="ASPath:/TS_TxDxM1I25R0/SA"/>
+              </d:lst>
+            </d:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+
+</datamodel>

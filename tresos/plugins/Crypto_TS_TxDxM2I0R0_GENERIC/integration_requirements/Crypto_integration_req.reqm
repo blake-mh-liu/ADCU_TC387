@@ -1,0 +1,3500 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<specdocument>
+  <specobjects doctype="lim">
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_API_CryptoInit_DuringStartup</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Crypto_Init() shall be called during the start-up procedure of the ECU before any other API
+        of the module is called.
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_API_CryptoInit_AfterStartup</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        If Crypto_Init() is called again after startup, e.g. during restart of the corresponding
+        memory region, it has to be ensured that all Crypto Driver Objects are idle, i.e. no job is
+        being processed.
+      </description>
+      <rationale>
+        Crypto_Init() can not cancel active jobs without actively waiting for a primitive to be
+        finally cancelled.
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_UInt64_EB</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        If
+        <ul>
+          <li>the Crypto module is used within an EB tresos Studio configuration project AND</li>
+          <li>the Base module is included in this EB tresos Studio configuration project AND</li>
+          <li>the Crypto module configuration parameter Crypto/CryptoEbGeneral/CryptoEbMisc/CryptoEbAutosarApiVersion is configured to CRYPTO_API_VERSION_430 or CRYPTO_API_VERSION_431,</li>
+        </ul>
+       then the Base module configuration parameter Base/BaseTypes/BaseTypes64bit shall be configured to TRUE to provide the AUTOSAR datatype 'uint64' via 'Std_Types.h'.
+      </description>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_UInt64_nonEB_or_nonBase</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        If
+        <ul>
+          <li>the Crypto module is NOT used within an EB tresos Studio configuration project</li>
+        </ul>
+        OR
+        <ul>
+          <li>the Crypto module is used within an EB tresos Studio configuration project AND</li>
+          <li>the Base module is NOT included in this an EB tresos Studio configuration project</li>
+        </ul>
+        then the AUTOSAR datatype 'uint64' has to be provided via 'Std_Types.h'.
+      </description>
+      
+    </specobject>
+
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_AEADDECRYPT_AES_GCM_Key_Elements</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = AEAD_DECRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_GCM</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElements with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_CIPHER_KEY (== 1)</li>
+          <li>CRYPTO_KE_CIPHER_IV (== 5)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_AEADDECRYPT_AES_GCM_CipherKey_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        If a CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = AEAD_DECRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_GCM</li>
+        </ul>
+        has the CryptoKeyElement "CRYPTO_KE_CIPHER_KEY", it shall have one of the following
+        lengths in bytes:
+        <ul>
+          <li>16</li>
+          <li>24</li>
+          <li>32</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_AEADDECRYPT_AES_GCM_Initialization_Vector_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement with CryptoKeyElementId "CRYPTO_KE_CIPHER_IV" of a CryptoKey used
+        with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = AEAD_DECRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_GCM</li>
+        </ul>
+        shall have a length of 12 bytes.
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_AEADDECRYPT_AES_GCM_AssociatedData</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The associated data (see SWS_Csm_01023) or additional authenticated data (AAD)
+        (see NIST SP 800-38D) for a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = AEAD_DECRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_GCM</li>
+        </ul>
+        shall be provided with and only with the first call of Crypto_OperationModeType
+        <ul>
+          <li>CRYPTO_OPERATIONMODE_UPDATE</li>
+        </ul>
+      </description>
+      <rationale>
+        The additional authenticated data must be processed before the plaintext/cyphertext is received.
+      </rationale>
+      
+    </specobject>
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_AEADENCRYPT_AES_GCM_Key_Elements</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = AEAD_ENCRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_GCM</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElements with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_CIPHER_KEY (== 1)</li>
+          <li>CRYPTO_KE_CIPHER_IV (== 5)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_AEADENCRYPT_AES_GCM_CipherKey_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        If a CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = AEAD_ENCRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_GCM</li>
+        </ul>
+        has the CryptoKeyElement "CRYPTO_KE_CIPHER_KEY", it shall have one of the following
+        lengths in bytes:
+        <ul>
+          <li>16</li>
+          <li>24</li>
+          <li>32</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_AEADENCRYPT_AES_GCM_Initialization_Vector_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement with CryptoKeyElementId "CRYPTO_KE_CIPHER_IV" of a CryptoKey used
+        with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = AEAD_ENCRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_GCM</li>
+        </ul>
+        shall have a length of 12 bytes.
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_AEADENCRYPT_AES_GCM_AssociatedData</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The associated data (see SWS_Csm_01023) or additional authenticated data (AAD)
+        (see NIST SP 800-38D) for a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = AEAD_ENCRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_GCM</li>
+        </ul>
+        shall be provided with and only with the first call of Crypto_OperationModeType
+        <ul>
+          <li>CRYPTO_OPERATIONMODE_UPDATE</li>
+        </ul>
+      </description>
+      <rationale>
+        The additional authenticated data must be processed before the plaintext/cyphertext is received.
+      </rationale>
+      
+    </specobject>
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_AEADDECRYPT_AES_CCM_Key_Elements</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = AEAD_DECRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_CCM</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElements with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_CIPHER_KEY (== 1)</li>
+          <li>CRYPTO_KE_CIPHER_IV (== 5)</li>
+          <li>CRYPTO_XVIX_XAIX_KE_CCM_MAC_LEN (== 1008)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_AEADDECRYPT_AES_CCM_CipherKey_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        If a CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = AEAD_DECRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_CCM</li>
+        </ul>
+        has the CryptoKeyElement "CRYPTO_KE_CIPHER_KEY", it shall have one of the following
+        lengths in bytes:
+        <ul>
+          <li>16</li>
+          <li>24</li>
+          <li>32</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_AEADDECRYPT_AES_CCM_Initialization_Vector_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement with CryptoKeyElementId "CRYPTO_KE_CIPHER_IV" of a CryptoKey used
+        with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = AEAD_DECRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_CCM</li>
+        </ul>
+        shall have one of the following lengths in bytes:
+        <ul>
+          <li>7</li>
+          <li>8</li>
+          <li>9</li>
+          <li>10</li>
+          <li>11</li>
+          <li>12</li>
+          <li>13</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_AEADDECRYPT_AES_CCM_MAC_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement with CryptoKeyElementId "CRYPTO_XVIX_XAIX_KE_CCM_MAC_LEN" of a CryptoKey used
+        with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = AEAD_DECRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_CCM</li>
+        </ul>
+        shall have one of the following lengths in bytes:
+        <ul>
+          <li>4</li>
+          <li>6</li>
+          <li>8</li>
+          <li>10</li>
+          <li>12</li>
+          <li>14</li>
+          <li>16</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_AEADDECRYPT_AES_CCM_AssociatedData_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        For a CryptoPrimitive with
+        <ul>
+          <li>CryptoPrimitiveService = AEAD_DECRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_CCM</li>
+        </ul>
+        SecondaryInputPtr of the crypto primitive service shall be provided with a valid pointer even if SecondaryInputLength is set to a value 0.
+      </description>
+      <rationale>
+        SecondaryInputPtr shall not be a NULL_PTR for a valid input.
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_AEADDECRYPT_AES_CCM_OperationMode_Update</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        For a CryptoPrimitive with
+        <ul>
+          <li>CryptoPrimitiveService = AEAD_DECRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_CCM</li>
+        </ul>
+          shall only support single call of Crypto_OperationModeType
+        <ul>
+          <li>CRYPTO_OPERATIONMODE_UPDATE</li>
+        </ul>
+      </description>
+      
+    </specobject>
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_AEADENCRYPT_AES_CCM_Key_Elements</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = AEAD_ENCRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_CCM</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElements with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_CIPHER_KEY (== 1)</li>
+          <li>CRYPTO_KE_CIPHER_IV (== 5)</li>
+          <li>CRYPTO_XVIX_XAIX_KE_CCM_MAC_LEN (== 1008)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_AEADENCRYPT_AES_CCM_CipherKey_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        If a CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = AEAD_ENCRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_CCM</li>
+        </ul>
+        has the CryptoKeyElement "CRYPTO_KE_CIPHER_KEY", it shall have one of the following
+        lengths in bytes:
+        <ul>
+          <li>16</li>
+          <li>24</li>
+          <li>32</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_AEADENCRYPT_AES_CCM_Initialization_Vector_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement with CryptoKeyElementId "CRYPTO_KE_CIPHER_IV" of a CryptoKey used
+        with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = AEAD_ENCRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_CCM</li>
+        </ul>
+        shall have one of the following lengths in bytes:
+        <ul>
+          <li>7</li>
+          <li>8</li>
+          <li>9</li>
+          <li>10</li>
+          <li>11</li>
+          <li>12</li>
+          <li>13</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_AEADENCRYPT_AES_CCM_MAC_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement with CryptoKeyElementId "CRYPTO_XVIX_XAIX_KE_CCM_MAC_LEN" of a CryptoKey used
+        with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = AEAD_ENCRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_CCM</li>
+        </ul>
+        shall have one of the following lengths in bytes:
+        <ul>
+          <li>4</li>
+          <li>6</li>
+          <li>8</li>
+          <li>10</li>
+          <li>12</li>
+          <li>14</li>
+          <li>16</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_AEADENCRYPT_AES_CCM_AssociatedData_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        For a CryptoPrimitive with
+        <ul>
+          <li>CryptoPrimitiveService = AEAD_ENCRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_CCM</li>
+        </ul>
+        SecondaryInputPtr of the crypto primitive service shall be provided with a valid pointer even if SecondaryInputLength is set to a value 0.
+      </description>
+      <rationale>
+        SecondaryInputPtr shall not be a NULL_PTR for a valid input.
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_AEADENCRYPT_AES_CCM_OperationMode_Update</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        For a CryptoPrimitive with
+        <ul>
+          <li>CryptoPrimitiveService = AEAD_ENCRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_GCM</li>
+        </ul>
+        shall only support single call of Crypto_OperationModeType
+        <ul>
+          <li>CRYPTO_OPERATIONMODE_UPDATE</li>
+        </ul>
+      </description>
+      
+    </specobject>
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_DECRYPT_AES_ECB_Key_Elements</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = DECRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_ECB</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElement with mentioned CryptoKeyElementId:
+       <ul>
+          <li>CRYPTO_KE_CIPHER_KEY (== 1)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_DECRYPT_AES_ECB_Key_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        If a CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = DECRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_ECB</li>
+        </ul>
+        has the CryptoKeyElement "CRYPTO_KE_CIPHER_KEY", it shall have one of the following
+        lengths in bytes:
+        <ul>
+          <li>16</li>
+          <li>24</li>
+          <li>32</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_DECRYPT_AES_ECB_InputLength</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        If a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = DECRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_ECB</li>
+        </ul>
+        is used and Csm_Decrypt is called with a mode of CRYPTO_OPERATIONMODE_SINGLECALL or CRYPTO_OPERATIONMODE_UPDATE,
+        the input length shall be exactly 16 bytes.
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_DECRYPT_AES_ECB_Streaming</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        If a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = DECRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_ECB</li>
+        </ul>
+        is used and Csm_Decrypt is called with modes of CRYPTO_OPERATIONMODE_START, CRYPTO_OPERATIONMODE_UPDATE,
+        and CRYPTO_OPERATIONMODE_FINISH, then Csm_Decrypt shall be called only exactly once with
+        mode CRYPTO_OPERATIONMODE_UPDATE.
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_DECRYPT_AES_CBC_Key_Elements</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = DECRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_CBC</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElements with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_CIPHER_KEY (== 1)</li>
+          <li>CRYPTO_KE_CIPHER_IV (== 5)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_DECRYPT_AES_CBC_CipherKey_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        If a CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = DECRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_CBC</li>
+        </ul>
+        has the CryptoKeyElement "CRYPTO_KE_CIPHER_KEY", it shall have one of the following
+        lengths in bytes:
+        <ul>
+          <li>16</li>
+          <li>24</li>
+          <li>32</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_DECRYPT_AES_CBC_Initialization_Vector_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement with CryptoKeyElementId "CRYPTO_KE_CIPHER_IV" of a CryptoKey used
+        with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = DECRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_CBC</li>
+        </ul>
+        shall have a length of 16 bytes.
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_DECRYPT_LZSS_STREAMBYTE_Crypto_Key</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        No CryptoKey is needed to be configured for the CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = DECRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_LZSS</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_STREAMBYTE</li>
+        </ul>
+      </description>
+      <rationale>
+        As the CryptoPrimitive doesn't require a key, a dummy key shall be referenced.
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_DECRYPT_LZSS_STREAMBYTE_Key</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The number of bits of 'length' in a two-byte (lenght/offset) encoding which denote
+        a compressed sequence of data and shall be in the range of <literal>0x02 ... 0x08</literal>.
+        This shall be set in the configuration parameter "CsmDecryptAlgorithmKeyLength" of the
+        primitive referenced by the desired job.
+      </description>
+      <rationale>
+        "CsmDecryptAlgorithmKeyLength" will not be interpreted as
+        a simple key length, but as a specific configuration for the LZSS primitive.
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_DECRYPT_LZSS_STREAMBYTE_HeapSize</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        To use the CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = DECRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_LZSS</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_STREAMBYTE</li>
+        </ul>
+        the optional configuration parameter
+        <ul>
+          <li>CryptoEbPrimaryHeapSize</li>
+        </ul>
+        shall be enabled.
+        The value shall be considered according to the number of bits of 'length' as
+        <ul>
+          <li>((1 &lt;&lt; (16 - CsmDecryptAlgorithmKeyLength)) - 1).</li>
+        </ul>
+        If the number of bits of 'length' is 0x02 the heapsize shall be 16383 bytes.
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_DECRYPT_LZSS_STREAMBIT_Crypto_Key</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        No CryptoKey is needed to be configured for the CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = DECRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_LZSS</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_STREAMBIT</li>
+        </ul>
+      </description>
+      <rationale>
+        As the CryptoPrimitive doesn't require a key, a dummy key shall be referenced.
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_DECRYPT_LZSS_STREAMBIT_Key_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The configuration parameter "CsmDecryptAlgorithmKeyLength" of the primitive referenced by
+        the desired job shall be set to a certain value:
+        <ul>
+          <li>Bits 0-3 shall encode the bit size of the "length" element in the encoding of a compression token. (Recommended is a value between 2 and 8).</li>
+          <li>Bits 4-7 shall encode the bit size of a compression token minus 8.</li>
+          <li>Bits 8-11 shall encode which value shall be added to the "length" element in a compression token to obtain the actual length of a compressed value</li>
+          <li>Bits 12-14 shall all be set to 1.</li>
+          <li>All other bits shall be set to 0. (This implies that the key length shall not be larger than 0x7FFF.)</li>
+        </ul>
+        Customer-specific information:
+        <ul>
+          <li>
+            Since the compression algorithm as specified by JLR uses compression tokens of length
+            14 bits, of which the "length" element has a size of 4 bits and where 2 has to
+            be added to the length element in the compression token to obtain the actual decrompressed length, this
+            means that "CsmDecryptAlgorithmKeyLength" shall be set to "0x7264" in this case.
+          </li>
+        </ul>
+      </description>
+      <rationale>
+        The value "CsmDecryptAlgorithmKeyLength" will be
+        interpreted as configuration values by the CryptoPrimitive as specified above.
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_DECRYPT_LZSS_STREAMBIT_HeapSize</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        To use the CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = DECRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_LZSS</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_STREAMBIT</li>
+        </ul>
+        the optional configuration parameter
+        <ul>
+          <li>CryptoEbPrimaryHeapSize</li>
+        </ul>
+        shall be enabled. The heap size shall be computed by computing 2 to the power of the bit size of the "position"
+        element in the compression token. And the bit size of the "position" element is identical to
+        ("bit size of compression token" - "bit size of length element of compression token"), which is
+        ((8 + "Bits 4-7 of CsmDecryptAlgorithmKeyLength") - "Bits 0-3 of CsmDecryptAlgorithmKeyLength").
+        So, the heap size has to be computed as
+        <ul>
+          <li>(1 &lt;&lt; ((8 + "Bits 4-7 of CsmDecryptAlgorithmKeyLength") - "Bits 0-3 of CsmDecryptAlgorithmKeyLength")).</li>
+        </ul>
+        Customer-specific information:
+        <ul>
+          <li>
+            The compression algorithm as specified by JLR has a bit size of the "position" element of the compression
+            token of ((8 + 6) - 4) = 10. That means that the heap size shall be set to 1024 in that case.
+          </li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_DECRYPT_RSA_RSAESOAEP_Key_Elements</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = DECRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_RSA</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_RSAESOAEP</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElement with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_CIPHER_KEY (== 1)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_DECRYPT_RSA_RSAESOAEP_KeyMaterial</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The key material of the CryptoKeyElement
+        <ul>
+          <li>CRYPTO_KE_CIPHER_KEY</li>
+        </ul>
+        are stored in DER (Distinguished Encoding Rules) as follows:
+        RSAPrivateKey ::= SEQUENCE {
+                                     version Version,
+                                     modulus INTEGER, -- n
+                                     publicExponent INTEGER, -- e
+                                     privateExponent INTEGER -- d
+                                   }
+      </description>
+      <rationale>
+      </rationale>
+      
+     </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_DECRYPT_RSA_RSAESOAEP_AdditionalData</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        If additional input A shall be used in the DECRYPT_RSA_RSAESOAEP primitive, then it has to be stored as byte array in the following CryptoKeyElement with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_XVIX_XAIX_KE_RSA_ADDITIONAL_INPUT (== 1004)</li>
+        </ul>
+      </description>
+      <rationale>
+        The additional input A is an optional parameter to the RSAES-OAEP algorithm. If the key element does not exist, the additional input A will be an empty string.
+      </rationale>
+      
+     </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_DECRYPT_RSA_RSAESOAEP_HeapSize</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = DECRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_RSA</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_RSAESOAEP</li>
+        </ul>
+        the configuration parameter
+        <ul>
+          <li>CryptoEbPrimaryHeapSize</li>
+        </ul>
+        shall be configured with a sufficient size.
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_ENCRYPT_AES_ECB_Key_Elements</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = ENCRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_ECB</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElement with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_CIPHER_KEY (== 1)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_ENCRYPT_AES_ECB_Key_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        If a CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = ENCRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_ECB</li>
+        </ul>
+        has the CryptoKeyElement "CRYPTO_KE_CIPHER_KEY", it shall have one of the following
+        lengths in bytes:
+        <ul>
+          <li>16</li>
+          <li>24</li>
+          <li>32</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_ENCRYPT_AES_ECB_InputLength</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        If a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = ENCRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_ECB</li>
+        </ul>
+        is used and Csm_Encrypt is called with a mode of CRYPTO_OPERATIONMODE_SINGLECALL or CRYPTO_OPERATIONMODE_UPDATE,
+        the input length shall be exactly 16 bytes.
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_ENCRYPT_AES_ECB_Streaming</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        If a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = ENCRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_ECB</li>
+        </ul>
+        is used and Csm_Encrypt is called with modes of CRYPTO_OPERATIONMODE_START, CRYPTO_OPERATIONMODE_UPDATE,
+        and CRYPTO_OPERATIONMODE_FINISH, then Csm_Encrypt shall be called only exactly once with
+        mode CRYPTO_OPERATIONMODE_UPDATE.
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_ENCRYPT_AES_CBC_Key_Elements</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = ENCRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_CBC</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElements with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_CIPHER_KEY (== 1)</li>
+          <li>CRYPTO_KE_CIPHER_IV (== 5)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_ENCRYPT_AES_CBC_CipherKey_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        If a CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = ENCRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_CBC</li>
+        </ul>
+        has the CryptoKeyElement "CRYPTO_KE_CIPHER_KEY", it shall have one of the following
+        lengths in bytes:
+        <ul>
+          <li>16</li>
+          <li>24</li>
+          <li>32</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_ENCRYPT_AES_CBC_Initialization_Vector_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement with CryptoKeyElementId "CRYPTO_KE_CIPHER_IV" of a CryptoKey used
+        with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = ENCRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_CBC</li>
+        </ul>
+        shall have a length of 16 bytes.
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_ENCRYPT_RSA_RSAESOAEP_Key_Elements</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = ENCRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_RSA</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_RSAESOAEP</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElements with mentioned CryptoKeyElementIds:
+        <ul>
+          <li>CRYPTO_KE_CIPHER_KEY (== 1)</li>
+          <li>CRYPTO_KE_RANDOM_SEED_STATE (== 3)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_ENCRYPT_RSA_RSAESOAEP_KeyMaterial</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The key material of the CryptoKeyElement
+        <ul>
+          <li>CRYPTO_KE_CIPHER_KEY</li>
+        </ul>
+        are stored in DER (Distinguished Encoding Rules) as follows:
+        RSAPublicKey ::= SEQUENCE {
+                                    modulus INTEGER, -- n
+                                    publicExponent INTEGER -- e
+                                  }
+      </description>
+      <rationale>
+      </rationale>
+      
+     </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_ENCRYPT_RSA_RSAESOAEP_AdditionalData</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        If additional input A shall be used in the ENCRYPT_RSA_RSAESOAEP primitive, then it has to be stored as byte array in the following CryptoKeyElement with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_XVIX_XAIX_KE_RSA_ADDITIONAL_INPUT (== 1004)</li>
+        </ul>
+      </description>
+      <rationale>
+        The additional input A is an optional parameter to the RSAES-OAEP algorithm. If the key element does not exist, the additional input A will be an empty string.
+      </rationale>
+      
+     </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_ENCRYPT_RSA_RSAESOAEP_HeapSize</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = ENCRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_RSA</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_RSAESOAEP</li>
+        </ul>
+        the configuration parameter
+        <ul>
+          <li>CryptoEbPrimaryHeapSize</li>
+        </ul>
+        shall be configured with a sufficient size.
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_ENCRYPT_RSA_RSAESOAEP_DefaultRandom</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = ENCRYPT</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_RSA</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_RSAESOAEP</li>
+        </ul>
+        the configuration parameter
+        <ul>
+          <li>CryptoDefaultRandomPrimitiveRef</li>
+        </ul>
+        shall be configured with a RANDOM service primitive, and
+        the configuration parameter
+        <ul>
+          <li>CryptoDefaultRandomKeyRef</li>
+        </ul>
+        can be configured with the key material used in the service identified by
+        CryptoDefaultRandomPrimitiveRef.
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_MACGENERATE_AES_CMAC_Key_Elements</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = MAC_GENERATE</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_CMAC</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElement with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_MAC_KEY (== 1)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_MACGENERATE_AES_CMAC_Key_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        If a CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = MAC_GENERATE</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_CMAC</li>
+        </ul>
+        has the CryptoKeyElement "CRYPTO_KE_MAC_KEY", it shall have one of the following
+        lengths in bytes:
+        <ul>
+          <li>16</li>
+          <li>24</li>
+          <li>32</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_MACVERIFY_AES_CMAC_Key_Elements</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = MAC_VERIFY</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_CMAC</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElement with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_MAC_KEY (== 1)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_MACVERIFY_AES_CMAC_Key_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        If a CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = MAC_VERIFY</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_CMAC</li>
+        </ul>
+        has the CryptoKeyElement "CRYPTO_KE_MAC_KEY", it shall have one of the following
+        lengths in bytes:
+        <ul>
+          <li>16</li>
+          <li>24</li>
+          <li>32</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_MACGENERATE_SHA1_HMAC_Key</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = MAC_GENERATE</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_SHA1</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_HMAC</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElement with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_MAC_KEY (== 1)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_MACVERIFY_SHA1_HMAC_Key</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = MAC_VERIFY</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_SHA1</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_HMAC</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElement with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_MAC_KEY (== 1)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_MACGENERATE_SHA2224_HMAC_Key</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = MAC_GENERATE</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_SHA2_224</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_HMAC</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElement with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_MAC_KEY (== 1)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_MACVERIFY_SHA2224_HMAC_Key</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = MAC_VERIFY</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_SHA2_224</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_HMAC</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElement with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_MAC_KEY (== 1)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_MACGENERATE_SHA2256_HMAC_Key</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = MAC_GENERATE</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_SHA2_256</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_HMAC</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElement with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_MAC_KEY (== 1)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_MACVERIFY_SHA2256_HMAC_Key</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = MAC_VERIFY</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_SHA2_256</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_HMAC</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElement with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_MAC_KEY (== 1)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_MACGENERATE_SHA2384_HMAC_Key</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = MAC_GENERATE</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_SHA2_384</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_HMAC</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElement with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_MAC_KEY (== 1)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_MACVERIFY_SHA2384_HMAC_Key</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = MAC_VERIFY</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_SHA2_384</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_HMAC</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElement with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_MAC_KEY (== 1)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_MACGENERATE_SHA2512_HMAC_Key</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = MAC_GENERATE</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_SHA2_512</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_HMAC</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElement with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_MAC_KEY (== 1)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_MACVERIFY_SHA2512_HMAC_Key</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = MAC_VERIFY</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_SHA2_512</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_HMAC</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElement with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_MAC_KEY (== 1)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_MACGENERATE_SIPHASH_SIPHASH24_Key</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = MAC_GENERATE</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_SIPHASH</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_SIPHASH24</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElement with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_MAC_KEY (== 1)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_MACGENERATE_SIPHASH_SIPHASH24_Key_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement with CryptoKeyElementId "CRYPTO_KE_MAC_KEY" of a CryptoKey used
+        with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = MAC_GENERATE</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_SIPHASH</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_SIPHASH24</li>
+        </ul>
+        shall have a length of 16 bytes.
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_MACVERIFY_SIPHASH_SIPHASH24_Key</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = MAC_VERIFY</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_SIPHASH</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_SIPHASH24</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElement with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_MAC_KEY (== 1)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_MACVERIFY_SIPHASH_SIPHASH24_Key_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement with CryptoKeyElementId "CRYPTO_KE_MAC_KEY" of a CryptoKey used
+        with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = MAC_VERIFY</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_SIPHASH</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_SIPHASH24</li>
+        </ul>
+        shall have a length of 16 bytes.
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_RANDOMGENERATE_AES_CTRDRBG_Key_Elements</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = RANDOM</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_CTRDRBG</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElements with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_CIPHER_KEY (== 1)</li>
+          <li>CRYPTO_KE_RANDOM_SEED_STATE (== 3)</li>
+          <li>optional: CRYPTO_XVIX_XAIX_KE_RANDOM_SEED_COUNT (== 1005)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_RANDOMGENERATE_AES_CTRDRBG_CipherKey_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement with CryptoKeyElementId "CRYPTO_KE_CIPHER_KEY" of a CryptoKey used
+        with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = RANDOM</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_CTRDRBG</li>
+        </ul>
+        shall have a length of 32 bytes.
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_RANDOMGENERATE_AES_CTRDRBG_Seed_State_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement with CryptoKeyElementId "CRYPTO_KE_RANDOM_SEED_STATE" of a CryptoKey used
+        with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = RANDOM</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_CTRDRBG</li>
+        </ul>
+        shall have a length of 16 bytes.
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_RANDOMGENERATE_AES_CTRDRBG_Seed_Count_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        If the CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = RANDOM</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_AES</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_CTRDRBG</li>
+        </ul>
+         uses the optional CryptoKeyElement with CryptoKeyElementId "CRYPTO_XVIX_XAIX_KE_RANDOM_SEED_COUNT",
+         it shall have a length of 4 bytes.
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_RANDOMGENERATE_NOTSET_NOTSET_Key_Elements</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = RANDOM</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_NOTSET</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_NOTSET</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElement with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_RANDOM_SEED_STATE (== 3)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_RANDOMGENERATE_NOTSET_NOTSET_DoNotUseInProductionSoftware</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        A CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = RANDOM</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_NOTSET</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_NOTSET</li>
+        </ul>
+        shall not be used in production software.
+      </description>
+      <rationale>
+        The named CryptoPrimitive is for testing purposes only. It directly returns the truncated or
+        with zeros padded value of key element CRYPTO_KE_RANDOM_SEED_STATE as random result.
+      </rationale>
+      
+    </specobject>
+
+
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_SIGNATUREGENERATE_ED25519_NOTSET_Key_Elements</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = SIGNATURE_GENERATE</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_ED25519</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_NOTSET</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElement with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_SIGNATURE_KEY (== 1)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_SIGNATUREGENERATE_ED25519_NOTSET_Key_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement with CryptoKeyElementId "CRYPTO_KE_SIGNATURE_KEY" of a CryptoKey used
+        with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = SIGNATURE_GENERATE</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_ED25519</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_NOTSET</li>
+        </ul>
+        shall have a length of 64 bytes.
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_SIGNATUREGENERATE_ED25519_NOTSET_Key_Value_Private_Key</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement
+        <ul>
+          <li>CRYPTO_KE_SIGNATURE_KEY</li>
+        </ul>
+        of each CryptoKey used for generating the signature using Ed25519
+        shall contain the private key in the first 32 bytes.
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_SIGNATUREGENERATE_ED25519_NOTSET_Key_Value_Public_Key</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement
+        <ul>
+          <li>CRYPTO_KE_SIGNATURE_KEY</li>
+        </ul>
+        of each CryptoKey used for generating the signature using Ed25519
+        shall contain the public key in the last 32 bytes, which shall be a compressed point on the
+        curve: It shall contain the y-coordinate in little endian format and the parity of the
+        x-coordinate in the most significant bit of the most significant byte.
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_SIGNATUREGENERATE_ED25519PH_NOTSET_Key_Elements</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = SIGNATURE_GENERATE</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_ED25519PH</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_NOTSET</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElement with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_SIGNATURE_KEY (== 1)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_SIGNATUREGENERATE_ED25519PH_NOTSET_Key_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement with CryptoKeyElementId "CRYPTO_KE_SIGNATURE_KEY" of a CryptoKey used
+        with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = SIGNATURE_GENERATE</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_ED25519PH</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_NOTSET</li>
+        </ul>
+        shall have a length of 64 bytes.
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_SIGNATUREGENERATE_ED25519PH_NOTSET_Key_Value_Private_Key</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement
+        <ul>
+          <li>CRYPTO_KE_SIGNATURE_KEY</li>
+        </ul>
+        of each CryptoKey used for generating the signature using Ed25519ph
+        shall contain the private key in the first 32 bytes.
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_SIGNATUREGENERATE_ED25519PH_NOTSET_Key_Value_Public_Key</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement
+        <ul>
+          <li>CRYPTO_KE_SIGNATURE_KEY</li>
+        </ul>
+        of each CryptoKey used for generating the signature using Ed25519ph
+        shall contain the public key in the last 32 bytes, which shall be a compressed point on the
+        curve: It shall contain the y-coordinate in little endian format and the parity of the
+        x-coordinate in the most significant bit of the most significant byte.
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_SIGNATUREGENERATE_RSA_RSASSAPKCS1V15_Key_Elements</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = SIGNATURE_GENERATE</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_RSA</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_RSASSAPKCS1V15</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElement with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_SIGNATURE_KEY (== 1)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_SIGNATUREGENERATE_RSA_RSASSAPKCS1V15_Key_Material</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The key material of the CryptoKeyElement
+        <ul>
+          <li>CRYPTO_KE_SIGNATURE_KEY</li>
+        </ul>
+        are stored in DER (Distinguished Encoding Rules) as follows:
+        RSAPrivateKey ::= SEQUENCE {
+                                     version Version,
+                                     modulus INTEGER, -- n
+                                     publicExponent INTEGER, -- e
+                                     privateExponent INTEGER -- d
+                                   }
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_SIGNATUREGENERATE_RSA_RSASSAPKCS1V15_HeapSize</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = SIGNATURE_GENERATE</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_RSA</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_RSA_RSASSAPKCS1V15</li>
+        </ul>
+        the configuration parameter
+        <ul>
+          <li>CryptoEbPrimaryHeapSize</li>
+        </ul>
+        shall be configured with a sufficient size.
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_SIGNATUREVERIFY_ECDSA_NOTSET_Configuration</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The following configuration is required for the SIGNATUREVERIFY_ECDSA_NOTSET service:
+        <ul>
+          <li>CryptoPrimitiveService = SIGNATURE_VERIFY</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_ECDSA</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_NOTSET</li>
+          <li>CryptoPrimitiveAlgorithmSecondaryFamiliy = CRYPTO_ALGOFAM_SHA2_256, or CRYPTO_ALGOFAM_SHA2_384, or CRYPTO_ALGOFAM_SHA2_512,
+             or CRYPTO_ALGOFAM_SHA3_256, or CRYPTO_ALGOFAM_SHA3_384, or CRYPTO_ALGOFAM_SHA3_512</li>
+        </ul>
+        Please note that the length of the hash must be at least as large as the curve size. That
+        means that for elliptic curve P-384, the hash algorithm families CRYPTO_ALGOFAM_SHA2_256
+        and CRYPTO_ALGOFAM_SHA3_256 are not allowed and will lead to an error.
+      </description>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_SIGNATUREVERIFY_ECDSA_NOTSET_Key_Elements</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = SIGNATURE_VERIFY</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_ECDSA</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_NOTSET</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElements with mentioned CryptoKeyElementIds:
+        <ul>
+          <li>CRYPTO_KE_SIGNATURE_KEY (== 1)</li>
+          <li>CRYPTO_KE_SIGNATURE_CURVETYPE (== 29)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_SIGNATUREVERIFY_ECDSA_NOTSET_Curve_Type_Values</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement
+        <ul>
+          <li>CRYPTO_KE_SIGNATURE_CURVETYPE</li>
+        </ul>
+        of each CryptoKey used for verifying the signature using ECDSA
+        shall contain the DER-encoded object identifier (OID) of the elliptic curve which shall be
+        used to verify the signature.
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_SIGNATUREVERIFY_ECDSA_NOTSET_Curve_secp256r1</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The curve secp256r1 / NIST P-256 / prime256v1 shall be selected by providing a CryptoKey with the CryptoKeyElement
+        <ul>
+          <li>CRYPTO_KE_SIGNATURE_CURVETYPE (== 29)</li>
+        </ul>
+        set to OID 06 08 2A 86 48 CE 3D 03 01 07.
+      </description>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_SIGNATUREVERIFY_ECDSA_NOTSET_secp384r1</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The curve secp384r1 / NIST P-384 / prime384v1 shall be selected by providing a CryptoKey with the CryptoKeyElement
+        <ul>
+          <li>CRYPTO_KE_SIGNATURE_CURVETYPE (== 29)</li>
+        </ul>
+        set to OID 06 05 2B 81 04 00 22.
+      </description>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_SIGNATUREVERIFY_ECDSA_NOTSET_Curve_Type_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement with CryptoKeyElementId "CRYPTO_KE_SIGNATURE_CURVETYPE" of a CryptoKey used
+        with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = SIGNATURE_VERIFY</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_ECDSA</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_NOTSET</li>
+        </ul>
+        shall have a length which corresponds to the length of the DER-encoded OID. That means that
+        for curve P-256, the length shall be 10 and for curve P-384, the length shall be 7.
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_SIGNATUREVERIFY_ECDSA_NOTSET_Signature_Key_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement with CryptoKeyElementId "CRYPTO_KE_SIGNATURE_KEY" of a CryptoKey used
+        with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = SIGNATURE_VERIFY</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_ECDSA</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_NOTSET</li>
+        </ul>
+        shall have a length of 64 bytes for keys used for curve P-256 and 96 bytes for curve P-384.
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_SIGNATUREVERIFY_ED25519_NOTSET_Key_Elements</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = SIGNATURE_VERIFY</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_ED25519</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_NOTSET</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElement with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_SIGNATURE_KEY (== 1)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_SIGNATUREVERIFY_ED25519_NOTSET_Key_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement with CryptoKeyElementId "CRYPTO_KE_SIGNATURE_KEY" of a CryptoKey used
+        with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = SIGNATURE_VERIFY</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_ED25519</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_NOTSET</li>
+        </ul>
+        shall have a length of 32 bytes.
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_SIGNATUREVERIFY_ED25519_NOTSET_Key_Values</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement
+        <ul>
+          <li>CRYPTO_KE_SIGNATURE_KEY</li>
+        </ul>
+        of each CryptoKey used for verifying the signature using Ed25519
+        shall contain the public key, which shall be a compressed point on the
+        curve: It shall contain the y-coordinate in little endian format and the parity of the
+        x-coordinate in the most significant bit of the most significant byte.
+      </description>
+      <rationale>
+      </rationale>
+      
+     </specobject>
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_SIGNATUREVERIFY_ED25519PH_NOTSET_Key_Elements</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = SIGNATURE_VERIFY</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_ED25519PH</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_NOTSET</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElement with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_SIGNATURE_KEY (== 1)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_SIGNATUREVERIFY_ED25519PH_NOTSET_Key_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement with CryptoKeyElementId "CRYPTO_KE_SIGNATURE_KEY" of a CryptoKey used
+        with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = SIGNATURE_VERIFY</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_ED25519PH</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_NOTSET</li>
+        </ul>
+        shall have a length of 32 bytes.
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_SIGNATUREVERIFY_ED25519PH_NOTSET_Key_Values</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement
+        <ul>
+          <li>CRYPTO_KE_SIGNATURE_KEY</li>
+        </ul>
+        of each CryptoKey used for verifying the signature using Ed25519ph
+        shall contain the public key, which shall be a compressed point on the
+        curve: It shall contain the y-coordinate in little endian format and the parity of the
+        x-coordinate in the most significant bit of the most significant byte.
+      </description>
+      <rationale>
+      </rationale>
+      
+     </specobject>
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_SIGNATUREVERIFY_RSA_RSASSAPSS_Key_Elements</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = SIGNATURE_VERIFY</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_RSA</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_RSASSAPSS</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElement with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_SIGNATURE_KEY (== 1)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_SIGNATUREVERIFY_RSA_RSASSAPSS_Key_Material</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The key material of the CryptoKeyElement
+        <ul>
+          <li>CRYPTO_KE_SIGNATURE_KEY</li>
+        </ul>
+        are stored in DER (Distinguished Encoding Rules) as follows:
+        RSAPrivateKey ::= SEQUENCE {
+                                     version Version,
+                                     modulus INTEGER, -- n
+                                     publicExponent INTEGER, -- e
+                                     privateExponent INTEGER -- d
+                                   }
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_SIGNATUREVERIFY_RSA_RSASSAPSS_HeapSize</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = SIGNATURE_VERIFY</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_RSA</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_RSASSAPSS</li>
+        </ul>
+        the optional configuration parameter
+        <ul>
+          <li>CryptoEbPrimaryHeapSize</li>
+        </ul>
+        shall be enabled and its value shall be configure to at least 5 times the used Key size.
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_SIGNATUREVERIFY_RSA_RSASSAPKCS1V15_Key_Elements</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = SIGNATURE_VERIFY</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_RSA</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_RSASSAPKCS1V15</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElement with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_SIGNATURE_KEY (== 1)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_SIGNATUREVERIFY_RSA_RSASSAPKCS1V15_Key_Material</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The key material of the CryptoKeyElement
+        <ul>
+          <li>CRYPTO_KE_SIGNATURE_KEY</li>
+        </ul>
+        are stored in DER (Distinguished Encoding Rules) as follows:
+        RSAPublicKey ::= SEQUENCE {
+                                    modulus INTEGER, -- n
+                                    publicExponent INTEGER -- e
+                                  }
+      </description>
+      <rationale>
+      </rationale>
+      
+     </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_CPR_SIGNATUREVERIFY_RSA_RSASSAPKCS1V15_HeapSize</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used with a CryptoPrimitive of
+        <ul>
+          <li>CryptoPrimitiveService = SIGNATURE_VERIFY</li>
+          <li>CryptoPrimitiveAlgorithmFamiliy = CRYPTO_ALGOFAM_RSA</li>
+          <li>CryptoPrimitiveAlgorithmMode = CRYPTO_ALGOMODE_RSA_RSASSAPKCS1V15</li>
+        </ul>
+        the configuration parameter
+        <ul>
+          <li>CryptoEbPrimaryHeapSize</li>
+        </ul>
+        shall be configured with a sufficient size.
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_KMN_RANDOMSEED_Key</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>2</version>
+      <description>
+        Each CryptoKey used for generating a random seed with the API
+        <ul>
+          <li>Crypto_RandomSeed()</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElements with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_RANDOM_SEED_STATE (== 3)</li>
+          <li>CRYPTO_KE_RANDOM_ALGORITHM (== 4)</li>
+          <li>optional: CRYPTO_XVIX_XAIX_KE_RANDOM_SEED_COUNT (== 1005)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_KMN_RANDOMSEED_KeyElementAlgorithm_Size</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>2</version>
+      <description>
+        The CryptoKeyElement
+        <ul>
+          <li>CRYPTO_KE_RANDOM_ALGORITHM</li>
+        </ul>
+        of each CryptoKey used for generating a random seed with the API
+        <ul>
+          <li>Crypto_RandomSeed()</li>
+        </ul>
+        shall have one of the following lengths in bytes:
+        <ul>
+          <li>2</li>
+          <li>6</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_KMN_RANDOMSEED_KeyElementAlgorithm_Values</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>2</version>
+      <description>
+        The CryptoKeyElement
+        <ul>
+          <li>CRYPTO_KE_RANDOM_ALGORITHM</li>
+        </ul>
+        of each CryptoKey used for generating a random seed with the API
+        <ul>
+          <li>Crypto_RandomSeed()</li>
+        </ul>
+        shall have one of the following values, to choose the corresponding seed algorithm
+        <ul>
+          <li>0x14 0x12 == CRYPTO_ALGOFAM_AES CRYPTO_ALGOMODE_CTRDRBG</li>
+        </ul>
+      </description>
+      <rationale>
+        The key management function Crypto_RandomSeed() is independent from CryptoPrimitives and
+        CsmJobs and needs to be configured.
+      </rationale>
+      
+    </specobject>
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_KMN_KeyDerive_Key</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>2</version>
+      <description>
+        Each CryptoKey which is used for key derivation with the API
+        <ul>
+          <li>Crypto_KeyDerive()</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains at least the following
+        CryptoKeyElement with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_KEYDERIVATION_ALGORITHM (== 15)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_KMN_KeyDerive_KeyElementAlgorithm_Size</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>3</version>
+      <description>
+        The CryptoKeyElement
+        <ul>
+          <li>CRYPTO_KE_KEYDERIVATION_ALGORITHM</li>
+        </ul>
+        of each CryptoKey which is used for key derivation with the API
+        <ul>
+          <li>Crypto_KeyDerive()</li>
+        </ul>
+        shall have the size
+        <ul>
+          <li>2</li>
+        </ul>
+      </description>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_KMN_KEYDERIVE_SINGLESTEPKDF_NOTSET_Key_Elements_Input</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>2</version>
+      <description>
+        Each CryptoKey which is used as input for key derivation with the API
+        <ul>
+          <li>Crypto_KeyDerive()</li>
+        </ul>
+        of the key derivation method "KEYDERIVE_SINGLESTEPKDF_NOTSET" shall be an instance of a
+        CryptoKeyType that contains at least the following CryptoKeyElements with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_KEYDERIVATION_PASSWORD (== 1)</li>
+          <li>CRYPTO_KE_KEYDERIVATION_ALGORITHM (== 15)</li>
+          <li>CRYPTO_XVIX_XAIX_KE_KEYDERIVATION_FIXEDINFOID (== 1007)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_KMN_KEYDERIVE_SINGLESTEPKDF_NOTSET_Key_Elements_Output</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>2</version>
+      <description>
+        Each CryptoKey which is used as output for key derivation with the API
+        <ul>
+          <li>Crypto_KeyDerive()</li>
+        </ul>
+        of the key derivation method "KEYDERIVE_SINGLESTEPKDF_NOTSET" shall be an instance of a
+        CryptoKeyType that contains at least the following CryptoKeyElement with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_XVIX_XAIX_INT_KMN_KEYDERIVE_SINGLESTEPKDF_NOTSET_NOTSET_KEYTARGETID (== 1)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_KMN_KEYDERIVE_SINGLESTEPKDF_NOTSET_KeyElementAlgorithm_Values</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>2</version>
+      <description>
+        The CryptoKeyElement
+        <ul>
+          <li>CRYPTO_KE_KEYDERIVATION_ALGORITHM</li>
+        </ul>
+        of each CryptoKey which is used for key derivation with the API
+        <ul>
+          <li>Crypto_KeyDerive()</li>
+        </ul>
+        for the key derivation method "KEYDERIVE_SINGLESTEPKDF_NOTSET" shall have one of the following values:
+        <ul>
+          <li>0, for SHA-1</li>
+          <li>1, for SHA-224</li>
+          <li>2, for SHA-256</li>
+          <li>3, for SHA-384</li>
+          <li>4, for SHA-512</li>
+          <li>5, for SHA3-224</li>
+          <li>6, for SHA3-256</li>
+          <li>7, for SHA3-384</li>
+          <li>8, for SHA3-512</li>
+        </ul>
+      </description>
+      
+    </specobject>
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_KMN_KEYEXCHANGE_X25519_NOTSET_CalcPubKey</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used to calculate the public value for the key exchange using X25519 with the API
+        <ul>
+          <li>Crypto_KeyExchangeCalcPubVal()</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElements with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_KEYEXCHANGE_PRIVKEY (== 9)</li>
+          <li>CRYPTO_KE_KEYEXCHANGE_OWNPUBKEY (== 10)</li>
+          <li>CRYPTO_KE_KEYEXCHANGE_ALGORITHM (== 12)</li>
+          <li>CRYPTO_KE_KMNCOMMON_WORKSPACE (== 1006)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_KMN_KEYEXCHANGE_X25519_NOTSET_CalcSecretKey</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used to calculate the the shared secret key for the key exchange using X25519 with the API
+        <ul>
+          <li>Crypto_KeyExchangeCalcSecret()</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElements with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CYRPTO_KE_KEYEXCHANGE_SHAREDVALUE (== 1)</li>
+          <li>CRYPTO_KE_KEYEXCHANGE_PRIVKEY (== 9)</li>
+          <li>CRYPTO_KE_KEYEXCHANGE_ALGORITHM (== 12)</li>
+          <li>CRYPTO_KE_KMNCOMMON_WORKSPACE (== 1006)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_KMN_KEYEXCHANGE_X25519_NOTSET_KeyElementPrivKey_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement
+        <ul>
+          <li>CRYPTO_KE_KEYEXCHANGE_PRIVKEY</li>
+        </ul>
+        of each CryptoKey used to calculate the public value and the shared secret key for the key exchange
+        using X25519 with the following API's
+        <ul>
+          <li>Crypto_KeyExchangeCalcPubVal()</li>
+          <li>Crypto_KeyExchangeCalcSecret()</li>
+        </ul>
+        shall have the size
+        <ul>
+          <li>32</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_KMN_KEYEXCHANGE_X25519_NOTSET_KeyElementOwnPubKey_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement
+        <ul>
+          <li>CRYPTO_KE_KEYEXCHANGE_OWNPUBKEY</li>
+        </ul>
+        of each CryptoKey used to calculate the public value for the key exchange using X25519 with the API
+        <ul>
+          <li>Crypto_KeyExchangeCalcPubVal()</li>
+        </ul>
+        shall have the size
+        <ul>
+          <li>32</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_KMN_KEYEXCHANGE_X25519_NOTSET_KeyElementSharedValue_Size</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement
+        <ul>
+          <li>CYRPTO_KE_KEYEXCHANGE_SHAREDVALUE</li>
+        </ul>
+        of each CryptoKey used to calculate the the shared secret key for the key exchange using X25519 with the API
+        <ul>
+          <li>Crypto_KeyExchangeCalcSecret()</li>
+        </ul>
+        shall have the size
+        <ul>
+          <li>32</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_KMN_KEYEXCHANGE_X25519_NOTSET_KeyElementAlgorithm_Size</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement
+        <ul>
+          <li>CRYPTO_KE_KEYEXCHANGE_ALGORITHM</li>
+        </ul>
+        of each CryptoKey used to calculate the public value and the shared secret key for the key exchange
+        using X25519 with the following API's
+        <ul>
+          <li>Crypto_KeyExchangeCalcPubVal()</li>
+          <li>Crypto_KeyExchangeCalcSecret()</li>
+        </ul>
+        shall have the size
+        <ul>
+          <li>2</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_KMN_KEYEXCHANGE_X25519_NOTSET_KeyElementAlgorithm_Values</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement
+        <ul>
+          <li>CRYPTO_KE_KEYEXCHANGE_ALGORITHM</li>
+        </ul>
+        of each CryptoKey used to calculate the public value and the shared secret key for the key exchange
+        using X25519 with the following API's
+        <ul>
+          <li>Crypto_KeyExchangeCalcPubVal()</li>
+          <li>Crypto_KeyExchangeCalcSecret()</li>
+        </ul>
+        shall have the following values, to choose the corresponding algorithm with the corresponding mode
+        <ul>
+          <li>0x2E == CRYPTO_ALGOFAM_X25519</li>
+          <li>0x00 == CRYPTO_ALGOMODE_NOT_SET</li>
+        </ul>
+      </description>
+      <rationale>
+        The key management function Crypto_KeyExchangeCalcPubVal() and Crypto_KeyExchangeCalcSecret() are
+        independent from CryptoPrimitives and CsmJobs and needs to be configured.
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_KMN_KEYEXCHANGE_X25519_NOTSET_KeyElementWorkspace_Size</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement
+        <ul>
+          <li>CRYPTO_KE_KMNCOMMON_WORKSPACE</li>
+        </ul>
+        of each CryptoKey used to calculate the public value and the shared secret key for the key exchange
+        using X25519 with the following API's
+        <ul>
+          <li>Crypto_KeyExchangeCalcPubVal()</li>
+          <li>Crypto_KeyExchangeCalcSecret()</li>
+        </ul>
+        shall have the size
+        <ul>
+          <li>408</li>
+        </ul>
+      </description>
+      <rationale>
+        This key element is used as a buffer.
+      </rationale>
+      
+    </specobject>
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_KMN_KEYGENERATE_ED25519_NOTSET_Key</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used for generating the public key using Ed25519 with the API
+        <ul>
+          <li>Crypto_KeyGenerate()</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElements with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_KEYGENERATE_KEY (== 1)</li>
+          <li>CRYPTO_KE_KEYGENERATE_SEED (== 16)</li>
+          <li>CRYPTO_KE_KEYGENERATE_ALGORITHM (== 17)</li>
+          <li>CRYPTO_KE_KMNCOMMON_WORKSPACE (== 1006)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_KMN_KEYGENERATE_ED25519_NOTSET_KeyElementSeed_Size</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement
+        <ul>
+          <li>CRYPTO_KE_KEYGENERATE_SEED</li>
+        </ul>
+        of each CryptoKey used for generating the public key using Ed25519 with the API
+        <ul>
+          <li>Crypto_KeyGenerate()</li>
+        </ul>
+        shall have the size
+        <ul>
+          <li>32</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_KMN_KEYGENERATE_ED25519_NOTSET_KeyElementSeed_Values</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        To generate the public key using Ed25519 with the API
+        <ul>
+          <li>Crypto_KeyGenerate()</li>
+        </ul>
+        the public key shall be gtenerated from the random value that is located in the key element
+        <ul>
+          <li>CRYPTO_KE_KEYGENERATE_SEED</li>
+        </ul>
+      </description>
+      <rationale>
+        The random value can be generated, for example, with the function Csm_RandomGenerate() and must be stored
+        in CRYPTO_KE_KEYGENERATE_SEED before the key generation is triggered.
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_KMN_KEYGENERATE_ED25519_NOTSET_KeyElementAlgorithm_Size</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement
+        <ul>
+          <li>CRYPTO_KE_KEYGENERATE_ALGORITHM</li>
+        </ul>
+        of each CryptoKey used for generating the public key using Ed25519 with the API
+        <ul>
+          <li>Crypto_KeyGenerate()</li>
+        </ul>
+        shall have the size
+        <ul>
+          <li>2</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_KMN_KEYGENERATE_ED25519_NOTSET_KeyElementAlgorithm_Values</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement
+        <ul>
+          <li>CRYPTO_KE_KEYGENERATE_ALGORITHM</li>
+        </ul>
+        of each CryptoKey used for generating the public key using Ed25519 with the API
+        <ul>
+          <li>Crypto_KeyGenerate()</li>
+        </ul>
+        shall have the following values, to choose the corresponding algorithm with the corresponding mode
+        <ul>
+          <li>0x17 == CRYPTO_ALGOFAM_ED25519</li>
+          <li>0x00 == CRYPTO_ALGOMODE_NOT_SET</li>
+        </ul>
+      </description>
+      <rationale>
+        The key management function Crypto_KeyGenerate() is independent from CryptoPrimitives and
+        CsmJobs and needs to be configured.
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_KMN_KEYGENERATE_ED25519_NOTSET_Key_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement
+        <ul>
+          <li>CRYPTO_KE_KEYGENERATE_KEY</li>
+        </ul>
+        of each CryptoKey used for generating the public key using Ed25519 with the API
+        <ul>
+          <li>Crypto_KeyGenerate()</li>
+        </ul>
+        shall have the size
+        <ul>
+          <li>32</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_KMN_KEYGENERATE_ED25519_NOTSET_Key_Values</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        To generate the public key using Ed25519 with the API
+        <ul>
+          <li>Crypto_KeyGenerate()</li>
+        </ul>
+        the generated public key shall be stored in the key element
+        <ul>
+          <li>CRYPTO_KE_KEYGENERATE_KEY</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_KMN_KEYGENERATE_ED25519_NOTSET_KeyElementWorkspace_Size</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement
+        <ul>
+          <li>CRYPTO_KE_KMNCOMMON_WORKSPACE</li>
+        </ul>
+        of each CryptoKey used for generating the public key using Ed25519 with the API
+        <ul>
+          <li>Crypto_KeyGenerate()</li>
+        </ul>
+        shall have the size
+        <ul>
+          <li>408</li>
+        </ul>
+      </description>
+      <rationale>
+        This key element is used as a buffer for the service Key Generate.
+      </rationale>
+      
+    </specobject>
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_KMN_KEYGENERATE_ED25519PH_NOTSET_Key</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        Each CryptoKey used for generating the public key using Ed25519ph with the API
+        <ul>
+          <li>Crypto_KeyGenerate()</li>
+        </ul>
+        shall be an instance of a CryptoKeyType that contains the following
+        CryptoKeyElements with mentioned CryptoKeyElementId:
+        <ul>
+          <li>CRYPTO_KE_KEYGENERATE_KEY (== 1)</li>
+          <li>CRYPTO_KE_KEYGENERATE_SEED (== 16)</li>
+          <li>CRYPTO_KE_KEYGENERATE_ALGORITHM (== 17)</li>
+          <li>CRYPTO_KE_KMNCOMMON_WORKSPACE (== 1006)</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_KMN_KEYGENERATE_ED25519PH_NOTSET_KeyElementSeed_Size</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement
+        <ul>
+          <li>CRYPTO_KE_KEYGENERATE_SEED</li>
+        </ul>
+        of each CryptoKey used for generating the public key using Ed25519ph with the API
+        <ul>
+          <li>Crypto_KeyGenerate()</li>
+        </ul>
+        shall have the size
+        <ul>
+          <li>32</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_KMN_KEYGENERATE_ED25519PH_NOTSET_KeyElementSeed_Values</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        To generate the public key using Ed25519ph with the API
+        <ul>
+          <li>Crypto_KeyGenerate()</li>
+        </ul>
+        the public key shall be gtenerated from the random value that is located in the key element
+        <ul>
+          <li>CRYPTO_KE_KEYGENERATE_SEED</li>
+        </ul>
+      </description>
+      <rationale>
+        The random value can be generated, for example, with the function Csm_RandomGenerate() and must be stored
+        in CRYPTO_KE_KEYGENERATE_SEED before the key generation is triggered.
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_KMN_KEYGENERATE_ED25519PH_NOTSET_KeyElementAlgorithm_Size</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement
+        <ul>
+          <li>CRYPTO_KE_KEYGENERATE_ALGORITHM</li>
+        </ul>
+        of each CryptoKey used for generating the public key using Ed25519ph with the API
+        <ul>
+          <li>Crypto_KeyGenerate()</li>
+        </ul>
+        shall have the size
+        <ul>
+          <li>2</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_KMN_KEYGENERATE_ED25519PH_NOTSET_KeyElementAlgorithm_Values</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement
+        <ul>
+          <li>CRYPTO_KE_KEYGENERATE_ALGORITHM</li>
+        </ul>
+        of each CryptoKey used for generating the public key using Ed25519ph with the API
+        <ul>
+          <li>Crypto_KeyGenerate()</li>
+        </ul>
+        shall have the following values, to choose the corresponding algorithm with the corresponding mode
+        <ul>
+          <li>0xA1 == CRYPTO_ALGOFAM_ED25519PH</li>
+          <li>0x00 == CRYPTO_ALGOMODE_NOT_SET</li>
+        </ul>
+      </description>
+      <rationale>
+        The key management function Crypto_KeyGenerate() is independent from CryptoPrimitives and
+        CsmJobs and needs to be configured.
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_KMN_KEYGENERATE_ED25519PH_NOTSET_Key_Length</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement
+        <ul>
+          <li>CRYPTO_KE_KEYGENERATE_KEY</li>
+        </ul>
+        of each CryptoKey used for generating the public key using Ed25519ph with the API
+        <ul>
+          <li>Crypto_KeyGenerate()</li>
+        </ul>
+        shall have the size
+        <ul>
+          <li>32</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_KMN_KEYGENERATE_ED25519PH_NOTSET_Key_Values</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        To generate the public key using Ed25519ph with the API
+        <ul>
+          <li>Crypto_KeyGenerate()</li>
+        </ul>
+        the generated public key shall be stored in the key element
+        <ul>
+          <li>CRYPTO_KE_KEYGENERATE_KEY</li>
+        </ul>
+      </description>
+      <rationale>
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_KMN_KEYGENERATE_ED25519PH_NOTSET_KeyElementWorkspace_Size</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The CryptoKeyElement
+        <ul>
+          <li>CRYPTO_KE_KMNCOMMON_WORKSPACE</li>
+        </ul>
+        of each CryptoKey used for generating the public key using Ed25519ph with the API
+        <ul>
+          <li>Crypto_KeyGenerate()</li>
+        </ul>
+        shall have the size
+        <ul>
+          <li>408</li>
+        </ul>
+      </description>
+      <rationale>
+        This key element is used as a buffer for the service Key Generate.
+      </rationale>
+      
+    </specobject>
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_MISC_BuildForMultiInstances</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The build process must not consider source files from the Crypto plugin folder, but instead
+        shall consider the <emphasis>output</emphasis> directory, particularly the
+        <emphasis>output\generated\instance\include</emphasis> and the
+        <emphasis>output\generated\instance\src</emphasis>
+        directories.
+      </description>
+      <rationale>
+        The source files in the Crypto plugin folder are prepared for multiple instantiation.
+        They will be copied, processed and renamed during project's generation.
+        For further information please see the Crypto module user's guide.
+      </rationale>
+      
+    </specobject>
+
+
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_KeyElementCopy_InvalidKey</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The function Crypto_xVIx_xAIx_KeyElementCopy copies the source key element from the source key to the target key element of the target key even if the source key is currently invalid.
+        Crypto_xVIx_xAIx_KeyElementCopy cannot evaluate if the resulting state of the target key is valid or not.
+        Therefore, it has to be ensured that the target key is set to valid after the key element is copied before it is accessed.
+        In contrast to that, the Crypto_xVIx_xAIx_KeyCopy function does not copy the key from source to destination if the source key is invalid. No processing would take place and E_NOT_OK would be returned.
+      </description>
+      <rationale>The usage of the Crypto_xVIx_xAIx_KeyElementCopy should not be limited by limiting the source keys to be valid keys only.
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_MultiCore_EcucPartitionRef</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The parameters CryptoEcucPartitionRef and CryptoDriverObjectEcucPartitionRef are only used for multi-core, and if configured should all have the same ECU partition reference.
+      </description>
+      <rationale>The CryptoEcucPartitionRef can have multiple entries so, CryptoDriverObjectEcucPartitionRef is used to ensure that only 1 ECU partition reference is configured.
+      </rationale>
+      
+    </specobject>
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_Signature_EdDSA</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>2</version>
+      <description>
+        The following configuration is required for the SIGNATUREGENERATE/VERIFY EdDSA service:
+        <ul>
+          <li>Ed25519 primitive:</li>
+        </ul>
+        CryptoPrimitiveAlgorithmFamiliy CRYPTO_ALGOFAM_ED25519, CryptoPrimitiveAlgorithmMode CRYPTO_ALGOMODE_NOT_SET,
+        CryptoPrimitiveAlgorithmSecondaryFamiliy CRYPTO_ALGOFAM_SHA2_512.
+        <ul>
+          <li>Ed25519ph primitive:</li>
+        </ul>
+        CryptoPrimitiveAlgorithmFamiliy CRYPTO_ALGOFAM_ED25519PH, CryptoPrimitiveAlgorithmMode CRYPTO_ALGOMODE_NOT_SET,
+        CryptoPrimitiveAlgorithmSecondaryFamiliy CRYPTO_ALGOFAM_SHA2_512.
+      </description>
+      
+    </specobject>
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_Byte_Order</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The value of the macro CPU_BYTE_ORDER shall be consistent with the endianness of the target platform and any compiler options associated with it.
+      </description>
+      <rationale>CPU_BYTE_ORDER macro is provided by the Plaforms module and represents the target platforms endianness (big or little endian).
+      </rationale>
+      
+    </specobject>
+
+
+
+    <specobject>
+      <id>Crypto.Req.Integration_NvMdifferentBlockForDID</id>
+      <status>approved</status>
+      <source>EB cybersecurity integration requirement</source>
+      <version>1</version>
+      <description>
+        Consider not defining a diagnostic data identifier (DID) at Dcm for an NvM
+        block which can store a cryptographic key.
+      </description>
+      <rationale>
+        If there is no DID configured for a data block which contains a key, this helps to prevent disclosure of cryptographic credentials.
+      </rationale>
+      <securityclass>CSR</securityclass>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_DcmDIDcryptoKeyNoRead</id>
+      <status>approved</status>
+      <source>EB cybersecurity integration requirement</source>
+      <version>1</version>
+      <description>
+        If a diagnostic data identifier (DID) is configured at Dcm for an NvM block which can store a cryptographic
+        key, consider not activating service 0x22 (ReadDataByIdentifier) for this DID.
+      </description>
+      <rationale>
+        If the DID cannot be read out via diagnostic service, this helps to prevent disclosure of cryptographic credentials.
+      </rationale>
+      <securityclass>CSR</securityclass>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_NvMencryptionSecurityHook</id>
+      <status>approved</status>
+      <source>EB cybersecurity integration requirement</source>
+      <version>1</version>
+      <description>
+        If the use of an NvM block is enabled for a cryptographic key by setting the parameter CryptoKeyElementPersist,
+        consider configuring encryption/decryption security hook functions (Elektrobit parameter NvMEnableBlockCryptoSecurityHandling) for that
+        NvM block. The hook will encrypt data before writing to NvM and decrypt data after reading from NvM, using Csm cipher jobs with a configured key.
+      </description>
+      <rationale>
+        In a system having virtual machines, storing the keys in encrypted format can help to prevent disclosure of cryptographic credentials by a compromised virtual machine.
+      </rationale>
+      <securityclass>CSR</securityclass>
+      
+    </specobject>
+
+    <specobject>
+      <id>Crypto.Req.Integration_NvMintegrityCheckHook</id>
+      <status>approved</status>
+      <source>EB cybersecurity integration requirement</source>
+      <version>1</version>
+      <description>
+        If the use of an NvM block is enabled for a cryptographic key by setting the parameter CryptoKeyElementPersist,
+        consider implementing integrity check security hook functions, supported by the Elektrobit memory stack before NvM write (parameter NvMWriteBlockHook)
+        and after NvM Read (parameter NvMReadBlockHook).
+      </description>
+      <rationale>
+        Using integrity checks can help to prevent tampering of cryptographic keys.
+      </rationale>
+      <securityclass>CSR</securityclass>
+      
+    </specobject>
+
+  </specobjects>
+</specdocument>

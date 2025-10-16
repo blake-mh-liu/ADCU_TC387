@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecum:initFunctions
+    xmlns:ecum="http://www.tresos.de/_project/AutoCore/ecum.initFunctions_1.xsd"
+    xmlns:svc="http://www.tresos.de/_project/AutoCore/svc.base_1.xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.tresos.de/_project/AutoCore/ecum.initFunctions_1.xsd">
+
+    <initFunction name="Sent_Init">
+        <enable type="XPATH" value="as:modconf('Sent')[1]/IMPLEMENTATION_CONFIG_VARIANT = 'VariantPostBuild'"/>
+        <moduleId value="Sent" />
+        <service value="Init" />
+        <initList value="1" />
+        <initConfigStr value ="&amp;Sent_Config"/>
+        <initializeAfter>
+            <moduleId>Dem</moduleId>
+            <moduleId>Mcu</moduleId>
+            <moduleId>MyMcuArchClockInit</moduleId>
+            <moduleId>Eb_Intgr_McuArchClockInit</moduleId>
+            <moduleId>Mcl</moduleId>
+            <moduleId>Port</moduleId>
+            <moduleId>Dio</moduleId>
+            <moduleId>Gpt</moduleId>
+            <moduleId>Wdg</moduleId>
+            <moduleId>WdgM</moduleId>
+            <moduleId>Adc</moduleId>
+            <moduleId>Icu</moduleId>
+            <moduleId>Pwm</moduleId>
+            <moduleId>Dma</moduleId>
+        </initializeAfter>
+
+    </initFunction>
+
+</ecum:initFunctions>

@@ -1,0 +1,27 @@
+########### CORE PART OF THE TEMPLATE - START ###########
+#parse("make/Os_objects.make.vm")
+########### CORE PART OF THE TEMPLATE - END #############
+########### TARGET PART OF THE TEMPLATE - START ###########
+########### Arch specific velocimacros that can be called from the common code parts ###########
+
+$hashChars#* ################################################################### *#
+# RH850 Memory Regions
+$hashChars#* ################################################################### *#
+#if( $OsModel.isMicroKernel() )
+#* *##foreach( $coreId in $OsModel.getUsedCoreIds() )
+#*   *##set( $cLocalPartList = $mkPartitionManager.getCore($coreId) )
+#*   *## The MK_TEXTREGIONS macro tells the build process the names
+#*   *## of special text regions (e.g. for hooks or the idle thread)
+#*   *#MK_TEXTREGIONS = #foreach( $reg in $cLocalPartList.getTextRegions() ) $reg.getName()#end$newLine
+#*   *## For each memory region XXX in the MK_TEXTREGIONS macro, the following
+#*   *## macros are generated which define the names of the respective symbols:
+#*   *##foreach( $reg in $cLocalPartList.getTextRegions() )
+#*      *## - MK_MR_START_XXX for the start address of the region
+#*      *## - MK_MR_LIMIT_XXX for the limit address of the region
+#*      *#MK_MR_START_$reg.getName() = MK_RSA_$reg.getName()
+#*      *#MK_MR_LIMIT_$reg.getName() = MK_RLA_$reg.getName()
+#*   *##end
+#* *##end
+#end
+
+endif

@@ -1,0 +1,29 @@
+/**
+ ** \brief <TRANSFORMER_NAME> - Protects the array/buffer to be transmitted, using the in-place transformation.
+ **
+ ** \param[in]  extractProtocolHeaderFields  This is the pointer to the function that extracts
+ **             relevant protocol header fields. It is used for E2E method profiles (PXXm).
+ ** \param[in]  csTransactionHandle  This is the pointer to the E2E transaction handle for the C/S method call.
+ **             It is used to tunnel the relevant information (E2E Source ID and E2E Counter) from the request
+ **             to the response at the server side via the RTE. It is used for E2E method profiles (PXXm).
+ ** \param[in]  InputBufferLength  This argument holds the length of the E2E transformer's input
+ **             data (in the inputBuffer argument).
+ ** \param[in,out]  BufferPtr  This is the buffer where the E2E transformer places its output data.
+ **             With the E2E transformer configured for in-place transformation, it also contains
+ **             its input data.
+ **             With the E2E transformer using in-place transformation and having a headerLength
+ **             different from 0, the output data of the previous transformer begin at position
+ **             headerLength.
+ **             It is the buffer allocated by the RTE, where the transformed data has to be stored
+ **             by the transformer.
+ ** \param[out]  BufferLengthPtr  Used length of the buffer
+ **
+ ** \return Function execution success status
+ ** \retval 0x00  (E_OK): Function performed successfully.
+ ** \retval 0xFF  (E_SAFETY_HARD_RUNTIMEERROR): A runtime error occurred, safety properties could
+ **               not be checked and no output data could be produced.
+ **
+ ** \ServiceID{0x03}
+ ** \Reentrancy{Non Reentrant}
+ ** \Synchronicity{Synchronous}
+ **/

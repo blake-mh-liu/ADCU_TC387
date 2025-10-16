@@ -1,0 +1,1668 @@
+<?xml version="1.0"?>
+<datamodel xmlns="http://www.tresos.de/_projects/DataModel2/18/root.xsd" xmlns:a="http://www.tresos.de/_projects/DataModel2/18/attribute.xsd" xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd" version="8.0">
+
+  <d:ctr xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" xmlns:ce="http://www.tresos.de/_projects/DataModel2/18/childenable.xsd" xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd" xmlns:f="http://www.tresos.de/_projects/DataModel2/14/formulaexpr.xsd" xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd" xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd" xmlns:variant="http://www.tresos.de/_projects/DataModel2/11/variant.xsd" type="AUTOSAR" factory="autosar">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="TS_T0D1MxIxRx" type="AR-PACKAGE">
+        <d:lst type="ELEMENTS">
+          <d:chc name="ComM" type="AR-ELEMENT" value="MODULE-DEF">
+            <v:ctr type="MODULE-DEF">
+              <a:a name="ADMIN-DATA" type="ADMIN-DATA">
+                <ad:ADMIN-DATA>
+                  <ad:LANGUAGE>EN</ad:LANGUAGE>
+                  <ad:DOC-REVISIONS>
+                    <ad:DOC-REVISION>
+                      <ad:REVISION-LABEL>4.1.3</ad:REVISION-LABEL>
+                      <ad:ISSUED-BY>AUTOSAR</ad:ISSUED-BY>
+                    </ad:DOC-REVISION>
+                    <ad:DOC-REVISION>
+                      <ad:REVISION-LABEL>5.21.4</ad:REVISION-LABEL>
+                      <ad:ISSUED-BY>Elektrobit Automotive GmbH</ad:ISSUED-BY>
+                      <ad:DATE>2024-05-02T23:59:59Z</ad:DATE>
+                    </ad:DOC-REVISION>
+                  </ad:DOC-REVISIONS>
+                </ad:ADMIN-DATA>
+              </a:a>
+              <a:a name="DESC">
+                <a:v>&lt;html&gt;
+                      Configuration of the ComM (Communications Manager) module.
+                    &lt;/html&gt;</a:v>
+              </a:a>
+              <a:a name="LOWER-MULTIPLICITY" value="1"/>
+              <a:a name="POSTBUILDVARIANTSUPPORT" value="true"/>
+              <a:a name="RELEASE" value="asc:4.1"/>
+              <a:a name="UPPER-MULTIPLICITY" value="1"/>
+              
+              <v:ctr name="PublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>EN:
+                    &lt;html&gt;
+                      Additional published parameters not covered by CommonPublishedInformation container.
+                  &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="EB Published Information"/>
+                <a:a name="TAB" value="EB Published Information"/>
+                
+                <v:var name="PbcfgMSupport" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Specifies whether or not the ComM can use the PbcfgM module for post-build support.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" value="PublishedInformation"/>
+                  <a:a name="LABEL" value="PbcfgM support"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  
+                  <a:da name="DEFAULT" value="true"/>
+                </v:var>
+              </v:ctr>
+              
+              <v:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION">
+                <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                  <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                </a:a>
+                <a:a name="LABEL" value="Configuration Variant"/>
+                
+                <a:da name="DEFAULT" value="VariantPostBuild"/>
+                <a:da name="EDITABLE" value="false"/>
+                <a:da name="RANGE" value="VariantPostBuild"/>
+              </v:var>
+              <v:lst name="ComMConfigSet" type="MULTIPLE-CONFIGURATION-CONTAINER">
+                <a:da name="MAX" value="1"/>
+                <a:da name="MIN" value="1"/>
+                <v:ctr name="ComMConfigSet" type="MULTIPLE-CONFIGURATION-CONTAINER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;This container is the base for a multiple configuration set.&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  
+                  <v:var name="ComMPncEnabled" type="BOOLEAN">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                            &lt;p&gt;Defines whether in this configuration set the partial
+                            networking is enabled.&lt;/p&gt;
+                            &lt;ul&gt;
+                              &lt;li&gt;&lt;code&gt;TRUE&lt;/code&gt;: Enabled&lt;/li&gt;
+                              &lt;li&gt;&lt;code&gt;FALSE&lt;/code&gt;: Disabled&lt;/li&gt;
+                            &lt;/ul&gt;
+                          &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PostBuild">VariantPostBuild</icc:v>
+                    </a:a>
+                    <a:a name="OPTIONAL" value="true"/>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="true"/>
+                    <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    
+                    <a:da name="DEFAULT" value="true"/>
+                    <a:da name="EDITABLE" value="true"/>
+                    <a:da name="ENABLE" value="false"/>
+                    
+                  </v:var>
+                  <v:lst name="ComMChannel" type="MAP">
+                    <a:a name="COLUMNS">
+                      <a:v>ComMChannelId</a:v>
+                      <a:v>ComMBusType</a:v>
+                      <a:v>ComMNetworkManagement/ComMNmVariant</a:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Network Channel"/>
+                    
+                    <a:da name="MIN" value="1"/>
+                    <v:ctr name="ComMChannel" type="IDENTIFIABLE">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              &lt;p&gt;This container contains the configuration (parameters)
+                              of the bus channel(s). The channel parameters shall be harmonized
+                              within the whole communication stack.&lt;/p&gt;
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="POSTBUILDCHANGEABLE" value="false"/>
+                      
+                      <a:da name="TITLE" value="Network Channel"/>
+                      <v:var name="ComMBusType" type="ENUMERATION">
+                        <a:a name="COLUMN_TITLE" value="Bus Type"/>
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;This parameter identifies
+                                the bus type of the network channel.&lt;/p&gt;
+
+                                &lt;p&gt;Dependencies:&lt;/p&gt;
+                                &lt;ul&gt;
+                                  &lt;li&gt;If the bus type of the network channel
+                                  is set to &lt;em&gt;COMM_BUS_TYPE_INTERNAL&lt;/em&gt;
+                                  the Network Management Variant has to be set
+                                  to &lt;em&gt;NONE&lt;/em&gt; and if the bus type of the network
+                                  channel is set to &lt;em&gt;COMM_BUS_TYPE_LIN&lt;/em&gt;
+                                  the Network Management Variant has to be set
+                                  to &lt;em&gt;LIGHT&lt;/em&gt;
+                                  &lt;/li&gt;
+                                &lt;/ul&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="LABEL" value="Bus Type"/>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        
+                        <a:da name="DEFAULT" value="COMM_BUS_TYPE_CAN"/>
+                        
+                        <a:da name="RANGE">
+                          <a:v>COMM_BUS_TYPE_CAN</a:v>
+                          <a:v>COMM_BUS_TYPE_ETH</a:v>
+                          <a:v>COMM_BUS_TYPE_FR</a:v>
+                          <a:v>COMM_BUS_TYPE_INTERNAL</a:v>
+                          <a:v>COMM_BUS_TYPE_LIN</a:v>
+                        </a:da>
+                      </v:var>
+                      <v:var name="ComMChannelId" type="INTEGER">
+                        <a:a name="COLUMN_TITLE" value="Channel ID"/>
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;Identification number of the network channel.&lt;/p&gt;
+
+                                &lt;p&gt;Dependencies:&lt;/p&gt;
+                                &lt;ul&gt;
+                                  &lt;li&gt;The identifier of the network channel
+                                  must be zero-based, consecutive and unique.&lt;/li&gt;
+                                &lt;/ul&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="LABEL" value="Network Channel ID"/>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                        
+                        <a:da name="DEFAULT" type="XPath" expr="node:pos(..)"/>
+                        
+                      </v:var>
+                      <v:ref name="ComMChannelPartitionRef" type="REFERENCE">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;Channel partition reference&lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="LABEL" value="Channel EcuC Partition Reference"/>
+                        <a:a name="OPTIONAL" value="true"/>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        
+                        <a:da name="ENABLE" value="false"/>
+                        
+                        <a:da name="REF" value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/EcuC/EcucPartitionCollection/EcucPartition"/>
+                      </v:ref>
+                      <v:var name="ComMFullCommRequestNotificationEnabled" type="BOOLEAN">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;Defines if the optional SenderReceiver Port of Interface
+                                &lt;code&gt;ComM_CurrentChannelRequest&lt;/code&gt; will
+                                be provided for the network channel.&lt;/p&gt;
+                                &lt;ul&gt;
+                                  &lt;li&gt;&lt;code&gt;TRUE&lt;/code&gt;: Enabled&lt;/li&gt;
+                                  &lt;li&gt;&lt;code&gt;FALSE&lt;/code&gt;: Disabled&lt;/li&gt;
+                                &lt;/ul&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        
+                        <a:da name="DEFAULT" value="false"/>
+                      </v:var>
+                      <v:var name="ComMGlobalNvmBlockDescriptor" type="BOOLEAN">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;If this parameter is set to "true", the NoWakeUp inhibition
+                                state of the channel shall be stored (in some implementation
+                                specific way) in the block pointed to by ComMGlobalNvmBlockDescriptor.&lt;/p&gt;
+
+                                &lt;p&gt;Dependencies:&lt;/p&gt;
+                                &lt;ul&gt;
+                                  &lt;li&gt;If the parameter is set to true, a valid Nvm block reference must be
+                                  given in the (existing, i.e. multiplicity 1) ComMGlobalNvmBlockDescriptor
+                                  pointing to a sufficiently big Nvm block.&lt;/li&gt;
+                                &lt;/ul&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="LABEL" value="Enable Storage for NoWakeUp Inhibition"/>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        
+                        <a:da name="DEFAULT" value="false"/>
+                        
+                      </v:var>
+                      <v:var name="ComMMainFunctionPeriod" type="FLOAT">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;Specifies the period the
+                                MainFunction has to be triggered in seconds.&lt;/p&gt;
+                                &lt;p&gt;ComM scheduling shall be at least as fast as the communication stack
+                                 and a schedule longer than 100ms makes no sense for communication.&lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="LABEL" value="Main Function Period"/>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        
+                        <a:da name="DEFAULT" value="0.020"/>
+                        
+                      </v:var>
+                      <v:var name="ComMNoCom" type="BOOLEAN">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;If this parameter is enabled it is not possible to
+                                switch the mode of the network channel to
+                                &lt;em&gt;Full Communication&lt;/em&gt; or &lt;em&gt;Silent Communication&lt;/em&gt;.&lt;/p&gt;
+
+                                &lt;p&gt;This parameter just defines the initial value.
+                                The limitation can be modified by
+                                calling &lt;code&gt;ComM_LimitChannelToNoComMode()&lt;/code&gt;.&lt;/p&gt;
+                                &lt;ul&gt;
+                                  &lt;li&gt;&lt;code&gt;TRUE&lt;/code&gt;: Enabled - Not allowed to switch to
+                                  Communication Modes above.
+                                  &lt;/li&gt;
+                                  &lt;li&gt;&lt;code&gt;FALSE&lt;/code&gt;: Disabled - Allowed to switch Communication
+                                  Modes above.
+                                  &lt;/li&gt;
+                                &lt;/ul&gt;
+                                &lt;p&gt;Dependencies:&lt;/p&gt;
+                                &lt;ul&gt;
+                                  &lt;li&gt;Mode Limitation must be enabled.&lt;/li&gt;
+                                &lt;/ul&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="LABEL" value="No Change To Communication"/>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        
+                        <a:da name="DEFAULT" value="false"/>
+                        
+                      </v:var>
+                      <v:var name="ComMNoWakeup" type="BOOLEAN">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;Defines if an ECU is not allowed to wake-up
+                                the network channel.&lt;/p&gt;
+                                &lt;ul&gt;
+                                  &lt;li&gt;&lt;code&gt;TRUE&lt;/code&gt;: Enabled (not allowed to wake-up)&lt;/li&gt;
+                                  &lt;li&gt;&lt;code&gt;FALSE&lt;/code&gt;: Disabled.&lt;/li&gt;
+                                &lt;/ul&gt;
+                                &lt;p&gt;This is the default/init value of the runtime variable that can be
+                                 changed during runtime using &lt;code&gt;ComM_PreventWakeUp()&lt;/code&gt;.&lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="LABEL" value="Prevent Channel Wake Up"/>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        
+                        <a:da name="DEFAULT" value="false"/>
+                      </v:var>
+                      <v:var name="ComMPncGatewayType" type="ENUMERATION">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;Identifies the Partial Network Gateway behaviour of a ComMChannel.&lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="LABEL" value="Partial Network Gateway Type"/>
+                        <a:a name="OPTIONAL" value="true"/>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        
+                        <a:da name="DEFAULT" value="COMM_GATEWAY_TYPE_ACTIVE"/>
+                        <a:da name="ENABLE" value="false"/>
+                        <a:da name="RANGE">
+                          <a:v>COMM_GATEWAY_TYPE_ACTIVE</a:v>
+                          <a:v>COMM_GATEWAY_TYPE_PASSIVE</a:v>
+                        </a:da>
+                      </v:var>
+                      <v:var name="ComMWakeupSleepRequestEnabled" type="BOOLEAN">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                              &lt;p&gt;
+                                Used for communication channels where the corresponding hardware support wake-up and/or 
+                                sleep request capability on the network, e.g. OA TC10 compatible PHYs for Ethernet.                               
+                              &lt;/p&gt;
+                              &lt;ul&gt;
+                                &lt;li&gt;&lt;code&gt;TRUE&lt;/code&gt;: Enabled&lt;/li&gt;
+                                &lt;li&gt;&lt;code&gt;FALSE&lt;/code&gt;: Disabled&lt;/li&gt;
+                              &lt;/ul&gt;
+                            &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="OPTIONAL" value="true"/>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        
+                        <a:da name="DEFAULT" value="false"/>
+                        <a:da name="EDITABLE" value="true"/>
+                        <a:da name="ENABLE" value="false"/>
+                        
+                      </v:var>
+                      <v:ctr name="ComMNetworkManagement" type="IDENTIFIABLE">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                This container contains the configuration parameters
+                                of the networkmanagement.
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="LABEL" value="Network Management Configuration"/>
+                        
+                        <v:var name="ComMNmLightTimeout" type="FLOAT">
+                          <a:a name="DESC">
+                            <a:v>&lt;html&gt;
+                                  Defines the timeout (in seconds)
+                                  after state &lt;em&gt;ready sleep&lt;/em&gt; is left.
+                                  &lt;p&gt;Range: greater than 0 and less than or equal to 255 &lt;/p&gt;
+
+                                  &lt;p&gt;Dependencies:&lt;/p&gt;
+                                  &lt;ul&gt;
+                                    &lt;li&gt;Even though the AUTOSAR Specification allows a minimum value of 0,
+                                        the possible minimum value has been restricted to 0.001 which is
+                                        also the minimum value of ComMMainFunctionPeriod.
+                                        Rationale: A timeout value configured to be less than the value of
+                                        the Main Function Period cannot really be ensured.&lt;/li&gt;
+                                    &lt;li&gt;The value of this parameter must be greater or equal
+                                        the value of ComMMainFunctionPeriod.&lt;/li&gt;
+                                  &lt;/ul&gt;
+                                &lt;/html&gt;</a:v>
+                          </a:a>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="LABEL" value="Network Management Light Timeout"/>
+                          <a:a name="OPTIONAL" value="true"/>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          
+                          <a:da name="DEFAULT" value="10.000"/>
+                          <a:da name="ENABLE" value="false"/>
+                          
+                        </v:var>
+                        <v:var name="ComMNmVariant" type="ENUMERATION">
+                          <a:a name="COLUMN_TITLE" value="Nm Variant"/>
+                          <a:a name="DESC">
+                            <a:v>&lt;html&gt;
+                                  &lt;p&gt;Defines the functionality of the networkmanagement.
+                                  Shall be harmonized with NM configuration.&lt;/p&gt;
+
+                                  &lt;ul&gt;
+                                    &lt;li&gt;&lt;code&gt;NONE&lt;/code&gt; : No NM available&lt;/li&gt;
+
+                                    &lt;li&gt;&lt;code&gt;LIGHT&lt;/code&gt; : No AUTOSAR NM available
+                                                             but functionality to shut
+                                                             down a network channel
+                                                             (not synchronized).&lt;/li&gt;
+
+                                    &lt;li&gt;&lt;code&gt;PASSIVE&lt;/code&gt; : AUTOSAR NM available
+                                                               but ECU is not allowed to
+                                                               keep the bus awake.&lt;/li&gt;
+
+                                    &lt;li&gt;&lt;code&gt;FULL&lt;/code&gt; : AUTOSAR NM available (default)&lt;/li&gt;
+                                  &lt;/ul&gt;
+                                &lt;/html&gt;</a:v>
+                          </a:a>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="LABEL" value="Network Management Variant"/>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          
+                          <a:da name="DEFAULT" value="FULL"/>
+                          
+                          <a:da name="RANGE">
+                            <a:v>FULL</a:v>
+                            <a:v>LIGHT</a:v>
+                            <a:v>NONE</a:v>
+                            <a:v>PASSIVE</a:v>
+                            <a:v>SLAVE_ACTIVE</a:v>
+                            <a:v>SLAVE_PASSIVE</a:v>
+                          </a:da>
+                        </v:var>
+                        <v:var name="ComMPncNmRequest" type="BOOLEAN">
+                          <a:a name="DESC">
+                            <a:v>&lt;html&gt;
+                                  &lt;p&gt;If this parameter equals true then every time a FULL Communication
+                                  is requested due to a change in the PNC state machine to PNC_REQUESTED
+                                  Nm shall be called using the API Nm_NetworkRequest.&lt;/p&gt;
+                                  &lt;p&gt;Dependencies:&lt;/p&gt;
+                                  &lt;ul&gt;
+                                    &lt;li&gt;Channel is not limited to COMM_NO_COM. Refer &lt;function&gt;ComM_LimitChannelToNoComMode()&lt;/function&gt;.&lt;/li&gt;
+                                    &lt;li&gt;Wake up is not inhibited. Refer parameter &lt;code&gt;ComMWakeupInhibitionEnabled&lt;/code&gt;&lt;/li&gt;
+                                  &lt;/ul&gt;
+                                &lt;/html&gt;</a:v>
+                          </a:a>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="LABEL" value="Pnc Network Request"/>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          
+                          <a:da name="DEFAULT" value="false"/>
+                          
+                        </v:var>
+                      </v:ctr>
+                      <v:lst name="ComMUserPerChannel" type="MAP">
+                        <a:a name="COLUMNS" value="ComMUserChannel"/>
+                        <a:a name="LABEL" value="User Per Channel"/>
+                        <a:da name="MIN" value="0"/>
+                        <v:ctr name="ComMUserPerChannel" type="IDENTIFIABLE">
+                          <a:a name="DESC">
+                            <a:v>&lt;html&gt;
+                                  &lt;p&gt;This container contains a list of identifiers that are
+                                  needed to refer to a user in the system which is linked to
+                                  a channel.&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                          </a:a>
+                          <a:a name="POSTBUILDCHANGEABLE" value="false"/>
+                          
+                          
+                          <a:da name="TITLE" value="User Per Channel"/>
+                          <v:ref name="ComMUserChannel" type="REFERENCE">
+                            <a:a name="COLUMN_TITLE" value="User Reference"/>
+                            <a:a name="DESC">
+                              <a:v>&lt;html&gt;
+                                    &lt;p&gt;Reference to the ComMUser that corresponds to this channel user.&lt;/p&gt;
+                                    &lt;ul&gt;
+                                      &lt;li&gt;&lt;code&gt;ImplementationType&lt;/code&gt;: COMM_UserHandleType&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                  &lt;/html&gt;</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                            </a:a>
+                            <a:a name="LABEL" value="User Reference"/>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            
+                            
+                            <a:da name="REF" value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/ComM/ComMConfigSet/ComMUser"/>
+                          </v:ref>
+                        </v:ctr>
+                      </v:lst>
+                      <v:lst name="ComMManageReference">
+                        <a:a name="LABEL" value="ComMManageReference"/>
+                        <a:da name="MAX" value="1"/>
+                        <a:da name="MIN" value="0"/>
+                        <v:ref name="ComMManageReference" type="REFERENCE">
+                          <a:a name="DESC">
+                            <a:v>&lt;html&gt;
+                                  &lt;p&gt;Reference to the managing channel.&lt;/p&gt;
+                                  &lt;ul&gt;
+                                    &lt;li&gt;&lt;code&gt;ImplementationType&lt;/code&gt;: COMM_ChannelType&lt;/li&gt;
+                                  &lt;/ul&gt;
+                                &lt;/html&gt;</a:v>
+                          </a:a>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          
+                          
+                          <a:da name="REF" value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/ComM/ComMConfigSet/ComMChannel"/>
+                        </v:ref>
+                      </v:lst>
+                    </v:ctr>
+                  </v:lst>
+                  <v:lst name="ComMPnc" type="MAP">
+                    <a:a name="LABEL" value="Partial Network Cluster"/>
+                    <a:da name="MIN" value="0"/>
+                    <v:ctr name="ComMPnc" type="IDENTIFIABLE">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              &lt;p&gt;This container contains the configuration of the
+                               partial network cluster (PNC).&lt;/p&gt;
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="POSTBUILDCHANGEABLE" value="false"/>
+                      
+                      
+                      <v:var name="ComMPncId" type="INTEGER">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;Partial network cluster identification number.&lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="LABEL" value="PNC ID"/>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                        
+                        
+                      </v:var>
+                      <v:var name="ComMPncWakeupSleepRequestEnabled" type="BOOLEAN">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                              &lt;p&gt;
+                                Used for PNCs where a requested PNC shall report an 
+                                active communication request towards the BswM. 
+                                The BswM forward the active communication request to the 
+                                lower layer communication channels where the used hardware support wake-up and/or sleep 
+                                request capability on the network, e.g. OA TC10 compatible PHYs for Ethernet. 
+                                This is used e.g. for Ethernet Switch port group switching.                                
+                              &lt;/p&gt;
+                              &lt;ul&gt;
+                                &lt;li&gt;&lt;code&gt;TRUE&lt;/code&gt;: Enabled&lt;/li&gt;
+                                &lt;li&gt;&lt;code&gt;FALSE&lt;/code&gt;: Disabled&lt;/li&gt;
+                              &lt;/ul&gt;
+                            &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="OPTIONAL" value="true"/>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        
+                        <a:da name="DEFAULT" value="false"/>
+                        <a:da name="EDITABLE" value="true"/>
+                        <a:da name="ENABLE" value="false"/>
+                      </v:var>
+                      <v:lst name="ComMChannelPerPnc">
+                        <a:a name="LABEL" value="Channel Per PNC"/>
+                        <a:da name="MIN" value="1"/>
+                        <v:ref name="ComMChannelPerPnc" type="REFERENCE">
+                          <a:a name="DESC">
+                            <a:v>&lt;html&gt;
+                                  &lt;p&gt;Reference to the ComMChannel that is required for this PNC.&lt;/p&gt;
+                                  &lt;ul&gt;
+                                    &lt;li&gt;&lt;code&gt;ImplementationType&lt;/code&gt;: COMM_ChannelType&lt;/li&gt;
+                                  &lt;/ul&gt;
+                                &lt;/html&gt;</a:v>
+                          </a:a>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="true"/>
+                          <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                          
+                          
+                          <a:da name="REF" value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/ComM/ComMConfigSet/ComMChannel"/>
+                        </v:ref>
+                      </v:lst>
+                      <v:lst name="ComMUserPerPnc">
+                        <a:a name="LABEL" value="User Per PNC"/>
+                        
+                        <a:da name="MIN" value="0"/>
+                        <v:ref name="ComMUserPerPnc" type="REFERENCE">
+                          <a:a name="DESC">
+                            <a:v>&lt;html&gt;
+                                  &lt;p&gt;Reference to the ComMUsers that correspond to this PNC.&lt;/p&gt;
+                                  &lt;ul&gt;
+                                    &lt;li&gt;&lt;code&gt;ImplementationType&lt;/code&gt;: COMM_UserHandleType&lt;/li&gt;
+                                  &lt;/ul&gt;
+                                &lt;/html&gt;</a:v>
+                          </a:a>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="LABEL" value="User Per PNC"/>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="true"/>
+                          <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                          
+                          
+                          <a:da name="REF" value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/ComM/ComMConfigSet/ComMUser"/>
+                        </v:ref>
+                      </v:lst>
+                      <v:lst name="ComMPncComSignal" type="MAP">
+                        <a:a name="LABEL" value="PNC Com Signal"/>
+                        
+                        <v:ctr name="ComMPncComSignal" type="IDENTIFIABLE">
+                          <a:a name="DESC">
+                            <a:v>&lt;html&gt;
+                                  &lt;p&gt;Represents the PncComSignals which are used to communicate
+                                  the EIRA and ERA status of this PNC.&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                          </a:a>
+                          <a:a name="POSTBUILDCHANGEABLE" value="false"/>
+                          
+                          
+                          <v:var name="ComMPncComSignalDirection" type="ENUMERATION">
+                            <a:a name="DESC">
+                              <a:v>&lt;html&gt;
+                                    &lt;p&gt;Indicates the communication direction of this PncComSignal.&lt;/p&gt;
+                                  &lt;/html&gt;</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                            </a:a>
+                            <a:a name="LABEL" value="PNC Com Signal Direction"/>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            
+                            
+                            <a:da name="RANGE">
+                              <a:v>RX</a:v>
+                              <a:v>TX</a:v>
+                            </a:da>
+                          </v:var>
+                          <v:var name="ComMPncComSignalKind" type="ENUMERATION">
+                            <a:a name="DESC">
+                              <a:v>&lt;html&gt;
+                                    &lt;p&gt;Indicates whether this PncComSignal represents
+                                     EIRA or ERA PNC information.&lt;/p&gt;
+                                  &lt;/html&gt;</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                            </a:a>
+                            <a:a name="LABEL" value="PNC Com Signal Kind"/>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            
+                            <a:da name="DEFAULT" value="EIRA"/>
+                            <a:da name="EDITABLE" value="true"/>
+                            
+                            <a:da name="RANGE">
+                              <a:v>EIRA</a:v>
+                              <a:v>ERA</a:v>
+                            </a:da>
+                          </v:var>
+                          <v:ref name="ComMPncComSignalChannelRef" type="REFERENCE">
+                            <a:a name="DESC">
+                              <a:v>&lt;html&gt;
+                                    &lt;p&gt;Reference to the ComMChannel which is used to determine
+                                    whether this PncComSignal shall participate in the active or
+                                    passive role (via the parameter ComMPncGatewayType of the
+                                    ComMChannel). Not applicable if ComMPncComSignalKind is EIRA.&lt;/p&gt;
+                                    &lt;p&gt;Dependencies:&lt;/p&gt;
+                                    &lt;ul&gt;
+                                      &lt;li&gt;The parameter &lt;code&gt;ComMPncComSignalKind&lt;/code&gt; must be set to 'ERA'.&lt;/li&gt;
+                                      &lt;li&gt;The parameter &lt;code&gt;ComMPncGatewayEnabled&lt;/code&gt; must be set to 'true'.&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                  &lt;/html&gt;</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PreCompile">VariantPostBuild</icc:v>
+                            </a:a>
+                            <a:a name="LABEL" value="PNC Com Signal Channel Reference"/>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            
+                            <a:da name="ENABLE" type="XPath" expr="../ComMPncComSignalKind = 'ERA'"/>
+                            
+                            <a:da name="REF" value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/ComM/ComMConfigSet/ComMChannel"/>
+                          </v:ref>
+                          <v:ref name="ComMPncComSignalRef" type="SYMBOLIC-NAME-REFERENCE">
+                            <a:a name="DESC">
+                              <a:v>&lt;html&gt;
+                                    &lt;p&gt;Reference to the ComSignal which is used to transport
+                                    the partial network channel request information.&lt;/p&gt;
+                                  &lt;/html&gt;</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                            </a:a>
+                            <a:a name="LABEL" value="PNC Com Signal Reference"/>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            
+                            
+                            <a:da name="REF" value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Com/ComConfig/ComSignal"/>
+                          </v:ref>
+                        </v:ctr>
+                      </v:lst>
+                      <v:lst name="ComMPncEthIfSwitchPortGroupRef">
+                        <a:a name="LABEL" value="PNC EthIf switch port group references"/>
+                        <a:da name="MAX" value="255"/>
+                        <a:da name="MIN" value="0"/>
+                        <v:ref name="ComMPncEthIfSwitchPortGroupRef" type="REFERENCE">
+                          <a:a name="DESC">
+                            <a:v>&lt;html&gt;
+                                    &lt;p&gt;Reference to the PortGroups that correspond to this PNC&lt;/p&gt;
+                                  &lt;/html&gt;</a:v>
+                          </a:a>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PostBuild">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="LABEL" value="EthIf Switch port group references"/>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="true"/>
+                          <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                          
+                          
+                          <a:da name="REF" value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/EthIf/EthIfConfigSet/EthIfSwitchPortGroup"/>
+                        </v:ref>
+                      </v:lst>
+                    </v:ctr>
+                  </v:lst>
+                  <v:lst name="ComMUser" type="MAP">
+                    <a:a name="COLUMNS" value="ComMUserIdentifier"/>
+                    <a:a name="LABEL" value="Users"/>
+                    <v:ctr name="ComMUser" type="IDENTIFIABLE">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              &lt;p&gt;This container contains a list of user.&lt;/p&gt;
+
+                              &lt;p&gt;For each user the Rte creates ports for
+                              requesting communication modes and for notification
+                              of mode changes.&lt;/p&gt;
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="POSTBUILDCHANGEABLE" value="false"/>
+                      
+                      
+                      <a:da name="TITLE" value="User"/>
+                      <v:var name="ComMUserIdentifier" type="INTEGER">
+                        <a:a name="COLUMN_TITLE" value="User ID"/>
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;Numeric identifier of one
+                                user of the Communication Manager.&lt;/p&gt;
+
+                                &lt;p&gt;Dependencies:&lt;/p&gt;
+                                &lt;ul&gt;
+                                  &lt;li&gt;The user identifier must be
+                                  zero-based and consective.&lt;/li&gt;
+                                &lt;/ul&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="LABEL" value="User Identifier"/>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                        
+                        <a:da name="DEFAULT" type="XPath" expr="node:pos(..)"/>
+                        
+                      </v:var>
+                      <v:ref name="ComMUserEcucPartitionRef" type="REFERENCE">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;Denotes in which "EcucPartition" the requester
+                                is executed. When the partition is stopped, the communication
+                                request shall be cancelled in the ComM to avoid a stay-awake
+                                situation of the bus due to a stopped partition.&lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="OPTIONAL" value="true"/>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        
+                        <a:da name="ENABLE" value="false"/>
+                        
+                        <a:da name="REF" value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/EcuC/EcucPartitionCollection/EcucPartition"/>
+                      </v:ref>
+                    </v:ctr>
+                  </v:lst>
+                </v:ctr>
+              </v:lst>
+              <v:ctr name="ComMGeneral" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                        General configuration parameters of the Communication Manager.
+                      &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="General Configuration"/>
+                
+                
+                <v:var name="ComMMultiCoreSupport" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                            &lt;p&gt;Enables MultiCoreSupport.&lt;/p&gt;
+                          &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="ComM multicore support"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  
+                  <a:da name="DEFAULT" value="false"/>
+                  
+                </v:var>
+                <v:ref name="ComMMasterCoreEcuCPartitionRef" type="REFERENCE">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;Master Core EcuC Partition Ref&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Master Core EcuC Partition Reference"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  
+                  <a:da name="ENABLE" type="XPath" expr="as:modconf('ComM')[1]/ComMGeneral/ComMMultiCoreSupport = 'true'"/>
+                  
+                  <a:da name="REF" value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/EcuC/EcucPartitionCollection/EcucPartition"/>
+                </v:ref>
+                <v:ref name="ComMMasterPNCEcuCPartitionRef" type="REFERENCE">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;PNC EcuC Partition Ref&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Pnc EcuC Partition Reference"/>
+                  <a:a name="OPTIONAL" value="true"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  
+                  <a:da name="ENABLE" value="false"/>
+                  
+                  <a:da name="REF" value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/EcuC/EcucPartitionCollection/EcucPartition"/>
+                </v:ref>
+                <v:ref name="ComMInhibitionEcuCPartitionRef" type="REFERENCE">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;Inhibition EcuC Partition Ref&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Inhibition EcuC Partition Reference"/>
+                  <a:a name="OPTIONAL" value="true"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  
+                  <a:da name="ENABLE" value="false"/>
+                  
+                  <a:da name="REF" value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/EcuC/EcucPartitionCollection/EcucPartition"/>
+                </v:ref>
+                <v:var name="ComMDcmUsage" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;
+                            This parameter enables the usage of the Dcm. In case
+                            this parameter is set to &lt;code&gt;false&lt;/code&gt;:
+                            &lt;ul&gt;
+                              &lt;li&gt;
+                                ComM does not provide the API functions
+                                &lt;code&gt;ComM_DCM_ActiveDiagnostic()&lt;/code&gt; and
+                                &lt;code&gt;ComM_DCM_InactiveDiagnostic&lt;/code&gt;
+                              &lt;/li&gt;
+                              &lt;li&gt;
+                                ComM does not call the API functions
+                                &lt;code&gt;Dcm_ComM_FullComModeEntered()&lt;/code&gt;,
+                                &lt;code&gt;Dcm_ComM_SilentComModeEntered()&lt;/code&gt;
+                                and &lt;code&gt;Dcm_ComM_NoComModeEntered()&lt;/code&gt;
+                              &lt;/li&gt;
+                            &lt;/ul&gt;
+                          &lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Enable Dcm Usage"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" type="XPath" expr="count(as:modconf('Dcm')/*) &gt; 0"/>
+                  
+                  
+                </v:var>
+                <v:var name="ComM0PncVectorAvoidance" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          Avoids sending of 0-PNC-Vectors in case
+                          ComMPncGatewayEnabled is enabled
+                          &lt;ul&gt;
+                            &lt;li&gt;&lt;code&gt;TRUE&lt;/code&gt;: Enabled&lt;/li&gt;
+                            &lt;li&gt;&lt;code&gt;FALSE&lt;/code&gt;: Disabled&lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Enable ComM0PncVectorAvoidance"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="ENABLE" type="XPath" expr="as:modconf('ComM')[1]/ComMGeneral/ComMPncGatewayEnabled = 'true'"/>
+                </v:var>
+                <v:var name="ComMDevErrorDetect" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          Switches the Development Error Detection and
+                          Notification &lt;code&gt;ON&lt;/code&gt; or &lt;code&gt;OFF&lt;/code&gt;.
+                          &lt;ul&gt;
+                            &lt;li&gt;&lt;code&gt;TRUE&lt;/code&gt;: Enabled&lt;/li&gt;
+                            &lt;li&gt;&lt;code&gt;FALSE&lt;/code&gt;: Disabled&lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Enable Development Error Detection"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  
+                  <a:da name="DEFAULT" value="true"/>
+                </v:var>
+                <v:var name="ComMDirectUserMapping" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;If this parameter is set to true the configuration
+                          tool shall automatically create a ComMUser per ComMPnc
+                          and a ComMUser per ComMChannel.&lt;/p&gt;
+
+                          &lt;p&gt;The shortName of the generated ComMUsers shall follow
+                          the following naming convention:
+                            &lt;ul&gt;
+                              &lt;li&gt;&lt;code&gt;PNCUser_ComMPncId&lt;/code&gt;, e.g. PNCUser_13&lt;/li&gt;
+                              &lt;li&gt;&lt;code&gt;ChannelUser_ComMChannelId&lt;/code&gt;, e.g. ChannelUser_25&lt;/li&gt;
+                            &lt;/ul&gt;
+                          &lt;/p&gt;
+
+                          &lt;p&gt;Restriction: ComMUser, which are created due to this
+                          configuration parameter, shall not be used by SWCs (only
+                          available for BswM).&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Direct User Mapping"/>
+                  <a:a name="OPTIONAL" value="true"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="ENABLE" value="false"/>
+                </v:var>
+                <v:var name="ComMEcuGroupClassification" type="INTEGER">
+                  <a:a name="DEFAULT_RADIX" value="BIN"/>
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;This parameter is interpreted as a bitfield
+                          where each bit enables/disables a mode inhibition.&lt;/p&gt;
+
+                          &lt;ul&gt;
+                            &lt;li&gt;&lt;code&gt;Bit 0&lt;/code&gt;:
+                            Wake Up inhibition active&lt;/li&gt;
+
+                            &lt;li&gt;&lt;code&gt;Bit 1&lt;/code&gt;:
+                            Limit to &lt;em&gt;No Communication&lt;/em&gt; mode&lt;/li&gt;
+                          &lt;/ul&gt;
+
+                          &lt;p&gt;For Example:&lt;/p&gt;
+                          &lt;p&gt;&lt;code&gt;00000011&lt;/code&gt;: Wake up inhibition and
+                          limitation to &lt;em&gt;No Communication&lt;/em&gt; mode active&lt;/p&gt;
+
+                          &lt;p&gt;Dependencies:&lt;/p&gt;
+
+                          &lt;ul&gt;
+                            &lt;li&gt;Mode Limitation must be enabled.&lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="ECU Group Classification"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  
+                  <a:da name="DEFAULT" value="3"/>
+                  
+                </v:var>
+                <v:var name="ComMModeLimitationEnabled" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;This parameter enables the
+                          mode limitation functionality.&lt;/p&gt;
+                          &lt;ul&gt;
+                            &lt;li&gt;&lt;code&gt;TRUE&lt;/code&gt;: Enabled&lt;/li&gt;
+                            &lt;li&gt;&lt;code&gt;FALSE&lt;/code&gt;: Disabled&lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Mode Limitation"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="ComMPncGatewayEnabled" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;Enables or disables support of Partial Network Gateway.&lt;/p&gt;
+                          &lt;ul&gt;
+                            &lt;li&gt;&lt;code&gt;False&lt;/code&gt;: Partial Networking Gateway is disabled&lt;/li&gt;
+                            &lt;li&gt;&lt;code&gt;True&lt;/code&gt;: Partial Networking Gateway is enabled&lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Support for Partial Network Gateway"/>
+                  <a:a name="OPTIONAL" value="false"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  
+                  <a:da name="DEFAULT" value="false"/>
+                  
+                </v:var>
+                <v:var name="ComMPncPrepareSleepTimer" type="FLOAT">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;Time in seconds the PNC state machine shall wait in PNC_PREPARE_SLEEP.&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="PNC PrepareSleep Timer"/>
+                  <a:a name="OPTIONAL" value="true"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  
+                  <a:da name="ENABLE" value="false"/>
+                  
+                </v:var>
+                <v:var name="ComMPncSupport" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;Enables or disables support of partial networking.&lt;/p&gt;
+                          &lt;ul&gt;
+                            &lt;li&gt;&lt;code&gt;False&lt;/code&gt;: Partial Networking is disabled &lt;/li&gt;
+                            &lt;li&gt;&lt;code&gt;True&lt;/code&gt;: Partial Networking is enabled&lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Support for Partial Network Cluster (PNC)"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  
+                  <a:da name="DEFAULT" type="XPath" expr="count(as:modconf('ComM')[1]/ComMConfigSet/*/ComMPnc/*) &gt; 0"/>
+                  
+                </v:var>
+                <v:var name="ComMSynchronizedPncShutdownEnabled" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;Enables or disables support for synchronized shut down.&lt;/p&gt;
+                          &lt;ul&gt;
+                            &lt;li&gt;&lt;code&gt;False&lt;/code&gt;: Synchronized shut down is disabled&lt;/li&gt;
+                            &lt;li&gt;&lt;code&gt;True&lt;/code&gt;: Synchronized shut down is enabled&lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Support for synchronized shut down"/>
+                  <a:a name="OPTIONAL" value="true"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="ENABLE" value="false"/>
+                  
+                </v:var>
+                <v:var name="ComMPnInfoOffset" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                         &lt;p&gt;Position of partial network information inside NM frame.&lt;/p&gt;
+                         &lt;p&gt;Ex. For a NM frame CBV BYTE1 BYTE2 ...BYTE7.&lt;/p&gt;
+                         &lt;ul&gt;
+                            &lt;li&gt;A value 1 for ComMPnInfoOffset, lead to interpreting BYTE1
+                             as holding PN ID 8 to 15.&lt;/li&gt;
+                            &lt;li&gt;A value 2 for ComMPnInfoOffset, lead to interpreting BYTE2
+                             as holdign PN ID 16 to 23.&lt;/li&gt;
+                         &lt;/ul&gt;
+                       &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="PnInfoOfset"/>
+                  <a:a name="OPTIONAL" value="true"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  
+                  <a:da name="DEFAULT" value="1"/>
+                  <a:da name="ENABLE" value="false"/>
+                  
+                </v:var>
+                <v:var name="ComMRelocatablePbcfgEnable" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                         Enables/disables support for relocatable postbuild configuration.
+                         &lt;ul&gt;
+                           &lt;li&gt;True: Postbuild configuration relocatable in memory.&lt;/li&gt;
+                           &lt;li&gt;False: Postbuild configuration not relocatable in memory.&lt;/li&gt;
+                         &lt;/ul&gt;
+                       &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="ComMRelocatablePbcfgEnable"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  
+                  <a:da name="DEFAULT" value="true"/>
+                  <a:da name="EDITABLE" type="XPath" expr="(node:contains(util:distinct(node:refs(as:modconf('PbcfgM')/PbcfgMBswModules/*/PbcfgMBswModuleRef)), as:modconf('ComM')) = 'true')" true="false" false="true"/>
+                </v:var>
+                <v:var name="ComMRteUsage" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;This parameter enables
+                          the usage of the RTE for this module.&lt;/p&gt;
+                           &lt;p&gt;For an easy integration it is
+                          recommended to disable the usage of the
+                          RTE at the beginning of the integration work.&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Enable Rte Usage"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  
+                  <a:da name="DEFAULT" value="false"/>
+                  
+                </v:var>
+                <v:var name="ComMSynchronousWakeUp" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;If this parameter is enabled, a wake up of one
+                          channel shall lead to a wake up of all network channels.&lt;/p&gt;
+                          &lt;ul&gt;
+                            &lt;li&gt;&lt;code&gt;TRUE&lt;/code&gt;: Enabled&lt;/li&gt;
+                            &lt;li&gt;&lt;code&gt;FALSE&lt;/code&gt;: Disabled&lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Synchronous Wake Up"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  
+                  <a:da name="DEFAULT" value="true"/>
+                </v:var>
+                <v:var name="ComMTMinFullComModeDuration" type="FLOAT">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;Minimum time duration in seconds the
+                          ComM spends in the Full Communication mode.&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Minimum Full Communication Mode Duration Time"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  
+                  <a:da name="DEFAULT" value="5"/>
+                  
+                </v:var>
+                <v:var name="ComMVersionInfoApi" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;Switches the possibility to read the published information
+                          with the service &lt;code&gt;ComM_GetPublishedInformation()&lt;/code&gt;.&lt;/p&gt;
+                          &lt;ul&gt;
+                            &lt;li&gt;&lt;code&gt;TRUE&lt;/code&gt;: Enabled&lt;/li&gt;
+                            &lt;li&gt;&lt;code&gt;FALSE&lt;/code&gt;: Disabled&lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Enable Version Info API"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="ComMWakeupInhibitionEnabled" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          Enable wake up inhibition functionality.
+                          &lt;ul&gt;
+                            &lt;li&gt;&lt;code&gt;TRUE&lt;/code&gt;: Enabled&lt;/li&gt;
+                            &lt;li&gt;&lt;code&gt;FALSE&lt;/code&gt;: Disabled&lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Wakeup Inhibition"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:ref name="ComMGlobalNvMBlockDescriptor" type="SYMBOLIC-NAME-REFERENCE">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;Reference to NVRAM block
+                          containing the non volatile data.&lt;/p&gt;
+
+                          &lt;p&gt;Index of the NvMBlockDescriptor will be
+                          used by the ComM module for the identification
+                          of the NvM block&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Global NVRAM Block Descriptor"/>
+                  <a:a name="OPTIONAL" value="true"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  
+                  <a:da name="ENABLE" value="false"/>
+                  
+                  <a:da name="REF" value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/NvM/NvMBlockDescriptor"/>
+                </v:ref>
+                <v:var name="ComMResetAfterForcingNoComm" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;This parameter enables reseting ECU when entering "No Communication"
+                          mode because of an active mode limitation to "No Communication" mode.&lt;/p&gt;
+                          &lt;ul&gt;
+                            &lt;li&gt;&lt;code&gt;TRUE&lt;/code&gt;: Enabled&lt;/li&gt;
+                            &lt;li&gt;&lt;code&gt;FALSE&lt;/code&gt;: Disabled&lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Reset enable"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  
+                  <a:da name="DEFAULT" value="false"/>
+                  
+                </v:var>
+                <v:var name="ComMReleaseNoneChannels" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                        &lt;p&gt;
+                          Specifies if all channels with
+                          attribute ComMBusType set to COMM_BUS_TYPE_INTERNAL shall switch from
+                          Ready Sleep state to No Communication.
+                        &lt;/p&gt;
+                        &lt;ul&gt;
+                          &lt;li&gt;&lt;code&gt;TRUE&lt;/code&gt;If ComMBusType = (COMM_BUS_TYPE_CAN or
+                               COMM_BUS_TYPE_FR or COMM_BUS_TYPE_LIN or COMM_BUS_TYPE_ETH)
+                               and ComMNmVariant = NONE, state transition from Ready Sleep state
+                               to No Communication is not performed.
+                               The transition from Ready Sleep state to No Communication state is
+                               performed only in case ComMBusType = COMM_BUS_TYPE_INTERNAL.
+                          &lt;/li&gt;
+                          &lt;li&gt;&lt;code&gt;FALSE&lt;/code&gt;When entering ready sleep state all channels with
+                               ComMNmVariant = NONE go immediatly to No Communication.
+                          &lt;/li&gt;
+                        &lt;/ul&gt;
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="ComMReleaseNoneChannels"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="EDITABLE" value="true"/>
+                </v:var>
+                <v:var name="ComMPncReleaseChannel" type="ENUMERATION">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                        &lt;p&gt;
+                          Configures when the Full Communication requests shall
+                          be released.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                          When this parameter is set to COMM_NO_INTERNAL_AND_EXTERNAL_REQUESTS,
+                          all Full Communication requests shall be released in the
+                          PNC_NO_COMMUNICATION state (Autosar 4.1.1 and Autosar 3.2.3).
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                          When this parameter is set to COMM_NO_INTERNAL_REQUESTS,
+                          all Full Communication requests shall be released after
+                          leaving the PNC_REQUESTED state (Autosar 4.2.1, see Rfc #63643).
+                        &lt;/p&gt;
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="ComMPncReleaseChannel"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  
+                  <a:da name="DEFAULT" value="COMM_NO_INTERNAL_REQUESTS"/>
+                  <a:da name="EDITABLE" value="true"/>
+                  <a:da name="ENABLE" value="true"/>
+                  <a:da name="RANGE">
+                    <a:v>COMM_NO_INTERNAL_REQUESTS</a:v>
+                    <a:v>COMM_NO_INTERNAL_AND_EXTERNAL_REQUESTS</a:v>
+                  </a:da>
+                </v:var>
+                <v:var name="ComMEnableGetCurrentPNCComMode" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                        &lt;p&gt;
+                          Enables operation GetCurrentPNCComMode of the ComM_UserRequest Client-Server interface
+                        &lt;/p&gt;
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="ComMEnableGetCurrentPNCComMode"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="true"/>
+                  <a:da name="EDITABLE" value="true"/>
+                </v:var>
+                <v:var name="ComMDefineOrder" type="ENUMERATION">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                        &lt;p&gt;
+                          Defines the order to be used for mode declaration group ComMMode.
+                        &lt;/p&gt;
+                         &lt;ul&gt;
+                            &lt;li&gt; &lt;code&gt;EXPLICIT_ORDER&lt;/code&gt; - Explicit order is used.&lt;/li&gt;
+                            &lt;li&gt; &lt;code&gt;ALPHABETIC_ORDER&lt;/code&gt; - Alphabetical order is used.&lt;/li&gt;
+                          &lt;/ul&gt;
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="ComMDefineOrder"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  
+                  <a:da name="DEFAULT" value="EXPLICIT_ORDER"/>
+                  <a:da name="EDITABLE" type="XPath" expr="(../../ComMGeneral/ComMRteUsage = 'true')"/>
+                  <a:da name="RANGE">
+                    <a:v>EXPLICIT_ORDER</a:v>
+                    <a:v>ALPHABETIC_ORDER</a:v>
+                  </a:da>
+                </v:var>
+                <v:var name="ComMOptimizePncIndexingForSpeed" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                        &lt;p&gt;
+                         Instead of looping the PNC list indexing is used this result in less execution time.
+                         With this option more ROM is used depending on numer of PNCs.
+                        &lt;/p&gt;
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="ComMOptimizePncIndexingForSpeed"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="EDITABLE" value="true"/>
+                  <a:da name="ENABLE" type="XPath" expr="as:modconf('ComM')[1]/ComMGeneral/ComMPncSupport = 'true'  "/>
+                </v:var>
+                <v:ctr name="ComMServiceAPI" type="IDENTIFIABLE">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                        &lt;p&gt;
+                          Container for configuration of the service API of ComM.
+                        &lt;/p&gt;
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Service API Parameters"/>
+                  
+                  <v:var name="ComMEnableASR32ServiceAPI" type="BOOLEAN">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                          &lt;p&gt;
+                            Configures whether the AUTOSAR 3.2 service API shall be provided.
+                          &lt;/p&gt;
+                          &lt;ul&gt;
+                            &lt;li&gt; &lt;code&gt;TRUE&lt;/code&gt; = Enables AUTOSAR 3.2 service API.&lt;/li&gt;
+                            &lt;li&gt; &lt;code&gt;FALSE&lt;/code&gt; = Disables AUTOSAR 3.2 service API.&lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Enable AUTOSAR 3.2 service API"/>
+                    <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    
+                    <a:da name="DEFAULT" value="false"/>
+                    <a:da name="EDITABLE" value="true"/>
+                  </v:var>
+                  <v:var name="ComMEnableASR40ServiceAPI" type="BOOLEAN">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                        &lt;p&gt;
+                          Configures whether the AUTOSAR 4.0 service API shall be provided.&lt;/p&gt;
+                          &lt;ul&gt;
+                            &lt;li&gt;&lt;code&gt;TRUE&lt;/code&gt; = Enables AUTOSAR 4.0 service API.&lt;/li&gt;
+                            &lt;li&gt;&lt;code&gt;FALSE&lt;/code&gt; = Disables AUTOSAR 4.0 service API.&lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/html&gt;;</a:v>
+                    </a:a>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Enable AUTOSAR 4.0 service API"/>
+                    <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    
+                    <a:da name="DEFAULT" value="false"/>
+                    <a:da name="EDITABLE" value="true"/>
+                  </v:var>
+                  <v:var name="ComMDefaultASRServiceAPI" type="ENUMERATION">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                          &lt;p&gt;Defines the default AUTOSAR service API.&lt;/p&gt;
+                            &lt;ul&gt;
+                              &lt;li&gt;&lt;code&gt;AUTOSAR_32&lt;/code&gt; = AUTOSAR 3.2 service API is the default one.&lt;/li&gt;
+                              &lt;li&gt;&lt;code&gt;AUTOSAR_40&lt;/code&gt; = AUTOSAR 4.0 service API is the default one.&lt;/li&gt;
+                              &lt;li&gt;&lt;code&gt;NONE&lt;/code&gt; = No default AUTOSAR service API is provided.&lt;/li&gt;
+                            &lt;/ul&gt;
+                          &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Default AUTOSAR service API"/>
+                    <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    
+                    <a:da name="DEFAULT" value="AUTOSAR_40"/>
+                    <a:da name="RANGE">
+                      <a:v>AUTOSAR_32</a:v>
+                      <a:v>AUTOSAR_40</a:v>
+                      <a:v>NONE</a:v>
+                    </a:da>
+                  </v:var>
+                </v:ctr>
+              </v:ctr>
+              <d:ref type="REFINED_MODULE_DEF" value="ASPath:/AUTOSAR/EcucDefs/ComM"/>
+              <v:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>EN:
+                    &lt;html&gt;
+                      Common container, aggregated by all modules. It contains published information about vendor and versions.
+                  &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="Common Published Information"/>
+                
+                <v:var name="ArMajorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Major version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Major Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  
+                  <a:da name="DEFAULT" value="4"/>
+                </v:var>
+                <v:var name="ArMinorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Minor version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Minor Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  
+                  <a:da name="DEFAULT" value="1"/>
+                </v:var>
+                <v:var name="ArPatchVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Patch level version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Patch Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  
+                  <a:da name="DEFAULT" value="1"/>
+                </v:var>
+                <v:var name="SwMajorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Major version number of the vendor specific implementation of the module.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Major Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  
+                  <a:da name="DEFAULT" value="5"/>
+                </v:var>
+                <v:var name="SwMinorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Minor version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Minor Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  
+                  <a:da name="DEFAULT" value="21"/>
+                </v:var>
+                <v:var name="SwPatchVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Patch Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  
+                  <a:da name="DEFAULT" value="4"/>
+                </v:var>
+                <v:var name="ModuleId" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Module ID of this module from Module List
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Numeric Module ID"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  
+                  <a:da name="DEFAULT" value="12"/>
+                </v:var>
+                <v:var name="VendorId" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" value="PreCompile"/>
+                  <a:a name="LABEL" value="Vendor ID"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  
+                  <a:da name="DEFAULT" value="1"/>
+                </v:var>
+                <v:var name="Release" type="STRING_LABEL">
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Release Information"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  
+                  <a:da name="DEFAULT" value=""/>
+                </v:var>
+              </v:ctr>
+            </v:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+
+</datamodel>

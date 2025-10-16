@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<root xmlns="http://www.infineon.com/BifacesConfig"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.infineon.com/BifacesConfig BifacesConfig.xsd ">
+	
+	<!-- Primary architecture configuration -->
+	<primaryArchitecture name="Tricore"/>
+	
+	<!-- Architecture congfigurations -->
+	<architecture name="Tricore" primaryToolchain="Gnuc">
+		<!-- Target congfigurations -->
+		<target name="Tc" enable="true">
+			<output type="elf" enable="true" fileName="$(PROJ_NAME)_tc.elf" tool="Ld"/>
+			<output type="hex" enable="true" fileName="$(PROJ_NAME)_tc.hex" tool="Hex">
+				<input siblingTypes="elf" useObjects="false"/>
+			</output>
+			<output type="srec" enable="false" fileName="$(PROJ_NAME)_tc.srec" tool="Srec">
+				<input siblingTypes="elf" useObjects="false"/>
+			</output>
+			<output type="lib" enable="false" fileName="$(PROJ_NAME)_tc.a" tool="Archiver"/>
+		</target>
+
+		<!-- Toolchain configurations -->
+		<toolchain name="Gnuc" enable="true"
+			path="$(B_Gnuc_COMPILER_PATH)" configFolder="$(B_CONFIG_FILES_FOLDER)/Config_Tricore_Gnuc"
+			configFiles="1_ToolEnv/0_Build/1_Config/Config.mk">
+			<tool name="Cc" type="COMPILER" command="tricore-gcc">
+				<optionSet id="Common">-DAPP_SW=DEMO_APP -DDEMO_APP=1 -DTEST_APP=2 -DDEV_APP=3 -DAURIX2G_MCAL_DEMOAPP=1U -DFR_17_ERAY_PBCFG_0 $(B_GNUC_TRICORE_CC_OPTIONS)</optionSet> 
+                <argument template="{kw:options} @{kw:incpaths_listfile} -c ${kw:lt} -o $@ -save-temps=obj -MMD"/>
+			</tool>
+			<tool name="As" type="ASSEMBLER" command="tricore-gcc">
+				<optionSet id="Common">$(B_GNUC_TRICORE_ASM_OPTIONS)</optionSet>
+				<argument template="{kw:options} @{kw:incpaths_listfile} -c ${kw:lt} -o $@"/>
+			</tool>
+			<tool name="Ld" type="LINKER" command="tricore-gcc">
+				<optionSet id="Common">$(B_GNUC_TRICORE_LD_OPTIONS)</optionSet>
+				<argument template="@{kw:objfiles_listfile} $(B_GNUC_TRICORE_LIB_INC) $(B_GNUC_TRICORE_LIBS) -o $@"/>
+				<argument template="{kw:options} -Wl,-T {kw:linkerfile} -Wl,-Map={kw:mapfile} -Wl,--extmap=a"/>
+			</tool>
+			<tool name="Hex" type="OTHER" command="tricore-objcopy">
+				<argument template="${kw:lt} -O ihex $@"/>
+			</tool>
+			<tool name="Srec" type="OTHER" command="tricore-objcopy">
+				<argument template="${kw:lt} -O srec $@"/>
+			</tool>
+			<tool name="Ar" type="ARCHIVER" command="tricore-ar">
+				<argument template="rcs $@ @{kw:objfiles_listfile}"/>
+			</tool>
+		</toolchain>
+	</architecture>
+	
+	<!-- Toolchain configurations -->
+	<specificInclude internalPaths="*/Sfr/TC38xA*, /BaseSw/*/Tricore, */BaseSw/*/Platform, */BaseSw/*/CpuGeneric"/>
+	<specificInclude externalPaths=""/>
+    <sourceFolder paths="../../../McIsar"/>
+    <selection enable="true">
+        <use files="*0_Src*,*Src/Infra_Prod/Platform*,*Src/Infra_Prod/Sfr/TC38xA/*,*Src/Mcal/*,*Stm_Irq/*"/>
+        <discard files="*Plugins*,*AS422*,*Ifx_Cfg_SswBmhd*,*Msc*,*CfgMcal_*"/>
+    </selection>
+</root>

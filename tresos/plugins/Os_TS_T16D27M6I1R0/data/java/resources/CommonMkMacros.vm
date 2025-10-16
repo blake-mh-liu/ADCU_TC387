@@ -1,0 +1,29 @@
+## Some common macros to be used in the Microkernel templates.
+##
+## Make sure to include CommonMkVars.vm before you include this file.
+##
+##
+##
+#if( $OsModel.isMicroKernel() )
+##
+##
+##
+## VM_MkStackStart($runnable) creates a string that represents the threads stack start address for
+## the provided runnable element.
+#macro( VM_MkStackStart $runnable )
+#* *#&${runnable.getMkStackVarName()}[$runnable.getMkStackStartIndex()]##
+#end
+##
+##
+##
+## VM_MkStackEnd($runnable) creates a string that represents the threads stack end address for the
+## provided runnable element.
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_TASKCFG.stackend, 2
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_ISRCFG.stackend, 2
+#macro( VM_MkStackEnd $runnable )
+#* *#&${runnable.getMkStackVarName()}[${runnable.getMkStackEndIndex()}#if(!$IsMkVersionOlderThan21) - MK_HW_STACK_RESERVE#end]##
+#end
+##
+##
+##
+#end

@@ -1,0 +1,899 @@
+<?xml version='1.0'?>
+<!--
+/*******************************************************************************
+**                                                                            **
+** Copyright (C) Infineon Technologies (2023)                                 **
+**                                                                            **
+** All rights reserved.                                                       **
+**                                                                            **
+** This document contains proprietary information belonging to Infineon       **
+** Technologies. Passing on and copying of this document, and communication   **
+** of its contents is not permitted without prior written authorization.      **
+**                                                                            **
+********************************************************************************
+**                                                                            **
+**  FILENAME  : Uart.xdm                                                      **
+**                                                                            **
+**  VERSION   :  9.0.0                                                        **
+**                                                                            **
+**  DATE      : 2023-05-24                                                    **
+**                                                                            **
+**  VARIANT   : Variant PB                                                    **
+**                                                                            **
+**  PLATFORM  : Infineon AURIX2G                                              **
+**                                                                            **
+**  AUTHOR    : DL-AUTOSAR-Engineering                                        **
+**                                                                            **
+**  VENDOR    : Infineon Technologies                                         **
+**                                                                            **
+**  TRACEABILITY : [cover parentID={F5CF0050-FA3F-4e14-8C3E-FD0E8CB08831}]    **
+**                                                                            **
+**  DESCRIPTION  : XML data model for Uart driver                             **
+**                                                                            **
+**  [/cover]                                                                  **
+**                                                                            **
+**  SPECIFICATION(S) : NA                                                     **
+**                                                                            **
+**  MAY BE CHANGED BY USER : no                                               **
+**                                                                            **
+*******************************************************************************/
+-->
+<!-- [cover parentID={C695C1BE-5CDE-4ccb-8D61-4BCDE5A32646}] Uart.bmd [/cover] -->
+<!-- [cover parentID={1C34C228-693F-4042-B108-66C5C375F18C}] [/cover] -->
+<datamodel version="7.0"
+           xmlns="http://www.tresos.de/_projects/DataModel2/16/root.xsd"
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/16/attribute.xsd"
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd"
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar"
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd"
+         xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd"
+         xmlns:f="http://www.tresos.de/_projects/DataModel2/14/formulaexpr.xsd"
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd"
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd"
+         xmlns:variant="http://www.tresos.de/_projects/DataModel2/11/variant.xsd">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+        <d:ctr name="AURIX2G" type="AR-PACKAGE">
+        <a:a name="UUID" value="ECUC:AUTOSAR"/>
+            <d:lst type="TOP-LEVEL-PACKAGES">
+                <d:ctr name="EcucDefs" type="AR-PACKAGE">
+                <a:a name="UUID" value="ECUC:ECUCDEFS"/>
+                <d:lst type="ELEMENTS">
+                <d:chc name="Uart" type="AR-ELEMENT" value="MODULE-DEF">
+                     <v:ctr type="MODULE-DEF">
+                     <a:a name="ADMIN-DATA" type="ADMIN-DATA">
+                     <ad:ADMIN-DATA>
+                     <ad:DOC-REVISIONS>
+                     <ad:DOC-REVISION>
+                      <ad:REVISION-LABEL>4.4.0</ad:REVISION-LABEL>
+                      <ad:ISSUED-BY>IFX</ad:ISSUED-BY>
+                     </ad:DOC-REVISION>
+                     </ad:DOC-REVISIONS>
+                     </ad:ADMIN-DATA>
+                     </a:a>
+             <a:a name="DESC"
+             value="EN: Configuration of the UART Module."/>
+                     <a:a name="LOWER-MULTIPLICITY" value="0"/>
+                     <a:a name="POSTBUILDVARIANTSUPPORT" value="true"/>
+                     <!-- [cover parentID={BD607180-6DDB-4175-9E75-6DCCAEBFBD5C}]Autosar 440 [/cover] -->
+                     <a:a name="RELEASE" value="asc:4.4.0"/>
+                     <a:a name="UPPER-MULTIPLICITY" value="1"/>
+                     <a:a name="UUID" value="ECUC:13aa2440-e790-4121-9e12-3a380efb0d6b"/>
+            <v:var name="POST_BUILD_VARIANT_USED" type="BOOLEAN">
+                    <a:a name="DESC"
+                         value="Indicates whether a module implementation has or plans to have (i.e., introduced at link or post-build time) new post-build variation points."/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Post Build Variant Used"/>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="false"/>
+                    <a:da name="READONLY" value="FALSE"/>
+                  </v:var>
+                    <v:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION">
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="LABEL" value="Config Variant"/>
+                        <a:da name="DEFAULT" value="VariantPostBuild"/>
+                        <a:da name="RANGE">
+                            <a:v>VariantPostBuild</a:v>
+                        </a:da>
+                    </v:var>
+                    <!-- [cover parentID={B6585A1F-950B-497f-8F2D-390E5823F3BE}] UartGeneral [/cover] -->
+                    <v:ctr name="UartGeneral" type="IDENTIFIABLE">
+                        <a:a name="DESC"
+                        value="EN: General configuration (parameters) of the UART driver software module."/>
+                        <a:a name="UUID" value="a868aef7-06f0-5e10-9482-3b9f6ca77cb2"/>
+                            <!-- [cover parentID={8EFE7DE7-C46E-437e-B5E6-22CAA8A9F791}] UartDevErrorDetect [/cover] -->
+                            <v:var name="UartDevErrorDetect" type="BOOLEAN">
+                                <a:a name="DESC" value="EN: Switches the Development Error Detection and Notification ON or OFF."/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                <a:a name="UUID" value="DCE:a4e951e4-be6b-4d72-b360-c13bb0bff7f6"/>
+                                <a:da name="DEFAULT" value="false"/>
+                            </v:var>
+                            <!-- [cover parentID={ED3C75A9-11A5-465e-AC71-36463F521671}] UartRunTimeErrorDetect [/cover] -->
+                            <v:var name="UartRunTimeErrorDetect" type="BOOLEAN">
+                                <a:a name="DESC" value="EN: Switches the Runtime Error Detection and Notification ON or OFF."/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                <a:a name="UUID" value="DCE:a4e95104-be6b-4d72-b360-c13bb0bff7f6"/>
+                                <a:da name="DEFAULT" value="true"/>
+                            </v:var>
+                            <!-- [cover parentID={1B2F1967-66F2-4065-B521-35E60CEA72C5}] UartSafetyEnable [/cover] -->
+                            <v:var name="UartSafetyEnable" type="BOOLEAN">
+                              <a:a name="DESC" value="EN: Enable/Disable safety feature in Uart driver"/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                              <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                              <a:a name="UUID" value="13cc7127-ef8d-4893-b0e5-495c0b3a7765"/>
+                              <a:da name="DEFAULT" value="true"/>
+                            </v:var>
+                            <!-- [cover parentID={EAC85886-A052-433a-9BF4-13D9CEFA043C}] UartVersionInfoApi [/cover] -->
+                            <v:var name="UartVersionInfoApi" type="BOOLEAN">
+                              <a:a name="DESC" value="EN: Switches the Uart_GetVersionInfo function ON or OFF."/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                 <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                              </a:a>
+                              <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                              <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                              <a:a name="UUID" value="3f862ba7-4f88-4980-950b-a3117f65e387"/>
+                              <a:da name="DEFAULT" value="false"/>
+                            </v:var>
+                            <!-- [cover parentID={574A3D65-2F79-4792-B534-1E28EF6CE34B}] UartInitCheckApi [/cover] -->
+                            <v:var name="UartInitCheckApi" type="BOOLEAN">
+                              <a:a name="DESC" value="EN: Switches the Uart_InitCheck function ON or OFF."/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                   <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                              <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                              <a:a name="UUID" value="2f362bd7-4f28-498d-95db-a31d7f65ed87"/>
+                              <a:da name="DEFAULT" value="false"/>
+                            </v:var>
+                            <!-- [cover parentID={6C5B7DC6-02C5-4c7f-8B68-8C015FD2C7BA}] UartDeInitApi [/cover] -->
+                            <v:var name="UartDeInitApi" type="BOOLEAN">
+                              <a:a name="DESC" value="EN: Switches the Uart_Deinit function ON or OFF."/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                   <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                              <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                              <a:a name="UUID" value="2f362bd7-4f28-498d-95db-a31d7f99ed87"/>
+                              <a:da name="DEFAULT" value="false"/>
+                            </v:var>
+                            <!-- [cover parentID={817E8510-2137-4e67-9C62-BB6D5A0040A0}] UartStreamingRecvModeApi [/cover] -->
+                            <v:var name="UartStreamingRecvModeApi" type="BOOLEAN">
+                              <a:a name="DESC" value="EN: Switches the Uart_StartStreaming and Uart_StopStreaming functions ON or OFF."/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                   <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                              <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                              <a:a name="UUID" value="d5013ac6-e172-4b44-859c-19259a961f48"/>
+                              <a:da name="DEFAULT" value="false"/>
+                            </v:var>
+                            <!-- [cover parentID={1C8B9E8D-C790-44f1-ADFF-23019CFF2A0D}] UartAbortReadApi [/cover] -->
+                            <v:var name="UartAbortReadApi" type="BOOLEAN">
+                              <a:a name="DESC" value="EN: Switches the Uart_AbortRead function ON or OFF."/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                   <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                              <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                              <a:a name="UUID" value="3f823ba7-4bf8-49f8-9f0b-a311ff65ef87"/>
+                              <a:da name="DEFAULT" value="false"/>
+                            </v:var>
+                            <!-- [cover parentID={D6A9AA52-B4AF-437c-9301-2DB3C085C9AB}] UartAbortWriteApi [/cover] -->
+                            <v:var name="UartAbortWriteApi" type="BOOLEAN">
+                              <a:a name="DESC" value="EN: Switches the Uart_AbortWrite function ON or OFF."/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                   <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                              <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                              <a:a name="UUID" value="3f82dba7-4df8-49d8-9fdb-a312ff65ef87"/>
+                              <a:da name="DEFAULT" value="false"/>
+                            </v:var>
+                            <!-- [cover parentID={4DC6933A-9EA8-4c56-9EE5-E0D101E098E9}] UartClockRef [/cover] -->
+                            <v:ref name="UartClockRef" type="REFERENCE">
+                                <a:a name="DESC"
+                                       value="EN: This parameter refers to the system clock configured by MCU driver.This reference is used for BaudRate computation."/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                       type="IMPLEMENTATIONCONFIGCLASS">
+                                    <icc:v class="PreCompile">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="UUID"
+                                     value="ECUC:03f6c9e0-e3b7-4907-84c0-a96e099b4433"/>
+                                <a:da name="REF"
+                                        value="ASPathDataOfSchema:/AURIX2G/EcucDefs/Mcu/McuModuleConfiguration/McuClockSettingConfig/McuClockReferencePointConfig"/>
+                            </v:ref>
+                            <!-- [cover parentID={1073A0F6-8991-4b7b-92FC-C5FFBF001314}] UartCsrClksel [/cover] -->
+                            <v:var name="UartCsrClksel" type="ENUMERATION">
+                              <a:a name="DESC"
+                                  value="EN: This parameter selects the Baud Rate Logic Clock for the Uart Driver."/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v class="PreCompile">VariantPostBuild</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                              <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                              <a:a name="SCOPE" value="LOCAL"/>
+                              <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                              <a:da name="DEFAULT" value="ASCLINF"/>
+                              <a:da name="RANGE">
+                                <a:v>ASCLINF</a:v>
+                                <a:v>ASCLINS</a:v>
+                              </a:da>
+                              <a:a name="UUID"
+                                   value="ECUC:03f6c9e0-e3b7-4907-84c0-a96e099b4435"/>
+                            </v:var>
+                            <!-- [cover parentID={A27AF91D-D101-451f-B990-37406CDE5FC1}] UartSleepEnable [/cover] -->
+                            <v:var name="UartSleepEnable" type="BOOLEAN">
+                              <a:a name="DESC" value="EN: Enable/Disable parameter for the ASCLIN Hw module Sleep triggered by SCU"/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                  <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                              <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                              <a:a name="UUID" value="13dc6427-ed8d-4484-b0d4-494cdb3a7764"/>
+                              <a:da name="DEFAULT" value="false"/>
+                            </v:var>
+                            <!-- [cover parentID={ACCE6A8C-4083-483e-9035-109529D38BFB}] UartIndex [/cover] -->
+                            <v:var name="UartIndex" type="INTEGER">
+                              <a:a name="DESC" value="EN: Specifies the InstanceId of this module instance. "/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                              </a:a>
+                              <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                              <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                              <a:a name="UUID" value="a9361f42-ca28-4ec5-8a32-aca0597add15"/>
+                              <a:da name="INVALID" type="Range">
+                                <a:tst expr="&lt;=255"/>
+                                <a:tst expr="&gt;=0"/>
+                              </a:da>
+                              <a:da name="DEFAULT" value="0"/>
+                            </v:var>
+                            <!-- [cover parentID={16AD1121-85FE-4f5f-8DF6-06680630C0CE}] UartInitDeInitApiMode [/cover] -->
+                            <!-- [cover parentID={1A65EADD-AFD0-4845-B2D2-8257E086DD67} ] User Mode [/cover] -->
+                            <!-- [cover parentID={BC139946-FA15-47ce-AE75-51BD763262D4} ] User Mode [/cover] -->
+                            <v:var name="UartInitDeInitApiMode" type="ENUMERATION">
+                              <a:a name="DESC" value="EN: Defines the privilege mode in which the Initialization and De-initialization APIs would operate."/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                              <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                              <a:a name="SCOPE" value="LOCAL"/>
+                              <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                              <a:a name="UUID" value="ECUC:7e0e69e5-6004-1956-a113-f0559f2409d6"/>
+                              <a:da name="DEFAULT" value="MCAL_SUPERVISOR"/>
+                              <a:da name="RANGE">
+                                <a:v>MCAL_SUPERVISOR</a:v>
+                                <a:v>MCAL_USER1</a:v>
+                              </a:da>
+                            </v:var>
+                            <!-- [cover parentID={3E4090E8-6D0C-4ce1-9493-DF10085ECE7C}] UartTimeoutCount [/cover] -->
+                            <v:var name="UartTimeoutCount" type="INTEGER">
+                              <a:a name="DESC"
+                                   value="EN: Specifies the maximum time in nanoseconds to wait for hardware timeout errors(Reported as hardware access error)."/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                              <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                              <a:a name="UUID"
+                                   value="ECUC:f4b834a6-9fce-4cf9-9f80-98e4a6ad9eed"/>
+                              <a:da name="DEFAULT" value="4294967295"/>
+                              <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=4294967295"/>
+                              <a:tst expr="&gt;=100"/>
+                              <a:da name="EDITABLE" value="true"/>
+                              </a:da>
+                            </v:var>
+                            <!-- [cover parentID={7D55176B-23C4-42d6-A06E-5A1042A123CB}] UartMainFunctionReadPeriod [/cover] -->
+                            <v:var name="UartMainFunctionReadPeriod" type="FLOAT">
+                              <a:a name="DESC"
+                                   value="EN: Specifies the period of main function Uart_MainFunction_Read in seconds. Uart driver does not require this information but the BSW scheduler."/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                              <a:a name="SCOPE" value="LOCAL"/>
+                              <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                              <a:a name="UUID"
+                                   value="ECUC:ca545039-b3f3-4a63-8b04-29ebac136e9d"/>
+                              <a:da name="DEFAULT" value="0.005"/>
+                              <a:da name="INVALID" type="Range">
+                                <a:tst expr="&lt;=10.0"/>
+                                <a:tst expr="&gt;=0.0"/>
+                              </a:da>
+                            </v:var>
+                            <!-- [cover parentID={3EDE9CF2-09CC-4554-8017-017B257359EE}] UartMainFunctionWritePeriod [/cover] -->
+                            <v:var name="UartMainFunctionWritePeriod" type="FLOAT">
+                              <a:a name="DESC"
+                                   value="EN: Specifies the period of main function Uart_MainFunction_Write in seconds. Uart driver does not require this information but the BSW scheduler."/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                              <a:a name="SCOPE" value="LOCAL"/>
+                              <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                              <a:a name="UUID"
+                                   value="ECUC:ca545039-b3f3-4a63-8b04-29ebac136r9d"/>
+                              <a:da name="DEFAULT" value="0.005"/>
+                              <a:da name="INVALID" type="Range">
+                                <a:tst expr="&lt;=10.0"/>
+                                <a:tst expr="&gt;=0.0"/>
+                              </a:da>
+                            </v:var>
+                        </v:ctr>
+                        <!-- [cover parentID={75A660F0-432F-4dbd-A666-6B9854B3D218}] UartConfigSet [/cover] -->
+                        <v:ctr name="UartConfigSet" type="IDENTIFIABLE">
+                            <a:a name="DESC" value="EN: This container contains the Channel configuration of the Uart driver. This container is a MultipleConfigurationContainer, i.e. this container and its sub-containers exit once per configuration set."/>
+                            <a:a name="UUID" value="439b823d-f723-43d7-b3d6-8e4c38733021"/>
+                            <!-- [cover parentID={31A04AD9-9D98-497e-A8E7-5538D1C6EEF1}] UartChannel [/cover] -->
+                            <v:lst name="UartChannel" type="MAP">
+                                <a:da name="MAX" type="XPath" expr="ecu:get('AscLin.MaxNoOfAscLinModules')"/>
+                                <a:da name="MIN" value="1"/>
+                            <v:ctr name="UartChannel" type="IDENTIFIABLE">
+                                <a:a name="DESC" value="EN: This container contains the configuration (parameters) of the UART Controller(s)."/>
+                                <a:a name="UUID" value="eee1d64f-d2e3-4e79-a5ed-c142334dee3c"/>
+                                <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="false"/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                     type="IMPLEMENTATIONCONFIGCLASS">
+                                     <icc:v mclass="PreCompile">VariantPostBuild</icc:v>
+                                </a:a>
+                                <!-- [cover parentID={A7490F4C-AADB-4946-8A51-ECB75C289D6B}] UartBaudRate [/cover] -->
+                                <v:var name="UartBaudRate" type="INTEGER">
+                                    <a:a name="DESC" value="EN: Specifies the baud rate in bits per second of the UART channel. This parameter shall be disabled when 'UartAutoCalcBaudParams' is false"/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="8db8dbce-1d4b-4315-8d1b-edad5df02cb1"/>
+                                    <a:da name="DEFAULT" value="9600"/>
+                                    <a:da name="INVALID" type="Range">
+                                        <a:tst expr="&lt;=6250000"/>
+                                        <a:tst expr="&gt;=1000"/>
+                                    </a:da>
+                                    <a:da name="EDITABLE" type="XPath">
+                                        <a:tst expr="../UartAutoCalcBaudParams = 'true'"/>
+                                    </a:da>
+                                </v:var>
+                                <!-- [cover parentID={1146B481-F077-48f5-B0AF-DB77FC29531C}] UartHwUnit  [/cover] -->
+                                <v:var name="UartHwUnit" type="ENUMERATION">
+                                     <a:a name="DESC" value="EN: This parameter selects the hardware unit used by Uart channel."/>
+                                     <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                          <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                     </a:a>
+                                     <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                     <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                     <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                     <a:a name="UUID" value="989b798d-d7b4-479e-909c-b8479ac98b69"/>
+                                     <a:da name="DEFAULT" type="XPath">
+                                            <a:tst expr="normalize-space(text:split(ecu:get('AscLin.AvailableAscLinModules'),',')[1])"/>
+                                     </a:da>
+                                     <a:da name="RANGE" type="XPath" expr="ecu:list('AscLin.AvailableAscLinModules')"/>
+                                </v:var>
+                                <!-- [cover parentID={F650FC0A-2B3E-466b-A58E-B98386C54EE8}] UartChannelId [/cover] -->
+                                <v:var name="UartChannelId" type="INTEGER">
+                                    <a:a name="DESC" value="EN: Identifies the UART channel."/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                                    <a:a name="UUID" value="575c5e2f-5aba-43b2-be5d-e3b62b05a6e7"/>
+                                    <a:da name="DEFAULT" type="XPath" expr="node:fallback(../@index,'0')"/>
+                                    <a:da name="INVALID" type="Multi">
+                                        <mt:xpath expr="text:uniq(../../*/UartChannelId,.)" false="UartChannelId should be unique.Enter diff Number"/>
+                                        <mt:xpath expr="node:isconsecutive(../../*/UartChannelId,0)" false="UartChannelId not Consecutive"/>
+                                        <mt:range>
+                                            <a:tst expr="&lt;=num:i(ecu:get('AscLin.MaxNoOfAscLinModules') - 1)"/>
+                                            <a:tst expr="&gt;=0"/>
+                                        </mt:range>
+                                    </a:da>
+                                  <a:da name="EDITABLE" value="true"/>
+                                </v:var>
+                                <!-- [cover parentID={BBC3CF40-BFAD-4450-88CD-FA01C126941A}] UartAutoCalcBaudParams  [/cover] -->
+                                <v:var name="UartAutoCalcBaudParams" type="BOOLEAN">
+                                    <a:a name="DESC" value="EN: Enable/Disable Automatic calculation of Asclin Baudrate params UartChanBaudNumerator, UartChanBaudDenominator, UartChanBaudPrescalar,UartChanBaudOVERSAMPLING "/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                       <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                    <a:a name="UUID" value="13cc2127-e28d-4433-b0e5-495c1b3a7765"/>
+                                    <a:da name="DEFAULT" value="true"/>
+                                </v:var>
+                                <!-- [cover parentID={B4B47692-1001-4fdd-A247-6F3E08D858AD}] UartChanBaudNumerator [/cover] -->
+                                <v:var name="UartChanBaudNumerator" type="INTEGER">
+                                    <a:a name="DESC" value="EN: Specifies the BRG register numerator value used for Baudrate calculation. The value configured in this parameter will be written to the BRG.NUMERATOR register field. This parameter will be disabled when 'UartAutoCalcBaudParams' is true"/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                    <a:a name="UUID" value="967b5282-8ce2-4638-9586-3a3a28391b69"/>
+                                    <a:da name="DEFAULT" value="24"/>
+                                    <a:da name="INVALID" type="Range">
+                                        <a:tst expr="&lt;=4095"/>
+                                        <a:tst expr="&gt;=1"/>
+                                    </a:da>
+                                    <a:da name="EDITABLE" type="XPath">
+                                      <a:tst expr="(node:current()/../UartAutoCalcBaudParams = 'false') "/>
+                                    </a:da>
+                                </v:var>
+                                <!-- [cover parentID={8D841EDD-7BFA-4281-9625-084455431AC2}] UartChanBaudDenominator [/cover] -->
+                                <v:var name="UartChanBaudDenominator" type="INTEGER">
+                                    <a:a name="DESC" value="EN: Specifies the BRG register Denominator value used for Baudrate calculation. The value configured in this parameter will be written to the BRG.DENOMINATOR register field.This parameter will be disabled when 'UartAutoCalcBaudParams' is true"/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                    <a:a name="UUID" value="967b5282-8ce2-4638-9586-3a3a28394b69"/>
+                                    <a:da name="DEFAULT" value="1000"/>
+                                    <a:da name="INVALID" type="Range">
+                                        <a:tst expr="&lt;=4095"/>
+                                        <a:tst expr="&gt;=1"/>
+                                    </a:da>
+                                    <a:da name="EDITABLE" type="XPath">
+                                      <a:tst expr="(node:current()/../UartAutoCalcBaudParams = 'false') "/>
+                                    </a:da>
+                                </v:var>
+                                <!-- [cover parentID={FC804910-14F6-4d38-B0B0-9AD250A3696E}] UartChanBaudPrescalar [/cover] -->
+                                <v:var name="UartChanBaudPrescalar" type="INTEGER">
+                                    <a:a name="DESC"
+                                       value="EN: Specifies the BITCON register Prescalar value used for Baudrate calculation. The value configured in this parameter will be written to the BITCON.PRESCALAR register field.This parameter will be disabled when 'UartAutoCalcBaudParams' is true"/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                    <a:a name="UUID" value="96ab5282-8cea-46a8-9586-3a3a28394b69"/>
+                                    <a:da name="DEFAULT" value="4"/>
+                                    <a:da name="INVALID" type="Range">
+                                        <a:tst expr="&lt;=4095"/>
+                                        <a:tst expr="&gt;=0"/>
+                                    </a:da>
+                                    <a:da name="EDITABLE" type="XPath">
+                                      <a:tst expr="(node:current()/../UartAutoCalcBaudParams = 'false') "/>
+                                    </a:da>
+                                </v:var>
+                                <!-- [cover parentID={6DFCA181-4066-4b05-831F-C14526C381B0}] UartChanBaudOverSampling [/cover] -->
+                               <v:var name="UartChanBaudOverSampling" type="INTEGER">
+                                    <a:a name="DESC" value="EN: Specifies the BITCON register Oversampling value used for Baudrate calculation.The value configured in this parameter will be written to the BITCON.OVERSAMPLING register field. This parameter will be disabled when 'UartAutoCalcBaudParams' is true"/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                    <a:a name="UUID" value="96ac5282-8cea-4628-9286-3a3a18394b69"/>
+                                    <a:da name="DEFAULT" value="9"/>
+                                    <a:da name="INVALID" type="Range">
+                                        <a:tst expr="&lt;=15"/>
+                                        <a:tst expr="&gt;=3"/>
+                                    </a:da>
+                                    <a:da name="EDITABLE" type="XPath">
+                                      <a:tst expr="(node:current()/../UartAutoCalcBaudParams = 'false') "/>
+                                    </a:da>
+                               </v:var>
+                               <!-- [cover parentID={B0173EA2-04FF-4d96-93EB-44EC2613DD7C}] UartRxPinSelection [/cover] -->
+                               <v:var name="UartRxPinSelection" type="ENUMERATION">
+                                    <a:a name="DESC" value="EN: Selects the alternate input for the RX signal for the given Uart channel"/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                    <a:a name="UUID" value="571e4e1f-8aba-43b2-be1e-e2b62b02a6d7"/>
+                                    <a:da name="DEFAULT" type="XPath">
+                                        <a:tst expr="normalize-space(text:split(ecu:get(concat('AscLin.', node:fallback(node:current()/../UartHwUnit,'ALL'), '_RxSelectLine')),',')[1])"/>
+                                    </a:da>
+                                    <a:da name="RANGE" type="XPath" expr="ecu:list(concat('AscLin.', node:fallback(node:current()/../UartHwUnit,'ALL'), '_RxSelectLine'))"/>
+                               </v:var>
+                               <!-- [cover parentID={A819F16B-61E8-4873-9133-554A1D8A161F}] UartCTSEnable [/cover] -->
+                               <v:var name="UartCTSEnable" type="BOOLEAN">
+                                    <a:a name="DESC"
+                                        value="EN: Switch to enable the CTS signal ."/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                    <a:a name="UUID" value="5aae2e0e1-309-8d1f-8142-45531dc8a9b0"/>
+                                    <a:da name="INVALID" type="XPath">
+                                        <a:tst expr="(node:value(node:current()/../UartCTSPinSelection) = 'NONE') and (node:value(.)= 'true')"
+                                            true=" CTS PIN is not available for selected ASCLIN channel."/>
+                                    </a:da>
+                                    <a:da name="DEFAULT" value="false"/>
+                               </v:var>
+                               <!-- [cover parentID={92AA91D1-5BEE-4e15-9E21-7205B9A38597}] UartCTSPinSelection [/cover] -->
+                               <v:var name="UartCTSPinSelection" type="ENUMERATION">
+                                    <a:a name="DESC" value="EN: Selects the alternate input for the CTS signal for the given Uart channel"/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                    <a:a name="UUID" value="571e4e1f-8aba-4302-be1e-e2b62b02a6d7"/>
+                                    <a:da name="DEFAULT" type="XPath">
+                                        <a:tst expr="normalize-space(text:split(ecu:get(concat('AscLin.', node:fallback(node:current()/../UartHwUnit,'ALL'), '_CTSSelectLine')),',')[1])"/>
+                                     </a:da>
+                                    <a:da name="RANGE" type="XPath" expr="ecu:list(concat('AscLin.', node:fallback(node:current()/../UartHwUnit,'ALL'), '_CTSSelectLine'))"/>
+                                    <a:da name="EDITABLE" type="XPath">
+                                    <a:tst expr="../UartCTSEnable = 'true'"/>
+                                    </a:da>
+                               </v:var>
+                               <!-- [cover parentID={B99C47DC-F6F9-4e00-A4B9-AC980E694E38}] UartCTSPolarity [/cover] -->
+                               <v:var name="UartCTSPolarity" type="ENUMERATION">
+                                    <a:a name="DESC"
+                                        value="EN: This parameter defines the active level or the RTS and CTS signals. Active means ready/clear to send."/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                    <a:a name="UUID"
+                                        value="962b718d-d1b6-149e-139c-b8419ac68b46"/>
+                                    <a:da name="DEFAULT" value="HIGH"/>
+                                    <a:da name="RANGE">
+                                        <a:v>LOW</a:v>
+                                        <a:v>HIGH</a:v>
+                                    </a:da>
+                                    <a:da name="EDITABLE" type="XPath">
+                                    <a:tst expr="../UartCTSEnable = 'true'"/>
+                                    </a:da>
+                               </v:var>
+                               <!-- [cover parentID={DC274698-B9D9-40a6-ACAB-48CD668F456D}] UartDataLength [/cover] -->
+                               <v:var name="UartDataLength" type="INTEGER">
+                                    <a:a name="DESC" value="EN: Specifies the number of bits to be transmitted or recieved. "/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                    <a:a name="UUID" value="a9361d42-cb28-4bc5-8ae2-aca0597ade15"/>
+                                    <a:da name="INVALID" type="Range">
+                                    <a:tst expr="&lt;=16"/>
+                                    <a:tst expr="&gt;=2"/>
+                                    </a:da>
+                                    <a:da name="DEFAULT" value="8"/>
+                               </v:var>
+                               <!-- [cover parentID={93B6E187-036B-4ea2-802F-7ED412C30630}] UartStopBits [/cover] -->
+                               <v:var name="UartStopBits" type="INTEGER">
+                                    <a:a name="DESC"
+                                         value="EN: Specifies the number of stop bits Range is one or two. "/>
+                                     <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                         <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                    <a:a name="UUID" value="4f862ba7-4f88-4980-950b-a3117f65e387"/>
+                                    <a:da name="INVALID" type="Range">
+                                        <a:tst expr="&lt;=2"/>
+                                        <a:tst expr="&gt;=1"/>
+                                    </a:da>
+                                    <a:da name="DEFAULT" value="1"/>
+                               </v:var>
+                               <!-- [cover parentID={E761EDE2-1F28-49da-929D-E4B0F1429CA9}] UartParityBit [/cover] -->
+                               <v:var name="UartParityBit" type="ENUMERATION">
+                                    <a:a name="DESC"
+                                        value="EN: This parameter selects the parity even or odd or no parity."/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                    <a:a name="UUID"
+                                       value="939b718d-d2b4-429e-109c-b8489ac98b96"/>
+                                    <a:da name="DEFAULT" value="NOPARITY"/>
+                                    <a:da name="RANGE">
+                                        <a:v>NOPARITY</a:v>
+                                        <a:v>ODDPARITY</a:v>
+                                        <a:v>EVENPARITY</a:v>
+                                    </a:da>
+                               </v:var>
+                               <!-- [cover parentID={8EE111EC-411F-4d79-956A-B8DAD768A336}] UartTxChannelMode [/cover] -->
+                               <v:var name="UartTxChannelMode" type="ENUMERATION">
+                                    <a:a name="DESC"
+                                        value="EN: This parameter selects the Tx channel mode polling or interrupt."/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="UUID"
+                                       value="939b718d-d2b4-429e-109c-b8480ac98b96"/>
+                                    <a:da name="DEFAULT" value="INTERRUPT"/>
+                                    <a:da name="RANGE">
+                                        <a:v>POLLING</a:v>
+                                        <a:v>INTERRUPT</a:v>
+                                    </a:da>
+                               </v:var>
+                               <!-- [cover parentID={EA62243B-EBC4-4ea0-9F3A-225BDEA932AB}] UartRxChannelMode [/cover] -->
+                               <v:var name="UartRxChannelMode" type="ENUMERATION">
+                                    <a:a name="DESC"
+                                     value="EN: This parameter selects the Rx channel mode polling or interrupt."/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="UUID"
+                                       value="939b718d-d2b4-429e-109c-b8489dc98b96"/>
+                                    <a:da name="DEFAULT" value="INTERRUPT"/>
+                                    <a:da name="RANGE">
+                                        <a:v>POLLING</a:v>
+                                        <a:v>INTERRUPT</a:v>
+                                    </a:da>
+                               </v:var>
+                               <!-- [cover parentID={1E408CED-4DDF-416a-B4F8-A5904EB44FCC}] UartNotification [/cover] -->
+                               <v:ctr name="UartNotification" type="IDENTIFIABLE">
+                                    <a:a name="DESC"
+                                        value="EN: This container contains the Notification function pointers ."/>
+                                    <a:a name="UUID"
+                                        value="eea1d64f-d2e3-4b79-a5ed-ca42334dea3c"/>
+                                    <!-- [cover parentID={74ADF853-9BA2-44eb-8D60-989B81CFDC41}] UartTransmitNotifPtr [/cover] -->
+                                    <v:var name="UartTransmitNotifPtr" type="FUNCTION-NAME">
+                                        <a:a name="DESC"
+                                            value="EN: This parameter is a reference to a notification function."/>
+                                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                        </a:a>
+                                        <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                        <a:a name="UUID"
+                                            value="999ccf11-8b4f-4719-abde-2f2d65e8614a"/>
+                                        <a:da name="DEFAULT" value="NULL_PTR"/>
+                                    </v:var>
+                                    <!-- [cover parentID={2A2CEBC4-C744-4acd-AC81-CBD5256BDBB9}] UartReceiveNotifPtr [/cover] -->
+                                    <v:var name="UartReceiveNotifPtr" type="FUNCTION-NAME">
+                                        <a:a name="DESC"
+                                             value="EN: This parameter is a reference to a notification function."/>
+                                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                        </a:a>
+                                        <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                        <a:a name="UUID"
+                                           value="956fcf11-1b4f-4719-ab2e-2f2d75e8624a"/>
+                                        <a:da name="DEFAULT" value="NULL_PTR"/>
+                                    </v:var>
+                                    <!-- [cover parentID={4D62D85C-ECA6-4f4a-8CEA-FFDEE60ECA56}] UartAbortTransmitNotifPtr [/cover] -->
+                                    <v:var name="UartAbortTransmitNotifPtr" type="FUNCTION-NAME">
+                                        <a:a name="DESC"
+                                           value="EN: This parameter is a reference to a notification function."/>
+                                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                        </a:a>
+                                        <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                        <a:a name="UUID"
+                                         value="929fcf11-8b2f-4719-aaee-2f2d73e8614a"/>
+                                        <a:da name="DEFAULT" value="NULL_PTR"/>
+                                    </v:var>
+                                    <!-- [cover parentID={27272DDE-582A-47b9-99C4-25B575EEC08E}] UartAbortReceiveNotifPtr [/cover] -->
+                                    <v:var name="UartAbortReceiveNotifPtr" type="FUNCTION-NAME">
+                                        <a:a name="DESC"
+                                             value="EN: This parameter is a reference to a notification function."/>
+                                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                             <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                        </a:a>
+                                        <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                        <a:a name="UUID" value="199fcf11-8a4f-4719-acee-2f2d75e7614a"/>
+                                        <a:da name="DEFAULT" value="NULL_PTR"/>
+                                    </v:var>
+                                    <!-- [cover parentID={2A2CEBC4-C744-4acd-AC81-CBD5256BDBB9}] UartStreamingRecvNotifPtr [/cover] -->
+                                    <v:var name="UartStreamingRecvNotifPtr" type="FUNCTION-NAME">
+                                        <a:a name="DESC"
+                                             value="EN: This parameter is a reference to a notification function."/>
+                                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                        </a:a>
+                                        <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                        <a:a name="UUID" value="c99aa6c3-534b-4d13-b452-428a839081c7"/>
+                                        <a:da name="DEFAULT" value="NULL_PTR"/>
+                                    </v:var>
+                                </v:ctr>
+                            </v:ctr>
+                            </v:lst>
+                        </v:ctr>
+                        <!-- [cover parentID={2202DDA5-E670-47bf-BA0E-FEDA630DB10F}] CommonPublishedInformation [/cover] -->
+                        <v:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                            <a:a name="DESC" value="EN: Common container, aggregated by all modules. It contains published information about vendor and versions."/>
+                            <a:a name="UUID" value="492f8482-3e2c-4bf1-b27f-01fd7ac35788"/>
+                                <!-- [cover parentID={6470CE38-EA5D-4233-812B-78350CFF09D0}] ArMajorVersion [/cover] -->
+                                <v:var name="ArMajorVersion" type="INTEGER_LABEL">
+                                    <a:a name="DESC" value="EN: Major version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="bd0a8d38-4d8c-4ee9-88fe-1166b258bb8a"/>
+                                    <a:da name="INVALID" type="Range">
+                                        <a:tst expr="&lt;=255"/>
+                                        <a:tst expr="&gt;=0"/>
+                                    </a:da>
+                                    <a:da name="DEFAULT" value="4"/>
+                                </v:var>
+                                <!-- [cover parentID={8DBAA411-CD89-44b7-AD7B-BD1EC4AE4D24}] ArMinorVersion [/cover] -->
+                                <v:var name="ArMinorVersion" type="INTEGER_LABEL">
+                                    <a:a name="DESC" value="EN: Minor version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v class="PublishedInformation">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="73f87c7f-e230-4178-bff0-eb2704aae656"/>
+                                    <a:da name="INVALID" type="Range">
+                                        <a:tst expr="&lt;=255"/>
+                                        <a:tst expr="&gt;=0"/>
+                                    </a:da>
+                                    <a:da name="DEFAULT" value="4"/>
+                                </v:var>
+                                <!-- [cover parentID={EBF93A85-8713-4605-83BD-BF7F1DAB405E}] ArPatchVersion [/cover] -->
+                                <v:var name="ArPatchVersion" type="INTEGER_LABEL">
+                                    <a:a name="DESC" value="EN: Patch level version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v class="PublishedInformation">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="2380135d-6778-417a-a34b-e10017d4dd54"/>
+                                    <a:da name="INVALID" type="Range">
+                                        <a:tst expr="&lt;=255"/>
+                                        <a:tst expr="&gt;=0"/>
+                                    </a:da>
+                                    <a:da name="DEFAULT" value="0"/>
+                                </v:var>
+                                <!-- [cover parentID={BC3AAA46-6CEE-4584-A7FA-C4A75B6C83FA}] SWMajorVersion [/cover] -->
+                                <v:var name="SwMajorVersion" type="INTEGER_LABEL">
+                                    <a:a name="DESC" value="EN: Major version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v class="PublishedInformation">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="fca015e3-5f28-4cbe-8949-8f4b87d86827"/>
+                                    <a:da name="INVALID" type="Range">
+                                    <a:tst expr="&lt;=255"/>
+                                        <a:tst expr="&gt;=0"/>
+                                    </a:da>
+                                    <a:da name="DEFAULT" value="20"/>
+                                </v:var>
+                                <!-- [cover parentID={558AAF7E-9A21-4db4-8A2B-AEFC12FF6969}] SWMinorVersion [/cover] -->
+                                <v:var name="SwMinorVersion" type="INTEGER_LABEL">
+                                    <a:a name="DESC" value="EN: Minor version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v class="PublishedInformation">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="14ab81e0-3d80-43dc-8b92-247e5a542df9"/>
+                                    <a:da name="INVALID" type="Range">
+                                    <a:tst expr="&lt;=255"/>
+                                        <a:tst expr="&gt;=0"/>
+                                    </a:da>
+                                    <a:da name="DEFAULT" value="25"/>
+                                </v:var>
+                                <!-- [cover parentID={DCEF48F5-DC46-4497-8C85-7BC6B014FA01}] SWPatchVersion [/cover] -->
+                                <v:var name="SwPatchVersion" type="INTEGER_LABEL">
+                                    <a:a name="DESC" value="EN: Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v class="PublishedInformation">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="32e37bfd-18b6-41d1-9248-a81dbe0fe4c5"/>
+                                    <a:da name="INVALID" type="Range">
+                                        <a:tst expr="&lt;=255"/>
+                                        <a:tst expr="&gt;=0"/>
+                                    </a:da>
+                                    <a:da name="DEFAULT" value="0"/>
+                                </v:var>
+                                <!-- [cover parentID={33F02509-F8A3-4365-93E3-512F4D42E550}] ModuleId [/cover] -->
+                                <v:var name="ModuleId" type="INTEGER_LABEL">
+                                    <a:a name="DESC" value="EN: Module ID of this module from Module List"/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v class="PublishedInformation">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="3b407478-6902-4f80-b7cf-f33b0854e638"/>
+                                    <a:da name="INVALID" type="Range">
+                                        <a:tst expr="&lt;=65535"/>
+                                        <a:tst expr="&gt;=0"/>
+                                    </a:da>
+                                    <a:da name="DEFAULT" value="255"/>
+                                </v:var>
+                                <!-- [cover parentID={086EFC5C-FB62-474d-B6D3-71F88CD7FB8D}] VendorId [/cover] -->
+                                <v:var name="VendorId" type="INTEGER_LABEL">
+                                    <a:a name="DESC" value="EN: Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list"/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v class="PublishedInformation">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="7d650b2d-4adb-41f0-a68e-5f0c416501d1"/>
+                                    <a:da name="INVALID" type="Range">
+                                        <a:tst expr="&lt;=65535"/>
+                                        <a:tst expr="&gt;=0"/>
+                                    </a:da>
+                                    <a:da name="DEFAULT" value="17"/>
+                                </v:var>
+                                <!-- [cover parentID={36E664F4-CF4A-4c02-8B5C-5DDFF1BAE6C9}] Release [/cover] -->
+                                <v:var name="Release" type="STRING_LABEL">
+                                    <a:a name="DESC" value="EN: Aurix2G derivative used for the implementation"/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                                        <icc:v class="PublishedInformation">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID" value="3b407478-6902-4f40-b7cf-f33b0854e638"/>
+                                    <a:da name="DEFAULT" type="XPath" expr="ecu:get('Rel.Derivate')"/>
+                                </v:var>
+                        </v:ctr>
+                    </v:ctr>
+                </d:chc>
+                </d:lst>
+                </d:ctr>
+            </d:lst>
+        </d:ctr>
+    </d:lst>
+    </d:ctr>
+</datamodel>

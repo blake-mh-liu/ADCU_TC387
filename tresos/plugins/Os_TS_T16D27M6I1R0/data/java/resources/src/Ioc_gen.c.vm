@@ -1,0 +1,45 @@
+#parse("CommonVars.vm")
+/* This file is generated automatically. DO NOT EDIT!!
+ * 
+ * EB tresos AutoCore OS ${Version.getMajor()}.${Version.getMinor()}.${Version.getPatch()} ${Version.getTarget()}/${Version.getDerivate()}
+ * (Build ${Version.getBuild()})
+ * 
+ * (c) 1998-${Version.getCurrentYear()} Elektrobit Automotive GmbH
+ * Am Wolfsmantel 46
+ * 91058 Erlangen
+ * GERMANY
+ * 
+ * Date         : ${Version.getDate()}           !!!IGNORE-LINE!!!
+ */
+
+/* MISRA-C:2012 Deviation List
+ *
+ * MISRAC2012-1) Deviated Rule: 11.5 (advisory)
+ *  A conversion should not be performed from pointer to void into pointer to
+ *  object.
+ *
+ * Reason:
+ *  This is a wrapper function. The array is provided to the wrapped function
+ *  reinterpreted as pointer along with its length.
+ */
+
+\#include <Ioc_gen.h>
+
+#foreach( $comm in $IocCommsList )
+#*  *#/*===================================================================
+#*  *# * Operations $comm.getChannelName()
+#*  *# *==================================================================*/
+## !LINKSTO Generator.Output.ioc_gen_c.QueuedBuffer, 1
+#* *##foreach( $opertaion in $comm.getIocCommOperations() )
+#*    *##if( $opertaion.isPassByValueOperation() || $opertaion.isEmptyQueueOperation() )
+#*       *#/* Channel operations of $opertaion.getPrimaryFunctionIdentifier() is implemented via Macro in Ioc_gen.h */
+#*    *##else
+#*       *#Std_ReturnType ${opertaion.getPrimaryFunctionIdentifier()}(${opertaion.getParametersForGroupPrototype()})
+#*       *#{
+#*          *#/* Deviation MISRAC2012-1 <START> */
+#*          *#$opertaion.getAutosarWrapperDefinition()
+#*          *#/* Deviation MISRAC2012-1 <STOP> */
+#*       *#}
+#*    *##end
+#* *##end
+#end

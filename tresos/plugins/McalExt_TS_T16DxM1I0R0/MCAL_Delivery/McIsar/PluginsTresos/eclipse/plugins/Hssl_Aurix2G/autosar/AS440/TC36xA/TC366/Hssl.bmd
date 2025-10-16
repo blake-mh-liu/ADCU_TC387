@@ -1,0 +1,1320 @@
+<?xml version='1.0'?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_00046.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE UUID="ECUC:c03239fe-1dca-415e-a47c-1ae11e6c1812">
+      <SHORT-NAME>AURIX2G</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE UUID="ECUC:ECUCDEFS">
+          <SHORT-NAME>EcucDefs</SHORT-NAME>
+          <ELEMENTS>
+            <ECUC-MODULE-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1202">
+              <SHORT-NAME>Hssl</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">Configuration of the Hssl module.</L-2>
+              </DESC>
+              <ADMIN-DATA>
+                <DOC-REVISIONS>
+                  <DOC-REVISION>
+                    <REVISION-LABEL>4.4.0</REVISION-LABEL>
+                    <ISSUED-BY>AUTOSAR</ISSUED-BY>
+                    <DATE>2014-10-31</DATE>
+                  </DOC-REVISION>
+                </DOC-REVISIONS>
+              </ADMIN-DATA>
+              <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+              <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+              <SUPPORTED-CONFIG-VARIANTS>
+                <SUPPORTED-CONFIG-VARIANT>VARIANT-PRE-COMPILE</SUPPORTED-CONFIG-VARIANT>
+              </SUPPORTED-CONFIG-VARIANTS>
+              <CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF UUID="ECUC:c03229fe-4dca-416e-a48d-1ae11e6c1206">
+                  <SHORT-NAME>HsslGeneral</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">General configuration of Hssl Driver module</L-2>
+                  </DESC>
+                  <PARAMETERS>
+                    <ECUC-BOOLEAN-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1210">
+                      <SHORT-NAME>HsslDevErrorDetect</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Enables / Disables development error detection</L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1234">
+                      <SHORT-NAME>HsslVersionInfoApi</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Enables / Disables the Get version Info API</L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1236">
+                      <SHORT-NAME>HsslInitApiMode</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This parameter selects the operating modes for HSSL driver initialization</L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <DEFAULT-VALUE>HSSL_MCAL_SUPERVISOR</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>HSSL_MCAL_SUPERVISOR</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>HSSL_MCAL_USER1</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="ECUC:c15229fe-3dca-435e-a48d-1ae11e6c1236">
+                      <SHORT-NAME>HsslRuntimeApiMode</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This parameter selects the runtime operating modes for HSSL driver</L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <DEFAULT-VALUE>HSSL_MCAL_SUPERVISOR</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>HSSL_MCAL_SUPERVISOR</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>HSSL_MCAL_USER1</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1352">
+                      <SHORT-NAME>HsslMultiSlaveMode</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Enables / Disables multi slave mode</L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1356">
+                      <SHORT-NAME>Hsslclockpredivider</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Defines the Address pointer containing the address of the memory location containing the unique ID data</L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <DEFAULT-VALUE>255</DEFAULT-VALUE>
+                      <MAX>16383</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1334">
+                      <SHORT-NAME>HsslInterfaceMode</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">The parameter represents the Interface mode. The values correspond to the following modes:                                                     0 - HSSL_MASTER,                                                     1 - HSSL_SLAVE </L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>HSSL_MASTER</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>HSSL_MASTER</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>HSSL_SLAVE</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1360">
+                      <SHORT-NAME>HsslOperatingMode</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">The parameter represents the Interface mode. The values correspond to the following modes:                                                     0 - HSSL_POLLING_MODE,                                                     1 - HSSL_INTERUPT_MODE </L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>HSSL_POLLING_MODE</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>HSSL_POLLING_MODE</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>HSSL_INTERUPT_MODE</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                  </PARAMETERS>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+                <ECUC-PARAM-CONF-CONTAINER-DEF UUID="ECUC:c03229fe-2dca-418e-a47c-1ab11e6c1922">
+                  <SHORT-NAME>HsslConfig</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Hssl Configuration</L-2>
+                  </DESC>
+                  <MULTIPLICITY-CONFIG-CLASSES>
+                    <ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-MULTIPLICITY-CONFIGURATION-CLASS>
+                  </MULTIPLICITY-CONFIG-CLASSES>
+                  <PARAMETERS>
+                    <ECUC-INTEGER-PARAM-DEF UUID="ECUC:c03229fe-3aca-418e-a47c-1ab11e6c2032">
+                      <SHORT-NAME>HsslInstanceID</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">HSSL Instance ID</L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>255</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1214">
+                      <SHORT-NAME>HsslCh2Mode</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Defines if the channel 2 is used in a streaming or command mode.</L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <DEFAULT-VALUE>HSSL_CH2_COMMAND</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>HSSL_CH2_COMMAND</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>HSSL_CH2_STREAMING</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1218">
+                      <SHORT-NAME>HsslStreamingModeTx</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Defines the Streaming Mode for Transmitter to be either Continuous or Streaming.                                                                         - if ON, Single                                                                         - if OFF, Continuous </L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <DEFAULT-VALUE>HSSL_STREAMING_MODE_CONTINOUS</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>HSSL_STREAMING_MODE_SINGLE</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>HSSL_STREAMING_MODE_CONTINOUS</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-STRING-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1240">
+                      <SHORT-NAME>HsslEXICallbackFunction</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">User function to handle Global error event for HSSL.</L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <ECUC-STRING-PARAM-DEF-VARIANTS>
+                        <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                          <DEFAULT-VALUE>NULL_PTR</DEFAULT-VALUE>
+                        </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                      </ECUC-STRING-PARAM-DEF-VARIANTS>
+                    </ECUC-STRING-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1222">
+                      <SHORT-NAME>HsslStreamingModeRx</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Defines the Streaming Mode for Receiver to be either Continuous or Streaming.                                                                         - if ON, Single                                                                         - if OFF, Continuous </L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <DEFAULT-VALUE>HSSL_STREAMING_MODE_CONTINOUS</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>HSSL_STREAMING_MODE_SINGLE</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>HSSL_STREAMING_MODE_CONTINOUS</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1226">
+                      <SHORT-NAME>HsslTargetIDAddr</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Defines the Address pointer containing the address of the memory location containing the unique ID data</L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>4294967295</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-STRING-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1440">
+                      <SHORT-NAME>HsslDmaMultiWriteCallback</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">User function to handle Write completion event for HSSL channel-0.</L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <ECUC-STRING-PARAM-DEF-VARIANTS>
+                        <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                          <DEFAULT-VALUE>NULL_PTR</DEFAULT-VALUE>
+                        </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                      </ECUC-STRING-PARAM-DEF-VARIANTS>
+                    </ECUC-STRING-PARAM-DEF>
+                    <ECUC-STRING-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1432">
+                      <SHORT-NAME>HsslDmaMultiReadCallback</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">User function to handle Write completion event for HSSL channel-0.</L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <ECUC-STRING-PARAM-DEF-VARIANTS>
+                        <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                          <DEFAULT-VALUE>NULL_PTR</DEFAULT-VALUE>
+                        </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                      </ECUC-STRING-PARAM-DEF-VARIANTS>
+                    </ECUC-STRING-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1252">
+                      <SHORT-NAME>HsslAcessWindowStartAddr0</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Defines the upper 24 bits of the start address of the corresponding access window</L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>4294967295</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1256">
+                      <SHORT-NAME>HsslAcessWindowStartAddr1</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Defines the upper 24 bits of the start address of the corresponding access window</L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>4294967295</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1260">
+                      <SHORT-NAME>HsslAcessWindowStartAddr2</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Defines the upper 24 bits of the start address of the corresponding access window</L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>4294967295</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1264">
+                      <SHORT-NAME>HsslAcessWindowStartAddr3</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Defines the upper 24 bits of the start address of the corresponding access window</L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>4294967295</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1268">
+                      <SHORT-NAME>HsslAcessWindowEndAddr0</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Defines the upper 24 bits of the End address of the corresponding access window</L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>4294967295</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1272">
+                      <SHORT-NAME>HsslAcessWindowEndAddr1</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Defines the upper 24 bits of the End address of the corresponding access window</L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>4294967295</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1276">
+                      <SHORT-NAME>HsslAcessWindowEndAddr2</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Defines the upper 24 bits of the End address of the corresponding access window</L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>4294967295</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1280">
+                      <SHORT-NAME>HsslAcessWindowEndAddr3</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Defines the upper 24 bits of the End address of the corresponding access window</L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>4294967295</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1284">
+                      <SHORT-NAME>HsslAcessRuleWindow0</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">The parameter represents the Access Rules for Window 0. The values correspond to the following modes:                                                     0 - HSSL_NO_ACCESS,                                                     1 - HSSL_READ_ACCESS,                                                     2 - HSSL_WRITE_ACCESS,                                                     3 - HSSL_READ_WRITE_ACCESS </L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>NO_ACCESS</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>NO_ACCESS</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>READ</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>WRITE</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>READ_WRITE</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1288">
+                      <SHORT-NAME>HsslAcessRuleWindow1</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">The parameter represents the Access Rules for Window 0. The values correspond to the following modes:                                                     0 - HSSL_NO_ACCESS,                                                     1 - HSSL_READ_ACCESS,                                                     2 - HSSL_WRITE_ACCESS,                                                     3 - HSSL_READ_WRITE_ACCESS </L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>NO_ACCESS</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>NO_ACCESS</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>READ</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>WRITE</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>READ_WRITE</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1292">
+                      <SHORT-NAME>HsslAcessRuleWindow2</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">The parameter represents the Access Rules for Window 0. The values correspond to the following modes:                                                     0 - HSSL_NO_ACCESS,                                                     1 - HSSL_READ_ACCESS,                                                     2 - HSSL_WRITE_ACCESS,                                                     3 - HSSL_READ_WRITE_ACCESS </L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>NO_ACCESS</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>NO_ACCESS</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>READ</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>WRITE</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>READ_WRITE</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1296">
+                      <SHORT-NAME>HsslAcessRuleWindow3</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">The parameter represents the Access Rules for Window 0. The values correspond to the following modes:                                                     0 - HSSL_NO_ACCESS,                                                     1 - HSSL_READ_ACCESS,                                                     2 - HSSL_WRITE_ACCESS,                                                     3 - HSSL_READ_WRITE_ACCESS </L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>NO_ACCESS</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>NO_ACCESS</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>READ</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>WRITE</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>READ_WRITE</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1336">
+                      <SHORT-NAME>HsslReferenceClock</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">The parameter represents the Interface mode. The values correspond to the following modes:                                                     0 - REFCLK 10MHz, LS 5MBaud, MS n.a.,                                                     1 - REFCLK 20MHz, LS 5MBaud, MS=20MBaud,                                                     2 - REFCLK 40MHz, LS 5MBaud, MS=20MBaud </L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>HSSL_20MHZ</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>HSSL_10MHZ</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>HSSL_20MHZ</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>HSSL_40MHZ</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1340">
+                      <SHORT-NAME>HsslSystemClockDivider</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">The parameter represents the System Clock Frequency Divider. The values correspond to the following modes:                                                     0 - SYSCLK DIV 1/1,                                                     1 - SYSCLK DIV 1/2,                                                     2 - SYSCLK DIV 1/4 </L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>SYSCLK_DIV_1</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>SYSCLK_DIV_1</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>SYSCLK_DIV_2</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>SYSCLK_DIV_4</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1344">
+                      <SHORT-NAME>HsslMasterTxSpeed</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">The parameter represents the Master mode TX speed. The values correspond to the following modes:                                                     0 - LOW SPEED,                                                     2 - HIGH SPEED </L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>LOW_SPEED</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>LOW_SPEED</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>HIGH_SPEED</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1348">
+                      <SHORT-NAME>HsslMasterRxSpeed</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">The parameter represents the Master mode RX speed. The values correspond to the following modes:                                                     0 - LOW SPEED,                                                     1 - MEDIUM SPEED,                                                     2 - HIGH SPEED </L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>LOW_SPEED</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>LOW_SPEED</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>MEDIUM_SPEED</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>HIGH_SPEED</SHORT-NAME>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                  </PARAMETERS>
+                  <REFERENCES>
+                    <ECUC-REFERENCE-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1244">
+                      <SHORT-NAME>HsslDmaMultiWriteChannelRef</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This parameter refers to DMA Tx Channel configuration in MCU. Used for HSSL.</L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AURIX2G/EcucDefs/Dma/DmaChannelConfig</DESTINATION-REF>
+                    </ECUC-REFERENCE-DEF>
+                    <ECUC-REFERENCE-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1428">
+                      <SHORT-NAME>HsslDmaMultiReadTxChannelRef</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This parameter refers to DMA Tx Channel configuration in MCU. Used for HSSL.</L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AURIX2G/EcucDefs/Dma/DmaChannelConfig</DESTINATION-REF>
+                    </ECUC-REFERENCE-DEF>
+                    <ECUC-REFERENCE-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1354">
+                      <SHORT-NAME>HsslDmaMultiReadRxChannelRef</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">This parameter refers to DMA Rx Channel configuration in MCU. Used for HSSL.</L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AURIX2G/EcucDefs/Dma/DmaChannelConfig</DESTINATION-REF>
+                    </ECUC-REFERENCE-DEF>
+                  </REFERENCES>
+                  <SUB-CONTAINERS>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="ECUC:c03229fe-2dca-418e-a47c-1ab11e6c1926">
+                      <SHORT-NAME>HsslChannelCallbackConfig</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Hssl Channel callback configuration</L-2>
+                      </DESC>
+                      <PARAMETERS>
+                        <ECUC-STRING-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1364">
+                          <SHORT-NAME>HsslCh0COKCallbackFunction</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">User function to handle Write completion event for HSSL channel-0.</L-2>
+                          </DESC>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                          <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                          <VALUE-CONFIG-CLASSES>
+                            <ECUC-VALUE-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-VALUE-CONFIGURATION-CLASS>
+                          </VALUE-CONFIG-CLASSES>
+                          <ECUC-STRING-PARAM-DEF-VARIANTS>
+                            <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                              <DEFAULT-VALUE>NULL_PTR</DEFAULT-VALUE>
+                            </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                          </ECUC-STRING-PARAM-DEF-VARIANTS>
+                        </ECUC-STRING-PARAM-DEF>
+                        <ECUC-STRING-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1368">
+                          <SHORT-NAME>HsslCh1COKCallbackFunction</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">User function to handle Write completion event for HSSL channel-1.</L-2>
+                          </DESC>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                          <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                          <VALUE-CONFIG-CLASSES>
+                            <ECUC-VALUE-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-VALUE-CONFIGURATION-CLASS>
+                          </VALUE-CONFIG-CLASSES>
+                          <ECUC-STRING-PARAM-DEF-VARIANTS>
+                            <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                              <DEFAULT-VALUE>NULL_PTR</DEFAULT-VALUE>
+                            </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                          </ECUC-STRING-PARAM-DEF-VARIANTS>
+                        </ECUC-STRING-PARAM-DEF>
+                        <ECUC-STRING-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1372">
+                          <SHORT-NAME>HsslCh2COKCallbackFunction</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">User function to handle Write completion event for HSSL channel-2.</L-2>
+                          </DESC>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                          <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                          <VALUE-CONFIG-CLASSES>
+                            <ECUC-VALUE-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-VALUE-CONFIGURATION-CLASS>
+                          </VALUE-CONFIG-CLASSES>
+                          <ECUC-STRING-PARAM-DEF-VARIANTS>
+                            <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                              <DEFAULT-VALUE>NULL_PTR</DEFAULT-VALUE>
+                            </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                          </ECUC-STRING-PARAM-DEF-VARIANTS>
+                        </ECUC-STRING-PARAM-DEF>
+                        <ECUC-STRING-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1376">
+                          <SHORT-NAME>HsslCh3COKCallbackFunction</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">User function to handle Write completion event for HSSL channel-3.</L-2>
+                          </DESC>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                          <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                          <VALUE-CONFIG-CLASSES>
+                            <ECUC-VALUE-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-VALUE-CONFIGURATION-CLASS>
+                          </VALUE-CONFIG-CLASSES>
+                          <ECUC-STRING-PARAM-DEF-VARIANTS>
+                            <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                              <DEFAULT-VALUE>NULL_PTR</DEFAULT-VALUE>
+                            </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                          </ECUC-STRING-PARAM-DEF-VARIANTS>
+                        </ECUC-STRING-PARAM-DEF>
+                        <ECUC-STRING-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1380">
+                          <SHORT-NAME>HsslCh0RDICallbackFunction</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">User function to handle Read completion event for HSSL channel-0.</L-2>
+                          </DESC>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                          <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                          <VALUE-CONFIG-CLASSES>
+                            <ECUC-VALUE-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-VALUE-CONFIGURATION-CLASS>
+                          </VALUE-CONFIG-CLASSES>
+                          <ECUC-STRING-PARAM-DEF-VARIANTS>
+                            <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                              <DEFAULT-VALUE>NULL_PTR</DEFAULT-VALUE>
+                            </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                          </ECUC-STRING-PARAM-DEF-VARIANTS>
+                        </ECUC-STRING-PARAM-DEF>
+                        <ECUC-STRING-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1384">
+                          <SHORT-NAME>HsslCh1RDICallbackFunction</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">User function to handle Read completion event for HSSL channel-1.</L-2>
+                          </DESC>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                          <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                          <VALUE-CONFIG-CLASSES>
+                            <ECUC-VALUE-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-VALUE-CONFIGURATION-CLASS>
+                          </VALUE-CONFIG-CLASSES>
+                          <ECUC-STRING-PARAM-DEF-VARIANTS>
+                            <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                              <DEFAULT-VALUE>NULL_PTR</DEFAULT-VALUE>
+                            </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                          </ECUC-STRING-PARAM-DEF-VARIANTS>
+                        </ECUC-STRING-PARAM-DEF>
+                        <ECUC-STRING-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1388">
+                          <SHORT-NAME>HsslCh2RDICallbackFunction</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">User function to handle Read completion event for HSSL channel-2.</L-2>
+                          </DESC>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                          <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                          <VALUE-CONFIG-CLASSES>
+                            <ECUC-VALUE-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-VALUE-CONFIGURATION-CLASS>
+                          </VALUE-CONFIG-CLASSES>
+                          <ECUC-STRING-PARAM-DEF-VARIANTS>
+                            <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                              <DEFAULT-VALUE>NULL_PTR</DEFAULT-VALUE>
+                            </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                          </ECUC-STRING-PARAM-DEF-VARIANTS>
+                        </ECUC-STRING-PARAM-DEF>
+                        <ECUC-STRING-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1392">
+                          <SHORT-NAME>HsslCh3RDICallbackFunction</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">User function to handle Read completion event for HSSL channel-3.</L-2>
+                          </DESC>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                          <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                          <VALUE-CONFIG-CLASSES>
+                            <ECUC-VALUE-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-VALUE-CONFIGURATION-CLASS>
+                          </VALUE-CONFIG-CLASSES>
+                          <ECUC-STRING-PARAM-DEF-VARIANTS>
+                            <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                              <DEFAULT-VALUE>NULL_PTR</DEFAULT-VALUE>
+                            </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                          </ECUC-STRING-PARAM-DEF-VARIANTS>
+                        </ECUC-STRING-PARAM-DEF>
+                        <ECUC-STRING-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1396">
+                          <SHORT-NAME>HsslCh0TRGCallbackFunction</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">User function to handle Trigger event for HSSL channel-0.</L-2>
+                          </DESC>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                          <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                          <VALUE-CONFIG-CLASSES>
+                            <ECUC-VALUE-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-VALUE-CONFIGURATION-CLASS>
+                          </VALUE-CONFIG-CLASSES>
+                          <ECUC-STRING-PARAM-DEF-VARIANTS>
+                            <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                              <DEFAULT-VALUE>NULL_PTR</DEFAULT-VALUE>
+                            </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                          </ECUC-STRING-PARAM-DEF-VARIANTS>
+                        </ECUC-STRING-PARAM-DEF>
+                        <ECUC-STRING-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1400">
+                          <SHORT-NAME>HsslCh1TRGCallbackFunction</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">User function to handle Trigger event for HSSL channel-1.</L-2>
+                          </DESC>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                          <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                          <VALUE-CONFIG-CLASSES>
+                            <ECUC-VALUE-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-VALUE-CONFIGURATION-CLASS>
+                          </VALUE-CONFIG-CLASSES>
+                          <ECUC-STRING-PARAM-DEF-VARIANTS>
+                            <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                              <DEFAULT-VALUE>NULL_PTR</DEFAULT-VALUE>
+                            </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                          </ECUC-STRING-PARAM-DEF-VARIANTS>
+                        </ECUC-STRING-PARAM-DEF>
+                        <ECUC-STRING-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1404">
+                          <SHORT-NAME>HsslCh2TRGCallbackFunction</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">User function to handle Trigger event for HSSL channel-2.</L-2>
+                          </DESC>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                          <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                          <VALUE-CONFIG-CLASSES>
+                            <ECUC-VALUE-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-VALUE-CONFIGURATION-CLASS>
+                          </VALUE-CONFIG-CLASSES>
+                          <ECUC-STRING-PARAM-DEF-VARIANTS>
+                            <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                              <DEFAULT-VALUE>NULL_PTR</DEFAULT-VALUE>
+                            </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                          </ECUC-STRING-PARAM-DEF-VARIANTS>
+                        </ECUC-STRING-PARAM-DEF>
+                        <ECUC-STRING-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1408">
+                          <SHORT-NAME>HsslCh3TRGCallbackFunction</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">User function to handle Trigger event for HSSL channel-3.</L-2>
+                          </DESC>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                          <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                          <VALUE-CONFIG-CLASSES>
+                            <ECUC-VALUE-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-VALUE-CONFIGURATION-CLASS>
+                          </VALUE-CONFIG-CLASSES>
+                          <ECUC-STRING-PARAM-DEF-VARIANTS>
+                            <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                              <DEFAULT-VALUE>NULL_PTR</DEFAULT-VALUE>
+                            </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                          </ECUC-STRING-PARAM-DEF-VARIANTS>
+                        </ECUC-STRING-PARAM-DEF>
+                        <ECUC-STRING-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1412">
+                          <SHORT-NAME>HsslCh0ERRCallbackFunction</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">User function to handle Error event for HSSL channel-0.</L-2>
+                          </DESC>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                          <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                          <VALUE-CONFIG-CLASSES>
+                            <ECUC-VALUE-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-VALUE-CONFIGURATION-CLASS>
+                          </VALUE-CONFIG-CLASSES>
+                          <ECUC-STRING-PARAM-DEF-VARIANTS>
+                            <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                              <DEFAULT-VALUE>NULL_PTR</DEFAULT-VALUE>
+                            </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                          </ECUC-STRING-PARAM-DEF-VARIANTS>
+                        </ECUC-STRING-PARAM-DEF>
+                        <ECUC-STRING-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1416">
+                          <SHORT-NAME>HsslCh1ERRCallbackFunction</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">User function to handle Error event for HSSL channel-1.</L-2>
+                          </DESC>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                          <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                          <VALUE-CONFIG-CLASSES>
+                            <ECUC-VALUE-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-VALUE-CONFIGURATION-CLASS>
+                          </VALUE-CONFIG-CLASSES>
+                          <ECUC-STRING-PARAM-DEF-VARIANTS>
+                            <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                              <DEFAULT-VALUE>NULL_PTR</DEFAULT-VALUE>
+                            </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                          </ECUC-STRING-PARAM-DEF-VARIANTS>
+                        </ECUC-STRING-PARAM-DEF>
+                        <ECUC-STRING-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1420">
+                          <SHORT-NAME>HsslCh2ERRCallbackFunction</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">User function to handle Error event for HSSL channel-2.</L-2>
+                          </DESC>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                          <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                          <VALUE-CONFIG-CLASSES>
+                            <ECUC-VALUE-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-VALUE-CONFIGURATION-CLASS>
+                          </VALUE-CONFIG-CLASSES>
+                          <ECUC-STRING-PARAM-DEF-VARIANTS>
+                            <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                              <DEFAULT-VALUE>NULL_PTR</DEFAULT-VALUE>
+                            </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                          </ECUC-STRING-PARAM-DEF-VARIANTS>
+                        </ECUC-STRING-PARAM-DEF>
+                        <ECUC-STRING-PARAM-DEF UUID="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1424">
+                          <SHORT-NAME>HsslCh3ERRCallbackFunction</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="EN">User function to handle Error event for HSSL channel-3.</L-2>
+                          </DESC>
+                          <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                          <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                          <VALUE-CONFIG-CLASSES>
+                            <ECUC-VALUE-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-VALUE-CONFIGURATION-CLASS>
+                          </VALUE-CONFIG-CLASSES>
+                          <ECUC-STRING-PARAM-DEF-VARIANTS>
+                            <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                              <DEFAULT-VALUE>NULL_PTR</DEFAULT-VALUE>
+                            </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                          </ECUC-STRING-PARAM-DEF-VARIANTS>
+                        </ECUC-STRING-PARAM-DEF>
+                      </PARAMETERS>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                  </SUB-CONTAINERS>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+                <ECUC-PARAM-CONF-CONTAINER-DEF UUID="ECUC:c03229fe-4dca-416e-a48d-1ae11e6c1300">
+                  <SHORT-NAME>CommonPublishedInformation</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">Common container, aggregated by all modules. It contains published information about vendor and versions.</L-2>
+                  </DESC>
+                  <PARAMETERS>
+                    <ECUC-INTEGER-PARAM-DEF UUID="bd0a8d38-4d8c-4ee9-888d-1166b2581304">
+                      <SHORT-NAME>ArMajorVersion</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Major version number of AUTOSAR specification on which the appropriate implementation is based on.</L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>4</DEFAULT-VALUE>
+                      <MAX>65535</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="bd0a8d38-4d8c-4ee9-888d-1166b2581308">
+                      <SHORT-NAME>ArMinorVersion</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Minor version number of AUTOSAR specification on which the appropriate implementation is based on.</L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>4</DEFAULT-VALUE>
+                      <MAX>65535</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="bd0a8d38-4d8c-4ee9-888d-1166b2581312">
+                      <SHORT-NAME>ArPatchVersion</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Patch level version number of AUTOSAR specification on which the appropriate implementation is based on.</L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>65535</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="bd0a8d38-4d8c-4ee9-888d-1166b2581316">
+                      <SHORT-NAME>SwMajorVersion</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Major version number of the vendor specific implementation of the module. The numbering is vendor specific.</L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>20</DEFAULT-VALUE>
+                      <MAX>65535</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="bd0a8d38-4d8c-4ee9-888d-1166b2581320">
+                      <SHORT-NAME>SwMinorVersion</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Minor version number of the vendor specific implementation of the module. The numbering is vendor specific.</L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                      <MAX>65535</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="bd0a8d38-4d8c-4ee9-888d-1166b2581322">
+                      <SHORT-NAME>SwPatchVersion</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific.</L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                      <MAX>65535</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="bd0a8d38-4d8c-4ee9-888d-1166b2581324">
+                      <SHORT-NAME>ModuleId</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Module ID of this module from Module List</L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>255</DEFAULT-VALUE>
+                      <MAX>65535</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="bd0a8d38-4d8c-4ee9-888d-1166b2581328">
+                      <SHORT-NAME>VendorId</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list</L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>17</DEFAULT-VALUE>
+                      <MAX>65535</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-STRING-PARAM-DEF UUID="bd0a8d38-4d8c-4ee9-888d-1166b2581360">
+                      <SHORT-NAME>Release</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="EN">Aurix2G derivative used for the implementation</L-2>
+                      </DESC>
+                      <ORIGIN>INFINEON_AURIX2G</ORIGIN>
+                      <POST-BUILD-VARIANT-VALUE>false</POST-BUILD-VARIANT-VALUE>
+                      <VALUE-CONFIG-CLASSES>
+                        <ECUC-VALUE-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-VALUE-CONFIGURATION-CLASS>
+                      </VALUE-CONFIG-CLASSES>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <ECUC-STRING-PARAM-DEF-VARIANTS>
+                        <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                          <DEFAULT-VALUE>_TRICORE_TC366</DEFAULT-VALUE>
+                        </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                      </ECUC-STRING-PARAM-DEF-VARIANTS>
+                    </ECUC-STRING-PARAM-DEF>
+                  </PARAMETERS>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </CONTAINERS>
+            </ECUC-MODULE-DEF>
+          </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

@@ -1,0 +1,803 @@
+#parse("CommonVars.vm")
+#parse("CommonMkVars.vm")
+#parse("CommonMkMacros.vm")
+#* *##set( $allMkThreadsList = $OsModel.getMkThreadList() )
+/* This file is generated automatically. DO NOT EDIT!!
+ *
+ * EB tresos AutoCore OS ${Version.getMajor()}.${Version.getMinor()}.${Version.getPatch()} ${Version.getTarget()}/${Version.getDerivate()}
+ * (Build ${Version.getBuild()})
+ *
+ * (c) 1998-${Version.getCurrentYear()} Elektrobit Automotive GmbH
+ * Am Wolfsmantel 46
+ * 91058 Erlangen
+ * GERMANY
+ *
+ * Date         : ${Version.getDate()}           !!!IGNORE-LINE!!!
+ */
+
+#ifndef MK_GEN_CONFIG_H
+\#define MK_GEN_CONFIG_H
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+## !LINKSTO Microkernel.Generator.OutputFiles.General.Header_Comment, 1
+/*
+ * MISRA-C:2012 Deviation List
+ *
+ * MISRAC2012-1) Deviated Rule: 20.1 (advisory)
+ * \#include statements in a file should only be preceded by
+ * preprocessor directives or comments.
+ *
+ * Reason:
+ * The C++ guards allow usage of the OS with a C++-compiler.
+ *
+ * MISRAC2012-2) Deviated Rule: 8.6 (required)
+ * An identifier with external linkage shall have exactly one
+ * external definition.
+ *
+ * Reason:
+ * These symbols form MPU address ranges, they are defined by the linker.
+ *
+ * MISRAC2012-3) Deviated Rule: 8.5 (required)
+ * An external object or function shall be declared once in one and only one file.
+ *
+ * Reason:
+ * Some MPU regions defined here might also be used by configuration
+ * independent functions, which can't include this configuration header.
+ * Therefore there might also be a declaration in a configuration
+ * independent header.
+ */
+
+/* Deviation MISRAC2012-1 <*> */
+
+#if( $IsMkVersionOlderThan21 )
+#* *#\#include <private/Mk_interrupt.h>
+#* *#\#include <private/Mk_tool.h>
+#* *#\#include <private/Mk_core.h>
+#*    *##VM_ArchOsConfigIncludeFiles()
+#* *##if( $AllScTablesList.getNumMkScheduleTables() > 0 )
+## The declaration of the handler for the internal microkernel interrupts for the
+## microkernel counters referenced by simple schedule tables (SSTs) is contained
+## in the header file included on the next lines. Because this handler is referenced
+## by MK_SOFTVECTOR_xxxx macros, this include is needed.
+#*    *#\#include <private/Mk_sst.h>
+#* *##end
+#* *##if( $MkConfig.hasPanicStop() )
+#*    *#\#include <private/Mk_panic.h>
+#* *##end
+#end
+
+\#define $ConstOsMicroKernel.MK_CFG_MASTERCOREINDEX($MkVersion)        $OsConfig.getPhysicalInitCoreId()u
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_HAS_USERPANICSTOP, 1
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_USERPANICSTOP, 2
+#if( $MkConfig.hasPanicStop() )
+#* *#\#define MK_HAS_USERPANICSTOP      1
+#* *#\#define MK_USERPANICSTOP          $MkConfig.getPanicStopFunction()
+#else
+#* *#\#define MK_HAS_USERPANICSTOP      0
+#end
+#set( $resSchedulerPrio = 1 )
+#if( $allMkThreadsList.getTaskTypeThreads().getHighestPriority() > $resSchedulerPrio )
+#* *##set( $resSchedulerPrio = $allMkThreadsList.getTaskTypeThreads().getHighestPriority() )
+#end
+#set( $cat2LockPrio = $resSchedulerPrio )
+#if( $allMkThreadsList.getCAT2IsrTypeThreads().getHighestPriority() > $cat2LockPrio )
+#* *##set( $cat2LockPrio = $allMkThreadsList.getCAT2IsrTypeThreads().getHighestPriority() )
+#end
+#set( $cat1LockPrio = $cat2LockPrio )
+#if( $allMkThreadsList.getCAT1IsrTypeThreads().getHighestPriority() > $cat1LockPrio )
+#* *##set( $cat1LockPrio = $allMkThreadsList.getCAT1IsrTypeThreads().getHighestPriority() )
+#end
+#if( $IsMkVersionOlderThan21 )
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_SCHEDULERPRIO, 1
+#* *#\#define MK_SCHEDULERPRIO          $resSchedulerPrio
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_CAT2LOCKPRIO, 1
+#* *#\#define MK_CAT2LOCKPRIO           $cat2LockPrio
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_CAT1LOCKPRIO, 1
+#* *#\#define MK_CAT1LOCKPRIO           $cat1LockPrio
+#end
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_CAT2LOCKLEVEL, 1
+\#define MK_${MkCfgPrefix}CAT2LOCKLEVEL          $AllInterruptsList.getCat2LockLevel()u
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_CAT1LOCKLEVEL, 1
+\#define MK_${MkCfgPrefix}CAT1LOCKLEVEL          $AllInterruptsList.getCat1LockLevel()u
+
+
+/*===================================================================
+ * Addons
+ *==================================================================*/
+\#define MK_CFG_NADDONS  $MkConfig.getAddOns().size()u
+
+#if( $IsMkVersionOlderThan21 )
+#* *#/*===================================================================
+#* *# * Advanced Logical Core Interface
+#* *# *==================================================================*/
+#* *#/* Advanced Logical Core Interface preprocessor macros. */
+#* *##foreach( $lphy2LogMacro in $OsConfig.getAlciP2LMacros() )
+#*    *#\#define $lphy2LogMacro
+#* *##end
+#* *##foreach( $log2PhyMacro in $OsConfig.getAlciL2PMacros() )
+#*    *#\#define $log2PhyMacro
+#* *##end
+#else
+#* *#/*===================================================================
+#* *# * Core Interface
+#* *# *==================================================================*/
+#* *#\#define MK_CFG_NCORES  $OsModel.getNumUsedCores()
+#* *##foreach( $coreId in $OsModel.getUsedCoreIds() )
+#*    *#\#define MK_CFG_C${OsConfig.lookUpLogicalCoreId($coreId)}_PHYSICALID  $coreId
+#* *##end
+#end
+
+/*===================================================================
+ * Alarms
+ *==================================================================*/
+#set( $nonInternalAlarmList = $AllAlarmsList.getNonInternalElements() )
+\#define MK_CFG_NALARMS  $nonInternalAlarmList.size()
+\#define MK_CFG_ALARMPROPERTIES   \
+#foreach( $alarm in $AllAlarmsList.getNonInternalElements() )
+#* *##set( $pair = $alarm.generateMKCtrSubObjectProperties() )
+#* *#  MK_${MkCsPrefix}PROP($pair.getFirst(), $pair.getSecond())#if( $foreach.hasNext ),  \\$newLine#end
+#end
+
+/*===================================================================
+ * Application modes
+ *==================================================================*/
+\#define MK_CFG_NSTARTMODES  $AllAppModesList.size()
+
+/*===================================================================
+ * Applications
+ *==================================================================*/
+\#define MK_CFG_NAPPLICATIONS  $AllApplicationsList.size()
+
+#foreach( $app in $AllApplicationsList )
+#* *##set( $owningCoreId = $app.getPhyCoreAssignment() )
+#* *##set( $cLocalAppList = $AllApplicationsList.getElementsOnCore($owningCoreId) )
+#* *#\#define MK_APPCONFIG_$app.getName()  MK_APPCONFIG(    /* $app.getName() */  \
+#* *#  /* ID */                       $AllApplicationsList.getId($app)u,  \
+#* *#  /* dynamic data */             &MK_c${owningCoreId}_appDynamic[$cLocalAppList.getId($app)],  \
+#* *#  /* core ID */                  ${owningCoreId}u,  \
+#* *##if( $app.hasRestartTask() )
+#*    *#  /* restart task */             $app.getRestartTask().getName(),  \
+#* *##else
+#* *#  /* restart task */             MK_INVALID_TASK,  \
+#* *##end
+#* *#  /* global permissions */       $app.getMkPermString(),  \
+#* *##if( !$app.isAPP_SYSTEM() )
+#*    *#  /* accessing applications */   {$ClassOfHelpers.toHexStringUnsigned($app.getAppAccessMask())}  \
+#* *##else
+#* *#  /* accessing applications */   {$ClassOfHelpers.toHexStringUnsigned(0)}  \
+#* *##end
+#* *#)
+#end
+#foreach( $app in $AllApplicationsList )
+#* *##if( $foreach.index == 0 )
+#*    *#\#define MK_CFG_APPLIST   \
+#* *##end
+#* *#  /* $foreach.index */ MK_APPCONFIG_$app.getName()#if($foreach.hasNext),  \\$newLine#else$newLine#end
+#end
+
+#foreach( $app in $AllApplicationsList )
+#* *##foreach( $tf in $app.getTrustedFunctions() )
+#*    *#\#define MK_TFCFG_$tf.getName()  MK_TRUSTEDFUNCTIONCFG(  \
+#*    *#  /* name */                                             "$tf.getName()",  \
+#*    *#  /* core */                                             $app.getPhyCoreAssignment(),  \
+#*    *#  /* func */                                             TRUSTED_$tf.getName(),  \
+#*    *#  /* Processor mode */                                   $tf.getProcessorStatus().getProcessorModeString(),  \
+#*    *#  /* Floating point enabled flag */                      $tf.getProcessorStatus().getFpEnabledString(),  \
+#*    *#  /* Hardware specific extensions */                     $tf.getProcessorStatus().getHwExtensionString(),  \
+#*    *#  /* Partition index */                                  $mkPartitionManager.getCore($app.getPhyCoreAssignment()).getPartitionIndexForVM($tf.getMkMemoryPartition())  \
+#*    *#)
+#* *##end
+#end
+#set( $totalTrustedFunctions = $AllApplicationsList.getNumTrustedFunctions() )
+\#define MK_CFG_NTRUSTEDFUNCTIONS  $totalTrustedFunctions
+#set( $nTf = 0 )
+#if( $totalTrustedFunctions > 0 )
+#* *#\#define MK_CFG_TRUSTEDFUNCTIONLIST  \
+#* *##foreach( $app in $AllApplicationsList )
+#*    *##foreach( $tf in $app.getTrustedFunctions() )
+#*       *#  /* $nTf */  MK_TFCFG_$tf.getName()#if( $nTf < ( $totalTrustedFunctions - 1 ) ),  \\$newLine#end
+#*       *##set( $nTf = $nTf + 1 )
+#*    *##end
+#* *##end
+#end
+
+#foreach( $coreId in [0..$OsModel.getMaxCoreId()] )
+#* *#\#define MK_CFG_C${coreId}_NAPPLICATIONS  $AllApplicationsList.getElementsOnCore($coreId).size()
+#end
+
+/*===================================================================
+ * Core Mapping
+ *==================================================================*/
+#foreach( $map in $OsConfig.getCoreMaps() )
+#* *#\#define MK_CFG_COREMAP_$map.getKey()  $map.getValue()
+#end
+
+/*===================================================================
+ * Counters
+ *==================================================================*/
+\#define MK_CFG_NCOUNTERS  $AllCountersList.size()
+\#define MK_CFG_COUNTERPROPERTIES   \
+#foreach( $counter in $AllCountersList.getNonInternalElements() )
+#* *##set( $pair = $counter.generateMKCtrSubObjectProperties() )
+#* *#        MK_${MkCsPrefix}PROP($pair.getFirst(), $pair.getSecond())#if( $foreach.hasNext ),  \\$newLine#end
+#end
+
+/*===================================================================
+ * Hardware Timers
+ *==================================================================*/
+\#define MK_CFG_NTIMERS          0
+\#define MK_CFG_TIMERPROPERTIES  1
+#foreach( $hwTmr in $AllHwTimersList.getNonInternalElements() )
+#* *##set( $pair = $hwTmr.generateMKCtrSubObjectProperties() )
+#* *#  MK_${MkCsPrefix}PROP($pair.getFirst(), $pair.getSecond())#if( $foreach.hasNext ),  \\$newLine#end
+#end
+
+/*===================================================================
+ * Interrupts
+ *==================================================================*/
+/* Mk Regular Interrupts */
+#set( $allRegularInterruptsList = $AllInterruptsList.getRegularInterrupts() )
+#foreach( $interrupt in $allRegularInterruptsList )
+#* *##set( $owningapp        = $interrupt.getOwningApplication() )
+#* *##set( $coreId           = $owningapp.getPhyCoreAssignment() )
+#* *##set( $cLocalInterrupts = $OsModel.getInterruptsOnCore($coreId) )
+#* *##set( $cLocalIsrThreads = $OsModel.getMkThreadsOnCore($coreId).getIsrTypeThreads() )
+#* *##set( $interruptThread  = $OsModel.getMkThreadList().get($interrupt) )
+#* *##if( $interrupt.isBankedInterrupt() )
+#*    *##ifndef MK_SOFTVECTOR_$interrupt.getMkSoftVectorMask($interrupt.getSoftVectorNumber())
+#*    *#\#define MK_SOFTVECTOR_$interrupt.getMkSoftVectorMask($interrupt.getSoftVectorNumber())  MK_VECTOR_DEMUX($interrupt.getMuxedVectorStart())
+#*    *##endif
+#* *##end
+#* *##if( !$interrupt.isCounterIsr() )
+#*    *#\#define MK_SOFTVECTOR_$interrupt.getMkSoftVectorMask($interrupt.getRealVectorNumber())  MK_VECTOR_ISR($AllInterruptsList.getIsrId($interrupt))
+#* *##else
+#*    *#\#define MK_SOFTVECTOR_$interrupt.getMkSoftVectorMask($interrupt.getRealVectorNumber())  MK_VECTOR_${MkCtrsubPrefix}ISR($AllInterruptsList.getIsrId($interrupt))
+#* *##end
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_IRQCFG, 1
+#* *#\#define MK_IRQCFG_$interrupt.getName()  MK_IRQCFG(  /* $interrupt.getName() */  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_IRQCFG.control_register, 1
+#* *#  /* Control register */            $interrupt.getMkControlReg(),  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_IRQCFG.level, 1
+#* *#  /* IRQ level */                   $interrupt.getArbitrationPriority()u,  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_IRQCFG.coreIndex, 1
+#* *#  /* coreIndex */                   $coreId,  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_IRQCFG.flags, 1
+#* *##if( $interrupt.isEnableOnStartup() )
+#*    *#  /* Flags */                       (MK_IRQ_ENABLE)  \
+#* *##else
+#*    *#  /* Flags */                       0  \
+#* *##end
+#* *#)
+#* *##set( $isrConfigMacro = "MK_ISRCFG" )
+#* *##if( $interrupt.isCounterIsr() )
+#*    *##set( $isrConfigMacro = "MK_${MkCtrsubPrefix}ISRCFG" )
+#* *##end
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_ISRCFG, 2
+#* *#\#define MK_ISRCFG_$interrupt.getName()  $isrConfigMacro(  /* $interrupt.getName() */  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_ISRCFG.irqcfg, 1
+#* *#  /* ISR config */                        &MK_irqCfgTable[$interrupt.getName()],  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_ISRCFG.thread, 1
+#* *#  /* Thread data */                       &MK_c${coreId}_isrThreads[$cLocalIsrThreads.getId($interruptThread)],  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_ISRCFG.registers, 1
+#* *#  /* ISR register storage */              &MK_c${coreId}_isrRegisters[$interrupt.getMkThreadRegisterStorageIndex()],  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_ISRCFG.dynamic, 1
+#* *#  /* ISR dynamic state */                 &MK_c${coreId}_isrDynamic[$cLocalInterrupts.getId($interrupt)],  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_ISRCFG.name, 1
+#* *#  /* ISR name */                          "$interrupt.getName()",  \
+#* *#  /* core */                              $coreId,  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_ISRCFG.stackstart, 2
+#* *#  /* Stack start */                       #VM_MkStackStart($interrupt),  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_ISRCFG.stackend, 2
+#* *#  /* Stack end */                         #VM_MkStackEnd($interrupt),  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_ISRCFG.function, 1
+#* *#  /* ISR function */                      &$interrupt.getIsrFuncName(),  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_ISRCFG.pm, 1
+#* *#  /* Processor mode */                    $interrupt.getProcessorStatus().getProcessorModeString(),  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_ISRCFG.ilvl, 2
+#* *#  /* Interrupt level */                   $interrupt.getProcessorStatus().getInterruptLevelString(),  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_ISRCFG.ie, 1
+#* *#  /* Interrupts enabled flag */           $interrupt.getProcessorStatus().getInterruptsEnabledString(),  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_ISRCFG.fpu, 1
+#* *#  /* Floating point enabled flag */       $interrupt.getProcessorStatus().getFpEnabledString(),  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_ISRCFG.hws, 1
+#* *#  /* Hardware specific extensions */      $interrupt.getProcessorStatus().getHwExtensionString(),  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_ISRCFG.queueprio, 1
+#* *#  /* Queuing priority */                  $interruptThread.getCalcPriority(),  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_ISRCFG.runprio, 2
+#* *#  /* Run priority */                      $interrupt.getMkThreadRunPriority(),  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_ISRCFG.partIdx, 1
+#* *#  /* Partition index */                   $mkPartitionManager.getCore($coreId).getPartitionIndexForVM($interrupt.getMkMemoryPartition()),  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_ISRCFG.isrid, 1
+#* *#  /* ISR ID */                            $interrupt.getName(), \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_ISRCFG.execBudget, 1
+#* *##if( $interrupt.hasAccounting()  && $interrupt.hasTimingProtection() )
+#*     *#  /* Execution budget */                  MK_ExecutionNsToTicks_c${coreId}($interrupt.getExecutionBudget()u),  \
+#* *##else
+#*     *#  /* Execution budget */                  MK_EXECBUDGET_INFINITE,  \
+#* *##end
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_ISRCFG.lockBudget, 1
+#* *#  /* Lock budget */                       MK_NULL,  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_ISRCFG.aid, 1
+#* *##set( $owningApp = $interrupt.getOwningApplication() )
+#* *##if( ($owningApp == $null) || $owningapp.isAPP_SYSTEM() || $owningapp.isAPP_NULL)
+#*    *#  /* OS-Application */                    MK_APPL_NONE#if( $interrupt.isCounterIsr() ),  \\$newLine#else  \\$newLine#end
+#* *##else
+#*    *#  /* OS-Application */                    $owningapp.getName()#if( $interrupt.isCounterIsr() ),  \\$newLine#else  \\$newLine#end
+#* *##end
+#* *##if( $interrupt.isCounterIsr() )
+#*    *#  /* Counter index ctrSubHwCounterId($interrupt.getCounter().getName()) */                 $AllCountersList.getCsCounters().getId($interrupt.getCounter())  \
+#* *##end
+#* *#)
+#end
+/* Mk Internal Interrupts */
+#set( $allMkInternalInterrupts = $AllInterruptsList.getMkInternalInterrupts() )
+#foreach( $interrupt in $allMkInternalInterrupts )
+#* *##set( $owningapp = $interrupt.getOwningApplication() )
+#* *##set( $coreId    = $owningapp.getPhyCoreAssignment() )
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.SOFTVECTOR, 2
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.SOFTVECTOR.internal, 1
+#* *##if( $interrupt.isBankedInterrupt() )
+#*    *##ifndef MK_SOFTVECTOR_$interrupt.getMkSoftVectorMask($interrupt.getSoftVectorNumber())
+#*    *#\#define MK_SOFTVECTOR_$interrupt.getMkSoftVectorMask($interrupt.getSoftVectorNumber())  MK_VECTOR_DEMUX($interrupt.getMuxedVectorStart())
+#*    *##endif
+#* *##end
+#* *#\#define MK_SOFTVECTOR_$interrupt.getMkSoftVectorMask($interrupt.getRealVectorNumber())  MK_VECTOR_INTERNAL(((mk_interruptfunc_t)&$interrupt.getIsrFuncName()), $interrupt.getMkAdditionalParams())
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.SOFTVECTOR.ISR, 1
+#* *#\#define MK_IRQCFG_$interrupt.getName()  MK_IRQCFG(  /* $interrupt.getName() */  \
+#* *#  /* Control register */            $interrupt.getMkControlReg(),  \
+#* *#  /* IRQ level */                   $interrupt.getArbitrationPriority()u,  \
+#* *#  /* coreIndex */                   $coreId,  \
+#* *##if( $interrupt.isEnableOnStartup() )
+#*    *#  /* Flags */                       (MK_IRQ_ENABLE)  \
+#* *##else
+#*    *#  /* Flags */                       0  \
+#* *##end
+#* *#)
+#end
+/* Mk CrossCore Interrupts */
+#set( $allCrossCoreInterrupts = $AllInterruptsList.getCrossCoreInterrupts() )
+#foreach( $interrupt in $allCrossCoreInterrupts )
+#* *##set( $owningapp = $interrupt.getOwningApplication() )
+#* *##set( $coreId    = $owningapp.getPhyCoreAssignment() )
+#* *##ifndef MK_SOFTVECTOR_$interrupt.getMkSoftVectorMask($interrupt.getSoftVectorNumber())
+#* *#\#define MK_SOFTVECTOR_$interrupt.getMkSoftVectorMask($interrupt.getSoftVectorNumber())  MK_VECTOR_XCORE(0)
+#* *##endif
+#* *#\#define MK_IRQCFG_$interrupt.getName()  MK_IRQCFG(  /* $interrupt.getName() */  \
+#* *#  /* Control register */            $interrupt.getMkControlReg(),  \
+#* *#  /* IRQ level */                   $interrupt.getArbitrationPriority()u,  \
+#* *#  /* coreIndex */                   $coreId,  \
+#* *##if( $interrupt.isEnableOnStartup() )
+#*    *#  /* Flags */                       (MK_IRQ_ENABLE)  \
+#* *##else
+#*    *#  /* Flags */                       0  \
+#* *##end
+#* *#)
+#end
+
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_NISRS, 1
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_CFG_CX_NISRS, 1
+#set( $mkInterruptsList = $AllInterruptsList.getMkInterruptsWithISRs() )
+\#define MK_CFG_NISRS  $mkInterruptsList.size()
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_NIRQS, 1
+\#define MK_CFG_NIRQS  $AllInterruptsList.size()
+\#define MK_CFG_IRQLIST  \
+#foreach( $interrupt in $AllInterruptsList )
+#* *#  MK_IRQCFG_$interrupt.getName()#if($foreach.hasNext ),  \\$newLine#else$newLine#end
+#end
+
+\#define MK_CFG_ISRLIST  \
+#foreach( $interrupt in $mkInterruptsList )
+#* *#  MK_ISRCFG_$interrupt.getName()#if($foreach.hasNext ),  \\$newLine#else$newLine#end
+#end
+
+/* Core Local Interrupt Macros */
+#foreach( $coreId in [0..$OsModel.getMaxCoreId()] )
+#* *##set( $cLocalInterruptsList = $OsModel.getInterruptsOnCore($coreId) )
+#* *#\#define MK_CFG_C${coreId}_NISRS              $cLocalInterruptsList.getMkInterruptsWithISRs().size()
+#* *##set( $lowestCalPrio = $cLocalInterruptsList.getLowestCalcPriority() )
+#* *##set( $highestCalPrio = $cLocalInterruptsList.getHighestCalcPriority() )
+#* *#\#define MK_CFG_C${coreId}_NISRREGISTERS      $cLocalInterruptsList.getNumIsrThreadRegisters($lowestCalPrio, $highestCalPrio, $cLocalInterruptsList )u
+#end
+
+/*===================================================================
+ * Memory Partitions
+ *==================================================================*/
+#foreach( $coreId in $OsModel.getUsedCoreIds() )
+#* *##set( $mkPartitionList = $mkPartitionManager.getCore($coreId) )
+#* *#\#define MK_CFG_C${coreId}_NMEMORYPARTITIONS        $mkPartitionList.calculatePartitionCount()
+#* *#\#define MK_CFG_C${coreId}_INIT_MEMPART             $mkPartitionList.getPartitionIndexForVM($mkPartitionList.getInitPartition())
+#* *#\#define MK_CFG_C${coreId}_IDLE_MEMPART             $mkPartitionList.getPartitionIndexForVM($mkPartitionList.getIdlePartition())
+#* *#\#define MK_CFG_C${coreId}_${MkCtrsubPrefix}_MEMPART             $mkPartitionList.getPartitionIndexForVM($mkPartitionList.getOsPartition())
+#* *#\#define MK_CFG_C${coreId}_ERRORHOOK_MEMPART        $mkPartitionList.getPartitionIndexForVM($mkPartitionList.getErrorHookPartition())
+#* *#\#define MK_CFG_C${coreId}_PROTECTIONHOOK_MEMPART   $mkPartitionList.getPartitionIndexForVM($mkPartitionList.getProtectionHookPartition())
+#* *#\#define MK_CFG_C${coreId}_SHUTDOWNHOOK_MEMPART     $mkPartitionList.getPartitionIndexForVM($mkPartitionList.getShutdownHookPartition())
+#* *#\#define MK_CFG_C${coreId}_SHUTDOWN_MEMPART         $mkPartitionList.getPartitionIndexForVM($mkPartitionList.getShutdownPartition())
+#* *##if($ArchProperties.hasMkStartupPartition())
+#* *#\#define MK_CFG_C${coreId}_STARTUP_MEMPART          $mkPartitionList.getStartupPartitionIndex()
+#* *##end
+#end
+\#define MK_CFG_NMEMORYPARTITIONS           $mkPartitionManager.getNumTotalPartitions()
+\#define MK_CFG_NMEMORYREGIONS              $mkPartitionManager.accessAllRegions().size()
+#set( $partCount = 0 )
+#foreach( $coreId in $OsModel.getUsedCoreIds() )
+#*    *#\#define MK_CFG_C${coreId}_FIRST_MEMORYPARTITION    $partCount
+#*    *##set( $cLocalPartList = $mkPartitionManager.getCore($coreId) )
+#*    *##set( $partCount = $partCount + $cLocalPartList.size() )
+#* *#\#define MK_CFG_C${coreId}_MPUREGIONCACHESIZE       $cLocalPartList.getMemRegionCount()
+#end
+#set( $regCount   = 0 )
+#set( $partIndex  = 0 )
+#foreach( $coreId in $OsModel.getUsedCoreIds() )
+#* *##set( $cLocalPartList = $mkPartitionManager.getCore($coreId) )
+#*    *##if( $foreach.index == 0 )
+#*       *#\#define MK_CFG_MEMORYPARTITIONCONFIG   \
+#*    *##end
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_MEMORYPARTITIONCONFIG.r, 1
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_MEMORYPARTITIONCONFIG.n, 1
+#* *##foreach( $partition in $cLocalPartList )
+#*    *#  /*  $partIndex */ MK_MEMORYPARTITION( $regCount, $partition.size() )#if($foreach.hasNext || $foreach.parent.hasNext),  \\$newLine#else$newLine#end
+#*    *##set( $regCount  = $regCount + $partition.size() )
+#*    *##set( $partIndex = $partIndex + 1 )
+#* *##end
+#end
+#set( $mapIndex = 0 )
+#set( $partCnt  = 0 )
+\#define MK_CFG_MEMORYREGIONMAPCONFIG   \
+#foreach( $coreId in $OsModel.getUsedCoreIds() )
+#* *##set( $cLocalPartList = $mkPartitionManager.getCore($coreId) )
+#* *##foreach( $part in $cLocalPartList )
+#*    *##foreach( $memReg in $part.getAllRegionsInArchDefinedOrder() )
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_MEMORYREGIONMAPCONFIG.partition, 1
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_MEMORYREGIONMAPCONFIG.region, 1
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_MEMORYREGIONMAPCONFIG.perms, 1
+#*       *#  /* $mapIndex */ MK_MEMORYREGIONMAP( $partCnt, $mkPartitionManager.getAllRegions().indexOf($memReg), $memReg.getFlags().toString(), $memReg.getArchInitForRegionmap() )#if($foreach.hasNext || $foreach.parent.hasNext || $foreach.parent.parent.hasNext),  \\$newLine#else$newLine#end
+#*       *##set( $mapIndex = $mapIndex + 1 )
+#*    *##end
+#*    *##set( $partCnt = $partCnt + 1 )
+#* *##end
+#end
+
+\#define MK_CFG_NMEMORYREGIONMAPS  $mapIndex
+
+\#define MK_CFG_MEMORYREGIONCONFIG   \
+#foreach( $memReg in $mkPartitionManager.getAllRegions() )
+#* *#  /* $foreach.index */  $memReg.getCInitMacro()#if($foreach.hasNext),  \\$newLine#else$newLine#end
+#end
+
+/*===================================================================
+ * Memory Partitions Symbol Declarations
+ *==================================================================*/
+## !LINKSTO Microkernel.Generator.OutputFiles.General.Assembler_Protection, 1
+#ifndef MK_ASM
+/* Deviation MISRAC2012-2, MISRAC2012-3 <START> */
+#foreach( $memReg in $mkPartitionManager.getAllRegions() )
+#* *#extern mk_machineword_t $memReg.getStartSymbolName(true);
+#* *#extern mk_machineword_t $memReg.getLimitSymbolName(true);
+#* *### Starting with MK 2.1 we don't generate BSTART and IDATA symbols for stack regions.
+#* *##if ( $memReg.isInit() && ($IsMkVersionOlderThan21 || (!$memReg.isStack())) )
+#*    *#extern mk_machineword_t $memReg.getBStartSymbolName(true);
+#*    *#extern mk_machineword_t $memReg.getIDataSymbolName(true);
+#* *##end
+#end
+/* Deviation MISRAC2012-2, MISRAC2012-3 <STOP> */
+#endif  /* MK_ASM */
+
+/*===================================================================
+ * Microkernel Core Config
+ *==================================================================*/
+\#define MK_CFG_MAXMSG  31
+#if( !$IsMkVersionOlderThan21 )
+#* *#\#define MK_CFG_IDLE_FUNCTION              ( &$MkConfig.getIdleFunction() )
+#end
+#foreach( $coreId in [0..$OsModel.getMaxCoreId()] )
+#* *#/* Idle thread */
+#* *##if( $IsMkVersionOlderThan21 )
+#*    *#\#define MK_CFG_C${coreId}_IDLE_FUNCTION           ( &$MkConfig.getIdleFunction() )
+#* *##end
+#* *#\#define MK_CFG_C${coreId}_IDLE_MODE               $MkConfig.getThreadDataByType("IDLE").getPs().getProcessorModeString()
+#* *#\#define MK_CFG_C${coreId}_IDLE_STACK_NELEMENTS    $MkConfig.calcArchStackSize($MkConfig.getThreadDataByType("IDLE").getStacksize())
+#* *#/* Shutdown thread */
+#* *#\#define MK_CFG_C${coreId}_SHUTDOWN_FUNCTION       ( &$MkConfig.getShutdownFunction() )
+#* *#\#define MK_CFG_C${coreId}_SHUTDOWN_MODE           $MkConfig.getThreadDataByType("SHUTDOWN").getPs().getProcessorModeString()
+#* *#/* Init thread */
+#* *#\#define MK_CFG_C${coreId}_INIT_FUNCTION           ( &$MkConfig.getInitFunction() )
+#* *#\#define MK_CFG_C${coreId}_INIT_MODE               $MkConfig.getThreadDataByType("INIT").getPs().getProcessorModeString()
+#* *### Starting with MK 2.1, below priority related constants are not generated
+#* *##if( $IsMkVersionOlderThan21 )
+#*    *#\#define MK_CFG_C${coreId}_INIT_QPRIO              MK_SCHEDULERPRIO
+#*    *#\#define MK_CFG_C${coreId}_INIT_RPRIO              MK_SCHEDULERPRIO
+#* *##end
+#* *#\#define MK_CFG_C${coreId}_INIT_STACK_NELEMENTS    $MkConfig.calcArchStackSize($MkConfig.getKernStackSize())
+#* *#\#define MK_CFG_C${coreId}_KERNEL_STACK_NELEMENTS  $MkConfig.calcArchStackSize($MkConfig.getKernStackSize())
+#* *#/* error hook and protection hook */
+#* *##if( $OsConfig.hasErrorHook() )
+#*    *#\#define MK_CFG_C${coreId}_ERRORHOOK_MODE              $MkConfig.getThreadDataByType("ERROR_HOOK").getPs().getProcessorModeString()
+#*    *#\#define MK_CFG_C${coreId}_ERRORHOOK_LEVEL             MK_${MkCfgPrefix}CAT1LOCKLEVEL
+#*    *#\#define MK_CFG_C${coreId}_ERRORHOOK_STACK_NELEMENTS   $MkConfig.calcArchStackSize($MkConfig.getThreadDataByType("ERROR_HOOK").getStacksize())
+#*    *### Starting with MK 2.1, below priority related constants are not generated
+#*    *##if( $IsMkVersionOlderThan21 )
+#*       *#\#define MK_CFG_C${coreId}_ERRORHOOK_QPRIO             2200$newLine##MkThread.THREAD_HOOK_ERROR_PRIO
+#*       *#\#define MK_CFG_C${coreId}_ERRORHOOK_RPRIO             2200$newLine##MkThread.THREAD_HOOK_ERROR_PRIO
+#*    *##end
+#*    *#\#define MK_CFG_C${coreId}_HAS_ERRORHOOK               1
+#* *##else
+#*    *#\#define MK_CFG_C${coreId}_HAS_ERRORHOOK               0
+#* *##end
+#* *##if( $OsConfig.hasProtectionHook() )
+#*    *#\#define MK_CFG_C${coreId}_PROTECTIONHOOK_MODE              $MkConfig.getThreadDataByType("PROTECTION_HOOK").getPs().getProcessorModeString()
+#*    *#\#define MK_CFG_C${coreId}_PROTECTIONHOOK_LEVEL             MK_${MkCfgPrefix}CAT1LOCKLEVEL
+#*    *#\#define MK_CFG_C${coreId}_PROTECTIONHOOK_STACK_NELEMENTS   $MkConfig.calcArchStackSize($MkConfig.getThreadDataByType("PROTECTION_HOOK").getStacksize())
+#*    *### Starting with MK 2.1, below priority related constants are not generated
+#*    *##if( $IsMkVersionOlderThan21 )
+#*       *#\#define MK_CFG_C${coreId}_PROTECTIONHOOK_QPRIO             2300$newLine##MkThread.THREAD_HOOK_PROTECTION_PRIO
+#*       *#\#define MK_CFG_C${coreId}_PROTECTIONHOOK_RPRIO             2300$newLine##MkThread.THREAD_HOOK_PROTECTION_PRIO
+#*    *##end
+#*    *#\#define MK_CFG_C${coreId}_HAS_PROTECTIONHOOK               1
+#* *##else
+#*    *#\#define MK_CFG_C${coreId}_HAS_PROTECTIONHOOK               0
+#* *##end
+#* *##if( $OsConfig.hasShutdownHook() )
+#*    *#\#define MK_CFG_C${coreId}_SHUTDOWNHOOK_MODE                $MkConfig.getThreadDataByType("SHUTDOWN_HOOK").getPs().getProcessorModeString()
+#*    *#\#define MK_CFG_C${coreId}_SHUTDOWNHOOK_LEVEL               MK_${MkCfgPrefix}CAT1LOCKLEVEL
+#*    *#\#define MK_CFG_C${coreId}_SHUTDOWNHOOK_STACK_NELEMENTS     $MkConfig.calcArchStackSize( $MkConfig.getThreadDataByType("SHUTDOWN_HOOK").getStacksize())
+#*    *### Starting with MK 2.1, below priority related constants are not generated
+#*    *##if( $IsMkVersionOlderThan21 )
+#*       *#\#define MK_CFG_C${coreId}_SHUTDOWNHOOK_QPRIO               2100$newLine##MkThread.THREAD_HOOK_SHUTDOWN_PRIO
+#*       *#\#define MK_CFG_C${coreId}_SHUTDOWNHOOK_RPRIO               2100$newLine##MkThread.THREAD_HOOK_SHUTDOWN_PRIO
+#*    *##end
+#*    *#\#define MK_CFG_C${coreId}_HAS_SHUTDOWNHOOK                 1
+#* *##else
+#*    *#\#define MK_CFG_C${coreId}_HAS_SHUTDOWNHOOK                 0
+#* *##end
+/* PSW, thread prio and int level for CTRSUB calls from tasks */
+#* *#\#define MK_CFG_C${coreId}_${MkCtrsubPrefix}_MODE                          $MkConfig.getThreadDataByType("OS").getPs().getProcessorModeString()
+#* *### Starting with MK 2.1, below priority related constants are not generated
+#* *##if( $IsMkVersionOlderThan21 )
+#*    *#\#define MK_CFG_C${coreId}_${MkCtrsubPrefix}_QPRIO                          1024$newLine##MkThread.THREAD_CTRSUB_PRIO
+#*    *#\#define MK_CFG_C${coreId}_${MkCtrsubPrefix}_RPRIO                          1024$newLine##fMkThread.THREAD_CTRSUB_PRIO
+#* *##end
+#* *#\#define MK_CFG_C${coreId}_${MkCtrsubPrefix}_STACK_NELEMENTS                $MkConfig.calcArchStackSize($MkConfig.getThreadDataByType("OS").getStacksize())
+#* *#/* Trusted Functions */
+#* *##if( $OsModel.getApplicationsOnCore($coreId).hasAnyAppTrustedFunctions() )
+#*    *#\#define MK_CFG_C${coreId}_HAS_TRUSTEDFUNCTION              1
+#* *### Starting with MK 2.1, below priority related constants are not generated
+#*    *##if( $IsMkVersionOlderThan21 )
+#*       *#\#define MK_CFG_C${coreId}_TF_QPRIO                         1024$newLine##$ClassOfMkThread.THREAD_TF_PRIO
+#*       *#\#define MK_CFG_C${coreId}_TF_RPRIO                         1024$newLine##$ClassOfMkThread.THREAD_TF_PRIO
+#*    *##end
+#*    *#\#define MK_CFG_C${coreId}_TF_STACK_NELEMENTS               $MkConfig.calcArchStackSize($MkConfig.getTfStackSize($coreId))
+#* *##else
+#*    *#\#define MK_CFG_C${coreId}_HAS_TRUSTEDFUNCTION              0
+#* *##end
+#end
+
+/*===================================================================
+ * Resources
+ *==================================================================*/
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_user.Resource_Id, 1
+#foreach( $res in $AllResourcesList )
+\#define MK_LOCKCFG_$res.getName()  MK_LOCKCFG(    /* $res.getName() */  \
+#* *#  /* Thread priority */            $res.getMaxThreadPrioLevel(),  \
+#* *#  /* Interrupt level */            $res.getMaxInterruptPrioLevel(),  \
+#* *#  /* Maximum nesting */            $res.getMaxNesting(),  \
+#* *#  /* spinlock */                   $res.getSpinlockConfigFunction(),  \
+#* *#  /* coreIndex */                  $res.getOwningApplication().getPhyCoreAssignment(),  \
+#* *#  /* lockIndex */                  $res.getCoreLocalResourceIndex()  \
+#* *#)
+#end
+
+#set( $usedNonInternalResList = $AllResourcesList.getUsedNonInternalResources() )
+\#define MK_CFG_NLOCKS        $usedNonInternalResList.size()
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.resources, 2
+\#define MK_CFG_NGLOBALLOCKS  $OsModel.getNumGlobalMkResources()
+\#define MK_CFG_LOCKLIST #foreach( $res in $usedNonInternalResList )  MK_LOCKCFG_$res.getName()#if($foreach.hasNext),  \\$newLine#else$newLine#end#end
+
+/* Number of Non-Internal Used resources on cores */
+#foreach( $coreId in [0..$OsModel.getMaxCoreId()] )
+#* *##set( $cLocalResList = $OsModel.getResourcesOnCore($coreId) )
+#* *#\#define MK_CFG_C${coreId}_NLOCKS  $cLocalResList.getUsedNonInternalResources().size()
+#end
+
+/*===================================================================
+ * Schedule Tables
+ *==================================================================*/
+\#define MK_CFG_NSCHEDULETABLES  $AllScTablesList.getNumAutocoreScheduleTables()
+\#define MK_CFG_SCHEDULETABLEPROPERTIES  \
+#foreach( $st in $AllScTablesList.getNonInternalElements() )
+#* *##if( !$st.isSimpleScheduleTable() )
+#*    *##set( $pair = $st.generateMKCtrSubObjectProperties() )
+#*    *#  MK_${MkCsPrefix}PROP($pair.getFirst(), $pair.getSecond())#if( $foreach.hasNext ),  \\$newLine#end
+#* *##end
+#end
+
+/*===================================================================
+ * Simple Schedule Tables
+ *==================================================================*/
+#foreach( $coreId in $OsModel.getUsedCoreIds() )
+#* *#\#define MK_CFG_C${coreId}_NSSTS     $AllScTablesList.getNumMkScheduleTables($coreId)
+#end
+\#define MK_CFG_NSSTS        $AllScTablesList.getNumMkScheduleTables()
+\#define MK_CFG_NSSTACTIONS  $AllScTablesList.getNumberOfEPActions($AllScTablesList.getExpiryPoints("MK"))
+#set( $epActionIndex = 0 )
+#set( $allMkSimpleSchedTables = $AllScTablesList.getMkScheduleTables() )
+#if( $allMkSimpleSchedTables.size() > 0 )
+#* *#\#define MK_CFG_SSTCOUNTERTABLE  \
+#* *##foreach( $mkSst in $allMkSimpleSchedTables )
+#*    *##set( $mkSstCtrInd  = $allMkSimpleSchedTables.getMkSstCounterIndex($mkSst) )
+#*    *##set( $owningApp    = $mkSst.getOwningApplication() )
+#*    *##set( $coreId       = $owningApp.getPhyCoreAssignment() )
+#*    *##set( $numEpActions = $mkSst.getNumberOfEPActions() )
+#*    *##set( $sstCounter   = $mkSst.getCounter() )
+#*    *##set( $ctrModulus   = $sstCounter.getCounterModulus() )
+#*    *##set( $relInterval  = $sstCounter.getMkTickerReloadInterval() )
+#*    *##set( $ctrTickerId  = $sstCounter.getMkTickerId() )
+#*    *##if( $ctrTickerId == -1 )
+#*       *##set( $ctrTickerId  = "MK_OBJECTID_INVALID" )
+#*    *##end
+#*    *#  /* $foreach.index */  MK_SSTCOUNTERCONFIG( &MK_c${coreId}_sstCounters[$mkSstCtrInd], $ctrModulus, &MK_sstActions[$epActionIndex], $numEpActions, $ctrTickerId, $relInterval, $coreId)#if( $foreach.hasNext ),  \\${newLine}#end
+#*    *##set( $epActionIndex = $epActionIndex + $numEpActions )
+#* *##end
+#* *#
+#* *##set( $mkExpiryPoints = $AllScTablesList.getExpiryPoints("MK") )
+#* *##if( $mkExpiryPoints.size() > 0 )
+#* *#/* Simple Schedule Tables expiry points actions table */
+#*    *#\#define MK_CFG_SSTACTIONTABLE  \
+#*    *##set( $actionIndex = 0 )
+#*    *##foreach( $ep in $mkExpiryPoints )
+#*       *##set( $taskActivations   = $ep.getActivateTasks() )
+#*       *##set( $mapTask2EventMask = $ep.getCombinedSetEvents() )
+#*       *### ActivateTask Expiry Points if any configured
+#*       *##foreach( $task in $taskActivations )
+#*          *#  /* $actionIndex */ MK_SSTACTIONCONFIG( $ep.getOffset(), $task.getName(), 0 )#if($foreach.hasNext || $foreach.parent.hasNext || !$mapTask2EventMask.keySet().isEmpty() ),  \\$newLine#else$newLine#end
+#*          *##set( $actionIndex = $actionIndex + 1 )
+#*       *##end
+#*       *### SetEvents Expiry Points if any configured
+#*       *##foreach( $task in $mapTask2EventMask.keySet() )
+#*          *#  /* $actionIndex */ MK_SSTACTIONCONFIG( $ep.getOffset(), $task.getName(), $mapTask2EventMask.get($task) )#if($foreach.hasNext|| $foreach.parent.hasNext ),  \\$newLine#else$newLine#end
+#*          *##set( $actionIndex = $actionIndex + 1 )
+#*       *##end
+#*    *##end
+#* *##end
+#end
+
+/*===================================================================
+ * Spinlocks
+ *==================================================================*/
+\#define MK_CFG_NSPINLOCKS  $AllSpinlocksList.size()
+
+/*===================================================================
+ * Stacks
+ *==================================================================*/
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.stacks, 2
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_global.stacks, 2
+#foreach( $stack in $OsModel.getAllMkStacks() )
+#* *##foreach( $slot in $stack )
+#*    *##set( $slotName = $stack.getSlotVarName($slot) )
+## !LINKSTO Microkernel.Generator.OutputFiles.General.Assembler_Protection, 1
+#*    *##ifndef MK_ASM
+#*    *#extern MK_GEN_STACK_DECL($slotName, $stack.getSectionName($slotName), $slot.getArchSlotSize(), $ArchProperties.getStackRegionAlignment());
+#*    *##endif  /* MK_ASM */
+#* *##end
+#end
+
+/*===================================================================
+ * Tasks
+ *==================================================================*/
+#foreach( $task in $AllTasksList )
+#* *##set( $coreId = $task.getOwningApplication().getPhyCoreAssignment() )
+#* *##set( $cLocalTaskThreads = $OsModel.getMkThreadsOnCore($coreId).getTaskTypeThreads() )
+#* *##set( $taskThread = $cLocalTaskThreads.get($task) )
+#* *##set( $taskConfigStructName = "MK_TASKCFG" )
+#* *##if( $task.getType().toString().equals( "EXTENDED" ) )
+#*    *##set( $taskConfigStructName = "MK_ETASKCFG" )
+#* *##end
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_TASKCFG, 2
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_ETASKCFG, 2
+#* *#\#define MK_TASKCFG_$task.getName()  ${taskConfigStructName}(    /* $task.getName() */  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_ETASKCFG.other_parameters, 1
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_TASKCFG.dynamic, 1
+#* *#  /* Task dynamic data */             &MK_c${coreId}_taskDynamic[${OsModel.getTasksOnCore($coreId).getId($task)}],  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_TASKCFG.thread, 1
+#* *#  /* Thread data */                   &MK_c${coreId}_taskThreads[$cLocalTaskThreads.getId($taskThread)],  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_TASKCFG.registers, 1
+#* *#  /* Task register storage */         &MK_c${coreId}_taskRegisters[$task.getRegisterStorageIndex()],  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_TASKCFG.name, 1
+#* *#  /* Task name */                     "$task.getName()",  \
+#* *#  /* coreId */                        $coreId,  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_TASKCFG.stackstart, 2
+#* *#  /* Stack start */                   #VM_MkStackStart($task),  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_TASKCFG.stackend, 2
+#* *#  /* Stack end */                     #VM_MkStackEnd($task),  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_TASKCFG.function, 1
+#* *#  /* Task function */                 &$task.getEntryFunction(),  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_TASKCFG.pm, 1
+#* *#  /* Processor mode */                $task.getProcessorStatus().getProcessorModeString(),  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_TASKCFG.ilvl, 1
+#* *#  /* Interrupt level */               $task.getProcessorStatus().getInterruptLevelString(),  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_TASKCFG.ie, 1
+#* *#  /* Interrupts enabled flag */       $task.getProcessorStatus().getInterruptsEnabledString(),  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_TASKCFG.fpu, 1
+#* *#  /* Floating point enabled flag */   $task.getProcessorStatus().getFpEnabledString(),  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_TASKCFG.hws, 1
+#* *#  /* Hardware specific extensions */  $task.getProcessorStatus().getHwExtensionString(), \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_TASKCFG.queueprio, 1
+#* *#  /* Queuing priority */              $taskThread.getCalcPriority(),  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_TASKCFG.runprio, 1
+#* *#  /* Run priority */                  $task.getMkThreadRunPriority(),  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_TASKCFG.maxact, 1
+#* *##if( $task.getType().toString().equals( "BASIC" ) )
+#*    *#  /* Max. activations */              $task.getActivation(),  \
+#* *##else
+#*    *#  /* event status */                  &MK_c${coreId}_eventStatus[${OsModel.getTasksOnCore($coreId).getExtendedTasks().getId($task)}],  \
+#* *##end
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_TASKCFG.partIdx, 1
+#* *#  /* Partition index */               $mkPartitionManager.getCore($coreId).getPartitionIndexForVM($task.getMkMemoryPartition()),  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_TASKCFG.taskid, 1
+#* *#  /* Task ID */                       $task.getName(),  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_TASKCFG.execBudget, 1
+#* *##if( $task.hasAccounting() && $task.hasTimingProtection() )
+#*    *#  /* Execution budget */              MK_ExecutionNsToTicks_c${coreId}($task.getExecutionBudget()u),  \
+#* *##else
+#* *#  /* Execution budget */              MK_EXECBUDGET_INFINITE,  \
+#* *##end
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_TASKCFG.lockBudget, 1
+#* *#  /* Lock budget */                   MK_NULL,  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_TASKCFG.aid, 1
+#* *##set( $owningApp = $task.getOwningApplication() )
+#* *##if( ($owningApp == $null) || $owningApp.isAPP_SYSTEM() || $owningApp.isAPP_NULL )
+#*    *#  /* OS-Application */                MK_APPL_NONE  \
+#* *##else
+#*    *#  /* OS-Application */                $owningApp.getName()  \
+#* *##end
+#* *#)
+#end
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_NTASKS, 1
+\#define MK_CFG_NTASKS  $AllTasksList.size()
+\#define MK_CFG_TASKLIST   \
+#foreach( $task in $AllTasksList )
+#* *#  /* $foreach.index */ MK_TASKCFG_$task.getName()#if($foreach.hasNext),  \\$newLine#else$newLine#end
+#end
+
+#foreach( $coreId in $OsModel.getUsedCoreIds() )
+#* *##set( $cLocalTasksList = $OsModel.getTasksOnCore($coreId) )
+#* *#\#define MK_CFG_C${coreId}_NTASKREGISTERS  $cLocalTasksList.getNumRegisterSets()u
+#* *#\#define MK_CFG_C${coreId}_NTASKS          $cLocalTasksList.size()
+#* *#\#define MK_CFG_C${coreId}_NETASKS         $cLocalTasksList.getNumExtendedTasks()
+#end
+
+/*===================================================================
+ * Threads
+ *==================================================================*/
+#foreach( $coreId in $OsModel.getUsedCoreIds() )
+#* *##set( $cLocalMkThreadsList = $OsModel.getMkThreadsOnCore($coreId) )
+#* *##set( $cLocalMkTaskThreadsList = $cLocalMkThreadsList.getTaskTypeThreads() )
+#* *#\#define MK_CFG_C${coreId}_NTASKTHREADS    $cLocalMkTaskThreadsList.size()
+#* *#\#define MK_CFG_C${coreId}_NISRTHREADS     $cLocalMkThreadsList.getIsrTypeThreads().size()
+#* *#\#define MK_CFG_C${coreId}_NJOBQUEUES      $cLocalMkThreadsList.getNumJobQueues($coreId)
+#* *#\#define MK_CFG_C${coreId}_JOBQUEUEBUFLEN  ($cLocalMkThreadsList.getAux1JobQueueBufferPosition($coreId)+ (10 * MK_${MkCsPrefix}J_SIZE)+ (5 * MK_TFJ_SIZE))
+#* *#\#define MK_CFG_C${coreId}_JOBQUEUECONFIG  \
+#* *##foreach( $taskThr in $cLocalMkTaskThreadsList )
+#*    *##if( $taskThr.getNumJobQueueEntries() > 0 )
+#*       *#MK_JOBQUEUECFG(  \
+#*       *#  /* Associated thread */     &MK_c${coreId}_taskThreads[$cLocalMkTaskThreadsList.getId($taskThr)],  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_JOBQUEUECONFIG.len, 1
+#*       *#  /* Buffer length */         $taskThr.getNumJobQueueEntries()u,  \
+#*       *#  /* job size */              1u  \
+#*       *#),  \
+#*    *##end
+#* *##end
+#* *#MK_JOBQUEUECFG(  \
+#* *#  /* Associated thread */     &MK_c${coreId}_aux1Thread,  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_JOBQUEUECONFIG.len, 1
+#* *#  /* Buffer length */         10u,  \
+#* *#  /* job size */              MK_${MkCsPrefix}J_SIZE  \
+#* *#),  \
+#* *#MK_JOBQUEUECFG(  \
+#* *#  /* Associated thread */     &MK_c${coreId}_aux2Thread,  \
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_config.MK_JOBQUEUECONFIG.len, 1
+#* *#  /* Buffer length */         5u,  \
+#* *#  /* job size */              MK_TFJ_SIZE  \
+#* *#)
+#end

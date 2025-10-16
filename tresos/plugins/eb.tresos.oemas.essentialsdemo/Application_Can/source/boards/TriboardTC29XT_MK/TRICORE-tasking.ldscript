@@ -1,0 +1,207 @@
+// $Id: TRICORE-tasking.ldscript 23786 2016-06-17 13:46:29Z mist8519 $
+//
+// Minimal TC29XT CPU description for Tasking linker.
+//
+// This file contains a stripped-down CPU description for the Tasking
+// linker. It was created using a trial-and-error
+// method, starting with an empty file and adding only the portions
+// that the linker complained about.
+//
+// (c) Elektrobit Automotive GmbH
+//
+
+architecture TC
+{
+	endianness
+	{
+		little;
+	}
+
+	space linear
+	{
+		id = 1;
+		mau = 8;
+
+		map (src_offset=0x00000000, dest_offset=0x00000000, size=4G, dest=bus:fpi_bus);
+
+		copytable (align = 1 << 2, copy_unit = 1, dest = linear);
+	}
+
+	bus fpi_bus
+	{
+		mau = 8;
+		width = 32;
+	}
+}
+
+architecture TC1V1.6.X extends TC
+{
+}
+
+processor spe
+{
+	derivative = tcxxx;
+}
+
+derivative tcxxx
+{
+	core tc
+	{
+		architecture = TC1V1.6.X;
+	}
+
+	bus fpi_bus
+	{
+		mau = 8;
+		width = 32;
+		map (dest=bus:tc:fpi_bus, dest_offset=0, size=4G);
+	}
+}
+
+// the GENLD_csaCore<coreId>_NCSA identifiers are replaced by the linker script generator
+#define NCSA_C0 GENLD_csaCore0_NCSA
+#define NCSA_C1 GENLD_csaCore1_NCSA
+#define NCSA_C2 GENLD_csaCore2_NCSA
+
+// DSPR - Space used for CSA
+#define INTRAM_CORE0 (DSPR_CORE0 - NCSA_C0*64 - 0x200)
+
+#ifdef DSPR_CORE1
+#define INTRAM_CORE1 (DSPR_CORE1 - NCSA_C1*64)
+#endif
+
+#ifdef DSPR_CORE2
+#define INTRAM_CORE2 (DSPR_CORE2 - NCSA_C2*64)
+#endif
+
+// size of the initial memory portion int_rom_vect used for vectors
+#define INT_ROM_VECT_SIZE 20k
+
+// Flash ROM at 0x80100000, PMU0 (mapped to seg. 8 for cached access)
+memory int_rom_vect
+{
+	mau = 8;
+	size = INT_ROM_VECT_SIZE;
+	type = rom;
+	map (dest=bus:spe:fpi_bus, dest_offset=0x80100000, size=INT_ROM_VECT_SIZE);
+}
+
+memory int_rom
+{
+	mau = 8;
+	size = (1M - INT_ROM_VECT_SIZE);
+	type = rom;
+	map (dest=bus:spe:fpi_bus,
+		dest_offset=(0x80100000+INT_ROM_VECT_SIZE),
+		size=(1M - INT_ROM_VECT_SIZE));
+}
+
+memory int_ram
+{
+  mau = 8;
+  size = 32k;
+  type = ram;
+  map (dest=bus:spe:fpi_bus, dest_offset=0x90000000, size=32k);
+}
+
+memory int_ram_core0_noinit_shared
+{
+  mau = 8;
+  size = 0x200;
+  type = ram;
+  map (dest=bus:spe:fpi_bus, dest_offset=0x70000000, size=0x200);
+}
+
+memory int_ram_core0
+{
+	mau = 8;
+	size = INTRAM_CORE0;
+	type = ram;
+  map (dest=bus:spe:fpi_bus, dest_offset=0x70000200, size=INTRAM_CORE0);
+}
+
+#ifdef DSPR_CORE1
+memory int_ram_core1
+{
+	mau = 8;
+	size = INTRAM_CORE1;
+	type = ram;
+	map (dest=bus:spe:fpi_bus, dest_offset=0x60000000, size=INTRAM_CORE1);
+}
+#endif
+
+#ifdef DSPR_CORE2
+memory int_ram_core2
+{
+	mau = 8;
+	size = INTRAM_CORE2;
+	type = ram;
+	map (dest=bus:spe:fpi_bus, dest_offset=0x50000000, size=INTRAM_CORE2);
+}
+#endif
+
+
+// Where the CSA memory is located:
+// MK_RSA_MK_Csa_Cx is the base of the CSA block for core x
+// MK_RLA_MK_Csa_Cx is the limit - i.e. the first address that won't be - for core x
+// used as a CSA
+//
+// These must be aligned on 64-byte boundaries (lower 6 bits all zero),
+// otherwise the initialisation function will round them and you might end
+// up with fewer CSAs than you expect.
+section_layout ::linear
+{
+// Link Prog_Sig to no init RAM 
+  group __AREA_databssnoinit (attributes=s, contiguous, ordered, run_addr = mem:int_ram_core0_noinit_shared[0], align=8)
+  {
+    group bssnoinit.TRICORE (contiguous, ordered)
+    {
+      select "*.section_noinit*";
+      select "*.bss.prog_sig*";
+    }
+  }
+  
+//  Link ValidApplication to 0x801FFF00  
+  group __AREA_applvery (attributes=i, contiguous, ordered, run_addr=0x801FFF00, align=8)
+  {
+    group applvery.TRICORE (contiguous, ordered)
+    {
+      select "*.rodata.main.verifyApplBootword*";
+    }
+  }
+
+	"BOARD_C0_RAM_BEG"  = addressof(mem:int_ram_core0);
+	"BOARD_C0_URAM_END" = "BOARD_C0_RAM_BEG" + sizeof(mem:int_ram_core0);
+
+	"MK_RSA_MK_Csa_C0"  := 0xd0000000 + INTRAM_CORE0;
+	"MK_RLA_MK_Csa_C0"  := 0xd0000000 + DSPR_CORE0;
+#ifdef DSPR_CORE1
+	"BOARD_C1_RAM_BEG"   = addressof(mem:int_ram_core1);
+	"BOARD_C1_URAM_END"  = "BOARD_C1_RAM_BEG" + sizeof(mem:int_ram_core1);
+
+	"MK_RSA_MK_Csa_C1"  := 0xd0000000 + INTRAM_CORE1;
+	"MK_RLA_MK_Csa_C1"  := 0xd0000000 + DSPR_CORE1;
+#endif
+#ifdef DSPR_CORE2
+	"BOARD_C2_RAM_BEG"   = addressof(mem:int_ram_core2);
+	"BOARD_C2_URAM_END"  = "BOARD_C2_RAM_BEG" + sizeof(mem:int_ram_core2);
+
+	"MK_RSA_MK_Csa_C2"  := 0xd0000000 + INTRAM_CORE2;
+	"MK_RLA_MK_Csa_C2"  := 0xd0000000 + DSPR_CORE2;
+#endif
+
+	/* Symbols of memory regions not bound to any object file */
+	"MK_RSA_MK_Rom"       = addressof(mem:int_rom_vect); /* Flash */
+	"MK_RLA_MK_Rom"       = addressof(mem:int_rom) + sizeof(mem:int_rom);
+	"MK_RSA_MK_GlobalRam" = addressof(mem:int_ram_core2);
+	"MK_RLA_MK_GlobalRam" = addressof(mem:int_ram_core0) + sizeof(mem:int_ram_core0) + (GENLD_csaCore0_NCSA*64);
+	"MK_RSA_MK_Io"        = 0xF0000000; /* I/O */
+	"MK_RLA_MK_Io"        = 0xFF120000;
+	"MK_RSA_MK_OsIo"      = 0xF0000000; /* OS I/O (STM only!!!) */
+	"MK_RLA_MK_OsIo"      = 0xF0000300;
+
+	/* Symbols for the initialisation of private data areas. */
+	"MK_INITIAL_A0"     := 0;
+	"MK_INITIAL_A1"     := 0;
+	"MK_INITIAL_A8"     := 0; /* reserved for OS use */
+}

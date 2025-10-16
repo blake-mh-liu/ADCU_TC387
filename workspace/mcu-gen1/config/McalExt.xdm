@@ -1,0 +1,113 @@
+<?xml version='1.0'?>
+<datamodel version="8.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/18/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/18/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar" 
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:ce="http://www.tresos.de/_projects/DataModel2/18/childenable.xsd" 
+         xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd" 
+         xmlns:f="http://www.tresos.de/_projects/DataModel2/14/formulaexpr.xsd" 
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd" 
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd"  
+         xmlns:variant="http://www.tresos.de/_projects/DataModel2/11/variant.xsd">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="McalExt" type="AR-PACKAGE">
+        <d:lst type="ELEMENTS">
+          <d:chc name="McalExt" type="AR-ELEMENT" value="MODULE-CONFIGURATION">
+            <d:ctr type="MODULE-CONFIGURATION">
+              <a:a name="DEF" value="ASPath:/TS_T16DxM1I0R0/McalExt"/>
+              <d:ctr name="PublishedInformation" type="IDENTIFIABLE">
+                <d:var name="PbcfgMSupport" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+              </d:ctr>
+              <d:lst name="PlatformModuleDefine" type="MAP">
+                <d:ctr name="BASE_MCU_CONFIG_PTR" type="IDENTIFIABLE">
+                  <d:var name="PlatformModuleValue" type="STRING" 
+                         value="&amp;Mcu_Config"/>
+                </d:ctr>
+                <d:ctr name="SPI_INIT_FUNC" type="IDENTIFIABLE">
+                  <d:var name="PlatformModuleValue" type="STRING" 
+                         value="Spi_Init"/>
+                </d:ctr>
+                <d:ctr name="BASE_SPI_CONFIG_PTR" type="IDENTIFIABLE">
+                  <d:var name="PlatformModuleValue" type="STRING" 
+                         value="&amp;Spi_Config"/>
+                </d:ctr>
+                <d:ctr name="FLS_INIT_FUNC" type="IDENTIFIABLE">
+                  <d:var name="PlatformModuleValue" type="STRING" 
+                         value="Fls_17_Dmu_Init"/>
+                </d:ctr>
+                <d:ctr name="BASE_FLS_CONFIG_PTR" type="IDENTIFIABLE">
+                  <d:var name="PlatformModuleValue" type="STRING" 
+                         value="&amp;Fls_17_Dmu_Config"/>
+                </d:ctr>
+                <d:ctr name="FEE_INIT_FUNC" type="IDENTIFIABLE">
+                  <d:var name="PlatformModuleValue" type="STRING" 
+                         value="Fee_Init"/>
+                </d:ctr>
+                <d:ctr name="BASE_FEE_CONFIG_PTR" type="IDENTIFIABLE">
+                  <d:var name="PlatformModuleValue" type="STRING" 
+                         value="&amp;Fee_Config"/>
+                </d:ctr>
+                <d:ctr name="CAN_INIT_FUNC" type="IDENTIFIABLE">
+                  <d:var name="PlatformModuleValue" type="STRING" 
+                         value="Can_17_McmCan_Init"/>
+                </d:ctr>
+                <d:ctr name="BASE_CAN_CONFIG_PTR" type="IDENTIFIABLE">
+                  <d:var name="PlatformModuleValue" type="STRING" 
+                         value="&amp;Can_17_McmCan_Config"/>
+                </d:ctr>
+                <d:ctr name="LIN_INIT_FUNC" type="IDENTIFIABLE">
+                  <d:var name="PlatformModuleValue" type="STRING" 
+                         value="Lin_17_AscLin_Init"/>
+                </d:ctr>
+                <d:ctr name="BASE_LIN_CONFIG_PTR" type="IDENTIFIABLE">
+                  <d:var name="PlatformModuleValue" type="STRING" 
+                         value="&amp;Lin_17_AscLin_Config"/>
+                </d:ctr>
+                <d:ctr name="FR_INIT_FUNC" type="IDENTIFIABLE">
+                  <d:var name="PlatformModuleValue" type="STRING" 
+                         value="Fr_17_Eray_Init"/>
+                </d:ctr>
+                <d:ctr name="BASE_FR_CONFIG_PTR" type="IDENTIFIABLE">
+                  <d:var name="PlatformModuleValue" type="STRING" 
+                         value="&amp;Fr_17_Eray_Config"/>
+                </d:ctr>
+                <d:ctr name="ETH_INIT_FUNC" type="IDENTIFIABLE">
+                  <d:var name="PlatformModuleValue" type="STRING" 
+                         value="Eth_17_GEthMacV2_Init"/>
+                </d:ctr>
+                <d:ctr name="BASE_ETH_CONFIG_PTR" type="IDENTIFIABLE">
+                  <d:var name="PlatformModuleValue" type="STRING" 
+                         value="&amp;Eth_17_GEthMacV2_Config"/>
+                </d:ctr>
+                <d:ctr name="EB_INTGR_ETHTRCV_INIT_FUNC" type="IDENTIFIABLE">
+                  <d:var name="PlatformModuleValue" type="STRING" 
+                         value="Eb_Intgr_EthTrcvInitialization_RGMII()"/>
+                </d:ctr>
+                <d:ctr name="ETHTRCV_INIT_INTEGRATION" type="IDENTIFIABLE">
+                  <d:var name="PlatformModuleValue" type="STRING" value="STD_ON"/>
+                </d:ctr>
+              </d:lst>
+              <d:lst name="PlatformMacroDefine" type="MAP"/>
+              <d:lst name="IncludePaths" type="MAP">
+                <d:ctr name="IncludePaths_0" type="IDENTIFIABLE">
+                  <d:var name="IncludePathsStrategy" type="ENUMERATION" 
+                         value="CC_INCLUDE_PATH"/>
+                  <d:var name="IncludePathsMakeFile" type="STRING" 
+                         value="$(PLUGINS_BASE)\McalExt_$(McalExt_VARIANT)\MCAL_Delivery\McIsar\Src\Infra_Prod\Sfr\TC38xA\_Reg"/>
+                </d:ctr>
+              </d:lst>
+              <d:lst name="FilesToBuild" type="MAP"/>
+            </d:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+
+</datamodel>

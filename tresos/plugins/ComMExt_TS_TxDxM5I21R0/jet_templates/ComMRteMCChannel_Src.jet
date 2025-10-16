@@ -1,0 +1,134 @@
+<%@ jet
+    package="com.elektrobit.comm.generated.templates"
+    class="ComMRteMCChannelSrc"
+    imports="java.io.IOException
+	         dreisoft.tresos.datamodel2.api.model.DCtxt
+             dreisoft.tresos.generator.ng.api.ant.JavaGenContext
+             com.elektrobit.comm.generator.ComMGenContext
+             com.elektrobit.comm.generator.ComMJetContext
+             com.elektrobit.comm.generator.ComMModel" %>
+<%
+    JavaGenContext javaGenContext = (JavaGenContext) argument;
+    ComMGenContext comMGenContext = (ComMGenContext) javaGenContext.gen.getVariable(ComMGenContext.COMM_GEN_CONTEXT, ComMGenContext.class, null);
+    comMGenContext.getWriter().startRedirect(stringBuffer);
+    ComMJetContext comMJetContext = comMGenContext.getComMJetContext();
+%><%@ include file="file-comment.c.txt" %>
+
+/*
+ * MISRA-C:2012 Deviation List
+ *
+ * MISRAC2012-1) Deviated Rule: 8.3 (required)
+ * All declarations of an object or function shall use the same names and type qualifiers.
+ *
+ * Reason:
+ * typedef of generated file .arxml don't use the same name.
+ *
+ */
+#include <Std_Types.h>
+#include <TSAutosar.h>
+#include <ComM_Trace.h>
+#include <ComM_BSW.h>
+#include <Rte_ComM_Channel_<%=comMJetContext.getOsAppNameForChannel()%>.h>
+<%
+    if(comMJetContext.isComMFullCommRequestNotificationEnabled())
+    {
+%>
+#include <ComM_Rte_MC_Channel_<%=comMJetContext.getOsAppNameForChannel()%>.h>
+<%
+    }
+%>
+
+#define COMM_START_SEC_CODE
+#include <ComM_MemMap.h>
+
+<%
+    for(DCtxt channel : comMJetContext.getChannels())
+    {
+        final DCtxt comMFullCommRequestNotificationEnabled = channel.get(ComMModel.COMM_FULL_COMM_REQUEST_NOTIFICATION_ENABLE);
+        if(comMFullCommRequestNotificationEnabled.var.getBool())
+        {
+%>
+FUNC(Std_ReturnType, COMM_CODE) ComM_Wrapper_Write_ComM_Channel_<%=comMJetContext.getOsAppNameForChannel()%>_CR_<%=channel.getName()%>_fullComRequestors (P2CONST(ComM_UserHandleArrayType, AUTOMATIC, COMM_APPL_DATA) data)
+{
+  Std_ReturnType retVal = Rte_Write_CR_<%=channel.getName()%>_fullComRequestors(data);
+  return retVal;
+}
+
+<%
+        }
+    }
+    if(comMJetContext.isModeLimitationEnabled() && comMJetContext.isWakeupInhibitionEnabled())
+    {
+%>
+
+/* Deviation MISRAC2012-1 */
+FUNC(Std_ReturnType, COMM_CODE) ComM_Rte_GetInhibitionStatus_<%=comMJetContext.getOsAppNameForChannel()%>
+(
+  NetworkHandleType                                           pdav0,
+  P2VAR(ComM_InhibitionStatusType, AUTOMATIC, COMM_APPL_DATA) Status
+)
+{
+  Std_ReturnType ret;
+  DBG_COMM_RTE_GETINHIBITIONSTATUS_ENTRY(pdav0, Status);
+  ret = ComM_ASR40_GetInhibitionStatus(pdav0, Status);
+  DBG_COMM_RTE_GETINHIBITIONSTATUS_EXIT(ret, pdav0, Status);
+  return ret;
+}
+<%
+    }
+
+    if(comMJetContext.isWakeupInhibitionEnabled())
+    {
+%>
+
+/* Deviation MISRAC2012-1 */
+FUNC(Std_ReturnType, COMM_CODE) ComM_Rte_PreventWakeUp_<%=comMJetContext.getOsAppNameForChannel()%>
+(
+  NetworkHandleType pdav0,
+  boolean           Status
+)
+{
+  Std_ReturnType ret;
+  DBG_COMM_RTE_PREVENTWAKEUP_ENTRY(pdav0, Status);
+  ret = ComM_ASR40_PreventWakeUp(pdav0, Status);
+  DBG_COMM_RTE_PREVENTWAKEUP_EXIT(ret, pdav0, Status);
+  return ret;
+}
+<%
+    }
+
+    if(comMJetContext.isModeLimitationEnabled())
+    {
+%>
+
+/* Deviation MISRAC2012-1 */
+FUNC(Std_ReturnType, COMM_CODE) ComM_Rte_LimitChannelToNoComMode_<%=comMJetContext.getOsAppNameForChannel()%>
+(
+  NetworkHandleType pdav0,
+  boolean           Status
+)
+{
+  Std_ReturnType ret;
+  DBG_COMM_RTE_LIMITCHANNELTONOCOMMODE_ENTRY(pdav0, Status);
+  ret = ComM_ASR40_LimitChannelToNoComMode(pdav0, Status);
+  DBG_COMM_RTE_LIMITCHANNELTONOCOMMODE_EXIT(ret, pdav0, Status);
+  return ret;
+}
+
+<%
+    }
+%>
+
+#define COMM_STOP_SEC_CODE
+#include <ComM_MemMap.h>
+
+<%
+    try
+    {
+        comMGenContext.getWriter().stopRedirected(false);
+    }
+    catch (IOException e)
+    {
+        e.printStackTrace();
+    }
+%>

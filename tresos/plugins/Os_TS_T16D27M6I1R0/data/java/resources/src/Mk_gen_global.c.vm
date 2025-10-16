@@ -1,0 +1,33 @@
+#parse("CommonVars.vm")
+#parse("CommonMkVars.vm")
+/* This file is generated automatically. DO NOT EDIT!!
+ *
+ * EB tresos AutoCore OS ${Version.getMajor()}.${Version.getMinor()}.${Version.getPatch()} ${Version.getTarget()}/${Version.getDerivate()}
+ * (Build ${Version.getBuild()})
+ *
+ * (c) 1998-${Version.getCurrentYear()} Elektrobit Automotive GmbH
+ * Am Wolfsmantel 46
+ * 91058 Erlangen
+ * GERMANY
+ *
+ * Date         : ${Version.getDate()}           !!!IGNORE-LINE!!!
+ */
+#if( $IsMkVersionOlderThan21 )
+#* *#\#include <public/Mk_public_types.h>
+#* *#\#include <Mk_gen_addons.h>
+#* *#\#include <Mk_gen_config.h>
+#* *#\#include <Mk_gen_user.h>
+#else
+#* *#\#include <Mk_Cfg.h>
+#* *#\#include <Mk_gen_config.h>
+#end
+
+/*===================================================================
+ * Stacks
+ *==================================================================*/
+#foreach( $stack in $OsModel.getAllMkStacks() )
+#* *##foreach( $slot in $stack )
+#*    *##set( $slotName = $stack.getSlotVarName($slot) )
+#*    *#MK_GEN_STACK($slotName, $stack.getSectionName($slotName), $slot.getArchSlotSize(), $ArchProperties.getStackRegionAlignment());
+#* *##end
+#end

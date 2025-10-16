@@ -1,0 +1,840 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?module J1939Rm?>
+<xgen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.elektrobit.com/2013/xgen" xmlns:xi="http://www.w3.org/2001/XInclude">
+[!CODE!]
+[!AUTOSPACING!]
+[!INCLUDE "include/J1939Rm_Vars.m"!]
+[!IF "var:defined('postBuildVariant')"!]
+[!/* Current PB variant Sufix
+*/!][!VAR "J1939RM_VARIANT_SUFIX"="concat('_',$postBuildVariant,'_')"!]
+[!ELSE!]
+[!/* Current PB variant Sufix
+*/!][!VAR "J1939RM_VARIANT_SUFIX"="string("_")"!]
+[!ENDIF!]
+[!IF "var:defined('postBuildVariant')"!]
+[!/* Current postbuild configuration name
+*/!][!VAR "initPredefinedCfgName"="concat('J1939Rm_Config','_',$postBuildVariant)"!]
+[!ELSE!]
+[!/* Current postbuild name
+*/!][!VAR "initPredefinedCfgName"="string("J1939Rm_Config")"!]
+[!ENDIF!]
+[!/* Current postbuild-c variant
+*/!][!VAR "J1939RM_PBCFG_C_VARIANT"="concat('J1939Rm',$J1939RM_VARIANT_SUFIX,'PBcfg.c')"!]
+[!/* Current postbuild-h variant
+*/!][!VAR "J1939RM_PBCFG_H_VARIANT"="concat('J1939Rm',$J1939RM_VARIANT_SUFIX,'PBcfg.h')"!]
+[!/* Current Config variant
+*/!][!VAR "J1939RM_CONFIG_LAYOUT_VARIANT"="concat('J1939Rm',$J1939RM_VARIANT_SUFIX,'ConfigLayout')"!]
+[!/* Current Config Type variant based
+*/!][!VAR "J1939RM_CONFIGLAYOUTTYPE_VARIANT"="concat('J1939Rm',$J1939RM_VARIANT_SUFIX,'ConfigLayoutType')"!]
+[!/* Current Const Config Type variant based
+*/!][!VAR "J1939RM_CONSTCONFIGLAYOUTTYPE_VARIANT"="concat('J1939Rm',$J1939RM_VARIANT_SUFIX,'ConstConfigLayoutType')"!]
+  <module name="J1939Rm" version="[!"$moduleSoftwareVer"!]">
+    <configuration class="PreCompile">
+      [!IF "(variant:size() = 0) or (variant:all()[1] = variant:name())"!]
+      <?artifact directory="include" file="J1939Rm_Types_Int.h" type="types-h" generate="yes"?>
+      [!ELSE!]
+      <?artifact directory="include" file="J1939Rm_Types_Int.h" type="types-h" generate="no"?>
+      [!ENDIF!]
+[!VAR "relocatable" = "'false'"!]
+[!IF "node:existsAndTrue(node:contains(node:refs(as:modconf('PbcfgM')/PbcfgMBswModules/eb-list::*/PbcfgMBswModuleRef), as:modconf('J1939Rm')))"!]
+  [!IF "node:existsAndTrue(as:modconf('PbcfgM')/PbcfgMGeneral/PbcfgMRelocatableCfgEnable)"!]
+    [!VAR "relocatable" = "'true'"!]
+  [!ENDIF!]
+[!ELSE!]
+    [!IF "node:existsAndTrue(J1939RmGeneral/J1939RmRelocatablePbcfgEnable)"!]
+      [!VAR "relocatable" = "'true'"!]
+    [!ENDIF!]
+[!ENDIF!]
+      <parameter name="relocatable-enable">
+        <boolean-value>[!"$relocatable"!]</boolean-value>
+      </parameter>
+<!--  Constant Parameters for a CAN channel-->
+      <type name="J1939Rm_Channel_Const_Struct_Pbcfg">
+        <struct>
+          <member name="J1939RmAckmRx_Ecuc_PduId"      type="uint16"         comment="Rx Ackm Ecuc PduID" />
+          <member name="J1939RmAckmRxPduId"            type="PduIdType"      comment="The I-PDU identifier used for RxIndication from PduR" />
+          <member name="J1939RmAckmTx_Ecuc_PduId"      type="uint16"         comment="Tx Ackm Ecuc PduID" />
+          <member name="J1939RmAckmTxPduId"            type="PduIdType"      comment="The I-PDU identifier used for TxConfirmation from PduR" />
+          <member name="J1939RmAckmTxPduRef"           type="PduIdType"      comment="The I-PDU identifier used for TxConfirmation to upper layer" />
+          <member name="J1939RmRqstRx_Ecuc_PduId"      type="uint16"         comment="Rqst Rx Ecuc PduID" />
+          <member name="J1939RmRqstRxPduId"            type="PduIdType"      comment="The I-PDU identifier used for RxIndication from PduR" />
+          <member name="J1939RmRqstTx_Ecuc_PduId"      type="uint16"         comment="Rqst Tx Ecuc PduID" />
+          <member name="J1939RmRqstTxPduId"            type="PduIdType"      comment="The I-PDU identifier used for TxConfirmation from PduR" />
+          <member name="J1939RmRqstTxPduRef"           type="PduIdType"      comment="The I-PDU identifier used for TxConfirmation to upper layer" />
+          <member name="J1939RmAckQueueSize"           type="uint8"          comment="Number of transmitted acknowledgements that can be stored" />
+          <member name="J1939RmRequestQueueSize"       type="uint8"          comment="Number of transmitted requests that can be stored" />
+          <member name="J1939RmRequestTimeoutMonitors" type="uint8"          comment="Number of transmitted requests that can be monitored for timeout" />
+          <member name="J1939RmChannelId"              type="uint8"          comment="Channel Identifier" />
+          <member name="J1939RmAckmTxPduMetaData"      type="uint8"          comment="MetaDataLength of AckmTxPdu" />
+          <member name="J1939RmRqstTxPduMetaData"      type="uint8"          comment="MetaDataLength of RqstTxPdu" />
+        </struct>
+      </type>
+<!--  Contains the parameters for the support of a logical J1939 node (identified by an ECU address)-->
+      <type name="J1939Rm_Node_Const_Struct_Pbcfg">
+        <struct>
+          <member name="J1939RmNodeUserRefPtr"   type="uint16" comment="Reference to the Users of this node" >
+            <compiler-abstraction>
+              <ref2cfg />
+            </compiler-abstraction>
+          </member>
+          <member name="J1939RmNodeChannelRefPtr" type="uint8" comment="Reference to the channels this node has access to" >
+            <compiler-abstraction>
+              <ref2cfg />
+            </compiler-abstraction>
+          </member>
+          <member name="J1939RmNodeUserNr"    type="uint16" comment="Number of Users present in J1939RmNode" />
+          <member name="J1939RmNodeChannelNr" type="uint8"  comment="Number of channels this node has access to" />
+          <member name="J1939RmNodeId"        type="uint8"  comment="J1939Nm node Identifier" />
+          <member name="J1939RmNodeAddress"   type="uint8"  comment="J1939Nm node Preferred Address" />
+        </struct>
+      </type>
+<!--  Contains the configuration of a module that uses the request and acknowledgement interfaces of J1939Rm. -->
+      <type name="J1939Rm_User_Const_Struct_Pbcfg">
+        <struct>
+          <member name="J1939RmComIPduConstStructPtr" type="J1939Rm_ComIPdu_Const_Struct_Pbcfg" comment="I-PDU configuration that is to be transmitted on request by COM">
+            <compiler-abstraction>
+              <ref2cfg />
+            </compiler-abstraction>
+          </member>
+          <member name="J1939RmUserSendAckSupport"     type="boolean"    comment="SendAck API Support" />
+          <member name="J1939RmUserSendRequestSupport" type="boolean"    comment="SendRequest API Support" />
+          <member name="J1939RmUserPGNPtr"             type="uint32"     comment="PGN supported to be requested" >
+            <compiler-abstraction>
+              <ref2cfg />
+            </compiler-abstraction>
+          </member>
+          <member name="J1939RmUserAckPGNPtr" type="uint32"              comment="PGN supported to be acknowledged" >
+            <compiler-abstraction>
+              <ref2cfg />
+            </compiler-abstraction>
+          </member>
+          <member name="J1939RmUserPGNNr"    type="uint32"               comment="Number of PGNs supported to be requested by User" />
+          <member name="J1939RmUserAckPGNNr" type="uint32"               comment="Number of Ack PGNs supported to be acknowledged by User" />
+          <member name="J1939RmComIPduNr"    type="PduIdType"            comment="Number of ComIpdus configured for UserType COM" />
+          <member name="J1939RmUserComIPduRequestQueueSize" type="uint8" comment="Number of received requests that can be stored for COM I-PDUs of this user" />
+          <member name="J1939RmUserType"     type="uint8"                comment="Type of module using J1939Rm" />
+          <member name="J1939RmUserId"       type="uint8"                comment="User Identifier (Only required when the module uses transmission of requests)" />
+        </struct>
+      </type>
+<!--  Contains the configuration of an I-PDU that is to be transmitted on request by COM. This configuration container is only relevant for J1939RmUserType J1939RM_USER_COM-->
+      <type name="J1939Rm_ComIPdu_Const_Struct_Pbcfg">
+        <struct>
+          <member name="J1939RmComIPduPGN"              type="uint32"          comment="PGN of the COM I-PDU" />
+          <member name="J1939RmUpperComIPduId"          type="PduIdType"       comment="The I-PDU identifier used for communication with PduR." />
+          <member name="J1939RmUpperComIPduRef"         type="PduIdType"       comment="The I-PDU identifier used for communication to COM from J1939Rm" />
+          <member name="J1939Rm_IfTransmit"             type="boolean"         comment="True:If this is NORMAL Pdu that can be sent unfragmented, False: It this is large PDU that shall be sent via TP" />
+          <member name="J1939RmUpperComIPduRef_PDUR"    type="PduIdType"       comment="The I-PDU identifier used for communication to COM from J1939Rm for confirmation" />
+          <member name="J1939RmLowerComIPduId"          type="PduIdType"       comment="The I-PDU identifier used for communication with PduR" />
+          <member name="J1939RmLowerComIPdu_Ecuc_PduId" type="uint16"          comment="Ecuc PduID" />
+          <member name="J1939RmLowerComIPduRef"         type="PduIdType"       comment="The I-PDU identifier used for communication to J1939Rm from PduR" />
+          <member name="J1939RmComIPduDA"               type="uint8"           comment="Destination address of the COM I-PDU" />
+          <member name="J1939RmComIPduSA"               type="uint8"           comment="Source address of the COM I-PDU" />
+          <member name="J1939RmLowerPduMetaData"        type="uint8"           comment="MetaData Length of Lower COM I-PDU" />
+        </struct>
+      </type>
+
+      <type name="J1939Rm_RealStructType_Pbcfg">
+        <struct>
+          <member name="J1939RmChannelConstStructPtr" type="J1939Rm_Channel_Const_Struct_Pbcfg" comment="Constant Parameters for a CAN channel" >
+            <compiler-abstraction>
+              <ref2cfg />
+            </compiler-abstraction>
+          </member>
+          <member name="J1939RmNodeConstStructPtr" type="J1939Rm_Node_Const_Struct_Pbcfg"  comment="Parameters of a logical J1939 node (identified by an ECU address)" >
+            <compiler-abstraction>
+              <ref2cfg />
+            </compiler-abstraction>
+          </member>
+          <member name="J1939RmUserConstStructPtr" type="J1939Rm_User_Const_Struct_Pbcfg"  comment="J1939RM User constant Configuration" >
+            <compiler-abstraction>
+              <ref2cfg />
+            </compiler-abstraction>
+          </member>
+          <member name="J1939RmTxConfirmationTimeout" type="uint16"  comment="Time to wait for a confirmation after transmission of a message." />
+          <member name="J1939RmTimeoutSupervision"    type="uint16"  comment="Timeout of 1.25s for the reception of answer to a request" />
+          <member name="J1939RmUserNr"                type="uint16"  comment="Number of Users present in configuration" />
+          <member name="J1939RmNodeNr"                type="uint8"   comment="Number of nodes present in configuration" />
+          <member name="J1939RmChannelNr"             type="uint8"   comment="Number of channels present in configuration" />
+        </struct>
+      </type>
+
+      <type name="J1939Rm_ConfigType">
+        <struct>
+          <member name="PlatformSignature"   type="uint32" comment="Used to validate the platform"/>
+          <member name="LcfgSignature"       type="uint32" comment="Used to validate the post build configuration against the link time configuration"/>
+          <member name="CfgSignature"        type="uint32" comment="Used to validate the post build configuration against the precompile time configuration"/>
+          <member name="PublicInfoSignature" type="uint32" comment="Used to validate the post build configuration against the precompile time published information configuration"/>
+          <member name="J1939RmConfigPtr" type="J1939Rm_RealStructType_Pbcfg" comment="" >
+            <compiler-abstraction>
+              <ref2cfg />
+            </compiler-abstraction>
+          </member>
+        </struct>
+      </type>
+      </configuration>
+                                      <!-- POSTBUILD CONFIGURATION-->
+                                      <!-- POSTBUILD CONFIGURATION-->
+    <configuration class="PostBuild">
+      <?artifact directory="include" file="[!"$J1939RM_PBCFG_H_VARIANT"!]" type="postbuild-h" ?>
+      <?artifact directory="src" file="[!"$J1939RM_PBCFG_C_VARIANT"!]" type="postbuild-c" ?>
+
+    <type name="[!"$J1939RM_CONFIGLAYOUTTYPE_VARIANT"!]">
+      <struct>
+        <member type="J1939Rm_ConfigType" name="RootCfg" />
+[!SELECT "(J1939RmConfigSet/eb-list::*)"!]
+        <member type="J1939Rm_RealStructType_Pbcfg"       name="J1939RmConfigRef_Pbcfg" count="1" />
+        <member type="J1939Rm_Channel_Const_Struct_Pbcfg" name="J1939Rm_Cfg_Channel_Pbcfg" count="[!"num:i(($TotalNumberOfJ1939RmChannels))"!]" />
+        <member type="J1939Rm_Node_Const_Struct_Pbcfg"    name="J1939Rm_Cfg_Rmnode_Pbcfg" count="[!"num:i(count(util:distinct(node:order(J1939RmNode/eb-list::*))))"!]" />
+        <member type="J1939Rm_User_Const_Struct_Pbcfg"    name="J1939Rm_Cfg_Rmuser_Pbcfg" count="[!"num:i(($TotalNumberOfJ1939RmUser))"!]" />
+[!VAR "NodeIndex" = "'0'"!][!LOOP "(util:distinct(node:order(J1939RmNode/eb-list::*)))"!][!VAR "UserIndex" = "'0'"!][!LOOP "(util:distinct(node:order(J1939RmUser/eb-list::*)))"!]
+[!IF "J1939RmUserType = 'J1939RM_USER_COM'"!]
+        <member type="J1939Rm_ComIPdu_Const_Struct_Pbcfg" name="J1939Rm_Cfg_Rmnode[!"$NodeIndex"!]_Rmuser[!"$UserIndex"!]_ComTxPdu_Pbcfg" count="[!"num:i(count(util:distinct(node:order(J1939RmComIPdu/eb-list::*))))"!]" />
+[!ENDIF!][!VAR "UserIndex" = "num:i($UserIndex + 1)"!][!ENDLOOP!][!VAR "NodeIndex" = "num:i($NodeIndex + 1)"!][!ENDLOOP!]
+[!VAR "NodeIndex" = "'0'"!][!LOOP "(util:distinct(node:order(J1939RmNode/eb-list::*)))"!]
+        <member type="uint16"                             name="J1939Rm_Cfg_Rmnode[!"$NodeIndex"!]_Rmusers_Pbcfg" count="[!"num:i(count(util:distinct(node:order(J1939RmUser/eb-list::*))))"!]" />
+[!VAR "NodeIndex" = "num:i($NodeIndex + 1)"!][!ENDLOOP!]
+[!VAR "NodeIndex" = "'0'"!][!LOOP "(util:distinct(node:order(J1939RmNode/eb-list::*)))"!]
+        <member type="uint8"                              name="J1939Rm_Cfg_Rmnode[!"$NodeIndex"!]_Channels_Pbcfg" count="[!"num:i(count(util:distinct(node:order(J1939RmNodeChannelRef/eb-list::*))))"!]" />
+[!VAR "NodeIndex" = "num:i($NodeIndex + 1)"!][!ENDLOOP!]
+[!VAR "NodeIndex" = "'0'"!]
+[!LOOP "(util:distinct(node:order(J1939RmNode/eb-list::*)))"!]
+  [!VAR "UserIndex" = "'0'"!]
+  [!LOOP "util:distinct(node:order(J1939RmUser/eb-list::*))"!]
+    [!IF "((J1939RmUserType) = 'J1939RM_USER_J1939NM')"!]
+        <member type="uint32"                             name="J1939Rm_Cfg_Rmnode[!"$NodeIndex"!]_Rmuser[!"$UserIndex"!]_UserPGNs_Pbcfg" count="1" />
+    [!ELSEIF "count(J1939RmUserPGN/eb-list::*) > 0"!]
+        <member type="uint32"                             name="J1939Rm_Cfg_Rmnode[!"$NodeIndex"!]_Rmuser[!"$UserIndex"!]_UserPGNs_Pbcfg" count="[!"num:i(count(util:distinct(node:order(J1939RmUserPGN/eb-list::*))))"!]" />
+    [!ENDIF!]
+  [!VAR "UserIndex" = "num:i($UserIndex + 1)"!]
+  [!ENDLOOP!]
+[!VAR "NodeIndex" = "num:i($NodeIndex + 1)"!]
+[!ENDLOOP!]
+[!VAR "NodeIndex" = "'0'"!]
+[!LOOP "(util:distinct(node:order(J1939RmNode/eb-list::*)))"!]
+  [!VAR "UserIndex" = "'0'"!]
+  [!LOOP "(util:distinct(node:order(J1939RmUser/eb-list::*)))"!]
+    [!IF "((J1939RmUserType = 'J1939RM_USER_CDD') or (J1939RmUserType = 'J1939RM_USER_RTE'))"!]
+        [!IF "num:i(count(util:distinct(node:order(J1939RmUserAckPGN/eb-list::*)))) > 0"!]
+        <member type="uint32"                       name="J1939Rm_Cfg_Rmnode[!"$NodeIndex"!]_Rmuser[!"$UserIndex"!]_UserAckPGNs_Pbcfg" count="[!"num:i(count(util:distinct(node:order(J1939RmUserAckPGN/eb-list::*))))"!]" />
+        [!ENDIF!]
+    [!ENDIF!]
+  [!VAR "UserIndex" = "num:i($UserIndex + 1)"!]
+  [!ENDLOOP!]
+[!VAR "NodeIndex" = "num:i($NodeIndex + 1)"!]
+[!ENDLOOP!]
+[!ENDSELECT!]
+      </struct>
+    </type>
+
+      <type name="[!"$J1939RM_CONSTCONFIGLAYOUTTYPE_VARIANT"!]">
+        <reference type="[!"$J1939RM_CONFIGLAYOUTTYPE_VARIANT"!]">
+          <compiler-abstraction>
+            <const memory-class="J1939RM_APPL_CONST" />
+          </compiler-abstraction>
+        </reference>
+      </type>
+
+      <memory-section  name="CONFIG_DATA_UNSPECIFIED"> 
+        <instance type="[!"$J1939RM_CONSTCONFIGLAYOUTTYPE_VARIANT"!]" name="[!"$J1939RM_CONFIG_LAYOUT_VARIANT"!]">
+          <parameter name="postbuild-configuration-name">
+          <symbolic-value>[!"$initPredefinedCfgName"!]</symbolic-value>
+        </parameter>
+        [!IF "not(var:defined('postBuildVariant')) and not(node:name(J1939RmConfigSet/eb-list::*[1]) = $initPredefinedCfgName)"!]
+        <parameter name="postbuild-configuration-name">
+          <symbolic-value>[!"node:name(J1939RmConfigSet/eb-list::*[1])"!]</symbolic-value>
+        </parameter>
+        [!ENDIF!]
+     <field><!-- RootConfig BEGIN-->
+          <field><int>[!"asc:getPlatformSignature()"!]</int></field>
+          <field><int>[!"asc:getConfigSignature(as:modconf('J1939Rm')[1]//eb-list::*[not(child::*) and (node:configclass() = 'Link')])"!]</int></field>
+          <field><int>[!"asc:getConfigSignature(as:modconf('J1939Rm')[1]//eb-list::*[not(child::*) and (node:configclass() = 'PreCompile') ])"!]</int></field>
+          <field><int>[!"asc:getConfigSignature(node:difference(as:modconf('J1939Rm')[1]/CommonPublishedInformation//eb-list::*[not(child::*) and (node:configclass() = 'PublishedInformation') ], as:modconf('J1939Rm')[1]/CommonPublishedInformation/Release))"!]</int></field>
+          <field>
+              <ref>
+                <struct-field name="J1939RmConfigRef_Pbcfg" />
+                <array-field index="0" />
+              </ref>
+          </field>
+     </field><!-- RootConfig  END-->
+     <field><!-- J1939RmConfigRef BEGIN-->
+[!LOOP "(J1939RmConfigSet/eb-list::*)"!]
+     <field>
+        <field>
+            <ref>
+               <struct-field name="J1939Rm_Cfg_Channel_Pbcfg" />
+               <array-field index="0" />
+             </ref>
+        </field>
+        <field>
+            <ref>
+               <struct-field name="J1939Rm_Cfg_Rmnode_Pbcfg" />
+               <array-field index="0" />
+             </ref>
+        </field>
+        <field>
+            <ref>
+               <struct-field name="J1939Rm_Cfg_Rmuser_Pbcfg" />
+               <array-field index="0" />
+             </ref>
+        </field>
+        <field><int>[!"$J1939RmTxConfirmationTimeoutValue"!]</int></field>
+        <field><int>[!"$J1939RmTimeoutSupervisionValue"!]</int></field>
+        <field><int>[!"num:i($TotalNumberOfJ1939RmUser)"!]</int></field>
+        <field><int>[!"$TotalNumberOfJ1939RmNodes"!]</int></field>
+        <field><int>[!"$TotalNumberOfJ1939RmChannels"!]</int></field>
+     </field>
+[!ENDLOOP!]
+    </field>
+                                             <!--J1939RmConfigRef END-->
+[!SELECT "(J1939RmConfigSet/eb-list::*)"!]
+                               <!--J1939Rm Channel Configuration J1939Rm_Channel_Const_Struct BEGIN-->
+    <field>
+[!VAR "J1939RmAckmRxPduRefVerify" = "0"!]
+[!LOOP "(util:distinct(node:order(J1939RmChannel/eb-list::*)))"!]
+      <field>
+    [!IF "node:exists(J1939RmAckmRxPdu)"!]
+      [!IF "(not(node:empty(node:ref(J1939RmAckmRxPdu/J1939RmAckmRxPduRef)/MetaDataTypeRef)))"!]
+        [!IF "node:refvalid(node:ref(J1939RmAckmRxPdu/J1939RmAckmRxPduRef)/MetaDataTypeRef)"!]
+          [!IF "(not(node:exists(node:ref(node:ref(J1939RmAckmRxPdu/J1939RmAckmRxPduRef)/MetaDataTypeRef)/MetaDataItem/eb-list::*[MetaDataItemType = 'CAN_ID_32'])))"!]
+            [!ERROR!]MetaDataItem should be configured as CAN_ID_32 for the reference EcuC Pdu "[!"node:name(as:ref(J1939RmAckmRxPdu/J1939RmAckmRxPduRef))"!]" of J1939RmAckmRxPdu "[!"as:name(J1939RmAckmRxPdu)"!]".[!ENDERROR!]
+          [!ENDIF!]
+        [!ELSE!]
+          [!ERROR!]No proper MetaDataTypeRef "[!"node:ref(J1939RmAckmRxPdu/J1939RmAckmRxPduRef)/MetaDataTypeRef"!]" exist for the reference EcuC Pdu "[!"node:name(as:ref(J1939RmAckmRxPdu/J1939RmAckmRxPduRef))"!]" of J1939RmAckmRxPdu "[!"as:name(J1939RmAckmRxPdu)"!]".[!ENDERROR!]
+        [!ENDIF!]
+      [!ELSE!]
+        [!ERROR!]MetaDataTypeRef should be configured for EcuC Pdu  of J1939RmAckmRxPdu "[!"as:name(J1939RmAckmRxPdu)"!]".[!ENDERROR!]
+      [!ENDIF!]
+      [!IF "node:exists(node:ref(J1939RmAckmRxPdu/J1939RmAckmRxPduRef)/PduId)"!]
+        <field><int>[!"node:ref(J1939RmAckmRxPdu/J1939RmAckmRxPduRef)/PduId"!]</int></field><!--J1939RmAckmRx_Ecuc_PduId-->
+      [!ELSE!]
+             [!ERROR!]PduId is not configured for the reference EcuC Pdu "[!"node:name(as:ref(J1939RmAckmRxPdu/J1939RmAckmRxPduRef))"!]" of J1939RmAckmRxPdu "[!"as:name(.)"!]".[!ENDERROR!]
+      [!ENDIF!] 
+      [!VAR "J1939RmAckmRxPduRefVerify" = "as:name(as:ref(J1939RmAckmRxPdu/J1939RmAckmRxPduRef))"!]
+      [!VAR "RefFound" = "'false'"!]
+      [!LOOP "(util:distinct(node:order(as:modconf('PduR')[1]/PduRRoutingTables/eb-list::*/PduRRoutingTable/eb-list::*/PduRRoutingPath/eb-list::*)))"!]
+        [!IF "$RefFound = 'true'"!]
+          [!BREAK!]
+        [!ELSE!]
+          [!LOOP "(util:distinct(node:order(PduRDestPdu/eb-list::*)))"!]
+            [!IF "$J1939RmAckmRxPduRefVerify = as:name(as:ref(PduRDestPduRef))"!] 
+              [!VAR "RefFound" = "'true'"!]
+              [!BREAK!]
+            [!ENDIF!]
+          [!ENDLOOP!]
+        [!ENDIF!]
+      [!ENDLOOP!]
+      [!IF "$RefFound = 'false'"!]
+        [!ERROR!]The J1939RmAckmRxPdu([!"as:name(J1939RmAckmRxPdu)"!]) reference [!"$J1939RmAckmRxPduRefVerify"!] is not matching with any PduRDestPduRef in the PduR module configuration.[!ENDERROR!]
+      [!ENDIF!]
+        <field><int>[!"node:value(J1939RmAckmRxPdu/J1939RmAckmRxPduId )"!]</int></field><!--PduIdType, The I-PDU identifier (Handle Id of J1939RmAckmRxPdu) used for RxIndication from PduR-->
+    [!ELSE!]
+        <field><int>65535</int></field><!--Invalid Pdu ID J1939RmAckmRxPduId -->
+        <field><int>65535</int></field><!--Invalid Pdu ID J1939RmAckmRx_Ecuc_PduId-->
+    [!ENDIF!]
+    [!IF "node:exists(J1939RmAckmTxPdu)"!]
+      [!IF "node:exists(node:ref(J1939RmAckmTxPdu/J1939RmAckmTxPduRef)/PduId)"!]
+        <field><int>[!"node:ref(J1939RmAckmTxPdu/J1939RmAckmTxPduRef)/PduId"!]</int></field><!--J1939RmAckmTx_Ecuc_PduId-->
+      [!ELSE!]
+        [!ERROR!] PduId is not configured for the reference EcuC Pdu "[!"node:name(as:ref(J1939RmAckmTxPdu/J1939RmAckmTxPduRef))"!]" of J1939RmAckmTxPdu "[!"as:name(.)"!]".[!ENDERROR!]
+      [!ENDIF!] 
+      [!VAR "J1939RmAckmTxPduRefVerify" = "as:name(as:ref(J1939RmAckmTxPdu/J1939RmAckmTxPduRef))"!]
+      [!VAR "RefFound" = "'false'"!]
+        <field><int>[!"node:value(J1939RmAckmTxPdu/J1939RmAckmTxPduId )"!]</int></field><!--PduIdType, The I-PDU identifier (Handle Id of J1939RmAckmTxPdu) used for TxConfirmation from PduR-->
+      [!LOOP "(util:distinct(node:order(../../../../../../../PduR/ELEMENTS/PduR/PduRRoutingTables/eb-list::*)))"!]
+        [!IF "$RefFound = 'true'"!]
+          [!BREAK!]
+        [!ELSE!]
+          [!LOOP "(util:distinct(node:order(PduRRoutingTable/eb-list::*)))"!]
+            [!IF "$RefFound = 'true'"!]
+              [!BREAK!]
+            [!ELSE!]
+              [!LOOP "(util:distinct(node:order(PduRRoutingPath/eb-list::*)))"!]
+                [!IF "$J1939RmAckmTxPduRefVerify = as:name(as:ref(PduRSrcPdu/PduRSrcPduRef))"!]
+        <field><int>[!"PduRSrcPdu/PduRSourcePduHandleId"!]</int></field><!--PduIdType, The I-PDU identifier (Handle Id of PduRSrcPdu) used for TxConfirmation to J1939Rm from PduR-->
+                  [!VAR "RefFound" = "'true'"!]
+                  [!BREAK!]
+                [!ENDIF!]
+              [!ENDLOOP!]
+            [!ENDIF!]
+          [!ENDLOOP!]
+        [!ENDIF!]
+      [!ENDLOOP!]
+      [!IF "$RefFound = 'false'"!]
+        [!ERROR!]The J1939RmAckmTxPdu([!"as:name(J1939RmAckmTxPdu)"!]) reference [!"$J1939RmAckmTxPduRefVerify"!] is not matching with the PduR module configuration.[!ENDERROR!]
+      [!ENDIF!]
+    [!ELSE!]
+        <field><int>65535</int></field><!--Invalid J1939RmAckmTx_Ecuc_PduId-->
+        <field><int>65535</int></field><!--Invalid PduIdType, The I-PDU identifier used for TxConfirmation from PduR.-->
+        <field><int>65535</int></field><!--Invalid PduIdType, The I-PDU identifier used for TxConfirmation to upper layer-->
+    [!ENDIF!]
+    [!IF "node:exists(J1939RmRqstRxPdu)"!]
+      [!IF "(not(node:empty(node:ref(J1939RmRqstRxPdu/J1939RmRqstRxPduRef)/MetaDataTypeRef)))"!]
+        [!IF "node:refvalid(node:ref(J1939RmRqstRxPdu/J1939RmRqstRxPduRef)/MetaDataTypeRef)"!]
+          [!IF "(not(node:exists(node:ref(node:ref(J1939RmRqstRxPdu/J1939RmRqstRxPduRef)/MetaDataTypeRef)/MetaDataItem/eb-list::*[MetaDataItemType = 'CAN_ID_32'])))"!]
+            [!ERROR!]MetaDataItem should be configured as CAN_ID_32 for the reference EcuC Pdu "[!"node:name(as:ref(J1939RmRqstRxPdu/J1939RmRqstRxPduRef))"!]" of J1939RmRqstRxPdu "[!"as:name(J1939RmRqstRxPdu)"!]".[!ENDERROR!]
+          [!ENDIF!]
+        [!ELSE!]
+          [!ERROR!]No proper MetaDataTypeRef "[!"node:ref(J1939RmRqstRxPdu/J1939RmRqstRxPduRef)/MetaDataTypeRef"!]" exist for the reference EcuC Pdu "[!"node:name(as:ref(J1939RmRqstRxPdu/J1939RmRqstRxPduRef))"!]" of J1939RmRqstRxPdu "[!"as:name(J1939RmRqstRxPdu)"!]".[!ENDERROR!]
+        [!ENDIF!]
+      [!ELSE!]
+        [!ERROR!]MetaDataTypeRef should be configured for EcuC Pdu  of J1939RmRqstRxPdu "[!"as:name(J1939RmRqstRxPdu)"!]".[!ENDERROR!]
+      [!ENDIF!]
+      [!IF "node:exists(node:ref(J1939RmRqstRxPdu/J1939RmRqstRxPduRef)/PduId)"!]
+        <field><int>[!"node:ref(J1939RmRqstRxPdu/J1939RmRqstRxPduRef)/PduId"!]</int></field><!--J1939RmRqstRx_Ecuc_PduId-->
+      [!ELSE!]
+        [!ERROR!] PduId is not configured for the reference EcuC Pdu "[!"node:name(as:ref(J1939RmRqstRxPdu/J1939RmRqstRxPduRef))"!]" of J1939RmRqstRxPdu "[!"as:name(.)"!]".[!ENDERROR!]
+      [!ENDIF!] 
+      [!VAR "J1939RmRqstRxPduRefVerify" = "as:name(as:ref(J1939RmRqstRxPdu/J1939RmRqstRxPduRef))"!]
+      [!VAR "RefFound" = "'false'"!]
+      [!LOOP "(util:distinct(node:order(as:modconf('PduR')[1]/PduRRoutingTables/eb-list::*/PduRRoutingTable/eb-list::*/PduRRoutingPath/eb-list::*)))"!]
+        [!IF "$RefFound = 'true'"!]
+          [!BREAK!]
+        [!ELSE!]
+          [!LOOP "(util:distinct(node:order(PduRDestPdu/eb-list::*)))"!]
+            [!IF "$J1939RmRqstRxPduRefVerify = as:name(as:ref(PduRDestPduRef))"!] 
+              [!VAR "RefFound" = "'true'"!]
+              [!BREAK!]
+            [!ENDIF!]
+          [!ENDLOOP!]
+        [!ENDIF!]
+      [!ENDLOOP!]
+      [!IF "$RefFound = 'false'"!]
+        [!ERROR!]The J1939RmRqstRxPdu([!"as:name(J1939RmRqstRxPdu)"!]) reference [!"$J1939RmRqstRxPduRefVerify"!] is not matching with any PduRDestPduRef in the PduR module configuration.[!ENDERROR!]
+      [!ENDIF!]
+        <field><int>[!"node:value(J1939RmRqstRxPdu/J1939RmRqstRxPduId )"!]</int></field><!--J1939RmRqstRxPduId-->
+    [!ELSE!]
+        <field><int>65535</int></field><!--Invalid J1939RmRqstRx_Ecuc_PduId-->
+        <field><int>65535</int></field><!--Invalid J1939RmRqstRxPduId-->
+    [!ENDIF!]
+    [!IF "node:exists(J1939RmRqstTxPdu)"!]
+      [!IF "node:exists(node:ref(J1939RmRqstTxPdu/J1939RmRqstTxPduRef)/PduId)"!]
+        <field><int>[!"node:ref(J1939RmRqstTxPdu/J1939RmRqstTxPduRef)/PduId"!]</int></field><!--J1939RmRqstRx_Ecuc_PduId-->
+      [!ELSE!]
+        [!ERROR!] PduId is not configured for the reference EcuC Pdu "[!"node:name(as:ref(J1939RmRqstTxPdu/J1939RmRqstTxPduRef))"!]" of J1939RmRqstTxPdu "[!"as:name(.)"!]".[!ENDERROR!]
+      [!ENDIF!] 
+      [!VAR "J1939RmRqstTxPduRefVerify" = "as:name(as:ref(J1939RmRqstTxPdu/J1939RmRqstTxPduRef))"!]
+      [!VAR "RefFound" = "'false'"!]
+        <field><int>[!"node:value(J1939RmRqstTxPdu/J1939RmRqstTxPduId)"!]</int></field><!---->
+      [!LOOP "(util:distinct(node:order(../../../../../../../PduR/ELEMENTS/PduR/PduRRoutingTables/eb-list::*)))"!]
+        [!IF "$RefFound = 'true'"!]
+          [!BREAK!]
+        [!ELSE!]
+          [!LOOP "(util:distinct(node:order(PduRRoutingTable/eb-list::*)))"!]
+            [!IF "$RefFound = 'true'"!]
+              [!BREAK!]
+            [!ELSE!]
+              [!LOOP "(util:distinct(node:order(PduRRoutingPath/eb-list::*)))"!]
+                [!IF "$J1939RmRqstTxPduRefVerify = as:name(as:ref(PduRSrcPdu/PduRSrcPduRef))"!]
+        <field><int>[!"PduRSrcPdu/PduRSourcePduHandleId"!]</int></field><!---->
+                  [!VAR "RefFound" = "'true'"!]
+                  [!BREAK!]
+                [!ENDIF!]
+              [!ENDLOOP!]
+            [!ENDIF!]
+          [!ENDLOOP!]
+        [!ENDIF!]
+      [!ENDLOOP!]
+      [!IF "$RefFound = 'false'"!]
+        [!ERROR!]The J1939RmRqstTxPdu([!"as:name(J1939RmRqstTxPdu)"!]) reference [!"$J1939RmRqstTxPduRefVerify"!] is not matching with the PduR module configuration.[!ENDERROR!]
+      [!ENDIF!]
+    [!ELSE!]
+        <field><int>65535</int></field><!--Invalid PduIdType, The I-PDU identifier used for TxConfirmation from PduR-->
+        <field><int>65535</int></field><!--Invalid 1939RmRqstTx_Ecuc_PduId-->
+        <field><int>65535</int></field><!--Invalid PduIdType, The I-PDU identifier used for TxConfirmation to upper layer-->
+    [!ENDIF!]
+        <!-- !LINKSTO EB_Ref.SWS_J1939Rm_00018.J1939RmAckQueueSize,1 -->
+        <field><int>[!"num:i(J1939RmAckQueueSize)"!]</int><!----></field>
+        <!-- !LINKSTO EB_Ref.SWS_J1939Rm_00021.J1939RmRequestQueueSize,1-->
+        <field><int>[!"num:i(J1939RmRequestQueueSize)"!]</int><!----></field>
+        <field><int>[!"num:i(J1939RmRequestTimeoutMonitors)"!]</int><!----></field>
+[!VAR "ComMChannelIdValue" = "(as:ref(J1939RmComMNetworkHandleRef)/ComMChannelId)"!]
+        <field><int>[!"$ComMChannelIdValue"!]</int></field><!-- J1939RmChannelId-->
+    [!IF "(node:exists(J1939RmAckmTxPdu))"!]
+      [!IF "(not(node:empty(node:ref(J1939RmAckmTxPdu/J1939RmAckmTxPduRef)/MetaDataTypeRef)))"!]
+        [!IF "node:refvalid(node:ref(J1939RmAckmTxPdu/J1939RmAckmTxPduRef)/MetaDataTypeRef)"!]
+          [!IF "node:exists(node:ref(node:ref(J1939RmAckmTxPdu/J1939RmAckmTxPduRef)/MetaDataTypeRef)/MetaDataItem/eb-list::*[MetaDataItemType = 'CAN_ID_32'])"!]
+        <field><int>4</int></field><!-- Pdu MetaDataLength -->
+          [!ELSE!]
+            [!ERROR!]MetaDataItem should be configured as CAN_ID_32 for the reference EcuC Pdu "[!"node:name(as:ref(J1939RmAckmTxPdu/J1939RmAckmTxPduRef))"!]" of J1939RmAckmTxPdu "[!"as:name(J1939RmAckmTxPdu)"!]".[!ENDERROR!]
+          [!ENDIF!]
+        [!ELSE!]
+          <!-- !LINKSTO J1939Rm.EB.MetaData_J1939RmAckmTxPdu,1 -->
+          [!ERROR!]No proper MetaDataTypeRef "[!"node:ref(J1939RmAckmTxPdu/J1939RmAckmTxPduRef)/MetaDataTypeRef"!]" exist for the reference EcuC Pdu "[!"node:name(as:ref(J1939RmAckmTxPdu/J1939RmAckmTxPduRef))"!]" of J1939RmAckmTxPdu "[!"as:name(J1939RmAckmTxPdu)"!]".[!ENDERROR!]
+        [!ENDIF!]
+      [!ELSE!]
+        [!ERROR!]MetaDataTypeRef should be configured for EcuC Pdu  of J1939RmAckmTxPdu "[!"as:name(J1939RmAckmTxPdu)"!]".[!ENDERROR!]
+      [!ENDIF!]
+    [!ELSE!]
+        <field><int>0</int></field><!--J1939RmAckmTxPdu is not configured-->
+    [!ENDIF!]
+    [!IF "(node:exists(J1939RmRqstTxPdu))"!]
+      [!IF "(not(node:empty(node:ref(J1939RmRqstTxPdu/J1939RmRqstTxPduRef)/MetaDataTypeRef)))"!]
+        [!IF "node:refvalid(node:ref(J1939RmRqstTxPdu/J1939RmRqstTxPduRef)/MetaDataTypeRef)"!]
+          [!IF "node:exists(node:ref(node:ref(J1939RmRqstTxPdu/J1939RmRqstTxPduRef)/MetaDataTypeRef)/MetaDataItem/eb-list::*[MetaDataItemType = 'CAN_ID_32'])"!]
+        <field><int>4</int></field><!-- Pdu MetaDataLength (J1939RmRqstTxPdu) -->
+          [!ELSE!]
+            [!ERROR!]MetaDataItem should be configured as CAN_ID_32 for the reference EcuC Pdu "[!"node:name(as:ref(J1939RmRqstTxPdu/J1939RmRqstTxPduRef))"!]" of J1939RmRqstTxPdu "[!"as:name(J1939RmRqstTxPdu)"!]".[!ENDERROR!]
+          [!ENDIF!]
+        [!ELSE!]
+         <!-- !LINKSTO J1939Rm.EB.MetaData_J1939RmRqstTxPdu,1-->
+          [!ERROR!]No proper MetaDataTypeRef "[!"node:ref(J1939RmRqstTxPdu/J1939RmRqstTxPduRef)/MetaDataTypeRef"!]" exist for the reference EcuC Pdu "[!"node:name(as:ref(J1939RmRqstTxPdu/J1939RmRqstTxPduRef))"!]" of J1939RmRqstTxPdu "[!"as:name(J1939RmRqstTxPdu)"!]".[!ENDERROR!]
+        [!ENDIF!]
+      [!ELSE!]
+        [!ERROR!]MetaDataTypeRef should be configured for EcuC Pdu  of J1939RmRqstTxPdu "[!"as:name(J1939RmRqstTxPdu)"!]".[!ENDERROR!]
+      [!ENDIF!]
+    [!ELSE!]
+        <field><int>0</int></field><!--J1939RmRqstTxPdu is not configured-->
+    [!ENDIF!]
+      </field>
+[!ENDLOOP!]
+    </field>
+                                 <!--J1939Rm Channel Configuration J1939Rm_Channel_Const_Struct END -->
+                                   <!--J1939Rm Node Configuration J1939Rm_Node_Const_Struct BEGIN -->
+    <field>
+[!VAR "NodeIndex" = "'0'"!]
+[!LOOP "(util:distinct(node:order(J1939RmNode/eb-list::*)))"!]
+      <field>
+        <field>
+            <ref>
+               <struct-field name="J1939Rm_Cfg_Rmnode[!"$NodeIndex"!]_Rmusers_Pbcfg" />
+               <array-field index="0" />
+             </ref>
+        </field>
+        <field>
+            <ref>
+               <struct-field name="J1939Rm_Cfg_Rmnode[!"$NodeIndex"!]_Channels_Pbcfg" />
+               <array-field index="0" />
+             </ref>
+        </field>
+        <field><int>[!"num:i(count(util:distinct(node:order(J1939RmUser/eb-list::*))))"!]</int></field>
+        <field><int>[!"num:i(count(util:distinct(node:order(J1939RmNodeChannelRef/eb-list::*))))"!]</int></field>
+[!VAR "J1939RmNmNodeIdValue" = "node:ref(J1939RmNmNodeRef)/J1939NmNodeId"!]
+[!VAR "J1939RmNmNodeAddress" = "node:ref(J1939RmNmNodeRef)/J1939NmNodePreferredAddress"!]
+        <field><int>[!"$J1939RmNmNodeIdValue"!]</int></field>
+        <field><int>[!"$J1939RmNmNodeAddress"!]</int></field>
+      </field>
+[!VAR "NodeIndex" = "num:i($NodeIndex + 1)"!][!ENDLOOP!]
+    </field>
+                                        <!--J1939Rm Node Configuration J1939Rm_Node_Const_Struct END -->
+                                       <!--J1939Rm User Configuration J1939Rm_User_Const_Struct BEGIN -->
+    <field>
+[!VAR "NodeIndex" = "'0'"!]
+[!LOOP "(util:distinct(node:order(J1939RmNode/eb-list::*)))"!]
+[!VAR "UserIndex" = "'0'"!]
+[!LOOP "(util:distinct(node:order(J1939RmUser/eb-list::*)))"!]
+      <field>
+[!VAR "userName" = "as:name(.)"!]
+[!VAR "userName_occurance" = "'0'"!]
+[!LOOP "(as:modconf('J1939Rm')[1]/J1939RmConfigSet/eb-list::*)"!]
+   [!LOOP "(util:distinct(node:order(J1939RmNode/eb-list::*)))"!]
+       [!LOOP "(util:distinct(node:order(J1939RmUser/eb-list::*)))"!]
+          [!VAR "CurrentUserName" = "as:name(.)"!]
+             [!IF "$userName = $CurrentUserName"!]
+                [!VAR "userName_occurance" = "num:i($userName_occurance + 1)"!]
+             [!ENDIF!]
+       [!ENDLOOP!]
+   [!ENDLOOP!]
+[!ENDLOOP!]
+[!IF "$userName_occurance > 1"!]
+[!ERROR!]The username should not be repeated[!ENDERROR!]
+[!ENDIF!]
+[!IF "(J1939RmUserType = 'J1939RM_USER_COM')"!]
+        <field>
+            <ref>
+               <struct-field name="J1939Rm_Cfg_Rmnode[!"$NodeIndex"!]_Rmuser[!"$UserIndex"!]_ComTxPdu_Pbcfg" /><!--This configuration of an I-PDU is only relevant to J1939RmUserType J1939RM_USER_COM/-->
+             <array-field index="0" />
+           </ref>
+        </field>
+[!ELSE!]
+        <field><ref/></field><!--NULL POINTER This configuration of an I-PDU is only relevant to J1939RmUserType J1939RM_USER_COM/-->
+[!ENDIF!]
+    [!IF "node:existsAndTrue(as:modconf('J1939Rm')[1]/J1939RmGeneral/J1939RmSupportAckTransmission) and node:existsAndTrue(J1939RmUserSendAck)"!]
+      [!IF "((J1939RmUserType = 'J1939RM_USER_CDD') or (J1939RmUserType = 'J1939RM_USER_RTE') or (J1939RmUserType = 'J1939RM_USER_J1939DCM'))"!]
+        <field><int>1</int></field>
+      [!ELSE!]
+        <field><int>0</int></field>
+      [!ENDIF!]
+    [!ELSE!]
+        <field><int>0</int></field>
+    [!ENDIF!]
+    [!IF "node:existsAndTrue(as:modconf('J1939Rm')[1]/J1939RmGeneral/J1939RmSupportRequestTransmission) and node:existsAndTrue(J1939RmUserSendRequest)"!]
+      [!IF "((J1939RmUserType = 'J1939RM_USER_CDD') or (J1939RmUserType = 'J1939RM_USER_RTE'))"!]
+        <field><int>1</int></field>
+      [!ELSE!]
+        <field><int>0</int></field>
+      [!ENDIF!]
+    [!ELSE!]
+        <field><int>0</int></field>
+    [!ENDIF!]
+    [!IF "count(J1939RmUserPGN/eb-list::*) > 0"!]
+        <field>
+           <ref>
+               <struct-field name="J1939Rm_Cfg_Rmnode[!"$NodeIndex"!]_Rmuser[!"$UserIndex"!]_UserPGNs_Pbcfg" /><!--J1939RmUserPGNPtr-->
+               <array-field index="0" />
+             </ref>
+        </field>
+    [!ELSE!]
+        <field><ref/></field> <!--NULL PTR-->
+    [!ENDIF!]
+    [!IF "((J1939RmUserType = 'J1939RM_USER_COM') or (J1939RmUserType = 'J1939RM_USER_J1939DCM') or (J1939RmUserType = 'J1939RM_USER_J1939NM') or (num:i(count(util:distinct(node:order(J1939RmUserAckPGN/eb-list::*)))) = 0))"!]
+        <field><ref/></field> <!--NULL PTR-->
+    [!ELSE!]
+        <field>
+          <ref>
+             <struct-field name="J1939Rm_Cfg_Rmnode[!"$NodeIndex"!]_Rmuser[!"$UserIndex"!]_UserAckPGNs_Pbcfg" /><!--J1939RmUserAckPGNPtr-->
+             <array-field index="0" />
+           </ref>
+        </field>
+    [!ENDIF!]
+    [!IF "(J1939RmUserType = 'J1939RM_USER_COM')"!]
+        <field><int>0</int><!--Zero for J1939RM_USER_COM J1939RmUserType configured--></field>
+      [!ELSE!]
+        <field><int>[!"num:i(count(util:distinct(node:order(J1939RmUserPGN/eb-list::*))))"!]</int></field><!-- Number of PGNs supported to be requested from this User.-->
+      [!ENDIF!]
+      [!IF "J1939RmUserType = 'J1939RM_USER_COM'"!]
+        <field><int>0</int><!--Zero for J1939RM_USER_COM J1939RmUserType configured--></field>
+      [!ELSE!]
+        <field><int>[!"num:i(count(util:distinct(node:order(J1939RmUserAckPGN/eb-list::*))))"!]</int></field><!--Number of Ack PGNs supported to be acknowledged from this User.-->
+      [!ENDIF!]
+      [!IF "J1939RmUserType = 'J1939RM_USER_COM'"!]
+        <field><int>[!"num:i(count(util:distinct(node:order(J1939RmComIPdu/eb-list::*))))"!]</int></field><!--uint16, Number of ComIpdus present in J1939RmUser[!"$UserIndex"!] J1939RmNode[!"$NodeIndex"!] configuration-->
+      [!ELSE!]
+        <field><int>0</int></field><!-- ComIpdus is not required when COM is not the user*/-->
+      [!ENDIF!]
+      [!IF "J1939RmUserType = 'J1939RM_USER_COM'"!]
+        <field><int>[!"node:value(J1939RmUserComIPduRequestQueueSize)"!]</int></field><!-- Number of received requests that can be stored for COM I-PDUs of this user.-->
+      [!ELSE!]
+        <field><int>0</int></field><!--J1939RmUserComIPduRequestQueueSize needs to be configured only for user type J1939RM_USER_COM.-->
+      [!ENDIF!]
+      [!IF "J1939RmUserType = 'J1939RM_USER_CDD'"!]
+        <field><int>0</int></field><!-- J1939RM_USER_CDD-->
+      [!ELSEIF "(J1939RmUserType = 'J1939RM_USER_COM')"!]
+        <field><int>1</int></field><!-- J1939RM_USER_COM-->
+      [!ELSEIF "(J1939RmUserType = 'J1939RM_USER_J1939DCM')"!]
+        <field><int>2</int></field><!-- J1939RM_USER_J1939DCM-->
+      [!ELSEIF "(J1939RmUserType = 'J1939RM_USER_J1939NM')"!]
+        <field><int>3</int></field><!-- J1939RM_USER_J1939NM-->
+      [!ELSEIF "(J1939RmUserType = 'J1939RM_USER_RTE')"!]
+        <field><int>4</int></field><!-- J1939RM_USER_RTE-->
+    [!ENDIF!]
+[!VAR "J1939RmUserIdValue"= "node:value(J1939RmUserId)"!]
+        <field><int>[!"$J1939RmUserIdValue"!]</int></field><!--  J1939RmUserId-->
+      </field>
+[!VAR "UserIndex" = "num:i($UserIndex + 1)"!][!ENDLOOP!]
+[!VAR "NodeIndex" = "num:i($NodeIndex + 1)"!][!ENDLOOP!]
+    </field>
+                                             <!-- J1939Rm User Configuration END -->
+                                       <!-- J1939Rm_ComIPdu_Const_Struct configuration  BEGIN-->
+[!LOOP "(util:distinct(node:order(J1939RmNode/eb-list::*)))"!]
+  [!LOOP "(util:distinct(node:order(J1939RmUser/eb-list::*)))"!]
+    [!IF "J1939RmUserType = 'J1939RM_USER_COM'"!]
+    <field>
+[!VAR "UserName" = "as:name(.)"!]
+   [!LOOP "(util:distinct(node:order(J1939RmComIPdu/eb-list::*)))"!]
+      <field>
+        <field><int>[!"node:value(J1939RmComIPduPGN)"!]</int></field><!--uint32, PGN of the COM I-PDU-->
+[!VAR "J1939RmUpperComIPduIdValue"= "(J1939RmUpperComIPdu/J1939RmUpperComIPduId)"!]
+        <field><int>[!"$J1939RmUpperComIPduIdValue"!]</int></field><!--PduIdType, The I-PDU identifier (Handle Id of J1939RmUpperComIPdu) used for Tx from COM to J1939Rm-->
+    [!VAR "J1939Rm_ComIpduType" = "node:value(ComIPduType)"!] 
+      [!VAR "J1939RmUpperComIPduRefVerify" = "as:name(as:ref(J1939RmUpperComIPdu/J1939RmUpperComIPduRef))"!]
+      [!VAR "RefFound" = "'false'"!]
+      [!VAR "skip_J1939Tp" = "'TRUE'"!]
+        [!IF "$Com_count > 0"!]
+          [!LOOP "(util:distinct(node:order(../../../../../../../../../../../Com/ELEMENTS/Com/ComConfig/eb-list::*)))"!]
+            [!IF "$RefFound = 'true'"!]
+              [!BREAK!]
+            [!ELSE!]
+              [!LOOP "(util:distinct(node:order(ComIPdu/eb-list::*)))"!]
+                [!IF "$J1939RmUpperComIPduRefVerify = as:name(as:ref(ComPduIdRef))"!]
+        <field><int>[!"ComIPduHandleId"!]</int></field><!--PduIdType, The I-PDU identifier (Handle Id of ComIPdu) used for TxConfirmation to COM from J1939Rm-->
+                  [!VAR "RefFound" = "'true'"!]
+                  [!VAR "IpduType" = "node:value(ComIPduType)"!]
+                    [!IF "$IpduType = 'NORMAL'"!]
+                        [!VAR "skip_J1939Tp" = "'TRUE'"!]
+        <field><int>1</int></field><!--TRUE-->
+                    [!ELSE!]
+                        [!VAR "skip_J1939Tp" = "'FALSE'"!]
+        <field><int>0</int></field><!--False-->
+                    [!ENDIF!]
+                  [!BREAK!]
+                [!ENDIF!]
+              [!ENDLOOP!]
+            [!ENDIF!]
+          [!ENDLOOP!]
+        [!ENDIF!]
+        [!IF "$RefFound = 'false'"!]
+        [!ERROR!]UpperComIpdu of [!"$UserName"!] is not configured in Com module [!ENDERROR!]
+        <field><int>65535</int></field><!--/*Invalid PDU-->
+        [!ENDIF!]
+        [!IF "($J1939Rm_ComIpduType = 'ComIPdu_IF') and ($skip_J1939Tp = 'FALSE')"!]
+            [!ERROR!]wrong ComIPduType for user [!"$UserName"!] [!ENDERROR!]
+        [!ELSEIF "( $J1939Rm_ComIpduType = 'ComIPdu_TP') and ($skip_J1939Tp = 'TRUE')"!]
+            [!ERROR!]wrong ComIPduType for user [!"$UserName"!] [!ENDERROR!]
+        [!ENDIF!]
+      [!VAR "J1939RmUpperPduRRefVerify" = "as:name(as:ref(J1939RmUpperComIPdu/J1939RmUpperComIPduRef))"!]
+      [!VAR "RefFound" = "'false'"!]
+      [!LOOP "(util:distinct(node:order(../../../../../../../../../../../PduR/ELEMENTS/PduR/PduRRoutingTables/eb-list::*)))"!]
+        [!IF "$RefFound = 'true'"!]
+          [!BREAK!]
+        [!ELSE!]
+          [!LOOP "(util:distinct(node:order(PduRRoutingTable/eb-list::*)))"!]
+            [!IF "$RefFound = 'true'"!]
+              [!BREAK!]
+            [!ELSE!]
+              [!LOOP "(util:distinct(node:order(PduRRoutingPath/eb-list::*)))"!]
+                [!IF "$RefFound = 'true'"!]
+                  [!BREAK!]
+                [!ELSE!]
+                  [!LOOP "(util:distinct(node:order(PduRDestPdu/eb-list::*)))"!]
+                    [!IF "$J1939RmUpperPduRRefVerify = as:name(as:ref(PduRDestPduRef))"!]
+                      [!IF "node:exists(PduRDestPduHandleId)"!]
+        <field><int>[!"PduRDestPduHandleId"!]</int></field><!--PduIdType, The I-PDU identifier (Handle Id of PduRDestPdu) used for TxConf to COM from J1939Rm-->
+                       [!VAR "RefFound" = "'true'"!]
+                        [!BREAK!]
+                      [!ELSE!]
+                        [!ERROR!]The PduRDestPduHandleId shall be configured for the Pdu [!"$J1939RmUpperPduRRefVerify"!].[!ENDERROR!]
+                      [!ENDIF!]
+                    [!ENDIF!]
+                  [!ENDLOOP!]
+                [!ENDIF!]
+              [!ENDLOOP!]
+            [!ENDIF!]
+          [!ENDLOOP!]
+        [!ENDIF!]
+      [!ENDLOOP!]
+      [!IF "$RefFound = 'false'"!]
+        <field><int>65535</int></field><!--Invalid PDU-->
+      [!ENDIF!]
+[!VAR "J1939RmLowerComIPduIdValue"= "(J1939RmLowerComIPdu/J1939RmLowerComIPduId)"!] 
+        <field><int>[!"$J1939RmLowerComIPduIdValue"!]</int></field><!--PduIdType, The I-PDU identifier used for Tx  from J1939Rm to PduR-->
+      [!IF "node:exists(node:ref(J1939RmLowerComIPdu/J1939RmLowerComIPduRef)/PduId)"!]
+        <field><int>[!"node:ref(J1939RmLowerComIPdu/J1939RmLowerComIPduRef)/PduId"!]</int></field><!--/*J1939RmLowerComIPdu_Ecuc_PduId-->
+      [!ELSE!].
+            <!-- !LINKSTO J1939Rm.EB.J1939RmLowerComIPduRefPduId,1-->
+             [!ERROR!]PduId is not configured for the reference EcuC Pdu "[!"node:name(as:ref(J1939RmLowerComIPdu/J1939RmLowerComIPduRef))"!]" of J1939RmLowerComIPdu "[!"as:name(.)"!]".[!ENDERROR!]
+      [!ENDIF!] 
+      [!VAR "J1939RmLowerPduRRefVerify" = "as:name(as:ref(J1939RmLowerComIPdu/J1939RmLowerComIPduRef))"!]
+      [!VAR "RefFound" = "'false'"!]
+      [!LOOP "(as:modconf('PduR')[1]/PduRRoutingTables/eb-list::*)"!]
+        [!IF "$RefFound = 'true'"!]
+          [!BREAK!]
+        [!ELSE!]
+          [!LOOP "(util:distinct(node:order(PduRRoutingTable/eb-list::*)))"!]
+            [!IF "$RefFound = 'true'"!]
+              [!BREAK!]
+            [!ELSE!]
+              [!LOOP "(util:distinct(node:order(PduRRoutingPath/eb-list::*)))"!]
+                [!IF "$J1939RmLowerPduRRefVerify = as:name(as:ref(PduRSrcPdu/PduRSrcPduRef))"!]
+        <field><int>[!"PduRSrcPdu/PduRSourcePduHandleId"!]</int></field><!--PduIdType, The I-PDU identifier (Handle Id of PduRSrcPdu) used for TxConfirmation to J1939Rm from PduR-->
+                  [!VAR "RefFound" = "'true'"!]
+                  [!BREAK!]
+                [!ENDIF!]
+              [!ENDLOOP!]
+            [!ENDIF!]
+          [!ENDLOOP!]
+        [!ENDIF!]
+      [!ENDLOOP!]
+      [!IF "$RefFound = 'false'"!]
+        [!ERROR!]The J1939RmLowerComIPdu ([!"as:name(J1939RmLowerComIPdu)"!]) reference [!"$J1939RmLowerPduRRefVerify"!] which is not configured in the PduR module configuration.[!ENDERROR!]
+      [!ENDIF!]
+        <field><int>[!"J1939RmComIPduDA"!]</int></field><!--uint8, Destination address of the COM I-PDU-->
+        <field><int>[!"J1939RmComIPduSA"!]</int></field><!--uint8, Source address of the COM I-PDU-->
+    [!IF "not(node:empty(node:ref(J1939RmLowerComIPdu/J1939RmLowerComIPduRef)/MetaDataTypeRef))"!]
+      [!VAR "MetaDataItemLength"= "'0'"!]     
+      [!IF "node:refvalid(node:ref(J1939RmLowerComIPdu/J1939RmLowerComIPduRef)/MetaDataTypeRef)"!]
+        [!IF " (node:exists(node:ref(node:ref(J1939RmLowerComIPdu/J1939RmLowerComIPduRef)/MetaDataTypeRef)/MetaDataItem/eb-list::*[MetaDataItemType = 'PRIORITY_8']) ) and ($skip_J1939Tp = 'FALSE')"!]
+          [!IF "node:exists(node:ref(node:ref(J1939RmLowerComIPdu/J1939RmLowerComIPduRef)/MetaDataTypeRef)/MetaDataItem/eb-list::*[MetaDataItemType = 'TARGET_ADDRESS_16'])"!]
+            [!IF "node:exists(node:ref(node:ref(J1939RmLowerComIPdu/J1939RmLowerComIPduRef)/MetaDataTypeRef)/MetaDataItem/eb-list::*[MetaDataItemType = 'SOURCE_ADDRESS_16'])"!]
+              [!VAR "MetaDataItemLength"= "'4'"!]
+            [!ELSE!]
+              [!ERROR!]MetaDataItem "SOURCE_ADDRESS_16" is not configured for the reference EcuC Pdu "[!"node:name(as:ref(J1939RmLowerComIPdu/J1939RmLowerComIPduRef))"!]" of J1939RmLowerComIPdu "[!"as:name(J1939RmLowerComIPdu)"!]".[!ENDERROR!]
+            [!ENDIF!]
+          [!ELSE!]
+            [!ERROR!]MetaDataItem "TARGET_ADDRESS_16" is not configured for the reference EcuC Pdu "[!"node:name(as:ref(J1939RmLowerComIPdu/J1939RmLowerComIPduRef))"!]" of J1939RmLowerComIPdu "[!"as:name(J1939RmLowerComIPdu)"!]".[!ENDERROR!]
+          [!ENDIF!]
+        [!ELSEIF "(node:exists(node:ref(node:ref(J1939RmLowerComIPdu/J1939RmLowerComIPduRef)/MetaDataTypeRef)/MetaDataItem/eb-list::*[MetaDataItemType = 'TARGET_ADDRESS_16']) ) and ($skip_J1939Tp = 'FALSE')"!]
+          [!IF "node:exists(node:ref(node:ref(J1939RmLowerComIPdu/J1939RmLowerComIPduRef)/MetaDataTypeRef)/MetaDataItem/eb-list::*[MetaDataItemType = 'SOURCE_ADDRESS_16'])"!]
+            [!VAR "MetaDataItemLength"= "'2'"!]
+          [!ELSE!]
+            [!ERROR!]MetaDataItem "SOURCE_ADDRESS_16" is not configured for the reference EcuC Pdu "[!"node:name(as:ref(J1939RmLowerComIPdu/J1939RmLowerComIPduRef))"!]" of J1939RmLowerComIPdu "[!"as:name(J1939RmLowerComIPdu)"!]".[!ENDERROR!]
+          [!ENDIF!]
+        [!ELSEIF "(node:exists(node:ref(node:ref(J1939RmLowerComIPdu/J1939RmLowerComIPduRef)/MetaDataTypeRef)/MetaDataItem/eb-list::*[MetaDataItemType = 'CAN_ID_32'])) and ($skip_J1939Tp = 'TRUE')"!]
+            [!VAR "MetaDataItemLength"= "'4'"!]
+        [!ELSE!]
+            <!-- !LINKSTO J1939Rm.EB.MetaData_J1939RmLowerComIPdu,1-->
+          [!ERROR!]MetaDataItem is not configured correctly for the reference EcuC Pdu "[!"node:name(as:ref(J1939RmLowerComIPdu/J1939RmLowerComIPduRef))"!]" of J1939RmLowerComIPdu "[!"as:name(J1939RmLowerComIPdu)"!]".[!ENDERROR!]
+        [!ENDIF!]
+      [!ELSE!]
+        [!ERROR!]No proper MetaDataTypeRef "[!"node:ref(J1939RmLowerComIPdu/J1939RmLowerComIPduRef)/MetaDataTypeRef"!]" exist for the reference EcuC Pdu "[!"node:name(as:ref(J1939RmLowerComIPdu/J1939RmLowerComIPduRef))"!]" of J1939RmLowerComIPdu "[!"as:name(J1939RmLowerComIPdu)"!]".[!ENDERROR!]
+      [!ENDIF!]
+        <field><int>[!"$MetaDataItemLength"!]</int></field>
+    [!ELSE!]
+       [!ERROR!]MetaDataItem is not configured for the reference EcuC Pdu "[!"node:name(as:ref(J1939RmLowerComIPdu/J1939RmLowerComIPduRef))"!]" of J1939RmLowerComIPdu "[!"as:name(J1939RmLowerComIPdu)"!]".[!ENDERROR!]
+    [!ENDIF!]
+    </field>
+      [!ENDLOOP!]
+    </field>
+    [!ENDIF!]
+  [!ENDLOOP!]
+[!ENDLOOP!]
+                                                  <!-- J1939Rm_ComIPdu_Const_Struct  END-->
+[!LOOP "(util:distinct(node:order(J1939RmNode/eb-list::*)))"!]
+                                                          <!-- UserId  Begin-->
+    <field>
+[!LOOP "(util:distinct(node:order(J1939RmUser/eb-list::*)))"!]
+[!IF "node:exists(J1939RmUserId)"!]
+[!VAR "J1939RmUserIdValue"= "node:value(J1939RmUserId)"!]
+       <field><int>[!"$J1939RmUserIdValue"!]</int></field>
+[!ENDIF!][!ENDLOOP!]
+    </field>
+                                                           <!-- UserId  END-->
+[!ENDLOOP!]
+                                                        <!-- ComChannel Id Begin-->
+[!LOOP "(util:distinct(node:order(J1939RmNode/eb-list::*)))"!]
+    <field>
+    [!LOOP "(util:distinct(node:order(J1939RmNodeChannelRef/eb-list::*)))"!]
+      <field><int>[!"node:value(node:ref(node:ref(.)/J1939RmComMNetworkHandleRef)/ComMChannelId)"!]</int></field>
+    [!ENDLOOP!]
+    </field>
+                                                          <!--ComChannel Id END-->
+                                                            <!--User PGN BEGIN-->
+[!ENDLOOP!]
+[!LOOP "(util:distinct(node:order(J1939RmNode/eb-list::*)))"!]
+  [!LOOP "util:distinct(node:order(J1939RmUser/eb-list::*))"!]
+    [!IF "((J1939RmUserType) = 'J1939RM_USER_J1939NM')"!]
+    <field>
+       <field><int>60928</int></field><!--J1939RmUserPGN is predefined to AC (0x0EE00) for J1939RmUserType J1939RM_USER_J1939NM-->
+    </field>
+    [!ELSEIF "count(J1939RmUserPGN/eb-list::*) > 0"!]<!--User pgn-->
+    <field>
+    [!LOOP "(util:distinct(node:order(J1939RmUserPGN/eb-list::*)))"!]
+       <field><int>[!"node:value(.)"!]</int></field>
+    [!ENDLOOP!]
+    </field>
+    [!ENDIF!]
+  [!ENDLOOP!]
+[!ENDLOOP!]
+                                                            <!--User PGN END-->
+                                                       <!-- J1939RmUserAckPGNs BEGIN -->
+[!LOOP "(util:distinct(node:order(J1939RmNode/eb-list::*)))"!]
+  [!LOOP "(util:distinct(node:order(J1939RmUser/eb-list::*)))"!]
+    [!IF "((J1939RmUserType = 'J1939RM_USER_CDD') or (J1939RmUserType = 'J1939RM_USER_RTE'))"!]
+        [!IF "num:i(count(util:distinct(node:order(J1939RmUserAckPGN/eb-list::*)))) > 0"!] 
+    <field>
+        [!LOOP "(util:distinct(node:order(J1939RmUserAckPGN/eb-list::*)))"!]
+       <field><int>[!"node:value(.)"!]</int></field>
+        [!ENDLOOP!]
+    </field>
+        [!ENDIF!]
+    [!ENDIF!]
+  [!ENDLOOP!]
+[!ENDLOOP!]
+                                                       <!-- J1939RmUserAckPGNs END -->
+[!ENDSELECT!]
+    </instance>
+    </memory-section>
+    </configuration>
+  </module>
+[!ENDCODE!]
+  <xi:include href="Base.xgen" xpointer="element(/1/1)" />
+</xgen>

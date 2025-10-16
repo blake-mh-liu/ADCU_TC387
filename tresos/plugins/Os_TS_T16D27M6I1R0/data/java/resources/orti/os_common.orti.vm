@@ -1,0 +1,811 @@
+#parse("CommonVars.vm")
+#parse("CommonMkVars.vm")
+#parse("CommonMkMacros.vm")
+// This file is generated automatically. DO NOT EDIT!!
+//
+// EB tresos AutoCore OS ${Version.getMajor()}.${Version.getMinor()}.${Version.getPatch()} ${Version.getTarget()}/${Version.getDerivate()}
+// (Build ${Version.getBuild()})
+//
+// (c) 1998-${Version.getCurrentYear()} Elektrobit Automotive GmbH
+// Am Wolfsmantel 46
+// 91058 Erlangen
+// GERMANY
+//
+// Date         : ${Version.getDate()}           !!!IGNORE-LINE!!!
+
+#macro( VTL_MkInternalThreadDeclation )
+#* *##foreach( $coreId in $OsModel.getUsedCoreIds() )
+#*    *#    "mk_boot_thread_core$coreId"    = "MK_bootThreadConfig[$coreId]->name",
+#*    *#    "mk_init_thread_core$coreId"    = "MK_initThreadConfig[$coreId]->name",
+#*    *#    "mk_idle_thread_core$coreId"    = "MK_idleThreadConfig[$coreId]->name",
+#*    *#    "mk_shutdown_thread_core$coreId" = "MK_shutdownThreadConfig[$coreId]->name",
+#*    *#    "mk_aux1_thread_core$coreId"    = "MK_aux1Thread[$coreId]->name",
+#*    *#    "mk_aux2_thread_core$coreId"    = "MK_aux2Thread[$coreId]->name",
+#*    *##set( $isThereNext = false )
+#*    *##if( $OsModel.getApplicationsOnCore($coreId).hasAnyAppTrustedFunctions()
+            || $OsConfig.hasProtectionHook()
+            || $OsConfig.hasErrorHook()
+            || $OsConfig.hasShutdownHook()
+            || $foreach.hasNext )
+#*          *##set( $isThereNext = true )
+#*    *##end
+#*    *#    "mk_qmos_thread_core$coreId"    = "MK_qmosThreadConfig[$coreId]->name"#if($isThereNext == true),$newLine#else$newLine#end
+#*    *###
+#*    *##set( $isThereNext = false )
+#*    *##if( $OsConfig.hasProtectionHook()
+            || $OsConfig.hasErrorHook()
+            || $OsConfig.hasShutdownHook()
+            || $foreach.hasNext )
+#*          *##set( $isThereNext = true )
+#*    *##end
+#*    *##if( $OsModel.getApplicationsOnCore($coreId).hasAnyAppTrustedFunctions())
+#*       *#    "mk_trusted_function_thread_core$coreId" = "MK_trustedFunctionThreadConfig[$coreId]->name"#if($isThereNext == true),$newLine#else$newLine#end
+#*    *##end
+#*    *###
+#*    *##set( $isThereNext = false )
+#*    *##if( $OsConfig.hasErrorHook()
+            || $OsConfig.hasShutdownHook()
+            || $foreach.hasNext )
+#*          *##set( $isThereNext = true )
+#*    *##end
+#*    *##if( $OsConfig.hasProtectionHook() )
+#*       *#    "mk_protection_hook_thread_core$coreId" = "MK_protectionHookThreadConfig[$coreId]->name"#if($isThereNext == true),$newLine#else$newLine#end
+#*    *##end
+#*    *###
+#*    *##set( $isThereNext = false )
+#*    *##if( $OsConfig.hasShutdownHook()
+            || $foreach.hasNext )
+#*          *##set( $isThereNext = true )
+#*    *##end
+#*    *##if( $OsConfig.hasErrorHook() )
+#*       *#    "mk_error_hook_thread_core$coreId" = "MK_errorHookThreadConfig[$coreId]->name"#if($isThereNext == true),$newLine#else$newLine#end
+#*    *##end
+#*    *##if( $OsConfig.hasShutdownHook() )
+#*       *#    "mk_shutdown_hook_thread_core$coreId" = "MK_shutdownHookThreadConfig[$coreId]->name"#if($foreach.hasNext),$newLine#else$newLine#end
+#*    *##end
+#* *##end
+#end
+//-------------------------------------------------------------------
+// 00 ORTI Version
+//-------------------------------------------------------------------
+
+VERSION
+{
+#if ( $OsConfig.getNumCPUCoresMax() == 1 )
+#* *#  KOIL = "2.2";
+#* *#  OSSEMANTICS = "ORTI", "2.2";
+#else
+#* *#  KOIL = "2.3";
+#* *#  OSSEMANTICS = "ORTI", "2.3";
+#end
+};
+
+//-------------------------------------------------------------------
+// 10 Declaration
+//-------------------------------------------------------------------
+#if( $OsModel.isMicroKernel() )
+#* *#IMPLEMENTATION EB_tresos_SafetyOS
+#else
+#* *#IMPLEMENTATION EB_tresos_AutoCoreOS
+#end
+{
+
+OS
+{
+#if( $OsConfig.getNumCPUCoresMax() > 1 )
+#* *#  CTYPE "int" vs_SMP_NUMCPU,    "Number of cores";
+#end
+#if( $OsModel.isMicroKernel() )
+#* *##if( $useTrace > 0 )
+#*   *#  ENUM [
+#*   *##foreach( $task in $AllTasksList )
+#*      *#    "$task.getName()" = "0x40000000 | $AllTasksList.getId($task)",
+#*   *##end
+#*   *##foreach( $interrupt in $AllInterruptsList.getInterruptsWithThreads() )
+#*      *##* *#    "$interrupt.getName()" = "0x60000000 | $AllInterruptsList.getIsrId($interrupt)",
+#*   *##end
+#*   *##set( $iTrustedFunctions = 0 )
+#*   *##foreach( $app in $AllApplicationsList )
+#*      *##foreach( $tf in $app.getTrustedFunctions() )
+#*         *#    "$tf.getName()" = "0xc0000000 | $iTrustedFunctions",
+#*         *##set( $iTrustedFunctions = $iTrustedFunctions + 1 )
+#*      *##end
+#*   *##end
+#*   *#    "idle"     = 0x20000000,
+#*   *#    "init"     = 0x20000001,
+#*   *#    "boot"     = 0x20000002,
+#*   *#    "shutdown" = 0x20000003,
+#*   *##if( $OsConfig.hasShutdownHook() )
+#*      *#    "ShutdownHook"   = 0xa0000000,
+#*   *##end
+#*   *##if( $OsConfig.hasErrorHook() )
+#*      *#    "ErrorHook"      = 0xa0000001,
+#*   *##end
+#*   *##if( $OsConfig.hasProtectionHook() )
+#*      *#    "ProtectionHook" = 0xa0000002,
+#*   *##end
+#*   *###
+#*   *#    "UNKNOWN" = 0x00000000
+#*   *##if( $OsConfig.getNumCPUCoresMax() > 1 )
+#*      *#  ] RUNNINGTASK[], "Running thread identification";
+#*   *##else
+#*      *#  ] RUNNINGTASK, "Running thread identification";
+#*   *##end
+#* *##else
+#*   *#  ENUM [
+#*   *#    "NO_THREAD" = 0x0,
+#*   *##foreach( $task in $AllTasksList )
+#*      *#    "$task.getName()" = "MK_taskCfgTable[$AllTasksList.getId($task)].threadCfg.name",
+#*   *##end
+#*   *##foreach( $interrupt in $AllInterruptsList.getInterruptsWithThreads() )
+#*      *##* *#    "$interrupt.getName()" = "MK_isrCfgTable[$AllInterruptsList.getIsrId($interrupt)].threadCfg.name",
+#*   *##end
+#*   *##VTL_MkInternalThreadDeclation()
+#*   *##if( $OsModel.getNumUsedCores() > 1 )
+#*      *#  ] vs_RUNNINGTHREAD[], "Running thread identification";
+#*   *##else
+#*      *#  ] vs_RUNNINGTHREAD, "Running thread identification";
+#*   *##end
+#* *##end
+#* *##if( $OsConfig.getNumCPUCoresMax() > 1 )
+#*    *#  CTYPE vs_RUNNINGTHREADPRIORITY[], "Running thread priority";
+#* *##else
+#*    *#  CTYPE vs_RUNNINGTHREADPRIORITY, "Running thread priority";
+#* *##end
+#else#* **********Autocore declarations********** *#
+#* *#  ENUM [
+#* *#    "NO_TASK" = 0x0,
+#* *##foreach( $task in $AllTasksList )
+#*    *#    "$task.getName()" = "&OS_taskTable[$AllTasksList.getId($task)]"#if($foreach.hasNext),$newLine#else$newLine#end
+#* *##end
+#* *##if( $OsConfig.getNumCPUCoresMax() > 1 )
+#*    *#  ] RUNNINGTASK[], "Running task identification";
+#* *##else
+#*    *#  ] RUNNINGTASK, "Running task identification";
+#* *##end
+#* *#  ENUM [
+#* *#    "NO_ISR" = 0xfff,
+#* *##foreach( $interrupt in $AllInterruptsList )
+#*    *#    "$interrupt.getName()" = $AllInterruptsList.getId($interrupt)#if($foreach.hasNext),$newLine#else$newLine#end
+#* *##end
+#* *##if( $OsConfig.getNumCPUCoresMax() > 1 )
+#*    *#  ] RUNNINGISR2[], "Running ISR identification";
+#* *##else
+#*    *#  ] RUNNINGISR2, "Running ISR identification";
+#* *##end
+#* *##if( $ArchProperties.getConfArchName() == "PA" && $useTrace > 0 )
+#*    *#  ENUM [
+#*    *#    "NO_TASK" = 0xff,
+#*    *##foreach( $task in $AllTasksList )
+#*       *#    "$task.getName()" = $AllTasksList.getId($task)#if($foreach.hasNext),$newLine#else$newLine#end
+#*    *##end
+#*    *#  ] vs_SIGNAL_RUNNINGTASK, "Trace task identification";
+#*    *#  ENUM [
+#*    *#    "NO_ISR" = 0x3ff,
+#*    *##foreach( $interrupt in $AllInterruptsList )
+#*       *#    "$interrupt.getName()" = $AllInterruptsList.getId($interrupt)#if($foreach.hasNext),$newLine#else$newLine#end
+#*    *##end
+#*    *#  ] vs_SIGNAL_RUNNINGISR2, "Trace ISR identification";
+#* *##end
+#* *#  ENUM [
+#* *#    "Boot"           = 0,
+#* *#    "Task"           = 1,
+#* *#    "Cat1"           = 2,
+#* *#    "Cat2"           = 3,
+#* *#    "Alarm Callback" = 4,
+#* *#    "Shutdown"       = 5,
+#* *#    "Internal"       = 6,
+#* *#    "Startuphook"    = 7,
+#* *#    "Shutdownhook"   = 8,
+#* *#    "Errorhook"      = 9,
+#* *#    "PreTaskHook"    = 10,
+#* *#    "PostTaskHook"   = 11,
+#* *#    "PreIsrHook"     = 12,
+#* *#    "PostIsrHook"    = 13,
+#* *#    "ProtectionHook" = 14
+#* *##if( $OsConfig.getNumCPUCoresMax() > 1 )
+#*    *#  ] vs_INFUNCTION[], "Type of current runnable entity";
+#* *##else
+#*    *#  ] vs_INFUNCTION, "Type of current runnable entity";
+#* *##end
+#* *##if( $ArchProperties.getConfArchName() == "PA" )
+#*    *#  ENUM [
+#*    *#    "Boot"           = 0,
+#*    *#    "Task"           = 1,
+#*    *#    "Cat1"           = 2,
+#*    *#    "Cat2"           = 3,
+#*    *#    "Alarm Callback" = 4,
+#*    *#    "Shutdown"       = 5,
+#*    *#    "Internal"       = 6,
+#*    *#    "Startuphook"    = 7,
+#*    *#    "Shutdownhook"   = 8,
+#*    *#    "Errorhook"      = 9,
+#*    *#    "PreTaskHook"    = 10,
+#*    *#    "PostTaskHook"   = 11,
+#*    *#    "PreIsrHook"     = 12,
+#*    *#    "PostIsrHook"    = 13,
+#*    *#    "ProtectionHook" = 14
+#*    *#  ] vs_SIGNAL_SERVICETRACE, "Trace Service Identification";
+#* *##end
+#* *##if( $OsConfig.getNumCPUCoresMax() > 1 )
+#*    *#  CTYPE RUNNINGTASKPRIORITY[], "Running task priority";
+#* *##else
+#*    *#  CTYPE RUNNINGTASKPRIORITY, "Running task priority";
+#* *##end
+#end
+#* *#  ENUM [
+#* *##foreach( $appMode in $AllAppModesList )
+#*    *#    "$appMode.getName()" = $AllAppModesList.getId($appMode)
+#* *##end
+## Micro kernel has a separate app mode for individual cores
+#* *##if( $OsModel.isMicroKernel() && $OsConfig.getNumCPUCoresMax() > 1 )
+#*    *#  ] CURRENTAPPMODE[], "Application mode";
+#* *##else
+#*    *#  ] CURRENTAPPMODE, "Application mode";
+#* *##end
+#* *#  ENUM [
+#* *#    "E_OK"          = 0,
+#* *#    "E_OS_ACCESS"   = 1,
+#* *#    "E_OS_CALLEVEL" = 2,
+#* *#    "E_OS_ID"       = 3,
+#* *#    "E_OS_LIMIT"    = 4,
+#* *#    "E_OS_NOFUNC"   = 5,
+#* *#    "E_OS_RESOURCE" = 6,
+#* *#    "E_OS_STATE"    = 7,
+#* *#    "E_OS_VALUE"    = 8
+#* *##if( $OsConfig.getNumCPUCoresMax() > 1 )
+#*    *#  ] LASTERROR[];
+#* *##else
+#*    *#  ] LASTERROR;
+#* *##end
+  STRING vs_SCALABILITYCLASS,      "Scalability class";
+  STRING vs_CC,                    "Conformance class";
+  STRING vs_SCHEDULE,              "Schedule";
+  STRING vs_STATUS,                "Status";
+  STRING vs_USERESSCHEDULER,       "use RES SCHEDULER";
+  STRING vs_STARTUPHOOK,           "StartUpHook";
+  STRING vs_SHUTDOWNHOOK,          "ShutdownHook";
+  STRING vs_ERRORHOOK,             "Error Hook";
+  STRING vs_PROTECTIONHOOK,        "Protection Hook";
+  STRING vs_PRETASKHOOK,           "Pre Task Hook";
+  STRING vs_POSTTASKHOOK,          "Post Task Hook";
+  STRING vs_PREISRHOOK,            "PreIsrHook";
+  STRING vs_POSTISRHOOK,           "PostIsrHook";
+  STRING vs_STACKOPTIMIZATION,     "Stackoptimization";
+  STRING vs_USEGETSERVICEID,       "Use Get ServiceId";
+  STRING vs_USEPARAMETERACCESS,    "Use ParameterAccess";
+  STRING vs_USELASTERROR,          "Use Last Error";
+  STRING vs_EXTRA_RUNTIME_CHECKS,  "Extra Runtime Checks";
+  STRING vs_TRAPPING,              "Trapping kernel";
+  STRING vs_PROTECTION,            "Protection";
+};
+ALARM
+{
+  STRING ACTION,                  "Assigned action";
+  ENUM [ "Stopped"=0, "Running"=1 ] STATE, "Alarm state";
+  STRING COUNTER,                 "Assigned counter";
+  CTYPE ALARMTIME,                "Alarm time";
+  CTYPE CYCLETIME,                "Cycle time";
+  STRING vs_TASK,                 "Assigned task";
+  STRING vs_EVENT,                "Assigned event";
+  STRING vs_AUTOSTART,            "Autostart";
+  STRING vs_AUTOSTART_ALARMTIME,  "AutoStart alarmtime";
+  STRING vs_AUTOSTART_CYCLETIME,  "AutoStart cycletime";
+};
+vs_APPLICATION
+{
+  STRING vs_NUMBER_TASKS,           "Number of tasks";
+  STRING vs_NUMBER_RESOURCES,       "Number of resources";
+  STRING vs_NUMBER_ISRS,            "Number of ISRs";
+  STRING vs_NUMBER_ALARMS,          "Number of alarms";
+  STRING vs_NUMBER_SCHEDULETABLES,  "Number of schedule tables";
+  STRING vs_NUMBER_COUNTER,         "Number of counters";
+  STRING vs_HAS_STARTUPHOOK,        "StartUpHook";
+  STRING vs_HAS_ERRORHOOK,          "ErrorHook";
+  STRING vs_HAS_SHUTDOWNHOOK,       "Shutdown Hook";
+  STRING vs_COREASSIGNMENT,         "Core assignment";
+};
+vs_COUNTER
+{
+  STRING vs_MAXALLOWEDVALUE,  "Max allowed value";
+  STRING vs_TICKSPERBASE,     "Ticks per base";
+  STRING vs_MINCYCLE,         "Min cycle";
+  CTYPE vs_VALUE,             "Current value";
+};
+vs_EVENT
+{
+  STRING vs_ID,     "Event id";
+  STRING vs_MASK ,  "Event mask";
+};
+vs_ISR
+{
+  STRING vs_CATEGORY,              "Category";
+  STRING vs_ENABLE_ON_STARTUP,     "Enable on startup";
+  STRING vs_MEASURE_MAX_RUNTIME,   "Measure max runtime";
+  STRING vs_ASSIGNEDPRIO,          "Assigned priority";
+  STRING vs_REALPRIORITY,          "Real priority";
+  STRING vs_STACKSIZE,             "Stacksize";
+  STRING vs_TIMING_PROTECTION,     "Timing protection";
+  STRING vs_EXECUTION_BUDGET,      "Execution budget";
+  STRING vs_OSINTERRUPTLOCKTIME,   "Os interrupt lock budget";
+  STRING vs_ALLINTERRUPTLOCKTIME,  "All interrupt lock budget";
+  STRING vs_RESOURCE,              "Time monitored resources";
+  STRING vs_RESOURCELOCKTIME,      "Resource lock budget";
+  STRING vs_COUNTLIMIT,            "Count limit";
+  STRING vs_TIMEFRAME,             "Time limit";
+  ENUM "unsigned char *" [
+#macro( VTL_StackEnumItem $stack $next)
+#* *##foreach( $slot in $stack )
+#*    *##set( $stackName = $stack.getSlotVarName($slot) )
+#*    *#    "$stackName" : $stackName = "$stackName"#if($foreach.hasNext || $next),$newLine#else$newLine#end
+#* *##end
+#end
+#if( $OsModel.isMicroKernel() )
+#* *##foreach( $coreId in $OsModel.getUsedCoreIds() )
+#*    *##set( $next = $foreach.hasNext )
+#*    *##VTL_StackEnumItem( $OsModel.getMkStackOnCore($coreId) $next )
+#* *##end
+#else## Autocore Stacks
+#* *##foreach( $coreId in $OsModel.getUsedCoreIds() )
+#*    *##set( $next = $foreach.hasNext )
+#*    *##VTL_StackEnumItem( $AllInterruptsList.getStack($coreId) $next )
+#* *##end
+#end
+  ] vs_STACK,                      "Stack";
+#* *##if( !$OsModel.isMicroKernel() )
+#*    *#  ENUM ["0"=0, "RATEX"=0x10, "BLOCKED"=0x20, "RATEX+BLOCKED"=0x30]  vs_STATUS, "Status";
+#* *##end
+};
+RESOURCE
+{
+  STRING PRIORITY, "Ceiling priority";
+  ENUM [
+#if( $OsModel.isMicroKernel() )
+#* *#    "NO_LOCKER" = 0x0,
+#* *##foreach( $task in $AllTasksList )
+#*    *#    "$task.getName()" = "MK_taskCfg[$AllTasksList.getId($task)].threadCfg.name",
+#* *##end
+#* *##foreach( $interrupt in $AllInterruptsList.getInterruptsWithThreads() )
+#*    *#    "$interrupt.getName()" = "MK_isrCfg[$AllInterruptsList.getId($interrupt)].threadCfg.name",
+#* *##end
+#* *##VTL_MkInternalThreadDeclation()
+#else
+#* *#    "NO_LOCKER" = 0xff,
+#* *##foreach( $task in $AllTasksList )
+#*    *#    "$task.getName()" = $AllTasksList.getId($task)#if($foreach.hasNext || !$AllInterruptsList.isEmpty() ),$newLine#else$newLine#end
+#* *##end
+#* *##foreach( $interrupt in $AllInterruptsList )
+##     An offset must be added to ISR ids, because the id spaces of task and ISRs are distinct.
+##     IDs below OS_TOI_ISR==0x100==256 belong to tasks and those above or with that value to ISRs.
+##     Note, in the OS source code the macro OS_TOI_ISR is used for this distinction.
+#*    *##set( $interruptId = $AllInterruptsList.getId($interrupt) + 256 )
+#*    *#    "$interrupt.getName()" = $interruptId#if($foreach.hasNext),$newLine#else$newLine#end
+#* *##end
+#end
+  ] LOCKER, "Locker identification";
+  ENUM "unsigned char" [ "UNLOCKED"=0,"LOCKED"=1 ] STATE, "Resource state";
+};
+vs_SCHEDULETABLE
+{
+  ENUM "unsigned int" ["STOPPED"=0, "WAITTING"=1, "CHAINED"=2, "RUNNING"=3, "QUARANTINED"=4] vs_STATE, "State";
+  STRING vs_PERIOD, "Duration";
+  STRING vs_IS_PERIODIC, "Repeating";
+  CTYPE vs_NEXT_EVENT, "Next event";
+  STRING vs_COUNTER, "Counter";
+  CTYPE vs_ABS_COUNTER_VALUE, "Absolute Counter Value";
+#foreach( $scTblEntryId in $AllScTablesList.getScTblMaxEntries() )
+#* *#  STRING vs_ENTRY_$scTblEntryId, "Schedule table entry $scTblEntryId";
+#end
+};
+STACK
+{
+  STRING vs_USERSIZE,    "User defined stack size";
+  CTYPE SIZE,            "Actual stack size";
+  CTYPE "unsigned char *" BASEADDRESS, "Stack base address";
+  STRING STACKDIRECTION, "Stack direction";
+  CTYPE "unsigned char"  FILLPATTERN,    "Fill pattern";
+};
+TASK
+{
+  STRING vs_ID,                      "Task id";
+  CTYPE CURRENTACTIVATIONS,          "Current task activations";
+  STRING vs_MAXACTIVATIONS,          "Maximum number of activations";
+  ENUM "unsigned char *" [
+#if( $OsModel.isMicroKernel() )
+#* *##foreach( $coreId in $OsModel.getUsedCoreIds() )
+#*    *##set( $next = $foreach.hasNext )
+#*    *##VTL_StackEnumItem( $OsModel.getMkStackOnCore($coreId) $next )
+#* *##end
+#else## Autocore Stacks
+#* *##foreach( $coreId in $OsModel.getUsedCoreIds() )
+#*    *##set( $next = $foreach.hasNext )
+#*    *##VTL_StackEnumItem( $AllTasksList.getStack($coreId) $next )
+#* *##end
+#end
+  ] STACK,                           "Stack";
+  STRING vs_STACKSIZE,               "Stacksize";
+  STRING vs_SHAREDSTACK,             "Stack sharing";
+  STRING vs_ASSIGNEDPRIO,            "Assigned priority";
+  STRING vs_REALPRIORITY,            "Real priority";
+  CTYPE PRIORITY,                    "Current priority";
+  STRING vs_TYPE,                    "Task type";
+  STRING vs_USE_HW_FP,               "Use floating point";
+  STRING vs_MEASURE_MAX_RUNTIME,     "Measure Max Runtime";
+  STRING vs_TIMING_PROTECTION,       "Timing Protection";
+  STRING vs_EXECUTION_BUDGET,        "Execution budget";
+  STRING vs_OSINTERRUPTLOCKTIME,     "Os interrupt lock budget";
+  STRING vs_ALLINTERRUPTLOCKTIME,    "All interrupt lock budget";
+  STRING vs_RESOURCE,                "Time monitored resources";
+  STRING vs_RESOURCELOCKTIME,        "Resource lock budget";
+  STRING vs_COUNTLIMIT ,             "Count Limit";
+  STRING vs_TIMEFRAME ,              "Time Limit";
+  ENUM ["NOT_SUPPORTED"=0] CONTEXT,  "Context";
+#if( !$OsModel.isMicroKernel() )
+##      When the microkernel is used, a task's state can be determined, because this is more complex
+##      than what can be achieved with an ORTI formula. See also MK_SysGetTaskState() in the microkernel.
+##      There, among other things, functions are called to determine a task's state, what is not possible
+##      with ORTI formulas.
+#*  *#  ENUM ["SUSPENDED"=0, "QUARANTINED"=1, "NEW"=2, "READY_SYNC"=3, "READY_ASYNC"=4, "RUNNING"=5, "WAITING"=6, "INVALID"=255] STATE, "Task state";
+#end
+};
+
+};
+
+//-------------------------------------------------------------------
+// 20 Implementation
+//-------------------------------------------------------------------
+
+OS $OsConfig.getCpuName()
+{
+#if( $OsConfig.getNumCPUCoresMax() > 1 )
+#* *#  vs_SMP_NUMCPU = "$OsConfig.getNumCPUCoresMax()";
+#end
+#if( $OsModel.isMicroKernel() )
+#* *##if( $useTrace > 0 )
+#*   *##foreach( $coreId in $OsModel.getUsedCoreIds() )
+#*      *##if( $OsConfig.getNumCPUCoresMax() > 1 )
+#*         *#  RUNNINGTASK[$coreId] = "MK_c${coreId}_ortiRunningThread";
+#*      *##else
+#*         *#  RUNNINGTASK = "MK_c${coreId}_ortiRunningThread";
+#*      *##end
+#*   *##end
+#* *##else
+#*   *##foreach( $coreId in $OsModel.getUsedCoreIds() )
+#*      *##if( $OsModel.getUsedCoreIds().size() > 1 )
+#*         *#  vs_RUNNINGTHREAD[$coreId] = "MK_coreTable[$coreId]->currentThread->name";
+#*      *##else
+#*         *#  vs_RUNNINGTHREAD = "MK_coreTable[$coreId]->currentThread->name";
+#*      *##end
+#*   *##end
+#*   *##foreach( $coreId in $OsModel.getUsedCoreIds() )
+#*      *##if( $OsModel.getUsedCoreIds().size() > 1 )
+#*         *#  vs_RUNNINGTHREADPRIORITY[$coreId] = "MK_coreTable[$coreId]->currentThread->currentPriority";
+#*      *##else
+#*         *#  vs_RUNNINGTHREADPRIORITY = "MK_coreTable[$coreId]->currentThread->currentPriority";
+#*      *##end
+#*   *##end
+#* *##end
+#* *##foreach( $coreId in $OsModel.getUsedCoreIds() )
+#*    *##if( $OsConfig.getNumCPUCoresMax() > 1 )
+#*       *#  vs_RUNNINGTHREADPRIORITY[$coreId] = "MK_coreTable[$coreId]->currentThread->currentPriority";
+#*    *##else
+#*       *#  vs_RUNNINGTHREADPRIORITY = "MK_coreTable[$coreId]->currentThread->currentPriority";
+#*    *##end
+#* *##end
+#* *##foreach( $coreId in $OsModel.getUsedCoreIds() )
+#*    *##if( $OsConfig.getNumCPUCoresMax() > 1 )
+#*       *#  LASTERROR[$coreId] = "MK_errorInfo[$coreId]->osekError";
+#*    *##else
+#*       *#  LASTERROR = "MK_errorInfo[$coreId]->osekError";
+#*    *##end
+#* *##end
+#* *##foreach( $coreId in $OsModel.getUsedCoreIds() )
+#*    *##if( $OsConfig.getNumCPUCoresMax() > 1 )
+#*       *#  CURRENTAPPMODE[$coreId] = "MK_coreTable[$coreId]->qmosAppMode";
+#*    *##else
+#*       *#  CURRENTAPPMODE = "MK_coreTable[$coreId]->qmosAppMode";
+#*    *##end
+#* *##end
+#else#* Autocore *#
+#* *##foreach( $coreId in $OsModel.getUsedCoreIds() )
+#*    *##if( $OsConfig.getNumCPUCoresMax() > 1 )
+#*       *#  RUNNINGTASK[$coreId] = "OS_kernel_ptr[$coreId]->taskCurrent";
+#*    *##else
+#*       *#  RUNNINGTASK = "OS_kernel_ptr[$coreId]->taskCurrent";
+#*    *##end
+#* *##end
+#* *##foreach( $coreId in $OsModel.getUsedCoreIds() )
+#*    *##if( $OsConfig.getNumCPUCoresMax() > 1 )
+#*       *#  RUNNINGISR2[$coreId] = "OS_kernel_ptr[$coreId]->isrCurrent";
+#*    *##else
+#*       *#  RUNNINGISR2 = "OS_kernel_ptr[$coreId]->isrCurrent";
+#*    *##end
+#* *##end
+#* *##foreach( $coreId in $OsModel.getUsedCoreIds() )
+#*    *##if( $OsConfig.getNumCPUCoresMax() > 1 )
+#*       *#  vs_INFUNCTION[$coreId] = "OS_kernel_ptr[$coreId]->inFunction";
+#*    *##else
+#*       *#  vs_INFUNCTION = "OS_kernel_ptr[$coreId]->inFunction";
+#*    *##end
+#* *##end
+#* *##foreach( $coreId in $OsModel.getUsedCoreIds() )
+#*    *##if( $OsConfig.getNumCPUCoresMax() > 1 )
+#*       *#  RUNNINGTASKPRIORITY[$coreId] = "OS_kernel_ptr[$coreId]->taskCurrent->dynamic->prio";
+#*    *##else
+#*       *#  RUNNINGTASKPRIORITY = "OS_kernel_ptr[$coreId]->taskCurrent->dynamic->prio";
+#*    *##end
+#* *##end
+#* *##foreach( $coreId in $OsModel.getUsedCoreIds() )
+#*    *##if( $OsConfig.getNumCPUCoresMax() > 1 )
+#*       *#  LASTERROR[$coreId] = "OS_kernel_ptr[$coreId]->errorStatus.result";
+#*    *##else
+#*       *#  LASTERROR = "OS_kernel_ptr[$coreId]->errorStatus.result";
+#*    *##end
+#* *##end
+#* *#  CURRENTAPPMODE = "OS_appMode";
+#end
+  vs_SCALABILITYCLASS     = "$OsConfig.getScalabilityClass()";
+  vs_CC                   = "$OsConfig.getCC().toString()";
+  vs_SCHEDULE             = "$OsConfig.getSchedule().toString()";
+  vs_STATUS               = "$OsConfig.getStatus().toString()";
+  vs_STARTUPHOOK          = "$OsConfig.hasStartupHook()";
+  vs_SHUTDOWNHOOK         = "$OsConfig.hasShutdownHook()";
+  vs_ERRORHOOK            = "$OsConfig.hasErrorHook()";
+  vs_PROTECTIONHOOK       = "$OsConfig.hasProtectionHook()";
+  vs_PRETASKHOOK          = "$OsConfig.hasPreTaskHook()";
+  vs_POSTTASKHOOK         = "$OsConfig.hasPostTaskHook()";
+  vs_PREISRHOOK           = "$OsConfig.hasPreISRHook()";
+  vs_POSTISRHOOK          = "$OsConfig.hasPostISRHook()";
+  vs_USEGETSERVICEID      = "$OsConfig.isUsingGetServiceId()";
+  vs_USEPARAMETERACCESS   = "$OsConfig.isUsingParameterAccess()";
+  vs_USERESSCHEDULER      = "$OsConfig.isUsingResScheduler()";
+  vs_STACKOPTIMIZATION    = "$OsConfig.getStackOptimization().toString()";
+  vs_EXTRA_RUNTIME_CHECKS = "$OsConfig.hasExtraRuntimeChecks()";
+  vs_USELASTERROR         = "$OsConfig.isUsingLastError()";
+  vs_PROTECTION           = "$OsConfig.getDebugMemoryProtection().toString()";
+  vs_TRAPPING             = "$OsConfig.isTrapping()";
+#if( !$OsModel.isMicroKernel() && $ArchProperties.getConfArchName() == "PA" )
+  vs_SIGNAL_RUNNINGTASK   = "OTM.1.2.0";
+  vs_SIGNAL_RUNNINGISR2   = "OTM.1.2.1";
+  vs_SIGNAL_SERVICETRACE  = "OTM.1.2.2";
+#end
+};
+
+#foreach( $alarm in $AllAlarmsList )
+#* *#ALARM $alarm.getName()
+#* *#{
+#* *##if( $alarm.getAlarmAction().name() == "ACTIVATE_TASK" )
+#*    *#  vs_TASK                =  "$alarm.getActivateTask().getName()";
+#*    *#  ACTION                 = "ACTIVATE_TASK $alarm.getActivateTask().getName()";
+#* *##elseif($alarm.getAlarmAction().name() == "CALLBACK" )
+#*    *#  ACTION                 = "CALLBACK $alarm.getCallbackName()";
+#* *##elseif($alarm.getAlarmAction().name() == "INCREMENT_COUNTER" )
+#*    *#  ACTION                 = "INCREMENT_COUNTER $alarm.getIncCounter().getName()";
+#* *##elseif($alarm.getAlarmAction().name() == "SET_EVENT" )
+#*    *#  vs_EVENT               = "$alarm.getSetEvent().getEvent().getName()";
+#*    *#  vs_TASK                = "$alarm.getSetEvent().getEventTask().getName()";
+#*    *#  ACTION                 = "SET_EVENT $alarm.getSetEvent().getEvent().getName()";
+#* *##elseif($alarm.getAlarmAction().name() == "RUN_SCHEDULETABLE" )
+#*    *#  ACTION                 = "RUN_SCHEDULETABLE $alarm.getRunScheduleTable().getName()";
+#* *##elseif($alarm.getAlarmAction().name() == "NO_OP" )
+#*    *#  ACTION                 = "NO_OP";
+#* *##end
+#* *#  COUNTER                = "$alarm.getCounter().getName()";
+#* *#  STATE                  = "OS_alarmTableBase[$AllAlarmsList.getId($alarm)].dynamic->inUse";
+#* *#  CYCLETIME              = "OS_alarmTableBase[$AllAlarmsList.getId($alarm)].dynamic->period";
+#* *##if( $alarm.isAutoStart() )
+#*    *#  vs_AUTOSTART           = "true";
+#*    *#  vs_AUTOSTART_ALARMTIME = "$alarm.getAlarmTime()";
+#*    *#  vs_AUTOSTART_CYCLETIME = "$alarm.getCycleTime()";
+#* *##else
+#* *#  vs_AUTOSTART           = "false";
+#* *##end
+#* *#};
+#end
+
+#foreach( $app in $AllApplicationsList )
+#* *#vs_APPLICATION $app.getName()
+#* *#{
+#* *#  vs_NUMBER_TASKS          = "$app.getTasks().size()";
+#* *#  vs_NUMBER_RESOURCES      = "$app.getResources().size()";
+#* *#  vs_NUMBER_ISRS           = "$app.getInterrupts().size()";
+#* *#  vs_NUMBER_ALARMS         = "$app.getAlarms().size()";
+#* *#  vs_NUMBER_SCHEDULETABLES = "$app.getScheduleTables().size()";
+#* *#  vs_NUMBER_COUNTER        = "$app.getCounters().size()";
+#* *#  vs_HAS_STARTUPHOOK       = "$app.hasStartupHook()";
+#* *#  vs_HAS_SHUTDOWNHOOK      = "$app.hasShutdownHook()";
+#* *#  vs_HAS_ERRORHOOK         = "$app.hasErrorHook()";
+#* *#  vs_COREASSIGNMENT        = "$app.getPhyCoreAssignment()";
+#* *#};
+#end
+
+#foreach( $counter in $AllCountersList )
+#* *#vs_COUNTER $counter.getName()
+#* *#{
+#* *#  vs_TICKSPERBASE    = "$counter.getTicksPerBase()";
+#* *#  vs_MINCYCLE        = "$counter.getMinCycle()";
+#* *#  vs_VALUE           = "OS_counterTableBase[$AllCountersList.getId($counter)].dynamic->current";
+#* *#  vs_MAXALLOWEDVALUE = "$counter.getMaxAllowedValue()";
+#* *#};
+#end
+
+#foreach( $event in $AllEventsList )
+#* *#vs_EVENT $event.getName()
+#* *#{
+#* *#  vs_MASK = "$event.getMask()";
+#* *#  vs_ID   = "$AllEventsList.getId($event)";
+#* *#};
+#end
+
+#foreach( $interrupt in $AllInterruptsList )
+#* *##set( $owningApp = $interrupt.getOwningApplication() )
+#* *##set( $coreId    = $owningApp.getPhyCoreAssignment() )
+#* *#vs_ISR $interrupt.getName()
+#* *#{
+#* *#  vs_CATEGORY            = "$interrupt.getCategory()";
+#* *#  vs_ENABLE_ON_STARTUP   = "$interrupt.isEnableOnStartup()";
+#* *#  vs_MEASURE_MAX_RUNTIME = "$interrupt.isMeasureMaxRuntime()";
+#* *#  vs_STACKSIZE           = "$interrupt.getStackSize()";
+#* *##if( $OsModel.isMicroKernel() )
+#*    *##if( $interrupt.getMkStackVarName() == $null )
+#*       *#  vs_STACK               = "NULL";#* Interrupts types, forexample cross-core do not have their own stacks *#
+#*    *##else
+#*       *#  vs_STACK               = "$interrupt.getMkStackVarName()";
+#*    *##end
+#* *##else
+#*    *#  vs_STATUS              = "(OS_isrTableBase[$AllInterruptsList.getId($interrupt)].dynamic->statusflags & 0x30)";
+#*    *#  vs_STACK               = "$AllInterruptsList.getStack($coreId).getSlotVarName($interrupt)";
+#* *##end
+#* *#  vs_ASSIGNEDPRIO        = "$interrupt.getConfPriority()";
+#* *#  vs_REALPRIORITY        = "$interrupt.getCalcPriority()";
+#* *##if( $interrupt.hasTimingProtection() )
+#*    *#  vs_TIMING_PROTECTION      = "true";
+#*    *#  vs_EXECUTION_BUDGET       = "$interrupt.getExecutionBudget()";
+#*    *#  vs_OSINTERRUPTLOCKTIME    = "$interrupt.getOsInterruptLockBudget()";
+#*    *#  vs_ALLINTERRUPTLOCKTIME   = "$interrupt.getAllInterruptLockBudget()";
+#*    *#  vs_TIMEFRAME              = "$interrupt.getTimeFrame()";
+#*    *#  vs_COUNTLIMIT             = "$interrupt.getCountLimit()";
+#*    *##if( $interrupt.getResourceLocks().size() > 0 )
+#*    *#  vs_RESOURCE               = "$interrupt.getTpLockResources().toString()";
+#*    *#  vs_RESOURCELOCKTIME       = "$interrupt.getTpLockBudgets().toString()";
+#*    *##end
+#* *##else
+#*    *#  vs_TIMING_PROTECTION   = "false";
+#* *##end
+#* *#};
+#end
+
+#foreach( $res in $AllResourcesList )
+#set( $owningApp = $res.getOwningApplication() )
+#set( $coreId    = $owningApp.getPhyCoreAssignment() )
+#* *#RESOURCE $res.getName()
+#* *#{
+#* *##if( $OsModel.isMicroKernel() )
+#* *#  STATE    = "MK_lockTables[$coreId][$OsModel.getResourcesOnCore($coreId).getUsedNonInternalResources().getId($res)].count";
+#* *#  LOCKER   = "MK_lockTables[$coreId][$OsModel.getResourcesOnCore($coreId).getUsedNonInternalResources().getId($res)].owner->name";
+#* *##if( !$res.getUsingInterrupts().isEmpty() )
+#*    *#  PRIORITY = "ISR_THREAD: $res.getMkIsrThreadPriority()";
+#* *##elseif( !$res.getUsingTasks().isEmpty() )
+#*    *#  PRIORITY = "TASK_THREAD: $res.getMkTaskThreadPriority()";
+#* *##end
+#* *##else
+#*    *##set( $resGId = $AllResourcesList.getId($res) )
+#*    *#  STATE = "OS_resourceTableBase[$resGId].dynamic->takenBy != 0xff";
+#*    *#  LOCKER = "OS_resourceTableBase[$resGId].dynamic->takenBy < 0x100 ? OS_resourceTableBase[$resGId].dynamic->takenBy : OS_resourceTableBase[$resGId].dynamic->takenBy - 0x100";
+#*    *##if( !$res.getUsingInterrupts().isEmpty() )
+#*       *#  PRIORITY = "ISR: $res.getInterruptPriority()";
+#*    *##elseif( !$res.getUsingTasks().isEmpty() )
+#*       *#  PRIORITY = "TASK: $res.getTaskPriority()";
+#*    *##end
+#* *##end
+#* *#};
+#end
+
+#foreach( $scTbl in $AllScTablesList )
+#* *#vs_SCHEDULETABLE $scTbl.getName()
+#* *#{
+#* *#  vs_STATE              = "OS_scheduleTableBase[$AllScTablesList.getId($scTbl)].dynamic->status & 0x7";
+#* *#  vs_NEXT_EVENT         = "OS_scheduleTableBase[$AllScTablesList.getId($scTbl)].dynamic->next";
+#* *#  vs_ABS_COUNTER_VALUE  = "OS_scheduleTableBase[$AllScTablesList.getId($scTbl)].dynamic->ctrAbs";
+#* *#  vs_IS_PERIODIC        = "$scTbl.isRepeating()";
+#* *#  vs_PERIOD             = "$scTbl.getDuration()";
+#* *#  vs_COUNTER            = "$scTbl.getCounter().getName()";
+#* *##foreach( $ep in $scTbl.getExpiryPoints() )
+#*    *##set( $actions = "" )
+#*    *##if( !$ep.getActivateTasks().isEmpty() )
+#*       *##set( $actions = "ACTIVATE_TASKS={" + $ClassOfHelpers.listToString($ep.getActivateTasks(),";") + ";}" )
+#*       *#  vs_ENTRY_$foreach.index            = "OFFSET=$ep.getOffset() $actions";
+#*    *##end
+#*    *##if( !$ep.getSetEvents().isEmpty() )
+#*       *##set( $actions =  $actions + " SET_EVENTS={")
+#*       *##foreach( $eventTaskPair in $ep.getSetEvents() )
+#*          *##set( $setEventAction = "{EVENT=$eventTaskPair.getEvent().getName();TASK=$eventTaskPair.getEventTask().getName()};")
+#*          *##set( $actions = $actions + $setEventAction )
+#*       *##end
+#*    *##set( $actions = $actions + "}" )
+#*       *#  vs_ENTRY_$foreach.index            = "OFFSET=$ep.getOffset() $actions";
+#*    *##end
+#* *##end
+#* *#};
+#end
+
+#macro( VTL_StackDefinition $stack )
+#* *##foreach( $slot in $stack )
+#*    *#STACK $stack.getSlotVarName( $slot )
+#*    *#{
+#*    *#  vs_USERSIZE    = "$slot.getMaxUserStackSize()";
+#*    *#  SIZE           = "$slot.getSlotSize()";
+#*    *#  BASEADDRESS    = "$stack.getSlotVarName($slot)";
+#*    *#  STACKDIRECTION = "$ArchProperties.getDirectionOfStackGrowth().toString()";
+#*    *##if( (!$OsModel.isMicroKernel() && $OsConfig.hasStackMonitoring()) || $MkConfig.getInitializeStacks() )
+#*       *### The stack fill pattern is only used if stack monitoring is enabled in AutoCore OS
+#*       *### or if stacks are configured to be initialized in Safety OS.
+#*       *#  FILLPATTERN    = "0xEB";
+#*    *##end
+#*    *#};
+#* *##end
+#end
+#if( $OsModel.isMicroKernel() )
+#* *##foreach( $coreId in $OsModel.getUsedCoreIds() )
+#*    *##VTL_StackDefinition( $OsModel.getMkStackOnCore( $coreId ) )
+#* *##end
+#else## Autocore Stacks
+#* *##foreach( $coreId in $OsModel.getUsedCoreIds() )
+#*    *##VTL_StackDefinition( $AllTasksList.getStack($coreId) )
+#*    *##VTL_StackDefinition( $AllInterruptsList.getStack($coreId) )
+#* *##end
+#end
+
+#foreach( $task in $AllTasksList )
+#* *##set( $coreId = $task.getOwningApplication().getPhyCoreAssignment() )
+#* *#TASK $task.getName()
+#* *#{
+#* *#  vs_ID                    = "$AllTasksList.getId($task)";
+#* *##if( !$OsModel.isMicroKernel() )
+#*    *#  STATE                    = "OS_taskTableBase[$AllTasksList.getId($task)].dynamic->state";
+#* *##end
+#* *##if( $OsModel.isMicroKernel() )
+#*    *#  CURRENTACTIVATIONS       = "MK_taskCfg[$AllTasksList.getId($task)].dynamic->activationCount";
+#* *##else
+#*    *#  CURRENTACTIVATIONS       = "OS_taskTableBase[$AllTasksList.getId($task)].dynamic->nAct";
+#* *##end
+#* *#  vs_MAXACTIVATIONS        = "$task.getActivation()";
+#* *##if( $OsModel.isMicroKernel() )
+#*    *#  STACK                    = "$task.getMkStackVarName()";
+#* *##else
+#*    *#  STACK                    = "$AllTasksList.getStack($coreId).getSlotVarName($task)";
+#* *##end
+#* *##set( $taskStackSlot = $AllTasksList.getStack($coreId).get($task) )
+#* *##if( $taskStackSlot.size() > 1 )
+#*    *#  vs_SHAREDSTACK           = "true";
+#* *##else
+#*    *#  vs_SHAREDSTACK           = "false";
+#* *##end
+#* *#  vs_STACKSIZE             = "$taskStackSlot.getSlotSize()";
+#* *#  vs_ASSIGNEDPRIO          = "$task.getConfPriority()";
+#* *#  vs_REALPRIORITY          = "$task.getCalcPriority()";
+#* *##if( $OsModel.isMicroKernel() )
+#*    *#  PRIORITY                 = "MK_taskCfg[$AllTasksList.getId($task)].thread->currentPriority";
+#* *##else
+#*    *#  PRIORITY                 = "OS_taskTableBase[$AllTasksList.getId($task)].dynamic->prio";
+#* *##end
+#* *#  vs_TYPE                  = "$task.getType().toString()";
+#* *#  vs_USE_HW_FP             = "$task.isUsingHwFp()";
+#* *#  vs_MEASURE_MAX_RUNTIME   = "$task.isMeasureMaxRuntime()";
+#* *##if( $task.hasTimingProtection() )
+#*    *#  vs_TIMING_PROTECTION     = "true";
+#*    *#  vs_EXECUTION_BUDGET      = "$task.getExecutionBudget()";
+#*    *#  vs_OSINTERRUPTLOCKTIME   = "$task.getOsInterruptLockBudget()";
+#*    *#  vs_ALLINTERRUPTLOCKTIME  = "$task.getAllInterruptLockBudget()";
+#*    *#  vs_TIMEFRAME             = "$task.getTimeFrame()";
+#*    *#  vs_COUNTLIMIT            = "$task.getCountLimit()";
+#*    *##if( $task.getResourceLocks().size() > 0 )
+#*    *#  vs_RESOURCE              = "$task.getTpLockResources().toString()";
+#*    *#  vs_RESOURCELOCKTIME      = "$task.getTpLockBudgets().toString()";
+#*    *##end
+#* *##else
+#*    *#  vs_TIMING_PROTECTION     = "false";
+#* *##end
+#* *#};
+#end
+

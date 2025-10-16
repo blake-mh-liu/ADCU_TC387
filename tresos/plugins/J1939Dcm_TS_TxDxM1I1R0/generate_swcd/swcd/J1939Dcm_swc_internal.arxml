@@ -1,0 +1,120 @@
+[!AUTOSPACING!][!//
+[!//
+[!MACRO "Create_Interface_Vars", "VarsAsrVersion", "VarsInterfaceName"!][!//
+[!ENDMACRO!][!//
+[!//
+[!//
+[!//
+[!MACRO "Build_Ports", "AsrVersion", "InterfaceName" = "'Rte_Call_J1939Dcm_CalibrationInformation_GetCalibrationVerificationNumber'", "TopLevelPackage" = "'/AUTOSAR_J1939Dcm'"!][!//
+[!CALL "Create_Interface_Vars", "VarsAsrVersion"="$AsrVersion", "VarsInterfaceName"="$InterfaceName"!][!//
+[!//
+[!/* -------- Only if DM19 message is supported ------------------ */!]
+[!IF "node:exists(J1939DcmConfigSet/*[1]/J1939DcmNode/eb-list::*/J1939DcmDiagnosticMessageSupport/eb-list::*[J1939DcmDmxSupport = 'J1939DCM_DM19_SUPPORT'])"!]
+                    <R-PORT-PROTOTYPE>
+                      <SHORT-NAME>J1939Dcm_CalibrationInformation</SHORT-NAME>
+                      <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_J1939Dcm/PortInterfaces/J1939Dcm_CalibrationInformation</REQUIRED-INTERFACE-TREF>
+                    </R-PORT-PROTOTYPE>
+[!ENDIF!]
+[!ENDMACRO!][!//
+[!//
+[!//
+[!//
+[!MACRO "Build_MainFunction", "AsrVersion", "InterfaceName" = "'Rte_Call_J1939Dcm_CalibrationInformation_GetCalibrationVerificationNumber'", "TopLevelPackage" = "'/AUTOSAR_J1939Dcm'"!][!//
+[!CALL "Create_Interface_Vars", "VarsAsrVersion"="$AsrVersion", "VarsInterfaceName"="$InterfaceName"!]
+[!IF "node:exists(J1939DcmConfigSet/*[1]/J1939DcmNode/eb-list::*/J1939DcmDiagnosticMessageSupport/eb-list::*[J1939DcmDmxSupport = 'J1939DCM_DM19_SUPPORT'])"!]
+                    <SYNCHRONOUS-SERVER-CALL-POINT>
+                      <SHORT-NAME>[!"$InterfaceName"!]sscp_J1939Dcm_CalibrationInformation</SHORT-NAME>
+                      <OPERATION-IREF>
+                        <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/AUTOSAR_J1939Dcm/SwComponentTypes/J1939Dcm/J1939Dcm_CalibrationInformation</CONTEXT-R-PORT-REF>
+                        <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">[!"$TopLevelPackage"!]/PortInterfaces/J1939Dcm_CalibrationInformation/GetCalibrationVerificationNumber</TARGET-REQUIRED-OPERATION-REF>
+                      </OPERATION-IREF>
+                      <TIMEOUT>0.0</TIMEOUT>
+                    </SYNCHRONOUS-SERVER-CALL-POINT>
+[!ENDIF!]
+[!ENDMACRO!][!//
+<?xml version="1.0" encoding="UTF-8"?>
+[!AUTOSPACING!][!//
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-0-3.xsd">
+[!/* do not generate this file if DM19 is not supported */!][!//
+[!//
+[!SKIPFILE "not(node:exists(J1939DcmConfigSet/*[1]/J1939DcmNode/eb-list::*/J1939DcmDiagnosticMessageSupport/eb-list::*[J1939DcmDmxSupport = 'J1939DCM_DM19_SUPPORT']))"!][!//
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>AUTOSAR_J1939Dcm</SHORT-NAME>
+      <ELEMENTS/>
+      <AR-PACKAGES>
+        <AR-PACKAGE>
+          <SHORT-NAME>SwComponentTypes</SHORT-NAME>
+          <ELEMENTS>
+            <SERVICE-SW-COMPONENT-TYPE>
+              <SHORT-NAME>J1939Dcm</SHORT-NAME>
+              <PORTS>
+                [!CALL "Build_Ports", "AsrVersion"="'AUTOSAR_42'", "InterfaceName"="'Rte_Call_J1939Dcm_CalibrationInformation_GetCalibrationVerificationNumber'", "TopLevelPackage"="'/AUTOSAR_J1939Dcm'"!]
+              </PORTS>
+            
+              <INTERNAL-BEHAVIORS>
+                <SWC-INTERNAL-BEHAVIOR>
+                  <SHORT-NAME>J1939DcmIntBehavior_0</SHORT-NAME>
+
+                  <HANDLE-TERMINATION-AND-RESTART>NO-SUPPORT</HANDLE-TERMINATION-AND-RESTART>
+                  <RUNNABLES>
+                        <RUNNABLE-ENTITY>
+                        <SHORT-NAME>RE_ASR44_GetCalibrationVerificationNumber</SHORT-NAME>
+                        <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                        <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>                    
+                        <SERVER-CALL-POINTS>
+                            [!CALL "Build_MainFunction", "AsrVersion"="'AUTOSAR_42'", "InterfaceName"="'Rte_Call_J1939Dcm_CalibrationInformation_GetCalibrationVerificationNumber'", "TopLevelPackage"="'/AUTOSAR_J1939Dcm'"!]                  
+                        </SERVER-CALL-POINTS>
+                        <SYMBOL>J1939Dcm_GetCalibrationVerificationNumber</SYMBOL>
+                        </RUNNABLE-ENTITY>
+                  </RUNNABLES>
+                  <SUPPORTS-MULTIPLE-INSTANTIATION>false</SUPPORTS-MULTIPLE-INSTANTIATION>
+                </SWC-INTERNAL-BEHAVIOR>
+              </INTERNAL-BEHAVIORS>
+              </SERVICE-SW-COMPONENT-TYPE>
+          </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+    <AR-PACKAGE>
+      <SHORT-NAME>EB_J1939Dcm</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE>
+              <SHORT-NAME>SwcImplementations</SHORT-NAME>
+              <ELEMENTS>
+                <SWC-IMPLEMENTATION>
+                  <SHORT-NAME>J1939DcmImpl</SHORT-NAME>
+                  <CODE-DESCRIPTORS>
+                    <CODE>
+                      <SHORT-NAME>Code</SHORT-NAME>
+                      <ARTIFACT-DESCRIPTORS>
+                        <AUTOSAR-ENGINEERING-OBJECT>
+                          <SHORT-LABEL>EngObject</SHORT-LABEL>
+                          <CATEGORY>SWSRC</CATEGORY>
+                        </AUTOSAR-ENGINEERING-OBJECT>
+                      </ARTIFACT-DESCRIPTORS>
+                    </CODE>
+                  </CODE-DESCRIPTORS>
+                  <PROGRAMMING-LANGUAGE>C</PROGRAMMING-LANGUAGE>
+                  <RESOURCE-CONSUMPTION>
+                    <SHORT-NAME>Resources</SHORT-NAME>
+                    <MEMORY-SECTIONS>
+                    <MEMORY-SECTION>
+                    <SHORT-NAME>CODE</SHORT-NAME>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/CODE</SW-ADDRMETHOD-REF>
+                    </MEMORY-SECTION>
+                    </MEMORY-SECTIONS>
+                  </RESOURCE-CONSUMPTION>
+                  <SW-VERSION>1.1.14</SW-VERSION>
+                  <VENDOR-ID>1</VENDOR-ID>
+                  <BEHAVIOR-REF DEST="SWC-INTERNAL-BEHAVIOR">/AUTOSAR_J1939Dcm/SwComponentTypes/J1939Dcm/J1939DcmIntBehavior_0</BEHAVIOR-REF>
+                </SWC-IMPLEMENTATION>
+                
+              </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

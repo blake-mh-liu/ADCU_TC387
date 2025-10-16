@@ -1,0 +1,116 @@
+<%@ jet
+    package="com.elektrobit.comm.generated.templates"
+    class="ComMRteMCUserSrc"
+    imports="java.io.IOException
+             dreisoft.tresos.generator.ng.api.ant.JavaGenContext
+             com.elektrobit.comm.generator.ComMGenContext
+             com.elektrobit.comm.generator.ComMJetContext" %>
+<%
+    JavaGenContext javaGenContext = (JavaGenContext) argument;
+    ComMGenContext comMGenContext = (ComMGenContext) javaGenContext.gen.getVariable(ComMGenContext.COMM_GEN_CONTEXT, ComMGenContext.class, null);
+    comMGenContext.getWriter().startRedirect(stringBuffer);
+    ComMJetContext comMJetContext = comMGenContext.getComMJetContext();
+%><%@ include file="file-comment.c.txt" %>
+
+#include <Std_Types.h>
+#include <TSAutosar.h>
+#include <ComM_Trace.h>
+#include <ComM_BSW.h>
+#include <Rte_ComM_User_<%=comMJetContext.getOsAppNameForUser()%>.h>
+#include <ComM_Rte_MC_User_<%=comMJetContext.getOsAppNameForUser()%>.h>
+
+#define COMM_START_SEC_CODE
+#include <ComM_MemMap.h>
+
+<%
+    for(String userName : comMJetContext.getUsers())
+    {
+%>
+FUNC(Std_ReturnType, COMM_CODE) ComM_Wrapper_Switch_ComM_User_<%=comMJetContext.getOsAppNameForUser()%>_UM_<%=userName%>_currentMode (uint8 mode)
+{
+  Std_ReturnType retVal = Rte_Switch_UM_<%=userName%>_currentMode(mode);
+  return retVal;
+}
+<%
+    }
+
+%>
+
+FUNC(Std_ReturnType, COMM_CODE) ComM_Rte_RequestComMode_<%=comMJetContext.getOsAppNameForUser()%>
+(
+  ComM_UserHandleType pdav0,
+  ComM_ModeType       ComMode
+)
+{
+  Std_ReturnType ret;
+  DBG_COMM_RTE_REQUESTCOMMODE_ENTRY(pdav0, ComMode);
+  ret = ComM_ASR40_RequestComMode(pdav0, ComMode);
+  DBG_COMM_RTE_REQUESTCOMMODE_EXIT(ret, pdav0, ComMode);
+  return ret;
+}
+
+FUNC(Std_ReturnType, COMM_CODE) ComM_Rte_GetMaxComMode_<%=comMJetContext.getOsAppNameForUser()%>
+(
+  ComM_UserHandleType                             pdav0,
+  P2VAR(ComM_ModeType, AUTOMATIC, COMM_APPL_DATA) ComMode
+)
+{
+  Std_ReturnType ret;
+  DBG_COMM_RTE_GETMAXCOMMODE_ENTRY(pdav0, ComMode);
+  ret = ComM_ASR40_GetMaxComMode(pdav0, ComMode);
+  DBG_COMM_RTE_GETMAXCOMMODE_EXIT(ret, pdav0, ComMode);
+  return ret;
+}
+
+FUNC(Std_ReturnType, COMM_CODE) ComM_Rte_GetRequestedComMode_<%=comMJetContext.getOsAppNameForUser()%>
+(
+  ComM_UserHandleType                             pdav0,
+  P2VAR(ComM_ModeType, AUTOMATIC, COMM_APPL_DATA) ComMode
+)
+{
+  Std_ReturnType ret;
+  DBG_COMM_RTE_GETREQUESTEDCOMMODE_ENTRY(pdav0, ComMode);
+  ret = ComM_ASR40_GetRequestedComMode(pdav0, ComMode);
+  DBG_COMM_RTE_GETREQUESTEDCOMMODE_EXIT(ret, pdav0, ComMode);
+  return ret;
+}
+
+FUNC(Std_ReturnType, COMM_CODE) ComM_Rte_GetCurrentComMode_<%=comMJetContext.getOsAppNameForUser()%>
+(
+  ComM_UserHandleType                             pdav0,
+  P2VAR(ComM_ModeType, AUTOMATIC, COMM_APPL_DATA) ComMode
+)
+{
+  Std_ReturnType ret;
+  DBG_COMM_RTE_GETCURRENTCOMMODE_ENTRY(pdav0, ComMode);
+  ret = ComM_ASR40_GetCurrentComMode(pdav0, ComMode);
+  DBG_COMM_RTE_GETCURRENTCOMMODE_EXIT(ret, pdav0, ComMode);
+  return ret;
+}
+
+FUNC(Std_ReturnType, COMM_CODE) ComM_Rte_GetCurrentPNCComMode_<%=comMJetContext.getOsAppNameForUser()%>
+(
+  ComM_UserHandleType                             pdav0,
+  P2VAR(ComM_ModeType, AUTOMATIC, COMM_APPL_DATA) ComMode
+)
+{
+  Std_ReturnType ret;
+  DBG_COMM_RTE_GETCURRENTPNCCOMMODE_ENTRY(pdav0, ComMode);
+  ret = ComM_ASR40_GetCurrentPNCComMode(pdav0, ComMode);
+  DBG_COMM_RTE_GETCURRENTPNCCOMMODE_EXIT(ret, pdav0, ComMode);
+  return ret;
+}
+
+#define COMM_STOP_SEC_CODE
+#include <ComM_MemMap.h>
+
+<%
+    try
+    {
+        comMGenContext.getWriter().stopRedirected(false);
+    }
+    catch (IOException e)
+    {
+        e.printStackTrace();
+    }
+%>

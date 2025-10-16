@@ -1,0 +1,41 @@
+<Script xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="Scriptor.xsd">
+	<Name>Mcu_PostImport</Name>
+	<Decription>desc</Decription>
+	<Expression>as:modconf('Mcu')[1]</Expression>
+	<Operations>
+
+		<!--		Remove recommended reference to Dem     -->
+		<Operation Type="ForEach">
+			<Expression>as:modconf('Mcu')[1]/McuModuleConfiguration/McuModuleConfiguration_0/McuDemEventParameterRefs/McuDemEventParameterRefs_0/MCU_E_OSC_FAILURE/__1</Expression>
+			<Operations>
+				<Operation Type="Remove">
+					<Expression>boolean(0)</Expression>
+				</Operation>
+			</Operations>
+		</Operation>
+        
+
+		<!--		Remove recommended reference to Dem     -->
+		<Operation Type="ForEach">
+			<Expression>as:modconf('Mcu')[1]/McuModuleConfiguration/McuModuleConfiguration_0/McuDemEventParameterRefs/McuDemEventParameterRefs_0/MCU_E_ERAY_TIMEOUT/__1</Expression>
+			<Operations>
+				<Operation Type="Remove">
+					<Expression>boolean(0)</Expression>
+				</Operation>
+			</Operations>
+		</Operation>
+        
+
+		<!--		Remove recommended reference to Dem     -->
+		<Operation Type="ForEach">
+			<Expression>as:modconf('Mcu')[1]/McuModuleConfiguration/McuModuleConfiguration_0/McuDemEventParameterRefs/McuDemEventParameterRefs_0/MCU_E_CLOCK_FAILURE/__1</Expression>
+			<Operations>
+				<Operation Type="Remove">
+					<Expression>boolean(0)</Expression>
+				</Operation>
+			</Operations>
+		</Operation>
+		
+	</Operations>
+</Script>

@@ -1,0 +1,76 @@
+[!SKIPFILE "as:modconf('Icv')[1]/IcvConfigSet/*[1]/GenerateReport = 'false'"!][!//
+[!AUTOSPACING!][!//
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites>
+
+  [!LOOP "as:modconf('Icv')[1]/IcvConfigSet/*[1]/Group/*"!][!//
+    [!IF "GroupEnabled = 'true' and count(Rule/*[RulesEnabled='true' and State!='rejected'])>0"!][!//
+      [!IF "normalize-space(Variant) = ''"!][!//
+  <testsuite name="[!"name(.)"!]: [!"Id"!]">
+      [!ELSE!][!//
+  <testsuite name="[!"name(.)"!]: [!"Id"!] - [!"Variant"!]">
+      [!ENDIF!][!//
+      [!LOOP "Rule/*"!][!//
+        [!IF "RulesEnabled = 'true' and State != 'rejected'"!][!//
+          [!VAR "testFailed" = "false()"!][!//
+          [!VAR "noEnabledRuleExists" = "true()"!][!//
+          [!LOOP "./XPathExpressionList/*"!][!//
+            [!IF "RuleEnabled = 'true'"!][!//
+              [!VAR "noEnabledRuleExists" = "false()"!][!//
+              [!SELECT "./XPathExpression"!][!//
+                [!IF "SWICV:ExecuteXPathFunction(.)"!][!//
+                [!ELSE!][!//
+                  [!VAR "testFailed" = "true()"!][!//
+                  [!BREAK!][!//
+                [!ENDIF!][!//
+              [!ENDSELECT!][!//
+            [!ENDIF!][!//
+          [!ENDLOOP!][!//
+          [!IF "$noEnabledRuleExists"!][!//
+            [!VAR "description" = "'No enabled rule exists in the XPath expression list!'"!][!//
+            [!VAR "result" = "'error'"!][!//
+          [!ELSEIF "$testFailed"!][!//
+            [!VAR "description" = "'Evaluation of XPath expression(s) failed!'"!][!//
+            [!VAR "result" = "'failure'"!][!//
+          [!ELSE!]
+            [!VAR "description" = "''"!][!//
+            [!VAR "result" = "''"!][!//
+          [!ENDIF!][!//
+    <testcase name="[!"text:replace(Id,'SwIntTS.','')"!]">
+          [!IF "normalize-space(Variant) = ''"!][!//
+            [!VAR "vers" = "'unversioned'"!][!//
+          [!ELSE!][!//
+            [!VAR "vers" = "normalize-space(Variant)"!][!//
+          [!ENDIF!][!//
+          [!IF "normalize-space($result) != ''"!][!//
+      <[!"$result"!]/>
+          [!ENDIF!][!//
+          [!IF "normalize-space(Description) != ''"!][!//
+      <system-out>[!"text:replace(text:replace(text:replace(normalize-space(Description),'&','&amp;'),'<','&lt;'),'>','&gt;')"!]</system-out>
+          [!ENDIF!][!//
+      <system-out>Evaluation of the following XPath expression(s):</system-out>
+          [!VAR "noEnabledRuleExists" = "true()"!][!//
+          [!LOOP "./XPathExpressionList/*"!][!//
+            [!IF "RuleEnabled = 'true'"!][!//
+              [!VAR "noEnabledRuleExists" = "false()"!][!//
+              [!IF "normalize-space(./Description) = ''"!][!//
+      <system-out>- [!"name(.)"!]: [!"text:replace(text:replace(text:replace(normalize-space(./XPathExpression),'&','&amp;'),'<','&lt;'),'>','&gt;')"!]</system-out>
+              [!ELSE!][!//
+      <system-out>- [!"name(.)"!]: [!"text:replace(text:replace(text:replace(normalize-space(./XPathExpression),'&','&amp;'),'<','&lt;'),'>','&gt;')"!]  ->  [!"text:replace(text:replace(text:replace(normalize-space(./Description),'&','&amp;'),'<','&lt;'),'>','&gt;')"!]</system-out>
+              [!ENDIF!][!//
+            [!ENDIF!][!//
+          [!ENDLOOP!][!//
+          [!IF "$noEnabledRuleExists"!][!//
+      <system-out>- [!"$description"!]</system-out>
+          [!ENDIF!][!//
+          [!IF "normalize-space($description) != ''"!][!//
+      <system-err>[!"$description"!]</system-err>
+          [!ENDIF!][!//
+    </testcase>
+        [!ENDIF!][!//
+      [!ENDLOOP!][!//
+  </testsuite>
+    [!ENDIF!][!//
+  [!ENDLOOP!][!//
+
+</testsuites>

@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-1-3.xsd.xsd">
+[!SKIPFILE "not(node:exists(J1939RmConfigSet/eb-list::*/J1939RmNode/eb-list::*/J1939RmUser/eb-list::*[J1939RmUserType = 'J1939RM_USER_RTE']))"!]
+    <AR-PACKAGES>
+        <AR-PACKAGE>
+
+
+                    <SHORT-NAME>AUTOSAR_J1939Rm</SHORT-NAME>
+        <AR-PACKAGES>
+        <AR-PACKAGE>
+                    <SHORT-NAME>ServiceComponent</SHORT-NAME>
+                    <ELEMENTS>
+                        <SERVICE-SW-COMPONENT-TYPE>
+                            <SHORT-NAME>J1939Rm</SHORT-NAME>
+                            <PORTS>
+
+
+[!CODE!]
+[!AUTOSPACING!]
+                                [!VAR "ConfigIndex" = "'0'"!]
+                                [!SELECT "(util:distinct(node:order(J1939RmConfigSet/eb-list::*)))"!]
+                                [!LOOP "util:distinct(node:order(J1939RmNode/eb-list::*))"!]
+                                  [!LOOP "util:distinct(node:order(J1939RmUser/eb-list::*))"!]
+                                    [!IF "J1939RmUserType = 'J1939RM_USER_RTE'"!]
+                                        [!IF "node:existsAndTrue(as:modconf('J1939Rm')[1]/J1939RmGeneral/J1939RmSupportAckTransmission)"!]
+                                        [!IF "node:existsAndTrue(J1939RmUserSendAck)"!]
+                                            <!-- !LINKSTO J1939Rm.ASR413.SWS_J1939Rm_00098,1 -->
+                                            <P-PORT-PROTOTYPE>
+                                              <SHORT-NAME>J1939Rm_SendAck_[!"as:name(.)"!]</SHORT-NAME>
+                                              <PROVIDED-COM-SPECS>
+                                                <SERVER-COM-SPEC>
+                                                  <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_J1939Rm/ASR40/PortInterfaces/AppSendAck/SendAck</OPERATION-REF>
+                                                  <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                                                </SERVER-COM-SPEC>
+                                              </PROVIDED-COM-SPECS>
+                                              <PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_J1939Rm/ASR40/PortInterfaces/AppSendAck</PROVIDED-INTERFACE-TREF>
+                                            </P-PORT-PROTOTYPE>
+                                        [!ENDIF!]
+                                        [!ENDIF!]
+                                        [!IF "node:existsAndTrue(as:modconf('J1939Rm')[1]/J1939RmGeneral/J1939RmSupportRequestTransmission)"!]
+                                        [!IF "node:existsAndTrue(J1939RmUserSendRequest)"!]
+                                            <!-- !LINKSTO J1939Rm.ASR413.SWS_J1939Rm_00097,1 -->
+                                            <P-PORT-PROTOTYPE>
+                                              <SHORT-NAME>J1939Rm_SendRequest_[!"as:name(.)"!]</SHORT-NAME>
+                                              <PROVIDED-COM-SPECS>
+                                                <SERVER-COM-SPEC>
+                                                  <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_J1939Rm/ASR40/PortInterfaces/AppSendRequest/SendRequest</OPERATION-REF>
+                                                  <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                                                </SERVER-COM-SPEC>
+                                              </PROVIDED-COM-SPECS>
+                                              <PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_J1939Rm/ASR40/PortInterfaces/AppSendRequest</PROVIDED-INTERFACE-TREF>
+                                            </P-PORT-PROTOTYPE>
+                                        [!ENDIF!]
+                                        [!ENDIF!]
+                                        [!IF "node:existsAndTrue(as:modconf('J1939Rm')[1]/J1939RmGeneral/J1939RmSupportTimeoutSupervision)"!]
+                                        [!IF "node:existsAndTrue(J1939RmUserTimeoutSupervision)"!]
+                                            <!-- !LINKSTO J1939Rm.SWS_J1939Rm_00099,1 -->
+                                            <P-PORT-PROTOTYPE>
+                                              <SHORT-NAME>J1939Rm_CancelRequestTimeout_[!"as:name(.)"!]</SHORT-NAME>
+                                              <PROVIDED-COM-SPECS>
+                                                <SERVER-COM-SPEC>
+                                                  <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_J1939Rm/ASR40/PortInterfaces/AppCancelRequestTimeout/CancelRequestTimeout</OPERATION-REF>
+                                                  <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                                                </SERVER-COM-SPEC>
+                                              </PROVIDED-COM-SPECS>
+                                              <PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_J1939Rm/ASR40/PortInterfaces/AppCancelRequestTimeout</PROVIDED-INTERFACE-TREF>
+                                            </P-PORT-PROTOTYPE>
+                                        [!ENDIF!]
+                                        [!ENDIF!]
+                                        [!IF "node:existsAndTrue(as:modconf('J1939Rm')[1]/J1939RmGeneral/J1939RmSupportAckIndication)"!]
+                                            [!IF "node:existsAndTrue(J1939RmUserAckIndication)"!]
+                                            <!-- !LINKSTO J1939Rm.SWS_J1939Rm_00101,1 -->
+                                            <R-PORT-PROTOTYPE>
+                                                <SHORT-NAME>J1939Rm_AckIndication_[!"as:name(.)"!]</SHORT-NAME>
+                                                <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_J1939Rm/ASR40/PortInterfaces/AppAckIndication</REQUIRED-INTERFACE-TREF>
+                                            </R-PORT-PROTOTYPE>
+                                            [!ENDIF!]
+                                        [!ENDIF!]
+                                        [!IF "node:existsAndTrue(as:modconf('J1939Rm')[1]/J1939RmGeneral/J1939RmSupportRequestIndication)"!]
+                                            [!IF "node:existsAndTrue(J1939RmUserRequestIndication)"!]
+                                            <!-- !LINKSTO J1939Rm.SWS_J1939Rm_00100,1 -->
+                                            <R-PORT-PROTOTYPE>
+                                                <SHORT-NAME>J1939Rm_RequestIndication_[!"as:name(.)"!]</SHORT-NAME>
+                                                <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_J1939Rm/ASR40/PortInterfaces/AppRequestIndication</REQUIRED-INTERFACE-TREF>
+                                            </R-PORT-PROTOTYPE>
+                                            [!ENDIF!]
+                                        [!ENDIF!]
+                                        [!IF "node:existsAndTrue(as:modconf('J1939Rm')[1]/J1939RmGeneral/J1939RmSupportTimeoutSupervision)"!]
+                                            [!IF "node:existsAndTrue(J1939RmUserTimeoutSupervision)"!]
+                                            <!-- !LINKSTO J1939Rm.SWS_J1939Rm_00102,1 -->
+                                            <R-PORT-PROTOTYPE>
+                                                <SHORT-NAME>J1939Rm_RequestTimeoutIndication_[!"as:name(.)"!]</SHORT-NAME>
+                                                <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_J1939Rm/ASR40/PortInterfaces/AppRequestTimeoutIndication</REQUIRED-INTERFACE-TREF>
+                                            </R-PORT-PROTOTYPE>
+                                                [!ENDIF!]
+                                        [!ENDIF!]
+                                    [!ENDIF!]
+                                  [!ENDLOOP!]
+                                [!ENDLOOP!]
+                                [!VAR "ConfigIndex" = "num:i($ConfigIndex + 1)"!]
+                                [!ENDSELECT!]
+
+                            </PORTS>
+                            <INTERNAL-BEHAVIORS>
+                                <SWC-INTERNAL-BEHAVIOR>
+                                    <SHORT-NAME>SwcInternalBehavior_0</SHORT-NAME>
+                                    <EVENTS>
+                                [!VAR "ConfigIndex" = "'0'"!]
+                                [!SELECT "(util:distinct(node:order(J1939RmConfigSet/eb-list::*)))"!]
+                                [!LOOP "util:distinct(node:order(J1939RmNode/eb-list::*))"!]
+                                  [!LOOP "util:distinct(node:order(J1939RmUser/eb-list::*))"!]
+                                    [!IF "J1939RmUserType = 'J1939RM_USER_RTE'"!]
+                                    [!IF "node:existsAndTrue(as:modconf('J1939Rm')[1]/J1939RmGeneral/J1939RmSupportAckTransmission)"!]
+                                    [!IF "node:existsAndTrue(J1939RmUserSendAck)"!]
+                                        <OPERATION-INVOKED-EVENT>
+                                          <SHORT-NAME>OperationInvokedEvent_SendAck_[!"as:name(.)"!]</SHORT-NAME>
+                                          <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_J1939Rm/ServiceComponent/J1939Rm/SwcInternalBehavior_0/RunnableEntity_SendAck</START-ON-EVENT-REF>
+                                          <OPERATION-IREF>
+                                            <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_J1939Rm/ServiceComponent/J1939Rm/J1939Rm_SendAck_[!"as:name(.)"!]</CONTEXT-P-PORT-REF>
+                                            <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_J1939Rm/ASR40/PortInterfaces/AppSendAck/SendAck</TARGET-PROVIDED-OPERATION-REF>
+                                          </OPERATION-IREF>
+                                        </OPERATION-INVOKED-EVENT>
+                                    [!ENDIF!]
+                                    [!ENDIF!]
+                                    [!IF "node:existsAndTrue(as:modconf('J1939Rm')[1]/J1939RmGeneral/J1939RmSupportRequestTransmission)"!]
+                                    [!IF "node:existsAndTrue(J1939RmUserSendRequest)"!]
+                                        <OPERATION-INVOKED-EVENT>
+                                          <SHORT-NAME>OperationInvokedEvent_SendRequest_[!"as:name(.)"!]</SHORT-NAME>
+                                          <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_J1939Rm/ServiceComponent/J1939Rm/SwcInternalBehavior_0/RunnableEntity_SendRequest</START-ON-EVENT-REF>
+                                          <OPERATION-IREF>
+                                            <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_J1939Rm/ServiceComponent/J1939Rm/J1939Rm_SendRequest_[!"as:name(.)"!]</CONTEXT-P-PORT-REF>
+                                            <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_J1939Rm/ASR40/PortInterfaces/AppSendRequest/SendRequest</TARGET-PROVIDED-OPERATION-REF>
+                                          </OPERATION-IREF>
+                                        </OPERATION-INVOKED-EVENT>
+                                    [!ENDIF!]
+                                    [!ENDIF!]
+                                    [!IF "node:existsAndTrue(as:modconf('J1939Rm')[1]/J1939RmGeneral/J1939RmSupportTimeoutSupervision)"!]
+                                    [!IF "node:existsAndTrue(J1939RmUserTimeoutSupervision)"!]
+                                        <OPERATION-INVOKED-EVENT>
+                                          <SHORT-NAME>OperationInvokedEvent_CancelRequestTimeout_[!"as:name(.)"!]</SHORT-NAME>
+                                          <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_J1939Rm/ServiceComponent/J1939Rm/SwcInternalBehavior_0/RunnableEntity_CancelRequestTimeout</START-ON-EVENT-REF>
+                                          <OPERATION-IREF>
+                                            <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_J1939Rm/ServiceComponent/J1939Rm/J1939Rm_CancelRequestTimeout_[!"as:name(.)"!]</CONTEXT-P-PORT-REF>
+                                            <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_J1939Rm/ASR40/PortInterfaces/AppCancelRequestTimeout/CancelRequestTimeout</TARGET-PROVIDED-OPERATION-REF>
+                                          </OPERATION-IREF>
+                                        </OPERATION-INVOKED-EVENT>
+                                    [!ENDIF!]
+                                    [!ENDIF!]
+                                    [!ENDIF!]
+                                  [!ENDLOOP!]
+                                [!ENDLOOP!]
+
+                                [!VAR "ConfigIndex" = "num:i($ConfigIndex + 1)"!]
+                                [!ENDSELECT!]
+                                    </EVENTS>
+                  <HANDLE-TERMINATION-AND-RESTART>NO-SUPPORT</HANDLE-TERMINATION-AND-RESTART>
+                    <PORT-API-OPTIONS>
+                                    [!VAR "ConfigIndex" = "'0'"!]
+[!SELECT "(util:distinct(node:order(J1939RmConfigSet/eb-list::*)))"!]
+[!LOOP "util:distinct(node:order(J1939RmNode/eb-list::*))"!]
+[!LOOP "util:distinct(node:order(J1939RmUser/eb-list::*))"!]
+[!IF "J1939RmUserType = 'J1939RM_USER_RTE'"!]
+    [!IF "node:existsAndTrue(as:modconf('J1939Rm')[1]/J1939RmGeneral/J1939RmSupportAckTransmission)"!]
+    [!IF "node:existsAndTrue(J1939RmUserSendAck)"!]
+        <PORT-API-OPTION>
+            <ENABLE-TAKE-ADDRESS>true</ENABLE-TAKE-ADDRESS>
+            <INDIRECT-API>false</INDIRECT-API>
+            <PORT-ARG-VALUES>
+              <PORT-DEFINED-ARGUMENT-VALUE>
+                <VALUE>
+                  <NUMERICAL-VALUE-SPECIFICATION>
+                    <VALUE>[!"num:i(J1939RmUserId)"!]</VALUE>
+                  </NUMERICAL-VALUE-SPECIFICATION>
+                </VALUE>
+                <VALUE-TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</VALUE-TYPE-TREF>
+              </PORT-DEFINED-ARGUMENT-VALUE>
+            </PORT-ARG-VALUES>
+            <PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_J1939Rm/ServiceComponent/J1939Rm/J1939Rm_SendAck_[!"as:name(.)"!]</PORT-REF>
+        </PORT-API-OPTION>
+    [!ENDIF!]
+    [!ENDIF!]
+    [!IF "node:existsAndTrue(as:modconf('J1939Rm')[1]/J1939RmGeneral/J1939RmSupportRequestTransmission)"!]
+    [!IF "node:existsAndTrue(J1939RmUserSendRequest)"!]
+        <PORT-API-OPTION>
+            <ENABLE-TAKE-ADDRESS>true</ENABLE-TAKE-ADDRESS>
+            <INDIRECT-API>false</INDIRECT-API>
+            <PORT-ARG-VALUES>
+              <PORT-DEFINED-ARGUMENT-VALUE>
+                <VALUE>
+                  <NUMERICAL-VALUE-SPECIFICATION>
+                    <VALUE>[!"num:i(J1939RmUserId)"!]</VALUE>
+                  </NUMERICAL-VALUE-SPECIFICATION>
+                </VALUE>
+                <VALUE-TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</VALUE-TYPE-TREF>
+              </PORT-DEFINED-ARGUMENT-VALUE>
+            </PORT-ARG-VALUES>
+            <PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_J1939Rm/ServiceComponent/J1939Rm/J1939Rm_SendRequest_[!"as:name(.)"!]</PORT-REF>
+        </PORT-API-OPTION>
+    [!ENDIF!]
+    [!ENDIF!]
+    [!IF "node:existsAndTrue(as:modconf('J1939Rm')[1]/J1939RmGeneral/J1939RmSupportTimeoutSupervision)"!]
+    [!IF "node:existsAndTrue(J1939RmUserTimeoutSupervision)"!]
+        <PORT-API-OPTION>
+            <ENABLE-TAKE-ADDRESS>true</ENABLE-TAKE-ADDRESS>
+            <INDIRECT-API>false</INDIRECT-API>
+            <PORT-ARG-VALUES>
+              <PORT-DEFINED-ARGUMENT-VALUE>
+                <VALUE>
+                  <NUMERICAL-VALUE-SPECIFICATION>
+                    <VALUE>[!"num:i(J1939RmUserId)"!]</VALUE>
+                  </NUMERICAL-VALUE-SPECIFICATION>
+                </VALUE>
+                <VALUE-TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</VALUE-TYPE-TREF>
+              </PORT-DEFINED-ARGUMENT-VALUE>
+            </PORT-ARG-VALUES>
+            <PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_J1939Rm/ServiceComponent/J1939Rm/J1939Rm_CancelRequestTimeout_[!"as:name(.)"!]</PORT-REF>
+        </PORT-API-OPTION>
+    [!ENDIF!]
+    [!ENDIF!]
+[!ENDIF!]
+[!ENDLOOP!]
+[!ENDLOOP!]
+[!VAR "ConfigIndex" = "num:i($ConfigIndex + 1)"!]
+[!ENDSELECT!]
+                                    </PORT-API-OPTIONS>
+                                    <RUNNABLES>
+                                [!VAR "ConfigIndex" = "'0'"!]
+                                [!VAR "RunnableCreated" = "'0'"!]
+                                [!SELECT "(util:distinct(node:order(J1939RmConfigSet/eb-list::*)))"!]
+                                [!LOOP "util:distinct(node:order(J1939RmNode/eb-list::*))"!]
+                                  [!LOOP "util:distinct(node:order(J1939RmUser/eb-list::*))"!]
+                                    [!IF "J1939RmUserType = 'J1939RM_USER_RTE'"!]
+                                        [!IF "node:existsAndTrue(as:modconf('J1939Rm')[1]/J1939RmGeneral/J1939RmSupportAckTransmission)"!]
+                                        [!IF "(node:existsAndTrue(J1939RmUserSendAck)) and ($RunnableCreated ='0')"!]
+                                            <RUNNABLE-ENTITY>
+                                              <SHORT-NAME>RunnableEntity_SendAck</SHORT-NAME>
+                                              <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                              <ARGUMENTS>
+                                                  <RUNNABLE-ENTITY-ARGUMENT>
+                                                    <SYMBOL>userId</SYMBOL>
+                                                  </RUNNABLE-ENTITY-ARGUMENT>
+                                                  <RUNNABLE-ENTITY-ARGUMENT>
+                                                    <SYMBOL>channel</SYMBOL>
+                                                  </RUNNABLE-ENTITY-ARGUMENT>
+                                                  <RUNNABLE-ENTITY-ARGUMENT>
+                                                    <SYMBOL>ackPgn</SYMBOL>
+                                                  </RUNNABLE-ENTITY-ARGUMENT>
+                                                  <RUNNABLE-ENTITY-ARGUMENT>
+                                                    <SYMBOL>ackCode</SYMBOL>
+                                                  </RUNNABLE-ENTITY-ARGUMENT>
+                                                  <RUNNABLE-ENTITY-ARGUMENT>
+                                                    <SYMBOL>ackAddress</SYMBOL>
+                                                  </RUNNABLE-ENTITY-ARGUMENT>
+                                                  <RUNNABLE-ENTITY-ARGUMENT>
+                                                    <SYMBOL>priority</SYMBOL>
+                                                  </RUNNABLE-ENTITY-ARGUMENT>
+                                              </ARGUMENTS>
+                                              <CAN-BE-INVOKED-CONCURRENTLY>true</CAN-BE-INVOKED-CONCURRENTLY>
+                                              <SYMBOL>J1939Rm_SendAck</SYMBOL>
+                                            </RUNNABLE-ENTITY>
+                                            [!VAR "RunnableCreated" = "1"!]
+                                            [!BREAK!]
+                                        [!ENDIF!]
+                                        [!ENDIF!]
+
+                                    [!ENDIF!]
+                                  [!ENDLOOP!]
+                                [!ENDLOOP!]
+
+                                [!VAR "ConfigIndex" = "num:i($ConfigIndex + 1)"!]
+                                [!ENDSELECT!]
+
+                                [!VAR "ConfigIndex" = "'0'"!]
+                                [!VAR "RunnableCreated" = "'0'"!]
+                                [!SELECT "(util:distinct(node:order(J1939RmConfigSet/eb-list::*)))"!]
+                                [!LOOP "util:distinct(node:order(J1939RmNode/eb-list::*))"!]
+                                  [!LOOP "util:distinct(node:order(J1939RmUser/eb-list::*))"!]
+                                    [!IF "J1939RmUserType = 'J1939RM_USER_RTE'"!]
+                                        [!IF "node:existsAndTrue(as:modconf('J1939Rm')[1]/J1939RmGeneral/J1939RmSupportRequestTransmission)"!]
+                                        [!IF "(node:existsAndTrue(J1939RmUserSendRequest)) and ($RunnableCreated ='0')"!]
+                                            <RUNNABLE-ENTITY>
+                                              <SHORT-NAME>RunnableEntity_SendRequest</SHORT-NAME>
+                                              <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                              <ARGUMENTS>
+                                                  <RUNNABLE-ENTITY-ARGUMENT>
+                                                    <SYMBOL>userId</SYMBOL>
+                                                  </RUNNABLE-ENTITY-ARGUMENT>
+                                                  <RUNNABLE-ENTITY-ARGUMENT>
+                                                    <SYMBOL>channel</SYMBOL>
+                                                  </RUNNABLE-ENTITY-ARGUMENT>
+                                                  <RUNNABLE-ENTITY-ARGUMENT>
+                                                    <SYMBOL>requestedPgn</SYMBOL>
+                                                  </RUNNABLE-ENTITY-ARGUMENT>
+                                                  <RUNNABLE-ENTITY-ARGUMENT>
+                                                    <SYMBOL>destAddress</SYMBOL>
+                                                  </RUNNABLE-ENTITY-ARGUMENT>
+                                                  <RUNNABLE-ENTITY-ARGUMENT>
+                                                    <SYMBOL>priority</SYMBOL>
+                                                  </RUNNABLE-ENTITY-ARGUMENT>
+                                                  <RUNNABLE-ENTITY-ARGUMENT>
+                                                    <SYMBOL>checkTimeout</SYMBOL>
+                                                  </RUNNABLE-ENTITY-ARGUMENT>
+                                              </ARGUMENTS>
+                                              <CAN-BE-INVOKED-CONCURRENTLY>true</CAN-BE-INVOKED-CONCURRENTLY>
+                                              <SYMBOL>J1939Rm_SendRequest</SYMBOL>
+                                            </RUNNABLE-ENTITY>
+                                            [!VAR "RunnableCreated" = "1"!]
+                                            [!BREAK!]
+                                        [!ENDIF!]
+                                        [!ENDIF!]
+                                    [!ENDIF!]
+                                  [!ENDLOOP!]
+                                [!ENDLOOP!]
+
+                                [!VAR "ConfigIndex" = "num:i($ConfigIndex + 1)"!]
+                                [!ENDSELECT!]
+
+                                [!VAR "ConfigIndex" = "'0'"!]
+                                [!VAR "RunnableCreated" = "'0'"!]
+                                [!SELECT "(util:distinct(node:order(J1939RmConfigSet/eb-list::*)))"!]
+                                [!LOOP "util:distinct(node:order(J1939RmNode/eb-list::*))"!]
+                                  [!LOOP "util:distinct(node:order(J1939RmUser/eb-list::*))"!]
+                                    [!IF "J1939RmUserType = 'J1939RM_USER_RTE'"!]
+                                        [!IF "node:existsAndTrue(as:modconf('J1939Rm')[1]/J1939RmGeneral/J1939RmSupportTimeoutSupervision)"!]
+                                        [!IF "(node:existsAndTrue(J1939RmUserTimeoutSupervision)) and ($RunnableCreated ='0')"!]
+                                            <RUNNABLE-ENTITY>
+                                              <SHORT-NAME>RunnableEntity_CancelRequestTimeout</SHORT-NAME>
+                                              <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                                              <ARGUMENTS>
+                                                  <RUNNABLE-ENTITY-ARGUMENT>
+                                                    <SYMBOL>UserId</SYMBOL>
+                                                  </RUNNABLE-ENTITY-ARGUMENT>
+                                                  <RUNNABLE-ENTITY-ARGUMENT>
+                                                    <SYMBOL>channel</SYMBOL>
+                                                  </RUNNABLE-ENTITY-ARGUMENT>
+                                                  <RUNNABLE-ENTITY-ARGUMENT>
+                                                    <SYMBOL>requestedPgn</SYMBOL>
+                                                  </RUNNABLE-ENTITY-ARGUMENT>
+                                                  <RUNNABLE-ENTITY-ARGUMENT>
+                                                    <SYMBOL>destAddress</SYMBOL>
+                                                  </RUNNABLE-ENTITY-ARGUMENT>
+                                              </ARGUMENTS>
+                                              <CAN-BE-INVOKED-CONCURRENTLY>true</CAN-BE-INVOKED-CONCURRENTLY>
+                                              <SYMBOL>J1939Rm_CancelRequestTimeout_Operation</SYMBOL>
+                                            </RUNNABLE-ENTITY>
+                                            [!VAR "RunnableCreated" = "1"!]
+                                            [!BREAK!]
+                                        [!ENDIF!]
+                                        [!ENDIF!]
+
+
+                                    [!ENDIF!]
+                                  [!ENDLOOP!]
+                                [!ENDLOOP!]
+
+                                [!VAR "ConfigIndex" = "num:i($ConfigIndex + 1)"!]
+                                [!ENDSELECT!]
+
+
+
+                                [!VAR "ConfigIndex" = "'0'"!]
+                                [!SELECT "(util:distinct(node:order(J1939RmConfigSet/eb-list::*)))"!]
+                                [!LOOP "util:distinct(node:order(J1939RmNode/eb-list::*))"!]
+                                  [!LOOP "util:distinct(node:order(J1939RmUser/eb-list::*))"!]
+                                    [!IF "J1939RmUserType = 'J1939RM_USER_RTE'"!]
+
+                                        [!IF "node:existsAndTrue(as:modconf('J1939Rm')[1]/J1939RmGeneral/J1939RmSupportAckIndication)"!]
+                                        [!IF "node:existsAndTrue(J1939RmUserAckIndication)"!]
+                                        <RUNNABLE-ENTITY>
+                                            <SHORT-NAME>RE_ASR40_AckIndication_[!"as:name(.)"!]</SHORT-NAME>
+                                            <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                                            <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                                            <SERVER-CALL-POINTS>
+                                                <SYNCHRONOUS-SERVER-CALL-POINT>
+                                                    <SHORT-NAME>SynchronousServerCallPoint_AckIndication</SHORT-NAME>
+                                                    <OPERATION-IREF>
+                                                        <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/AUTOSAR_J1939Rm/ServiceComponent/J1939Rm/J1939Rm_AckIndication_[!"as:name(.)"!]</CONTEXT-R-PORT-REF>
+                                                        <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_J1939Rm/ASR40/PortInterfaces/AppAckIndication/AckIndication</TARGET-REQUIRED-OPERATION-REF>
+                                                    </OPERATION-IREF>
+                                                    <TIMEOUT>1.0</TIMEOUT>
+                                                </SYNCHRONOUS-SERVER-CALL-POINT>
+                                            </SERVER-CALL-POINTS>
+                                            <SYMBOL>[!"as:name(.)"!]_AckIndication</SYMBOL>
+                                        </RUNNABLE-ENTITY>
+                                        [!ENDIF!]
+                                        [!ENDIF!]
+                                        [!IF "node:existsAndTrue(as:modconf('J1939Rm')[1]/J1939RmGeneral/J1939RmSupportRequestIndication)"!]
+                                            [!IF "node:existsAndTrue(J1939RmUserRequestIndication)"!]
+                                        <RUNNABLE-ENTITY>
+                                            <SHORT-NAME>RE_ASR40_RequestIndication_[!"as:name(.)"!]</SHORT-NAME>
+                                            <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                                            <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                                            <SERVER-CALL-POINTS>
+                                                <SYNCHRONOUS-SERVER-CALL-POINT>
+                                                    <SHORT-NAME>SynchronousServerCallPoint_RequestIndication</SHORT-NAME>
+                                                    <OPERATION-IREF>
+                                                        <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/AUTOSAR_J1939Rm/ServiceComponent/J1939Rm/J1939Rm_RequestIndication_[!"as:name(.)"!]</CONTEXT-R-PORT-REF>
+                                                        <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_J1939Rm/ASR40/PortInterfaces/AppRequestIndication/RequestIndication</TARGET-REQUIRED-OPERATION-REF>
+                                                    </OPERATION-IREF>
+                                                    <TIMEOUT>1.0</TIMEOUT>
+                                                </SYNCHRONOUS-SERVER-CALL-POINT>
+                                            </SERVER-CALL-POINTS>
+                                            <SYMBOL>[!"as:name(.)"!]_RequestIndication</SYMBOL>
+                                        </RUNNABLE-ENTITY>
+                                        [!ENDIF!]
+                                        [!ENDIF!]
+                                        [!IF "node:existsAndTrue(as:modconf('J1939Rm')[1]/J1939RmGeneral/J1939RmSupportTimeoutSupervision)"!]
+                                            [!IF "node:existsAndTrue(J1939RmUserTimeoutSupervision)"!]
+                                        <RUNNABLE-ENTITY>
+                                            <SHORT-NAME>RE_ASR40_RequestTimeoutIndication_[!"as:name(.)"!]</SHORT-NAME>
+                                            <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                                            <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                                            <SERVER-CALL-POINTS>
+                                                <SYNCHRONOUS-SERVER-CALL-POINT>
+                                                    <SHORT-NAME>SynchronousServerCallPoint_RequestTimeoutIndication</SHORT-NAME>
+                                                    <OPERATION-IREF>
+                                                        <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/AUTOSAR_J1939Rm/ServiceComponent/J1939Rm/J1939Rm_RequestTimeoutIndication_[!"as:name(.)"!]</CONTEXT-R-PORT-REF>
+                                                        <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_J1939Rm/ASR40/PortInterfaces/AppRequestTimeoutIndication/RequestTimeoutIndication</TARGET-REQUIRED-OPERATION-REF>
+                                                    </OPERATION-IREF>
+                                                    <TIMEOUT>1.0</TIMEOUT>
+                                                </SYNCHRONOUS-SERVER-CALL-POINT>
+                                            </SERVER-CALL-POINTS>
+                                            <SYMBOL>[!"as:name(.)"!]_RequestTimeoutIndication</SYMBOL>
+                                        </RUNNABLE-ENTITY>
+                                        [!ENDIF!]
+                                        [!ENDIF!]
+                                    [!ENDIF!]
+                                  [!ENDLOOP!]
+                                [!ENDLOOP!]
+
+                                [!VAR "ConfigIndex" = "num:i($ConfigIndex + 1)"!]
+                                [!ENDSELECT!]
+                                    </RUNNABLES>
+                                    <SUPPORTS-MULTIPLE-INSTANTIATION>false</SUPPORTS-MULTIPLE-INSTANTIATION>
+                                </SWC-INTERNAL-BEHAVIOR>
+                            </INTERNAL-BEHAVIORS>
+
+
+                        </SERVICE-SW-COMPONENT-TYPE>
+
+
+
+
+                        <SWC-IMPLEMENTATION>
+                            <SHORT-NAME>SwcImplementation_0</SHORT-NAME>
+                            <CODE-DESCRIPTORS>
+                                <CODE>
+                                    <SHORT-NAME>J1939RmCode</SHORT-NAME>
+                                    <ARTIFACT-DESCRIPTORS>
+                                        <AUTOSAR-ENGINEERING-OBJECT>
+                                            <SHORT-LABEL>EngObject</SHORT-LABEL>
+                                            <CATEGORY>SWSRC</CATEGORY>
+                                        </AUTOSAR-ENGINEERING-OBJECT>
+                                    </ARTIFACT-DESCRIPTORS>
+                                </CODE>
+                            </CODE-DESCRIPTORS>
+                            <PROGRAMMING-LANGUAGE>C</PROGRAMMING-LANGUAGE>
+                            <RESOURCE-CONSUMPTION>
+                                <SHORT-NAME>Resources</SHORT-NAME>
+                                <MEMORY-SECTIONS>
+                                    <MEMORY-SECTION>
+                                        <SHORT-NAME>CODE</SHORT-NAME>
+                                        <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/CODE</SW-ADDRMETHOD-REF>
+                                    </MEMORY-SECTION>
+                                </MEMORY-SECTIONS>
+                            </RESOURCE-CONSUMPTION>
+                            <SW-VERSION>1.0.0</SW-VERSION>
+                            <VENDOR-ID>1</VENDOR-ID>
+                            <BEHAVIOR-REF DEST="SWC-INTERNAL-BEHAVIOR">/AUTOSAR_J1939Rm/ServiceComponent/J1939Rm/SwcInternalBehavior_0</BEHAVIOR-REF>
+                        </SWC-IMPLEMENTATION>
+                    </ELEMENTS>
+                </AR-PACKAGE>
+            </AR-PACKAGES>
+                </AR-PACKAGE>
+            </AR-PACKAGES>
+
+[!ENDCODE!]
+</AUTOSAR>

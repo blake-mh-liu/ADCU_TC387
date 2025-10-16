@@ -1,0 +1,148 @@
+<?xml version='1.0'?>
+<datamodel version="8.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/18/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/18/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar" 
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:ce="http://www.tresos.de/_projects/DataModel2/18/childenable.xsd" 
+         xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd" 
+         xmlns:f="http://www.tresos.de/_projects/DataModel2/14/formulaexpr.xsd" 
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd" 
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd"  
+         xmlns:variant="http://www.tresos.de/_projects/DataModel2/11/variant.xsd">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="TS_T16DxM1I0R0" type="AR-PACKAGE">
+        <d:lst type="ELEMENTS">
+          <d:chc name="McalExt" type="AR-ELEMENT" value="MODULE-DEF">
+            <v:ctr type="MODULE-DEF">
+              <a:a name="ADMIN-DATA" type="ADMIN-DATA">
+                <ad:ADMIN-DATA>
+                  <ad:LANGUAGE>EN</ad:LANGUAGE>
+                  <ad:DOC-REVISIONS>
+                    <ad:DOC-REVISION>
+                      <ad:REVISION-LABEL>4.0.3</ad:REVISION-LABEL>
+                      <ad:ISSUED-BY>AUTOSAR</ad:ISSUED-BY>
+                    </ad:DOC-REVISION>
+                    <ad:DOC-REVISION>
+                      <ad:REVISION-LABEL>1.0.0</ad:REVISION-LABEL>
+                      <ad:ISSUED-BY>Elektrobit Automotive GmbH</ad:ISSUED-BY>
+                      <ad:DATE>2024-05-02T23:59:59Z</ad:DATE>
+                    </ad:DOC-REVISION>
+                  </ad:DOC-REVISIONS>
+                </ad:ADMIN-DATA>
+              </a:a>
+              <a:a name="RELEASE" value="asc:4.0"/>
+              <v:ctr name="PublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>EN:
+                    &lt;html&gt;
+                      Additional published parameters not covered by CommonPublishedInformation container.
+                  &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="EB Published Information"/>
+                <a:a name="TAB" value="EB Published Information"/>
+                <a:a name="UUID" 
+                     value="ECUC:cb4128ed-26c1-4ddd-906e-854bed917e07"/>
+                <v:var name="PbcfgMSupport" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Specifies whether or not the McalExt can use the PbcfgM module for post-build support.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="PbcfgM support"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:eb61002e-69c0-4f16-a910-c27adb75f6ee"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+              </v:ctr>
+              <v:lst name="PlatformModuleDefine" type="MAP">
+                <v:ctr name="ModuleDefine" type="IDENTIFIABLE">
+                  <v:var name="PlatformModuleValue" type="STRING">
+                    <a:a name="DESC">
+                      <a:v>EN:
+                          &lt;html&gt;
+                            Init Function or Config pointer define used in Platforms_Modules.h file
+                        &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" 
+                         value="Init function or Pointer define used in Platforms_Modules.h"/>
+                  </v:var>
+                </v:ctr>
+              </v:lst>
+              <v:lst name="PlatformMacroDefine" type="MAP">
+                <v:ctr name="MacroDefine" type="IDENTIFIABLE">
+                  <v:var name="PlatformMacroValue" type="STRING">
+                    <a:a name="DESC">
+                      <a:v>EN:
+                          &lt;html&gt;
+                            macro&apos;s or preprocessor defines used in Platforms_Macros.h file
+                        &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" 
+                         value="macro&apos;s or preprocessor defines used in Platforms_Macros.h"/>
+                  </v:var>
+                </v:ctr>
+              </v:lst>
+              <v:lst name="IncludePaths" type="MAP">
+                <v:ctr name="IncludePaths" type="IDENTIFIABLE">
+                  <v:var name="IncludePathsStrategy" type="ENUMERATION">
+                    <a:da name="RANGE" value="CC_INCLUDE_PATH"/>
+                  </v:var>
+                  <v:var name="IncludePathsMakeFile" type="STRING">
+                    <a:a name="DESC">
+                      <a:v>EN:
+                        &lt;html&gt;
+                            Include paths in make file for files that need to be used by project
+                        &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" 
+                         value="Path that need to be include by BuldEnvironment"/>
+                    <a:da name="INVALID" type="XPath" expr="node:empty(.)" 
+                          true="Field must not be left empty."/>
+                  </v:var>
+                </v:ctr>
+              </v:lst>
+              <v:lst name="FilesToBuild" type="MAP">
+                <v:ctr name="FilesToBuild" type="IDENTIFIABLE">
+                  <v:var name="BuildStrategy" type="ENUMERATION">
+                    <a:a name="DESC">
+                      <a:v>EN:
+                        &lt;html&gt;
+                            CC_FILES_TO_BUILD is used for c files.
+                            ASM_FILES_TO_BUILD is used for assembler files.
+                        &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:da name="RANGE">
+                      <a:v>CC_FILES_TO_BUILD</a:v>
+                      <a:v>ASM_FILES_TO_BUILD</a:v>
+                    </a:da>
+                  </v:var>
+                  <v:var name="FilePathToBuild" type="STRING">
+                    <a:a name="DESC">
+                      <a:v>EN:
+                        &lt;html&gt;
+                        Include that need to be used by project
+                        &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Files that need to be compiled"/>
+                    <a:da name="INVALID" type="XPath" expr="node:empty(.)" 
+                          true="Field must not be left empty."/>
+                  </v:var>
+                </v:ctr>
+              </v:lst>
+            </v:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+
+</datamodel>

@@ -1,0 +1,19 @@
+<Script xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="Scriptor.xsd">
+	<Name>Diag_Dcm_PostImport</Name>
+	<Decription>desc</Decription>
+	<Expression>as:modconf('Dcm')[1]</Expression>
+	<Operations>
+
+		<!--		Remove Buffer added by importer-->
+		<Operation Type="ForEach">
+			<Expression>as:modconf('Dcm')[1]/DcmConfigSet/*[1]/DcmDsl/DcmDslBuffer/DcmBuffer_0</Expression>
+			<Operations>
+				<Operation Type="Remove">
+					<Expression>boolean(0)</Expression>
+				</Operation>
+			</Operations>
+		</Operation>
+		
+	</Operations>
+</Script>

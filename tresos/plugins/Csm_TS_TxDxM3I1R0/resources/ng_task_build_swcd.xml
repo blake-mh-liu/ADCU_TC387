@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<project name="Csm" default="all" basedir=".">
+
+  <!-- include ant-contrib -->
+  <taskdef resource="net/sf/antcontrib/antlib.xml"/>
+
+  <!-- set properties -->
+  <ng.getgeneratorvar name="tresosBase" property="genTresosBase" />
+  <ng.getgeneratorvar name="module"     property="genModule"     />
+  <ng.getgeneratorvar name="pluginPath" property="genPluginDir"  />
+  <ng.getgeneratorvar name="outputDir"  property="genOutputDir"  />
+  <ng.getgeneratorvar name="project"    property="genProject"    />
+  <ng.getgeneratorvar name="datetime"   property="genDateTime"   />
+
+  <!-- WORKAROUND [TRESOSWP-3967] -->
+  <ng.property name="org.rte.enabled.all" xpath="   boolean(num:i(count(as:modconf('Csm')/CsmKeys/CsmKey/*[CsmKeyUsePort = 'true'])))
+                                                 or boolean(num:i(count(as:modconf('Csm')/CsmCallbacks/CsmCallback/*[node:empty(./CsmCallbackFunc)])))
+                                                 or boolean(num:i(count(as:modconf('Csm')/CsmJobs/CsmJob/*[CsmJobUsePort = 'true'])))" />
+
+  <ng.property name="org.api.version" xpath="node:value(as:modconf('Csm')/CsmEbGeneral/CsmEbMisc/CsmEbAutosarApiVersion)" />
+
+  <property environment="env"                                                     />
+  <property name="genPluginDirGenerateSwcd" value="${genPluginDir}/generate_swcd" />
+
+  <if>
+    <or>
+      <equals arg1="${org.api.version}" arg2="CSM_API_VERSION_440" />
+    </or>
+    <then>
+      <property name="excludes"  value="*.m,*_ASR43_*.arxml"/>
+    </then>
+    <else>
+      <property name="excludes"  value="*.m,*_ASR44_*.arxml"/>
+    </else>
+  </if>
+
+  <!-- process -->
+  <target name="all" depends="Process.Generate_Swcd" />
+
+  <target name="Process.Generate_Swcd">
+    <sequential>
+      <for list="swcd" param="dir">
+        <sequential>
+          <for param="file">
+            <path>
+              <fileset dir="${genPluginDirGenerateSwcd}/@{dir}/" excludes="${excludes}" />
+            </path>
+            <sequential>
+              <basename property="org.file.basename" file="@{file}" />
+              <echo level="info" message="FILE: @{file} // @{dir}/${org.file.basename} ... ${org.rte.enabled.all}" />
+              <!-- WORKAROUND [TRESOSWP-3967] -->
+              <if>
+                <or>
+                  <contains string="${org.file.basename}" substring="Bswmd.arxml" />
+                  <equals arg1="${org.rte.enabled.all}" arg2="true" />
+                </or>
+                <then>
+                  <ng.tmplgen template="@{file}" file="@{dir}/${org.file.basename}" failonerror="true">
+                    <include path="generate_swcd" />
+                    <variable name="project" value="${genProject}" />
+                  </ng.tmplgen>
+                </then>
+              </if>
+              <var name="org.file.basename" unset="true" />
+            </sequential>
+          </for>
+        </sequential>
+      </for>
+    </sequential>
+  </target>
+
+</project>

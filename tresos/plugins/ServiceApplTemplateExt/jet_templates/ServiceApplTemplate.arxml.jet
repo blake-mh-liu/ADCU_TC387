@@ -1,0 +1,456 @@
+<%@ jet package="eb.tresos.serviceappltemplate.generated"
+        class="ServiceApplTemplateArxmlGenerator"
+        imports="
+                 dreisoft.tresos.datamodel2.api.model.DCtxt
+                 dreisoft.tresos.generator.ng.api.ant.JavaGenContext
+                 dreisoft.tresos.tresosdb.api.model.v2.swcomponenttemplate.components.*
+                 dreisoft.tresos.tresosdb.api.model.v2.swcomponenttemplate.composition.*
+                 dreisoft.tresos.tresosdb.api.model.v2.swcomponenttemplate.portinterface.*
+                 dreisoft.tresos.tresosdb.api.model.v2.swcomponenttemplate.datatype.dataprototypes.IVariableDataPrototype
+                 eb.tresos.serviceappltemplate.IntermediateModel
+                 java.util.Arrays
+                 java.util.Deque
+                 java.util.LinkedList
+                "
+%>
+<%
+/*
+ * See tresos Studio developer's guide for further information on the usage of JET templates
+ * in tresos Studio plugins.
+ *
+ * !LINKSTO SERVICEAPPLTEMPLATE_0014, 1
+ */
+%>
+<%
+JavaGenContext context = (JavaGenContext) argument;
+DCtxt dctxt = context.gen.getDCtxtVariable();
+
+String argumentKey = "swc_template_name";
+String generatedSwcName = context.gen.getStringVariable(argumentKey, null);
+if (generatedSwcName == null)
+{
+    throw new NullPointerException("lookup of variable '" + argumentKey + "' via getStringVariable() returned null (no value found), which is unexpected");
+}
+IntermediateModel model = new IntermediateModel(dctxt, generatedSwcName);
+%>
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR <%= model.createArxmlNameSpaceString() %>>
+
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME><%= model.getServiceApplTemplatePackageName() %></SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE>
+        <SHORT-NAME><%= model.getSwComponentTypePackageName() %></SHORT-NAME>
+        <ELEMENTS>
+          <APPLICATION-SW-COMPONENT-TYPE>
+            <SHORT-NAME><%= model.getSwComponentTypeName() %></SHORT-NAME>
+            <PORTS>
+              <% if (model.isGenerateClientServerPPort()) { %>
+              <% for (IRPortPrototype rPortPrototype : model.getServiceSwcClientServerRequiredPortPrototypesToImplement()) { %>
+                <P-PORT-PROTOTYPE>
+                  <SHORT-NAME><%= rPortPrototype.getShortName() %></SHORT-NAME>
+                  <PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE"><%= IntermediateModel.getASPathChecked(rPortPrototype.getRequiredInterface()) %></PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+              <% } %>
+              <% } %>
+              <% if (model.isGenerateClientServerRPort()) { %>
+              <% for (IPPortPrototype pPortPrototype : model.getServiceSwcClientServerProvidedPortPrototypesToImplement()) { %>
+                <R-PORT-PROTOTYPE>
+                  <SHORT-NAME><%= pPortPrototype.getShortName() %></SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE"><%= IntermediateModel.getASPathChecked(pPortPrototype.getProvidedInterface()) %></REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+              <% } %>
+              <% } %>
+              <% if (model.isGenerateSenderReceiverPPort()) { %>
+              <% for (IRPortPrototype rPortPrototype : model.getServiceSwcSenderReceiverRequiredPortPrototypesToImplement()) { %>
+                <P-PORT-PROTOTYPE>
+                  <SHORT-NAME><%= rPortPrototype.getShortName() %></SHORT-NAME>
+                  <PROVIDED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE"><%= IntermediateModel.getASPathChecked(rPortPrototype.getRequiredInterface()) %></PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+              <% } %>
+              <% } %>
+              <% if (model.isGenerateSenderReceiverRPort()) { %>
+              <% for (IPPortPrototype pPortPrototype : model.getServiceSwcSenderReceiverProvidedPortPrototypesToImplement()) { %>
+                <R-PORT-PROTOTYPE>
+                  <SHORT-NAME><%= pPortPrototype.getShortName() %></SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="SENDER-RECEIVER-INTERFACE"><%= IntermediateModel.getASPathChecked(pPortPrototype.getProvidedInterface()) %></REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+              <% } %>
+              <% } %>
+            </PORTS>
+            <INTERNAL-BEHAVIORS>
+              <SWC-INTERNAL-BEHAVIOR>
+                <SHORT-NAME><%= model.getServiceApplTemplateSwComponentPrototypeInternalBehaviourName() %></SHORT-NAME>
+                <!--
+                  note: the OperationInvokedEvents have an MD5 hash over their RPortPrototype, PPortPrototype,
+                  Interface and OperationPrototype to prevent names that exceed the maximum
+                  ShortName length
+                -->
+                <EVENTS>
+                  <% if (model.isGenerateClientServerPPort()) { %>
+                  <%
+                     for (IRPortPrototype rPortPrototype : model.getServiceSwcClientServerRequiredPortPrototypesToImplement()) {
+                         for (IClientServerOperation operationPrototype : ((IClientServerInterface) rPortPrototype.getRequiredInterface()).getOperations().values()) {
+                  %>
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME><%= IntermediateModel.createOperationInvokedEventName(rPortPrototype, rPortPrototype.getInterface(), operationPrototype) %></SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY"><%= IntermediateModel.createPath(model.getServiceApplTemplateSwComponentPrototypeInternalBehaviourPath(), IntermediateModel.createRunnableName(rPortPrototype, rPortPrototype.getInterface(), operationPrototype)) %></START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE"><%= IntermediateModel.createPath(model.getSwComponentTypePath(), rPortPrototype.getShortName()) %></CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION"><%= IntermediateModel.getASPathChecked(operationPrototype) %></TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                  <%
+                         }
+                     }
+                  %>
+                  <% } %>
+                   <% if (model.getPeriodForTimingEvent() != null && (model.isGenerateClientServerRPort() || model.isGenerateSenderReceiverPPort() || model.isGenerateSenderReceiverRPort())) { %>
+                  <TIMING-EVENT>
+                      <SHORT-NAME><%= "TE"+"_"+model.getSwComponentTypeName() + "_" + "Cyclic" %></SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY"><%= IntermediateModel.createPath(model.getServiceApplTemplateSwComponentPrototypeInternalBehaviourPath(), "Runnable"+"_"+model.getSwComponentTypeName() + "_" + "Cyclic" )%></START-ON-EVENT-REF>
+                      <PERIOD><%=model.getPeriodForTimingEvent()%></PERIOD>
+                    </TIMING-EVENT>
+                  <% } %>
+                </EVENTS>
+                <HANDLE-TERMINATION-AND-RESTART>NO-SUPPORT</HANDLE-TERMINATION-AND-RESTART>
+                <!--
+                  note: the Runnables have an MD5 hash over their RPortPrototype,
+                  Interface and OperationPrototype to prevent names that exceed the maximum
+                  ShortName length
+                -->
+                <RUNNABLES>
+                  <% boolean runnablesWereCreated = false;%>
+                     <% if (model.isGenerateClientServerPPort()) { %>
+                     <% for (IRPortPrototype rPortPrototype : model.getServiceSwcClientServerRequiredPortPrototypesToImplement()) {
+                         for (IClientServerOperation operationPrototype : ((IClientServerInterface) rPortPrototype.getRequiredInterface()).getOperations().values()) {
+                             runnablesWereCreated = true;
+                  %>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME><%= IntermediateModel.createRunnableName(rPortPrototype, rPortPrototype.getInterface(), operationPrototype) %></SHORT-NAME>
+                      <SYMBOL><%= model.getSwComponentTypeName() + "_" + rPortPrototype.getShortName() + "_" + operationPrototype.getShortName() %></SYMBOL>
+                    </RUNNABLE-ENTITY>
+                  <%
+                         }
+                     }
+                  %>
+                  <% } %>
+                   <% if (model.getPeriodForTimingEvent() != null && (model.isGenerateClientServerRPort() || model.isGenerateSenderReceiverPPort() || model.isGenerateSenderReceiverRPort())) { %>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME><%= "Runnable"+"_"+model.getSwComponentTypeName() + "_" + "Cyclic" %></SHORT-NAME>
+                      <% runnablesWereCreated = true; %>
+                      <% if (model.isGenerateSenderReceiverRPort()) { %>
+                      	<DATA-RECEIVE-POINT-BY-ARGUMENTS>
+                      	<% for (IPPortPrototype pPortPrototype : model.getServiceSwcSenderReceiverProvidedPortPrototypesToImplement()) {
+                         	for (IVariableDataPrototype variableDataPrototype : ((ISenderReceiverInterface) pPortPrototype.getProvidedInterface()).getDataElements().values()) {
+                             	runnablesWereCreated = true;
+						%>  <VARIABLE-ACCESS>
+                      		<SHORT-NAME><%= IntermediateModel.createDataReceivePointName(pPortPrototype, pPortPrototype.getInterface(), variableDataPrototype) %></SHORT-NAME>
+                      			<ACCESSED-VARIABLE>
+                      				<AUTOSAR-VARIABLE-IREF>
+                      					<PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE"><%= IntermediateModel.createPath(model.getSwComponentTypePath(), pPortPrototype.getShortName()) %></PORT-PROTOTYPE-REF>
+                      					<TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE"><%= IntermediateModel.getASPathChecked(variableDataPrototype) %></TARGET-DATA-PROTOTYPE-REF>
+                      				</AUTOSAR-VARIABLE-IREF>
+                      			</ACCESSED-VARIABLE>
+                      		</VARIABLE-ACCESS>
+                      	<%
+                         	}
+                     	}
+                  		%></DATA-RECEIVE-POINT-BY-ARGUMENTS>
+<% } %>
+<% if (model.isGenerateSenderReceiverPPort()) { %>
+                  		<DATA-SEND-POINTS>
+                  		<% for (IRPortPrototype rPortPrototype : model.getServiceSwcSenderReceiverRequiredPortPrototypesToImplement()) {
+                         for (IVariableDataPrototype variableDataPrototype : ((ISenderReceiverInterface) rPortPrototype.getRequiredInterface()).getDataElements().values()) {
+                             	runnablesWereCreated = true;
+						%>  <VARIABLE-ACCESS>
+                      		<SHORT-NAME><%= IntermediateModel.createDataSendPointName(rPortPrototype, rPortPrototype.getInterface(), variableDataPrototype) %></SHORT-NAME>
+                      			<ACCESSED-VARIABLE>
+                      				<AUTOSAR-VARIABLE-IREF>
+                      					<PORT-PROTOTYPE-REF DEST="P-PORT-PROTOTYPE"><%= IntermediateModel.createPath(model.getSwComponentTypePath(), rPortPrototype.getShortName()) %></PORT-PROTOTYPE-REF>
+                      					<TARGET-DATA-PROTOTYPE-REF DEST="VARIABLE-DATA-PROTOTYPE"><%= IntermediateModel.getASPathChecked(variableDataPrototype) %></TARGET-DATA-PROTOTYPE-REF>
+                      				</AUTOSAR-VARIABLE-IREF>
+                      			</ACCESSED-VARIABLE>
+                      		</VARIABLE-ACCESS>
+                 		 <%
+                         	}
+                     	}
+                  	 %></DATA-SEND-POINTS>
+<% } %>
+<% if (model.isGenerateClientServerRPort()) { %>
+					    <SERVER-CALL-POINTS>
+                      	<% for (IPPortPrototype pPortPrototype : model.getServiceSwcClientServerProvidedPortPrototypesToImplement()) {
+                         	for (IClientServerOperation operationPrototype : ((IClientServerInterface) pPortPrototype.getProvidedInterface()).getOperations().values()) {
+                             	runnablesWereCreated = true;
+                      	%>  <SYNCHRONOUS-SERVER-CALL-POINT>
+                          	<SHORT-NAME><%= IntermediateModel.createSynchronousServerCallPointName(pPortPrototype, pPortPrototype.getInterface(), operationPrototype) %></SHORT-NAME>
+                          		<OPERATION-IREF>
+                            		<CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE"><%= IntermediateModel.createPath(model.getSwComponentTypePath(), pPortPrototype.getShortName()) %></CONTEXT-R-PORT-REF>
+                            		<TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION"><%= IntermediateModel.getASPathChecked(operationPrototype) %></TARGET-REQUIRED-OPERATION-REF>
+                          		</OPERATION-IREF>
+                            </SYNCHRONOUS-SERVER-CALL-POINT>
+                         <%
+                         	}
+                     	}
+                  	  %>
+                  	  </SERVER-CALL-POINTS>
+<% } %>
+					  <SYMBOL><%= model.getSwComponentTypeName() + "_" + "Cyclic" %></SYMBOL>
+                    </RUNNABLE-ENTITY>
+                  <% } %>
+                   <%
+                     if (!runnablesWereCreated) {
+                         String unusedRunnableName = model.getSwComponentTypeName() + "_UnusedRunnable";
+                  %>
+                    <!--
+                      The Runnables list needs to contain at least one element, but none was needed
+                      for Operations. This unused one shall fulfill the constraint.
+                    -->
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME><%= unusedRunnableName %></SHORT-NAME>
+                      <SYMBOL><%= unusedRunnableName %></SYMBOL>
+                    </RUNNABLE-ENTITY>
+                  <%
+                     }
+                  %>
+                </RUNNABLES>
+              </SWC-INTERNAL-BEHAVIOR>
+            </INTERNAL-BEHAVIORS>
+          </APPLICATION-SW-COMPONENT-TYPE>
+          <SWC-IMPLEMENTATION>
+            <SHORT-NAME><%= model.getServiceApplTemplateSwComponentPrototypeImplementationName() %></SHORT-NAME>
+            <CODE-DESCRIPTORS>
+              <CODE>
+                <SHORT-NAME>CodeDescriptor</SHORT-NAME>
+                <ARTIFACT-DESCRIPTORS>
+                  <AUTOSAR-ENGINEERING-OBJECT>
+                    <SHORT-LABEL>EngObject</SHORT-LABEL>
+                    <CATEGORY>SWSRC</CATEGORY>
+                  </AUTOSAR-ENGINEERING-OBJECT>
+                </ARTIFACT-DESCRIPTORS>
+              </CODE>
+            </CODE-DESCRIPTORS>
+            <PROGRAMMING-LANGUAGE>C</PROGRAMMING-LANGUAGE>
+            <RESOURCE-CONSUMPTION>
+              <SHORT-NAME>ResourceConsumption</SHORT-NAME>
+              <MEMORY-SECTIONS>
+                <%
+                  /*
+                   * !LINKSTO SERVICEAPPLTEMPLATE_0034, 1
+                   */
+                %>
+                <MEMORY-SECTION>
+                  <SHORT-NAME>Code</SHORT-NAME>
+                  <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/CODE</SW-ADDRMETHOD-REF>
+                  <SYMBOL>CODE</SYMBOL>
+                </MEMORY-SECTION>
+              </MEMORY-SECTIONS>
+            </RESOURCE-CONSUMPTION>
+            <SW-VERSION>1.0.0</SW-VERSION>
+            <VENDOR-ID>1</VENDOR-ID>
+            <BEHAVIOR-REF DEST="SWC-INTERNAL-BEHAVIOR"><%= IntermediateModel.createPath(model.getSwComponentTypePath(), model.getServiceApplTemplateSwComponentPrototypeInternalBehaviourName()) %></BEHAVIOR-REF>
+          </SWC-IMPLEMENTATION>
+        </ELEMENTS>
+      </AR-PACKAGE>
+    </AR-PACKAGES>
+    </AR-PACKAGE>
+	<%
+		String systemParent = Arrays.asList(model.getSystemPath().split("/")).get(1);
+	 	String compParent = Arrays.asList(model.getCompositionSwComponentTypePath().split("/")).get(1);
+	%>
+    <!--
+      Generate the CompositionSwComponentType which contains the SwComponentPrototype of
+      ServiceApplTemplate's ApplicationSwComponentType and which will be merged with the existing
+      one (CompositionSwComponentType is splittable). It needs to be the same (have the same path)
+      as the one which contains service SWC's ServiceSwComponentPrototype.
+    -->
+    <%
+      /*
+       * !LINKSTO SERVICEAPPLTEMPLATE_0011, 2
+       */
+      /*
+       * !LINKSTO SERVICEAPPLTEMPLATE_0030, 2
+       */
+    %>
+    <AR-PACKAGE>
+      <%
+        // "/foo/bar" is split into "", "foo", "bar"
+        Deque<String> compositionSwComponentTypePackages = new LinkedList<>(Arrays.asList(model.getCompositionSwComponentTypePath().split("/")));
+        compositionSwComponentTypePackages.removeFirst(); // remove ""
+        compositionSwComponentTypePackages.removeLast();  // remove "bar"
+      %>
+      <SHORT-NAME><%= compositionSwComponentTypePackages.removeFirst() %></SHORT-NAME>
+      <% for (String pkg : compositionSwComponentTypePackages) { %>
+      <AR-PACKAGES>
+        <AR-PACKAGE>
+          <SHORT-NAME><%= pkg %></SHORT-NAME>
+      <% } %>
+      <ELEMENTS>
+        <%
+          /*
+           * !LINKSTO SERVICEAPPLTEMPLATE_0010, 3
+           */
+        %>
+        <COMPOSITION-SW-COMPONENT-TYPE>
+          <SHORT-NAME><%= model.getCompositionSwComponentTypeName() %></SHORT-NAME>
+          <COMPONENTS>
+            <SW-COMPONENT-PROTOTYPE>
+              <SHORT-NAME><%= model.getServiceApplTemplateSwComponentPrototypeName() %></SHORT-NAME>
+              <TYPE-TREF DEST="APPLICATION-SW-COMPONENT-TYPE"><%= model.getSwComponentTypePath() %></TYPE-TREF>
+            </SW-COMPONENT-PROTOTYPE>
+          </COMPONENTS>
+          <% if (model.isGenerateAssemblyConnectors()) { %>
+          <CONNECTORS>
+             <% if (model.isGenerateClientServerPPort()) { %>
+            <!-- Service SWC RPorts -->
+            <%
+              /*
+               * !LINKSTO SERVICEAPPLTEMPLATE_0002, 2
+               */
+              for (IRPortPrototype rPortPrototype : model.getServiceSwcClientServerRequiredPortPrototypesToImplement()) {
+            %>
+              <ASSEMBLY-SW-CONNECTOR>
+                <SHORT-NAME>AssemblyConR<%= rPortPrototype.getShortName() %></SHORT-NAME>
+                <PROVIDER-IREF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE"><%= IntermediateModel.createPath(model.getCompositionSwComponentTypePath(), model.getServiceApplTemplateSwComponentPrototypeName()) %></CONTEXT-COMPONENT-REF>
+                  <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE"><%= IntermediateModel.createPath(model.getSwComponentTypePath(), rPortPrototype.getShortName()) %></TARGET-P-PORT-REF>
+                </PROVIDER-IREF>
+                <REQUESTER-IREF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE"><%= IntermediateModel.getASPathChecked(model.getServiceSwComponentPrototype()) %></CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE"><%= IntermediateModel.getASPathChecked(rPortPrototype) %></TARGET-R-PORT-REF>
+                </REQUESTER-IREF>
+              </ASSEMBLY-SW-CONNECTOR>
+            <% } %>
+            <% } %>
+            <% if (model.isGenerateSenderReceiverPPort()) { %>
+            <% for (IRPortPrototype rPortPrototype : model.getServiceSwcSenderReceiverRequiredPortPrototypesToImplement()) {
+            %>
+              <ASSEMBLY-SW-CONNECTOR>
+                <SHORT-NAME>AssemblyConR<%= rPortPrototype.getShortName() %></SHORT-NAME>
+                <PROVIDER-IREF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE"><%= IntermediateModel.createPath(model.getCompositionSwComponentTypePath(), model.getServiceApplTemplateSwComponentPrototypeName()) %></CONTEXT-COMPONENT-REF>
+                  <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE"><%= IntermediateModel.createPath(model.getSwComponentTypePath(), rPortPrototype.getShortName()) %></TARGET-P-PORT-REF>
+                </PROVIDER-IREF>
+                <REQUESTER-IREF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE"><%= IntermediateModel.getASPathChecked(model.getServiceSwComponentPrototype()) %></CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE"><%= IntermediateModel.getASPathChecked(rPortPrototype) %></TARGET-R-PORT-REF>
+                </REQUESTER-IREF>
+              </ASSEMBLY-SW-CONNECTOR>
+            <% } %>
+            <% } %>
+            <% if (model.isGenerateClientServerRPort()) { %>
+            <!-- Service SWC PPorts -->
+            <%
+              /*
+               * !LINKSTO SERVICEAPPLTEMPLATE_0002, 2
+               */
+              for (IPPortPrototype pPortPrototype : model.getServiceSwcClientServerProvidedPortPrototypesToImplement()) {
+            %>
+              <ASSEMBLY-SW-CONNECTOR>
+                <SHORT-NAME>AssemblyConR<%= pPortPrototype.getShortName() %></SHORT-NAME>
+                <PROVIDER-IREF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE"><%= IntermediateModel.getASPathChecked(model.getServiceSwComponentPrototype()) %></CONTEXT-COMPONENT-REF>
+                  <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE"><%= IntermediateModel.getASPathChecked(pPortPrototype) %></TARGET-P-PORT-REF>
+                </PROVIDER-IREF>
+                <REQUESTER-IREF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE"><%= IntermediateModel.createPath(model.getCompositionSwComponentTypePath(), model.getServiceApplTemplateSwComponentPrototypeName()) %></CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE"><%= IntermediateModel.createPath(model.getSwComponentTypePath(), pPortPrototype.getShortName()) %></TARGET-R-PORT-REF>
+                </REQUESTER-IREF>
+              </ASSEMBLY-SW-CONNECTOR>
+            <% } %>
+            <% } %>
+            <% if (model.isGenerateSenderReceiverRPort()) { %>
+            <% for (IPPortPrototype pPortPrototype : model.getServiceSwcSenderReceiverProvidedPortPrototypesToImplement()) {
+            %>
+              <ASSEMBLY-SW-CONNECTOR>
+                <SHORT-NAME>AssemblyConR<%= pPortPrototype.getShortName() %></SHORT-NAME>
+                <PROVIDER-IREF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE"><%= IntermediateModel.getASPathChecked(model.getServiceSwComponentPrototype()) %></CONTEXT-COMPONENT-REF>
+                  <TARGET-P-PORT-REF DEST="P-PORT-PROTOTYPE"><%= IntermediateModel.getASPathChecked(pPortPrototype) %></TARGET-P-PORT-REF>
+                </PROVIDER-IREF>
+                <REQUESTER-IREF>
+                  <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE"><%= IntermediateModel.createPath(model.getCompositionSwComponentTypePath(), model.getServiceApplTemplateSwComponentPrototypeName()) %></CONTEXT-COMPONENT-REF>
+                  <TARGET-R-PORT-REF DEST="R-PORT-PROTOTYPE"><%= IntermediateModel.createPath(model.getSwComponentTypePath(), pPortPrototype.getShortName()) %></TARGET-R-PORT-REF>
+                </REQUESTER-IREF>
+              </ASSEMBLY-SW-CONNECTOR>
+            <% } %>
+            <% } %>
+          </CONNECTORS>
+         <% } %>
+        </COMPOSITION-SW-COMPONENT-TYPE>
+      </ELEMENTS>
+    <% for (String pkg : compositionSwComponentTypePackages) { %>
+      </AR-PACKAGE>
+    </AR-PACKAGES>
+    <% } %>
+    </AR-PACKAGE>
+    <% if (systemParent.equals(compParent)) {%>
+         <%
+            IntermediateModel.isDuplicateArPackage = true;
+            System.setProperty("isDuplicateArPackage", "true");
+    } %>
+    <% else {%>
+    <%
+            IntermediateModel.isDuplicateArPackage = false;
+            System.setProperty("isDuplicateArPackage", "false");
+    %>
+  	<!--
+      generate the System Mappings. The System path has to be the same path as the final application uses.
+	-->
+	<%
+      /*
+       * !LINKSTO SERVICEAPPLTEMPLATE_0006, 1
+       */
+    %>
+    <AR-PACKAGE>
+    <%
+      // "/foo/bar" is split into "", "foo", "bar"
+      Deque<String> systemPackages = new LinkedList<>(Arrays.asList(model.getSystemPath().split("/")));
+      systemPackages.removeFirst(); // remove ""
+      systemPackages.removeLast(); // remove "bar"
+    %>
+    <SHORT-NAME><%= systemPackages.removeFirst() %></SHORT-NAME>
+    <% for (String pkg : systemPackages) { %>
+    <AR-PACKAGES>
+      <AR-PACKAGE>
+        <SHORT-NAME><%= pkg %></SHORT-NAME>
+    <% } %>
+      <ELEMENTS>
+        <SYSTEM>
+          <SHORT-NAME><%= model.getSystemName() %></SHORT-NAME>
+          <MAPPINGS>
+            <SYSTEM-MAPPING>
+              <SHORT-NAME><%= model.getServiceApplTemplateSwComponentPrototypeName() %>SystemMappings</SHORT-NAME>
+              <SW-MAPPINGS>
+                <%
+                  /*
+                   * !LINKSTO SERVICEAPPLTEMPLATE_0007, 2
+                   */
+                %>
+                <SWC-TO-ECU-MAPPING>
+                  <SHORT-NAME><%= model.getServiceApplTemplateSwComponentPrototypeName() %>SwcToEcuMapping</SHORT-NAME>
+                  <COMPONENT-IREFS>
+                    <COMPONENT-IREF>
+                      <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE"><%= IntermediateModel.getASPathChecked(model.getSystem().getRootSoftwareComposition()) %></CONTEXT-COMPOSITION-REF>
+                      <% for (ISwComponentPrototype compositionPrototype : model.getIntermediateLayerCompositionPrototypes()) { %>
+                        <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE"><%= IntermediateModel.getASPathChecked(compositionPrototype) %></CONTEXT-COMPONENT-REF>
+                      <% } %>
+                      <TARGET-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE"><%= IntermediateModel.createPath(model.getCompositionSwComponentTypePath(), model.getServiceApplTemplateSwComponentPrototypeName()) %></TARGET-COMPONENT-REF>
+                    </COMPONENT-IREF>
+                  </COMPONENT-IREFS>
+                  <ECU-INSTANCE-REF DEST="ECU-INSTANCE"><%= IntermediateModel.getASPathChecked(model.getEcuInstance()) %></ECU-INSTANCE-REF>
+                </SWC-TO-ECU-MAPPING>
+              </SW-MAPPINGS>
+            </SYSTEM-MAPPING>
+          </MAPPINGS>
+        </SYSTEM>
+      </ELEMENTS>
+    <% for (String pkg : systemPackages) { %>
+      </AR-PACKAGE>
+    </AR-PACKAGES>
+    <% } %>
+    </AR-PACKAGE>
+    <% } %>
+  </AR-PACKAGES>
+</AUTOSAR>

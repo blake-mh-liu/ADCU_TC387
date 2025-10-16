@@ -1,0 +1,848 @@
+<?xml version='1.0'?>
+<datamodel version="7.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/16/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/16/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar" 
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd" 
+         xmlns:f="http://www.tresos.de/_projects/DataModel2/14/formulaexpr.xsd" 
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd" 
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd"  
+         xmlns:variant="http://www.tresos.de/_projects/DataModel2/11/variant.xsd">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="EcuC" type="AR-PACKAGE">
+        <d:lst type="ELEMENTS">
+          <d:chc name="EcuC" type="AR-ELEMENT" value="MODULE-CONFIGURATION">
+            <d:ctr type="MODULE-CONFIGURATION">
+              <a:a name="DEF" value="ASPath:/TS_TxDxM5I0R0/EcuC"/>
+              <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+              <d:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                <d:var name="ArMajorVersion" type="INTEGER" value="4"/>
+                <d:var name="ArMinorVersion" type="INTEGER" value="0"/>
+                <d:var name="ArPatchVersion" type="INTEGER" value="3"/>
+                <d:var name="SwMajorVersion" type="INTEGER" value="5"/>
+                <d:var name="SwMinorVersion" type="INTEGER" value="0"/>
+                <d:var name="SwPatchVersion" type="INTEGER" value="19"/>
+                <d:var name="ModuleId" type="INTEGER" value="10">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="VendorId" type="INTEGER" value="1">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="Release" type="STRING" value="">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+              </d:ctr>
+              <d:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION" 
+                     value="VariantPostBuild">
+                <a:a name="IMPORTER_INFO" value="@DEF"/>
+              </d:var>
+              <d:ctr name="EcucGeneral" type="IDENTIFIABLE">
+                <d:var name="EcucDevErrorDetect" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EcucMetaDataHandlingEnabled" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+              </d:ctr>
+              <d:ctr name="EcucHardware" type="IDENTIFIABLE">
+                <a:a name="ENABLE" value="false"/>
+                <d:lst name="EcucCoreDefinition" type="MAP"/>
+              </d:ctr>
+              <d:ctr name="EcucPartitionCollection" type="IDENTIFIABLE">
+                <a:a name="ENABLE" value="false"/>
+                <d:lst name="EcucPartition" type="MAP"/>
+              </d:ctr>
+              <d:ctr name="EcucPduCollection" type="IDENTIFIABLE">
+                <a:a name="ENABLE" value="true"/>
+                <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                <d:var name="PduIdTypeEnum" type="ENUMERATION" value="UINT16">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="PduLengthTypeEnum" type="ENUMERATION" 
+                       value="UINT16">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:lst name="MetaDataType" type="MAP"/>
+                <d:lst name="Pdu" type="MAP">
+                  <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                  <d:ctr name="Pdu_CounterIn_256R" type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    <d:var name="PduLength" type="INTEGER" value="1">
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:var>
+                    <d:ref name="MetaDataTypeRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:ref name="EcucPduDefaultPartitionRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:lst name="EcucPduDedicatedPartition" type="MAP"/>
+                    <d:ref name="SysTPduToFrameMappingRef" type="REFERENCE" 
+                           value="ASPath:/CanSystem/FRAMES/Pdu_CounterIn/PduToFrame_Pdu_CounterIn_0">
+                      <a:a name="ENABLE" value="true"/>
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:ref>
+                    <d:var name="PduId" type="INTEGER" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ctr name="Pdu_CounterOut_272T" type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    <d:var name="PduLength" type="INTEGER" value="1">
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:var>
+                    <d:ref name="MetaDataTypeRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:ref name="EcucPduDefaultPartitionRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:lst name="EcucPduDedicatedPartition" type="MAP"/>
+                    <d:ref name="SysTPduToFrameMappingRef" type="REFERENCE" 
+                           value="ASPath:/CanSystem/FRAMES/Pdu_CounterOut/PduToFrame_Pdu_CounterOut_0">
+                      <a:a name="ENABLE" value="true"/>
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:ref>
+                    <d:var name="PduId" type="INTEGER" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ctr name="N_Pdu_USDT_CAN_Rx_Func_Tp_417070833R" 
+                         type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    <d:var name="PduLength" type="INTEGER" value="8">
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:var>
+                    <d:ref name="MetaDataTypeRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:ref name="EcucPduDefaultPartitionRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:lst name="EcucPduDedicatedPartition" type="MAP"/>
+                    <d:ref name="SysTPduToFrameMappingRef" type="REFERENCE" 
+                           value="ASPath:/CanSystem/FRAMES/USDT_CAN_Rx_Func/USDT_CAN_Rx_Func_Tp">
+                      <a:a name="ENABLE" value="true"/>
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:ref>
+                    <d:var name="PduId" type="INTEGER" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ctr name="N_Pdu_USDT_CAN_Rx_Phys_Tp_417000433R" 
+                         type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    <d:var name="PduLength" type="INTEGER" value="8">
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:var>
+                    <d:ref name="MetaDataTypeRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:ref name="EcucPduDefaultPartitionRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:lst name="EcucPduDedicatedPartition" type="MAP"/>
+                    <d:ref name="SysTPduToFrameMappingRef" type="REFERENCE" 
+                           value="ASPath:/CanSystem/FRAMES/USDT_CAN_Rx_Phys/USDT_CAN_Rx_Phys_Tp">
+                      <a:a name="ENABLE" value="true"/>
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:ref>
+                    <d:var name="PduId" type="INTEGER" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ctr name="N_Pdu_USDT_CAN_Tx_Tp_417001963T" 
+                         type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    <d:var name="PduLength" type="INTEGER" value="8">
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:var>
+                    <d:ref name="MetaDataTypeRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:ref name="EcucPduDefaultPartitionRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:lst name="EcucPduDedicatedPartition" type="MAP"/>
+                    <d:ref name="SysTPduToFrameMappingRef" type="REFERENCE" 
+                           value="ASPath:/CanSystem/FRAMES/USDT_CAN_Tx/USDT_CAN_Tx_Tp">
+                      <a:a name="ENABLE" value="true"/>
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:ref>
+                    <d:var name="PduId" type="INTEGER" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ctr name="N_Pdu_USDT_CAN_Tx_Tp_D_417001963T" 
+                         type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    <d:var name="PduLength" type="INTEGER" value="8">
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:var>
+                    <d:ref name="MetaDataTypeRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:ref name="EcucPduDefaultPartitionRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:lst name="EcucPduDedicatedPartition" type="MAP"/>
+                    <d:ref name="SysTPduToFrameMappingRef" type="REFERENCE" 
+                           value="ASPath:/CanSystem/FRAMES/USDT_CAN_Tx/USDT_CAN_Tx_Tp">
+                      <a:a name="ENABLE" value="true"/>
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:ref>
+                    <d:var name="PduId" type="INTEGER" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ctr name="Dcm_Pdu_UUDT_CAN_Tx_417133035T" 
+                         type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    <d:var name="PduLength" type="INTEGER" value="8">
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:var>
+                    <d:ref name="MetaDataTypeRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:ref name="EcucPduDefaultPartitionRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:lst name="EcucPduDedicatedPartition" type="MAP"/>
+                    <d:ref name="SysTPduToFrameMappingRef" type="REFERENCE" 
+                           value="ASPath:/CanSystem/FRAMES/UUDT_CAN_Tx/UUDT_CAN_Tx">
+                      <a:a name="ENABLE" value="true"/>
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:ref>
+                    <d:var name="PduId" type="INTEGER" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ctr name="N_Pdu_USDT_CAN_FD_Rx_Func_Tp_417070834R" 
+                         type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    <d:var name="PduLength" type="INTEGER" value="64">
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:var>
+                    <d:ref name="MetaDataTypeRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:ref name="EcucPduDefaultPartitionRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:lst name="EcucPduDedicatedPartition" type="MAP"/>
+                    <d:ref name="SysTPduToFrameMappingRef" type="REFERENCE" 
+                           value="ASPath:/CanSystem/FRAMES/USDT_CAN_FD_Rx_Func/USDT_CAN_FD_Rx_Func_Tp">
+                      <a:a name="ENABLE" value="true"/>
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:ref>
+                    <d:var name="PduId" type="INTEGER" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ctr name="N_Pdu_USDT_CAN_FD_Rx_Phys_Tp_417000434R" 
+                         type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    <d:var name="PduLength" type="INTEGER" value="64">
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:var>
+                    <d:ref name="MetaDataTypeRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:ref name="EcucPduDefaultPartitionRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:lst name="EcucPduDedicatedPartition" type="MAP"/>
+                    <d:ref name="SysTPduToFrameMappingRef" type="REFERENCE" 
+                           value="ASPath:/CanSystem/FRAMES/USDT_CAN_FD_Rx_Phys/USDT_CAN_FD_Rx_Phys_Tp">
+                      <a:a name="ENABLE" value="true"/>
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:ref>
+                    <d:var name="PduId" type="INTEGER" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ctr name="N_Pdu_USDT_CAN_FD_Tx_Tp_417002219T" 
+                         type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    <d:var name="PduLength" type="INTEGER" value="64">
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:var>
+                    <d:ref name="MetaDataTypeRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:ref name="EcucPduDefaultPartitionRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:lst name="EcucPduDedicatedPartition" type="MAP"/>
+                    <d:ref name="SysTPduToFrameMappingRef" type="REFERENCE" 
+                           value="ASPath:/CanSystem/FRAMES/USDT_CAN_FD_Tx/USDT_CAN_FD_Tx_TP">
+                      <a:a name="ENABLE" value="true"/>
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:ref>
+                    <d:var name="PduId" type="INTEGER" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ctr name="N_Pdu_USDT_CAN_FD_Tx_Tp_D_417002219T" 
+                         type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    <d:var name="PduLength" type="INTEGER" value="64">
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:var>
+                    <d:ref name="MetaDataTypeRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:ref name="EcucPduDefaultPartitionRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:lst name="EcucPduDedicatedPartition" type="MAP"/>
+                    <d:ref name="SysTPduToFrameMappingRef" type="REFERENCE" 
+                           value="ASPath:/CanSystem/FRAMES/USDT_CAN_FD_Tx/USDT_CAN_FD_Tx_TP">
+                      <a:a name="ENABLE" value="true"/>
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:ref>
+                    <d:var name="PduId" type="INTEGER" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ctr name="Dcm_Pdu_UUDT_CAN_FD_Tx_417133291T" 
+                         type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    <d:var name="PduLength" type="INTEGER" value="64">
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:var>
+                    <d:ref name="MetaDataTypeRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:ref name="EcucPduDefaultPartitionRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:lst name="EcucPduDedicatedPartition" type="MAP"/>
+                    <d:ref name="SysTPduToFrameMappingRef" type="REFERENCE" 
+                           value="ASPath:/CanSystem/FRAMES/UUDT_CAN_FD_Tx/UUDT_CAN_FD_Tx">
+                      <a:a name="ENABLE" value="true"/>
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:ref>
+                    <d:var name="PduId" type="INTEGER" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ctr name="Pdu_CounterIn_CAN_FD_257R" type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    <d:var name="PduLength" type="INTEGER" value="64">
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:var>
+                    <d:ref name="MetaDataTypeRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:ref name="EcucPduDefaultPartitionRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:lst name="EcucPduDedicatedPartition" type="MAP"/>
+                    <d:ref name="SysTPduToFrameMappingRef" type="REFERENCE" 
+                           value="ASPath:/CanSystem/FRAMES/Pdu_CounterIn_CAN_FD/PduToFrame_Pdu_CounterIn_CAN_FD_0">
+                      <a:a name="ENABLE" value="true"/>
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:ref>
+                    <d:var name="PduId" type="INTEGER" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ctr name="Pdu_CounterOut_CAN_FD_273T" type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    <d:var name="PduLength" type="INTEGER" value="64">
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:var>
+                    <d:ref name="MetaDataTypeRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:ref name="EcucPduDefaultPartitionRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:lst name="EcucPduDedicatedPartition" type="MAP"/>
+                    <d:ref name="SysTPduToFrameMappingRef" type="REFERENCE" 
+                           value="ASPath:/CanSystem/FRAMES/Pdu_CounterOut_CAN_FD/PduToFrame_Pdu_CounterOut_CAN_FD_0">
+                      <a:a name="ENABLE" value="true"/>
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:ref>
+                    <d:var name="PduId" type="INTEGER" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ctr name="Nm_Pdu_CanIn_592R" type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    <d:var name="PduLength" type="INTEGER" value="8">
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:var>
+                    <d:ref name="MetaDataTypeRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:ref name="EcucPduDefaultPartitionRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:lst name="EcucPduDedicatedPartition" type="MAP"/>
+                    <d:ref name="SysTPduToFrameMappingRef" type="REFERENCE" 
+                           value="ASPath:/CanSystem/FRAMES/Nm_Can_Rx/PduToFrame_Nm_Pdu_CanIn">
+                      <a:a name="ENABLE" value="true"/>
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:ref>
+                    <d:var name="PduId" type="INTEGER" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ctr name="Nm_Pdu_CanOut_593T" type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    <d:var name="PduLength" type="INTEGER" value="8">
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:var>
+                    <d:ref name="MetaDataTypeRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:ref name="EcucPduDefaultPartitionRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:lst name="EcucPduDedicatedPartition" type="MAP"/>
+                    <d:ref name="SysTPduToFrameMappingRef" type="REFERENCE" 
+                           value="ASPath:/CanSystem/FRAMES/Nm_Can_Tx/PduToFrame_Nm_Pdu_CanOut">
+                      <a:a name="ENABLE" value="true"/>
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:ref>
+                    <d:var name="PduId" type="INTEGER" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ctr name="Pdu_SecuredIn_261R" type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    <d:var name="PduLength" type="INTEGER" value="13">
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:var>
+                    <d:ref name="MetaDataTypeRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:ref name="EcucPduDefaultPartitionRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:lst name="EcucPduDedicatedPartition" type="MAP"/>
+                    <d:ref name="SysTPduToFrameMappingRef" type="REFERENCE" 
+                           value="ASPath:/CanSystem/FRAMES/Pdu_SecuredDataIn/PduToFrame_Pdu_SecuredDataIn">
+                      <a:a name="ENABLE" value="true"/>
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:ref>
+                    <d:var name="PduId" type="INTEGER" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ctr name="Pdu_SecuredPayloadIn_261R" type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    <d:var name="PduLength" type="INTEGER" value="9">
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:var>
+                    <d:ref name="MetaDataTypeRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:ref name="EcucPduDefaultPartitionRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:lst name="EcucPduDedicatedPartition" type="MAP"/>
+                    <d:ref name="SysTPduToFrameMappingRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:var name="PduId" type="INTEGER" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ctr name="Pdu_SecuredOut_277T" type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    <d:var name="PduLength" type="INTEGER" value="13">
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:var>
+                    <d:ref name="MetaDataTypeRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:ref name="EcucPduDefaultPartitionRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:lst name="EcucPduDedicatedPartition" type="MAP"/>
+                    <d:ref name="SysTPduToFrameMappingRef" type="REFERENCE" 
+                           value="ASPath:/CanSystem/FRAMES/Pdu_SecuredDataOut/PduToFrame_Pdu_SecuredDataOut">
+                      <a:a name="ENABLE" value="true"/>
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:ref>
+                    <d:var name="PduId" type="INTEGER" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ctr name="Pdu_SecuredPayloadOut_277T" type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    <d:var name="PduLength" type="INTEGER" value="9">
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:var>
+                    <d:ref name="MetaDataTypeRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:ref name="EcucPduDefaultPartitionRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:lst name="EcucPduDedicatedPartition" type="MAP"/>
+                    <d:ref name="SysTPduToFrameMappingRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:var name="PduId" type="INTEGER" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ctr name="ISIP_E2EProt_DataIn_280R" type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    <d:var name="PduLength" type="INTEGER" value="8">
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:var>
+                    <d:ref name="MetaDataTypeRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:ref name="EcucPduDefaultPartitionRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:lst name="EcucPduDedicatedPartition" type="MAP"/>
+                    <d:ref name="SysTPduToFrameMappingRef" type="REFERENCE" 
+                           value="ASPath:/CanSystem/FRAMES/CF_E2EProt_DataIn/CF_E2EProt_DataIn">
+                      <a:a name="ENABLE" value="true"/>
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:ref>
+                    <d:var name="PduId" type="INTEGER" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ctr name="ISIP_E2EProt_DataOut_284T" type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    <d:var name="PduLength" type="INTEGER" value="8">
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:var>
+                    <d:ref name="MetaDataTypeRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:ref name="EcucPduDefaultPartitionRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:lst name="EcucPduDedicatedPartition" type="MAP"/>
+                    <d:ref name="SysTPduToFrameMappingRef" type="REFERENCE" 
+                           value="ASPath:/CanSystem/FRAMES/CF_E2EProt_DataOut/CF_E2EProt_DataOut">
+                      <a:a name="ENABLE" value="true"/>
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:ref>
+                    <d:var name="PduId" type="INTEGER" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ctr name="Nm_Pdu_CanIn_NmComUserData_592R" 
+                         type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    <d:var name="PduLength" type="INTEGER" value="6">
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:var>
+                    <d:ref name="MetaDataTypeRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:ref name="EcucPduDefaultPartitionRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:lst name="EcucPduDedicatedPartition" type="MAP"/>
+                    <d:ref name="SysTPduToFrameMappingRef" type="REFERENCE" 
+                           value="ASPath:/CanSystem/FRAMES/Nm_Can_Rx/PduToFrame_Nm_Pdu_CanIn">
+                      <a:a name="ENABLE" value="true"/>
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:ref>
+                    <d:var name="PduId" type="INTEGER" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ctr name="Nm_Pdu_CanOut_NmComUserData_593T" 
+                         type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    <d:var name="PduLength" type="INTEGER" value="6">
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:var>
+                    <d:ref name="MetaDataTypeRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:ref name="EcucPduDefaultPartitionRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:lst name="EcucPduDedicatedPartition" type="MAP"/>
+                    <d:ref name="SysTPduToFrameMappingRef" type="REFERENCE" 
+                           value="ASPath:/CanSystem/FRAMES/Nm_Can_Tx/PduToFrame_Nm_Pdu_CanOut">
+                      <a:a name="ENABLE" value="true"/>
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:ref>
+                    <d:var name="PduId" type="INTEGER" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ctr name="Dcm_Pdu_USDT_CAN_FD_Rx_Func" type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    <d:var name="PduLength" type="INTEGER" value="63">
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:var>
+                    <d:ref name="MetaDataTypeRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:ref name="EcucPduDefaultPartitionRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:lst name="EcucPduDedicatedPartition" type="MAP"/>
+                    <d:ref name="SysTPduToFrameMappingRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:var name="PduId" type="INTEGER" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ctr name="Dcm_Pdu_USDT_CAN_FD_Rx_Phys" type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    <d:var name="PduLength" type="INTEGER" value="64">
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:var>
+                    <d:ref name="MetaDataTypeRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:ref name="EcucPduDefaultPartitionRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:lst name="EcucPduDedicatedPartition" type="MAP"/>
+                    <d:ref name="SysTPduToFrameMappingRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:var name="PduId" type="INTEGER" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ctr name="Dcm_Pdu_USDT_CAN_Rx_Func" type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    <d:var name="PduLength" type="INTEGER" value="7">
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:var>
+                    <d:ref name="MetaDataTypeRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:ref name="EcucPduDefaultPartitionRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:lst name="EcucPduDedicatedPartition" type="MAP"/>
+                    <d:ref name="SysTPduToFrameMappingRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:var name="PduId" type="INTEGER" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ctr name="Dcm_Pdu_USDT_CAN_Rx_Phys" type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    <d:var name="PduLength" type="INTEGER" value="8">
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:var>
+                    <d:ref name="MetaDataTypeRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:ref name="EcucPduDefaultPartitionRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:lst name="EcucPduDedicatedPartition" type="MAP"/>
+                    <d:ref name="SysTPduToFrameMappingRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:var name="PduId" type="INTEGER" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ctr name="Dcm_Pdu_USDT_CAN_FD_Tx" type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    <d:var name="PduLength" type="INTEGER" value="64">
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:var>
+                    <d:ref name="MetaDataTypeRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:ref name="EcucPduDefaultPartitionRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:lst name="EcucPduDedicatedPartition" type="MAP"/>
+                    <d:ref name="SysTPduToFrameMappingRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:var name="PduId" type="INTEGER" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ctr name="Dcm_Pdu_USDT_CAN_Tx" type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    <d:var name="PduLength" type="INTEGER" value="8">
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:var>
+                    <d:ref name="MetaDataTypeRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:ref name="EcucPduDefaultPartitionRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:lst name="EcucPduDedicatedPartition" type="MAP"/>
+                    <d:ref name="SysTPduToFrameMappingRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:var name="PduId" type="INTEGER" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ctr name="CanNmPnEiraRxNSdu" type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    <d:var name="PduLength" type="INTEGER" value="6">
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    </d:var>
+                    <d:ref name="MetaDataTypeRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:ref name="EcucPduDefaultPartitionRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:lst name="EcucPduDedicatedPartition" type="MAP"/>
+                    <d:ref name="SysTPduToFrameMappingRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:var name="PduId" type="INTEGER" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                </d:lst>
+              </d:ctr>
+              <d:ctr name="EcucPostBuildVariants" type="IDENTIFIABLE">
+                <a:a name="ENABLE" value="false"/>
+                <d:ref name="ActiveLoadableVariantRef" type="REFERENCE" >
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:ref>
+                <d:ref name="ActiveSelectableVariantRef" type="REFERENCE" >
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:ref>
+                <d:lst name="EcucPostBuildVariantRef"/>
+              </d:ctr>
+              <d:ctr name="EcucVariationResolver" type="IDENTIFIABLE">
+                <a:a name="ENABLE" value="false"/>
+                <d:lst name="PredefinedVariantRef"/>
+              </d:ctr>
+              <d:ctr name="PublishedInformation" type="IDENTIFIABLE">
+                <d:var name="PbcfgMSupport" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+              </d:ctr>
+            </d:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+
+</datamodel>

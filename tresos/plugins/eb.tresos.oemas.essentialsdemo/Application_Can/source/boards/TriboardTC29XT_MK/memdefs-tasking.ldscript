@@ -1,0 +1,35 @@
+// $Id: memdefs-tasking.ldscript 23786 2016-06-17 13:46:29Z mist8519 $
+//
+// Minimal TC29XT CPU description for Tasking linker.
+//
+// This file defines the specifics for the TC29XT, used by the more generic
+// TRICORE-tasking.ldscript linker script.
+//
+// Copyright 1998-2014 Elektrobit Automotive GmbH
+// All rights exclusively reserved for Elektrobit Automotive GmbH,
+// unless expressly agreed to otherwise.
+//
+
+// size of the DSPR RAM for each core
+#define DSPR_CORE0 120k
+#define DSPR_CORE1 240k
+#define DSPR_CORE2 240k
+
+// size of the PFLASH
+#define PFLASH_SIZE 8M
+
+// reserved sections in PFLASH
+section_setup spe:tc:linear
+{
+    // According to Tasking compiler user guide the reserved keyword is used, like
+    // reserved start_address .. end_address;
+    // The end address is not part of the range
+
+    reserved 0x80014000 .. 0x80018000; // PS0, S5 (Tuning Protection)
+    reserved 0x80018000 .. 0x8001c000; // PS0, S6 (HSM)
+    reserved 0x80020000 .. 0x80028000; // PS0, S8 (BMI Header)
+    reserved 0x80060000 .. 0x80080000; // PS0, S16, S17 (HSM)
+}
+
+// Editor settings: DO NOT DELETE
+// vi:set ts=4:

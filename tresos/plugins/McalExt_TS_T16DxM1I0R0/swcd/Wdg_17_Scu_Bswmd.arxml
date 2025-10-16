@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+[!AUTOSPACING!][!//
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-0-3.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>AUTOSAR_Wdg</SHORT-NAME>
+      <AR-PACKAGES>
+            <AR-PACKAGE>
+              <SHORT-NAME>BswModuleDescriptions</SHORT-NAME>
+              <ELEMENTS>
+                <BSW-MODULE-DESCRIPTION>
+                  <SHORT-NAME>Wdg_17_Scu</SHORT-NAME>
+                  <MODULE-ID>102</MODULE-ID>
+                  <PROVIDED-ENTRYS>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_Wdg/BswModuleEntrys/Wdg_17_Scu_Init</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                  </PROVIDED-ENTRYS>
+                  <INTERNAL-BEHAVIORS>
+                    <BSW-INTERNAL-BEHAVIOR>
+                      <SHORT-NAME>InternalBehavior_0</SHORT-NAME>
+                      <EXCLUSIVE-AREAS>
+                        <EXCLUSIVE-AREA>
+                          <SHORT-NAME>CpuEndInit</SHORT-NAME>
+                        </EXCLUSIVE-AREA>
+                        <EXCLUSIVE-AREA>
+                          <SHORT-NAME>TimerHandling</SHORT-NAME>
+                        </EXCLUSIVE-AREA>
+                      </EXCLUSIVE-AREAS>
+                      <ENTITYS>
+                        <BSW-CALLED-ENTITY>
+                          <SHORT-NAME>Wdg_17_Scu_Init</SHORT-NAME>
+                          <CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                            <CAN-ENTER-EXCLUSIVE-AREA-REF DEST="EXCLUSIVE-AREA">/AUTOSAR_Wdg/BswModuleDescriptions/Wdg_17_Scu/InternalBehavior_0/CpuEndInit</CAN-ENTER-EXCLUSIVE-AREA-REF>
+                            <CAN-ENTER-EXCLUSIVE-AREA-REF DEST="EXCLUSIVE-AREA">/AUTOSAR_Wdg/BswModuleDescriptions/Wdg_17_Scu/InternalBehavior_0/TimerHandling</CAN-ENTER-EXCLUSIVE-AREA-REF>
+                          </CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_Wdg/BswModuleEntrys/Wdg_17_Scu_Init</IMPLEMENTED-ENTRY-REF>
+                        </BSW-CALLED-ENTITY>
+                      </ENTITYS>
+                    </BSW-INTERNAL-BEHAVIOR>
+                  </INTERNAL-BEHAVIORS>
+                </BSW-MODULE-DESCRIPTION>
+              </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE>
+              <SHORT-NAME>BswModuleEntrys</SHORT-NAME>
+              <ELEMENTS>
+                <BSW-MODULE-ENTRY>
+                  <SHORT-NAME>Wdg_17_Scu_Init</SHORT-NAME>
+                  <SERVICE-ID>1000</SERVICE-ID>
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+              </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+
+    <AR-PACKAGE>
+      <SHORT-NAME>Wdg_Aurix2GAS440</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE>
+          <SHORT-NAME>Implementations</SHORT-NAME>
+          <ELEMENTS>
+            <BSW-IMPLEMENTATION>
+              <SHORT-NAME>BswImplementation_0</SHORT-NAME>
+              <CODE-DESCRIPTORS>
+                <CODE>
+                  <SHORT-NAME>Files</SHORT-NAME>
+                  <ARTIFACT-DESCRIPTORS>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>make::Wdg_defs.mak</SHORT-LABEL>
+                      <CATEGORY>SWMAKE</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>make::Wdg_rules.mak</SHORT-LABEL>
+                      <CATEGORY>SWMAKE</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                  </ARTIFACT-DESCRIPTORS>
+                </CODE>
+              </CODE-DESCRIPTORS>
+              <PROGRAMMING-LANGUAGE>C</PROGRAMMING-LANGUAGE>
+            <RESOURCE-CONSUMPTION>
+              <SHORT-NAME>ResourceConsumption</SHORT-NAME>
+                <MEMORY-SECTIONS>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_CLEARED_ASIL_B_GLOBAL_32</SHORT-NAME>
+                    <ALIGNMENT>32</ALIGNMENT>
+                    <OPTIONS>
+                    	<OPTION>safetyAsilB</OPTION>
+                    </OPTIONS>
+                    <PREFIX-REF DEST="SECTION-NAME-PREFIX">/Wdg_Aurix2GAS440/Implementations/BswImplementation_0/ResourceConsumption/WDG_17_SCU</PREFIX-REF>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_CLEARED_ASIL_B</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>CONST_ASIL_B_GLOBAL_UNSPECIFIED</SHORT-NAME>
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <OPTIONS>
+                    	<OPTION>safetyAsilB</OPTION>
+                    </OPTIONS>
+                    <PREFIX-REF DEST="SECTION-NAME-PREFIX">/Wdg_Aurix2GAS440/Implementations/BswImplementation_0/ResourceConsumption/WDG_17_SCU</PREFIX-REF>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/CONST_ASIL_B</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>CONFIG_DATA_ASIL_B_CORE0_UNSPECIFIED</SHORT-NAME>
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <OPTIONS>
+                    	<OPTION>safetyAsilB</OPTION>
+                    </OPTIONS>
+                    <PREFIX-REF DEST="SECTION-NAME-PREFIX">/Wdg_Aurix2GAS440/Implementations/BswImplementation_0/ResourceConsumption/WDG_17_SCU</PREFIX-REF>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/CONFIG_DATA_ASIL_B</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+
+
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>CONFIG_DATA_ASIL_B_CORE1_UNSPECIFIED</SHORT-NAME>
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <OPTIONS>
+                    	<OPTION>safetyAsilB</OPTION>
+                    </OPTIONS>
+                    <PREFIX-REF DEST="SECTION-NAME-PREFIX">/Wdg_Aurix2GAS440/Implementations/BswImplementation_0/ResourceConsumption/WDG_17_SCU</PREFIX-REF>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/CONFIG_DATA_ASIL_B</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+
+
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>CONFIG_DATA_ASIL_B_CORE2_UNSPECIFIED</SHORT-NAME>
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <OPTIONS>
+                    	<OPTION>safetyAsilB</OPTION>
+                    </OPTIONS>
+                    <PREFIX-REF DEST="SECTION-NAME-PREFIX">/Wdg_Aurix2GAS440/Implementations/BswImplementation_0/ResourceConsumption/WDG_17_SCU</PREFIX-REF>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/CONFIG_DATA_ASIL_B</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+
+
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>CONFIG_DATA_ASIL_B_CORE3_UNSPECIFIED</SHORT-NAME>
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <OPTIONS>
+                    	<OPTION>safetyAsilB</OPTION>
+                    </OPTIONS>
+                    <PREFIX-REF DEST="SECTION-NAME-PREFIX">/Wdg_Aurix2GAS440/Implementations/BswImplementation_0/ResourceConsumption/WDG_17_SCU</PREFIX-REF>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/CONFIG_DATA_ASIL_B</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+
+
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>CONFIG_DATA_ASIL_B_CORE4_UNSPECIFIED</SHORT-NAME>
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <OPTIONS>
+                    	<OPTION>safetyAsilB</OPTION>
+                    </OPTIONS>
+                    <PREFIX-REF DEST="SECTION-NAME-PREFIX">/Wdg_Aurix2GAS440/Implementations/BswImplementation_0/ResourceConsumption/WDG_17_SCU</PREFIX-REF>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/CONFIG_DATA_ASIL_B</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+
+
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>CONFIG_DATA_ASIL_B_CORE5_UNSPECIFIED</SHORT-NAME>
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <OPTIONS>
+                    	<OPTION>safetyAsilB</OPTION>
+                    </OPTIONS>
+                    <PREFIX-REF DEST="SECTION-NAME-PREFIX">/Wdg_Aurix2GAS440/Implementations/BswImplementation_0/ResourceConsumption/WDG_17_SCU</PREFIX-REF>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/CONFIG_DATA_ASIL_B</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+
+
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_CLEARED_ASIL_B_CORE0_UNSPECIFIED</SHORT-NAME>
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <OPTIONS>
+                    	<OPTION>safetyAsilB</OPTION>
+                    </OPTIONS>
+                    <PREFIX-REF DEST="SECTION-NAME-PREFIX">/Wdg_Aurix2GAS440/Implementations/BswImplementation_0/ResourceConsumption/WDG_17_SCU</PREFIX-REF>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_CLEARED_ASIL_B</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+
+
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_CLEARED_ASIL_B_CORE1_UNSPECIFIED</SHORT-NAME>
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <OPTIONS>
+                    	<OPTION>safetyAsilB</OPTION>
+                    </OPTIONS>
+                    <PREFIX-REF DEST="SECTION-NAME-PREFIX">/Wdg_Aurix2GAS440/Implementations/BswImplementation_0/ResourceConsumption/WDG_17_SCU</PREFIX-REF>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_CLEARED_ASIL_B</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+
+
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_CLEARED_ASIL_B_CORE2_UNSPECIFIED</SHORT-NAME>
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <OPTIONS>
+                    	<OPTION>safetyAsilB</OPTION>
+                    </OPTIONS>
+                    <PREFIX-REF DEST="SECTION-NAME-PREFIX">/Wdg_Aurix2GAS440/Implementations/BswImplementation_0/ResourceConsumption/WDG_17_SCU</PREFIX-REF>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_CLEARED_ASIL_B</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+
+
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_CLEARED_ASIL_B_CORE3_UNSPECIFIED</SHORT-NAME>
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <OPTIONS>
+                    	<OPTION>safetyAsilB</OPTION>
+                    </OPTIONS>
+                    <PREFIX-REF DEST="SECTION-NAME-PREFIX">/Wdg_Aurix2GAS440/Implementations/BswImplementation_0/ResourceConsumption/WDG_17_SCU</PREFIX-REF>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_CLEARED_ASIL_B</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+
+
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_CLEARED_ASIL_B_CORE4_UNSPECIFIED</SHORT-NAME>
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <OPTIONS>
+                    	<OPTION>safetyAsilB</OPTION>
+                    </OPTIONS>
+                    <PREFIX-REF DEST="SECTION-NAME-PREFIX">/Wdg_Aurix2GAS440/Implementations/BswImplementation_0/ResourceConsumption/WDG_17_SCU</PREFIX-REF>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_CLEARED_ASIL_B</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+
+
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_CLEARED_ASIL_B_CORE5_UNSPECIFIED</SHORT-NAME>
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <OPTIONS>
+                    	<OPTION>safetyAsilB</OPTION>
+                    </OPTIONS>
+                    <PREFIX-REF DEST="SECTION-NAME-PREFIX">/Wdg_Aurix2GAS440/Implementations/BswImplementation_0/ResourceConsumption/WDG_17_SCU</PREFIX-REF>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_CLEARED_ASIL_B</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+
+
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>CODE_ASIL_B_GLOBAL</SHORT-NAME>
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <OPTIONS>
+                    	<OPTION>safetyAsilB</OPTION>
+                    </OPTIONS>
+                    <PREFIX-REF DEST="SECTION-NAME-PREFIX">/Wdg_Aurix2GAS440/Implementations/BswImplementation_0/ResourceConsumption/WDG_17_SCU</PREFIX-REF>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/CODE_ASIL_B</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>CODE_FAST_ASIL_B_GLOBAL</SHORT-NAME>
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <OPTIONS>
+                    	<OPTION>safetyAsilB</OPTION>
+                    </OPTIONS>
+                    <PREFIX-REF DEST="SECTION-NAME-PREFIX">/Wdg_Aurix2GAS440/Implementations/BswImplementation_0/ResourceConsumption/WDG_17_SCU</PREFIX-REF>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/CODE_ASIL_B</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                </MEMORY-SECTIONS>
+                <SECTION-NAME-PREFIXS>
+                  <SECTION-NAME-PREFIX>
+                    <SHORT-NAME>WDG_17_SCU</SHORT-NAME>
+                    <SYMBOL>WDG_17_SCU</SYMBOL>
+                  </SECTION-NAME-PREFIX>
+                </SECTION-NAME-PREFIXS>
+            </RESOURCE-CONSUMPTION>
+              <SW-VERSION>20.25.0</SW-VERSION>
+              <VENDOR-ID>17</VENDOR-ID>
+              <AR-RELEASE-VERSION>4.4.0</AR-RELEASE-VERSION>
+              <BEHAVIOR-REF DEST="BSW-INTERNAL-BEHAVIOR">/AUTOSAR_Wdg/BswModuleDescriptions/Wdg_17_Scu/InternalBehavior_0</BEHAVIOR-REF>
+              <!-- Disabled cause MemMap section needs SCU in section name and not Scu  -->
+              <!--
+              <VENDOR-API-INFIX>Scu</VENDOR-API-INFIX>
+              -->
+              <VENDOR-SPECIFIC-MODULE-DEF-REFS>
+                <VENDOR-SPECIFIC-MODULE-DEF-REF DEST="ECUC-MODULE-DEF">/AURIX2G/EcucDefs/Wdg</VENDOR-SPECIFIC-MODULE-DEF-REF>
+              </VENDOR-SPECIFIC-MODULE-DEF-REFS>
+            </BSW-IMPLEMENTATION>
+          </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

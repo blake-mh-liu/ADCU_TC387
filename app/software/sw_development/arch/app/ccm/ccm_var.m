@@ -1,0 +1,90 @@
+%===========$Update Time :  2025-09-22 15:32:58 $=========
+disp('Loading $Id: ccm_var.m  2025-09-22 15:32:58    foxtron $      FVT_export_businfo_v2.0 2021-11-02')
+%% Calibration Name, Units, Min, Max, Data Type, Comment
+a2l_par('ACCM_facLPFiDAct_X_rpm', 	'rpm',    0,    100000,    'single',    '');
+a2l_par('MCCM_facLPFiDAct_Y_T', 	'raw',    0.0001,    1000,    'single',    '');
+a2l_par('MCCM_facLPFiQAct_Y_T', 	'raw',    0.0001,    1000,    'single',    '');
+a2l_par('ACCM_IdKp_X_rpm', 	'rpm',    -20000,    20000,    'single',    '');
+a2l_par('MCCM_IdKp_Y_value', 	'constant',    0,    100,    'single',    '');
+a2l_par('MCCM_IqKp_Y_value', 	'constant',    0,    100,    'single',    '');
+a2l_par('ACCM_facCCMLq_X_A', 	'A',    -700,    700,    'single',    '');
+a2l_par('ACCM_facCCMLq_Y_A', 	'A',    -700,    700,    'single',    '');
+a2l_par('MCCM_facCCMLq_Z_T', 	'H',    0,    1,    'single',    '');
+a2l_par('MCCM_facCCMLd_Z_T', 	'H',    0,    1,    'single',    '');
+a2l_par('ACCM_tiCurErrOvr_X_A', 	'A',    0,    500,    'single',    '');
+a2l_par('MCCM_tiCurErrOvr_Y_T', 	'A',    0,    500,    'single',    '');
+a2l_par('KCCM_IdCmdLut_A_ovrdflg', 	'flag',    0,    1,    'boolean',    '');
+a2l_par('KCCM_IdCmdLut_A_ovrdval', 	'A',    -100000,    100000,    'single',    '');
+a2l_par('KCCM_IqCmdLut_A_ovrdflg', 	'flg',    0,    1,    'boolean',    '');
+a2l_par('KCCM_IqCmdLut_A_ovrdval', 	'A',    -100000,    100000,    'single',    '');
+a2l_par('KCCM_DischargeIdCmd_A', 	'A',    -400,    400,    'single',    '');
+a2l_par('KCCM_iCurrDQRstIntgl_C', 	'A',    0,    100,    'single',    '');
+a2l_par('KCCM_nRotRstIntgl_C', 	'rpm',    0,    1000,    'single',    '');
+a2l_par('KCCM_bRstPITrig_flg_ovrdflg', 	'flag',    0,    1,    'boolean',    '');
+a2l_par('KCCM_bRstPITrig_flg_ovrdval', 	'flag',    0,    1,    'boolean',    '');
+a2l_par('KCCM_iDErrDeadZoneUp_C', 	'A',    0,    400,    'single',    '');
+a2l_par('KCCM_iDErrDeadZoneLo_C', 	'A',    -400,    0,    'single',    '');
+a2l_par('KCCM_iQErrDeadZoneUp_C', 	'A',    0,    400,    'single',    '');
+a2l_par('KCCM_iQErrDeadZoneLo_C', 	'A',    -400,    0,    'single',    '');
+a2l_par('KCCM_bRstIpartTrig_C', 	'flag',    0,    1,    'boolean',    '');
+a2l_par('KCCM_bUseCCMVolFFTrig_C', 	'flag',    0,    1,    'boolean',    '');
+a2l_par('KCCM_uDVoltTarMax_C', 	'V',    0,    830,    'single',    '');
+a2l_par('KCCM_uDVoltTarMin_C', 	'V',    -830,    0,    'single',    '');
+a2l_par('KCCM_uQVoltTarMax_C', 	'V',    0,    830,    'single',    '');
+a2l_par('KCCM_uQVoltTarMin_C', 	'V',    -830,    0,    'single',    '');
+a2l_par('KCCM_uDVoltTar_V_ovrdflg', 	'flag',    0,    1,    'boolean',    '');
+a2l_par('KCCM_uDVoltTar_V_ovrdval', 	'V',    0,    830,    'single',    '');
+a2l_par('KCCM_uQVoltTar_V_ovrdflg', 	'flag',    0,    1,    'boolean',    '');
+a2l_par('KCCM_uQVoltTar_V_ovrdval', 	'V',    0,    830,    'single',    '');
+a2l_par('KCCM_facAngleComp_C', 	'constant',    0,    100,    'single',    '');
+a2l_par('KCCM_RsvLrnEna_flg', 	'flag',    0,    1,    'boolean',    '');
+a2l_par('KMCM_QFwdCoef_null', 	'flg',    0,    1,    'single',    '');
+a2l_par('KMCM_DFwdCoef_null', 	'flg',    0,    1,    'single',    '');
+a2l_par('KCCM_FwdMask_c', 	'constant',    0,    10,    'single',    '');
+a2l_par('KCCM_IdKi_null', 	'constant',    0,    1000,    'single',    '');
+a2l_par('KCCM_IdKt_null', 	'constant',    0,    1000,    'single',    '');
+a2l_par('KCCM_CurLoopPrd_t', 	'constant',    0,    1000,    'single',    '');
+a2l_par('KCCM_IqKi_null', 	'constant',    0,    1000,    'single',    '');
+a2l_par('KCCM_IqKt_null', 	'constant',    0,    1000,    'single',    '');
+a2l_par('KCCM_VdSpSwEna_flg', 	'flag',    0,    1,    'boolean',    '');
+a2l_par('KCCM_VdSp_V', 	'V',    0,    100,    'single',    '');
+a2l_par('KCCM_VqSp_V', 	'V',    0,    100,    'single',    '');
+a2l_par('KCCM_VolMod_perc', 	'perc',    0,    1,    'single',    '');
+a2l_par('KCCM_BattVolFilTi_fac', 	'factor',    0,    1,    'single',    '');
+a2l_par('KCCM_UdqASCTagValue_C', 	'constant',    0,    100,    'single',    '');
+a2l_par('KCCM_UdqASCTimesValue_C', 	'constant',    0,    100,    'single',    '');
+a2l_par('KDSM_CurErrorThd_value', 	'A',    0,    100,    'single',    '');
+a2l_par('SampleTimeFOC', 	'constant',    0,    100,    'single',    '');
+a2l_par('KCCM_bRstCurErrorOverThd_C', 	'flag',    0,    1,    'boolean',    '');
+a2l_par('KRCM_IdCmd_A', 	'A',    -100,    100,    'single',    '');
+a2l_par('KRCM_IqCmd_A', 	'A',    -100,    100,    'single',    '');
+a2l_par('KCCM_UdqASCEna_C', 	'flag',    0,    1,    'boolean',    '');
+a2l_par('KDSM_CurErrorThd2_value', 	'A',    0,    100,    'single',    '');
+a2l_par('KCCM_tiCurErrOvr_C', 	'constant',    0,    100,    'single',    '');
+
+%% Monitored Signals
+% Internal Signals %
+a2l_mon('VCCM_iDCurrAct_A', 	'A',    -10000,    10000,    'single',    '');
+a2l_mon('VCCM_iQCurrAct_A', 	'A',    -10000,    10000,    'single',    '');
+a2l_mon('VMCM_VqFwd_V', 	'V',    -10000,    10000,    'single',    '');
+a2l_mon('VMCM_VdFwd_V', 	'V',    -10000,    10000,    'single',    '');
+a2l_mon('VMCM_TqAct_Nm', 	'Nm',    -10000,    10000,    'single',    '');
+a2l_mon('VMCM_TqEst_Nm', 	'Nm',    -10000,    10000,    'single',    '');
+a2l_mon('VCCM_VdRef_V', 	'V',    -10000,    10000,    'single',    '');
+a2l_mon('VCCM_VqRef_V', 	'V',    -10000,    10000,    'single',    '');
+a2l_mon('VCCM_VdCmd_V', 	'V',    -10000,    10000,    'single',    '');
+a2l_mon('VCCM_VqCmd_V', 	'V',    -10000,    10000,    'single',    '');
+a2l_mon('VCCM_uAlphaVoltTar_V', 	'V',    -10000,    10000,    'single',    '');
+a2l_mon('VCCM_uBetaVoltTar_V', 	'V',    -10000,    10000,    'single',    '');
+a2l_mon('VCCM_uASCVd_V', 	'V',    -10000,    10000,    'single',    '');
+a2l_mon('VCCM_uASCVq_V', 	'V',    -10000,    10000,    'single',    '');
+a2l_mon('VCCM_bASCEna_flg', 	'flg',    0,    1,    'boolean',    '');
+a2l_mon('VCCM_DcHiBatLim_V', 	'V',    0,    2000,    'single',    '');
+a2l_mon('VCCM_VcmdBfLim_V', 	'V',    0,    2000,    'single',    '');
+a2l_mon('VCCM_BattVolCirRadius_V', 	'V',    0,    2000,    'single',    '');
+a2l_mon('VCCM_VoltUtilize_pu', 	'pu',    0,    100,    'single',    '');
+a2l_mon('VCCM_CurErrorOverThd_flg', 	'flg',    0,    1,    'boolean',    '');
+a2l_mon('VCCM_CurErrorOverThd2_flg', 	'flg',    0,    1,    'boolean',    '');
+
+%% Outputs Signals
+% Outputs Signals %

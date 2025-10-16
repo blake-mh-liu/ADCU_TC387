@@ -1,0 +1,642 @@
+<?xml version='1.0'?>
+<datamodel version="8.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/18/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/18/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar" 
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:ce="http://www.tresos.de/_projects/DataModel2/18/childenable.xsd" 
+         xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd" 
+         xmlns:f="http://www.tresos.de/_projects/DataModel2/14/formulaexpr.xsd" 
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd" 
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd"  
+         xmlns:variant="http://www.tresos.de/_projects/DataModel2/11/variant.xsd">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="TS_TxDxM1I20R0" type="AR-PACKAGE">
+        <d:lst type="ELEMENTS">
+          <d:chc name="BM" type="AR-ELEMENT" value="MODULE-DEF">
+            <v:ctr type="MODULE-DEF">
+              <a:a name="ADMIN-DATA" type="ADMIN-DATA">
+                <ad:ADMIN-DATA>
+                  <ad:LANGUAGE>EN</ad:LANGUAGE>
+                  <ad:DOC-REVISIONS>
+                    <ad:DOC-REVISION>
+                      <ad:REVISION-LABEL>4.0.3</ad:REVISION-LABEL>
+                      <ad:ISSUED-BY>AUTOSAR</ad:ISSUED-BY>
+                    </ad:DOC-REVISION>
+                    <ad:DOC-REVISION>
+                      <ad:REVISION-LABEL>1.20.0</ad:REVISION-LABEL>
+                      <ad:ISSUED-BY>Elektrobit Automotive GmbH</ad:ISSUED-BY>
+                      <ad:DATE>2024-05-02T23:59:59Z</ad:DATE>
+                    </ad:DOC-REVISION>
+                  </ad:DOC-REVISIONS>
+                </ad:ADMIN-DATA>
+              </a:a>
+              <a:a name="DESC">
+                <a:v>&lt;html&gt;
+                      Configuration of the BM module&lt;br/&gt;
+                    &lt;/html&gt;</a:v>
+              </a:a>
+              <a:a name="LOWER-MULTIPLICITY" value="1"/>
+              <a:a name="RELEASE" value="asc:4.0"/>
+              <a:a name="UPPER-MULTIPLICITY" value="1"/>
+              <a:a name="UUID" value="3d92ddc5-303e-4648-927e-0d2f27850c98"/>
+              <v:ctr name="PublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>EN:
+                    &lt;html&gt;
+                      Additional published parameters not covered by CommonPublishedInformation container.
+                  &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="EB Published Information"/>
+                <a:a name="TAB" value="EB Published Information"/>
+                <a:a name="UUID" 
+                     value="ECUC:cb4128ed-26c1-4ddd-906e-854bed917e07"/>
+                <v:var name="PbcfgMSupport" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Specifies whether or not the BM can use the PbcfgM module for post-build support.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="PbcfgM support"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:eb61002e-69c0-4f16-a910-c27adb75f6ee"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="General" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                        This container contains the general boot manager configuration element.&lt;br/&gt;
+                      &lt;/html&gt;</a:v>
+                </a:a>
+                <v:var name="Boot_Manager_Variant" type="STRING">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          It allows to select between Initial Boot Manager and Boot Manager :
+                                 &lt;ul&gt;
+                                    &lt;li&gt;Initial Boot Manager : Checks if jump is needed towards Bootloader Updater, Bootloader or Application. Use this option if a Bootloader Updater is needed.&lt;/li&gt;
+                                    &lt;li&gt;Boot Manager : Checks if jump is needed towards Bootloader or Application.&lt;/li&gt;
+                                 &lt;/ul&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Boot Manager Variant"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="Boot Manager"/>
+                  <a:da name="RANGE">
+                    <a:v>Initial Boot Manager</a:v>
+                    <a:v>Boot Manager</a:v>
+                  </a:da>
+                </v:var>
+                <v:var name="Test_Application" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          Tick this to enable the test Application execution from BM.
+						  &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Support_TestApplication"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="(../Boot_Manager_Variant =&apos;Initial Boot Manager&apos;) and (node:exists(as:modconf(&apos;ProgJLR&apos;)))"/>
+                </v:var>
+                <v:var name="Initial_Boot_Check_Application" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          Enable or disable the Application Validity Check Initial Boot Manager&lt;br/&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Check Application Validity"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="(../Boot_Manager_Variant =&apos;Initial Boot Manager&apos;)"/>
+                  <a:da name="INVALID" type="XPath" 
+                        expr="(../../Security/SecureBoot/SECURE_AUTHENTICATED_BOOT != &apos;OFF&apos;) and (. =&apos;true&apos;)" 
+                        true="Application check in IBM can&apos;t be activated with Secure or Authenticated Boot"/>
+                </v:var>
+                <v:var name="Dual_Memory_Bank_Used" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+						  &lt;p&gt;This option allows the usage of dual memory bank feature on the supported hardware.
+						  Please reffer to the user manual for details.&lt;/p&gt;
+						&lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Dual Memory Bank Used"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="Trial_period" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+						  &lt;p&gt;This option allows the usage of trial period feature on the supported hardware.
+						  Please refer to the user manual for details.&lt;/p&gt;
+						&lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Trial period activation"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="BM_TIMEOUT_CHECK" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          This entry defines if a delay has to be waited before checking the application Validity.&lt;br/&gt;
+                          Note:
+                          &lt;ul&gt;
+                            &lt;li&gt;In case of CAN network: it allows to  start a new reprog session even if the application is valid, by receiving a DSC02 during this delay.&lt;/li&gt;
+                            &lt;li&gt;In case of FLEXRAY network: it is forced to true.&lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="true"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="(../Boot_Manager_Variant =&apos;Boot Manager&apos;)"/>
+                </v:var>
+                <v:var name="BM_TIMEOUT_VALUE" type="INTEGER">
+                  <a:a name="COLUMN_TITLE" value="BM timeout startup"/>
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          Define the delay value to wait before checking application validity&lt;br/&gt;
+                          Note:
+                          &lt;ul&gt;
+                            &lt;li&gt;In case of CAN network: it corresponds to the max time (in ms) waiting for DSC02 request.&lt;/li&gt;
+                            &lt;li&gt;In case of FLEXRAY network: it corresponds to the max time (in FR cycle) waiting for FR synchronization or a valid NetworkStatus.&lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="20"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="(../BM_TIMEOUT_CHECK =&apos;true&apos;)"/>
+                </v:var>
+                <v:var name="BM_CALL_CYCLE" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          Define the periodicity of the call to BM_Manage.&lt;br/&gt;
+                          Note:
+                          &lt;ul&gt;
+                            &lt;li&gt;In case of CAN network: at each BM_manage a check is done to veriy if the DSC02 have been received.&lt;br/&gt;
+                            This value shall be a multiple of BM_TIMEOUT_VALUE.&lt;/li&gt;
+                            &lt;li&gt;In case of FLEXRAY network: a check is done to test the NetworkStatus (if the ECU is synchronized).&lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="1"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="(../BM_TIMEOUT_CHECK =&apos;true&apos;)"/>
+                  <a:da name="WARNING" type="XPath" 
+                        expr="../BM_TIMEOUT_VALUE mod . = 0" 
+                        false="Value must be divisible by BM_TIMEOUT_VALUE"/>
+                </v:var>
+                <v:var name="BM_FR_CYCLE_LENGTH" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                           Define the FlexRay cycle length.&lt;br/&gt;
+                           Note: has to be configured with the same value (in ms) than the FrIfGdCycle used parameter.
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="5"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="((as:modconf(&apos;BlPduR&apos;)/General/FlexRay_Protocol_Supported = &apos;true&apos;) or (as:modconf(&apos;EB&apos;)/General/Protocol_Type = &apos;FLEXRAY&apos;))"/>
+                </v:var>
+                <v:var name="BM_SOURCE_ADDRESS_CHECK" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          Enable or disable the management of diagnostic source filtering on a single address&lt;br/&gt;
+                          Note:
+                          &lt;ul&gt;
+                            &lt;li&gt;If no programming is requested by application, all tester requests shall be accepted.&lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="(../Boot_Manager_Variant =&apos;Boot Manager&apos;)"/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="Security" type="IDENTIFIABLE">
+                <a:a name="TAB" value="Security"/>
+                <a:da name="ENABLE" type="XPath" 
+                      expr="(node:exists(as:modconf(&apos;ProgDAG&apos;))                           or node:exists(as:modconf(&apos;ProgJLR&apos;))                           or node:exists(as:modconf(&apos;ProgVCC&apos;))                           or node:exists(as:modconf(&apos;ProgFCA&apos;))                           or node:exists(as:modconf(&apos;ProgOEMInd&apos;))                           or node:exists(as:modconf(&apos;ProgFord&apos;))                           or ../General/Boot_Manager_Variant =&apos;Initial Boot Manager&apos;)"/>
+                <v:ctr name="BMCsmReferences" type="IDENTIFIABLE">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                   Contains references to Csm configuration.&lt;br/&gt;
+                                   If HSM is used, this container will be disabled.&lt;br/&gt;
+                                &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="( (  (as:modconf(&apos;BM&apos;)/Security/SecureBoot/SECURE_AUTHENTICATED_BOOT = &apos;Authenticated&apos;)                                   or (as:modconf(&apos;BM&apos;)/Security/SecureBoot/SECURE_AUTHENTICATED_BOOT = &apos;Secure&apos;))                                 and  (as:modconf(&apos;BM&apos;)/Security/SecureBoot/BMSecureBootWithHsm = &apos;false&apos;))"/>
+                  <v:ref name="BMCsmChecksumConfigId" type="CHOICE-REFERENCE">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                   &lt;p&gt;Reference a &lt;em&gt;CsmHash&lt;/em&gt; or a &lt;em&gt;CsmMacVerify&lt;/em&gt;&lt;/p&gt;
+
+                                   &lt;p&gt;Dependencies:&lt;/p&gt;
+                                   &lt;ul&gt;
+                                      &lt;li&gt;Reference shall be valid&lt;/li&gt;
+                                   &lt;/ul&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                    </a:a>
+                    <a:a name="LABEL" value="BMCsmChecksumConfigId"/>
+                    <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                    <a:da name="INVALID" type="XPath">
+                      <a:tst expr="node:refvalid(.)" false="Invalid reference."/>
+                      <a:tst 
+                             expr="(node:exists(as:modconf(&apos;ProgVCC&apos;))) or                                   (((not(node:exists(as:modconf(&apos;CryIf&apos;)))) and                                   (((contains(as:modconf(&apos;Prog&apos;)/Security/ProgCsmSecureConfigId, &apos;/Csm/Csm/CsmMacGenerate/&apos;)=&apos;true&apos;)                                   and (contains(as:modconf(&apos;BM&apos;)/Security/BMCsmReferences/BMCsmChecksumConfigId, &apos;/Csm/Csm/CsmMacVerify/&apos;)=&apos;true&apos;)) or                                   ((contains(as:modconf(&apos;Prog&apos;)/Security/ProgCsmSecureConfigId, &apos;/Csm/Csm/CsmHash/&apos;)=&apos;true&apos;)                                   and (contains(as:modconf(&apos;BM&apos;)/Security/BMCsmReferences/BMCsmChecksumConfigId, &apos;/Csm/Csm/CsmHash/&apos;)=&apos;true&apos;)))) or                                   ((node:exists(as:modconf(&apos;CryIf&apos;))) and                                   (((node:exists(node:ref(node:ref(as:modconf(&apos;Prog&apos;)/Security/ProgCsmSecureConfigId)/CsmJobPrimitiveRef)/CsmMacGenerate))                                   and (node:exists(node:ref(node:ref(as:modconf(&apos;BM&apos;)/Security/BMCsmReferences/BMCsmChecksumConfigId)/CsmJobPrimitiveRef)/CsmMacVerify))) or                                   ((node:exists(node:ref(node:ref(as:modconf(&apos;Prog&apos;)/Security/ProgCsmSecureConfigId)/CsmJobPrimitiveRef)/CsmHash))                                   and (node:exists(node:ref(node:ref(as:modconf(&apos;BM&apos;)/Security/BMCsmReferences/BMCsmChecksumConfigId)/CsmJobPrimitiveRef)/CsmHash))))))" 
+                             false="Type of Algo used for Secure/Authenticated shall be the same for BM (BMCsmChecksumConfigId) and Prog (ProgCsmSecureConfigId)."/>
+                    </a:da>
+                    <a:da name="REF">
+                      <a:v>ASPathDataOfSchema:/AUTOSAR/EcucDefs/Csm/CsmJobs/CsmJob</a:v>
+                      <a:v>ASPathDataOfSchema:/AUTOSAR/EcucDefs/Csm/CsmHash/CsmHashConfig</a:v>
+                      <a:v>ASPathDataOfSchema:/AUTOSAR/EcucDefs/Csm/CsmMacVerify/CsmMacVerifyConfig</a:v>
+                    </a:da>
+                  </v:ref>
+                  <v:var name="BS_size" type="INTEGER">
+                    <a:a name="DEFAULT_RADIX" value="DEC"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                  &lt;p&gt;This feature shall allow the Integrator to decide the size of the data to be processed 
+                                  in a single Asynchronous Crypto main function call.&lt;/p&gt;
+                                  &lt;p&gt;it allows to reduce the time blocked by the CryptoMainfunction in a single main 
+                                  function call.&lt;/p&gt;
+                                  &lt;p&gt;This feature can be enabled by entering any value other than 0 in this field. 
+                                  Setting it to 0 shall allow the Bootlaoder to pass the entire available data for processing
+                                  in a single CryptoMainfunction call.&lt;/p&gt;
+                                  &lt;p&gt;Note:&lt;/p&gt;
+                                  &lt;p&gt;1. This field is only enabled for the integration of ASR Crypto stack version 4.3 or higher.&lt;/p&gt;
+                                  &lt;p&gt;2. Enabling this feature (by setting a very small size) shall increase the time for verification significantly, 
+                                  integrator shall decide the value to be set.&lt;/p&gt;
+                                  &lt;p&gt;3. It is recommended to set this value to a maximum value that is sufficient to 
+                                  not to cause timeouts in the system. &lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Data size for Block Slicing"/>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="0"/>
+                    <a:da name="ENABLE" type="XPath" 
+                          expr="node:exists(as:modconf(&apos;CryIf&apos;))"/>
+                  </v:var>
+                  <v:var name="Cancel_OngoingJobs" type="BOOLEAN">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                  &lt;p&gt;If enabled, any ongoing or active Crypto job operations shall be cancelled at the start of this job operation.&lt;/p&gt;
+                                  &lt;p&gt;This option is applicable only for the integration of Crypto 4.3 or higher versions, for older version this feature 
+                                  is realized using &apos;Enable the cancelation of ongoing requests&apos; in the Csm/Cry modules.&lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" 
+                         value="Allow cancellation of any ongoing Crypto job"/>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="true"/>
+                    <a:da name="ENABLE" type="XPath" 
+                          expr="node:exists(as:modconf(&apos;CryIf&apos;))and node:exists(../BMCsmChecksumConfigId)"/>
+                  </v:var>
+                  <v:var name="SetCryptoKey" type="BOOLEAN">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                  &lt;p&gt;This will allow the integrator to pass the desired key and its elements at the start of the Crypto operation. &lt;/p&gt;
+                                  &lt;p&gt;This option is applicable only for the integration of Crypto 4.3 or higher versions.&lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Allow to fetch the stored Key"/>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="true"/>
+                    <a:da name="ENABLE" type="XPath" 
+                          expr="node:exists(as:modconf(&apos;CryIf&apos;)) and node:exists(../BMCsmChecksumConfigId)"/>
+                  </v:var>
+                </v:ctr>
+                <v:ctr name="SecureBoot" type="IDENTIFIABLE">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                  This container contains all configurations for Authenticated/Secure bootloader features.
+                                  Configuration can be done only if Authenticated or Secure features are activated.
+                              &lt;/html&gt;</a:v>
+                  </a:a>
+                  <v:var name="SECURE_AUTHENTICATED_BOOT" type="ENUMERATION">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Enable or disable the Authenticated or Secure Boot features. When the Authenticated Boot feature is enabled, Application and Bootloader checksum
+                                    will be verified before any software execution by comparison to the previous one. When Secure Boot feature is enabled, Application and Bootloader checksum
+                                    will be computed and verified before any software execution. These two features cannot be enabled at the same time.&lt;/p&gt;
+                                    &lt;ul&gt;
+                                      &lt;li&gt;OFF : Neither Authenticated Boot nor Secure Boot feature is enabled.&lt;/li&gt;
+                                      &lt;li&gt;Authenticated : Authenticated Boot feature is enabled.&lt;/li&gt;
+                                      &lt;li&gt;Secure : Secure boot feature is enabled.&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                  &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Authenticated / Secure Boot"/>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="OFF"/>
+                    <a:da name="INVALID" type="XPath" 
+                          expr="((.=&apos;Authenticated&apos;) and (node:exists(as:modconf(&apos;ProgVCC&apos;)) or node:exists(as:modconf(&apos;ProgOEMInd&apos;)) or (as:modconf(&apos;BM&apos;)/Security/SecureBoot/BMSecureBootWithHsm = &apos;true&apos;)))" 
+                          true="Either Authenticated boot is not supported by the current OEM. Or Authenticated Boot feature is not compatible with HSM."/>
+                    <a:da name="RANGE">
+                      <a:v>OFF</a:v>
+                      <a:v>Authenticated</a:v>
+                      <a:v>Secure</a:v>
+                    </a:da>
+                  </v:var>
+                  <v:var name="BMSecureBootWithHsm" type="BOOLEAN">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                Use HSM to implement Secure Boot feature.&lt;br/&gt;
+                                Note:
+                                &lt;ul&gt;
+                                  &lt;li&gt;If this box is checked, CSM is not used for implementing Secure Boot feature.&lt;/li&gt;
+                                  &lt;li&gt;HSM does not support Authenticated Boot feature.&lt;/li&gt;
+                                &lt;/ul&gt;
+                              &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Use HSM (Hardware Security Module)"/>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="false"/>
+                    <a:da name="INVALID" type="XPath">
+                      <a:tst 
+                             expr="((.=&apos;true&apos;) and (as:modconf(&apos;BM&apos;)/Security/SecureBoot/SECURE_AUTHENTICATED_BOOT = &apos;OFF&apos;))" 
+                             true="Secure Boot feature cannot be turned off when HSM is used"/>
+                      <a:tst 
+                             expr="((.=&apos;false&apos;) and (as:modconf(&apos;BM&apos;)/Security/SecureBoot/SECURE_AUTHENTICATED_BOOT = &apos;Secure&apos;) and (../../../General/Boot_Manager_Variant =&apos;Initial Boot Manager&apos;))" 
+                             true="Secure boot need to be used with HSM for Initial Boot Manager"/>
+                    </a:da>
+                  </v:var>
+                  <v:var name="BOOT_VERIFICATION" type="ENUMERATION">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Enable or disable the Bootloader verification at startup when Secure Boot or Authenticated Boot feature are enabled.
+                                    If a HSM is used the Bootloader verification shall be disabled as ensured by the HSM.&lt;/p&gt;
+                                    &lt;ul&gt;
+                                      &lt;li&gt;ON : Bootloader is verified at startup.&lt;/li&gt;
+                                      &lt;li&gt;OFF : Bootloader is not verified at startup.&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                    &lt;p&gt;When HSM is used, this feature will no longer be handled by the bootloader software itself.&lt;/p&gt;
+                                  &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" 
+                         value="Bootloader verified/ Bootloader not verified"/>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="OFF"/>
+                    <a:da name="ENABLE" type="XPath" 
+                          expr="( (  (as:modconf(&apos;BM&apos;)/Security/SecureBoot/SECURE_AUTHENTICATED_BOOT = &apos;Authenticated&apos;)                                         or (as:modconf(&apos;BM&apos;)/Security/SecureBoot/SECURE_AUTHENTICATED_BOOT = &apos;Secure&apos;))                                       and  (as:modconf(&apos;BM&apos;)/Security/SecureBoot/BMSecureBootWithHsm = &apos;false&apos;))"/>
+                    <a:da name="RANGE">
+                      <a:v>OFF</a:v>
+                      <a:v>ON</a:v>
+                    </a:da>
+                  </v:var>
+                  <v:var name="CHECKSUM_LENGTH" type="INTEGER">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                     Size of the checksum for Authenticated / Secure Boot feature in Bytes
+                                  &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Checksum length"/>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="512"/>
+                    <a:da name="ENABLE" type="XPath" 
+                          expr="(not((../SECURE_AUTHENTICATED_BOOT = &apos;OFF&apos;) and (as:modconf(&apos;Prog&apos;)/Security/Secure_Checksum_computation = &apos;false&apos;)))"/>
+                  </v:var>
+                  <v:var name="BootCksStartAddress" type="INTEGER">
+                    <a:a name="DEFAULT_RADIX" value="HEX"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;This value indicated from wich address the bootloader checksum shall be computed.&lt;/p&gt;
+                                    &lt;p&gt;This value is 4 bytes long&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Bootloader checksum start address"/>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="00000000"/>
+                    <a:da name="ENABLE" type="XPath" 
+                          expr="((../SECURE_AUTHENTICATED_BOOT = &apos;Authenticated&apos;) or ((../SECURE_AUTHENTICATED_BOOT = &apos;Secure&apos;) and (as:modconf(&apos;BM&apos;)/Security/SecureBoot/BOOT_VERIFICATION = &apos;ON&apos;)))"/>
+                    <a:da name="INVALID" type="Range" expr="&lt;=4294967295"/>
+                  </v:var>
+                  <v:var name="BootCksRangeLength" type="INTEGER">
+                    <a:a name="DEFAULT_RADIX" value="HEX"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                  &lt;p&gt;This value indicated the data length on which the Bootloader checksum shall be computed.
+                                  It can be the full Bootloader software length or only a part of the bootloader software.&lt;/p&gt;
+                                  &lt;p&gt;This value is 4 bytes long&lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Bootloader checksum range length"/>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="00000000"/>
+                    <a:da name="ENABLE" type="XPath" 
+                          expr="((../SECURE_AUTHENTICATED_BOOT = &apos;Authenticated&apos;) or ((../SECURE_AUTHENTICATED_BOOT = &apos;Secure&apos;) and (as:modconf(&apos;BM&apos;)/Security/SecureBoot/BOOT_VERIFICATION = &apos;ON&apos;)))"/>
+                    <a:da name="INVALID" type="Range" expr="&lt;=4294967295"/>
+                  </v:var>
+                </v:ctr>
+              </v:ctr>
+              <v:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>EN:
+                    &lt;html&gt;
+                      Common container, aggregated by all modules. It contains published information about vendor and versions.
+                  &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="Common Published Information"/>
+                <a:a name="UUID" 
+                     value="ECUC:a00be3e0-8783-9123-2d52-1eb616737ca6"/>
+                <v:var name="ArMajorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Major version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Major Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:948f3f2e-f129-4bc5-b4e1-7a7bdb8599e1"/>
+                  <a:da name="DEFAULT" value="4"/>
+                </v:var>
+                <v:var name="ArMinorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Minor version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Minor Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:2893b920-59d5-4ac2-b2c1-e23742e66d70"/>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="ArPatchVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Patch level version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Patch Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:6428eb9b-8790-488a-b9a3-0fba52d0f59e"/>
+                  <a:da name="DEFAULT" value="3"/>
+                </v:var>
+                <v:var name="SwMajorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Major version number of the vendor specific implementation of the module.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Major Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:605b18ae-3f9a-41d4-9225-67c9c5f6fc34"/>
+                  <a:da name="DEFAULT" value="1"/>
+                </v:var>
+                <v:var name="SwMinorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Minor version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Minor Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a7fe44dc-ea25-4b8d-8fad-9fbcae86d56f"/>
+                  <a:da name="DEFAULT" value="20"/>
+                </v:var>
+                <v:var name="SwPatchVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Patch Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a318d2d9-0e75-49da-ac43-e7e4e682e2f9"/>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="ModuleId" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Module ID of this module from Module List
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Numeric Module ID"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:78bc8362-080f-4253-b3da-804ab69a7154"/>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="VendorId" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Vendor ID"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:01b0f467-6943-4558-b4f2-3fa1fad28449"/>
+                  <a:da name="DEFAULT" value="1"/>
+                </v:var>
+                <v:var name="VendorApiInfix" type="STRING_LABEL">
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Vendor API Infix"/>
+                  <a:a name="OPTIONAL" value="true"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:1c68a547-f24e-4a4e-9540-69fbd466ec89"/>
+                  <a:a name="VISIBLE" value="false"/>
+                  <a:da name="ENABLE" value="false"/>
+                </v:var>
+                <v:var name="Release" type="STRING_LABEL">
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Release Information"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:1c68a547-f24e-4a4e-9540-69fbd533ec89"/>
+                  <a:da name="DEFAULT" value=""/>
+                </v:var>
+              </v:ctr>
+            </v:ctr>
+          </d:chc>
+          <d:chc name="myEcuParameterDefinition" type="AR-ELEMENT" 
+                 value="ECU_PARAMETER_DEFINITION">
+            <d:ctr type="AR-ELEMENT">
+              <a:a name="DEF" 
+                   value="ASPath:/AR_PACKAGE_SCHEMA/ECU_PARAMETER_DEFINITION"/>
+              <d:lst name="MODULE_REF">
+                <d:ref type="MODULE_REF" value="ASPath:/TS_TxDxM1I20R0/BM"/>
+              </d:lst>
+            </d:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+
+</datamodel>

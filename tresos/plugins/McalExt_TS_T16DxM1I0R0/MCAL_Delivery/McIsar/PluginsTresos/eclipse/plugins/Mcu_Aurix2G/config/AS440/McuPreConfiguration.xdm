@@ -1,0 +1,223 @@
+<?xml version='1.0'?>
+<!--
+/*******************************************************************************
+**                                                                            **
+** Copyright (C) Infineon Technologies (2023)                                 **
+**                                                                            **
+** All rights reserved.                                                       **
+**                                                                            **
+** This document contains proprietary information belonging to Infineon       **
+** Technologies. Passing on and copying of this document, and communication   **
+** of its contents is not permitted without prior written authorization.      **
+**                                                                            **
+********************************************************************************
+**                                                                            **
+**  FILENAME  : McuPreConfiguration.xdm                                       **
+**                                                                            **
+**  VERSION   : 3.0.0                                                         **
+**                                                                            **
+**  DATE      : 2023-05-22                                                    **
+**                                                                            **
+**  VARIANT   : Variant PB                                                    **
+**                                                                            **
+**  PLATFORM  : Infineon AURIX2G                                              **
+**                                                                            **
+**  AUTHOR    : DL-AUTOSAR-Engineering                                        **
+**                                                                            **
+**  VENDOR    : Infineon Technologies                                         **
+**                                                                            **
+**  TRACEABILITY : [cover parentID=]                                          **
+**                                                                            **
+**  DESCRIPTION  : XML data model for Mcu driver                              **
+**                                                                            **
+**  [/cover]                                                                  **
+**                                                                            **
+**  SPECIFICATION(S) : Specification of Mcu Driver, AUTOSAR Release 4.2.2     **
+**                                                                            **
+**  MAY BE CHANGED BY USER : no                                               **
+**                                                                            **
+*******************************************************************************/
+-->
+<!--[cover parentID={9D39C69F-2F03-4d9f-9140-04C340C4EB36}][/cover]-->
+<datamodel version="5.0"
+           xmlns="http://www.tresos.de/_projects/DataModel2/12/root.xsd"
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/12/attribute.xsd"
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd"
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar"
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd"
+         xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd"
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd"
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd"
+         xmlns:variant="http://www.tresos.de/_projects/DataModel2/11/variant.xsd">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="AURIX2G" type="AR-PACKAGE">
+        <a:a name="UUID" value="ECUC:AUTOSAR"/>
+        <d:lst type="TOP-LEVEL-PACKAGES">
+          <d:ctr name="EcucDefs" type="AR-PACKAGE">
+            <a:a name="UUID" value="ECUC:ECUCDEFS"/>
+            <d:lst type="ELEMENTS">
+              <d:chc name="McuPreConfiguration" type="AR-ELEMENT" value="MODULE-CONFIGURATION">
+                <d:ctr type="MODULE-CONFIGURATION">
+                  <a:a name="DEF" value="ASPath:/AURIX2G/EcucDefs/Mcu"/>
+                  <d:ctr name="McuPublishedInformation" type="IDENTIFIABLE">
+                    <d:lst name="McuResetReasonConf" type="MAP">
+<!--[cover parentID={71FFD74F-A378-422e-81B2-DBF9E339FB19}][/cover]-->
+                      <d:ctr name="MCU_ESR0_RESET" type="IDENTIFIABLE">
+<!--[cover parentID={8B8A721A-1726-4a04-8F61-DA75604611B2}][/cover]-->
+                        <d:var name="McuResetReason"
+                                 type="INTEGER" value="0">
+                        </d:var>
+                      </d:ctr>
+<!--[cover parentID={F9CF3A3A-5532-464c-A1F2-0C55623ED08C}][/cover]-->
+                      <d:ctr name="MCU_ESR1_RESET" type="IDENTIFIABLE">
+<!--[cover parentID={9A39DEAB-1122-4e90-8437-215F024017DE}][/cover]-->
+                        <d:var name="McuResetReason"
+                                 type="INTEGER" value="1">
+                        </d:var>
+                      </d:ctr>
+<!--[cover parentID={4EF3F960-CC2D-4a9e-AFF5-B20BCAC54AED}][/cover]-->
+                      <d:ctr name="MCU_SMU_RESET" type="IDENTIFIABLE">
+<!--[cover parentID={BA5FFC6E-782E-47af-8AA7-F7ABA0834415}][/cover]-->
+                        <d:var name="McuResetReason"
+                                 type="INTEGER" value="2">
+                        </d:var>
+                      </d:ctr>
+<!--[cover parentID={AFA59893-3DFB-44c2-A68D-87387A7FE961}][/cover]-->
+                      <d:ctr name="MCU_SW_RESET" type="IDENTIFIABLE">
+<!--[cover parentID={FF98E5FF-6554-4361-810D-8FA853DA7F6A}][/cover]-->
+                        <d:var name="McuResetReason"
+                                 type="INTEGER" value="3">
+                        </d:var>
+                      </d:ctr>
+<!--[cover parentID={A5105B74-D469-46be-9AC9-DFF3BF90DCD2}][/cover]-->
+                      <d:ctr name="MCU_STM0_RESET" type="IDENTIFIABLE">
+<!--[cover parentID={A5C889B1-310A-4379-9F01-5D965352E80A}][/cover]-->
+                        <d:var name="McuResetReason"
+                                 type="INTEGER" value="4">
+                        </d:var>
+                      </d:ctr>
+<!--[cover parentID={EB2A3DF8-4DC8-4407-B2E1-445353BAD254}][/cover]-->
+                      <d:ctr name="MCU_STM1_RESET" type="IDENTIFIABLE">
+<!--[cover parentID={0A8E7F81-9BA5-4a3f-8F18-DF3C4D59927A}][/cover]-->
+                        <d:var name="McuResetReason"
+                                 type="INTEGER" value="5">
+                        </d:var>
+                      </d:ctr>
+<!--[cover parentID={BEB09E7D-58C1-4ea3-9E19-85956346FE51}][/cover]-->
+                      <d:ctr name="MCU_STM2_RESET" type="IDENTIFIABLE">
+<!--[cover parentID={9C532008-415D-4228-942E-8D8F147F9654}][/cover]-->
+                        <d:var name="McuResetReason"
+                                 type="INTEGER" value="6">
+                        </d:var>
+                      </d:ctr>
+<!--[cover parentID={63C8C817-E011-4bbd-B6E5-DEA87F61820B}][/cover]-->
+                      <d:ctr name="MCU_STM3_RESET" type="IDENTIFIABLE">
+<!--[cover parentID={DD37B9DE-0F72-4fb4-8FD2-A030F5CE64D5}][/cover]-->
+                        <d:var name="McuResetReason"
+                                 type="INTEGER" value="7">
+                        </d:var>
+                      </d:ctr>
+<!--[cover parentID={AEFE4B23-9642-46af-93BA-0B8658AF5F4A}][/cover]-->
+                      <d:ctr name="MCU_STM4_RESET" type="IDENTIFIABLE">
+<!--[cover parentID={351EF8CD-0189-44ee-97B5-C8A09474E022}][/cover]-->
+                        <d:var name="McuResetReason"
+                                 type="INTEGER" value="8">
+                        </d:var>
+                      </d:ctr>
+<!--[cover parentID={213694C7-8F64-4437-BBAE-42B205C91084}][/cover]-->
+                      <d:ctr name="MCU_STM5_RESET" type="IDENTIFIABLE">
+<!--[cover parentID={43098F51-B03F-4457-8BAB-81D6B0BE18EC}][/cover]-->
+                        <d:var name="McuResetReason"
+                                 type="INTEGER" value="9">
+                        </d:var>
+                      </d:ctr>
+<!--[cover parentID={31566868-32DC-435c-95CC-5E882E9DBBB6}][/cover]-->
+                      <d:ctr name="MCU_POWER_ON_RESET" type="IDENTIFIABLE">
+<!--[cover parentID={3E366EBD-36E7-4555-9FC7-0AEF57E748BF}][/cover]-->
+                        <d:var name="McuResetReason"
+                                 type="INTEGER" value="10">
+                        </d:var>
+                      </d:ctr>
+<!--[cover parentID={A0D891E3-9F42-4b0d-B8A8-39C81146DB5C}][/cover]-->
+                      <d:ctr name="MCU_CB0_RESET" type="IDENTIFIABLE">
+<!--[cover parentID={5D80D005-6110-42ee-887B-981188F50494}][/cover]-->
+                        <d:var name="McuResetReason"
+                                 type="INTEGER" value="11">
+                        </d:var>
+                      </d:ctr>
+<!--[cover parentID={4CEE05A7-1585-4224-9A69-BE5A29487C19}][/cover]-->
+                      <d:ctr name="MCU_CB1_RESET" type="IDENTIFIABLE">
+<!--[cover parentID={0B3885D2-10D4-4f03-9CEF-9C2EF7980BAA}][/cover]-->
+                        <d:var name="McuResetReason"
+                                 type="INTEGER" value="12">
+                        </d:var>
+                      </d:ctr>
+<!--[cover parentID={C074CB5E-2133-4435-997F-B03EFB372D8D}][/cover]-->
+                      <d:ctr name="MCU_CB3_RESET" type="IDENTIFIABLE">
+<!--[cover parentID={07EB2496-6944-4d33-8A24-71730743ADC8}][/cover]-->
+                        <d:var name="McuResetReason"
+                                 type="INTEGER" value="13">
+                        </d:var>
+                      </d:ctr>
+<!--[cover parentID={5912681D-C88A-4f1c-BDBC-712D1E8E82FB}][/cover]-->
+                      <d:ctr name="MCU_EVRC_RESET" type="IDENTIFIABLE">
+<!--[cover parentID={82AA2A18-A386-491c-A26D-13186211F97F}][/cover]-->
+                        <d:var name="McuResetReason"
+                                 type="INTEGER" value="14">
+                        </d:var>
+                      </d:ctr>
+<!--[cover parentID={26CCF9F7-0D5B-4e3f-A2FD-B49A96DD243F}][/cover]-->
+                      <d:ctr name="MCU_EVR33_RESET" type="IDENTIFIABLE">
+<!--[cover parentID={0C1BD64D-9E92-4835-8D99-6136F545F09D}][/cover]-->
+                        <d:var name="McuResetReason"
+                                 type="INTEGER" value="15">
+                        </d:var>
+                      </d:ctr>
+<!--[cover parentID={10EE662D-C2EB-47ba-87B0-BC95AC8FCB44}][/cover]-->
+                      <d:ctr name="MCU_SUPPLY_WDOG_RESET" type="IDENTIFIABLE">
+<!--[cover parentID={304BD99E-C8DD-4534-8FE1-0D2CD99B4D60}][/cover]-->
+                        <d:var name="McuResetReason"
+                                 type="INTEGER" value="16">
+                        </d:var>
+                      </d:ctr>
+<!--[cover parentID={E3FCB59E-09C7-46f4-9062-6E132D630F9E}][/cover]-->
+                      <d:ctr name="MCU_STBYR_RESET" type="IDENTIFIABLE">
+<!--[cover parentID={668B9A7D-5C21-40af-BC4C-D9B96921A08A}][/cover]-->
+                        <d:var name="McuResetReason"
+                                 type="INTEGER" value="17">
+                        </d:var>
+                      </d:ctr>
+<!--[cover parentID={B62A4E8A-FE8C-45c0-A3DE-0D6C0D405DE6}][/cover]-->
+                      <d:ctr name="MCU_LBIST_RESET" type="IDENTIFIABLE">
+<!--[cover parentID={C1FF18AF-7910-4d17-A9E7-5DB40A9E4217}][/cover]-->
+                        <d:var name="McuResetReason"
+                                 type="INTEGER" value="18">
+                        </d:var>
+                      </d:ctr>
+<!--[cover parentID={CA8C91F6-1071-4104-B780-CBB925EAC0AF}][/cover]-->
+                      <d:ctr name="MCU_RESET_MULTIPLE" type="IDENTIFIABLE">
+<!--[cover parentID={EAA5F0D0-9770-49be-B77A-C004CFE0004B}][/cover]-->
+                        <d:var name="McuResetReason"
+                                 type="INTEGER" value="254">
+                        </d:var>
+                      </d:ctr>
+<!--[cover parentID={DE5D88EA-9110-469a-AB68-14FD57B10036}][/cover]-->
+                      <d:ctr name="MCU_RESET_UNDEFINED" type="IDENTIFIABLE">
+<!--[cover parentID={5123E381-8E7C-413c-AF6E-596EA0F3D2CB}][/cover]-->
+                        <d:var name="McuResetReason"
+                                 type="INTEGER" value="255">
+                        </d:var>
+                      </d:ctr>
+                    </d:lst>
+                  </d:ctr>
+                </d:ctr>
+              </d:chc>
+            </d:lst>
+          </d:ctr>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+</datamodel>

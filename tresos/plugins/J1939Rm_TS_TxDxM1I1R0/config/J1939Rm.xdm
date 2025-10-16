@@ -1,0 +1,1921 @@
+<?xml version='1.0'?>
+<datamodel version="8.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/18/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/18/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar" 
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:ce="http://www.tresos.de/_projects/DataModel2/18/childenable.xsd" 
+         xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd" 
+         xmlns:f="http://www.tresos.de/_projects/DataModel2/14/formulaexpr.xsd" 
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd" 
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd"  
+         xmlns:variant="http://www.tresos.de/_projects/DataModel2/11/variant.xsd">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="TS_TxDxM1I1R0" type="AR-PACKAGE">
+        <d:lst type="ELEMENTS">
+          <d:chc name="J1939Rm" type="AR-ELEMENT" value="MODULE-DEF">
+            <v:ctr type="MODULE-DEF">
+              <a:a name="ADMIN-DATA" type="ADMIN-DATA">
+                <ad:ADMIN-DATA>
+                  <ad:DOC-REVISIONS>
+                    <ad:DOC-REVISION>
+                      <ad:REVISION-LABEL>4.5.0</ad:REVISION-LABEL>
+                      <ad:ISSUED-BY>AUTOSAR</ad:ISSUED-BY>
+                      <ad:DATE>2014-03-31</ad:DATE>
+                    </ad:DOC-REVISION>
+                  </ad:DOC-REVISIONS>
+                </ad:ADMIN-DATA>
+              </a:a>
+              <a:a name="DESC">
+                <a:v>&lt;html&gt;
+                      &lt;p&gt;Configuration of the J1939 Request Manager.&lt;/p&gt;
+                    &lt;/html&gt;</a:v>
+              </a:a>
+              <a:a name="LOWER-MULTIPLICITY" value="0"/>
+              <a:a name="RELEASE" value="asc:4.1.3"/>
+              <a:a name="UPPER-MULTIPLICITY" value="1"/>
+              <a:a name="UUID" value="f98b8e0c-1b30-4ba2-bafa-37504dbe746c"/>
+              <v:ctr name="PublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>EN:
+                    &lt;html&gt;
+                      Additional published parameters not covered by CommonPublishedInformation container.
+                  &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="EB Published Information"/>
+                <a:a name="TAB" value="EB Published Information"/>
+                <a:a name="UUID" 
+                     value="ECUC:cb4128ed-26c1-4ddd-906e-854bed917e07"/>
+                <v:var name="PbcfgMSupport" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Specifies whether or not the J1939Rm can use the PbcfgM module for post-build support.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="PbcfgM support"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:eb61002e-69c0-4f16-a910-c27adb75f6ee"/>
+                  <a:da name="DEFAULT" value="true"/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>EN:
+                    &lt;html&gt;
+                      Common container, aggregated by all modules. It contains published information about vendor and versions.
+                  &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="Common Published Information"/>
+                <a:a name="UUID" 
+                     value="ECUC:a00be3e0-8783-9123-2d52-1eb616737ca6"/>
+                <v:var name="ArMajorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Major version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Major Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:948f3f2e-f129-4bc5-b4e1-7a7bdb8599e1"/>
+                  <a:da name="DEFAULT" value="4"/>
+                </v:var>
+                <v:var name="ArMinorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Minor version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Minor Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:2893b920-59d5-4ac2-b2c1-e23742e66d70"/>
+                  <a:da name="DEFAULT" value="1"/>
+                </v:var>
+                <v:var name="ArPatchVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Patch level version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Patch Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:6428eb9b-8790-488a-b9a3-0fba52d0f59e"/>
+                  <a:da name="DEFAULT" value="3"/>
+                </v:var>
+                <v:var name="SwMajorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Major version number of the vendor specific implementation of the module.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Major Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:605b18ae-3f9a-41d4-9225-67c9c5f6fc34"/>
+                  <a:da name="DEFAULT" value="1"/>
+                </v:var>
+                <v:var name="SwMinorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Minor version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Minor Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a7fe44dc-ea25-4b8d-8fad-9fbcae86d56f"/>
+                  <a:da name="DEFAULT" value="1"/>
+                </v:var>
+                <v:var name="SwPatchVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Patch Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a318d2d9-0e75-49da-ac43-e7e4e682e2f9"/>
+                  <a:da name="DEFAULT" value="15"/>
+                </v:var>
+                <v:var name="ModuleId" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Module ID of this module from Module List
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Numeric Module ID"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:78bc8362-080f-4253-b3da-804ab69a7154"/>
+                  <a:da name="DEFAULT" value="59"/>
+                </v:var>
+                <v:var name="VendorId" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Vendor ID"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:01b0f467-6943-4558-b4f2-3fa1fad28449"/>
+                  <a:da name="DEFAULT" value="1"/>
+                </v:var>
+                <v:var name="Release" type="STRING_LABEL">
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Release Information"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:1c68a547-f24e-4a4e-9540-69fbd533ec89"/>
+                  <a:da name="DEFAULT" value=""/>
+                </v:var>
+              </v:ctr>
+              <v:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION">
+                <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                     type="IMPLEMENTATIONCONFIGCLASS">
+                  <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                </a:a>
+                <a:a name="LABEL" value="Config Variant"/>
+                <a:a name="UUID" value="5c38ecdc-48e1-4043-a921-45bd6c665b05"/>
+                <a:da name="DEFAULT" value="VariantPostBuild"/>
+                <a:da name="RANGE">
+                  <a:v>VariantPostBuild</a:v>
+                  <a:v>VariantPreCompile</a:v>
+                </a:da>
+              </v:var>
+              <v:var name="POST_BUILD_VARIANT_USED" type="BOOLEAN">
+                <a:a name="DESC" 
+                     value="Indicates whether Postbuild Selectable is able to use or not"/>
+                <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                     type="IMPLEMENTATIONCONFIGCLASS">
+                  <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                </a:a>
+                <a:a name="LABEL" value="Post Build Variant Used"/>
+                <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                <a:da name="DEFAULT" value="false"/>
+                <a:da name="READONLY" value="false"/>
+                <a:da name="TOOLTIP" 
+                      value="Indicates whether Postbuild Selectable is able to use or not"/>
+              </v:var>
+              <v:lst name="J1939RmConfigSet" 
+                     type="MULTIPLE-CONFIGURATION-CONTAINER">
+                <a:da name="INVALID" type="XPath" 
+                      expr="(count(eb-list::*) &gt; 0)" 
+                      false="The number of configured J1939RmConfigSet shall be greater than 0."/>
+                <a:da name="MIN" value="1"/>
+                <v:ctr name="J1939RmConfigSet" 
+                       type="MULTIPLE-CONFIGURATION-CONTAINER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                            &lt;p&gt;Defines the configuration parameters
+                            and sub containers of the J1939Rm module supporting multiple
+                            configuration sets.&lt;/p&gt;
+                            &lt;p&gt;This container is a MultipleConfigurationContainer,
+                            i.e. this container and its sub-containers
+                            exist once per configuration set.&lt;/p&gt;
+                          &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="UUID" value="6fd26a11-ba76-40f2-81e4-f1657c97f29f"/>
+                  <v:lst name="J1939RmChannel" type="MAP">
+                    <a:da name="INVALID" type="XPath" 
+                          expr="(count(eb-list::*) &gt; 0)" 
+                          false="The number of configured J1939RmChannel shall be greater than 0."/>
+                    <a:da name="MIN" value="1"/>
+                    <v:ctr name="J1939RmChannel" type="IDENTIFIABLE">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                            &lt;p&gt;Defines the parameters for a CAN channel supported by the J1939 Request Manager.&lt;/p&gt;
+                            &lt;p&gt;&lt;strong&gt;Optimization Effect:&lt;/strong&gt;&lt;/p&gt;
+                            &lt;ul&gt;
+                              &lt;li class=&quot;optimization.config.ram.reduction&quot;&gt;
+                                &lt;strong&gt;RAM reduction (config):&lt;/strong&gt;
+                                Configuring less J1939Rm channels reduces the RAM
+                                consumption of the module configuration.
+                              &lt;/li&gt;
+                              &lt;li class=&quot;optimization.config.rom.reduction&quot;&gt;
+                                &lt;strong&gt;ROM reduction (config):&lt;/strong&gt;
+                                Configuring less J1939Rm channels reduces the ROM
+                                consumption of the module configuration.
+                              &lt;/li&gt;
+                              &lt;li class=&quot;optimization.code.exetime.reduction&quot;&gt;
+                                &lt;strong&gt;Execution time reduction (code):&lt;/strong&gt;
+                                Configuring less J1939Rm channels reduces the
+                                execution time of the module code.
+                              &lt;/li&gt;
+                            &lt;/ul&gt;
+                          &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                      </a:a>
+                      <a:a name="POSTBUILDCHANGEABLE" value="true"/>
+                      <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="true"/>
+                      <a:a name="UUID" 
+                           value="3106e3c5-52ef-4e19-9e29-68be2c1f65e5"/>
+                      <v:var name="J1939RmAckQueueSize" type="INTEGER">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;
+                                  Defines the number of transmitted acknowledgements that can be stored.
+                                &lt;/p&gt;
+                                &lt;p&gt;
+                                  Contains the size of the queue for the Transmission requests of the
+                                  Acknowledgement PG shall be queued when a previous transmission of
+                                  this PG is still pending.
+                                &lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="b1477efc-23e1-460b-b004-e04136962b18"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=255"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                      </v:var>
+                      <v:var name="J1939RmRequestQueueSize" type="INTEGER">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;
+                                  Defines the number of transmitted requests that can be stored.
+                                &lt;/p&gt;
+                                &lt;p&gt;
+                                  Contains the size of the queue for the Transmission requests for
+                                  the Request PG shall be queued when a previous transmission of this
+                                  PG is still pending.
+                                &lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="6197d9d1-8dee-459a-85e0-2523ee504589"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=255"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                      </v:var>
+                      <v:var name="J1939RmRequestTimeoutMonitors" 
+                             type="INTEGER">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;
+                                  Defines the number of transmitted requests that can be monitored for timeout.
+                                &lt;/p&gt;
+                                &lt;p&gt;
+                                  Contains the Number of transmitted requests that can be monitored
+                                  for timeout.
+                                &lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="c4f7fe71-3b07-49e7-afde-781b26ee7848"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=255"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                      </v:var>
+                      <v:ref name="J1939RmComMNetworkHandleRef" 
+                             type="SYMBOLIC-NAME-REFERENCE">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;
+                                  Reference to the ComM channel.
+                                &lt;/p&gt;
+                                &lt;p&gt;Dependency on parameter(s):&lt;/p&gt;
+                                &lt;ul&gt;
+                                  &lt;li&gt;A valid reference to ComM has to be provided.&lt;/li&gt;
+                                  &lt;li&gt;A Unique channel index ComMChannelId has to be provided as reference for each ComM network channel.&lt;/li&gt;
+                                  &lt;li&gt;It is not allowed to configured the same channel as reference
+                                      for both &lt;code&gt;J1939RmChannel&lt;/code&gt;.&lt;/li&gt;
+                                &lt;/ul&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="UUID" 
+                             value="33c6fcaa-ca27-4008-a823-0a61d65fcf53"/>
+                        <a:da name="INVALID" type="XPath">
+                          <a:tst expr="node:refvalid(.)" 
+                                 false="Invalid reference. A valid reference to a ComM Channel (J1939RmComMNetworkHandleRef) must be provided."/>
+                          <a:tst 
+                                 expr="count(../../../../../J1939RmConfigSet/eb-list::*/J1939RmChannel/eb-list::*[(node:refvalid(J1939RmComMNetworkHandleRef)) and (as:name(node:ref(J1939RmComMNetworkHandleRef)) = as:name(node:ref(node:current())))]) &gt; 1" 
+                                 true="ComM channel reference shall be unique across J1939RM channels."/>
+                        </a:da>
+                        <a:da name="REF" 
+                              value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/ComM/ComMConfigSet/ComMChannel"/>
+                      </v:ref>
+                      <v:ctr name="J1939RmAckmRxPdu" type="IDENTIFIABLE">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;
+                                  Defines the configuration of the I-PDU used to receive the Acknowledgment PG.
+                                &lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="OPTIONAL" value="true"/>
+                        <a:a name="TAB" value="J1939RmAckmRxPdu"/>
+                        <a:a name="UUID" 
+                             value="1acec3cc-7cd2-4b71-91c0-c4d9bf4be776"/>
+                        <a:da name="ENABLE" value="false"/>
+                        <a:da name="INVALID" type="XPath" 
+                              expr="count(../../../J1939RmChannel/eb-list::*[(node:exists(J1939RmAckmRxPdu)) and (as:name(J1939RmAckmRxPdu) = as:name(node:current()))]) &gt; 1" 
+                              true="J1939RmAckmRxPdu name shall be unique across all J1939RmAckmRxPdu&apos;s."/>
+                        <v:var name="J1939RmAckmRxPduId" type="INTEGER">
+                          <a:a name="DESC">
+                            <a:v>&lt;html&gt;
+                                  &lt;p&gt;
+                                    Defines the I-PDU identifier used for RxIndication from PduR.
+                                  &lt;/p&gt;
+                                  &lt;p&gt;
+                                    A symbolic value (preprocessor macro) is also generated for each PDU ID.
+                                  &lt;/p&gt;
+                                  &lt;p&gt;
+                                    The J1939RmAckmRxPdu ids has to be zero based and consecutive.
+                                  &lt;/p&gt;
+                                  &lt;p&gt;Range: 0 .. 65535&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                          </a:a>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SCOPE" value="ECU"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                          <a:a name="UUID" 
+                               value="a06607a8-9308-4854-adbe-87b9b5d0a3c2"/>
+                          <a:da name="INVALID" type="Multi">
+                            <mt:range>
+                              <mt:tst expr="&lt;=65535"/>
+                              <mt:tst expr="&gt;=0"/>
+                            </mt:range>
+                            <mt:xpath>
+                              <mt:tst 
+                                      false="J1939RmAckmRxPduId shall not be redundant " 
+                                      expr="text:uniq(as:modconf(&apos;J1939Rm&apos;)[1]/J1939RmConfigSet/eb-list::*/J1939RmChannel/eb-list::*/J1939RmAckmRxPdu/J1939RmAckmRxPduId, node:value(.))"/>
+                              <mt:tst 
+                                      true="J1939RmAckmRxPduId shall not be redundant with a J1939RmRqstRxPduId " 
+                                      expr="node:containsValue(as:modconf(&apos;J1939Rm&apos;)[1]/J1939RmConfigSet/eb-list::*/J1939RmChannel/eb-list::*/J1939RmRqstRxPdu/J1939RmRqstRxPduId, node:value(.))"/>
+                            </mt:xpath>
+                          </a:da>
+                        </v:var>
+                        <v:ref name="J1939RmAckmRxPduRef" type="REFERENCE">
+                          <a:a name="DESC">
+                            <a:v>&lt;html&gt;
+                                  &lt;p&gt;Reference to the external Rx PDU definition in the EcuC module.&lt;/p&gt;
+                                  &lt;p&gt;Reference to the Pdu object representing the I-PDU.&lt;/p&gt;
+                                  &lt;p&gt;Dependency on parameter(s):&lt;/p&gt;
+                                  &lt;ul&gt;
+                                    &lt;li&gt;A valid reference to EcuC&apos;s &lt;code&gt;Pdu&lt;/code&gt; parameters has to be provided.&lt;/li&gt;
+                                    &lt;li&gt;Unique EcuC PDU has to be provided as reference for each J1939RmAckmRxPdu.&lt;/li&gt;
+                                    &lt;li&gt;It is not allowed to configured bidirectional J1939Nm PDUs(the same PDU cannot be given
+                                        as reference for both &lt;code&gt;J1939RmAckmRxPdu&lt;/code&gt; and &lt;code&gt;J1939RmAckmTxPdu&lt;/code&gt;).&lt;/li&gt;
+                                  &lt;/ul&gt;
+                                &lt;/html&gt;</a:v>
+                          </a:a>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="UUID" 
+                               value="202dfe1a-ccbe-4277-be7c-4b9ea9120dd1"/>
+                          <a:da name="INVALID" type="XPath">
+                            <a:tst expr="node:refvalid(.)" 
+                                   false="Invalid reference. A valid reference to a J1939RmAckmRxPduRef must be provided."/>
+                            <a:tst 
+                                   expr="count(../../../../J1939RmChannel/eb-list::*[(node:exists(J1939RmAckmRxPdu)) and (node:refvalid(J1939RmAckmRxPdu/J1939RmAckmRxPduRef)) and (as:name(node:ref(J1939RmAckmRxPdu/J1939RmAckmRxPduRef)) = as:name(node:ref(node:current())))]) &gt; 1" 
+                                   true="Unique EcuC PDU shall be provided as reference for each J1939RmAckmRxPdu."/>
+                            <a:tst 
+                                   expr="count(../../../../J1939RmChannel/eb-list::*[(node:exists(J1939RmAckmTxPdu)) and (node:refvalid(J1939RmAckmTxPdu/J1939RmAckmTxPduRef)) and (as:name(node:ref(J1939RmAckmTxPdu/J1939RmAckmTxPduRef)) = as:name(node:ref(node:current())))]) &gt; 0" 
+                                   true="The referenced EcuC PDU is bidirectional(has both Tx and Rx direction). It is not allowed to configured bidirectional J1939Rm PDUs."/>
+                            <a:tst 
+                                   expr="count(../../../../J1939RmChannel/eb-list::*[(node:exists(J1939RmRqstRxPdu)) and (node:refvalid(J1939RmRqstRxPdu/J1939RmRqstRxPduRef)) and (as:name(node:ref(J1939RmRqstRxPdu/J1939RmRqstRxPduRef)) = as:name(node:ref(node:current())))]) &gt; 0" 
+                                   true="Unique EcuC PDU shall be provided as reference for each J1939RmAckmRxPdu. And it is not allowed to configured bidirectional J1939Rm PDUs."/>
+                            <a:tst 
+                                   expr="count(../../../../J1939RmChannel/eb-list::*[(node:exists(J1939RmRqstTxPdu)) and (node:refvalid(J1939RmRqstTxPdu/J1939RmRqstTxPduRef)) and (as:name(node:ref(J1939RmRqstTxPdu/J1939RmRqstTxPduRef)) = as:name(node:ref(node:current())))]) &gt; 0" 
+                                   true="Unique EcuC PDU shall be provided as reference for each J1939RmAckmRxPdu. And it is not allowed to configured bidirectional J1939Rm PDUs."/>
+                          </a:da>
+                          <a:da name="REF" 
+                                value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/EcuC/EcucPduCollection/Pdu"/>
+                        </v:ref>
+                      </v:ctr>
+                      <v:ctr name="J1939RmAckmTxPdu" type="IDENTIFIABLE">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;
+                                  Defines the configuration of the I-PDU used to transmit the
+                                  Acknowledgement PG.
+                                &lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="OPTIONAL" value="true"/>
+                        <a:a name="TAB" value="J1939RmAckmTxPdu"/>
+                        <a:a name="UUID" 
+                             value="ECUC:3dc55eb3-e8d0-4c21-98bf-5e34edce9502"/>
+                        <a:da name="ENABLE" value="false"/>
+                        <a:da name="INVALID" type="XPath" 
+                              expr="count(../../../J1939RmChannel/eb-list::*[(node:exists(J1939RmAckmTxPdu)) and (as:name(J1939RmAckmTxPdu) = as:name(node:current()))]) &gt; 1" 
+                              true="J1939RmAckmTxPdu name shall be unique across all J1939RmAckmTxPdu&apos;s."/>
+                        <v:var name="J1939RmAckmTxPduId" type="INTEGER">
+                          <a:a name="DESC">
+                            <a:v>&lt;html&gt;
+                                  &lt;p&gt;
+                                    Defines the I-PDU identifier used for TxConfirmation from PduR.
+                                  &lt;/p&gt;
+                                  &lt;p&gt;
+                                    A symbolic value (preprocessor macro) is also generated for each PDU ID.
+                                  &lt;/p&gt;
+                                  &lt;p&gt;The J1939RmAckmTxPdu ids has to be zero based and consecutive.
+                                  &lt;/p&gt;
+                                  &lt;p&gt;Range: 0 .. 65535&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                          </a:a>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SCOPE" value="ECU"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                          <a:a name="UUID" 
+                               value="8ffc876d-a5ef-4e49-a4b0-5302166f322a"/>
+                          <a:da name="INVALID" type="Multi">
+                            <mt:range>
+                              <mt:tst expr="&lt;=65535"/>
+                              <mt:tst expr="&gt;=0"/>
+                            </mt:range>
+                            <mt:xpath>
+                              <mt:tst 
+                                      false="J1939RmAckmTxPduId shall not be redundant " 
+                                      expr="text:uniq(as:modconf(&apos;J1939Rm&apos;)[1]/J1939RmConfigSet/eb-list::*/J1939RmChannel/eb-list::*/J1939RmAckmTxPdu/J1939RmAckmTxPduId, node:value(.))"/>
+                              <mt:tst 
+                                      true="J1939RmAckmTxPduId shall not be redundant with a J1939RmRqstTxPduId" 
+                                      expr="node:containsValue(as:modconf(&apos;J1939Rm&apos;)[1]/J1939RmConfigSet/eb-list::*/J1939RmChannel/eb-list::*/J1939RmRqstTxPdu/J1939RmRqstTxPduId, node:value(.))"/>
+                              <mt:tst 
+                                      true="J1939RmAckmTxPduId shall not be redundant with a J1939RmLowerComIPduId" 
+                                      expr="node:containsValue(as:modconf(&apos;J1939Rm&apos;)[1]/J1939RmConfigSet/eb-list::*/J1939RmNode/eb-list::*/J1939RmUser/eb-list::*/J1939RmComIPdu/eb-list::*/J1939RmLowerComIPdu/J1939RmLowerComIPduId, node:value(.))"/>
+                            </mt:xpath>
+                          </a:da>
+                        </v:var>
+                        <v:ref name="J1939RmAckmTxPduRef" type="REFERENCE">
+                          <a:a name="DESC">
+                            <a:v>&lt;html&gt;
+                                  &lt;p&gt;Reference to the external Tx PDU definition in the EcuC module.&lt;/p&gt;
+                                  &lt;p&gt;Reference to the Pdu object representing the I-PDU.&lt;/p&gt;
+                                &lt;p&gt;Dependency on parameter(s):&lt;/p&gt;
+                                &lt;ul&gt;
+                                  &lt;li&gt;A valid reference to EcuC&apos;s &lt;code&gt;Pdu&lt;/code&gt; parameters has to be provided.&lt;/li&gt;
+                                  &lt;li&gt;Unique EcuC PDU has to be provided as reference for each J1939RmAckmTxPdu.&lt;/li&gt;
+                                  &lt;li&gt;It is not allowed to configured bidirectional J1939Rm PDUs(the same PDU cannot be given
+                                      as reference for both &lt;code&gt;J1939RmAckmTxPdu&lt;/code&gt; and &lt;code&gt;J1939RmAckmRxPdu&lt;/code&gt;).&lt;/li&gt;
+                                &lt;/ul&gt;
+                                &lt;/html&gt;</a:v>
+                          </a:a>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="UUID" 
+                               value="6c691e3f-1b99-43e8-8e98-a2b533c12e52"/>
+                          <a:da name="INVALID" type="XPath">
+                            <a:tst expr="node:refvalid(.)" 
+                                   false="Invalid reference. A valid reference to a J1939RmAckmTxPduRef must be provided."/>
+                            <a:tst 
+                                   expr="count(../../../../J1939RmChannel/eb-list::*[(node:exists(J1939RmAckmTxPdu)) and (node:refvalid(J1939RmAckmTxPdu/J1939RmAckmTxPduRef)) and (as:name(node:ref(J1939RmAckmTxPdu/J1939RmAckmTxPduRef)) = as:name(node:ref(node:current())))]) &gt; 1" 
+                                   true="Unique EcuC PDU shall be provided as reference for each J1939RmAckmTxPdu."/>
+                            <a:tst 
+                                   expr="count(../../../../J1939RmChannel/eb-list::*[(node:exists(J1939RmAckmRxPdu)) and (node:refvalid(J1939RmAckmRxPdu/J1939RmAckmRxPduRef)) and (as:name(node:ref(J1939RmAckmRxPdu/J1939RmAckmRxPduRef)) = as:name(node:ref(node:current())))]) &gt; 0" 
+                                   true="The referenced EcuC PDU is bidirectional(has both Tx and Rx direction). It is not allowed to configured bidirectional J1939Rm PDUs."/>
+                            <a:tst 
+                                   expr="count(../../../../J1939RmChannel/eb-list::*[(node:exists(J1939RmRqstRxPdu)) and (node:refvalid(J1939RmRqstRxPdu/J1939RmRqstRxPduRef)) and (as:name(node:ref(J1939RmRqstRxPdu/J1939RmRqstRxPduRef)) = as:name(node:ref(node:current())))]) &gt; 0" 
+                                   true="Unique EcuC PDU shall be provided as reference for each J1939RmAckmTxPdu. And it is not allowed to configured bidirectional J1939Rm PDUs."/>
+                            <a:tst 
+                                   expr="count(../../../../J1939RmChannel/eb-list::*[(node:exists(J1939RmRqstTxPdu)) and (node:refvalid(J1939RmRqstTxPdu/J1939RmRqstTxPduRef)) and (as:name(node:ref(J1939RmRqstTxPdu/J1939RmRqstTxPduRef)) = as:name(node:ref(node:current())))]) &gt; 0" 
+                                   true="Unique EcuC PDU shall be provided as reference for each J1939RmAckmTxPdu. And it is not allowed to configured bidirectional J1939Rm PDUs."/>
+                          </a:da>
+                          <a:da name="REF" 
+                                value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/EcuC/EcucPduCollection/Pdu"/>
+                        </v:ref>
+                      </v:ctr>
+                      <v:ctr name="J1939RmRqstRxPdu" type="IDENTIFIABLE">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;
+                                  Defines the configuration of the I-PDU used to receive the Request PG.
+                                &lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="OPTIONAL" value="true"/>
+                        <a:a name="TAB" value="J1939RmRqstRxPdu"/>
+                        <a:a name="UUID" 
+                             value="ECUC:479965fe-361f-48f3-8cb4-093697565b3f"/>
+                        <a:da name="ENABLE" value="false"/>
+                        <a:da name="INVALID" type="XPath" 
+                              expr="count(../../../J1939RmChannel/eb-list::*[(node:exists(J1939RmRqstRxPdu)) and (as:name(J1939RmRqstRxPdu) = as:name(node:current()))]) &gt; 1" 
+                              true="J1939RmRqstRxPdu name shall be unique across all J1939RmRqstRxPdu&apos;s."/>
+                        <v:var name="J1939RmRqstRxPduId" type="INTEGER">
+                          <a:a name="DESC">
+                            <a:v>&lt;html&gt;
+                                  &lt;p&gt;
+                                    Defines The I-PDU identifier used to receive the Request PG.
+                                  &lt;/p&gt;
+                                  &lt;p&gt;
+                                    A symbolic value (preprocessor macro) is also generated for each PDU ID.
+                                  &lt;/p&gt;
+                                  &lt;p&gt;
+                                    The J1939RmRqstRxPdu ids has to be zero based and consecutive.
+                                  &lt;/p&gt;
+                                  &lt;p&gt;Range: 0 .. 65535&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                          </a:a>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SCOPE" value="ECU"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                          <a:a name="UUID" 
+                               value="bfcde4cf-7af0-4af4-9db0-e34522edaa18"/>
+                          <a:da name="INVALID" type="Multi">
+                            <mt:range>
+                              <mt:tst expr="&lt;=65535"/>
+                              <mt:tst expr="&gt;=0"/>
+                            </mt:range>
+                            <mt:xpath>
+                              <mt:tst 
+                                      false="J1939RmRqstRxPduId shall not be redundant " 
+                                      expr="text:uniq(as:modconf(&apos;J1939Rm&apos;)[1]/J1939RmConfigSet/eb-list::*/J1939RmChannel/eb-list::*/J1939RmRqstRxPdu/J1939RmRqstRxPduId, node:value(.))"/>
+                              <mt:tst 
+                                      true="J1939RmRqstRxPduId shall not be redundant with a J1939RmAckmRxPduId" 
+                                      expr="node:containsValue(as:modconf(&apos;J1939Rm&apos;)[1]/J1939RmConfigSet/eb-list::*/J1939RmChannel/eb-list::*/J1939RmAckmRxPdu/J1939RmAckmRxPduId, node:value(.))"/>
+                            </mt:xpath>
+                          </a:da>
+                        </v:var>
+                        <v:ref name="J1939RmRqstRxPduRef" type="REFERENCE">
+                          <a:a name="DESC">
+                            <a:v>&lt;html&gt;
+                                  &lt;p&gt;Reference to the external Rx PDU definition in the EcuC module.&lt;/p&gt;
+                                  &lt;p&gt;Reference to the Pdu object representing the I-PDU.&lt;/p&gt;
+                                  &lt;p&gt;Dependency on parameter(s):&lt;/p&gt;
+                                  &lt;ul&gt;
+                                    &lt;li&gt;A valid reference to EcuC&apos;s &lt;code&gt;Pdu&lt;/code&gt; parameters has to be provided.&lt;/li&gt;
+                                    &lt;li&gt;Unique EcuC PDU has to be provided as reference for each J1939RmRqstRxPdu.&lt;/li&gt;
+                                    &lt;li&gt;It is not allowed to configured bidirectional J1939Nm PDUs(the same PDU cannot be given
+                                        as reference for both &lt;code&gt;J1939RmRqstRxPdu&lt;/code&gt; and &lt;code&gt;J1939RmRqstTxPdu&lt;/code&gt;).&lt;/li&gt;
+                                  &lt;/ul&gt;
+                                &lt;/html&gt;</a:v>
+                          </a:a>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="UUID" 
+                               value="608bbd92-3265-4aa3-adc6-0ce87ca56ceb"/>
+                          <a:da name="INVALID" type="XPath">
+                            <a:tst expr="node:refvalid(.)" 
+                                   false="Invalid reference. A valid reference to a J1939RmRqstRxPduRef must be provided."/>
+                            <a:tst 
+                                   expr="count(../../../../J1939RmChannel/eb-list::*[(node:exists(J1939RmRqstRxPdu)) and (node:refvalid(J1939RmRqstRxPdu/J1939RmRqstRxPduRef)) and (as:name(node:ref(J1939RmRqstRxPdu/J1939RmRqstRxPduRef)) = as:name(node:ref(node:current())))]) &gt; 1" 
+                                   true="Unique EcuC PDU shall be provided as reference for each J1939RmRqstRxPdu."/>
+                            <a:tst 
+                                   expr="count(../../../../J1939RmChannel/eb-list::*[(node:exists(J1939RmRqstTxPdu)) and (node:refvalid(J1939RmRqstTxPdu/J1939RmRqstTxPduRef)) and (as:name(node:ref(J1939RmRqstTxPdu/J1939RmRqstTxPduRef)) = as:name(node:ref(node:current())))]) &gt; 0" 
+                                   true="The referenced EcuC PDU is bidirectional(has both Tx and Rx direction). It is not allowed to configured bidirectional J1939Rm PDUs."/>
+                            <a:tst 
+                                   expr="count(../../../../J1939RmChannel/eb-list::*[(node:exists(J1939RmAckmTxPdu)) and (node:refvalid(J1939RmAckmTxPdu/J1939RmAckmTxPduRef)) and (as:name(node:ref(J1939RmAckmTxPdu/J1939RmAckmTxPduRef)) = as:name(node:ref(node:current())))]) &gt; 0" 
+                                   true="Unique EcuC PDU shall be provided as reference for each J1939RmRqstRxPdu. And it is not allowed to configured bidirectional J1939Rm PDUs."/>
+                            <a:tst 
+                                   expr="count(../../../../J1939RmChannel/eb-list::*[(node:exists(J1939RmAckmRxPdu)) and (node:refvalid(J1939RmAckmRxPdu/J1939RmAckmRxPduRef)) and (as:name(node:ref(J1939RmAckmRxPdu/J1939RmAckmRxPduRef)) = as:name(node:ref(node:current())))]) &gt; 0" 
+                                   true="Unique EcuC PDU shall be provided as reference for each J1939RmRqstRxPdu. And it is not allowed to configured bidirectional J1939Rm PDUs."/>
+                          </a:da>
+                          <a:da name="REF" 
+                                value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/EcuC/EcucPduCollection/Pdu"/>
+                        </v:ref>
+                      </v:ctr>
+                      <v:ctr name="J1939RmRqstTxPdu" type="IDENTIFIABLE">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;
+                                  Defines the configuration of the I-PDU used to transmit the Request PG.
+                                &lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="OPTIONAL" value="true"/>
+                        <a:a name="TAB" value="J1939RmRqstTxPdu"/>
+                        <a:a name="UUID" 
+                             value="ECUC:58f0f75c-0764-429f-80d7-83187edbee73"/>
+                        <a:da name="ENABLE" value="false"/>
+                        <a:da name="INVALID" type="XPath" 
+                              expr="count(../../../J1939RmChannel/eb-list::*[(node:exists(J1939RmRqstTxPdu)) and (as:name(J1939RmRqstTxPdu) = as:name(node:current()))]) &gt; 1" 
+                              true="J1939RmRqstTxPdu name shall be unique across all J1939RmRqstTxPdu&apos;s."/>
+                        <v:var name="J1939RmRqstTxPduId" type="INTEGER">
+                          <a:a name="DESC">
+                            <a:v>&lt;html&gt;
+                                  &lt;p&gt;
+                                    Defines the I-PDU identifier used to transmit the Request PG.
+                                  &lt;/p&gt;
+                                  &lt;p&gt;
+                                    A symbolic value (preprocessor macro) is also generated for each PDU ID.&lt;/p&gt;
+                                  &lt;p&gt;Range: 0 .. 65535&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                          </a:a>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SCOPE" value="ECU"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                          <a:a name="UUID" 
+                               value="4b355e1d-f3db-43b4-80a3-e9d3d8e0e8e0"/>
+                          <a:da name="INVALID" type="Multi">
+                            <mt:range>
+                              <mt:tst expr="&lt;=65535"/>
+                              <mt:tst expr="&gt;=0"/>
+                            </mt:range>
+                            <mt:xpath>
+                              <mt:tst 
+                                      false="J1939RmRqstTxPduId shall not be redundant " 
+                                      expr="text:uniq(as:modconf(&apos;J1939Rm&apos;)[1]/J1939RmConfigSet/eb-list::*/J1939RmChannel/eb-list::*/J1939RmRqstTxPdu/J1939RmRqstTxPduId, node:value(.))"/>
+                              <mt:tst 
+                                      true="J1939RmRqstTxPduId shall not be redundant with a J1939RmAckmTxPduId" 
+                                      expr="node:containsValue(as:modconf(&apos;J1939Rm&apos;)[1]/J1939RmConfigSet/eb-list::*/J1939RmChannel/eb-list::*/J1939RmAckmTxPdu/J1939RmAckmTxPduId, node:value(.))"/>
+                              <mt:tst 
+                                      true="J1939RmRqstTxPduId shall not be redundant with a J1939RmLowerComIPduId" 
+                                      expr="node:containsValue(as:modconf(&apos;J1939Rm&apos;)[1]/J1939RmConfigSet/eb-list::*/J1939RmNode/eb-list::*/J1939RmUser/eb-list::*/J1939RmComIPdu/eb-list::*/J1939RmLowerComIPdu/J1939RmLowerComIPduId, node:value(.))"/>
+                            </mt:xpath>
+                          </a:da>
+                        </v:var>
+                        <v:ref name="J1939RmRqstTxPduRef" type="REFERENCE">
+                          <a:a name="DESC">
+                            <a:v>&lt;html&gt;
+                                  &lt;p&gt;Reference to the external Tx PDU definition in the EcuC module.&lt;/p&gt;
+                                  &lt;p&gt;Reference to the Pdu object representing the I-PDU.&lt;/p&gt;
+                                  &lt;p&gt;Dependency on parameter(s):&lt;/p&gt;
+                                  &lt;ul&gt;
+                                    &lt;li&gt;A valid reference to EcuC&apos;s &lt;code&gt;Pdu&lt;/code&gt; parameters has to be provided.&lt;/li&gt;
+                                    &lt;li&gt;Unique EcuC PDU has to be provided as reference for each J1939RmRqstTxPdu.&lt;/li&gt;
+                                    &lt;li&gt;It is not allowed to configured bidirectional J1939Rm PDUs(the same PDU cannot be given
+                                        as reference for both &lt;code&gt;J1939RmRqstTxPdu&lt;/code&gt; and &lt;code&gt;J1939RmRqstRxPdu&lt;/code&gt;).&lt;/li&gt;
+                                  &lt;/ul&gt;
+                                &lt;/html&gt;</a:v>
+                          </a:a>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="UUID" 
+                               value="155f2ee3-d701-4595-b097-8a5211d1178a"/>
+                          <a:da name="INVALID" type="XPath">
+                            <a:tst expr="node:refvalid(.)" 
+                                   false="Invalid reference. A valid reference to a J1939RmRqstTxPduRef must be provided."/>
+                            <a:tst 
+                                   expr="count(../../../../J1939RmChannel/eb-list::*[(node:exists(J1939RmRqstTxPdu)) and (node:refvalid(J1939RmRqstTxPdu/J1939RmRqstTxPduRef)) and (as:name(node:ref(J1939RmRqstTxPdu/J1939RmRqstTxPduRef)) = as:name(node:ref(node:current())))]) &gt; 1" 
+                                   true="Unique EcuC PDU shall be provided as reference for each J1939RmRqstTxPdu."/>
+                            <a:tst 
+                                   expr="count(../../../../J1939RmChannel/eb-list::*[(node:exists(J1939RmRqstRxPdu)) and (node:refvalid(J1939RmRqstRxPdu/J1939RmRqstRxPduRef)) and (as:name(node:ref(J1939RmRqstRxPdu/J1939RmRqstRxPduRef)) = as:name(node:ref(node:current())))]) &gt; 0" 
+                                   true="The referenced EcuC PDU is bidirectional(has both Tx and Rx direction). It is not allowed to configured bidirectional J1939Rm PDUs."/>
+                            <a:tst 
+                                   expr="count(../../../../J1939RmChannel/eb-list::*[(node:exists(J1939RmAckmTxPdu)) and (node:refvalid(J1939RmAckmTxPdu/J1939RmAckmTxPduRef)) and (as:name(node:ref(J1939RmAckmTxPdu/J1939RmAckmTxPduRef)) = as:name(node:ref(node:current())))]) &gt; 0" 
+                                   true="Unique EcuC PDU shall be provided as reference for each J1939RmRqstTxPdu. And it is not allowed to configured bidirectional J1939Rm PDUs."/>
+                            <a:tst 
+                                   expr="count(../../../../J1939RmChannel/eb-list::*[(node:exists(J1939RmAckmRxPdu)) and (node:refvalid(J1939RmAckmRxPdu/J1939RmAckmRxPduRef)) and (as:name(node:ref(J1939RmAckmRxPdu/J1939RmAckmRxPduRef)) = as:name(node:ref(node:current())))]) &gt; 0" 
+                                   true="Unique EcuC PDU shall be provided as reference for each J1939RmRqstTxPdu. And it is not allowed to configured bidirectional J1939Rm PDUs."/>
+                          </a:da>
+                          <a:da name="REF" 
+                                value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/EcuC/EcucPduCollection/Pdu"/>
+                        </v:ref>
+                      </v:ctr>
+                    </v:ctr>
+                  </v:lst>
+                  <v:lst name="J1939RmNode" type="MAP">
+                    <a:da name="INVALID" type="XPath" 
+                          expr="(count(eb-list::*) &gt; 0)" 
+                          false="The number of configured J1939RmNode shall be greater than 0."/>
+                    <a:da name="MIN" value="1"/>
+                    <v:ctr name="J1939RmNode" type="IDENTIFIABLE">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              &lt;p&gt;
+                                Defines logical node representing the parameters for the support of
+                                a logical J1939 node (identified by an ECU address).
+                              &lt;/p&gt;
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                      </a:a>
+                      <a:a name="POSTBUILDCHANGEABLE" value="true"/>
+                      <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="true"/>
+                      <a:a name="UUID" 
+                           value="330cfbee-f0e0-4f4a-bcc4-9226ee6e8afb"/>
+                      <v:lst name="J1939RmNodeChannelRef">
+                        <a:da name="INVALID" type="XPath" 
+                              expr="(count(eb-list::*) &gt; 0)" 
+                              false="The number of configured J1939RmNodeChannel shall be greater than 0."/>
+                        <a:da name="MIN" value="1"/>
+                        <v:ref name="J1939RmNodeChannelRef" type="REFERENCE">
+                          <a:a name="DESC">
+                            <a:v>&lt;html&gt;
+                                  &lt;p&gt;
+                                    Reference to the J1939Rm channels for this node has access to.
+                                  &lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                          </a:a>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="UUID" 
+                               value="bcc53ffc-b9ae-4913-9558-fe217e08821d"/>
+                          <a:da name="INVALID" type="XPath">
+                            <a:tst expr="node:refvalid(.)" 
+                                   false="Invalid reference. A valid reference to a Node Channel (J1939RmChannel) must be provided."/>
+                            <a:tst expr="text:uniq(../eb-list::*,.)" 
+                                   false="shall have unique J1939RmNodeChannel through out all the J1939RmChannel."/>
+                          </a:da>
+                          <a:da name="REF" 
+                                value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/J1939Rm/J1939RmConfigSet/J1939RmChannel"/>
+                        </v:ref>
+                      </v:lst>
+                      <v:ref name="J1939RmNmNodeRef" 
+                             type="SYMBOLIC-NAME-REFERENCE">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;
+                                  Reference to the corresponding J1939Nm node.
+                                &lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="UUID" 
+                             value="433315c0-2046-4083-808e-6381e56bfb41"/>
+                        <a:da name="INVALID" type="XPath">
+                          <a:tst expr="node:refvalid(.)" 
+                                 false="Invalid reference. A valid reference to a J1939Nm Node (J1939NmNode) must be provided."/>
+                          <a:tst 
+                                 expr="text:uniq(../../../J1939RmNode/eb-list::*/J1939RmNmNodeRef,.)" 
+                                 false="J1939NmNodeRef shall be unique across all J1939RmNodes."/>
+                        </a:da>
+                        <a:da name="REF" 
+                              value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/J1939Nm/J1939NmConfigSet/J1939NmNode"/>
+                      </v:ref>
+                      <v:lst name="J1939RmUser" type="MAP">
+                        <a:da name="MIN" value="1"/>
+                        <v:ctr name="J1939RmUser" type="IDENTIFIABLE">
+                          <a:a name="DESC">
+                            <a:v>&lt;html&gt;
+                                  &lt;p&gt;
+                                    Defines the configuration of a module that uses the request and
+                                    acknowledgement interfaces of J1939Rm.
+                                  &lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                          </a:a>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="POSTBUILDCHANGEABLE" value="true"/>
+                          <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="true"/>
+                          <a:a name="UUID" 
+                               value="e77db921-40d6-4d46-a176-abf91975f526"/>
+                          <a:da name="INVALID" type="XPath" 
+                                expr="node:exists(J1939RmUserId)" 
+                                false="User shall configure the user Id(J1939RmUserId)."/>
+                          <v:var name="J1939RmUserAckIndication" type="BOOLEAN">
+                            <a:a name="DESC">
+                              <a:v>&lt;html&gt;
+                                    &lt;p&gt;
+                                      Enable the user AckIndication for this module.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      Disable the user AckIndication for this module.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      In case of CDD, the name is &lt;apiServicePrefix&gt;_AckIndication.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      In case of RTE, the port is defined as J1939RmRPort&lt;J1939RmUserId&gt;.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      This parameter shall not be set for J1939RmUserType
+                                      J1939RM_USER_J1939NM,
+                                      J1939RM_USER_J1939DCM, or
+                                      J1939RM_USER_COM.
+                                    &lt;/p&gt;
+                                  &lt;/html&gt;</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SCOPE" value="LOCAL"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="f4ab7a87-e63d-42e4-8f62-65b088d8e516"/>
+                            <a:da name="INVALID" type="XPath">
+                              <a:tst 
+                                     expr="(node:existsAndTrue(.)) and ((../J1939RmUserType = &apos;J1939RM_USER_COM&apos;) or (../J1939RmUserType = &apos;J1939RM_USER_J1939NM&apos;) or (../J1939RmUserType = &apos;J1939RM_USER_J1939DCM&apos;))" 
+                                     true="J1939RmUserAckIndication parameter shall not be set for J1939RmUserType: J1939RM_USER_J1939NM, J1939RM_USER_J1939DCM, or J1939RM_USER_COM."/>
+                              <a:tst 
+                                     expr="((node:existsAndFalse(../../../../../../../J1939RmGeneral/J1939RmSupportAckIndication)) and (node:existsAndTrue(.)))" 
+                                     true="If J1939RmUserAckIndication is enabled, J1939RmSupportAckIndication shall also be enabled. Otherwise Disable both parameters, if Acknowledgment Indication is not required."/>
+                            </a:da>
+                          </v:var>
+                          <v:lst name="J1939RmUserAckPGN">
+                            <a:da name="INVALID" type="XPath" 
+                                  expr="(count(./eb-list::*) &gt; 0) and ((../J1939RmUserType = &apos;J1939RM_USER_COM&apos;) or (../J1939RmUserType = &apos;J1939RM_USER_J1939DCM&apos;) or (../J1939RmUserType = &apos;J1939RM_USER_J1939NM&apos;))" 
+                                  true="J1939RmUserAckPGN shall not be configured for user type(J1939RmUserType) COM or J1939NM or J1939DCM."/>
+                            <v:var name="J1939RmUserAckPGN" type="INTEGER">
+                              <a:a name="DESC">
+                                <a:v>&lt;html&gt;
+                                      &lt;p&gt;
+                                        Defines the PGN supported to be acknowledged to this module.
+                                        The PGNs supported by different modules should usually be
+                                        disjunctive.
+                                      &lt;/p&gt;
+                                      &lt;p&gt;
+                                        This parameter shall not be set for J1939RmUserType
+                                        J1939RM_USER_J1939NM,
+                                        J1939RM_USER_J1939DCM, and
+                                        J1939RM_USER_COM.
+                                      &lt;/p&gt;
+                                    &lt;/html&gt;</a:v>
+                              </a:a>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                              <a:a name="POSTBUILDVARIANTMULTIPLICITY" 
+                                   value="true"/>
+                              <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                              <a:a name="SCOPE" value="LOCAL"/>
+                              <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                              <a:a name="UUID" 
+                                   value="ebd69e13-9733-45fe-af67-e32a6560393a"/>
+                              <a:da name="INVALID" type="Multi">
+                                <mt:range>
+                                  <mt:tst expr="&lt;=262143"/>
+                                  <mt:tst expr="&gt;=0"/>
+                                </mt:range>
+                                <mt:xpath>
+                                  <mt:tst 
+                                          true="J1939RmUserAckPGN shall not be configured for user type(J1939RmUserType) COM or J1939NM or J1939DCM." 
+                                          expr="(count(./eb-list::*) &gt; 0) and ((../J1939RmUserType = &apos;J1939RM_USER_COM&apos;) or (../J1939RmUserType = &apos;J1939RM_USER_J1939DCM&apos;) or (../J1939RmUserType = &apos;J1939RM_USER_J1939NM&apos;))"/>
+                                  <mt:tst 
+                                          false="J1939RmUserAckPGN shall be unique." 
+                                          expr="text:uniq(../../../../../../J1939RmNode/eb-list::*/J1939RmUser/eb-list::*/J1939RmUserAckPGN/eb-list::*,.)"/>
+                                </mt:xpath>
+                              </a:da>
+                            </v:var>
+                          </v:lst>
+                          <v:var name="J1939RmUserComIPduRequestQueueSize" 
+                                 type="INTEGER">
+                            <a:a name="DESC">
+                              <a:v>&lt;html&gt;
+                                    &lt;p&gt;
+                                      Defines the number of received requests that can be
+                                      stored for COM I-PDUs of this user. This value is only taken into account if the user is J1939RM_USER_COM. If the user is not J1939RM_USER_COM
+                                      this value will be generated  as 0 regardless of what is configured.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      Value must be at least 1.
+                                    &lt;/p&gt;
+                                  &lt;/html&gt;</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                              <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="OPTIONAL" value="true"/>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SCOPE" value="LOCAL"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="5c396a72-3ce0-4178-85dd-06fc7b1721bc"/>
+                            <a:da name="ENABLE" value="false"/>
+                            <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=255"/>
+                              <a:tst expr="&gt;=1"/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="J1939RmUserId" type="INTEGER">
+                            <a:a name="DESC">
+                              <a:v>&lt;html&gt;
+                                    &lt;p&gt;
+                                      Defines the User Id of J1939Rm. And This parameter is only
+                                      required when the module uses transmission of requests.
+                                    &lt;/p&gt;
+                                  &lt;/html&gt;</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                              <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="OPTIONAL" value="true"/>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SCOPE" value="ECU"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                            <a:a name="UUID" 
+                                 value="c0b57948-d642-428d-8958-9722de87e709"/>
+                            <a:da name="ENABLE" value="false"/>
+                            <a:da name="INVALID" type="Multi">
+                              <mt:range>
+                                <mt:tst expr="&lt;=65535"/>
+                                <mt:tst expr="&gt;=0"/>
+                              </mt:range>
+                              <mt:xpath 
+                                        false="J1939RmUserId shall be unique across all J1939RmUsers." 
+                                        expr="text:uniq(../../../../../J1939RmNode/eb-list::*/J1939RmUser/eb-list::*/J1939RmUserId,.)"/>
+                            </a:da>
+                          </v:var>
+                          <v:lst name="J1939RmUserPGN">
+                            <a:da name="INVALID" type="XPath">
+                              <a:tst 
+                                     expr="(count(./eb-list::*) &gt; 0) and (../J1939RmUserType = &apos;J1939RM_USER_COM&apos;)" 
+                                     true="J1939RmUserPGN shall not be configured for user type J1939RM_USER_COM."/>
+                              <a:tst 
+                                     expr="(../J1939RmUserType = &apos;J1939RM_USER_J1939NM&apos;) and (count(./eb-list::*) != 1)" 
+                                     true="Only one J1939RmUserPGN shall be configured to 60928(0x0EE00), If J1939RmUserType is J1939RM_USER_J1939NM."/>
+                            </a:da>
+                            <v:var name="J1939RmUserPGN" type="INTEGER">
+                              <a:a name="DESC">
+                                <a:v>&lt;html&gt;
+                                      &lt;p&gt;
+                                        Defines the PGN supported to be requested from this module.
+                                        The PGNs supported by different modules should usually be disjunctive.
+                                      &lt;/p&gt;
+                                      &lt;p&gt;
+                                        This parameter is predefined to AC (0x0EE00) for J1939RmUserType
+                                        J1939RM_USER_J1939NM and is derived from the J1939Dcm PDUs
+                                        in the system description for J1939RmUserType J1939RM_USER_J1939DCM.
+                                      &lt;/p&gt;
+                                      &lt;p&gt;
+                                        It shall not be set for J1939RmUserType J1939RM_USER_COM.
+                                      &lt;/p&gt;
+                                    &lt;/html&gt;</a:v>
+                              </a:a>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                              <a:a name="POSTBUILDVARIANTMULTIPLICITY" 
+                                   value="true"/>
+                              <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                              <a:a name="SCOPE" value="LOCAL"/>
+                              <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                              <a:a name="UUID" 
+                                   value="c2aa65cb-7690-4fac-b9d2-8cac7bd09bf5"/>
+                              <a:da name="INVALID" type="Multi">
+                                <mt:range>
+                                  <mt:tst expr="&lt;=262143"/>
+                                  <mt:tst expr="&gt;=0"/>
+                                </mt:range>
+                                <mt:xpath>
+                                  <mt:tst 
+                                          true="J1939RmUserPGN shall be set to 60928 (0x0EE00), If J1939RmUserType is J1939RM_USER_J1939NM. " 
+                                          expr="(../../J1939RmUserType = &apos;J1939RM_USER_J1939NM&apos;) and (node:value(.) != 60928)"/>
+                                  <mt:tst 
+                                          false="J1939RmUserPGN shall be unique." 
+                                          expr="text:uniq(../../../../../../J1939RmNode/eb-list::*/J1939RmUser/eb-list::*/J1939RmUserPGN/eb-list::*,.)"/>
+                                </mt:xpath>
+                              </a:da>
+                            </v:var>
+                          </v:lst>
+                          <v:var name="J1939RmUserRequestIndication" 
+                                 type="BOOLEAN">
+                            <a:a name="DESC">
+                              <a:v>&lt;html&gt;
+                                    &lt;p&gt;
+                                      Enable the RequestIndication for this module.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      Disable the RequestIndication for this module.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      In case of J1939Nm or J1939Dcm, the name is fixed.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      In case of CDD, the name is &lt;apiServicePrefix&gt;_RequestIndication.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      In case of RTE, the port is defined as J1939RmRPort&lt;J1939RmUserId&gt;.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      This parameter shall not be set for J1939RmUserType J1939RM_USER_COM.
+                                    &lt;/p&gt;
+                                  &lt;/html&gt;</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SCOPE" value="LOCAL"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="30b5d0ad-9ec7-469b-b671-164e81daf840"/>
+                            <a:da name="INVALID" type="XPath">
+                              <a:tst 
+                                     expr="(node:existsAndTrue(.)) and (../J1939RmUserType = &apos;J1939RM_USER_COM&apos;)" 
+                                     true="J1939RmUserRequestIndication parameter shall not be set for J1939RmUserType: J1939RM_USER_COM."/>
+                              <a:tst 
+                                     expr="((node:existsAndFalse(../../../../../../../J1939RmGeneral/J1939RmSupportRequestIndication)) and (node:existsAndTrue(.)))" 
+                                     true="If J1939RmUserRequestIndication is enabled, J1939RmSupportRequestIndication shall also be enabled. Otherwise Disable both parameters, if Request Indication is not required."/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="J1939RmUserSendAck" type="BOOLEAN">
+                            <a:a name="DESC">
+                              <a:v>&lt;html&gt;
+                                    &lt;p&gt;
+                                      Enable the SendAck API for this module.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      Disable the SendAck API for this module.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      In case of RTE, the port is defined as J1939RmPPort&lt;J1939RmUserId&gt;.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      This parameter shall not be set for J1939RmUserType
+                                      J1939RM_USER_J1939NM or J1939RM_USER_COM.
+                                    &lt;/p&gt;
+                                  &lt;/html&gt;</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SCOPE" value="LOCAL"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="2aa1b4b8-e926-4a09-b002-804d4a1ffa87"/>
+                            <a:da name="INVALID" type="XPath">
+                              <a:tst 
+                                     expr="(node:existsAndTrue(.)) and ((../J1939RmUserType = &apos;J1939RM_USER_J1939NM&apos;) or (../J1939RmUserType = &apos;J1939RM_USER_COM&apos;))" 
+                                     true="J1939RmUserSendAck parameter shall not be set for J1939RmUserType: J1939RM_USER_J1939NM and J1939RM_USER_COM."/>
+                              <a:tst 
+                                     expr="((node:existsAndFalse(../../../../../../../J1939RmGeneral/J1939RmSupportAckTransmission)) and (node:existsAndTrue(.)))" 
+                                     true="If J1939RmUserSendAck is enabled, J1939RmSupportAckTransmission shall also be enabled. Otherwise Disable both parameters, if Acknowledgment Transmission is not required."/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="J1939RmUserSendRequest" type="BOOLEAN">
+                            <a:a name="DESC">
+                              <a:v>&lt;html&gt;
+                                    &lt;p&gt;
+                                      Enable the SendRequest API for this module.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      Disable the SendRequest API for this module.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      In case of RTE, the port is defined as J1939RmPPort&lt;J1939RmUserId&gt;.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      This parameter shall not be set for J1939RmUserType
+                                      J1939RM_USER_J1939NM,
+                                      J1939RM_USER_J1939DCM, or
+                                      J1939RM_USER_COM.
+                                    &lt;/p&gt;
+                                  &lt;/html&gt;</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SCOPE" value="LOCAL"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="2203df6d-1d97-4992-b275-56386f02fb6f"/>
+                            <a:da name="INVALID" type="XPath">
+                              <a:tst 
+                                     expr="(node:existsAndTrue(.)) and ((../J1939RmUserType = &apos;J1939RM_USER_J1939NM&apos;) or (../J1939RmUserType = &apos;J1939RM_USER_J1939DCM&apos;) or (../J1939RmUserType = &apos;J1939RM_USER_COM&apos;))" 
+                                     true="J1939RmUserSendRequest parameter shall not be set for J1939RmUserType: J1939RM_USER_J1939NM, J1939RM_USER_J1939DCM, or J1939RM_USER_COM."/>
+                              <a:tst 
+                                     expr="((node:existsAndFalse(../../../../../../../J1939RmGeneral/J1939RmSupportRequestTransmission)) and (node:existsAndTrue(.)))" 
+                                     true="If J1939RmUserSendRequest is enabled, J1939RmSupportRequestTransmission shall also be enabled. Otherwise Disable both parameters, if Request Transmission is not required."/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="J1939RmUserTimeoutSupervision" 
+                                 type="BOOLEAN">
+                            <a:a name="DESC">
+                              <a:v>&lt;html&gt;
+                                    &lt;p&gt;
+                                      Enable RequestTimeoutIndication and CancelRequestTimeout for this module.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      Disable RequestTimeoutIndication and CancelRequestTimeout for this module.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      RequestTimeoutIndication: In case of CDD, the name is &lt;apiServicePrefix&gt;_RequestTimeoutIndication.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      In case of RTE, the port is defined as J1939RmRPort&lt;J1939RmUserId&gt;.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      CancelRequestTimeout: In case of RTE, the port is defined as J1939RmPPort&lt;J1939RmUserId&gt;.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      This parameter shall not be set for J1939RmUserType
+                                      J1939RM_USER_J1939NM,
+                                      J1939RM_USER_J1939DCM, or
+                                      J1939RM_USER_COM.
+                                    &lt;/p&gt;
+                                  &lt;/html&gt;</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SCOPE" value="LOCAL"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="7b6403aa-892e-4d91-9045-adcd94c5f0ff"/>
+                            <a:da name="INVALID" type="XPath">
+                              <a:tst 
+                                     expr="(node:existsAndTrue(.)) and ((../J1939RmUserType = &apos;J1939RM_USER_J1939NM&apos;) or (../J1939RmUserType = &apos;J1939RM_USER_J1939DCM&apos;) or (../J1939RmUserType = &apos;J1939RM_USER_COM&apos;))" 
+                                     true="J1939RmUserTimeoutSupervision parameter shall not be set for J1939RmUserType: J1939RM_USER_J1939NM, J1939RM_USER_J1939DCM, or J1939RM_USER_COM."/>
+                              <a:tst 
+                                     expr="((node:existsAndFalse(../../../../../../../J1939RmGeneral/J1939RmSupportTimeoutSupervision)) and (node:existsAndTrue(.)))" 
+                                     true="If J1939RmUserTimeoutSupervision is enabled, J1939RmSupportTimeoutSupervision shall also be enabled. Otherwise Disable both parameters, if Timeout Supervision is not required."/>
+                            </a:da>
+                          </v:var>
+                          <v:var name="J1939RmUserType" type="ENUMERATION">
+                            <a:a name="DESC">
+                              <a:v>&lt;html&gt;
+                                    &lt;p&gt;
+                                      Defines the type of module using J1939Rm.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      J1939RM_USER_CDD: CDDs may use all APIs provided by J1939Rm.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      J1939RM_USER_COM: J1939Rm only supports requests for COM I-PDUs.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      J1939RM_USER_J1939DCM: J1939Dcm uses only request indication
+                                      and transmission of acknowledgement..
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      J1939RM_USER_J1939NM: J1939Nm uses only request indication.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      J1939RM_USER_RTE: Application SW-Cs may use all APIs provided by J1939Rm.
+                                    &lt;/p&gt;
+                                  &lt;/html&gt;</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SCOPE" value="LOCAL"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="b1fc86b7-14fa-4ad3-b380-479b81875942"/>
+                            <a:da name="INVALID" type="XPath">
+                              <a:tst 
+                                     expr="(as:name(.) = &apos;J1939RM_USER_J1939NM&apos;) and (not(node:exists(as:modconf(&apos;J1939Nm&apos;)[1])))" 
+                                     true="J1939RM configuration has Users of type J1939RM_USER_J1939NM, J1939Nm module-configuration was not found"/>
+                              <a:tst 
+                                     expr="(as:name(.) = &apos;J1939RM_USER_COM&apos;) and (not(node:exists(as:modconf(&apos;Com&apos;)[1])))" 
+                                     true="J1939RM configuration has Users of type J1939RM_USER_COM, Com module-configuration was not found"/>
+                              <a:tst 
+                                     expr="(as:name(.) = &apos;J1939RM_USER_RTE&apos;) and (not(node:exists(as:modconf(&apos;Rte&apos;)[1])))" 
+                                     true="J1939RM configuration has Users of type J1939RM_USER_RTE, Rte module-configuration was not found"/>
+                              <a:tst 
+                                     expr="(as:name(.) = &apos;J1939RM_USER_J1939DCM&apos;) and (not(node:exists(as:modconf(&apos;J1939Dcm&apos;)[1])))" 
+                                     true="J1939RM configuration has Users of type J1939RM_USER_J1939DCM, J1939Dcm module-configuration was not found"/>
+                              <a:tst 
+                                     expr="(as:name(.) = &apos;J1939RM_USER_CDD&apos;) and (not(node:exists(../J1939RmUserCddName)))" 
+                                     true="J1939RM configuration has Users of type J1939RM_USER_CDD, J1939RmUserCddName is not Enabled/Configured."/>
+                              <a:tst 
+                                     expr="(as:name(.) = &apos;J1939RM_USER_COM&apos;) and (not(node:exists(../J1939RmUserComIPduRequestQueueSize)))" 
+                                     true="J1939RmUserComIPduRequestQueueSize shall be configured for user type COM."/>
+                            </a:da>
+                            <a:da name="RANGE">
+                              <a:v>J1939RM_USER_CDD</a:v>
+                              <a:v>J1939RM_USER_COM</a:v>
+                              <a:v>J1939RM_USER_J1939DCM</a:v>
+                              <a:v>J1939RM_USER_J1939NM</a:v>
+                              <a:v>J1939RM_USER_RTE</a:v>
+                            </a:da>
+                          </v:var>
+                          <v:ref name="J1939RmUserCddRef" 
+                                 type="FOREIGN-REFERENCE">
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="OPTIONAL" value="false"/>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SCOPE" value="LOCAL"/>
+                            <a:a name="UUID" 
+                                 value="0b68a4e0-7e1c-4e61-bed0-3f55f0529590"/>
+                            <a:da name="ENABLE" value="false"/>
+                            <a:da name="REF" 
+                                  value="ASTyped:ECUC-MODULE-CONFIGURATION-VALUES"/>
+                          </v:ref>
+                          <v:var name="J1939RmUserCddName" type="STRING">
+                            <a:a name="DESC">
+                              <a:v>&lt;html&gt;
+                            			&lt;p&gt;
+                            			  Name of the CDD module.
+                            			&lt;/p&gt;
+                            			&lt;p&gt;
+                            			  This parameter is only required for J1939RmUserType J1939RM_USER_CDD.
+                            			&lt;/p&gt;
+                            		  &lt;/html&gt;</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                              <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="OPTIONAL" value="true"/>
+                            <a:a name="ORIGIN" 
+                                 value="Elektrobit Automotive GmbH"/>
+                            <a:a name="SCOPE" value="LOCAL"/>
+                            <a:a name="UUID" 
+                                 value="989111d6-d3c5-4e5f-9c2e-1d0f49862fe2"/>
+                            <a:da name="ENABLE" value="false"/>
+                            <a:da name="INVALID" type="XPath">
+                              <a:tst 
+                                     expr="(node:exists(.)) and ((../J1939RmUserType) != &apos;J1939RM_USER_CDD&apos;)" 
+                                     true="This parameter is only required for J1939RmUserType is J1939RM_USER_CDD"/>
+                              <a:tst 
+                                     expr="count(../../../../../../../J1939RmConfigSet/*/J1939RmNode/*/J1939RmUser/*[(node:exists(J1939RmUserCddName)) and (node:name(J1939RmUserCddName)/@name = node:name(node:current())/@name)]) &gt; 1" 
+                                     true="J1939RmUserCddName shall be unique across all J1939RmUserCdd."/>
+                              <a:tst 
+                                     expr="(../J1939RmUserType = &apos;J1939RM_USER_CDD&apos;) and (not(node:exists(.)))" 
+                                     true="J1939RM configuration has Users of type J1939RM_USER_CDD, J1939RmUserCddName is not Configured."/>
+                            </a:da>
+                          </v:var>
+                          <v:lst name="J1939RmComIPdu" type="MAP">
+                            <a:da name="INVALID" type="XPath" 
+                                  expr="(../J1939RmUserType = &apos;J1939RM_USER_COM&apos;) and (not(count(./eb-list::*) &gt; 0))" 
+                                  true="J1939RM configuration has Users of type J1939RM_USER_COM, J1939RmComIPdu is not Configured."/>
+                            <v:ctr name="J1939RmComIPdu" type="IDENTIFIABLE">
+                              <a:a name="DESC">
+                                <a:v>&lt;html&gt;
+                                      &lt;p&gt;
+                                        Defines the configuration of an I-PDU that is to be
+                                        transmitted on request by COM.
+                                      &lt;/p&gt;
+                                      &lt;p&gt;
+                                        This configuration container is only relevant for J1939RmUserType J1939RM_USER_COM.
+                                      &lt;/p&gt;
+                                    &lt;/html&gt;</a:v>
+                              </a:a>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                              </a:a>
+                              <a:a name="POSTBUILDCHANGEABLE" value="true"/>
+                              <a:a name="POSTBUILDVARIANTMULTIPLICITY" 
+                                   value="true"/>
+                              <a:a name="UUID" 
+                                   value="4cfdf0cf-2c08-4c43-81b4-fb4e2359f884"/>
+                              <v:var name="J1939RmComIPduDA" type="INTEGER">
+                                <a:a name="DESC">
+                                  <a:v>&lt;html&gt;
+                                        &lt;p&gt;
+                                          Defines the destination address of the COM I-PDU.
+                                        &lt;/p&gt;
+                                      &lt;/html&gt;</a:v>
+                                </a:a>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                     type="IMPLEMENTATIONCONFIGCLASS">
+                                  <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                <a:a name="UUID" 
+                                     value="983294b8-8c09-4246-a33a-59c93b7a9a38"/>
+                                <a:da name="INVALID" type="Range">
+                                  <a:tst expr="&lt;=253"/>
+                                  <a:tst expr="&gt;=0"/>
+                                </a:da>
+                              </v:var>
+                              <v:var name="ComIPduType" type="ENUMERATION">
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                     type="IMPLEMENTATIONCONFIGCLASS">
+                                  <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" 
+                                     value="Elektrobit Automotive GmbH"/>
+                                <a:da name="RANGE">
+                                  <a:v>ComIPdu_TP</a:v>
+                                  <a:v>ComIPdu_IF</a:v>
+                                </a:da>
+                              </v:var>
+                              <v:var name="J1939RmComIPduPGN" type="INTEGER">
+                                <a:a name="DESC">
+                                  <a:v>&lt;html&gt;
+                                        &lt;p&gt;
+                                          Defines the PGN of the COM I-PDU.
+                                        &lt;/p&gt;
+                                      &lt;/html&gt;</a:v>
+                                </a:a>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                     type="IMPLEMENTATIONCONFIGCLASS">
+                                  <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                <a:a name="UUID" 
+                                     value="ee9148dc-34f5-4cc8-b995-bef0ebb5013d"/>
+                                <a:da name="INVALID" type="Multi">
+                                  <mt:range>
+                                    <mt:tst expr="&lt;=262143"/>
+                                    <mt:tst expr="&gt;=0"/>
+                                  </mt:range>
+                                  <mt:xpath 
+                                            false="J1939RmComIPduPGN shall be unique across all J1939RmComIPdu." 
+                                            expr="text:uniq(../../../../../../../J1939RmNode/eb-list::*/J1939RmUser/eb-list::*/J1939RmComIPdu/eb-list::*/J1939RmComIPduPGN,.)"/>
+                                </a:da>
+                              </v:var>
+                              <v:var name="J1939RmComIPduSA" type="INTEGER">
+                                <a:a name="DESC">
+                                  <a:v>&lt;html&gt;
+                                        &lt;p&gt;
+                                          Defines the Source address of the COM I-PDU.
+                                        &lt;/p&gt;
+                                      &lt;/html&gt;</a:v>
+                                </a:a>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                     type="IMPLEMENTATIONCONFIGCLASS">
+                                  <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                <a:a name="UUID" 
+                                     value="b952313a-e784-4ecf-89ef-7dfcb9bb9a4b"/>
+                                <a:da name="INVALID" type="Range">
+                                  <a:tst expr="&lt;=253"/>
+                                  <a:tst expr="&gt;=0"/>
+                                </a:da>
+                              </v:var>
+                              <v:ctr name="J1939RmLowerComIPdu" 
+                                     type="IDENTIFIABLE">
+                                <a:a name="DESC">
+                                  <a:v>&lt;html&gt;
+                                        &lt;p&gt;
+                                          Defines the configuration of the I-PDU that is sent
+                                          from J1939Rm to IF modules (CanIf or IpduM), or Tp module (J1939Tp).
+                                        &lt;/p&gt;
+                                      &lt;/html&gt;</a:v>
+                                </a:a>
+                                <a:a name="TAB" value="J1939RmLowerComIPdu"/>
+                                <a:a name="UUID" 
+                                     value="41b384a3-7302-4339-85ec-8c32e916d9c6"/>
+                                <a:da name="INVALID" type="XPath" 
+                                      expr="count(../../../../../../../J1939RmNode/eb-list::*/J1939RmUser/eb-list::*/J1939RmComIPdu/eb-list::*[(as:name(J1939RmLowerComIPdu) = as:name(node:current()))]) &gt; 1" 
+                                      true="J1939RmLowerComIPdu name shall be unique across all J1939RmLowerComIPdu&apos;s."/>
+                                <v:var name="J1939RmLowerComIPduId" 
+                                       type="INTEGER">
+                                  <a:a name="DESC">
+                                    <a:v>&lt;html&gt;
+                                          &lt;p&gt;
+                                            Defines the configuration of the Lower COM PDU Id to communicate with PduR.
+                                          &lt;/p&gt;
+                                          &lt;p&gt;
+                                            A symbolic value (preprocessor macro) is also generated for each PDU ID.
+                                          &lt;/p&gt;
+                                          &lt;p&gt;
+                                            The J1939RmLowerComIPdu ids has to be zero based and consecutive.
+                                          &lt;/p&gt;
+                                          &lt;p&gt;Range: 0 .. 65535&lt;/p&gt;
+                                        &lt;/html&gt;</a:v>
+                                  </a:a>
+                                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                       type="IMPLEMENTATIONCONFIGCLASS">
+                                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                  </a:a>
+                                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                  <a:a name="SCOPE" value="ECU"/>
+                                  <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                                  <a:a name="UUID" 
+                                       value="6aea4925-1b79-419d-b10b-47465aa384d9"/>
+                                  <a:da name="INVALID" type="Multi">
+                                    <mt:range>
+                                      <mt:tst expr="&lt;=65535"/>
+                                      <mt:tst expr="&gt;=0"/>
+                                    </mt:range>
+                                    <mt:xpath 
+                                              false="J1939RmLowerComIPduId shall not be redundant." 
+                                              expr="text:uniq(../../../../../../../../J1939RmNode/eb-list::*/J1939RmUser/eb-list::*/J1939RmComIPdu/eb-list::*/J1939RmLowerComIPdu/J1939RmLowerComIPduId,node:value(.))"/>
+                                  </a:da>
+                                </v:var>
+                                <v:ref name="J1939RmLowerComIPduRef" 
+                                       type="REFERENCE">
+                                  <a:a name="DESC">
+                                    <a:v>&lt;html&gt;
+                                          &lt;p&gt;
+                                            Reference to the external Lower Com IPdu definition in the EcuC module.
+                                          &lt;/p&gt;
+                                          &lt;p&gt;
+                                            Dependency on parameter(s):
+                                          &lt;/p&gt;
+                                        &lt;ul&gt;
+                                          &lt;li&gt;A valid reference to EcuC&apos;s &lt;code&gt;Pdu&lt;/code&gt; parameters has to be provided.&lt;/li&gt;
+                                          &lt;li&gt;Unique EcuC PDU has to be provided as reference for each J1939RmLowerComIPdu.&lt;/li&gt;
+                                          &lt;li&gt;It is not allowed to configured bidirectional J1939Rm Com PDUs(the same PDU cannot be given
+                                              as reference for both &lt;code&gt;J1939RmLowerComIPdu&lt;/code&gt; and &lt;code&gt;J1939RmUpperComIPdu&lt;/code&gt;).&lt;/li&gt;
+                                        &lt;/ul&gt;
+                                        &lt;/html&gt;</a:v>
+                                  </a:a>
+                                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                       type="IMPLEMENTATIONCONFIGCLASS">
+                                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                  </a:a>
+                                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                  <a:a name="SCOPE" value="LOCAL"/>
+                                  <a:a name="UUID" 
+                                       value="4cc3639d-54d1-47a1-94eb-67b49e3e3a80"/>
+                                  <a:da name="INVALID" type="XPath">
+                                    <a:tst expr="node:refvalid(.)" 
+                                           false="Invalid reference. A valid reference to a J1939RmLowerComIPduRef must be provided."/>
+                                    <a:tst 
+                                           expr="count(../../../../../../../../J1939RmNode/eb-list::*/J1939RmUser/eb-list::*/J1939RmComIPdu/eb-list::*[(node:refvalid(J1939RmLowerComIPdu/J1939RmLowerComIPduRef)) and (as:name(node:ref(J1939RmLowerComIPdu/J1939RmLowerComIPduRef)) = as:name(node:ref(node:current())))]) &gt; 1" 
+                                           true="Unique EcuC PDU shall be provided as reference for each J1939RmLowerComIPdu."/>
+                                    <a:tst 
+                                           expr="count(../../../../../../../../J1939RmNode/eb-list::*/J1939RmUser/eb-list::*/J1939RmComIPdu/eb-list::*[(node:refvalid(J1939RmUpperComIPdu/J1939RmUpperComIPduRef)) and (as:name(node:ref(J1939RmUpperComIPdu/J1939RmUpperComIPduRef)) = as:name(node:ref(node:current())))]) &gt; 0" 
+                                           true="The referenced EcuC PDU is bidirectional(has both Tx and Rx direction). It is not allowed to configured bidirectional J1939Rm PDUs."/>
+                                  </a:da>
+                                  <a:da name="REF" 
+                                        value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/EcuC/EcucPduCollection/Pdu"/>
+                                </v:ref>
+                              </v:ctr>
+                              <v:ctr name="J1939RmUpperComIPdu" 
+                                     type="IDENTIFIABLE">
+                                <a:a name="DESC">
+                                  <a:v>&lt;html&gt;
+                                        &lt;p&gt;
+                                          Defines the configuration of the I-PDU that is sent
+                                          from COM to J1939Rm.
+                                        &lt;/p&gt;
+                                      &lt;/html&gt;</a:v>
+                                </a:a>
+                                <a:a name="TAB" value="J1939RmUpperComIPdu"/>
+                                <a:a name="UUID" 
+                                     value="15a917de-5b9d-41df-bf09-a09f957269db"/>
+                                <a:da name="INVALID" type="XPath" 
+                                      expr="count(../../../../../../../J1939RmNode/eb-list::*/J1939RmUser/eb-list::*/J1939RmComIPdu/eb-list::*[(as:name(J1939RmUpperComIPdu) = as:name(node:current()))]) &gt; 1" 
+                                      true="J1939RmUpperComIPdu name shall be unique across all J1939RmUpperComIPdu&apos;s."/>
+                                <v:var name="J1939RmUpperComIPduId" 
+                                       type="INTEGER">
+                                  <a:a name="DESC">
+                                    <a:v>&lt;html&gt;
+                                          &lt;p&gt;
+                                            Defines the configuration of the Upper COM PDU Id to communicate with PduR.
+                                          &lt;/p&gt;
+                                          &lt;p&gt;
+                                            A symbolic value (preprocessor macro) is also generated for each PDU ID.
+                                          &lt;/p&gt;
+                                          &lt;p&gt;
+                                            The J1939RmUpperComIPdu Ids has to be zero based and consecutive.
+                                          &lt;/p&gt;
+                                          &lt;p&gt;Range: 0 .. 65535&lt;/p&gt;
+                                        &lt;/html&gt;</a:v>
+                                  </a:a>
+                                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                       type="IMPLEMENTATIONCONFIGCLASS">
+                                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                  </a:a>
+                                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                  <a:a name="SCOPE" value="ECU"/>
+                                  <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                                  <a:a name="UUID" 
+                                       value="a90fff76-372a-494d-9093-9cb43cecd9ec"/>
+                                  <a:da name="INVALID" type="Multi">
+                                    <mt:range>
+                                      <mt:tst expr="&lt;=65535"/>
+                                      <mt:tst expr="&gt;=0"/>
+                                    </mt:range>
+                                    <mt:xpath 
+                                              false="J1939RmUpperComIPduId shall be zero based and consecutive." 
+                                              expr="node:isconsecutive(../../../../../../../../J1939RmNode/eb-list::*/J1939RmUser/eb-list::*/J1939RmComIPdu/eb-list::*/J1939RmUpperComIPdu/J1939RmUpperComIPduId,0)"/>
+                                  </a:da>
+                                </v:var>
+                                <v:ref name="J1939RmUpperComIPduRef" 
+                                       type="REFERENCE">
+                                  <a:a name="DESC">
+                                    <a:v>&lt;html&gt;
+                                          &lt;p&gt;
+                                            Reference to the external Upper Com IPdu definition in the EcuC module.
+                                          &lt;/p&gt;
+                                          &lt;p&gt;
+                                            Dependency on parameter(s):
+                                          &lt;/p&gt;
+                                        &lt;ul&gt;
+                                          &lt;li&gt;A valid reference to EcuC&apos;s &lt;code&gt;Pdu&lt;/code&gt; parameters has to be provided.&lt;/li&gt;
+                                          &lt;li&gt;Unique EcuC PDU has to be provided as reference for each J1939RmUpperComIPdu.&lt;/li&gt;
+                                          &lt;li&gt;It is not allowed to configured bidirectional J1939Rm Com PDUs(the same PDU cannot be given
+                                              as reference for both &lt;code&gt;J1939RmUpperComIPdu&lt;/code&gt; and &lt;code&gt;J1939RmLowerComIPdu&lt;/code&gt;).&lt;/li&gt;
+                                        &lt;/ul&gt;
+                                        &lt;/html&gt;</a:v>
+                                  </a:a>
+                                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                       type="IMPLEMENTATIONCONFIGCLASS">
+                                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                  </a:a>
+                                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                  <a:a name="SCOPE" value="LOCAL"/>
+                                  <a:a name="UUID" 
+                                       value="fe622d68-91a1-4879-92f4-26ec07c5f3b0"/>
+                                  <a:da name="INVALID" type="XPath">
+                                    <a:tst expr="node:refvalid(.)" 
+                                           false="Invalid reference. A valid reference to a J1939RmUpperComIPduRef must be provided."/>
+                                    <a:tst 
+                                           expr="count(../../../../../../../../J1939RmNode/eb-list::*/J1939RmUser/eb-list::*/J1939RmComIPdu/eb-list::*[(node:refvalid(J1939RmUpperComIPdu/J1939RmUpperComIPduRef)) and (as:name(node:ref(J1939RmUpperComIPdu/J1939RmUpperComIPduRef)) = as:name(node:ref(node:current())))]) &gt; 1" 
+                                           true="Unique EcuC PDU shall be provided as reference for each J1939RmUpperComIPdu."/>
+                                    <a:tst 
+                                           expr="count(../../../../../../../../J1939RmNode/eb-list::*/J1939RmUser/eb-list::*/J1939RmComIPdu/eb-list::*[(node:refvalid(J1939RmLowerComIPdu/J1939RmLowerComIPduRef)) and (as:name(node:ref(J1939RmLowerComIPdu/J1939RmLowerComIPduRef)) = as:name(node:ref(node:current())))]) &gt; 0" 
+                                           true="The referenced EcuC PDU is bidirectional(has both Tx and Rx direction). It is not allowed to configured bidirectional J1939Rm PDUs."/>
+                                  </a:da>
+                                  <a:da name="REF" 
+                                        value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/EcuC/EcucPduCollection/Pdu"/>
+                                </v:ref>
+                              </v:ctr>
+                            </v:ctr>
+                          </v:lst>
+                        </v:ctr>
+                      </v:lst>
+                    </v:ctr>
+                  </v:lst>
+                </v:ctr>
+              </v:lst>
+              <v:ctr name="J1939RmGeneral" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                        &lt;p&gt;
+                          Defines the general configuration parameters of the J1939Rm module.
+                        &lt;/p&gt;
+                      &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="UUID" value="e63d381c-31a2-4e1c-bf24-d1c8152f5e6b"/>
+                <v:var name="J1939RmRelocatablePbcfgEnable" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                         Enables/disables support for relocatable postbuild configuration.
+                         &lt;ul&gt;
+                           &lt;li&gt;True: Postbuild configuration relocatable in memory.&lt;/li&gt;
+                           &lt;li&gt;False: Postbuild configuration not relocatable in memory.&lt;/li&gt;
+                         &lt;/ul&gt;
+                       &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="J1939RmRelocatablePbcfgEnable"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="dc81d450-37d3-11e3-aa6e-0800200c9a66"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="EDITABLE" type="XPath" 
+                        expr="not(node:existsAndTrue(node:contains(node:refs(as:modconf(&apos;PbcfgM&apos;)/PbcfgMBswModules/eb-list::*/PbcfgMBswModuleRef), as:modconf(&apos;J1939Rm&apos;)))"/>
+                </v:var>
+                <v:var name="J1939RmDevErrorDetect" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;
+                            Enable Switches the Default Error Tracer (Det) detection and
+                            notification ON.
+                          &lt;/p&gt;
+                          &lt;p&gt;
+                            Disable Switches the Default Error Tracer (Det) detection and
+                            notification OFF.
+                          &lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SCOPE" value="LOCAL"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="8fd5d644-3235-4221-9418-e8a22aa57e55"/>
+                </v:var>
+                <v:var name="J1939RmMainFunctionPeriod" type="FLOAT">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;
+                            Defines the execution cycle of J1939Rm_MainFunction in seconds.
+                          &lt;/p&gt;
+                          &lt;p&gt;Range: 0.001 .. 0.255&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SCOPE" value="ECU"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="28829025-a1dc-4f4b-b70b-d4282474bd3e"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=0.255"/>
+                    <a:tst expr="&gt;=0.001"/>
+                  </a:da>
+                </v:var>
+                <v:var name="J1939RmSupportAckIndication" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;
+                            Enable support of acknowledgement indications.
+                          &lt;/p&gt;
+                          &lt;p&gt;
+                            Disable support of acknowledgement indications.
+                          &lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SCOPE" value="LOCAL"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="e0e2ba9a-86f4-4271-acd1-c84b10dfcdfb"/>
+                </v:var>
+                <v:var name="J1939RmSupportAckTransmission" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;
+                            Enable support of acknowledgement transmission.
+                          &lt;/p&gt;
+                          &lt;p&gt;
+                            Disable support of acknowledgement transmission.
+                          &lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SCOPE" value="LOCAL"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="03805a0b-ecf3-4e97-9a39-165da78b36b9"/>
+                </v:var>
+                <v:var name="J1939RmSupportRequestIndication" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;
+                            Enable support of request indications.
+                          &lt;/p&gt;
+                          &lt;p&gt;
+                            Disable support of request indications.
+                          &lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SCOPE" value="LOCAL"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="ad037fc9-a392-4aeb-b67a-72eb5a65670b"/>
+                </v:var>
+                <v:var name="J1939RmSupportRequestTransmission" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;
+                            Enable support of request transmission.
+                          &lt;/p&gt;
+                          &lt;p&gt;
+                            Disable support of request transmission.
+                          &lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SCOPE" value="LOCAL"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="5bb96677-35f4-4046-8282-5a64d67aa285"/>
+                </v:var>
+                <v:var name="J1939RmSupportTimeoutSupervision" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;
+                            Enable support of request timeout supervision.
+                          &lt;/p&gt;
+                          &lt;p&gt;
+                            Disable support of request timeout supervision.
+                          &lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SCOPE" value="LOCAL"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="61f46f72-137a-423f-8c6b-900d192b6714"/>
+                </v:var>
+                <v:var name="J1939RmTxConfirmationTimeout" type="FLOAT">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;
+                            Defines the time in seconds to wait for a confirmation after
+                            transmission of a message. The behaviour when the time elapses depends
+                            on the transmitted message.
+                          &lt;/p&gt;
+                          &lt;p&gt;Range: 0.0 .. 65.535&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SCOPE" value="LOCAL"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="503117fc-2477-4017-b595-a4506bd5a59d"/>
+                  <a:da name="INVALID" type="Multi">
+                    <mt:range>
+                      <mt:tst expr="&lt;=65.535"/>
+                      <mt:tst expr="&gt;=0.0"/>
+                    </mt:range>
+                    <mt:xpath 
+                              true="J1939RmTxConfirmationTimeout value shall be multiple of J1939RmMainFunctionPeriod period." 
+                              expr="(((node:value(.)) div (node:value(../J1939RmMainFunctionPeriod))) - (num:integer((node:value(.)) div (node:value(../J1939RmMainFunctionPeriod))))) &gt; 0"/>
+                  </a:da>
+                </v:var>
+                <v:var name="J1939RmVersionInfoApi" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;
+                            Enable the Pre-processor switch for version info API support.
+                          &lt;/p&gt;
+                          &lt;p&gt;
+                            Disable the Pre-processor switch for version info API support.
+                          &lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SCOPE" value="LOCAL"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="36f1ae60-1d7e-4cb0-9735-8a3f4b3b940f"/>
+                </v:var>
+              </v:ctr>
+              <d:ref type="REFINED_MODULE_DEF" 
+                     value="ASPath:/AUTOSAR/EcucDefs/J1939Rm"/>
+            </v:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+
+</datamodel>

@@ -1,0 +1,131 @@
+########### CORE PART OF THE TEMPLATE - START ###########
+## !LINKSTO Generator.Output.os_config_h, 2
+#parse("include/Os_config.h.vm")
+########### CORE PART OF THE TEMPLATE - END #############
+########### TARGET PART OF THE TEMPLATE - START ###########
+########### Arch specific velocimacros that can be called from the common code parts ###########
+#macro( VM_ArchOsApplication $app )
+## !LINKSTO Generator.Output.os_config_h.Applications.APPCONFIG.archapp, 2
+#* *##if( $OsGenerator.needMakeMemoryRegionSizes() )
+#*   *#    OS_ARCHAPP_INIT(  \
+## A check has been added in order to handle the system applications.
+#*     *##if( $app.isAPP_SYSTEM() )
+#*       *#      /* size of the private data region for MPU */                    OS_CORTEXM_MPU_SIZE_DISABLED  \
+#*     *##elseif( (!$app.getOwningApplication().isTrusted() || $OsModel.isMicroKernel()) )
+#*       *#      /* size of the private data region for MPU */                    OS_CORTEXM_MPU_$app.getPrivateDataRegionSize()  \
+#*     *##else
+#*       *#      /* size of the private data region for MPU */                    OS_CORTEXM_MPU_SIZE_DISABLED  \
+#*     *##end
+#*   *#    )  \
+#* *##end
+#end
+##
+##
+#macro( VM_ArchOsConfigDataInit $coreId )
+#end
+##
+##
+#macro( VM_ArchOsConfigInterruptInit )
+#end
+##
+##
+#macro( VM_ArchOsConfigTimestampInit )
+#end
+##
+##
+#macro( VM_ArchOsTaskInit $task )
+## !LINKSTO Generator.Output.os_config_h.Tasks.TASKCONFIG.arch, 1
+#* *##if( $OsGenerator.needMakeMemoryRegionSizes() )
+#*   *#    OS_ARCHTASK_INIT(  \
+#*     *##if( !$task.getOwningApplication().isTrusted() || $OsModel.isMicroKernel() )
+#*       *#      /* size of the private data region for MPU*/                    OS_CORTEXM_MPU_$task.getPrivateDataRegionSize(),  \
+#*       *#      /* size of the task stack for MPU*/                             OS_CORTEXM_MPU_$ArchProperties.getMpuMemorySize($task.getAutocoreStackSize())  \
+#*     *##else
+#*       *#      /* size of the private data region for MPU*/                    OS_CORTEXM_MPU_SIZE_DISABLED,  \
+#*       *#      /* size of the task stack for MPU*/                             OS_CORTEXM_MPU_SIZE_DISABLED  \
+#*     *##end
+#*   *#    )  \
+#* *##end
+#end
+#macro( VM_ArchOsHwTimerInit $timer )
+#end
+#macro( VM_ArchOsInterruptInit $interrupt )
+## !LINKSTO Generator.Output.os_config_h.Interrupts.ISRCONFIG.arch, 1
+#* *##set( $owningApp = $interrupt.getOwningApplication() )
+#* *#    OS_ARCHISR_INIT(  \
+#* *#      /* ISR source */                                                 $interrupt.getVectorNumber(),  \
+#* *##if( !$interrupt.getCategory().toString().equals("1") && !$interrupt.getCategory().toString().equals("2") )
+#*   *#      /* ISR priority (Cat K) */                                       $interrupt.getCalcPriority(),  \
+#* *##else
+#*   *#      /* ISR priority */                                               $interrupt.getCalcPriority(),  \
+#* *##end
+#* *##set( $isThereNext = $OsGenerator.needMakeMemoryRegionSizes() )
+#* *##if( $ArchProperties.getNumCPUCoresMax() > 1 )
+#*   *#      /* Target core */                                                OS_CORTEXM_INT_TARGET_C$owningApp.getPhyCoreAssignment()#if($isThereNext == true),  \\$newLine#else  \\$newLine#end
+#* *##else
+#*   *#      /* Target core */                                                OS_CORTEXM_INT_TARGET_DEFAULT#if($isThereNext == true),  \\$newLine#else  \\$newLine#end
+#* *##end
+#* *##if( $OsGenerator.needMakeMemoryRegionSizes() )
+#*   *##if( !$owningApp.isTrusted() || $OsModel.isMicroKernel() )
+#*     *#      /* size of the private data region for MPU */                    OS_CORTEXM_MPU_$interrupt.getPrivateDataRegionSize(),  \
+#*     *#      /* size of the ISR stack for MPU */                              OS_CORTEXM_MPU_$ArchProperties.getMpuMemorySize($interrupt.getStackSize())  \
+#*   *##else
+#*     *#      /* size of the private data region for MPU */                    OS_CORTEXM_MPU_SIZE_DISABLED,  \
+#*     *#      /* size of the ISR stack for MPU */                              OS_CORTEXM_MPU_SIZE_DISABLED  \
+#*   *##end
+#* *##end
+#* *#    )  \
+#end
+
+/*===================================================================
+ * CORTEXM memory region sizes for MPU
+ *==================================================================*/
+#if( $OsGenerator.needMakeMemoryRegionSizes() )
+#* *#\#define OS_CORTEXM_MPU_GLOBAL_ROM_SIZE  OS_CORTEXM_MPU_$OsConfig.getGlobalRomSize()
+#* *#\#define OS_CORTEXM_MPU_GLOBAL_RAM_SIZE  OS_CORTEXM_MPU_$OsConfig.getGlobalRamSize()
+#* *#\#define OS_CORTEXM_MPU_GLOBAL_IO_SIZE   OS_CORTEXM_MPU_$OsConfig.getGlobalIoSize()
+#* *#\#define OS_CORTEXM_MPU_SHOOK_SIZE       OS_CORTEXM_MPU_$ArchProperties.getMpuMemorySize($AllApplicationsList.getSHooksStackSize())
+#* *#\#define OS_CORTEXM_MPU_EHOOK_SIZE       OS_CORTEXM_MPU_$ArchProperties.getMpuMemorySize($AllApplicationsList.getEHooksStackSize())
+#foreach( $stack in $AllInterruptsList.getStacks() )
+#* *##foreach( $slot in $stack )
+#* *#\#define OS_CORTEXM_MPU_SIZE_$stack.getSlotVarName($slot).toUpperCase().substring(3)  OS_CORTEXM_MPU_$ArchProperties.getMpuMemorySize($slot.getSlotSize())
+#* *##end
+#end
+#end
+
+/*===================================================================
+ * CORTEXM Interrupts
+ *==================================================================*/
+## !LINKSTO Generator.Output.os_config_h.Interrupts.Vectors, 1
+#foreach( $interrupt in $AllInterruptsList )
+#* *##set( $vectorNumHex = $ClassOfHelpers.toHexString(2, $interrupt.getVectorNumber()) )
+#* *##set( $phyCoreId    = $interrupt.getOwningApplication().getPhyCoreAssignment() )
+#* *##set( $srcPrefix    = "OS_SRC${vectorNumHex}_C${phyCoreId}" )
+#* *##ifndef ${srcPrefix}_NAME 
+#* *#\#define ${srcPrefix}_NAME                      _OS_VECTOR_$interrupt.getVector()
+#* *#\#define ${srcPrefix}_ISRID                     $interrupt.getName()
+## !LINKSTO Generator.Output.os_config_h.Interrupts.Vectors.EntryFunction, 1
+#* *##if( $interrupt.getCategory().toString().equals("CC") )
+#*   *#\#define ${srcPrefix}_ENTRY                     OS_CrossCoreNotifyIsr
+#* *##elseif( $interrupt.getCategory().toString().equals("1") && $OsOptimize.isCat1DirectCall() )
+#*   *#\#define ${srcPrefix}_ENTRY                      $interrupt.getIsrFuncName()
+#* *##else
+#*   *#\#define ${srcPrefix}_ENTRY                     OS_Cat$interrupt.getCategory().toString()Entry
+#* *##end
+#* *##if( $interrupt.getCategory().toString().equals("1") )
+#*   *#\#define ${srcPrefix}_EXIT                      OS_CORTEXM_IntCat1Exit
+#*   *#\#define ${srcPrefix}_LOCKLEVEL                 $interrupt.getCalcPriority()
+#* *##else
+#*   *#\#define ${srcPrefix}_EXIT                      OS_CORTEXM_IntCat2Exit
+#*   *#\#define ${srcPrefix}_LOCKLEVEL                 OS_KERNLOCK
+#* *##end
+#* *#\#else
+#* *##error Redefined macro ${srcPrefix}_NAME
+#* *##endif
+
+#end
+
+#ifdef __cplusplus
+}
+#endif
+#endif  /* OS_CONFIG_H */

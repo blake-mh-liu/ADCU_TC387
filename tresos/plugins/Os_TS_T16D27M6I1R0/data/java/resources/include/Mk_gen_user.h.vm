@@ -1,0 +1,179 @@
+#parse("CommonVars.vm")
+#parse("CommonMkVars.vm")
+/* This file is generated automatically. DO NOT EDIT!!
+ *
+ * EB tresos AutoCore OS ${Version.getMajor()}.${Version.getMinor()}.${Version.getPatch()} ${Version.getTarget()}/${Version.getDerivate()}
+ * (Build ${Version.getBuild()})
+ *
+ * (c) 1998-${Version.getCurrentYear()} Elektrobit Automotive GmbH
+ * Am Wolfsmantel 46
+ * 91058 Erlangen
+ * GERMANY
+ *
+ * Date         : ${Version.getDate()}           !!!IGNORE-LINE!!!
+ */
+
+#ifndef MK_GEN_USER_H
+\#define MK_GEN_USER_H
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+## !LINKSTO Microkernel.Generator.OutputFiles.General.Header_Comment, 1
+/*
+ * MISRA-C:2012 Deviation List
+ *
+ * MISRAC2012-1) Deviated Rule: 20.1 (advisory)
+ * \#include statements in a file should only be preceded by
+ * preprocessor directives or comments.
+ *
+ * Reason:
+ * The C++ guards allow usage of the OS with a C++-compiler.
+ */
+
+/* Deviation MISRAC2012-1 <*> */
+
+#if( $IsMkVersionOlderThan21 )
+#* *#\#include <public/Mk_autosar.h>
+#end
+
+/*===================================================================
+ * Addons
+ *==================================================================*/
+#set( $mkAddOns = $MkConfig.getAddOns() )
+#if( $mkAddOns.size() > 0 )
+#* *##set( $numAddOns = $mkAddOns.size() - 1 )##Indexing starts from 0
+#* *##foreach( $i in [0..$numAddOns] )
+#*    *#\#define $mkAddOns.get($i).getMkAddOnId()  ${i}u
+#* *##end
+#end
+
+/*===================================================================
+ * Applications
+ *==================================================================*/
+#foreach( $app in $AllApplicationsList )
+#* *#\#define $app.getName()  $AllApplicationsList.getId($app)
+#end
+#foreach( $app in $AllApplicationsList )
+## !LINKSTO Microkernel.Generator.OutputFiles.General.Assembler_Protection, 1
+#* *##foreach( $tf in $app.getTrustedFunctions() )
+#*    *##ifndef MK_ASM
+#*    *#extern void TRUSTED_$tf.getName()(TrustedFunctionIndexType, TrustedFunctionParameterRefType);
+#*    *##endif  /* MK_ASM */
+#* *##end
+#end
+
+#set( $nTf = 0 )
+#foreach( $app in $AllApplicationsList )
+#* *##foreach( $tf in $app.getTrustedFunctions() )
+#*    *#\#define $tf.getName()  $nTf
+#*    *##set( $nTf = $nTf + 1 )
+#* *##end
+#end
+
+/*===================================================================
+ * Events
+ *==================================================================*/
+#foreach( $event in $AllEventsList )
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_user.Event_Mask, 1
+#* *#\#define $event.getName()  $event.getEventMaskHexString()
+#end
+
+/*===================================================================
+ * Interrupts
+ *==================================================================*/
+#foreach( $interrupt in $AllInterruptsList )
+#* *##if( $foreach.index == 0 )
+## !LINKSTO Microkernel.Generator.OutputFiles.General.Assembler_Protection, 1
+#*    *##ifndef MK_ASM
+#* *##end
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_user.Isr_Id, 1
+#* *##if( $AllInterruptsList.getId($interrupt) >= 0 )
+#*    *#\#define $interrupt.getName()  $AllInterruptsList.getId($interrupt)
+#* *##end
+#end
+#foreach( $interrupt in $AllInterruptsList )
+#* *##if( $interrupt.needsPrototype() )
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_user.Isr_prototype, 2
+#*    *##if( $interrupt.getCategory().toString() != "MK" )
+#*       *#extern void $interrupt.getIsrFuncName()(void);
+#*    *##else
+#*       *#extern void $interrupt.getIsrFuncName()(void *, mk_objectid_t, mk_unsigned_t);
+#*    *##end
+#* *##end
+#* *##if( !$foreach.hasNext )
+#*    *##endif  /* MK_ASM */
+#* *##end
+#end
+
+/*===================================================================
+ * Resources
+ *==================================================================*/
+#set( $stdResList = $AllResourcesList.getUsedNonInternalResources() )
+#foreach( $coreId in [0..$OsModel.getMaxCoreId()] )
+#* *##set( $localResList = $stdResList.getElementsOnCore( $coreId ) )
+#* *##foreach( $stdRes in $localResList )
+#*    *##if( $stdRes.isSpecialResource() )
+#*       *##if( $OsConfig.getPhysicalInitCoreId() == $coreId )
+#*           *#\#define $stdRes.getSpecialResourceUserName()  MK_MakeLockId(0u, $localResList.getId($stdRes)u)
+#*       *##end
+#*    *##else
+#*       *#\#define $stdRes.getName()  MK_MakeLockId(${coreId}u, $localResList.getId($stdRes)u)
+#*    *##end
+#* *##end
+#end
+
+/*===================================================================
+ * Simple Schedule Tables
+ *==================================================================*/
+#set( $numACSchedTables = $AllScTablesList.getNumAutocoreScheduleTables() )
+#foreach( $mkSc in $AllScTablesList.getMkScheduleTables() )
+#* *##set( $index = $numACSchedTables + $foreach.index )
+#* *#\#define $mkSc.getName()  $index
+#end
+
+/*===================================================================
+ * Tasks
+ *==================================================================*/
+## !LINKSTO Microkernel.Generator.OutputFiles.General.Assembler_Protection, 1
+#ifndef MK_ASM
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_user.Task_protoype, 1
+#foreach( $task in $AllTasksList )
+#* *#extern void $task.getEntryFunction()(void);
+#end
+#endif  /* MK_ASM */
+
+/*===================================================================
+ * Tasks_IDs
+ *==================================================================*/
+## !LINKSTO Microkernel.Generator.OutputFiles.Mk_gen_user.Task_Id, 1
+#foreach( $task in $AllTasksList )
+#* *#\#define $task.getName()  $AllTasksList.getId($task)
+#end
+
+/*===================================================================
+ * User Function Declarations
+ *==================================================================*/
+## !LINKSTO Microkernel.Generator.OutputFiles.General.Assembler_Protection, 1
+#ifndef MK_ASM
+#if( $MkConfig.hasPanicStop() )
+#* *#extern void ${MkConfig.getPanicStopFunction()}(mk_panic_t);
+#end
+#* The following functions are core independent and should be generated
+ * once. But first check if init values are provided, if so do nothing
+ * because they are created manually
+ * *#
+#if( $MkConfig.getIdleFunction() != "MK_Idle" )
+#* *#extern void $MkConfig.getIdleFunction()(void);
+#end
+#if ( $MkConfig.getShutdownFunction() != "MK_Idle" )
+#* *#extern void $MkConfig.getShutdownFunction()(void);
+#end
+#if( $MkConfig.getInitFunction() != "main" )
+#* *#extern void $MkConfig.getInitFunction()(void);
+#end
+#endif  /* MK_ASM */
+#ifdef __cplusplus
+}
+#endif
+#endif  /* MK_GEN_USER_H */

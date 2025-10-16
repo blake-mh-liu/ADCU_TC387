@@ -1,0 +1,973 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: MCU_B_R BMS CCU EBM FUSION MCU_B_F DataCenter Shifter
+
+
+BO_ 369 BMS1: 16 BMS
+ SG_ HVBattVolt : 28|13@0+ (0.1,0) [0|819] "V" MCU_B_R
+
+BO_ 378 BMS6: 12 BMS
+ SG_ HVBContactorSta : 66|1@0+ (1,0) [0|1] "" MCU_B_R
+
+BO_ 1328 NMm_BMS: 8 BMS
+ SG_ NM_BMS_Node_ID : 7|8@0+ (1,0) [0|127] "" MCU_B_R
+ SG_ NM_BMS_Rpt_Msg_Req : 8|1@0+ (1,0) [0|1] "" MCU_B_R
+ SG_ NM_BMS_CSB : 11|1@0+ (1,0) [0|1] "" MCU_B_R
+ SG_ NM_BMS_Active_WU : 12|1@0+ (1,0) [0|1] "" MCU_B_R
+ SG_ NM_BMS_PNI : 14|1@0+ (1,0) [0|1] "" MCU_B_R
+ SG_ NM_BMS_ERROR_State : 31|4@0+ (1,0) [0|8] "" MCU_B_R
+
+BO_ 1331 NMm_CCU: 8 CCU
+ SG_ NM_CCU_Node_ID : 7|8@0+ (1,0) [0|127] "" MCU_B_R
+ SG_ NM_CCU_Rpt_Msg_Req : 8|1@0+ (1,0) [0|1] "" MCU_B_R
+ SG_ NM_CCU_CSB : 11|1@0+ (1,0) [0|1] "" MCU_B_R
+ SG_ NM_CCU_Active_WU : 12|1@0+ (1,0) [0|1] "" MCU_B_R
+ SG_ NM_CCU_PNI : 14|1@0+ (1,0) [0|1] "" MCU_B_R
+ SG_ NM_CCU_ERROR_State : 31|4@0+ (1,0) [0|8] "" MCU_B_R
+
+BO_ 1315 NMm_EBM: 8 EBM
+ SG_ NM_EBM_Node_ID : 7|8@0+ (1,0) [0|127] "" MCU_B_R
+ SG_ NM_EBM_Rpt_Msg_Req : 8|1@0+ (1,0) [0|1] "" MCU_B_R
+ SG_ NM_EBM_CSB : 11|1@0+ (1,0) [0|1] "" MCU_B_R
+ SG_ NM_EBM_Active_WU : 12|1@0+ (1,0) [0|1] "" MCU_B_R
+ SG_ NM_EBM_PNI : 14|1@0+ (1,0) [0|1] "" MCU_B_R
+ SG_ NM_EBM_ERROR_State : 31|4@0+ (1,0) [0|8] "" MCU_B_R
+
+BO_ 277 FD3_VCU1: 8 FUSION
+ SG_ CS_VCU1 : 7|8@0+ (1,0) [0|255] "" MCU_B_R
+ SG_ RC_VCU1 : 11|4@0+ (1,0) [0|14] "" MCU_B_R
+ SG_ ShiftGearPosn : 38|3@0+ (1,0) [0|7] "" MCU_B_R
+ SG_ ActiveDischReq : 44|1@0+ (1,0) [0|1] "" MCU_B_R
+ SG_ PwrSta : 63|3@0+ (1,0) [0|7] "" MCU_B_R
+
+BO_ 339 FD3_VCU2: 32 FUSION
+ SG_ CS_VCU2_CAN1 : 7|8@0+ (1,0) [0|255] "" MCU_B_R
+ SG_ RC_VCU2_CAN1 : 11|4@0+ (1,0) [0|14] "" MCU_B_R
+ SG_ Rr_IdcMax : 23|12@0+ (1,0) [0|1022] "A" MCU_B_R
+ SG_ Rr_IdcMin : 27|12@0+ (1,-1022) [-1022|0] "A" MCU_B_R
+ SG_ Rr_TorqMax : 47|12@0+ (1,0) [0|1022] "Nm" MCU_B_R
+ SG_ Rr_TorqMin : 51|12@0+ (1,-1022) [-1022|0] "Nm" MCU_B_R
+ SG_ Rr_UdcMax : 71|12@0+ (1,0) [0|1022] "V" MCU_B_R
+ SG_ Rr_UdcMin : 75|12@0+ (1,0) [0|1022] "V" MCU_B_R
+ SG_ Rr_TMTqReq : 119|16@0+ (0.1,-530) [-530|6023.5] "Nm" MCU_B_R
+ SG_ Rr_ActvDmpDisabReq : 196|1@0+ (1,0) [0|1] "" MCU_B_R
+ SG_ Rr_MCUEnaReq : 197|1@0+ (1,0) [0|1] "" MCU_B_R
+
+BO_ 341 FD3_VCU5: 32 FUSION
+ SG_ FDC_VCU_RrSpdMin_Req : 135|16@0+ (1,-22000) [-22000|43535] "RPM" MCU_B_R
+ SG_ FDC_VCU_RrSpdMax_Req : 103|16@0+ (1,0) [0|65535] "RPM" MCU_B_R
+ SG_ FDC_VCU_RrTMSpd_Req : 167|16@0+ (1,-22000) [-22000|43535] "RPM" MCU_B_R
+ SG_ FDC_VCU_RrTMTq_Req : 199|16@0+ (0.1,-1000) [-1000|5553.5] "Nm" MCU_B_R
+ SG_ FDC_VCU_RrTqMax_Req : 219|12@0+ (1,0) [0|4095] "Nm" MCU_B_R
+ SG_ FDC_VCU_RrTqMin_Req : 243|12@0+ (1,-1022) [-1022|3073] "Nm" MCU_B_R
+ SG_ FDC_VCU_RrTMCtrlMode_Req : 47|3@0+ (1,0) [0|7] "" MCU_B_R
+
+BO_ 346 FD3_VCU4: 32 FUSION
+ SG_ Rr_TMSpdReq : 39|16@0+ (1,-17000) [-17000|17000] "RPM" MCU_B_R
+ SG_ Rr_SpdMax : 71|16@0+ (1,0) [0|17000] "RPM" MCU_B_R
+ SG_ Rr_SpdMin : 103|16@0+ (1,-17000) [-17000|0] "RPM" MCU_B_R
+ SG_ Rr_TMCtrlMode_Req : 118|1@0+ (1,0) [0|1] "" MCU_B_R
+
+BO_ 386 FD3_C100_0: 20 FUSION
+ SG_ BatteryMode : 118|3@0+ (1,0) [0|5] "" MCU_B_R
+ SG_ Rr_Coolanttemp : 144|9@0+ (1,-40) [-40|214] "Deg^C" MCU_B_R
+ SG_ Rr_Coolantflow : 150|6@0+ (0.25,0) [0|15.75] "L/min" MCU_B_R
+
+BO_ 451 GW3_CE100_0: 32 FUSION
+ SG_ VehSpeed : 19|12@0+ (0.125,0) [0|255.875] "km/h" MCU_B_R
+ SG_ IVI_Time_Month : 219|4@0+ (1,0) [0|12] "MONTH" MCU_B_R
+ SG_ IVI_Time_Day : 228|5@0+ (1,0) [0|31] "DAY" MCU_B_R
+ SG_ IVI_Time_Hour : 236|5@0+ (1,0) [0|31] "HOUR" MCU_B_R
+ SG_ IVI_Time_Minute : 245|6@0+ (1,0) [0|63] "MINUTE" MCU_B_R
+ SG_ IVI_Time_Second : 253|6@0+ (1,0) [0|63] "SECOND" MCU_B_R
+
+BO_ 1280 NMm_FUSION: 8 FUSION
+ SG_ NM_FUSION_Node_ID : 7|8@0+ (1,0) [0|127] "" MCU_B_R
+ SG_ NM_FUSION_Rpt_Msg_Req : 8|1@0+ (1,0) [0|1] "" MCU_B_R
+ SG_ NM_FUSION_CSB : 11|1@0+ (1,0) [0|1] "" MCU_B_R
+ SG_ NM_FUSION_Active_WU : 12|1@0+ (1,0) [0|1] "" MCU_B_R
+ SG_ NM_FUSION_PNI : 14|1@0+ (1,0) [0|1] "" MCU_B_R
+ SG_ NM_FUSION_ERROR_State : 31|4@0+ (1,0) [0|8] "" MCU_B_R
+
+BO_ 2000 DiagFuncReqFT: 8 FUSION
+ SG_ DiagFuncReqFT : 7|64@0+ (1,0) [0|0] "" MCU_B_R
+
+BO_ 401 MCU_B_F1: 32 MCU_B_F
+ SG_ MCU_B_F_IGBTDdeTemp_Sta : 24|9@0+ (1,-40) [-40|254] "Deg^C" MCU_B_R
+ SG_ MCU_B_F_RealPwrKw_Sta : 47|16@0+ (0.1,-530) [-530|6023.4] "KW" MCU_B_R
+
+BO_ 404 MCU_B_F2: 16 MCU_B_F
+ SG_ MCU_B_F_KL302TqCnt_Sta : 71|8@0+ (1,0) [0|254] "" MCU_B_R
+
+BO_ 400 MCU_B_R1: 32 MCU_B_R
+ SG_ Rr_MCU1Chksum : 7|8@0+ (1,0) [0|255] "" FUSION
+ SG_ Rr_MCU1RolCnt : 11|4@0+ (1,0) [0|14] "" FUSION
+ SG_ Rr_MCUSysSta : 59|4@0+ (1,0) [0|15] "" FUSION
+ SG_ MCUWarn_R : 62|3@0+ (1,0) [0|7] "" FUSION
+ SG_ Rr_MCUReady : 63|1@0+ (1,0) [0|1] "" FUSION
+ SG_ Rr_MCUBAT : 71|8@0+ (0.1,0) [0|25.4] "V" FUSION
+ SG_ Rr_MCUIGN_sta : 72|1@0+ (1,0) [0|1] "" FUSION
+ SG_ Rr_Reserved_bits : 79|7@0+ (1,0) [0|127] "" FUSION
+ SG_ Rr_RegenAvailTq : 87|12@0+ (1,-1022) [-1022|0] "Nm" FUSION
+ SG_ Rr_MotorAvailTq : 91|12@0+ (1,0) [0|1022] "Nm" FUSION
+ SG_ Rr_TMiq : 110|15@0+ (0.1,-1500) [-1500|1500] "A" FUSION
+ SG_ Rr_TMid : 126|15@0+ (0.1,-1500) [-1500|1500] "A" FUSION
+ SG_ Rr_MCUErr : 143|8@0+ (1,0) [0|255] "" FUSION
+ SG_ Rr_TMTemp : 144|9@0+ (1,-40) [-40|254] "Deg^C" FUSION
+ SG_ Rr_MCUTemp : 167|9@0+ (1,-40) [-40|254] "Deg^C" FUSION
+ SG_ Rr_MCUDCBusCurr : 174|15@0+ (0.1,-1500) [-1500|1500] "A" FUSION,DataCenter
+ SG_ Rr_MCUDCBusVolt : 191|16@0+ (0.1,0) [0|4000] "V" FUSION,DataCenter
+ SG_ Rr_MCUReady4Pre : 200|1@0+ (1,0) [0|1] "" FUSION
+ SG_ Rr_ActvDmpDisabSta : 201|1@0+ (1,0) [0|1] "" FUSION
+ SG_ Rr_EDUDrtSta : 202|1@0+ (1,0) [0|1] "" FUSION
+ SG_ Rr_MCUDischrgSta : 203|1@0+ (1,0) [0|1] "" FUSION
+ SG_ Rr_TMSpd : 215|16@0+ (1,-18000) [-18000|18000] "RPM" EBM,FUSION,DataCenter
+ SG_ Rr_EDURealTMTq : 231|16@0+ (0.1,-1022) [-1022|5531.5] "Nm" FUSION,DataCenter
+ SG_ Rr_EDUTqReqFbk : 243|12@0+ (1,-1022) [-1022|1022] "Nm" FUSION
+ SG_ Rr_MCUEnaSta : 244|1@0+ (1,0) [0|1] "" FUSION
+ SG_ Rr_EDUOpratingSta : 245|1@0+ (1,0) [0|1] "" FUSION
+ SG_ Rr_EDURotateDirction : 247|2@0+ (1,0) [0|2] "" FUSION
+ SG_ MCU_B_R_RealPwrKw_Sta : 47|16@0+ (0.1,-530) [-530|6023.4] "KW" FUSION,MCU_B_F
+ SG_ MCU_B_R_IGBTDdeTemp_Sta : 24|9@0+ (1,-40) [-40|254] "Deg^C" FUSION,MCU_B_F
+
+BO_ 403 MCU_B_R2: 16 MCU_B_R
+ SG_ Rr_MCU2Chksum : 7|8@0+ (1,0) [0|255] "" FUSION
+ SG_ Rr_MCU2RolCnt : 11|4@0+ (1,0) [0|14] "" FUSION
+ SG_ Rr_LLCflowReq : 21|6@0+ (0.25,0) [0|15.5] "L/min" FUSION
+ SG_ Rr_CoolanttempReq : 24|9@0+ (1,-40) [-40|214] "" FUSION
+ SG_ Rr_Failcodehistory1 : 41|2@0+ (1,0) [0|2] "" FUSION
+ SG_ Rr_Failcodehistory2 : 43|2@0+ (1,0) [0|2] "" FUSION
+ SG_ Rr_TMTempWarn : 45|2@0+ (1,0) [0|3] "" FUSION,DataCenter
+ SG_ Rr_MCUTempWarn : 47|2@0+ (1,0) [0|3] "" FUSION,DataCenter
+ SG_ Rr_Failcode2 : 55|8@0+ (1,0) [0|255] "" FUSION
+ SG_ Rr_Failcode1 : 63|8@0+ (1,0) [0|255] "" FUSION
+ SG_ Rr_LLCTemp : 80|9@0+ (1,-40) [-40|214] "Deg^C" FUSION
+ SG_ Rr_MCU3_HW_Ver : 103|16@0+ (1,0) [0|65535] "" FUSION
+ SG_ Rr_MCU3_SW_Ver : 119|16@0+ (1,0) [0|65535] "" FUSION
+ SG_ MCU_B_R_LLCTempWarn_Sta : 23|2@0+ (1,0) [0|3] "" FUSION
+ SG_ MCU_B_R_FailLv_Sta : 27|3@0+ (1,0) [0|7] "" FUSION
+ SG_ MCU_B_R_KL302TqCnt_Sta : 71|8@0+ (1,0) [0|254] "" FUSION,MCU_B_F
+
+BO_ 1336 NMm_Shifter: 8 Shifter
+ SG_ NM_Shifter_Node_ID : 7|8@0+ (1,0) [0|127] "" MCU_B_R
+ SG_ NM_Shifter_Rpt_Msg_Req : 8|1@0+ (1,0) [0|1] "" MCU_B_R
+ SG_ NM_Shifter_CSB : 11|1@0+ (1,0) [0|1] "" MCU_B_R
+ SG_ NM_Shifter_Active_WU : 12|1@0+ (1,0) [0|1] "" MCU_B_R
+ SG_ NM_Shifter_PNI : 14|1@0+ (1,0) [0|1] "" MCU_B_R
+ SG_ NM_Shifter_ERROR_State : 31|4@0+ (1,0) [0|8] "" MCU_B_R
+
+BO_ 1545 DiagRespFromMCU_B_R: 64 MCU_B_R
+ SG_ DiagRespFromMCU_B_R : 7|64@0+ (1,0) [0|0] "" FUSION
+
+BO_ 1673 DiagPhysReqToMCU_B_R: 64 FUSION
+ SG_ DiagPhysReqToMCU_B_R : 7|64@0+ (1,0) [0|0] "" MCU_B_R
+
+BO_ 1289 NMm_MCU_B_R: 8 MCU_B_R
+ SG_ NM_MCU_B_R_Node_ID : 7|8@0+ (1,0) [0|127] "" FUSION,MCU_B_F
+ SG_ NM_MCU_B_R_ERROR_State : 31|4@0+ (1,0) [0|8] "" FUSION,MCU_B_F
+ SG_ NM_MCU_B_R_Active_WU : 12|1@0+ (1,0) [0|1] "" FUSION,MCU_B_F
+ SG_ NM_MCU_B_R_CSB : 11|1@0+ (1,0) [0|1] "" FUSION,MCU_B_F
+ SG_ NM_MCU_B_R_PNI : 14|1@0+ (1,0) [0|1] "" FUSION,MCU_B_F
+ SG_ NM_MCU_B_R_Rpt_Msg_Req : 8|1@0+ (1,0) [0|1] "" FUSION,MCU_B_F
+
+BO_ 1290 NMm_MCU_B_F: 8 MCU_B_F
+ SG_ NM_MCU_B_F_Node_ID : 7|8@0+ (1,0) [0|127] "" MCU_B_R
+ SG_ NM_MCU_B_F_ERROR_State : 31|4@0+ (1,0) [0|8] "" MCU_B_R
+ SG_ NM_MCU_B_F_Active_WU : 12|1@0+ (1,0) [0|1] "" MCU_B_R
+ SG_ NM_MCU_B_F_CSB : 11|1@0+ (1,0) [0|1] "" MCU_B_R
+ SG_ NM_MCU_B_F_PNI : 14|1@0+ (1,0) [0|1] "" MCU_B_R
+ SG_ NM_MCU_B_F_Rpt_Msg_Req : 8|1@0+ (1,0) [0|1] "" MCU_B_R
+
+BO_ 1269 MCU_B_R_Debug1: 32 MCU_B_R
+ SG_ MCU_R_IQ_REF : 7|32@0+ (1,0) [0|4.294967295E9] "" Vector__XXX
+ SG_ MCU_R_ID_REF : 39|32@0+ (1,0) [0|4.294967295E9] "" Vector__XXX
+ SG_ R_OffsetAngle : 71|16@0+ (1,0) [0|65535] "" Vector__XXX
+ SG_ MCU_R_Reserve2 : 87|16@0+ (1,0) [0|65535] "" Vector__XXX
+ SG_ MCU_R_Reserve1 : 103|16@0+ (1,0) [0|65535] "" Vector__XXX
+ SG_ MCU_R_Reserve0 : 119|16@0+ (1,0) [0|65535] "" Vector__XXX
+ SG_ R_TQ_LIM_P : 135|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ R_TQ_LIM_N : 143|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ R_K_TQ_LIM_P : 151|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ R_K_TQ_LIM_N : 159|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ R_ID_TQ_LIM_P : 167|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ R_ID_TQ_LIM_N : 175|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ R_FD_FACTCODE_P : 183|8@0+ (1,0) [0|255] "" Vector__XXX
+ SG_ R_FD_FACTCODE_N : 191|8@0+ (1,0) [0|255] "" Vector__XXX
+
+BO_ 2015 DiagFuncReqOBD: 8 FUSION
+ SG_ DiagFuncReqOBD : 7|64@0+ (1,0) [0|0] "" MCU_B_R
+
+BO_ 409 MCU_FVT_R1: 20 MCU_B_R
+ SG_ MCU_FVT_R_TMSpd_Sta : 55|16@0+ (1,-22000) [-22000|43535] "RPM" FUSION
+ SG_ MCU_FVT_R_EDUTqReq_Fbk : 71|16@0+ (0.1,-1022) [-1022|5531.5] "" FUSION
+ SG_ MCU_FVT_R_Failcode3_Sta : 95|8@0+ (1,0) [0|255] "" FUSION
+ SG_ MCU_FVT_R_MCUErr_Sta : 87|8@0+ (1,0) [0|255] "" FUSION
+ SG_ MCU_FVT_R_OilTemp_Sta : 32|9@0+ (1,-40) [-40|471] "Deg^C" FUSION
+ SG_ MCU_FVT_R_MCUBAT_Sta : 16|9@0+ (0.2,0) [0|102.2] "V" FUSION
+ SG_ MCU_FVT_R_MCUSys_Sta : 23|4@0+ (1,0) [0|15] "" FUSION
+ SG_ MCU_FVT_R_HeatingOP_Sta : 33|1@0+ (1,0) [0|1] "" FUSION
+ SG_ MCU_FVT_R_BoostOP_Sta : 17|1@0+ (1,0) [0|1] "" FUSION
+
+BO_ 1731 DiagPhysReqToEOP_FVT_R: 8 FUSION
+ SG_ DiagPhysReqToEOP_FVT_R : 7|64@0+ (1,0) [0|0] "" MCU_B_R
+
+BO_ 1603 DiagRespFromEOP_FVT_R: 8 MCU_B_R
+ SG_ DiagRespFromEOP_FVT_R : 7|64@0+ (1,0) [0|0] "" FUSION
+
+
+CM_ SG_ 369 HVBattVolt "HV battery pack Volt";
+CM_ SG_ 378 HVBContactorSta "HV battery contactor closed status";
+CM_ SG_ 1328 NM_BMS_Node_ID "Source Node Identifier";
+CM_ SG_ 1328 NM_BMS_Rpt_Msg_Req "Repeat Message Request";
+CM_ SG_ 1328 NM_BMS_CSB "NM Coordinator Sleep Bit";
+CM_ SG_ 1328 NM_BMS_Active_WU "Active Wakeup Bit";
+CM_ SG_ 1328 NM_BMS_PNI "Partial Network Information Bit (PNI)";
+CM_ SG_ 1328 NM_BMS_ERROR_State "Defined Error states of the CAN Controller";
+CM_ SG_ 1331 NM_CCU_Node_ID "Source Node Identifier";
+CM_ SG_ 1331 NM_CCU_Rpt_Msg_Req "Repeat Message Request";
+CM_ SG_ 1331 NM_CCU_CSB "NM Coordinator Sleep Bit";
+CM_ SG_ 1331 NM_CCU_Active_WU "Active Wakeup Bit";
+CM_ SG_ 1331 NM_CCU_PNI "Partial Network Information Bit (PNI)";
+CM_ SG_ 1331 NM_CCU_ERROR_State "Defined Error states of the CAN Controller";
+CM_ SG_ 1315 NM_EBM_Node_ID "Source Node Identifier";
+CM_ SG_ 1315 NM_EBM_Rpt_Msg_Req "Repeat Message Request";
+CM_ SG_ 1315 NM_EBM_CSB "NM Coordinator Sleep Bit";
+CM_ SG_ 1315 NM_EBM_Active_WU "Active Wakeup Bit";
+CM_ SG_ 1315 NM_EBM_PNI "Partial Network Information Bit (PNI)";
+CM_ SG_ 1315 NM_EBM_ERROR_State "Defined Error states of the CAN Controller";
+CM_ SG_ 277 CS_VCU1 "Checksum of VCU1(AUTOSAR E2E profile 1)
+
+Polynomial 0x1D (x^8+x^4+x^3+x^2+1) Both start value and XOR value are 0x00.";
+CM_ SG_ 277 RC_VCU1 "VCU1 4-bit rolling counter
+It starts counting from 0, ends at 14 and returns to zero (0~14).";
+CM_ SG_ 277 ShiftGearPosn "EV Selector Position Status/ Selector Position Status Signal Failure";
+CM_ SG_ 277 ActiveDischReq "System Active Discharge Request";
+CM_ SG_ 277 PwrSta "Vehicle Power Status";
+CM_ SG_ 339 CS_VCU2_CAN1 "Checksum of VCU2(AUTOSAR E2E profile 1)
+
+Polynomial 0x1D (x^8+x^4+x^3+x^2+1) Both start value and XOR value are 0x00.";
+CM_ SG_ 339 RC_VCU2_CAN1 "VCU2 4-bit rolling counter
+It starts counting from 0, ends at 14 and returns to zero (0~14).";
+CM_ SG_ 339 Rr_IdcMax "E-Axle Idc limit max";
+CM_ SG_ 339 Rr_IdcMin "E-Axle Idc limit min";
+CM_ SG_ 339 Rr_TorqMax "max limit of positive torque";
+CM_ SG_ 339 Rr_TorqMin "min limit of negative torque";
+CM_ SG_ 339 Rr_UdcMax "E-Axle Udc limit max";
+CM_ SG_ 339 Rr_UdcMin "E-Axle Udc limit min";
+CM_ SG_ 339 Rr_TMTqReq "Rear Traction Motor Torque Request";
+CM_ SG_ 339 Rr_ActvDmpDisabReq "Rear EDU Low Speed Active Damping Disable Request";
+CM_ SG_ 339 Rr_MCUEnaReq "Rear MCU Enable Request";
+CM_ SG_ 341 FDC_VCU_RrSpdMin_Req "FDC_VCU Rear MCU minimum rpm in torque mode";
+CM_ SG_ 341 FDC_VCU_RrSpdMax_Req "FDC_VCU Rear MCU maximum rpm in torque mode";
+CM_ SG_ 341 FDC_VCU_RrTMSpd_Req "FDC_VCU Rear MCU rpm request in speed mode";
+CM_ SG_ 341 FDC_VCU_RrTMTq_Req "FDC_VCU Rear MCU torque request in torque mode";
+CM_ SG_ 341 FDC_VCU_RrTqMax_Req "FDC_VCU Rear MCU maximum torque in speed mode";
+CM_ SG_ 341 FDC_VCU_RrTqMin_Req "FDC_VCU Rear MCU minimum torque in speed mode";
+CM_ SG_ 341 FDC_VCU_RrTMCtrlMode_Req "FDC_VCU Rear MCU control mode request";
+CM_ SG_ 346 Rr_TMSpdReq "Rear traction motor speed request";
+CM_ SG_ 346 Rr_SpdMax "Rear max speed limit of torque request";
+CM_ SG_ 346 Rr_SpdMin "Rear min speed limit of torque request";
+CM_ SG_ 346 Rr_TMCtrlMode_Req "Rear MCU control mode request";
+CM_ SG_ 386 BatteryMode "Battery Mode";
+CM_ SG_ 386 Rr_Coolanttemp "LLC coolant temp";
+CM_ SG_ 386 Rr_Coolantflow "LLC coolant flow rate";
+CM_ SG_ 451 VehSpeed "Vehicle Speed";
+CM_ SG_ 451 IVI_Time_Month "IVI_GPS Satellite Time_Month";
+CM_ SG_ 451 IVI_Time_Day "IVI_GPS Satellite Time_Day";
+CM_ SG_ 451 IVI_Time_Hour "IVI_GPS Satellite Time_Hour";
+CM_ SG_ 451 IVI_Time_Minute "IVI_GPS Satellite Time_Minute";
+CM_ SG_ 451 IVI_Time_Second "IVI_GPS Satellite Time_Second";
+CM_ SG_ 1280 NM_FUSION_Node_ID "Source Node Identifier";
+CM_ SG_ 1280 NM_FUSION_Rpt_Msg_Req "Repeat Message Request";
+CM_ SG_ 1280 NM_FUSION_CSB "NM Coordinator Sleep Bit";
+CM_ SG_ 1280 NM_FUSION_Active_WU "Active Wakeup Bit";
+CM_ SG_ 1280 NM_FUSION_PNI "Partial Network Information Bit (PNI)";
+CM_ SG_ 1280 NM_FUSION_ERROR_State "Defined Error states of the CAN Controller";
+CM_ SG_ 2000 DiagFuncReqFT "Diagnostic Functional Request from Tester";
+CM_ SG_ 401 MCU_B_F_IGBTDdeTemp_Sta "Front IGBTDde of MCU Temp";
+CM_ SG_ 401 MCU_B_F_RealPwrKw_Sta "Front Real Power_Kw";
+CM_ SG_ 404 MCU_B_F_KL302TqCnt_Sta "Front KL30 to Torque mode counter";
+CM_ SG_ 400 Rr_MCU1Chksum "Checksum of MCU_R1(AUTOSAR E2E profile 1)
+
+Polynomial 0x1D (x^8+x^4+x^3+x^2+1) Both start value and XOR value are 0x00.";
+CM_ SG_ 400 Rr_MCU1RolCnt "MCU_R1 4-bit rolling counter
+It starts counting from 0, ends at 14 and returns to zero (0~14).";
+CM_ SG_ 400 Rr_MCUSysSta "Rear MCU System Status";
+CM_ SG_ 400 MCUWarn_R "MCU warning signal_Rear";
+CM_ SG_ 400 Rr_MCUReady "Rear MCU Ready";
+CM_ SG_ 400 Rr_MCUBAT "Rear  Bat Voltage";
+CM_ SG_ 400 Rr_MCUIGN_sta "IGN ON/OFF Status";
+CM_ SG_ 400 Rr_Reserved_bits "Rear  Reserved bits";
+CM_ SG_ 400 Rr_RegenAvailTq "Rear RegenerationTorque Available";
+CM_ SG_ 400 Rr_MotorAvailTq "Rear Motor Torque Available";
+CM_ SG_ 400 Rr_TMiq "Rear  TM iq Feedback";
+CM_ SG_ 400 Rr_TMid "Rear  TM id Feedback";
+CM_ SG_ 400 Rr_MCUErr "Rear  MCU Error Code";
+CM_ SG_ 400 Rr_TMTemp "Rear TM Temperature";
+CM_ SG_ 400 Rr_MCUTemp "Rear MCU Temperature";
+CM_ SG_ 400 Rr_MCUDCBusCurr "Rear  MCU DC Current";
+CM_ SG_ 400 Rr_MCUDCBusVolt "Rear MCU DC-Bus Voltage";
+CM_ SG_ 400 Rr_MCUReady4Pre "Rear MCU Ready for Precharge";
+CM_ SG_ 400 Rr_ActvDmpDisabSta "Rear MCU Low speed active damping disable status";
+CM_ SG_ 400 Rr_EDUDrtSta "Rear EDU Torque Derating Status";
+CM_ SG_ 400 Rr_MCUDischrgSta "Rear MCU Discharge Status";
+CM_ SG_ 400 Rr_TMSpd "Rear TM speed";
+CM_ SG_ 400 Rr_EDURealTMTq "Rear EDU Real Torque from TM";
+CM_ SG_ 400 Rr_EDUTqReqFbk "Rear EDU Torque Request Feedback";
+CM_ SG_ 400 Rr_MCUEnaSta "Rear MCU Enable Status";
+CM_ SG_ 400 Rr_EDUOpratingSta "Rear EDU Torque/Speed Status";
+CM_ SG_ 400 Rr_EDURotateDirction "Rear EDU Direction Status";
+CM_ SG_ 400 MCU_B_R_RealPwrKw_Sta "Rear Real Power_Kw";
+CM_ SG_ 400 MCU_B_R_IGBTDdeTemp_Sta "Rear IGBTDde of MCU Temp";
+CM_ SG_ 403 Rr_MCU2Chksum "Checksum of MCU_R2(AUTOSAR E2E profile 1)
+
+Polynomial 0x1D (x^8+x^4+x^3+x^2+1) Both start value and XOR value are 0x00.";
+CM_ SG_ 403 Rr_MCU2RolCnt "MCU_R2 4-bit rolling counter
+It starts counting from 0, ends at 14 and returns to zero (0~14).";
+CM_ SG_ 403 Rr_LLCflowReq "Rear  request LLC flow rate";
+CM_ SG_ 403 Rr_CoolanttempReq "LLC coolant temp Request";
+CM_ SG_ 403 Rr_Failcodehistory1 "Rear  Failcode history status";
+CM_ SG_ 403 Rr_Failcodehistory2 "Rear Failcode history status";
+CM_ SG_ 403 Rr_TMTempWarn "Rear TM Temperature Warning";
+CM_ SG_ 403 Rr_MCUTempWarn "Rear MCU Temperature Warning";
+CM_ SG_ 403 Rr_Failcode2 "Rear  Detail fail code";
+CM_ SG_ 403 Rr_Failcode1 "Rear  Detail fail code";
+CM_ SG_ 403 Rr_LLCTemp "Rear  LLC temperature";
+CM_ SG_ 403 Rr_MCU3_HW_Ver "Rear MCU Hardware version";
+CM_ SG_ 403 Rr_MCU3_SW_Ver "Rear MCU Software version";
+CM_ SG_ 403 MCU_B_R_LLCTempWarn_Sta "Rear LLC temperature Warning";
+CM_ SG_ 403 MCU_B_R_FailLv_Sta "Rear EDU Failure LVL Status";
+CM_ SG_ 403 MCU_B_R_KL302TqCnt_Sta "Rear KL30 to Torque mode counter";
+CM_ SG_ 1336 NM_Shifter_Node_ID "Source Node Identifier";
+CM_ SG_ 1336 NM_Shifter_Rpt_Msg_Req "Repeat Message Request";
+CM_ SG_ 1336 NM_Shifter_CSB "NM Coordinator Sleep Bit";
+CM_ SG_ 1336 NM_Shifter_Active_WU "Active Wakeup Bit";
+CM_ SG_ 1336 NM_Shifter_PNI "Partial Network Information Bit (PNI)";
+CM_ SG_ 1336 NM_Shifter_ERROR_State "Defined Error states of the CAN Controller";
+CM_ SG_ 1545 DiagRespFromMCU_B_R "Diagnostic Response from MCU_R";
+CM_ SG_ 1673 DiagPhysReqToMCU_B_R "Diagnostic Physical Request to MCU_R";
+CM_ SG_ 1289 NM_MCU_B_R_Node_ID "Source Node Identifier";
+CM_ SG_ 1289 NM_MCU_B_R_ERROR_State "Defined Error states of the CAN Controller";
+CM_ SG_ 1289 NM_MCU_B_R_Active_WU "Active Wakeup Bit";
+CM_ SG_ 1289 NM_MCU_B_R_CSB "NM Coordinator Sleep Bit";
+CM_ SG_ 1289 NM_MCU_B_R_PNI "Partial Network Information Bit (PNI)";
+CM_ SG_ 1289 NM_MCU_B_R_Rpt_Msg_Req "Repeat Message Request";
+CM_ SG_ 1290 NM_MCU_B_F_Node_ID "Source Node Identifier";
+CM_ SG_ 1290 NM_MCU_B_F_ERROR_State "Defined Error states of the CAN Controller";
+CM_ SG_ 1290 NM_MCU_B_F_Active_WU "Active Wakeup Bit";
+CM_ SG_ 1290 NM_MCU_B_F_CSB "NM Coordinator Sleep Bit";
+CM_ SG_ 1290 NM_MCU_B_F_PNI "Partial Network Information Bit (PNI)";
+CM_ SG_ 1290 NM_MCU_B_F_Rpt_Msg_Req "Repeat Message Request";
+CM_ SG_ 1269 R_OffsetAngle "offset Angle for MCU_R";
+CM_ SG_ 1269 MCU_R_Reserve2 "Reserve_3";
+CM_ SG_ 1269 MCU_R_Reserve1 "Reserve_1";
+CM_ SG_ 1269 MCU_R_Reserve0 "Reserve_0";
+CM_ SG_ 1269 R_TQ_LIM_P "Final Derating factor P for MCU_R";
+CM_ SG_ 1269 R_TQ_LIM_N "Final Derating factor N for MCU_R";
+CM_ SG_ 1269 R_K_TQ_LIM_P "Limit Ratio Derating factor P for MCU_R";
+CM_ SG_ 1269 R_K_TQ_LIM_N "Limit Ratio Derating factor N for MCU_R";
+CM_ SG_ 1269 R_ID_TQ_LIM_P "Limit Value Derating factor P for MCU_R";
+CM_ SG_ 1269 R_ID_TQ_LIM_N "Limit Value Derating factor N for MCU_R";
+CM_ SG_ 1269 R_FD_FACTCODE_P "Fade Derating factor P for MCU_R";
+CM_ SG_ 1269 R_FD_FACTCODE_N "Fade Derating factor N for MCU_R";
+CM_ SG_ 2015 DiagFuncReqOBD "Diagnostic Functional Request from OBD Tester";
+CM_ SG_ 409 MCU_FVT_R_TMSpd_Sta "Rear TM speed for FVT";
+CM_ SG_ 409 MCU_FVT_R_EDUTqReq_Fbk "Rear EDU Torque Request Feedback for FVT";
+CM_ SG_ 409 MCU_FVT_R_Failcode3_Sta "Rear MCU Detail fail code for FVT";
+CM_ SG_ 409 MCU_FVT_R_MCUErr_Sta "Rear MCU Error Code for FVT";
+CM_ SG_ 409 MCU_FVT_R_OilTemp_Sta "Rear Oil Temperature for FVT";
+CM_ SG_ 409 MCU_FVT_R_MCUBAT_Sta "Rear MCU Bat Voltage for FVT";
+CM_ SG_ 409 MCU_FVT_R_MCUSys_Sta "Rear MCU System Status for FVT";
+CM_ SG_ 409 MCU_FVT_R_HeatingOP_Sta "Rear Heating Operating Feedback for FVT";
+CM_ SG_ 409 MCU_FVT_R_BoostOP_Sta "Rear Boost Charge Operating Feedback for FVT";
+CM_ SG_ 1731 DiagPhysReqToEOP_FVT_R "Diagnostic Physical Request to EOP_FVT_R";
+CM_ SG_ 1603 DiagRespFromEOP_FVT_R "Diagnostic Response from EOP_FVT_R";
+
+BA_DEF_ "NmType" STRING ;
+BA_DEF_ "VersionYear" INT 2010 2999;
+BA_DEF_ "VersionNumber" INT 0 99;
+BA_DEF_ "VersionMonth" INT 0 12;
+BA_DEF_ "VersionDay" INT 0 31;
+BA_DEF_ "ProtocolType" STRING ;
+BA_DEF_ "NmMessageCount" INT 0 255;
+BA_DEF_ "NmBaseAddress" HEX 1280 1407;
+BA_DEF_ "Manufacturer" STRING ;
+BA_DEF_ "ILTxTimeout" INT 0 100;
+BA_DEF_ "DBName" STRING ;
+BA_DEF_ "BusType" STRING ;
+BA_DEF_ "Baudrate" INT 0 1000000;
+BA_DEF_ "DatabaseVersion" STRING ;
+BA_DEF_ "Datarate" INT 0 2000000;
+BA_DEF_ "MultiplexExtEnabled" ENUM "No","Yes";
+BA_DEF_ BO_ "StartDelay" INT 0 0;
+BA_DEF_ BO_ "GenMsgStartDelayTime" INT 0 0;
+BA_DEF_ BO_ "GenMsgSendType" ENUM "Cycle","NoMsgSendType","IfActive","Event","CA","CE";
+BA_DEF_ BO_ "GenMsgNrOfRepetition" INT 0 0;
+BA_DEF_ BO_ "GenMsgILSupport" ENUM "No","Yes";
+BA_DEF_ BO_ "GenMsgDelayTime" INT 0 0;
+BA_DEF_ BO_ "GenMsgCycleTimeFast" INT 0 0;
+BA_DEF_ BO_ "GenMsgCycleTime" INT 0 0;
+BA_DEF_ BO_ "DiagState" ENUM "No","Yes";
+BA_DEF_ BO_ "DiagResponse" ENUM "No","Yes";
+BA_DEF_ BO_ "DiagRequest" ENUM "No","Yes";
+BA_DEF_ BO_ "NmMessage" ENUM "No","Yes";
+BA_DEF_ BO_ "VFrameFormat" ENUM "StandardCAN","ExtendedCAN","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","reserved","StandardCAN_FD","ExtendedCAN_FD";
+BA_DEF_ BO_ "DataID" STRING ;
+BA_DEF_ BO_ "DoIPLogicalAddress" STRING ;
+BA_DEF_ BO_ "CANFD_BRS" ENUM "0","1";
+BA_DEF_ BO_ "GenMsgFastOnStart" INT 0 100000;
+BA_DEF_ BO_ "GenMsgRequestable" INT 0 1;
+BA_DEF_ BU_ "TerminalNode" ENUM "No","Yes";
+BA_DEF_ BU_ "NodeLayerModules" STRING ;
+BA_DEF_ BU_ "NmNode" ENUM "Yes","No";
+BA_DEF_ BU_ "ILUsed" ENUM "No","Yes";
+BA_DEF_ BU_ "NmNodeAddress" HEX 0 255;
+BA_DEF_ BU_ "NmCAN" INT 1 2;
+BA_DEF_ BU_ "CANoeStartDelay" INT 0 10;
+BA_DEF_ BU_ "CANoeDrift" INT 0 0;
+BA_DEF_ BU_ "CANoeJitterMin" INT 0 0;
+BA_DEF_ BU_ "NmStationAddress" HEX 0 255;
+BA_DEF_ BU_ "CANoeJitterMax" INT 0 0;
+BA_DEF_ BU_ "ECU" STRING ;
+BA_DEF_ BU_ "CANFD_CANFD_Gateway" ENUM "Yes","No";
+BA_DEF_ BU_ "CAN_CANFD_Gateway" ENUM "Yes","No";
+BA_DEF_ BU_ "CANFD_LIN_Gateway" ENUM "Yes","No";
+BA_DEF_ BU_ "CAN_LIN_Gateway" ENUM "Yes","No";
+BA_DEF_ BU_ "CAN_CAN_Gateway" ENUM "Yes","No";
+BA_DEF_ BU_ "BootloaderNode" ENUM "No","Yes";
+BA_DEF_ BU_ "ECUDisplayName" STRING ;
+BA_DEF_ SG_ "GenSigInvalidValue" HEX 0 0;
+BA_DEF_ SG_ "GenSigStartValue" HEX 0 0;
+BA_DEF_ SG_ "GenSigInactiveValue" HEX 0 0;
+BA_DEF_ SG_ "GenSigRoutingTimeoutValue_String" STRING ;
+BA_DEF_ SG_ "DataCenterDataType" STRING ;
+BA_DEF_ SG_ "GenSigRoutingTimeoutValue" HEX 0 0;
+BA_DEF_ SG_ "GenSigSendType" ENUM "Cycle","OnWrite","OnWriteWithRepetition","OnChange","OnChangeWithRepetition","IfActive","IfActiveWithRepetition","NoSigSendType","vector_leerstring";
+BA_DEF_ SG_ "E2EProfile" STRING ;
+BA_DEF_ SG_ "GenSigDataID" STRING ;
+BA_DEF_ SG_ "SigType" ENUM "Default","Range","RangeSigned","ASCII","Discrete","Control","ReferencePGN","DTC","StringDelimiter","StringLength","StringLengthControl","MessageCounter","MessageChecksum";
+BA_DEF_ SG_ "GenSigILSupport" ENUM "No","Yes";
+BA_DEF_ SG_ "GenSigLongName" STRING ;
+BA_DEF_DEF_ "NmType" "AUTOSAR";
+BA_DEF_DEF_ "VersionYear" 2024;
+BA_DEF_DEF_ "VersionNumber" 0;
+BA_DEF_DEF_ "VersionMonth" 0;
+BA_DEF_DEF_ "VersionDay" 0;
+BA_DEF_DEF_ "ProtocolType" "CAN";
+BA_DEF_DEF_ "NmMessageCount" 128;
+BA_DEF_DEF_ "NmBaseAddress" 1280;
+BA_DEF_DEF_ "Manufacturer" "";
+BA_DEF_DEF_ "ILTxTimeout" 0;
+BA_DEF_DEF_ "DBName" "";
+BA_DEF_DEF_ "BusType" "CAN";
+BA_DEF_DEF_ "Baudrate" 500000;
+BA_DEF_DEF_ "DatabaseVersion" "";
+BA_DEF_DEF_ "Datarate" 2000000;
+BA_DEF_DEF_ "MultiplexExtEnabled" "No";
+BA_DEF_DEF_ "StartDelay" 0;
+BA_DEF_DEF_ "GenMsgStartDelayTime" 0;
+BA_DEF_DEF_ "GenMsgSendType" "Cycle";
+BA_DEF_DEF_ "GenMsgNrOfRepetition" 0;
+BA_DEF_DEF_ "GenMsgILSupport" "Yes";
+BA_DEF_DEF_ "GenMsgDelayTime" 0;
+BA_DEF_DEF_ "GenMsgCycleTimeFast" 0;
+BA_DEF_DEF_ "GenMsgCycleTime" 100;
+BA_DEF_DEF_ "DiagState" "No";
+BA_DEF_DEF_ "DiagResponse" "No";
+BA_DEF_DEF_ "DiagRequest" "No";
+BA_DEF_DEF_ "NmMessage" "No";
+BA_DEF_DEF_ "VFrameFormat" "StandardCAN";
+BA_DEF_DEF_ "DataID" "";
+BA_DEF_DEF_ "DoIPLogicalAddress" "";
+BA_DEF_DEF_ "CANFD_BRS" "1";
+BA_DEF_DEF_ "GenMsgFastOnStart" 0;
+BA_DEF_DEF_ "GenMsgRequestable" 1;
+BA_DEF_DEF_ "TerminalNode" "No";
+BA_DEF_DEF_ "NodeLayerModules" "CANoeILNLVector.dll";
+BA_DEF_DEF_ "NmNode" "No";
+BA_DEF_DEF_ "ILUsed" "Yes";
+BA_DEF_DEF_ "NmNodeAddress" 0;
+BA_DEF_DEF_ "NmCAN" 2;
+BA_DEF_DEF_ "CANoeStartDelay" 0;
+BA_DEF_DEF_ "CANoeDrift" 0;
+BA_DEF_DEF_ "CANoeJitterMin" 0;
+BA_DEF_DEF_ "NmStationAddress" 0;
+BA_DEF_DEF_ "CANoeJitterMax" 0;
+BA_DEF_DEF_ "ECU" "";
+BA_DEF_DEF_ "CANFD_CANFD_Gateway" "No";
+BA_DEF_DEF_ "CAN_CANFD_Gateway" "No";
+BA_DEF_DEF_ "CANFD_LIN_Gateway" "No";
+BA_DEF_DEF_ "CAN_LIN_Gateway" "No";
+BA_DEF_DEF_ "CAN_CAN_Gateway" "No";
+BA_DEF_DEF_ "BootloaderNode" "No";
+BA_DEF_DEF_ "ECUDisplayName" "";
+BA_DEF_DEF_ "GenSigInvalidValue" 0;
+BA_DEF_DEF_ "GenSigStartValue" 0;
+BA_DEF_DEF_ "GenSigInactiveValue" 0;
+BA_DEF_DEF_ "GenSigRoutingTimeoutValue_String" "";
+BA_DEF_DEF_ "DataCenterDataType" "";
+BA_DEF_DEF_ "GenSigRoutingTimeoutValue" 0;
+BA_DEF_DEF_ "GenSigSendType" "Cycle";
+BA_DEF_DEF_ "E2EProfile" "";
+BA_DEF_DEF_ "GenSigDataID" "";
+BA_DEF_DEF_ "SigType" "Default";
+BA_DEF_DEF_ "GenSigILSupport" "Yes";
+BA_DEF_DEF_ "GenSigLongName" "";
+BA_ "BusType" "CAN FD";
+BA_ "ProtocolType" "CAN FD";
+BA_ "Manufacturer" "FVT";
+BA_ "DBName" "CAN3";
+BA_ "BootloaderNode" BU_ MCU_B_R 1;
+BA_ "CAN_CANFD_Gateway" BU_ MCU_B_R 0;
+BA_ "BootloaderNode" BU_ BMS 1;
+BA_ "NmStationAddress" BU_ BMS 0;
+BA_ "BootloaderNode" BU_ CCU 1;
+BA_ "NmStationAddress" BU_ CCU 0;
+BA_ "BootloaderNode" BU_ EBM 1;
+BA_ "NmStationAddress" BU_ EBM 0;
+BA_ "CANFD_CANFD_Gateway" BU_ FUSION 0;
+BA_ "NmStationAddress" BU_ FUSION 0;
+BA_ "BootloaderNode" BU_ MCU_B_F 1;
+BA_ "CAN_CANFD_Gateway" BU_ MCU_B_F 0;
+BA_ "BootloaderNode" BU_ Shifter 1;
+BA_ "NmStationAddress" BU_ Shifter 0;
+BA_ "GenMsgCycleTime" BO_ 369 10;
+BA_ "DataID" BO_ 369 "0xDC3C";
+BA_ "VFrameFormat" BO_ 369 14;
+BA_ "GenMsgNrOfRepetition" BO_ 378 1;
+BA_ "DataID" BO_ 378 "0xDB3B";
+BA_ "GenMsgSendType" BO_ 378 5;
+BA_ "VFrameFormat" BO_ 378 14;
+BA_ "GenMsgCycleTime" BO_ 1328 0;
+BA_ "NmMessage" BO_ 1328 1;
+BA_ "GenMsgSendType" BO_ 1328 3;
+BA_ "GenMsgCycleTime" BO_ 1331 0;
+BA_ "NmMessage" BO_ 1331 1;
+BA_ "GenMsgSendType" BO_ 1331 3;
+BA_ "GenMsgCycleTime" BO_ 1315 0;
+BA_ "NmMessage" BO_ 1315 1;
+BA_ "GenMsgSendType" BO_ 1315 3;
+BA_ "GenMsgNrOfRepetition" BO_ 277 1;
+BA_ "DataID" BO_ 277 "0x45F6";
+BA_ "GenMsgSendType" BO_ 277 5;
+BA_ "VFrameFormat" BO_ 277 14;
+BA_ "GenMsgCycleTime" BO_ 339 10;
+BA_ "DataID" BO_ 339 "0x2440";
+BA_ "VFrameFormat" BO_ 339 14;
+BA_ "GenMsgCycleTime" BO_ 341 10;
+BA_ "VFrameFormat" BO_ 341 14;
+BA_ "GenMsgCycleTime" BO_ 346 10;
+BA_ "VFrameFormat" BO_ 346 14;
+BA_ "VFrameFormat" BO_ 386 14;
+BA_ "GenMsgNrOfRepetition" BO_ 451 1;
+BA_ "GenMsgSendType" BO_ 451 5;
+BA_ "VFrameFormat" BO_ 451 14;
+BA_ "GenMsgCycleTime" BO_ 1280 0;
+BA_ "NmMessage" BO_ 1280 1;
+BA_ "GenMsgSendType" BO_ 1280 3;
+BA_ "GenMsgCycleTime" BO_ 2000 0;
+BA_ "DiagRequest" BO_ 2000 1;
+BA_ "GenMsgSendType" BO_ 2000 3;
+BA_ "VFrameFormat" BO_ 2000 14;
+BA_ "DoIPLogicalAddress" BO_ 2000 "0xEFFF";
+BA_ "GenMsgCycleTime" BO_ 401 10;
+BA_ "DataID" BO_ 401 "0x57F4";
+BA_ "VFrameFormat" BO_ 401 14;
+BA_ "GenMsgCycleTime" BO_ 404 10;
+BA_ "DataID" BO_ 404 "0x5277";
+BA_ "VFrameFormat" BO_ 404 14;
+BA_ "GenMsgCycleTime" BO_ 400 10;
+BA_ "DataID" BO_ 400 "0x1274";
+BA_ "VFrameFormat" BO_ 400 14;
+BA_ "GenMsgCycleTime" BO_ 403 10;
+BA_ "DataID" BO_ 403 "0x62BB";
+BA_ "VFrameFormat" BO_ 403 14;
+BA_ "GenMsgCycleTime" BO_ 1336 0;
+BA_ "NmMessage" BO_ 1336 1;
+BA_ "GenMsgSendType" BO_ 1336 3;
+BA_ "GenMsgCycleTime" BO_ 1545 0;
+BA_ "DiagResponse" BO_ 1545 1;
+BA_ "GenMsgSendType" BO_ 1545 3;
+BA_ "VFrameFormat" BO_ 1545 14;
+BA_ "DoIPLogicalAddress" BO_ 1545 "0x0689";
+BA_ "GenMsgCycleTime" BO_ 1673 0;
+BA_ "DiagRequest" BO_ 1673 1;
+BA_ "GenMsgSendType" BO_ 1673 3;
+BA_ "VFrameFormat" BO_ 1673 14;
+BA_ "DoIPLogicalAddress" BO_ 1673 "0x0689";
+BA_ "GenMsgCycleTime" BO_ 1289 0;
+BA_ "NmMessage" BO_ 1289 1;
+BA_ "GenMsgSendType" BO_ 1289 3;
+BA_ "GenMsgCycleTime" BO_ 1290 0;
+BA_ "NmMessage" BO_ 1290 1;
+BA_ "GenMsgSendType" BO_ 1290 3;
+BA_ "GenMsgCycleTime" BO_ 1269 10;
+BA_ "VFrameFormat" BO_ 1269 14;
+BA_ "GenMsgCycleTime" BO_ 2015 0;
+BA_ "DiagRequest" BO_ 2015 1;
+BA_ "GenMsgSendType" BO_ 2015 3;
+BA_ "VFrameFormat" BO_ 2015 14;
+BA_ "DoIPLogicalAddress" BO_ 2015 "0xE000 ";
+BA_ "GenMsgCycleTime" BO_ 409 10;
+BA_ "VFrameFormat" BO_ 409 14;
+BA_ "GenMsgCycleTime" BO_ 1731 0;
+BA_ "DiagRequest" BO_ 1731 1;
+BA_ "GenMsgSendType" BO_ 1731 3;
+BA_ "VFrameFormat" BO_ 1731 14;
+BA_ "DoIPLogicalAddress" BO_ 1731 "0x06C3";
+BA_ "GenMsgCycleTime" BO_ 1603 0;
+BA_ "DiagResponse" BO_ 1603 1;
+BA_ "GenMsgSendType" BO_ 1603 3;
+BA_ "VFrameFormat" BO_ 1603 14;
+BA_ "DoIPLogicalAddress" BO_ 1603 "0x06C3";
+BA_ "GenSigInvalidValue" SG_ 369 HVBattVolt 8191;
+BA_ "GenSigRoutingTimeoutValue_String" SG_ 369 HVBattVolt "0x1FFF";
+BA_ "GenSigInactiveValue" SG_ 369 HVBattVolt 8191;
+BA_ "GenSigRoutingTimeoutValue" SG_ 369 HVBattVolt 8191;
+BA_ "DataCenterDataType" SG_ 369 HVBattVolt "Varchar(10)";
+BA_ "GenSigSendType" SG_ 378 HVBContactorSta 3;
+BA_ "GenSigSendType" SG_ 1328 NM_BMS_Node_ID 7;
+BA_ "GenSigSendType" SG_ 1328 NM_BMS_Rpt_Msg_Req 7;
+BA_ "GenSigSendType" SG_ 1328 NM_BMS_CSB 7;
+BA_ "GenSigSendType" SG_ 1328 NM_BMS_Active_WU 7;
+BA_ "GenSigSendType" SG_ 1328 NM_BMS_PNI 7;
+BA_ "GenSigSendType" SG_ 1328 NM_BMS_ERROR_State 7;
+BA_ "GenSigSendType" SG_ 1331 NM_CCU_Node_ID 7;
+BA_ "GenSigSendType" SG_ 1331 NM_CCU_Rpt_Msg_Req 7;
+BA_ "GenSigSendType" SG_ 1331 NM_CCU_CSB 7;
+BA_ "GenSigSendType" SG_ 1331 NM_CCU_Active_WU 7;
+BA_ "GenSigSendType" SG_ 1331 NM_CCU_PNI 7;
+BA_ "GenSigSendType" SG_ 1331 NM_CCU_ERROR_State 7;
+BA_ "GenSigSendType" SG_ 1315 NM_EBM_Node_ID 7;
+BA_ "GenSigSendType" SG_ 1315 NM_EBM_Rpt_Msg_Req 7;
+BA_ "GenSigSendType" SG_ 1315 NM_EBM_CSB 7;
+BA_ "GenSigSendType" SG_ 1315 NM_EBM_Active_WU 7;
+BA_ "GenSigSendType" SG_ 1315 NM_EBM_PNI 7;
+BA_ "GenSigSendType" SG_ 1315 NM_EBM_ERROR_State 7;
+BA_ "GenSigInactiveValue" SG_ 277 RC_VCU1 0;
+BA_ "GenSigInvalidValue" SG_ 277 ShiftGearPosn 1;
+BA_ "GenSigStartValue" SG_ 277 ShiftGearPosn 1;
+BA_ "GenSigRoutingTimeoutValue_String" SG_ 277 ShiftGearPosn "0x1";
+BA_ "GenSigInactiveValue" SG_ 277 ShiftGearPosn 1;
+BA_ "GenSigRoutingTimeoutValue" SG_ 277 ShiftGearPosn 1;
+BA_ "GenSigSendType" SG_ 277 ShiftGearPosn 3;
+BA_ "DataCenterDataType" SG_ 277 ShiftGearPosn "Varchar(10)";
+BA_ "GenSigSendType" SG_ 277 ActiveDischReq 3;
+BA_ "GenSigInvalidValue" SG_ 277 PwrSta 7;
+BA_ "GenSigStartValue" SG_ 277 PwrSta 7;
+BA_ "GenSigRoutingTimeoutValue_String" SG_ 277 PwrSta "0x7";
+BA_ "GenSigInactiveValue" SG_ 277 PwrSta 7;
+BA_ "GenSigRoutingTimeoutValue" SG_ 277 PwrSta 7;
+BA_ "GenSigSendType" SG_ 277 PwrSta 3;
+BA_ "DataCenterDataType" SG_ 277 PwrSta "Varchar(15)";
+BA_ "GenSigInvalidValue" SG_ 339 Rr_TMTqReq 65535;
+BA_ "GenSigStartValue" SG_ 339 Rr_TMTqReq 5300;
+BA_ "GenSigRoutingTimeoutValue_String" SG_ 339 Rr_TMTqReq "0xFFFF";
+BA_ "GenSigInactiveValue" SG_ 339 Rr_TMTqReq 65535;
+BA_ "GenSigRoutingTimeoutValue" SG_ 339 Rr_TMTqReq 65535;
+BA_ "GenSigInvalidValue" SG_ 341 FDC_VCU_RrSpdMin_Req 65535;
+BA_ "GenSigStartValue" SG_ 341 FDC_VCU_RrSpdMin_Req 22000;
+BA_ "GenSigRoutingTimeoutValue_String" SG_ 341 FDC_VCU_RrSpdMin_Req "0xFFFF";
+BA_ "GenSigInactiveValue" SG_ 341 FDC_VCU_RrSpdMin_Req 65535;
+BA_ "GenSigRoutingTimeoutValue" SG_ 341 FDC_VCU_RrSpdMin_Req 65535;
+BA_ "GenSigInvalidValue" SG_ 341 FDC_VCU_RrSpdMax_Req 65535;
+BA_ "GenSigRoutingTimeoutValue_String" SG_ 341 FDC_VCU_RrSpdMax_Req "0xFFFF";
+BA_ "GenSigInactiveValue" SG_ 341 FDC_VCU_RrSpdMax_Req 65535;
+BA_ "GenSigRoutingTimeoutValue" SG_ 341 FDC_VCU_RrSpdMax_Req 65535;
+BA_ "GenSigInvalidValue" SG_ 341 FDC_VCU_RrTMSpd_Req 65535;
+BA_ "GenSigStartValue" SG_ 341 FDC_VCU_RrTMSpd_Req 22000;
+BA_ "GenSigRoutingTimeoutValue_String" SG_ 341 FDC_VCU_RrTMSpd_Req "0xFFFF";
+BA_ "GenSigInactiveValue" SG_ 341 FDC_VCU_RrTMSpd_Req 65535;
+BA_ "GenSigRoutingTimeoutValue" SG_ 341 FDC_VCU_RrTMSpd_Req 65535;
+BA_ "GenSigInvalidValue" SG_ 341 FDC_VCU_RrTMTq_Req 65535;
+BA_ "GenSigStartValue" SG_ 341 FDC_VCU_RrTMTq_Req 10000;
+BA_ "GenSigRoutingTimeoutValue_String" SG_ 341 FDC_VCU_RrTMTq_Req "0xFFFF";
+BA_ "GenSigInactiveValue" SG_ 341 FDC_VCU_RrTMTq_Req 10000;
+BA_ "GenSigRoutingTimeoutValue" SG_ 341 FDC_VCU_RrTMTq_Req 65535;
+BA_ "GenSigInvalidValue" SG_ 341 FDC_VCU_RrTqMax_Req 4095;
+BA_ "GenSigRoutingTimeoutValue_String" SG_ 341 FDC_VCU_RrTqMax_Req "0xFFF";
+BA_ "GenSigInactiveValue" SG_ 341 FDC_VCU_RrTqMax_Req 4095;
+BA_ "GenSigRoutingTimeoutValue" SG_ 341 FDC_VCU_RrTqMax_Req 4095;
+BA_ "GenSigInvalidValue" SG_ 341 FDC_VCU_RrTqMin_Req 4095;
+BA_ "GenSigStartValue" SG_ 341 FDC_VCU_RrTqMin_Req 1022;
+BA_ "GenSigRoutingTimeoutValue_String" SG_ 341 FDC_VCU_RrTqMin_Req "0xFFF";
+BA_ "GenSigInactiveValue" SG_ 341 FDC_VCU_RrTqMin_Req 4095;
+BA_ "GenSigRoutingTimeoutValue" SG_ 341 FDC_VCU_RrTqMin_Req 4095;
+BA_ "GenSigInvalidValue" SG_ 341 FDC_VCU_RrTMCtrlMode_Req 7;
+BA_ "GenSigRoutingTimeoutValue_String" SG_ 341 FDC_VCU_RrTMCtrlMode_Req "0x7";
+BA_ "GenSigInactiveValue" SG_ 341 FDC_VCU_RrTMCtrlMode_Req 7;
+BA_ "GenSigRoutingTimeoutValue" SG_ 341 FDC_VCU_RrTMCtrlMode_Req 7;
+BA_ "GenSigStartValue" SG_ 386 Rr_Coolanttemp 40;
+BA_ "GenSigInvalidValue" SG_ 451 VehSpeed 4095;
+BA_ "GenSigRoutingTimeoutValue_String" SG_ 451 VehSpeed "0xFFF";
+BA_ "GenSigInactiveValue" SG_ 451 VehSpeed 4095;
+BA_ "GenSigRoutingTimeoutValue" SG_ 451 VehSpeed 4095;
+BA_ "DataCenterDataType" SG_ 451 VehSpeed "Varchar(7)";
+BA_ "GenSigSendType" SG_ 1280 NM_FUSION_Node_ID 7;
+BA_ "GenSigSendType" SG_ 1280 NM_FUSION_Rpt_Msg_Req 7;
+BA_ "GenSigSendType" SG_ 1280 NM_FUSION_CSB 7;
+BA_ "GenSigSendType" SG_ 1280 NM_FUSION_Active_WU 7;
+BA_ "GenSigSendType" SG_ 1280 NM_FUSION_PNI 7;
+BA_ "GenSigSendType" SG_ 1280 NM_FUSION_ERROR_State 7;
+BA_ "GenSigSendType" SG_ 2000 DiagFuncReqFT 3;
+BA_ "GenSigInvalidValue" SG_ 401 MCU_B_F_IGBTDdeTemp_Sta 511;
+BA_ "GenSigStartValue" SG_ 401 MCU_B_F_IGBTDdeTemp_Sta 40;
+BA_ "GenSigRoutingTimeoutValue_String" SG_ 401 MCU_B_F_IGBTDdeTemp_Sta "0x1FF";
+BA_ "GenSigInactiveValue" SG_ 401 MCU_B_F_IGBTDdeTemp_Sta 40;
+BA_ "GenSigRoutingTimeoutValue" SG_ 401 MCU_B_F_IGBTDdeTemp_Sta 511;
+BA_ "GenSigInvalidValue" SG_ 401 MCU_B_F_RealPwrKw_Sta 65535;
+BA_ "GenSigStartValue" SG_ 401 MCU_B_F_RealPwrKw_Sta 5300;
+BA_ "GenSigRoutingTimeoutValue_String" SG_ 401 MCU_B_F_RealPwrKw_Sta "0xFFFF";
+BA_ "GenSigInactiveValue" SG_ 401 MCU_B_F_RealPwrKw_Sta 5300;
+BA_ "GenSigRoutingTimeoutValue" SG_ 401 MCU_B_F_RealPwrKw_Sta 65535;
+BA_ "GenSigInvalidValue" SG_ 404 MCU_B_F_KL302TqCnt_Sta 255;
+BA_ "GenSigRoutingTimeoutValue_String" SG_ 404 MCU_B_F_KL302TqCnt_Sta "0xFF";
+BA_ "GenSigRoutingTimeoutValue" SG_ 404 MCU_B_F_KL302TqCnt_Sta 255;
+BA_ "GenSigStartValue" SG_ 400 MCUWarn_R 7;
+BA_ "GenSigInvalidValue" SG_ 400 Rr_MCUBAT 255;
+BA_ "GenSigInvalidValue" SG_ 400 Rr_RegenAvailTq 4095;
+BA_ "GenSigInvalidValue" SG_ 400 Rr_MotorAvailTq 4095;
+BA_ "GenSigStartValue" SG_ 400 Rr_MotorAvailTq 0;
+BA_ "GenSigRoutingTimeoutValue_String" SG_ 400 Rr_MotorAvailTq "0xFFF";
+BA_ "GenSigInactiveValue" SG_ 400 Rr_MotorAvailTq 4095;
+BA_ "GenSigRoutingTimeoutValue" SG_ 400 Rr_MotorAvailTq 4095;
+BA_ "GenSigInvalidValue" SG_ 400 Rr_TMiq 32767;
+BA_ "GenSigStartValue" SG_ 400 Rr_TMiq 15000;
+BA_ "GenSigInvalidValue" SG_ 400 Rr_TMid 32767;
+BA_ "GenSigStartValue" SG_ 400 Rr_TMid 15000;
+BA_ "GenSigInvalidValue" SG_ 400 Rr_TMTemp 511;
+BA_ "GenSigRoutingTimeoutValue_String" SG_ 400 Rr_TMTemp "0x1FF";
+BA_ "GenSigInactiveValue" SG_ 400 Rr_TMTemp 511;
+BA_ "GenSigRoutingTimeoutValue" SG_ 400 Rr_TMTemp 511;
+BA_ "GenSigInvalidValue" SG_ 400 Rr_MCUTemp 511;
+BA_ "GenSigRoutingTimeoutValue_String" SG_ 400 Rr_MCUTemp "0x1FF";
+BA_ "GenSigInactiveValue" SG_ 400 Rr_MCUTemp 511;
+BA_ "GenSigRoutingTimeoutValue" SG_ 400 Rr_MCUTemp 511;
+BA_ "GenSigInvalidValue" SG_ 400 Rr_MCUDCBusCurr 32767;
+BA_ "GenSigStartValue" SG_ 400 Rr_MCUDCBusCurr 15000;
+BA_ "DataCenterDataType" SG_ 400 Rr_MCUDCBusCurr "Decimal";
+BA_ "GenSigInvalidValue" SG_ 400 Rr_MCUDCBusVolt 65535;
+BA_ "DataCenterDataType" SG_ 400 Rr_MCUDCBusVolt "INT(3)";
+BA_ "GenSigInvalidValue" SG_ 400 Rr_TMSpd 65535;
+BA_ "GenSigStartValue" SG_ 400 Rr_TMSpd 18000;
+BA_ "GenSigRoutingTimeoutValue_String" SG_ 400 Rr_TMSpd "0xFFFF";
+BA_ "GenSigInactiveValue" SG_ 400 Rr_TMSpd 65535;
+BA_ "GenSigRoutingTimeoutValue" SG_ 400 Rr_TMSpd 65535;
+BA_ "DataCenterDataType" SG_ 400 Rr_TMSpd "INT(5)";
+BA_ "GenSigInvalidValue" SG_ 400 Rr_EDURealTMTq 65535;
+BA_ "GenSigStartValue" SG_ 400 Rr_EDURealTMTq 10220;
+BA_ "GenSigRoutingTimeoutValue_String" SG_ 400 Rr_EDURealTMTq "0xFFFF";
+BA_ "GenSigInactiveValue" SG_ 400 Rr_EDURealTMTq 65535;
+BA_ "GenSigRoutingTimeoutValue" SG_ 400 Rr_EDURealTMTq 65535;
+BA_ "DataCenterDataType" SG_ 400 Rr_EDURealTMTq "INT(4)";
+BA_ "GenSigInvalidValue" SG_ 400 Rr_EDUTqReqFbk 4095;
+BA_ "GenSigStartValue" SG_ 400 Rr_EDUTqReqFbk 1022;
+BA_ "GenSigInvalidValue" SG_ 400 MCU_B_R_RealPwrKw_Sta 65535;
+BA_ "GenSigStartValue" SG_ 400 MCU_B_R_RealPwrKw_Sta 5300;
+BA_ "GenSigRoutingTimeoutValue_String" SG_ 400 MCU_B_R_RealPwrKw_Sta "0xFFFF";
+BA_ "GenSigInactiveValue" SG_ 400 MCU_B_R_RealPwrKw_Sta 5300;
+BA_ "GenSigRoutingTimeoutValue" SG_ 400 MCU_B_R_RealPwrKw_Sta 65535;
+BA_ "GenSigInvalidValue" SG_ 400 MCU_B_R_IGBTDdeTemp_Sta 511;
+BA_ "GenSigStartValue" SG_ 400 MCU_B_R_IGBTDdeTemp_Sta 40;
+BA_ "GenSigRoutingTimeoutValue_String" SG_ 400 MCU_B_R_IGBTDdeTemp_Sta "0x1FF";
+BA_ "GenSigInactiveValue" SG_ 400 MCU_B_R_IGBTDdeTemp_Sta 40;
+BA_ "GenSigRoutingTimeoutValue" SG_ 400 MCU_B_R_IGBTDdeTemp_Sta 511;
+BA_ "GenSigInvalidValue" SG_ 403 Rr_LLCflowReq 63;
+BA_ "GenSigInvalidValue" SG_ 403 Rr_CoolanttempReq 511;
+BA_ "GenSigStartValue" SG_ 403 Rr_CoolanttempReq 40;
+BA_ "GenSigInvalidValue" SG_ 403 Rr_TMTempWarn 3;
+BA_ "GenSigStartValue" SG_ 403 Rr_TMTempWarn 3;
+BA_ "GenSigRoutingTimeoutValue_String" SG_ 403 Rr_TMTempWarn "0x3";
+BA_ "GenSigInactiveValue" SG_ 403 Rr_TMTempWarn 3;
+BA_ "GenSigRoutingTimeoutValue" SG_ 403 Rr_TMTempWarn 3;
+BA_ "DataCenterDataType" SG_ 403 Rr_TMTempWarn "Varchar(10)";
+BA_ "GenSigInvalidValue" SG_ 403 Rr_MCUTempWarn 3;
+BA_ "GenSigStartValue" SG_ 403 Rr_MCUTempWarn 3;
+BA_ "GenSigRoutingTimeoutValue_String" SG_ 403 Rr_MCUTempWarn "0x3";
+BA_ "GenSigInactiveValue" SG_ 403 Rr_MCUTempWarn 3;
+BA_ "GenSigRoutingTimeoutValue" SG_ 403 Rr_MCUTempWarn 3;
+BA_ "DataCenterDataType" SG_ 403 Rr_MCUTempWarn "Varchar(10)";
+BA_ "GenSigInvalidValue" SG_ 403 Rr_LLCTemp 511;
+BA_ "GenSigStartValue" SG_ 403 Rr_LLCTemp 40;
+BA_ "GenSigInvalidValue" SG_ 403 MCU_B_R_LLCTempWarn_Sta 3;
+BA_ "GenSigRoutingTimeoutValue_String" SG_ 403 MCU_B_R_LLCTempWarn_Sta "0x3";
+BA_ "GenSigInactiveValue" SG_ 403 MCU_B_R_LLCTempWarn_Sta 3;
+BA_ "GenSigRoutingTimeoutValue" SG_ 403 MCU_B_R_LLCTempWarn_Sta 3;
+BA_ "GenSigInvalidValue" SG_ 403 MCU_B_R_FailLv_Sta 7;
+BA_ "GenSigRoutingTimeoutValue_String" SG_ 403 MCU_B_R_FailLv_Sta "0x7";
+BA_ "GenSigRoutingTimeoutValue" SG_ 403 MCU_B_R_FailLv_Sta 7;
+BA_ "GenSigInvalidValue" SG_ 403 MCU_B_R_KL302TqCnt_Sta 255;
+BA_ "GenSigRoutingTimeoutValue_String" SG_ 403 MCU_B_R_KL302TqCnt_Sta "0xFF";
+BA_ "GenSigRoutingTimeoutValue" SG_ 403 MCU_B_R_KL302TqCnt_Sta 255;
+BA_ "GenSigSendType" SG_ 1336 NM_Shifter_Node_ID 7;
+BA_ "GenSigSendType" SG_ 1336 NM_Shifter_Rpt_Msg_Req 7;
+BA_ "GenSigSendType" SG_ 1336 NM_Shifter_CSB 7;
+BA_ "GenSigSendType" SG_ 1336 NM_Shifter_Active_WU 7;
+BA_ "GenSigSendType" SG_ 1336 NM_Shifter_PNI 7;
+BA_ "GenSigSendType" SG_ 1336 NM_Shifter_ERROR_State 7;
+BA_ "GenSigSendType" SG_ 1545 DiagRespFromMCU_B_R 3;
+BA_ "GenSigSendType" SG_ 1673 DiagPhysReqToMCU_B_R 3;
+BA_ "GenSigSendType" SG_ 1289 NM_MCU_B_R_Node_ID 7;
+BA_ "GenSigSendType" SG_ 1289 NM_MCU_B_R_ERROR_State 7;
+BA_ "GenSigSendType" SG_ 1289 NM_MCU_B_R_Active_WU 7;
+BA_ "GenSigSendType" SG_ 1289 NM_MCU_B_R_CSB 7;
+BA_ "GenSigSendType" SG_ 1289 NM_MCU_B_R_PNI 7;
+BA_ "GenSigSendType" SG_ 1289 NM_MCU_B_R_Rpt_Msg_Req 7;
+BA_ "GenSigSendType" SG_ 1290 NM_MCU_B_F_Node_ID 7;
+BA_ "GenSigSendType" SG_ 1290 NM_MCU_B_F_ERROR_State 7;
+BA_ "GenSigSendType" SG_ 1290 NM_MCU_B_F_Active_WU 7;
+BA_ "GenSigSendType" SG_ 1290 NM_MCU_B_F_CSB 7;
+BA_ "GenSigSendType" SG_ 1290 NM_MCU_B_F_PNI 7;
+BA_ "GenSigSendType" SG_ 1290 NM_MCU_B_F_Rpt_Msg_Req 7;
+BA_ "GenSigSendType" SG_ 2015 DiagFuncReqOBD 3;
+BA_ "GenSigInvalidValue" SG_ 409 MCU_FVT_R_TMSpd_Sta 65535;
+BA_ "GenSigStartValue" SG_ 409 MCU_FVT_R_TMSpd_Sta 22000;
+BA_ "GenSigRoutingTimeoutValue_String" SG_ 409 MCU_FVT_R_TMSpd_Sta "0xFFFF";
+BA_ "GenSigInactiveValue" SG_ 409 MCU_FVT_R_TMSpd_Sta 65535;
+BA_ "GenSigRoutingTimeoutValue" SG_ 409 MCU_FVT_R_TMSpd_Sta 65535;
+BA_ "GenSigInvalidValue" SG_ 409 MCU_FVT_R_EDUTqReq_Fbk 65535;
+BA_ "GenSigStartValue" SG_ 409 MCU_FVT_R_EDUTqReq_Fbk 10220;
+BA_ "GenSigRoutingTimeoutValue_String" SG_ 409 MCU_FVT_R_EDUTqReq_Fbk "0xFFFF";
+BA_ "GenSigInactiveValue" SG_ 409 MCU_FVT_R_EDUTqReq_Fbk 65535;
+BA_ "GenSigRoutingTimeoutValue" SG_ 409 MCU_FVT_R_EDUTqReq_Fbk 65535;
+BA_ "GenSigInvalidValue" SG_ 409 MCU_FVT_R_Failcode3_Sta 255;
+BA_ "GenSigRoutingTimeoutValue_String" SG_ 409 MCU_FVT_R_Failcode3_Sta "0xFF";
+BA_ "GenSigRoutingTimeoutValue" SG_ 409 MCU_FVT_R_Failcode3_Sta 255;
+BA_ "GenSigInvalidValue" SG_ 409 MCU_FVT_R_OilTemp_Sta 511;
+BA_ "GenSigStartValue" SG_ 409 MCU_FVT_R_OilTemp_Sta 40;
+BA_ "GenSigRoutingTimeoutValue_String" SG_ 409 MCU_FVT_R_OilTemp_Sta "0x1FF";
+BA_ "GenSigInactiveValue" SG_ 409 MCU_FVT_R_OilTemp_Sta 511;
+BA_ "GenSigRoutingTimeoutValue" SG_ 409 MCU_FVT_R_OilTemp_Sta 511;
+BA_ "GenSigRoutingTimeoutValue" SG_ 409 MCU_FVT_R_MCUBAT_Sta 511;
+BA_ "GenSigInvalidValue" SG_ 409 MCU_FVT_R_MCUSys_Sta 15;
+BA_ "GenSigStartValue" SG_ 409 MCU_FVT_R_MCUSys_Sta 6;
+BA_ "GenSigRoutingTimeoutValue_String" SG_ 409 MCU_FVT_R_MCUSys_Sta "0xF";
+BA_ "GenSigRoutingTimeoutValue" SG_ 409 MCU_FVT_R_MCUSys_Sta 15;
+BA_ "GenSigRoutingTimeoutValue_String" SG_ 409 MCU_FVT_R_HeatingOP_Sta "0x0";
+BA_ "GenSigRoutingTimeoutValue_String" SG_ 409 MCU_FVT_R_BoostOP_Sta "0x0";
+BA_ "GenSigSendType" SG_ 1731 DiagPhysReqToEOP_FVT_R 3;
+BA_ "GenSigSendType" SG_ 1603 DiagRespFromEOP_FVT_R 3;
+VAL_ 369 HVBattVolt 8191 "Invalid";
+VAL_ 378 HVBContactorSta 1 "Closed" 0 "Open";
+VAL_ 1328 NM_BMS_Rpt_Msg_Req 1 "Repeat Message State requested" 0 "Repeat Message State not requested";
+VAL_ 1328 NM_BMS_CSB 1 "Start of synchronized shutdown is requested by main coordinator" 0 "Start of synchronized shutdown is not requested by main coordinator";
+VAL_ 1328 NM_BMS_Active_WU 1 "Node has woken up the network (active Wakeup)" 0 "Node has not woken up the network (passive wakeup)";
+VAL_ 1328 NM_BMS_PNI 1 "NM PDU contains Partial Network request information" 0 "NM PDU contains no Partial Network request information";
+VAL_ 1328 NM_BMS_ERROR_State 8 "BUS OFF_L2" 4 "BUS OFF_L1" 2 "ERROR PASSIVE" 1 "ERROR ACTIVE" 0 "Inactive";
+VAL_ 1331 NM_CCU_Rpt_Msg_Req 1 "Repeat Message State requested" 0 "Repeat Message State not requested";
+VAL_ 1331 NM_CCU_CSB 1 "Start of synchronized shutdown is requested by main coordinator" 0 "Start of synchronized shutdown is not requested by main coordinator";
+VAL_ 1331 NM_CCU_Active_WU 1 "Node has woken up the network (active Wakeup)" 0 "Node has not woken up the network (passive wakeup)";
+VAL_ 1331 NM_CCU_PNI 1 "NM PDU contains Partial Network request information" 0 "NM PDU contains no Partial Network request information";
+VAL_ 1331 NM_CCU_ERROR_State 8 "BUS OFF_L2" 4 "BUS OFF_L1" 2 "ERROR PASSIVE" 1 "ERROR ACTIVE" 0 "Inactive";
+VAL_ 1315 NM_EBM_Rpt_Msg_Req 1 "Repeat Message State requested" 0 "Repeat Message State not requested";
+VAL_ 1315 NM_EBM_CSB 1 "Start of synchronized shutdown is requested by main coordinator" 0 "Start of synchronized shutdown is not requested by main coordinator";
+VAL_ 1315 NM_EBM_Active_WU 1 "Node has woken up the network (active Wakeup)" 0 "Node has not woken up the network (passive wakeup)";
+VAL_ 1315 NM_EBM_PNI 1 "NM PDU contains Partial Network request information" 0 "NM PDU contains no Partial Network request information";
+VAL_ 1315 NM_EBM_ERROR_State 8 "BUS OFF_L2" 4 "BUS OFF_L1" 2 "ERROR PASSIVE" 1 "ERROR ACTIVE" 0 "Inactive";
+VAL_ 277 ShiftGearPosn 7 "Reverse" 6 "Failure" 5 "Drive" 4 "Neutral" 3 "Not used" 2 "Not used" 1 "Invalid" 0 "Park";
+VAL_ 277 ActiveDischReq 1 "Request Active Discharge" 0 "No Request";
+VAL_ 277 PwrSta 7 "Invalid" 5 "READY" 4 "ON" 3 "STANDBY" 2 "OFF-After-Run" 1 "OFF-Charging" 0 "OFF";
+VAL_ 339 Rr_ActvDmpDisabReq 1 "Disable Request" 0 "Enable Request";
+VAL_ 339 Rr_MCUEnaReq 1 "Enable Request" 0 "Disable";
+VAL_ 341 FDC_VCU_RrSpdMin_Req 65535 "Invalid";
+VAL_ 341 FDC_VCU_RrSpdMax_Req 65535 "Invalid";
+VAL_ 341 FDC_VCU_RrTMSpd_Req 65535 "Invalid";
+VAL_ 341 FDC_VCU_RrTMTq_Req 65535 "Invalid";
+VAL_ 341 FDC_VCU_RrTqMax_Req 4095 "Invalid";
+VAL_ 341 FDC_VCU_RrTqMin_Req 4095 "Invalid";
+VAL_ 341 FDC_VCU_RrTMCtrlMode_Req 7 "Invalid" 6 "Boost Mode" 5 "Heating Mode" 4 "Emergency Power Down" 3 "Reserved" 2 "Reserved" 1 "Speed Mode" 0 "Torque Mode";
+VAL_ 346 Rr_TMCtrlMode_Req 1 "Speed Mode" 0 "Torque Mode";
+VAL_ 386 BatteryMode 5 "Active Heating" 4 "Passive Heating" 3 "Isothermal Cycle" 2 "Passive Cooling" 1 "Active Cooling" 0 "OFF";
+VAL_ 451 VehSpeed 4095 "Invalid";
+VAL_ 451 IVI_Time_Month 15 "Not Used" 14 "Not Used" 13 "Not Used" 0 "invalid";
+VAL_ 1280 NM_FUSION_Rpt_Msg_Req 1 "Repeat Message State requested" 0 "Repeat Message State not requested";
+VAL_ 1280 NM_FUSION_CSB 1 "Start of synchronized shutdown is requested by main coordinator" 0 "Start of synchronized shutdown is not requested by main coordinator";
+VAL_ 1280 NM_FUSION_Active_WU 1 "Node has woken up the network (active Wakeup)" 0 "Node has not woken up the network (passive wakeup)";
+VAL_ 1280 NM_FUSION_PNI 1 "NM PDU contains Partial Network request information" 0 "NM PDU contains no Partial Network request information";
+VAL_ 1280 NM_FUSION_ERROR_State 8 "BUS OFF_L2" 4 "BUS OFF_L1" 2 "ERROR PASSIVE" 1 "ERROR ACTIVE" 0 "Inactive";
+VAL_ 401 MCU_B_F_IGBTDdeTemp_Sta 511 "Invalid";
+VAL_ 401 MCU_B_F_RealPwrKw_Sta 65535 "Invalid";
+VAL_ 404 MCU_B_F_KL302TqCnt_Sta 255 "Invalid";
+VAL_ 400 Rr_MCUSysSta 15 "Not used" 14 "Not used" 13 "Not used" 12 "Not used" 11 "Not used" 10 "Not used" 9 "Resolver Adjust." 8 "Diag Service" 7 "Discharge" 6 "AfterRun" 5 "Failure" 4 "Speed Control" 3 "Torque Control" 2 "Ready" 1 "Stand by" 0 "Initial Diag";
+VAL_ 400 MCUWarn_R 7 "MCU Normal(NO Error)" 3 "ERR LVL3" 2 "ERR LVL2" 1 "ERR LVL1" 0 "ERR LVL0";
+VAL_ 400 Rr_MCUReady 1 "Ready" 0 "Not Ready";
+VAL_ 400 Rr_MCUIGN_sta 1 "MCU IGN On" 0 "MCU IGN Off";
+VAL_ 400 Rr_MotorAvailTq 4095 "Invalid";
+VAL_ 400 Rr_MCUErr 33 "Rolling counter_Err" 32 "Checksum_Err" 31 "BAT_High_Err" 30 "DrvrBrdOff" 29 "HWth3PHmax" 28 "AD2SInit_Err" 27 "B_OFFSET_Err" 26 "IGN_High_Err" 25 "IGBT_TEMP_sensing_Err" 24 "Motor_TEMP_sensing_Err" 23 "UVW_sensing_Err" 22 "UVW_unbalance" 21 "VPN_sensing_Err" 20 "IGN_Low_Err" 19 "BAT_Low_Err" 18 "Motor_TEMP_OVER" 17 "thRDX_ERROR" 16 "RDX_LOS" 15 "C_OFFSET_Err" 14 "A_OFFSET_Err" 13 "th3PHmax" 12 "H_sensor_Fault" 11 "VPN_250V" 10 "VPN_450V" 9 "HCU_miss" 8 "BMS_miss" 7 "UVW_open" 6 "IGBT_TEMP_OVER" 5 "P30BAT_ERR" 4 "DIR_ERR" 3 "Motor_speed_OVER" 2 "IGBT_FAULT" 1 "Motor_stuck" 0 "Nofault";
+VAL_ 400 Rr_TMTemp 511 "Invalid";
+VAL_ 400 Rr_MCUTemp 511 "Invalid";
+VAL_ 400 Rr_MCUReady4Pre 1 "Ready for Precharge" 0 "Not Ready for Precharge";
+VAL_ 400 Rr_ActvDmpDisabSta 1 "Disable" 0 "Enable";
+VAL_ 400 Rr_EDUDrtSta 1 "Torque Derating" 0 "Normal operation";
+VAL_ 400 Rr_MCUDischrgSta 1 "Discharge completed" 0 "Discharge not ready";
+VAL_ 400 Rr_TMSpd 65535 "Invalid";
+VAL_ 400 Rr_EDURealTMTq 65535 "Invalid";
+VAL_ 400 Rr_MCUEnaSta 1 "Enable is ready" 0 "Disabled";
+VAL_ 400 Rr_EDUOpratingSta 1 "Speed" 0 "Torque";
+VAL_ 400 Rr_EDURotateDirction 2 "Backward" 1 "Forward" 0 "Stop";
+VAL_ 400 MCU_B_R_RealPwrKw_Sta 65535 "Invalid";
+VAL_ 400 MCU_B_R_IGBTDdeTemp_Sta 511 "Invalid";
+VAL_ 403 Rr_Failcodehistory1 2 "Past failure" 1 "Latest failure" 0 "Nothing";
+VAL_ 403 Rr_Failcodehistory2 2 "Past failure" 1 "Latest failure" 0 "Nothing";
+VAL_ 403 Rr_TMTempWarn 3 "Invalid" 2 "Reserve" 1 "Warning" 0 "Normal";
+VAL_ 403 Rr_MCUTempWarn 3 "Invalid" 2 "Reserve" 1 "Warning" 0 "Normal";
+VAL_ 403 MCU_B_R_LLCTempWarn_Sta 3 "Invalid" 2 "Reserve" 1 "Warning" 0 "Normal";
+VAL_ 403 MCU_B_R_FailLv_Sta 7 "Invalid" 6 "Reserved" 5 "Reserved" 4 "Reserved" 3 "Reserved" 2 "ASC" 1 "FW" 0 "Normal";
+VAL_ 403 MCU_B_R_KL302TqCnt_Sta 255 "Invalid";
+VAL_ 1336 NM_Shifter_Rpt_Msg_Req 1 "Repeat Message State requested" 0 "Repeat Message State not requested";
+VAL_ 1336 NM_Shifter_CSB 1 "Start of synchronized shutdown is requested by main coordinator" 0 "Start of synchronized shutdown is not requested by main coordinator";
+VAL_ 1336 NM_Shifter_Active_WU 1 "Node has woken up the network (active Wakeup)" 0 "Node has not woken up the network (passive wakeup)";
+VAL_ 1336 NM_Shifter_PNI 1 "NM PDU contains Partial Network request information" 0 "NM PDU contains no Partial Network request information";
+VAL_ 1336 NM_Shifter_ERROR_State 8 "BUS OFF_L2" 4 "BUS OFF_L1" 2 "ERROR PASSIVE" 1 "ERROR ACTIVE" 0 "Inactive";
+VAL_ 1289 NM_MCU_B_R_ERROR_State 8 "BUS OFF_L2" 4 "BUS OFF_L1" 2 "ERROR PASSIVE" 1 "ERROR ACTIVE" 0 "Inactive";
+VAL_ 1289 NM_MCU_B_R_Active_WU 1 "Node has woken up the network (active Wakeup)" 0 "Node has not woken up the network (passive wakeup)";
+VAL_ 1289 NM_MCU_B_R_CSB 1 "Start of synchronized shutdown is requested by main coordinator" 0 "Start of synchronized shutdown is not requested by main coordinator";
+VAL_ 1289 NM_MCU_B_R_PNI 1 "NM PDU contains Partial Network request information" 0 "NM PDU contains no Partial Network request information";
+VAL_ 1289 NM_MCU_B_R_Rpt_Msg_Req 1 "Repeat Message State requested" 0 "Repeat Message State not requested";
+VAL_ 1290 NM_MCU_B_F_ERROR_State 8 "BUS OFF_L2" 4 "BUS OFF_L1" 2 "ERROR PASSIVE" 1 "ERROR ACTIVE" 0 "Inactive";
+VAL_ 1290 NM_MCU_B_F_Active_WU 1 "Node has woken up the network (active Wakeup)" 0 "Node has not woken up the network (passive wakeup)";
+VAL_ 1290 NM_MCU_B_F_CSB 1 "Start of synchronized shutdown is requested by main coordinator" 0 "Start of synchronized shutdown is not requested by main coordinator";
+VAL_ 1290 NM_MCU_B_F_PNI 1 "NM PDU contains Partial Network request information" 0 "NM PDU contains no Partial Network request information";
+VAL_ 1290 NM_MCU_B_F_Rpt_Msg_Req 1 "Repeat Message State requested" 0 "Repeat Message State not requested";
+VAL_ 409 MCU_FVT_R_TMSpd_Sta 65535 "Invalid";
+VAL_ 409 MCU_FVT_R_EDUTqReq_Fbk 65535 "Invalid";
+VAL_ 409 MCU_FVT_R_Failcode3_Sta 255 "Invalid";
+VAL_ 409 MCU_FVT_R_MCUErr_Sta 33 "Rolling counter_Err" 32 "Checksum_Err" 31 "BAT_High_Err" 30 "DrvrBrdOff" 29 "HWth3PHmax" 28 "AD2SInit_Err" 27 "B_OFFSET_Err" 26 "IGN_High_Err" 25 "IGBT_TEMP_sensing_Err" 24 "Motor_TEMP_sensing_Err" 23 "UVW_sensing_Err" 22 "UVW_unbalance" 21 "VPN_sensing_Err" 20 "IGN_Low_Err" 19 "BAT_Low_Err" 18 "Motor_TEMP_OVER" 17 "thRDX_ERROR" 16 "RDX_LOS" 15 "C_OFFSET_Err" 14 "A_OFFSET_Err" 13 "th3PHmax" 12 "H_sensor_Fault" 11 "VPN_530V" 10 "VPN_830V" 9 "HCU_miss" 8 "BMS_miss" 7 "UVW_open" 6 "IGBT_TEMP_OVER" 5 "P30BAT_ERR" 4 "DIR_ERR" 3 "Motor_speed_OVER" 2 "IGBT_FAULT" 1 "Motor_stuck" 0 "Nofault";
+VAL_ 409 MCU_FVT_R_OilTemp_Sta 511 "Invalid";
+VAL_ 409 MCU_FVT_R_MCUBAT_Sta 511 "Invalid";
+VAL_ 409 MCU_FVT_R_MCUSys_Sta 15 "Invalid" 14 "Reserved" 13 "Reserved" 12 "Boost charge mode" 11 "Heating mode" 10 "Emergency Power Down" 9 "Resolver Adjust." 8 "Diag Service" 7 "Discharge" 6 "AfterRun" 5 "Failure" 4 "Speed Control" 3 "Torque Control" 2 "Ready" 1 "Stand by" 0 "Initial Diag";
+VAL_ 409 MCU_FVT_R_HeatingOP_Sta 1 "Heating" 0 "No Heating";
+VAL_ 409 MCU_FVT_R_BoostOP_Sta 1 "Boost" 0 "No Boost";

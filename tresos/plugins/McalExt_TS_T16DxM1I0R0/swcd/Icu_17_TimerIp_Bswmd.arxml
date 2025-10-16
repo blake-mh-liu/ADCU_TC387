@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+[!AUTOSPACING!][!//
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-0-3.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>AUTOSAR_Icu</SHORT-NAME>
+      <AR-PACKAGES>
+            <AR-PACKAGE>
+              <SHORT-NAME>BswModuleDescriptions</SHORT-NAME>
+              <ELEMENTS>
+                <BSW-MODULE-DESCRIPTION>
+                  <SHORT-NAME>Icu_17_TimerIp</SHORT-NAME>
+                  <MODULE-ID>122</MODULE-ID>
+                  <PROVIDED-ENTRYS>
+                    <BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                      <BSW-MODULE-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_Icu/BswModuleEntrys/Icu_17_TimerIp_Init</BSW-MODULE-ENTRY-REF>
+                    </BSW-MODULE-ENTRY-REF-CONDITIONAL>
+                  </PROVIDED-ENTRYS>
+                  <INTERNAL-BEHAVIORS>
+                    <BSW-INTERNAL-BEHAVIOR>
+                      <SHORT-NAME>InternalBehavior_0</SHORT-NAME>
+                      <EXCLUSIVE-AREAS>
+                        <EXCLUSIVE-AREA>
+                          <SHORT-NAME>GtmEnableEdgeCount</SHORT-NAME>
+                        </EXCLUSIVE-AREA>
+                        <EXCLUSIVE-AREA>
+                          <SHORT-NAME>GtmGetDutyCycle</SHORT-NAME>
+                        </EXCLUSIVE-AREA>
+                        <EXCLUSIVE-AREA>
+                          <SHORT-NAME>ResetEdgeCount</SHORT-NAME>
+                        </EXCLUSIVE-AREA>
+                        <EXCLUSIVE-AREA>
+                          <SHORT-NAME>SetActivationCondition</SHORT-NAME>
+                        </EXCLUSIVE-AREA>
+                      </EXCLUSIVE-AREAS>
+                      <ENTITYS>
+                        <BSW-CALLED-ENTITY>
+                          <SHORT-NAME>Icu_17_TimerIp_Init</SHORT-NAME>
+                          <CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                            <CAN-ENTER-EXCLUSIVE-AREA-REF DEST="EXCLUSIVE-AREA">/AUTOSAR_Icu/BswModuleDescriptions/Icu_17_TimerIp/InternalBehavior_0/GtmEnableEdgeCount</CAN-ENTER-EXCLUSIVE-AREA-REF>
+                            <CAN-ENTER-EXCLUSIVE-AREA-REF DEST="EXCLUSIVE-AREA">/AUTOSAR_Icu/BswModuleDescriptions/Icu_17_TimerIp/InternalBehavior_0/GtmGetDutyCycle</CAN-ENTER-EXCLUSIVE-AREA-REF>
+                            <CAN-ENTER-EXCLUSIVE-AREA-REF DEST="EXCLUSIVE-AREA">/AUTOSAR_Icu/BswModuleDescriptions/Icu_17_TimerIp/InternalBehavior_0/ResetEdgeCount</CAN-ENTER-EXCLUSIVE-AREA-REF>
+                            <CAN-ENTER-EXCLUSIVE-AREA-REF DEST="EXCLUSIVE-AREA">/AUTOSAR_Icu/BswModuleDescriptions/Icu_17_TimerIp/InternalBehavior_0/SetActivationCondition</CAN-ENTER-EXCLUSIVE-AREA-REF>
+                          </CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                          <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                          <IMPLEMENTED-ENTRY-REF DEST="BSW-MODULE-ENTRY">/AUTOSAR_Icu/BswModuleEntrys/Icu_17_TimerIp_Init</IMPLEMENTED-ENTRY-REF>
+                          <SCHEDULER-NAME-PREFIX-REF DEST="BSW-SCHEDULER-NAME-PREFIX">/AUTOSAR_Icu/BswModuleDescriptions/Icu_17_TimerIp/InternalBehavior_0/Prefix_Icu_17_TimerIp</SCHEDULER-NAME-PREFIX-REF>
+                        </BSW-CALLED-ENTITY>
+                      </ENTITYS>
+<!-- No Events -->
+                      <SCHEDULER-NAME-PREFIXS>
+                         <BSW-SCHEDULER-NAME-PREFIX>
+                           <SHORT-NAME>Prefix_Icu_17_TimerIp</SHORT-NAME>
+                           <SYMBOL>Icu_17_TimerIp</SYMBOL>
+                         </BSW-SCHEDULER-NAME-PREFIX>
+                      </SCHEDULER-NAME-PREFIXS>
+                    </BSW-INTERNAL-BEHAVIOR>
+                  </INTERNAL-BEHAVIORS>
+                </BSW-MODULE-DESCRIPTION>
+              </ELEMENTS>
+            </AR-PACKAGE>
+            <AR-PACKAGE>
+              <SHORT-NAME>BswModuleEntrys</SHORT-NAME>
+              <ELEMENTS>
+                <BSW-MODULE-ENTRY>
+                  <SHORT-NAME>Icu_17_TimerIp_Init</SHORT-NAME>
+                  <SERVICE-ID>1000</SERVICE-ID>
+                  <IS-REENTRANT>false</IS-REENTRANT>
+                  <IS-SYNCHRONOUS>true</IS-SYNCHRONOUS>
+                  <CALL-TYPE>REGULAR</CALL-TYPE>
+                  <EXECUTION-CONTEXT>UNSPECIFIED</EXECUTION-CONTEXT>
+                  <SW-SERVICE-IMPL-POLICY>STANDARD</SW-SERVICE-IMPL-POLICY>
+                </BSW-MODULE-ENTRY>
+              </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+
+    <AR-PACKAGE>
+      <SHORT-NAME>Icu_Aurix2GAS440</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE>
+          <SHORT-NAME>Implementations</SHORT-NAME>
+          <ELEMENTS>
+            <BSW-IMPLEMENTATION>
+              <SHORT-NAME>BswImplementation_0</SHORT-NAME>
+              <CODE-DESCRIPTORS>
+                <CODE>
+                  <SHORT-NAME>Files</SHORT-NAME>
+                  <ARTIFACT-DESCRIPTORS>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>make::Icu_defs.mak</SHORT-LABEL>
+                      <CATEGORY>SWMAKE</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>make::Icu_rules.mak</SHORT-LABEL>
+                      <CATEGORY>SWMAKE</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                  </ARTIFACT-DESCRIPTORS>
+                </CODE>
+              </CODE-DESCRIPTORS>
+              <PROGRAMMING-LANGUAGE>C</PROGRAMMING-LANGUAGE>
+            <RESOURCE-CONSUMPTION>
+              <SHORT-NAME>ResourceConsumption</SHORT-NAME>
+              <MEMORY-SECTIONS>
+[!FOR "CoreId" = "num:i(1)" TO "num:i(6)"!][!//
+
+                <MEMORY-SECTION>
+                  <SHORT-NAME>VAR_CLEARED_ASIL_B_CORE[!"num:i(($CoreId) - num:i(1))"!]_32</SHORT-NAME>
+                  <ALIGNMENT>32</ALIGNMENT>
+                    <OPTIONS>
+                    	<OPTION>safetyAsilB</OPTION>
+                    </OPTIONS>
+                  <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_CLEARED_ASIL_B</SW-ADDRMETHOD-REF>
+                </MEMORY-SECTION>
+                <MEMORY-SECTION>
+                  <SHORT-NAME>CONFIG_DATA_ASIL_B_CORE[!"num:i(($CoreId) - num:i(1))"!]_UNSPECIFIED</SHORT-NAME>
+                  <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <OPTIONS>
+                    	<OPTION>safetyAsilB</OPTION>
+                    </OPTIONS>
+                  <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/CONFIG_DATA_ASIL_B</SW-ADDRMETHOD-REF>
+                </MEMORY-SECTION>
+                <MEMORY-SECTION>
+                  <SHORT-NAME>VAR_INIT_ASIL_B_CORE[!"num:i(($CoreId) - num:i(1))"!]_32</SHORT-NAME>
+                  <ALIGNMENT>32</ALIGNMENT>
+                    <OPTIONS>
+                    	<OPTION>safetyAsilB</OPTION>
+                    </OPTIONS>
+                  <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_INIT_ASIL_B</SW-ADDRMETHOD-REF>
+                </MEMORY-SECTION>
+
+[!ENDFOR!]
+                <MEMORY-SECTION>
+                  <SHORT-NAME>CONST_ASIL_B_GLOBAL_32</SHORT-NAME>
+                  <ALIGNMENT>32</ALIGNMENT>
+                    <OPTIONS>
+                    	<OPTION>safetyAsilB</OPTION>
+                    </OPTIONS>
+                  <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/CONST_ASIL_B</SW-ADDRMETHOD-REF>
+                </MEMORY-SECTION>
+                <MEMORY-SECTION>
+                  <SHORT-NAME>VAR_CLEARED_ASIL_B_GLOBAL_32</SHORT-NAME>
+                  <ALIGNMENT>32</ALIGNMENT>
+                    <OPTIONS>
+                    	<OPTION>safetyAsilB</OPTION>
+                    </OPTIONS>
+                  <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_CLEARED_ASIL_B</SW-ADDRMETHOD-REF>
+                </MEMORY-SECTION>
+                <MEMORY-SECTION>
+                  <SHORT-NAME>CONFIG_DATA_ASIL_B_GLOBAL_UNSPECIFIED</SHORT-NAME>
+                  <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <OPTIONS>
+                    	<OPTION>safetyAsilB</OPTION>
+                    </OPTIONS>
+                  <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/CONFIG_DATA_ASIL_B</SW-ADDRMETHOD-REF>
+                </MEMORY-SECTION>
+                <MEMORY-SECTION>
+                  <SHORT-NAME>CODE_ASIL_B_GLOBAL</SHORT-NAME>
+                  <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <OPTIONS>
+                    	<OPTION>safetyAsilB</OPTION>
+                    </OPTIONS>
+                  <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/CODE_ASIL_B</SW-ADDRMETHOD-REF>
+                </MEMORY-SECTION>
+              </MEMORY-SECTIONS>
+              <SECTION-NAME-PREFIXS>
+                <SECTION-NAME-PREFIX>
+                  <SHORT-NAME>ICU_17_TIMERIP</SHORT-NAME>
+                  <SYMBOL>ICU_17_TIMERIP</SYMBOL>
+                </SECTION-NAME-PREFIX>
+              </SECTION-NAME-PREFIXS>
+            </RESOURCE-CONSUMPTION>
+              <SW-VERSION>20.25.0</SW-VERSION>
+              <VENDOR-ID>17</VENDOR-ID>
+              <AR-RELEASE-VERSION>4.4.0</AR-RELEASE-VERSION>
+              <BEHAVIOR-REF DEST="BSW-INTERNAL-BEHAVIOR">/AUTOSAR_Icu/BswModuleDescriptions/Icu_17_TimerIp/InternalBehavior_0</BEHAVIOR-REF>
+              <!-- Disabled cause MemMap section needs GTMCCU6 in section name and not TimerIp  -->
+              <!--
+              <VENDOR-API-INFIX>TimerIp</VENDOR-API-INFIX>
+              -->
+              <VENDOR-SPECIFIC-MODULE-DEF-REFS>
+                <VENDOR-SPECIFIC-MODULE-DEF-REF DEST="ECUC-MODULE-DEF">/AURIX2G/EcucDefs/Icu</VENDOR-SPECIFIC-MODULE-DEF-REF>
+              </VENDOR-SPECIFIC-MODULE-DEF-REFS>
+            </BSW-IMPLEMENTATION>
+          </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

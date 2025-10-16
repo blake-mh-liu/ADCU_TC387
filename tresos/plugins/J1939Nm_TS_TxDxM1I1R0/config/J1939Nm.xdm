@@ -1,0 +1,1040 @@
+<?xml version='1.0'?>
+<datamodel version="8.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/18/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/18/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar" 
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:ce="http://www.tresos.de/_projects/DataModel2/18/childenable.xsd" 
+         xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd" 
+         xmlns:f="http://www.tresos.de/_projects/DataModel2/14/formulaexpr.xsd" 
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd" 
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd"  
+         xmlns:variant="http://www.tresos.de/_projects/DataModel2/11/variant.xsd">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="TS_TxDxM1I1R0" type="AR-PACKAGE">
+        <d:lst type="ELEMENTS">
+          <d:chc name="J1939Nm" type="AR-ELEMENT" value="MODULE-DEF">
+            <v:ctr type="MODULE-DEF">
+              <a:a name="ADMIN-DATA" type="ADMIN-DATA">
+                <ad:ADMIN-DATA>
+                  <ad:DOC-REVISIONS>
+                    <ad:DOC-REVISION>
+                      <ad:REVISION-LABEL>4.2.2</ad:REVISION-LABEL>
+                      <ad:ISSUED-BY>AUTOSAR</ad:ISSUED-BY>
+                      <ad:DATE>2014-10-31</ad:DATE>
+                    </ad:DOC-REVISION>
+                  </ad:DOC-REVISIONS>
+                </ad:ADMIN-DATA>
+              </a:a>
+              <a:a name="DESC">
+                <a:v>&lt;html&gt;
+                      &lt;p&gt;Configuration of the J1939Nm module.&lt;/p&gt;
+                    &lt;/html&gt;</a:v>
+              </a:a>
+              <a:a name="LOWER-MULTIPLICITY" value="1"/>
+              <a:a name="POSTBUILDVARIANTSUPPORT" value="true"/>
+              <a:a name="RELEASE" value="asc:4.2.2"/>
+              <a:a name="UPPER-MULTIPLICITY" value="1"/>
+              <a:a name="UUID" value="9576597e-6971-4bc9-b324-10b79b18a948"/>
+              <v:ctr name="PublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>EN:
+                    &lt;html&gt;
+                      Additional published parameters not covered by CommonPublishedInformation container.
+                  &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="EB Published Information"/>
+                <a:a name="TAB" value="EB Published Information"/>
+                <a:a name="UUID" 
+                     value="ECUC:cb4128ed-26c1-4ddd-906e-854bed917e07"/>
+                <v:var name="PbcfgMSupport" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Specifies whether or not the J1939Nm can use the PbcfgM module for post-build support.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="PbcfgM support"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:eb61002e-69c0-4f16-a910-c27adb75f6ee"/>
+                  <a:da name="DEFAULT" value="true"/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>EN:
+                    &lt;html&gt;
+                      Common container, aggregated by all modules. It contains published information about vendor and versions.
+                  &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="Common Published Information"/>
+                <a:a name="UUID" 
+                     value="ECUC:a00be3e0-8783-9123-2d52-1eb616737ca6"/>
+                <v:var name="ArMajorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Major version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Major Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:948f3f2e-f129-4bc5-b4e1-7a7bdb8599e1"/>
+                  <a:da name="DEFAULT" value="20"/>
+                </v:var>
+                <v:var name="ArMinorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Minor version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Minor Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:2893b920-59d5-4ac2-b2c1-e23742e66d70"/>
+                  <a:da name="DEFAULT" value="11"/>
+                </v:var>
+                <v:var name="ArPatchVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Patch level version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Patch Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:6428eb9b-8790-488a-b9a3-0fba52d0f59e"/>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="SwMajorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Major version number of the vendor specific implementation of the module.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Major Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:605b18ae-3f9a-41d4-9225-67c9c5f6fc34"/>
+                  <a:da name="DEFAULT" value="1"/>
+                </v:var>
+                <v:var name="SwMinorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Minor version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Minor Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a7fe44dc-ea25-4b8d-8fad-9fbcae86d56f"/>
+                  <a:da name="DEFAULT" value="1"/>
+                </v:var>
+                <v:var name="SwPatchVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Patch Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a318d2d9-0e75-49da-ac43-e7e4e682e2f9"/>
+                  <a:da name="DEFAULT" value="13"/>
+                </v:var>
+                <v:var name="ModuleId" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Module ID of this module from Module List
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Numeric Module ID"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:78bc8362-080f-4253-b3da-804ab69a7154"/>
+                  <a:da name="DEFAULT" value="34"/>
+                </v:var>
+                <v:var name="VendorId" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Vendor ID"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:01b0f467-6943-4558-b4f2-3fa1fad28449"/>
+                  <a:da name="DEFAULT" value="1"/>
+                </v:var>
+                <v:var name="Release" type="STRING_LABEL">
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Release Information"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:1c68a547-f24e-4a4e-9540-69fbd533ec89"/>
+                  <a:da name="DEFAULT" value=""/>
+                </v:var>
+              </v:ctr>
+              <v:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION">
+                <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                     type="IMPLEMENTATIONCONFIGCLASS">
+                  <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                </a:a>
+                <a:a name="LABEL" value="Config Variant"/>
+                <a:a name="UUID" value="afb918ae-be8e-44d5-8eea-14d69bf25f3b"/>
+                <a:da name="DEFAULT" value="VariantPostBuild"/>
+                <a:da name="RANGE">
+                  <a:v>VariantPostBuild</a:v>
+                  <a:v>VariantPreCompile</a:v>
+                </a:da>
+              </v:var>
+              <v:var name="POST_BUILD_VARIANT_USED" type="BOOLEAN">
+                <a:a name="DESC" 
+                     value="Indicates whether Postbuild Selectable is able to use or not"/>
+                <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                     type="IMPLEMENTATIONCONFIGCLASS">
+                  <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                </a:a>
+                <a:a name="LABEL" value="Post Build Variant Used"/>
+                <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                <a:da name="DEFAULT" value="false"/>
+                <a:da name="READONLY" value="false"/>
+                <a:da name="TOOLTIP" 
+                      value="Indicates whether Postbuild Selectable is able to use or not"/>
+              </v:var>
+              <v:lst name="J1939NmConfigSet" 
+                     type="MULTIPLE-CONFIGURATION-CONTAINER">
+                <a:da name="MAX" value="1"/>
+                <a:da name="MIN" value="1"/>
+                <v:ctr name="J1939NmConfigSet" 
+                       type="MULTIPLE-CONFIGURATION-CONTAINER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                            &lt;p&gt;Defines the configuration parameters and sub containers of the
+                              J1939Nm module supporting multiple configuration sets.&lt;/p&gt;
+                            &lt;p&gt;This container is a MultipleConfigurationContainer,i.e. this container
+                              and its sub-containers exist once per configuration set.&lt;/p&gt;
+                          &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="UUID" value="7ef1c574-1060-4502-a6b3-4f1a3b0f7ce6"/>
+                  <v:lst name="J1939NmChannel" type="MAP">
+                    <a:da name="INVALID" type="XPath" expr="(count(*) &gt; 0)" 
+                          false="The number of configured J1939NmChannel shall be greater than 0."/>
+                    <a:da name="MIN" value="1"/>
+                    <v:ctr name="J1939NmChannel" type="IDENTIFIABLE">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              &lt;p&gt;Defines the configuration of J1939Nm channels.&lt;/p&gt;
+                              &lt;p&gt;&lt;strong&gt;Optimization Effect:&lt;/strong&gt;&lt;/p&gt;
+                              &lt;ul&gt;
+                                &lt;li class=&quot;optimization.config.ram.reduction&quot;&gt;
+                                  &lt;strong&gt;RAM reduction (config):&lt;/strong&gt;
+                                  Configuring less J1939Nm channels reduces the RAM
+                                  consumption of the module configuration.
+                                &lt;/li&gt;
+                                &lt;li class=&quot;optimization.config.rom.reduction&quot;&gt;
+                                  &lt;strong&gt;ROM reduction (config):&lt;/strong&gt;
+                                  Configuring less J1939Nm channels reduces the ROM
+                                  consumption of the module configuration.
+                                &lt;/li&gt;
+                                &lt;li class=&quot;optimization.code.exetime.reduction&quot;&gt;
+                                  &lt;strong&gt;Execution time reduction (code):&lt;/strong&gt;
+                                  Configuring less J1939Nm channels reduces the
+                                  execution time of the module code.
+                                &lt;/li&gt;
+                              &lt;/ul&gt;
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                      </a:a>
+                      <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="true"/>
+                      <a:a name="UUID" 
+                           value="56341d06-2c76-4f66-8b41-044ca2e741bd"/>
+                      <v:var name="J1939NmChannelUsesAddressArbitration" 
+                             type="BOOLEAN">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;Enable the initial address claim is sent, and the node reacts
+                                  to address claims of other nodes.&lt;/p&gt;
+                                &lt;p&gt;Disable the address claims of other nodes. The node only sends
+                                  an address claim upon request.&lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="e55ba2af-f712-4f1a-81b3-3bcd4f1ca6b7"/>
+                        <a:da name="DEFAULT" value="true"/>
+                      </v:var>
+                      <v:ref name="J1939NmComMNetworkHandleRef" 
+                             type="SYMBOLIC-NAME-REFERENCE">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;Reference to the ComM channel.&lt;/p&gt;
+                                &lt;p&gt;Dependency on parameter(s):&lt;/p&gt;
+                                &lt;ul&gt;
+                                  &lt;li&gt;A valid reference to ComM has to be provided.&lt;/li&gt;
+                                  &lt;li&gt;A unique channel index ComMChannelId has to be provided as
+                                    reference for each ComM network channel.&lt;/li&gt;
+                                  &lt;li&gt;It is not allowed to configure same ComM channel as reference
+                                    for more than one &lt;code&gt;J1939NmChannel&lt;/code&gt;.&lt;/li&gt;
+                                &lt;/ul&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="Link">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="UUID" 
+                             value="8d7af06f-ba63-4bb9-93c4-37adb659e2f7"/>
+                        <a:da name="INVALID" type="XPath">
+                          <a:tst expr="node:refvalid(.)" 
+                                 false="Invalid reference. A valid reference to a ComM Channel (ComMChannel) must be provided."/>
+                          <a:tst 
+                                 expr="count(../../../../../J1939NmConfigSet/eb-list::*/J1939NmChannel/eb-list::*[(node:refvalid(J1939NmComMNetworkHandleRef)) and (as:name(node:ref(J1939NmComMNetworkHandleRef)) = as:name(node:ref(node:current())))]) &gt; 1" 
+                                 true="ComM channel reference shall be unique across J1939Nm channels"/>
+                        </a:da>
+                        <a:da name="REF" 
+                              value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/ComM/ComMConfigSet/ComMChannel"/>
+                      </v:ref>
+                      <v:ctr name="J1939NmRxPdu" type="IDENTIFIABLE">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;Defines the configuration of the I-PDU used to receive the
+                                  AddressClaimed or CannotClaimAddress PG.&lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="TAB" value="J1939NmRxPdu"/>
+                        <a:a name="UUID" 
+                             value="0847185e-db2a-4a72-90a2-6b6c9e29e3d7"/>
+                        <a:da name="INVALID" type="XPath" 
+                              expr="count(../../../../../J1939NmConfigSet/eb-list::*/J1939NmChannel/eb-list::*[(node:exists(J1939NmRxPdu)) and (as:name(J1939NmRxPdu) = as:name(node:current()))]) &gt; 1" 
+                              true="J1939NmRxPdu name shall be unique across all J1939NmRxPdu&apos;s."/>
+                        <v:var name="J1939NmRxPduId" type="INTEGER">
+                          <a:a name="DESC">
+                            <a:v>&lt;html&gt;
+                                  &lt;p&gt;Defines the configuration of the Rx PDU Id to receive the
+                                    AddressClaimed or CannotClaimAddress PG.&lt;/p&gt;
+                                  &lt;p&gt;A symbolic name (preprocessor macro) is also generated for each
+                                    PDU ID.&lt;/p&gt;
+                                  &lt;p&gt;The J1939Nm&apos;s Rx Pdu ids has to be zero based and consecutive.&lt;/p&gt;
+                                  &lt;p&gt;Range: 0 .. 65535&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                          </a:a>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SCOPE" value="ECU"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                          <a:a name="UUID" 
+                               value="74a99a53-2ceb-4a9f-94ce-6b4f788fbe30"/>
+                          <a:da name="INVALID" type="Multi">
+                            <mt:range>
+                              <mt:tst expr="&lt;=65535"/>
+                              <mt:tst expr="&gt;=0"/>
+                            </mt:range>
+                            <mt:xpath 
+                                      false="J1939NmRxPduId has to be zero based and consecutive." 
+                                      expr="node:isconsecutive(../../../../../../J1939NmConfigSet/eb-list::*/J1939NmChannel/eb-list::*/J1939NmRxPdu/J1939NmRxPduId,0)"/>
+                          </a:da>
+                        </v:var>
+                        <v:ref name="J1939NmRxPduRef" type="REFERENCE">
+                          <a:a name="DESC">
+                            <a:v>&lt;html&gt;
+                                  &lt;p&gt;Reference to the external Rx PDU definition in the EcuC module.&lt;/p&gt;
+                                  &lt;p&gt;Dependency on parameter(s):&lt;/p&gt;
+                                  &lt;ul&gt;
+                                    &lt;li&gt;A valid reference to EcuC&apos;s &lt;code&gt;Pdu&lt;/code&gt; parameters has to be provided.&lt;/li&gt;
+                                    &lt;li&gt;Unique EcuC PDU has to be provided as reference for each J1939NmRxPdu.&lt;/li&gt;
+                                    &lt;li&gt;It is not allowed to configured bidirectional J1939Nm PDUs(the same PDU cannot be given
+                                        as reference for both &lt;code&gt;J1939NmRxPdu&lt;/code&gt; and &lt;code&gt;J1939NmTxPdu&lt;/code&gt;).&lt;/li&gt;
+                                  &lt;/ul&gt;
+                                &lt;/html&gt;</a:v>
+                          </a:a>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="Link">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="UUID" 
+                               value="47f71e82-7ad2-436d-a144-5a96fe267c4f"/>
+                          <a:da name="INVALID" type="XPath">
+                            <a:tst expr="node:refvalid(.)" 
+                                   false="Invalid reference. A valid reference to a EcuC PDU must be provided."/>
+                            <a:tst 
+                                   expr="count(../../../../../../J1939NmConfigSet/eb-list::*/J1939NmChannel/eb-list::*[(node:refvalid(J1939NmRxPdu/J1939NmRxPduRef)) and (as:name(node:ref(J1939NmRxPdu/J1939NmRxPduRef)) = as:name(node:ref(node:current())))]) &gt; 1" 
+                                   true="Unique EcuC PDU has to be provided as reference for each J1939NmRxPdu."/>
+                            <a:tst 
+                                   expr="count(../../../../../../J1939NmConfigSet/eb-list::*/J1939NmChannel/eb-list::*[(node:refvalid(J1939NmTxPdu/J1939NmTxPduRef)) and (as:name(node:ref(J1939NmTxPdu/J1939NmTxPduRef)) = as:name(node:ref(node:current())))]) &gt; 0" 
+                                   true="The referenced EcuC PDU is bidirectional(has both Tx and Rx direction). It is not allowed to configured bidirectional J1939Nm PDUs."/>
+                          </a:da>
+                          <a:da name="REF" 
+                                value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/EcuC/EcucPduCollection/Pdu"/>
+                        </v:ref>
+                      </v:ctr>
+                      <v:ctr name="J1939NmTxPdu" type="IDENTIFIABLE">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                  &lt;p&gt;Defines the configuration of the I-PDU used to transmit the
+                                    AddressClaimed or CannotClaimAddress PG.&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="TAB" value="J1939NmTxPdu"/>
+                        <a:a name="UUID" 
+                             value="64a4ae6e-43f3-4bf8-8ac5-75ef92b3a9f7"/>
+                        <a:da name="INVALID" type="XPath" 
+                              expr="count(../../../../../J1939NmConfigSet/eb-list::*/J1939NmChannel/eb-list::*[(node:exists(J1939NmTxPdu)) and (as:name(J1939NmTxPdu) = as:name(node:current()))]) &gt; 1" 
+                              true="J1939NmTxPdu name shall be unique across all J1939NmTxPdu&apos;s."/>
+                        <v:var name="J1939NmTxPduId" type="INTEGER">
+                          <a:a name="DESC">
+                            <a:v>&lt;html&gt;
+                                  &lt;p&gt;Defines the configuration of the Tx PDU Id to transmit the
+                                    AddressClaimed or CannotClaimAddress PG.&lt;/p&gt;
+                                  &lt;p&gt;A symbolic name (preprocessor macro) is also generated for each
+                                    PDU ID.&lt;/p&gt;
+                                  &lt;p&gt;The J1939Nm&apos;s Tx Pdu ids has to be zero based and consecutive.&lt;/p&gt;
+                                  &lt;p&gt;Range: 0 .. 65535&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                          </a:a>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SCOPE" value="ECU"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                          <a:a name="UUID" 
+                               value="b48d9712-52c8-4c67-bdd5-e4a9ce4a1cb5"/>
+                          <a:da name="INVALID" type="Multi">
+                            <mt:range>
+                              <mt:tst expr="&lt;=65535"/>
+                              <mt:tst expr="&gt;=0"/>
+                            </mt:range>
+                            <mt:xpath 
+                                      false="J1939NmTxPduId has to be zero based and consecutive." 
+                                      expr="node:isconsecutive(../../../../../../J1939NmConfigSet/eb-list::*/J1939NmChannel/eb-list::*/J1939NmTxPdu/J1939NmTxPduId,0)"/>
+                          </a:da>
+                        </v:var>
+                        <v:ref name="J1939NmTxPduRef" type="REFERENCE">
+                          <a:a name="DESC">
+                            <a:v>&lt;html&gt;
+                                  &lt;p&gt;Reference to the external Tx PDU definition in the EcuC module.&lt;/p&gt;
+                                  &lt;p&gt;Dependency on parameter(s):&lt;/p&gt;
+                                  &lt;ul&gt;
+                                    &lt;li&gt;A valid reference to EcuC&apos;s &lt;code&gt;Pdu&lt;/code&gt; parameters has to be provided.&lt;/li&gt;
+                                    &lt;li&gt;Unique EcuC PDU has to be provided as reference for each J1939NmTxPdu.&lt;/li&gt;
+                                    &lt;li&gt;It is not allowed to configured bidirectional J1939Nm PDUs(the same PDU cannot be given
+                                        as reference for both &lt;code&gt;J1939NmTxPdu&lt;/code&gt; and &lt;code&gt;J1939NmRxPdu&lt;/code&gt;).&lt;/li&gt;
+                                  &lt;/ul&gt;
+                                &lt;/html&gt;</a:v>
+                          </a:a>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="Link">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="UUID" 
+                               value="5bb4d70c-0463-4483-8b00-cc8b146dd770"/>
+                          <a:da name="INVALID" type="XPath">
+                            <a:tst expr="node:refvalid(.)" 
+                                   false="Invalid reference. A valid reference to a EcuC PDU must be provided."/>
+                            <a:tst 
+                                   expr="count(../../../../../../J1939NmConfigSet/eb-list::*/J1939NmChannel/eb-list::*[(node:refvalid(J1939NmTxPdu/J1939NmTxPduRef)) and (as:name(node:ref(J1939NmTxPdu/J1939NmTxPduRef)) = as:name(node:ref(node:current())))]) &gt; 1" 
+                                   true="Unique EcuC PDU has to be provided as reference for each J1939NmTxPdu."/>
+                            <a:tst 
+                                   expr="count(../../../../../../J1939NmConfigSet/eb-list::*/J1939NmChannel/eb-list::*[(node:refvalid(J1939NmRxPdu/J1939NmRxPduRef)) and (as:name(node:ref(J1939NmRxPdu/J1939NmRxPduRef)) = as:name(node:ref(node:current())))]) &gt; 0" 
+                                   true="The referenced EcuC PDU is bidirectional(has both Tx and Rx direction). It is not allowed to configured bidirectional J1939Nm PDUs."/>
+                          </a:da>
+                          <a:da name="REF" 
+                                value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/EcuC/EcucPduCollection/Pdu"/>
+                        </v:ref>
+                      </v:ctr>
+                      <v:lst name="J1939NmNodeSpecificDemEventParameterRefs" 
+                             type="MAP">
+                        <v:ctr name="J1939NmNodeSpecificDemEventParameterRefs" 
+                               type="IDENTIFIABLE">
+                          <a:a name="DESC">
+                            <a:v>&lt;html&gt;
+                                &lt;p&gt;Defines the references to DemEventParameter elements related to one J1939NmNode
+                                 which shall be invoked using the API Dem_SetEventStatus in case the corresponding
+                                 error occurs. The EventId is taken from the referenced DemEventParameter&apos;s DemEventId symbolic value.
+                                 The standardized errors are provided in this container and can be extended by vendor-specific
+                                 error references.&lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                          </a:a>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="true"/>
+                          <a:a name="UUID" 
+                               value="3c904669-b4ca-4738-9262-a28ce5f40fe2"/>
+                          <a:da name="ENABLE" value="true"/>
+                          <v:ref name="J1939NM_E_ADDRESS_LOST" 
+                                 type="SYMBOLIC-NAME-REFERENCE">
+                            <a:a name="DESC">
+                              <a:v>&lt;html&gt;
+                                  &lt;p&gt;Reference to the DemEventParameter which shall be issued when the ECU
+                                    failed to claim one of its addresses.&lt;/p&gt;
+                                  &lt;ul&gt;
+                                      &lt;li&gt;A valid reference to a Dem Event Parameter must be provided.&lt;/li&gt;
+                                  &lt;/ul&gt;
+                                &lt;/html&gt;</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SCOPE" value="LOCAL"/>
+                            <a:a name="UUID" 
+                                 value="1371b3fc-4ca7-4f7a-8fd2-7ac1765c9f4b"/>
+                            <a:da name="INVALID" type="XPath" 
+                                  expr="node:refvalid(.)" 
+                                  false="Invalid reference. A valid reference to a Dem Event Parameter must be provided."/>
+                            <a:da name="REF" 
+                                  value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter"/>
+                          </v:ref>
+                          <v:ref name="J1939NmNodeRef" 
+                                 type="SYMBOLIC-NAME-REFERENCE">
+                            <a:a name="DESC">
+                              <a:v>&lt;html&gt;
+                                  &lt;p&gt;Reference to J1939NmNode.&lt;/p&gt;
+                                  &lt;ul&gt;
+                                    &lt;li&gt;A valid reference to Node has to be provided.&lt;/li&gt;
+                                    &lt;li&gt;A unique Node reference has to be provided as
+                                      reference for each channel.&lt;/li&gt;
+                                    &lt;li&gt;It is not allowed to configure same Node as reference
+                                      for more than one &lt;code&gt;J1939NmChannel&lt;/code&gt;.&lt;/li&gt;
+                                  &lt;/ul&gt;
+                                &lt;/html&gt;</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                            <a:a name="SCOPE" value="LOCAL"/>
+                            <a:a name="UUID" 
+                                 value="e0d71955-e8b5-4d83-aa9d-3d4d3109a9f4"/>
+                            <a:da name="INVALID" type="XPath">
+                              <a:tst expr="node:refvalid(.)" 
+                                     false="Invalid reference. A valid reference to a J1939Nm node must be provided."/>
+                              <a:tst 
+                                     expr="text:uniq(../../eb-list::*/J1939NmNodeRef, .)" 
+                                     false="J1939NmNodelRef shall be unique to the channel."/>
+                            </a:da>
+                            <a:da name="REF" 
+                                  value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/J1939Nm/J1939NmConfigSet/J1939NmNode"/>
+                          </v:ref>
+                        </v:ctr>
+                      </v:lst>
+                    </v:ctr>
+                  </v:lst>
+                  <v:lst name="J1939NmNode" type="MAP">
+                    <a:da name="INVALID" type="XPath" expr="(count(*) &gt; 0)" 
+                          false="The number of configured J1939NmNode shall be greater than 0."/>
+                    <a:da name="MIN" value="1"/>
+                    <v:ctr name="J1939NmNode" type="IDENTIFIABLE">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              &lt;p&gt;Defines the logical node representing an another ECU, which is
+                                claiming an address in the network.&lt;/p&gt;
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                      </a:a>
+                      <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="true"/>
+                      <a:a name="UUID" 
+                           value="102e995f-d21f-47d3-a021-01ad734ac98d"/>
+                      <v:var name="J1939NmNodeId" type="INTEGER">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;Defines a identifier(Id) of the J1939Nm node.&lt;/p&gt;
+                                &lt;p&gt;Unique identifier(Id) shall be provided to each J1939Nm node.&lt;/p&gt;
+                                &lt;p&gt;A symbolic name (preprocessor macro) is also generated for each
+                                   PDU ID.&lt;/p&gt;
+                                &lt;p&gt;Range: 0 .. 255&lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SCOPE" value="ECU"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                        <a:a name="UUID" 
+                             value="64926776-da20-4bad-94b8-27605844becf"/>
+                        <a:da name="INVALID" type="Multi">
+                          <mt:range>
+                            <mt:tst expr="&lt;=255"/>
+                            <mt:tst expr="&gt;=0"/>
+                          </mt:range>
+                          <mt:xpath 
+                                    false="J1939NmNodeId shall be unique across all J1939NmNode&apos;s." 
+                                    expr="text:uniq(../../../../../J1939NmConfigSet/eb-list::*/J1939NmNode/eb-list::*/J1939NmNodeId,.)"/>
+                        </a:da>
+                      </v:var>
+                      <v:var name="J1939NmNodeNameArbitraryAddressCapable" 
+                             type="BOOLEAN">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;Enable the Arbitrary Address Capable field of the NAME of
+                                  this node.&lt;/p&gt;
+                                &lt;p&gt;Disable the Arbitrary Address Capable field of the NAME of
+                                  this node.&lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="76248137-65b8-4ff4-ba7f-db9f3555b256"/>
+                      </v:var>
+                      <v:var name="J1939NmNodeNameECUInstance" type="INTEGER">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;Defines the ECU Instance field of the NAME of this node.&lt;/p&gt;
+                                &lt;p&gt;Range: 0 .. 7&lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="314b5404-bd92-452a-8d3a-f13099ef2f8d"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=7"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                      </v:var>
+                      <v:var name="J1939NmNodeNameFunction" type="INTEGER">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;Defines the function field of the NAME of this node.&lt;/p&gt;
+                                &lt;p&gt;Range: 0 .. 255&lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="ef803d84-d9c8-4e15-b680-7e5e7c62d081"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=255"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                      </v:var>
+                      <v:var name="J1939NmNodeNameFunctionInstance" 
+                             type="INTEGER">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;Defines the function Instance field of the NAME of this node.&lt;/p&gt;
+                                &lt;p&gt;Range: 0 .. 31&lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="8813c9bb-9582-4626-91b0-22354f13fa67"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=31"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                      </v:var>
+                      <v:var name="J1939NmNodeNameIdentityNumber" 
+                             type="INTEGER">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;Defines the Identity Number field of the NAME of this node.&lt;/p&gt;
+                                &lt;p&gt;Range: 0 .. 2097151&lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="c77bd023-ebfb-4ccd-b977-814c5010d76e"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=2097151"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                      </v:var>
+                      <v:var name="J1939NmNodeNameIndustryGroup" type="INTEGER">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;Defines the Industry Group field of the NAME of this node.&lt;/p&gt;
+                                &lt;p&gt;Range: 0 .. 7&lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="acf89990-c14f-4dcd-accd-eccf367a9c53"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=7"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                      </v:var>
+                      <v:var name="J1939NmNodeNameManufacturerCode" 
+                             type="INTEGER">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;Defines the Manufacturer Code field of the NAME of this node.&lt;/p&gt;
+                                &lt;p&gt;Range: 0 .. 2047&lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="eb3059c3-4eec-4687-9891-565b659085fd"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=2047"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                      </v:var>
+                      <v:var name="J1939NmNodeNameVehicleSystem" type="INTEGER">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;Defines the Vehicle System field of the NAME of this node.&lt;/p&gt;
+                                &lt;p&gt;Range: 0 .. 127&lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="1668773d-913d-4ad7-8d47-7f95a96f7065"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=127"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                      </v:var>
+                      <v:var name="J1939NmNodeNameVehicleSystemInstance" 
+                             type="INTEGER">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;Defines the Vehicle System Instance field of the NAME of this node.&lt;/p&gt;
+                                &lt;p&gt;Range: 0 .. 15&lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="f7026d9a-b313-4b1c-9d48-4a97f344451a"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=15"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                      </v:var>
+                      <v:var name="J1939NmNodePreferredAddress" type="INTEGER">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;Defines the Source address of this node used for address claiming.&lt;/p&gt;
+                                &lt;p&gt;Range: 0 .. 253&lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                        <a:a name="SCOPE" value="ECU"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="6f051c57-2bdd-4901-844b-89ea1db0c3a5"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=253"/>
+                          <a:tst expr="&gt;=0"/>
+                        </a:da>
+                      </v:var>
+                      <v:var name="J1939NmNodeStartUpDelay" type="BOOLEAN">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;Enable: The node will start communication after a delay of 250ms
+                                  after transmission of the initial AddressClaimed, depending on the
+                                  configured J1939NmNodePreferredAddress.&lt;/p&gt;
+                                &lt;p&gt;Disable: The node will start communication immediately at
+                                  network start-up.&lt;/p&gt;
+                                &lt;p&gt;Please note: According to J1939/81, the 250ms delay is not required
+                                  for single address CAs with desired source addresses in the
+                                  ranges 0..127 or 248..253.&lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="a0708164-cd7c-45d7-986e-1ecc5a64bd96"/>
+                        <a:da name="DEFAULT" value="true"/>
+                      </v:var>
+                      <v:lst name="J1939NmNodeChannelRef">
+                        <a:da name="MIN" value="1"/>
+                        <v:ref name="J1939NmNodeChannelRef" type="REFERENCE">
+                          <a:a name="DESC">
+                            <a:v>&lt;html&gt;
+                                  &lt;p&gt;Reference to the J1939Nm channel.&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                          </a:a>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v mclass="Link">VariantPostBuild</icc:v>
+                            <icc:v vclass="Link">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="UUID" 
+                               value="5e8edc8d-b7c8-4850-82e8-829cc1b51a45"/>
+                          <a:da name="INVALID" type="XPath">
+                            <a:tst expr="node:refvalid(.)" 
+                                   false="Invalid reference. A valid reference to a Node Channel (J1939NmChannel) must be provided."/>
+                            <a:tst expr="text:uniq(../eb-list::*,.)" 
+                                   false="J1939NmNodeChannelRef shall be unique to the current J1939NmNode."/>
+                          </a:da>
+                          <a:da name="REF" 
+                                value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/J1939Nm/J1939NmConfigSet/J1939NmChannel"/>
+                        </v:ref>
+                      </v:lst>
+                    </v:ctr>
+                  </v:lst>
+                </v:ctr>
+              </v:lst>
+              <v:ctr name="J1939NmGeneral" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                        &lt;p&gt;Defines the the general configuration parameters of the module.&lt;/p&gt;
+                      &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="UUID" value="f39d6cf6-5249-45c6-a54f-7718a399ac1a"/>
+                <v:var name="J1939NmBusOffDelayTickPeriod" type="FLOAT">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;Defines the Duration of ticks that are used to time BusOff delays after
+                            conflicting address claims. This parameter must be synchronized with the
+                            main function period of the CAN State Manager.&lt;/p&gt;
+                          &lt;p&gt;Range: 0.0 .. 65.535&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v mclass="Link">VariantPostBuild</icc:v>
+                    <icc:v vclass="Link">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="OPTIONAL" value="true"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SCOPE" value="LOCAL"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="f7047f16-492c-4596-b7d9-534af3ab0323"/>
+                  <a:da name="DEFAULT" value="0.02"/>
+                  <a:da name="ENABLE" value="false"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65.535"/>
+                    <a:tst expr="&gt;=0.0"/>
+                  </a:da>
+                </v:var>
+                <v:var name="J1939NmDevErrorDetect" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;Enables the DET detection and notification.&lt;/p&gt;
+                          &lt;p&gt;Disables the DET detection and notification.&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SCOPE" value="LOCAL"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a7913ff1-127b-4a06-ba56-afd9a7da8cdc"/>
+                </v:var>
+                <v:var name="J1939NmMainFunctionPeriod" type="FLOAT">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;Defines the Call cycle in seconds of J1939Nm_MainFunction.&lt;/p&gt;
+                          &lt;p&gt;Range: 0.001 .. 0.255&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="Link">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SCOPE" value="ECU"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="ba48aeea-c721-46fe-ac11-0b6b385107e5"/>
+                  <a:da name="DEFAULT" value="0.01"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=0.255"/>
+                    <a:tst expr="&gt;=0.001"/>
+                  </a:da>
+                </v:var>
+                <v:var name="J1939NmUserCallout" type="FUNCTION-NAME">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;Defines the Pre-processor switch for enabling the
+                            &lt;User_AddressClaimedIndication&gt; and defining the name of the callout
+                            function.&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v mclass="PreCompile">VariantPostBuild</icc:v>
+                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="OPTIONAL" value="true"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SCOPE" value="LOCAL"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="04e35195-6473-4da6-a18b-2e6eb1fce7e9"/>
+                  <a:da name="ENABLE" value="false"/>
+                </v:var>
+                <v:var name="J1939NmVersionInfoApi" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;Enable the Pre-processor switch for version info API support.&lt;/p&gt;
+                          &lt;p&gt;Disable the Pre-processor switch for version info API support.&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SCOPE" value="LOCAL"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="ffa18dfa-46cd-4de9-a9f1-b30abd145b05"/>
+                </v:var>
+                <v:var name="J1939NmChMaxSize" type="INTEGER">
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SCOPE" value="LOCAL"/>
+                  <a:a name="UUID" value="5ceaa377-bc2c-40b7-8141-72d506d554df"/>
+                  <a:da name="DEFAULT" value="5"/>
+                </v:var>
+                <v:var name="J1939NmNodeMaxSize" type="INTEGER">
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SCOPE" value="LOCAL"/>
+                  <a:a name="UUID" value="430e99fd-e4e9-4d0e-b039-42bd7e14fbbc"/>
+                  <a:da name="DEFAULT" value="5"/>
+                </v:var>
+              </v:ctr>
+              <d:ref type="REFINED_MODULE_DEF" 
+                     value="ASPath:/AUTOSAR/EcucDefs/J1939Nm"/>
+            </v:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+
+</datamodel>

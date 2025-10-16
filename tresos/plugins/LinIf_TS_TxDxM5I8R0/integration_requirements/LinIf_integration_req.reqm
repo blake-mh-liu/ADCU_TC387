@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<specdocument>
+  <specobjects doctype="lim">
+    <specobject>
+      <id>lim.LinIf.EB_INTREQ_LinIf_0001</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+      
+      <para>Some LIN Driver API functions must support being called within an interrupt lock</para>
+      <para>Description:</para>
+      <para>
+        The following LIN Driver API functions must support being called by the LinIf within a
+        global interrupt lock:<pre>
+<code>Lin_Wakeup()</code>
+<code>Lin_WakeupInternal()</code></pre>
+      </para>
+      </description>
+      <rationale>
+      The LinIf makes calls to these functions in its critical section to make sure, that the
+      state is consistent to the LIN Driver.
+      As it is assumed, that the LinIf critical sections are configured as global interrupt
+      locks this means that these functions must support being called in such an interrupt lock
+      situation.
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>lim.LinIf.EB_INTREQ_LinIf_0002</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+      
+      <para>LinIf shall not be initialized as operational</para>
+      <para>Description:</para>
+      <para>
+        The LinIf configuration parameter LinIfStartupState shall only be configured to
+        LINIF_CHANNEL_SLEEP. Configuring it to LINIF_CHANNEL_OPERATIONAL is obsolete.
+      </para>
+      </description>
+      <rationale>
+        Following bugzilla shall be respected: https://bugzilla.autosar.org/show_bug.cgi?id=73095
+      </rationale>
+      
+    </specobject>
+
+    <specobject>
+      <id>lim.LinIf.EB_INTREQ_LinIf_0003</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+      
+      <para>Slave associated response_error signal access</para>
+      <para>Description:</para>
+      <para>
+        The configuration needs to ensure that LinIf is the only user that has
+        write-access to the response_error signal.
+      </para>
+      </description>
+      
+    </specobject>
+
+    <specobject>
+      <id>lim.LinIf.EB_INTREQ_LinIf_0004</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+      
+      <para>Slave associated response_error signal access</para>
+      <para>Description:</para>
+      <para>
+        For a given LinTp channel associated to a LinIf Slave channel a single
+        LinTpRxNSdu has to be configured. It shares all physical and functional
+        requests.
+      </para>
+      </description>
+      
+    </specobject>
+
+    <specobject>
+      <id>lim.LinIf.EB_INTREQ_LinIf_0005</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+      
+      <para>Expected values by LinIf_SetPIDTable</para>
+      <para>Description:</para>
+      <para>
+        When the API LinIf_SetPIDTable() is used the provided PID list shall
+        not include the PIDs for MRF and SRF.
+      </para>
+      </description>
+      
+    </specobject>
+
+    <specobject>
+      <id>lim.LinIf.EB_INTREQ_LinIf_0006</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+      
+      <para>Incomplete wakeup and transition to sleep</para>
+      <para>Description:</para>
+      <para>The following scenario can happen: 1. A wakeup process is incomplete because the first header after wakeup request is not arriving, so the LinIfBusIdleTimeoutPeriod expires.
+            2. When LinIfBusIdleTimeoutPeriod expires, a go-to-sleep process starts that interrupts the wakeup process. If the driver returns E_NOT_OK, LinIf will end up stuck in OPERATIONAL
+            state and LinSM will end up stuck in WAKEUP state. Given that go-to-sleep has failed, latest request from ComM will be FULL_COM. so LinSM should not transition to NO_COM,
+            but considering the bus is idle for more than LinIfBusIdleTimeoutPeriod, LinSM transition to FULL_COM is not appropriate.</para>
+      <para>Rationale:</para>
+      <para>Theoretically, the driver should not reject the sleep (return E_NOT_OK) unless there's an invalid call (development error).
+            Also, not receiving a header from the master for a long period of time is also considered a problem.
+            The scenario above is considered a double-fault and if considered necessary by the project the issue can be avoided by configuring LinIfBusIdleTimeoutPeriod to a value between:
+            lowerLimit = ((LinSMModeRequestRepetitionMax + 1) * LinSMConfirmationTimeout) and upperLimit = (((LinSMModeRequestRepetitionMax + 1) * LinSMConfirmationTimeout) + LinSMSilenceAfterWakeupTimeout)
+            If LinIfBusIdleTimeoutPeriod needs to be greater than upperLimit, then make sure it is between than (n * upperLimit + lowerLimit) and ((n+1) * upperLimit) (where n is the number of times LinSMSilenceAfterWakeupTimeout expired).
+            Basically, the Bus Idle Timeout should not expire during a Wakeup request + LinSMConfirmationTimeout.</para>
+      <para>For a visual description of this integration requirement, see LinSM limitation (Incomplete wakeup and transition to sleep).</para>
+      </description>
+      
+    </specobject>
+
+    <specobject>
+      <id>lim.LinIf.EB_INTREQ_LinIf_0007</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+      <para>Incomplete wakeup pulse</para>
+      <para>Description:</para>
+      <para>LinIf assumes by default that the wake up pulse last for 250μs, if it takes longer the value can be adjusted by configuring LinIfWakeUpTime.</para>
+      <para>The following scenario can happen: 
+            1. In case (SWS_LinIf_00460), Lin_Wakeup() called in the LinIf_MainFunction().
+            then LinIf will not start the handling of next the frame immediately in order to allow the wakeup pulse to be completed.
+            2. In case of (SWS_LinIf_00296), if ComM_MainFunction() is called right before LinIf_MainFunction() (or can interrupt it), and wake up is requested
+            Then there is a chance that LinIf will start processing the next frame without giving the wakeup pulse the time to be completed.
+            In this case it is optional to enable LinIfEnforceWakeUpTime to force LinIf to wait that time before start processing the next frame.
+            (LinIf will delay the frame processing for the necessary numbers of the LinIf_MainFunction() calls).
+      </para>
+      <para>If the runtime between wakeup request coming from ComM, and LinIf_MainFunction() can be ensured by the user in a way that it can be sure that the 
+      wake up pulse can be completed, then it is not necessary to change the LinIfWakeUpConfiguration container.</para>
+      <para>Rationale:</para>
+      <para>Lin wakeup pulse needs between 250 μs to 5 ms to be completed, so LinIf shall wait the time configured in LinIfWakeUpTime anytime he calls Lin_Wakeup().</para>
+      </description>
+      
+    </specobject>
+
+    <specobject>
+      <id>lim.LinIf.EB_INTREQ_LinIf_0008</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+      <para>BswMModeRequestPort configuration with LinTpScheduleChangeDiag enabled.</para>
+      <para>Description:</para>
+      <para>If LinTpScheduleChangeDiag is enabled, The related BswMModeRequestPort shall be configured as BSWM_IMMEDIATE.</para>
+      <para>Rationale:</para>
+      <para>Current implementation of LinTp is to check the requested schedule table mode right before handling the next frame.
+            Which means if the schedule table request was delayed, LinTp will terminate the current TP connection.</para>
+      </description>
+      
+    </specobject>
+
+  </specobjects>
+</specdocument>

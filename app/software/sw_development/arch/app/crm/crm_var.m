@@ -1,0 +1,94 @@
+%===========$Update Time :  2025-09-22 18:17:56 $=========
+disp('Loading $Id: crm_var.m  2025-09-22 18:17:56    foxtron $      FVT_export_businfo_v2.0 2021-11-02')
+%% Calibration Name, Units, Min, Max, Data Type, Comment
+a2l_par('KCRM_CurDebugSwt_null', 	'constant',    0,    1,    'boolean',    '');
+a2l_par('KCRM_IdSpForActvDisc_null', 	'A',    -1000,    1000,    'single',    '');
+a2l_par('KCRM_IdqMapVolHi_V', 	'V',    0,    1000,    'single',    '');
+a2l_par('KCRM_IdqMapVolLo_V', 	'V',    0,    1000,    'single',    '');
+a2l_par('KCRM_VolOfstVsBattVol4FW_V', 	'V',    0,    1000,    'single',    '');
+a2l_par('KCRM_MinVolOfst4FW_V', 	'V',    0,    1000,    'single',    '');
+a2l_par('KCRM_OCSwFltNormThd_A', 	'A',    0,    1000,    'single',    '');
+a2l_par('KCRM_DcHiBatLLim_V', 	'V',    0,    1000,    'single',    '');
+a2l_par('KCRM_DcHiBatLDerat_V', 	'V',    0,    1000,    'single',    '');
+a2l_par('KCRM_IqDerForFluxWeaken_fac', 	'V',    0,    1000,    'single',    '');
+a2l_par('KCRM_FWCKp_null', 	'constant',    0,    1000,    'single',    '');
+a2l_par('KCRM_FWCKi_null', 	'constant',    0,    1000,    'single',    '');
+a2l_par('KCRM_SpdCtlPrd_s', 	's',    0,    1000,    'single',    '');
+a2l_par('KCRM_PILowerLimit_null', 	'constant',    -1000,    0,    'single',    '');
+a2l_par('KCRM_AtSwFWThd_V', 	'V',    -1000,    0,    'single',    '');
+a2l_par('KCRM_CurTqCmdLo_Nm', 	'Nm',    0,    1000,    'single',    '');
+a2l_par('KCRM_CurTqCmdHi_Nm', 	'Nm',    0,    1000,    'single',    '');
+a2l_par('KCRM_FWCEnable_null', 	'constant',    0,    1,    'single',    '');
+a2l_par('ACRM_MTPVIdLimt_X_rpm', 	'RPM',    0,    20000,    'single',    '');
+a2l_par('MCRM_MTPVIdLimt_Y_A', 	'A',    -600,    0,    'single',    '');
+a2l_par('KCRM_MTPVSpdThd_rpm', 	'RPM',    -20000,    20000,    'single',    '');
+a2l_par('KCRM_IdCmdMaxLimt_A', 	'A',    -1000,    0,    'single',    '');
+a2l_par('KCRM_IdCmdFilCoeff_null', 	'constant',    0,    100,    'single',    '');
+a2l_par('KCRM_IqCmdFilCoeff_null', 	'constant',    0,    100,    'single',    '');
+a2l_par('KCRM_DynoDeratingFiltFac_null', 	'constant',    0,    100,    'single',    '');
+a2l_par('KCRM_AtSweep_deg_ovrdflg', 	'flag',    0,    1,    'boolean',    '');
+a2l_par('KCRM_AtSweep_deg_ovrdval', 	'deg',    0,    180,    'single',    '');
+a2l_par('KCRM_IsSp_A', 	'A',    -700,    700,    'single',    '');
+a2l_par('KCRM_UsingIsSp_A_ovrdflg', 	'flag',    0,    1,    'boolean',    '');
+a2l_par('KCRM_IdSp_A_ovrdval', 	'A',    -700,    700,    'single',    '');
+a2l_par('KCRM_IqSp_A_ovrdval', 	'A',    -700,    700,    'single',    '');
+a2l_par('KCRM_AtSwTqThd_Nm', 	'Nm',    0,    100,    'single',    '');
+a2l_par('KCRM_AtSwLatTime_s', 	's',    0,    10,    'single',    '');
+a2l_par('KCRM_IqDeratingFac_null', 	'constant',    0,    1,    'single',    '');
+a2l_par('KCRM_IqDeratingTi_ms', 	'ms',    0,    100000,    'single',    '');
+a2l_par('KCRM_IqDeratingRecoverTi_ms', 	'ms',    0,    100000,    'single',    '');
+a2l_par('KCRM_nDebugOverSpd_rpm', 	'RPM',    0,    20000,    'single',    '');
+a2l_par('KCRM_tiDebugOverSpdDlyon_ms', 	'ms',    0,    100000,    'single',    '');
+a2l_par('KCRM_bRstDebugOverSpd_null', 	'flag',    0,    1,    'boolean',    '');
+a2l_par('KCRM_AtSwThetaStep_deg', 	'deg',    0,    10,    'single',    '');
+a2l_par('KCRM_AtSwStep_ms', 	'ms',    0,    10000,    'single',    '');
+a2l_par('KCRM_AtSwInitPos_deg', 	'deg',    0,    90,    'single',    '');
+a2l_par('ACRM_Eta_X_rpm', 	'RPM',    0,    20000,    'single',    '');
+a2l_par('MCRM_Eta_Y_null', 	'constant',    0,    10,    'single',    '');
+a2l_par('KCRM_BusCurFil_null', 	'constant',    0,    1000,    'single',    '');
+a2l_par('KCRM_grdIsThetaRampUp_C', 	'constant',    0,    100,    'single',    '');
+a2l_par('KCRM_grdIsThetaRampDown_C', 	'constant',    -100,    0,    'single',    '');
+a2l_par('ACRM_MTPAIdMot_X_rpm', 	'RPM',    0,    20000,    'single',    '');
+a2l_par('ACRM_MTPAIdMot_Y_Nm', 	'Nm',    0,    500,    'single',    '');
+a2l_par('MCRM_MTPAIdMot_Z_A', 	'A',    -500,    20,    'single',    '');
+a2l_par('ACRM_MTPAIdGen_X_rpm', 	'RPM',    0,    20000,    'single',    '');
+a2l_par('ACRM_MTPAIdGen_Y_Nm', 	'Nm',    0,    500,    'single',    '');
+a2l_par('MCRM_MTPAIdGen_Z_A', 	'A',    -500,    20,    'single',    '');
+a2l_par('ACRM_MTPAIqMot_X_rpm', 	'RPM',    0,    20000,    'single',    '');
+a2l_par('ACRM_MTPAIqMot_Y_Nm', 	'Nm',    0,    500,    'single',    '');
+a2l_par('MCRM_MTPAIqMot_Z_A', 	'A',    0,    500,    'single',    '');
+a2l_par('ACRM_MTPAIqGen_X_rpm', 	'RPM',    0,    20000,    'single',    '');
+a2l_par('ACRM_MTPAIqGen_Y_Nm', 	'Nm',    0,    500,    'single',    '');
+a2l_par('MCRM_MTPAIqGen_Z_A', 	'A',    -500,    20,    'single',    '');
+a2l_par('ACRM_MTPAIdMotMin_X_rpm', 	'RPM',    0,    20000,    'single',    '');
+a2l_par('ACRM_MTPAIdMotMin_Y_Nm', 	'Nm',    0,    500,    'single',    '');
+a2l_par('MCRM_MTPAIdMotMin_Z_A', 	'A',    -700,    20,    'single',    '');
+a2l_par('ACRM_MTPAIdGenMin_X_rpm', 	'RPM',    0,    20000,    'single',    '');
+a2l_par('ACRM_MTPAIdGenMin_Y_Nm', 	'Nm',    0,    500,    'single',    '');
+a2l_par('MCRM_MTPAIdGenMin_Z_A', 	'A',    -700,    20,    'single',    '');
+a2l_par('ACRM_MTPAIqMotMin_X_rpm', 	'RPM',    0,    20000,    'single',    '');
+a2l_par('ACRM_MTPAIqMotMin_Y_Nm', 	'Nm',    0,    500,    'single',    '');
+a2l_par('MCRM_MTPAIqMotMin_Z_A', 	'A',    0,    500,    'single',    '');
+a2l_par('ACRM_MTPAIqGenMin_X_rpm', 	'RPM',    0,    20000,    'single',    '');
+a2l_par('ACRM_MTPAIqGenMin_Y_Nm', 	'Nm',    0,    500,    'single',    '');
+a2l_par('MCRM_MTPAIqGenMin_Z_A', 	'A',    -500,    20,    'single',    '');
+a2l_par('KCRM_MTPAMotSwitch_flg', 	'flag',    0,    1,    'boolean',    '');
+a2l_par('KCRM_MTPAGenSwitch_flg', 	'flag',    0,    1,    'boolean',    '');
+a2l_par('KCRM_VolModINV_perc', 	'constant',    0,    20,    'single',    '');
+
+%% Monitored Signals
+% Internal Signals %
+a2l_mon('VCRM_IdCmd_A', 	'A',    -100000,    100000,    'single',    '');
+a2l_mon('VCRM_IqCmd_A', 	'A',    -100000,    100000,    'single',    '');
+a2l_mon('VCRM_IdSp_A', 	'A',    -100000,    100000,    'single',    '');
+a2l_mon('VCRM_IqSp_A', 	'A',    -100000,    100000,    'single',    '');
+a2l_mon('VCRM_IdCmdinit_A', 	'A',    -100000,    100000,    'single',    '');
+a2l_mon('VCRM_IqCmdinit_A', 	'A',    -100000,    100000,    'single',    '');
+a2l_mon('VCRM_PIOut_value', 	'value',    -100000,    100000,    'single',    '');
+a2l_mon('VCRM_IdCmdFWC_A', 	'A',    -100000,    100000,    'single',    '');
+a2l_mon('VCRM_IqCmdFWC_A', 	'A',    -100000,    100000,    'single',    '');
+
+%% Outputs Signals
+% Outputs Signals %
+a2l_mon('VCRM_BusCurr_A', 	'A',    -100000,    100000,    'single',    '');
+a2l_mon('VCRM_PwrEleAct_W', 	'W',    -100000,    100000,    'single',    '');

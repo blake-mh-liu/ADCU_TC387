@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+  <!--
+    AUTOSAR EB_TS_TxDxM3I18R0 plugin
+    Project: EB tresos AutoCore
+
+    Copyright 2005-2024 by Elektrobit Automotive GmbH
+    All rights exclusively reserved for Elektrobit Automotive GmbH,
+    unless expressly agreed to otherwise.
+  -->
+  <extension point="dreisoft.tresos.launcher2.plugin.module"
+             id="EB_TS_TxDxM3I18R0_ModuleId"
+             name="EB_TS_TxDxM3I18R0 Module">
+    <module id="EB_TS_TxDxM3I18R0"
+            label="EB"
+            mandatory="false"
+            allowMultiple="false"
+            description="BL-Core: Bootloader Router module"
+            copyright="(c) 2005-2024 Elektrobit Automotive GmbH"
+            swVersionMajor="3"
+            swVersionMinor="18"
+            swVersionPatch="0"
+            swVersionSuffix="BL3"
+            specVersionMajor="4"
+            specVersionMinor="0"
+            specVersionPatch="3"
+            specVersionSuffix="0000"
+            relVersionMajor="4"
+            relVersionMinor="0"
+            relVersionPatch="3"
+            categoryType="EB"
+            categoryLayer="System Services"
+            categoryCategory="Diagnostic"
+            categoryComponent="ECUC">
+      <cluster name="Diagnostic"/>
+    </module>
+  </extension>
+  <extension point="dreisoft.tresos.launcher2.plugin.configuration"
+             id="EB_TS_TxDxM3I18R0_ConfigId"
+             name="EB_TS_TxDxM3I18R0 Configuration">
+    <configuration moduleId="EB_TS_TxDxM3I18R0">
+      <schema>
+        <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarSchemaManager"/>
+        <resource value="config/EB.xdm" type="xdm" id="res_default"/>
+      </schema>
+
+      <data>
+        <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarConfigManager"/>
+        <schemaNode path="ASPath:/TS_TxDxM3I18R0/EB"/>
+      </data>
+
+      <editor id="EB_TS_TxDxM3I18R0_EditorId"
+              label="Default"
+              tooltip="BL-Core: Bootloader Router module">
+        <class class="dreisoft.tresos.launcher2.editor.GenericConfigEditor">
+          <parameter name="schema" value="ASPath:/TS_TxDxM3I18R0/EB"/>
+          <parameter name="title" value="EB"/>
+          <parameter name="noTabs" value="false"/>
+          <parameter name="noLinks" value="true"/>
+          <parameter name="groupLinks" value="false"/>
+          <parameter name="groupContainers" value="false"/>
+          <parameter name="groupTables" value="true"/>
+          <parameter name="optionalGeneralTab" value="true"/>
+        </class>
+      </editor>
+    </configuration>
+  </extension>
+
+  <extension point="dreisoft.tresos.launcher2.plugin.generator"
+             id="EB_TS_TxDxM3I18R0_GeneratorId"
+             name="EB_TS_TxDxM3I18R0 Generator">
+    <generator class="dreisoft.tresos.launcher2.generator.TemplateBasedCodeGenerator"
+               id="EB_TS_TxDxM3I18R0_TemplateBasedCodeGeneratorId"
+               moduleId="EB_TS_TxDxM3I18R0">
+      <!-- common template path parameters -->
+      <parameter name="templates"
+                 mode="generate,verify" value="generate"/>
+    </generator>
+  </extension>
+  <extension point="dreisoft.tresos.autosar2.api.plugin.ecuresource">
+    <ecuresource
+      target="*"
+      derivate="*"
+      moduleId="EB_TS_TxDxM3I18R0"
+      file="resources/AdjacentLayer.properties">
+    </ecuresource>
+  </extension>
+</plugin>
+

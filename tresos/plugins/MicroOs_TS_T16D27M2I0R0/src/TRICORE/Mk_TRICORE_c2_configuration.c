@@ -1,0 +1,36 @@
+/* Mk_TRICORE_c2_configuration.c
+ *
+ * This file contains tricore specific configuration items for core 2 (MPU region cache etc.)
+ *
+ * (c) Elektrobit Automotive GmbH
+*/
+#include <public/Mk_public_types.h>
+#include <public/Mk_public_api.h>
+#include <public/Mk_error.h>
+#include <private/TRICORE/Mk_TRICORE_core.h>
+#include <private/TRICORE/Mk_TRICORE_memoryprotection.h>
+#include <private/TRICORE/Mk_TRICORE_Cfg.h>
+#include <Mk_Cfg.h>
+
+#if ((MK_COREMAPWORD_C2 & MK_COREMAPBIT_C2) == 0)
+mk_uint8_t MK_c2_unusedTRICOREConfig;
+#else
+
+
+/* MK_c2_MpuRegCache - Core-local MPU region cache.
+*/
+#if (MK_C2_MPUREGCACHE_SIZE > 0)
+mk_mpubounds_t MK_c2_MpuRegCache[MK_C2_MPUREGCACHE_SIZE];
+#endif
+
+#if MK_CFG_C2_NMEMORYPARTITIONS > 0
+mk_mpurwpermission_t MK_c2_MemoryPartitionPermissions[MK_CFG_C2_NMEMORYPARTITIONS];
+#endif
+
+mk_panicexceptionctx_t MK_c2_panicExceptionCtx;
+
+#endif /* (MK_COREMAPWORD_C2 & MK_COREMAPBIT_C2) == 0 */
+
+/* Editor settings; DO NOT DELETE
+ * vi:set ts=4:
+*/

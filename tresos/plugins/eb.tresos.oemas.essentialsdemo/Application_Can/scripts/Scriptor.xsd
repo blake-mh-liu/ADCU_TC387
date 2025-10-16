@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    
+    <xsd:group name="Script">
+        <xsd:sequence>
+            <xsd:element name="Name" type="xsd:string"/>
+            <xsd:element name="Decription" type="xsd:string"/>
+            <xsd:element name="Expression" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="Operations">
+                <xsd:complexType>
+                    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+                        <xsd:element name="Operation" type="Operation"/>
+                    </xsd:choice>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:group>
+    
+    <xsd:complexType abstract="false" mixed="false" name="Script">
+        <xsd:sequence>
+            <xsd:group ref="Script"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <xsd:element name="Script" type="Script"></xsd:element>
+    
+    <xsd:group name="Operation">
+        <xsd:sequence>
+            <xsd:element name="Expression" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="Operations">
+                <xsd:complexType>
+                    <xsd:choice maxOccurs="unbounded" minOccurs="0">
+                        <xsd:element name="Operation" type="Operation"/>
+                    </xsd:choice>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:group>
+    
+    <xsd:complexType abstract="false" mixed="false" name="Operation">
+        <xsd:sequence>
+            <xsd:group ref="Operation"/>
+        </xsd:sequence>
+        <xsd:attributeGroup ref="OperationAttributes"/>
+    </xsd:complexType>
+    
+    <xsd:element name="Operation" type="Operation"></xsd:element>
+    
+    <xsd:attributeGroup name="OperationAttributes">
+        <xsd:attribute name="Type" type="OperationTypeEnum">
+            
+        </xsd:attribute>
+    </xsd:attributeGroup>
+    
+
+    
+    <xsd:simpleType name="OperationTypeEnum">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="ForEach"/>
+            <xsd:enumeration value="SetValue"/>
+            <xsd:enumeration value="Condition"/>
+            <xsd:enumeration value="SetEnabled"/>
+            <xsd:enumeration value="Remove"/>
+            <xsd:enumeration value="Add"/>
+            <xsd:enumeration value="GenerateModule"/>
+            
+            <xsd:enumeration value="foreach"/>
+            <xsd:enumeration value="setvalue"/>
+            <xsd:enumeration value="condition"/>
+            <xsd:enumeration value="setenabled"/>
+            <xsd:enumeration value="remove"/>
+            <xsd:enumeration value="add"/>
+            <xsd:enumeration value="generatemodule"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    
+</xsd:schema>

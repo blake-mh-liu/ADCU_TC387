@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?module J1939Nm?>
+
+<xgen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.elektrobit.com/2013/xgen" xmlns:xi="http://www.w3.org/2001/XInclude">
+[!CODE!]
+[!AUTOSPACING!]
+
+[!VAR "ValueFFtoInt" = "num:hextoint('0xFF')"!]
+[!VAR "Value1FtoInt" = "num:hextoint('0x1F')"!]
+[!VAR "ValueE0toInt" = "num:hextoint('0xE0')"!]
+[!VAR "Value0FtoInt" = "num:hextoint('0x0F')"!]
+[!VAR "Value80toInt" = "num:hextoint('0x80')"!]
+[!VAR "Value7FtoInt" = "num:hextoint('0x7F')"!]
+[!VAR "Value70toInt" = "num:hextoint('0x70')"!]
+
+[!IF "var:defined('postBuildVariant')"!]
+[!/* Current PB variant Sufix
+*/!][!VAR "J1939NM_VARIANT_SUFIX"="concat('_',$postBuildVariant,'_')"!]
+[!ELSE!]
+[!/* Current PB variant Sufix
+*/!][!VAR "J1939NM_VARIANT_SUFIX"="string("_")"!]
+[!ENDIF!]
+[!IF "var:defined('postBuildVariant')"!]
+[!/* Current postbuild configuration name
+*/!][!VAR "initPredefinedCfgName"="concat('J1939Nm_Config','_',$postBuildVariant)"!]
+[!ELSE!]
+[!/* Current postbuild name
+*/!][!VAR "initPredefinedCfgName"="string("J1939Nm_Config_0")"!]
+[!ENDIF!]
+[!/* Current postbuild-c variant
+*/!][!VAR "J1939NM_PBCFG_C_VARIANT"="concat('J1939Nm',$J1939NM_VARIANT_SUFIX,'PBcfg.c')"!]
+[!/* Current postbuild-h variant
+*/!][!VAR "J1939NM_PBCFG_H_VARIANT"="concat('J1939Nm',$J1939NM_VARIANT_SUFIX,'PBcfg.h')"!]
+[!/* Current Config variant
+*/!][!VAR "J1939NM_CONFIG_LAYOUT_VARIANT"="concat('J1939Nm',$J1939NM_VARIANT_SUFIX,'ConfigLayout')"!]
+[!/* Current Config Type variant based
+*/!][!VAR "J1939NM_CONFIGLAYOUTTYPE_VARIANT"="concat('J1939Nm',$J1939NM_VARIANT_SUFIX,'ConfigLayoutType')"!]
+[!/* Current Const Config Type variant based
+*/!][!VAR "J1939NM_CONSTCONFIGLAYOUTTYPE_VARIANT"="concat('J1939Nm',$J1939NM_VARIANT_SUFIX,'ConstConfigLayoutType')"!]
+
+[!VAR "J1939NmMainFunctionPeriod" = "((as:modconf('J1939Nm')[1]/J1939NmGeneral/J1939NmMainFunctionPeriod) * 1000)"!]
+
+[!VAR "J1939NmBusOffDelayTickPeriod" = "((as:modconf('J1939Nm')[1]/J1939NmGeneral/J1939NmBusOffDelayTickPeriod) * 1000)"!]
+
+[!VAR "J1939NmDemEventRefCount" = "num:integer(count(as:modconf('J1939Nm')[1]/J1939NmConfigSet/eb-list::*[1]/J1939NmChannel/eb-list::*/J1939NmNodeSpecificDemEventParameterRefs/eb-list::*))"!]
+
+[!VAR "J1939NmDemEventMaxNumber" = "'0'"!]
+
+[!LOOP "as:modconf('J1939Nm')[1]/J1939NmConfigSet/eb-list::*[1]/J1939NmChannel/eb-list::*"!]
+[!VAR "DemChannelName"= "as:name(.)"!]
+[!VAR "EventCounter"= "'0'"!]
+[!LOOP "util:distinct(node:order(J1939NmNodeSpecificDemEventParameterRefs/eb-list::*))"!]
+  [!VAR "EventCounter"= "$EventCounter + 1"!]
+[!ENDLOOP!]
+[!IF "$EventCounter != '0'"!]
+  [!IF "($EventCounter) > ($J1939NmDemEventMaxNumber)"!]
+    [!VAR "J1939NmDemEventMaxNumber" = "$EventCounter"!]
+  [!ENDIF!]
+[!ENDIF!]
+[!ENDLOOP!]
+
+[!VAR "NumbOfNodes" = "num:i(count(as:modconf('J1939Nm')[1]/J1939NmConfigSet/eb-list::*[1]/J1939NmNode/eb-list::*))"!]
+
+[!VAR "NumbOfChannels" = "num:i(count(as:modconf('J1939Nm')[1]/J1939NmConfigSet/eb-list::*[1]/J1939NmChannel/eb-list::*))"!]
+
+<!-- This is the configuration of module J1939Nm -->
+  <module name="J1939Nm" version="[!"$moduleSoftwareVer"!]">
+     <configuration class="PreCompile">
+        [!IF "(variant:size() = 0) or (variant:all()[1] = variant:name())"!]
+        <?artifact directory="include" file="J1939Nm_Types_Int.h" type="types-h" generate="yes"?>
+        [!ELSE!]
+        <?artifact directory="include" file="J1939Nm_Types_Int.h" type="types-h" generate="no"?>
+        [!ENDIF!]
+
+        [!VAR "relocatable" = "'false'"!]
+        [!IF "node:contains(util:distinct(node:refs(as:modconf('PbcfgM')/PbcfgMBswModules/eb-list::*/PbcfgMBswModuleRef)), as:modconf('J1939Nm')) = 'true'"!]
+          [!IF "node:existsAndTrue(as:modconf('PbcfgM')/PbcfgMGeneral/PbcfgMRelocatableCfgEnable)"!]
+            [!VAR "relocatable" = "'true'"!]
+          [!ENDIF!]
+        [!ENDIF!]
+       <parameter name="relocatable-enable">
+          <boolean-value>[!"$relocatable"!]</boolean-value>
+       </parameter>
+
+        <!-- !LINKSTO J1939Nm.SWS_J1939Nm_00030,1 -->
+        <type name="J1939Nm_ConfigType">
+          <struct>
+            <member name="PlatformSignature" type="uint32" comment="Used to validate the platform"/>
+            <member name="LcfgSignature" type="uint32" comment="Used to validate the post build configuration against the link time configuration"/>
+            <member name="CfgSignature" type="uint32" comment="Used to validate the post build configuration against the precompile time configuration"/>
+            <member name="PublicInfoSignature" type="uint32" comment="Used to validate the post build configuration against the precompile time published information configuration"/>            
+            <member name="NodeCfgRef" type="J1939Nm_NodeCfgType">
+              <compiler-abstraction>
+                <ref2cfg/>
+              </compiler-abstraction>
+            </member>
+            <member name="ChannelCfgRef" type="J1939Nm_ChannelCfgType">
+              <compiler-abstraction>
+                <ref2cfg/>
+              </compiler-abstraction>
+            </member>
+            <member name="J1939NmNodeNum" type="uint8">
+              <compiler-abstraction>
+                <var memory-class="TYPEDEF"/>
+              </compiler-abstraction>
+            </member>
+            <member name="J1939NmChannelNum" type="uint8">
+              <compiler-abstraction>
+                <var memory-class="TYPEDEF"/>
+              </compiler-abstraction>
+            </member>
+          </struct>
+        </type>
+        
+        <type name="NodeName_Type">
+          <reference type="uint8" count="8">
+            <compiler-abstraction>
+              <const memory-class="TYPEDEF"/>
+            </compiler-abstraction>
+          </reference>
+        </type>
+
+        <type name="J1939Nm_NodeRefIdType">
+          <struct>
+            <member type="uint8" name="NodeRefId"/>
+          </struct>
+        </type>
+
+        <type name="J1939Nm_DemEventCfgType">
+          <struct>
+            <member name="EventId" type="uint16"/>
+            <member name="NodeId" type="uint8"/>
+          </struct>
+        </type>
+
+        <type name="J1939Nm_PduDescriptorType">
+          <struct>
+            <member name="PduID" type="PduIdType"/>
+            <member name="Ecuc_PduId" type="uint16"/>
+          </struct>
+        </type>
+        
+        <type name="J1939Nm_ChannelCfgType">
+          <struct>
+      [!IF "$J1939NmDemEventRefCount != 0"!]      
+            <member type="J1939Nm_DemEventCfgType" name="DemEventList" 
+              count="[!"num:i($J1939NmDemEventMaxNumber)"!]"/>
+      [!ENDIF!]
+            <member type="J1939Nm_NodeRefIdType" name="NodeRefId" 
+              count="[!"num:i(count(as:modconf('J1939Nm')[1]/J1939NmConfigSet/eb-list::*[1]/J1939NmNode/eb-list::*))"!]"/>
+            <member name="TxPdu" type="J1939Nm_PduDescriptorType"/>
+            <member name="RxPdu" type="J1939Nm_PduDescriptorType"/>
+            <member name="NumbOfDemEvents"  type="uint8"/>
+            <member name="NumberOfNodesInChannel" type="uint8"/>
+            <member name="ChannelUsesAddressArbitration" type="boolean"/>
+          </struct>
+        </type>
+
+        <!-- !LINKSTO J1939Nm.SWS_J1939Nm_00030,1 -->
+        <type name="J1939Nm_NodeCfgType">
+          <struct>
+            <member type="NodeName_Type" name="NodeName"/>
+            <member type="uint8" name="NodeId"/>         
+            <member type="uint8" name="SourceAddress"/>
+            <member type="boolean" name="NodeStartupDelay"/>
+      <!--      
+            <member type="uint8" name="ChannelRef" count="[!"num:i(count(as:modconf('J1939Nm')[1]/J1939NmConfigSet/eb-list::*[1]/J1939NmChannel/eb-list::*))"!]"/>
+      -->    
+          </struct>
+        </type>
+                
+    </configuration>
+    <configuration class="PostBuild">
+      <?artifact directory="include" file="[!"$J1939NM_PBCFG_H_VARIANT"!]" type="postbuild-h" ?>
+      <?artifact directory="src" file="[!"$J1939NM_PBCFG_C_VARIANT"!]" type="postbuild-c" ?>
+
+      <type name="[!"$J1939NM_CONFIGLAYOUTTYPE_VARIANT"!]">
+        <struct>
+          <member type="J1939Nm_ConfigType" name="RootCfg"/>
+          <member type="J1939Nm_NodeCfgType" name="J1939Nm_NodePbCfg" count="[!"num:i(count(as:modconf('J1939Nm')[1]/J1939NmConfigSet/eb-list::*[1]/J1939NmNode/eb-list::*))"!]"/>
+          <member type="J1939Nm_ChannelCfgType" name="J1939Nm_ChannelPbCfg" count="[!"num:i(count(as:modconf('J1939Nm')[1]/J1939NmConfigSet/eb-list::*[1]/J1939NmChannel/eb-list::*))"!]" />
+        </struct>
+      </type>
+
+      <type name="[!"$J1939NM_CONSTCONFIGLAYOUTTYPE_VARIANT"!]">
+        <reference type="[!"$J1939NM_CONFIGLAYOUTTYPE_VARIANT"!]">
+          <compiler-abstraction>
+            <const memory-class="J1939NM_APPL_CONST" />
+          </compiler-abstraction>
+        </reference>
+      </type>
+
+      <memory-section name="CONFIG_DATA_UNSPECIFIED">
+        <instance type="[!"$J1939NM_CONSTCONFIGLAYOUTTYPE_VARIANT"!]" 
+          name="[!"$J1939NM_CONFIG_LAYOUT_VARIANT"!]">
+        <parameter name="postbuild-configuration-name">
+          <symbolic-value>[!"$initPredefinedCfgName"!]</symbolic-value>
+        </parameter>
+        [!IF "not(var:defined('postBuildVariant')) and not(node:name(J1939NmConfigSet/eb-list::*[1]) = $initPredefinedCfgName)"!]
+        <parameter name="postbuild-configuration-name">
+          <symbolic-value>[!"node:name(J1939NmConfigSet/eb-list::*[1])"!]</symbolic-value>
+        </parameter>
+        [!ENDIF!]
+
+          <field> <!-- RootConfig -->
+            <field>
+              <int>[!"asc:getPlatformSignature()"!]</int>
+            </field>
+            <field>
+              <int>[!"asc:getConfigSignature(as:modconf('J1939Nm')[1]//eb-list::*[not(child::*) and (node:configclass() = 'Link')])"!]</int>
+            </field>
+            <field>
+              <int>[!"asc:getConfigSignature(as:modconf('J1939Nm')[1]//eb-list::*[not(child::*) and (node:configclass() = 'PreCompile') ])"!]</int>
+            </field>
+            <field>
+              <int>[!"asc:getConfigSignature(node:difference(as:modconf('J1939Nm')[1]/CommonPublishedInformation//eb-list::*[not(child::*) and (node:configclass() = 'PublishedInformation') ], as:modconf('J1939Nm')[1]/CommonPublishedInformation/Release))"!]</int>
+            </field>            
+            <field>
+              <ref>
+                <struct-field name="J1939Nm_NodePbCfg" />
+                <array-field index="0" />
+              </ref>
+            </field>
+            <field>  
+              <ref>
+                <struct-field name="J1939Nm_ChannelPbCfg" />
+                <array-field index="0" />
+              </ref>
+            </field>
+            <field>
+              <int>[!"$NumbOfNodes"!]</int>
+            </field>
+            <field>
+              <int>[!"$NumbOfChannels"!]</int>
+            </field>
+          </field>
+
+          <field> <!-- J1939Nm_NodePbCfg -->
+    [!LOOP "as:modconf('J1939Nm')[1]/J1939NmConfigSet/eb-list::*[1]/J1939NmNode/eb-list::*"!]
+    [!VAR "NodeId"= "J1939NmNodeId"!]
+    [!VAR "NameArray_0" = "bit:and(J1939NmNodeNameIdentityNumber,$ValueFFtoInt)"!]
+    [!VAR "NameArray_1" = "bit:and(bit:shr(J1939NmNodeNameIdentityNumber, 8), $ValueFFtoInt)"!]
+    [!VAR "NameArray_2" = "bit:or((bit:and(bit:shl(J1939NmNodeNameManufacturerCode, 5), $ValueE0toInt)), (bit:and(bit:shr(J1939NmNodeNameIdentityNumber, 16), $Value1FtoInt)))"!]
+    [!VAR "NameArray_3" = "bit:shr(J1939NmNodeNameManufacturerCode, 3)"!]
+    [!VAR "NameArray_4" = "bit:or((bit:shl(J1939NmNodeNameFunctionInstance, 3)), (bit:and((J1939NmNodeNameECUInstance), (7))))"!]
+    [!VAR "NameArray_5" = "J1939NmNodeNameFunction"!]
+    [!VAR "NameArray_6" = "bit:shl(J1939NmNodeNameVehicleSystem, 1)"!]
+    [!IF "node:existsAndTrue(J1939NmNodeNameArbitraryAddressCapable)"!]
+      [!VAR "NameArray_7" = "bit:or((bit:or((bit:and(bit:shl(J1939NmNodeNameIndustryGroup, 4), $Value70toInt)), (bit:and(J1939NmNodeNameVehicleSystemInstance, $Value0FtoInt)))), ($Value80toInt))"!]
+    [!ELSE!]
+      [!VAR "NameArray_7" = "bit:and((bit:or((bit:and(bit:shl(J1939NmNodeNameIndustryGroup, 4), $Value70toInt)), (bit:and(J1939NmNodeNameVehicleSystemInstance, $Value0FtoInt)))), ($Value7FtoInt))"!]
+    [!ENDIF!]
+    [!VAR "NodePrefAddr" = "J1939NmNodePreferredAddress"!]  
+            <field>
+              <field>
+                <field>
+                  <int>[!"$NameArray_0"!]</int>
+                </field>
+                <field>
+                  <int>[!"$NameArray_1"!]</int>
+                </field>
+                <field>
+                  <int>[!"$NameArray_2"!]</int>
+                </field>
+                <field>
+                  <int>[!"$NameArray_3"!]</int>
+                </field>
+                <field>
+                  <int>[!"$NameArray_4"!]</int>
+                </field>
+                <field>
+                  <int>[!"$NameArray_5"!]</int>
+                </field>
+                <field>
+                  <int>[!"$NameArray_6"!]</int>
+                </field>
+                <field>
+                  <int>[!"$NameArray_7"!]</int>
+                </field>
+              </field>
+              <field>
+                <int>[!"num:i($NodeId)"!]</int>
+              </field>        
+              <field>
+                <int>[!"$NodePrefAddr"!]</int>
+              </field>
+              <field>
+[!IF "(node:existsAndTrue(J1939NmNodeStartUpDelay))"!]
+    [!IF "($NodePrefAddr <= 127 ) or (($NodePrefAddr >= 248) and ($NodePrefAddr >= 253))"!]
+            <int> 0 </int>
+    [!ELSE!]
+            <int> 1 </int>
+    [!ENDIF!]
+[!ELSE!][!AUTOSPACING!]
+            <int> 0 </int>
+[!ENDIF!]               
+              </field>
+            </field>
+    [!ENDLOOP!]
+          </field>
+          <field> <!-- J1939_ChannelPbCfg -->
+[!LOOP "as:modconf('J1939Nm')[1]/J1939NmConfigSet/eb-list::*[1]/J1939NmChannel/eb-list::*"!]
+[!VAR "EventCounter"= "'0'"!]
+[!VAR "NodeRefCounter"= "'0'"!]
+[!VAR "ChannelName"= "as:name(.)"!]
+[!VAR "TxPduRef" =  "as:name(node:ref(J1939NmTxPdu/J1939NmTxPduRef))"!]
+[!VAR "RxPduRef" =  "as:name(node:ref(J1939NmRxPdu/J1939NmRxPduRef))"!]
+[!VAR "NodeCounter"= "'0'"!]
+[!VAR "TxPduRefSet"= "'0'"!]
+[!VAR "RxPduRefSet"= "'0'"!]
+[!VAR "EventNumbPerChannel" = "'0'"!]
+[!LOOP "util:distinct(node:order(J1939NmNodeSpecificDemEventParameterRefs/eb-list::*))"!]
+  [!VAR "EventNumbPerChannel"= "$EventNumbPerChannel + 1"!]
+[!ENDLOOP!]
+            <field>
+        [!IF "$J1939NmDemEventRefCount != 0"!]
+          [!IF "$EventNumbPerChannel != 0"!]      
+              <field> <!-- Dem Event List -->
+        [!LOOP "util:distinct(node:order(J1939NmNodeSpecificDemEventParameterRefs/eb-list::*))"!]
+        [!VAR "EventCounter"= "$EventCounter + 1"!]
+                <field>
+                    <field>
+              [!IF "node:exists(node:ref(J1939NM_E_ADDRESS_LOST)/DemEventId)"!]    
+                      <int>[!"node:ref(J1939NM_E_ADDRESS_LOST)/DemEventId"!]</int>
+              [!ELSE!]
+                  [!ERROR!]DemEventId shall be configured for each Dem Event referenced in J1939NmNodeSpecificDemEventParameterRefs [!ENDERROR!]
+              [!ENDIF!]                      
+                    </field>
+                    <field>
+              [!IF "node:exists(node:ref(J1939NmNodeRef)/J1939NmNodeId)"!]        
+                      <int>[!"node:ref(J1939NmNodeRef)/J1939NmNodeId"!]</int>
+              [!ELSE!]
+                  [!ERROR!]J1939NmNodeId shall be configured for each J1939Nm Node referenced in J1939NmNodeSpecificDemEventParameterRefs [!ENDERROR!]
+              [!ENDIF!]         
+                    </field>
+                </field>
+        [!ENDLOOP!]
+        <!-- Not Used Event-->
+        [!IF "(num:i($EventCounter) < num:i($J1939NmDemEventMaxNumber))"!]
+          [!FOR "i" = "num:i($EventCounter)" TO "num:i($J1939NmDemEventMaxNumber) - 1"!]
+                <field>
+                  <field>
+                    <int> 255 </int>
+                  </field>
+                  <field>
+                    <int> 255 </int>
+                  </field>
+                </field>
+          [!ENDFOR!]
+        [!ENDIF!]       
+              </field>
+            [!ELSE!]
+              <field> <!-- Dem Event Empty List -->
+                [!FOR "x"= "0" TO "num:i($J1939NmDemEventMaxNumber) - 1"!]
+                  <field>
+                    <field>
+                      <int> 255 </int>
+                    </field>
+                    <field>
+                      <int> 255 </int>
+                    </field>
+                  </field>
+                [!ENDFOR!]
+              </field>
+            [!ENDIF!]
+        [!ENDIF!]
+
+              <field> <!-- Node Ref Id -->
+[!LOOP "util:distinct(node:order(../../J1939NmNode/eb-list::*, 'J1939NmNodeId'))"!]
+[!VAR "NodeId"= "J1939NmNodeId"!]
+        [!LOOP "util:distinct(node:order(J1939NmNodeChannelRef/eb-list::*))"!]
+            [!IF "$ChannelName = as:name(as:ref(.))"!]
+                [!VAR "NodeRefCounter"= "$NodeRefCounter + 1"!]
+                 <field>     
+                    <field>
+                      <int>[!"num:i($NodeId)"!]</int> <!-- id -->
+                    </field>         
+                 </field>
+            [!ENDIF!]
+        [!ENDLOOP!]
+[!ENDLOOP!]
+        <!-- Not Used Node Ref Ids-->
+        [!IF "(num:i($NodeRefCounter) < num:i($NumbOfNodes))"!]
+          [!FOR "i" = "num:i($NodeRefCounter)" TO "num:i($NumbOfNodes) - 1"!]
+                <field>     
+                  <field>
+                    <int>255</int> <!-- not used id -->
+                  </field>         
+               </field>
+          [!ENDFOR!]
+        [!ENDIF!]
+              </field>
+              
+              <field> <!-- TxPdu -->
+                <field>
+[!LOOP "util:distinct(node:order(../../../../../../../CanIf/ELEMENTS/CanIf/CanIfInitCfg/eb-list::*/CanIfTxPduCfg/*, 'CanIfTxPduId'))"!]
+    [!IF "as:name(as:ref(CanIfTxPduRef)) = $TxPduRef"!]                 
+                  <int> [!"node:value(CanIfTxPduId)"!] </int> <!-- CanIF PduId -->
+    [!VAR "TxPduRefSet"= "$TxPduRefSet + 1"!]
+    [!BREAK!]
+    [!ENDIF!]
+[!ENDLOOP!]
+[!IF "$TxPduRefSet = '0'"!]
+  [!ERROR!]The [!"$TxPduRef"!] is not configured in the CanIf Tx configuration.[!ENDERROR!]
+[!ENDIF!]
+[!IF "node:refvalid(node:ref(J1939NmTxPdu/J1939NmTxPduRef)/MetaDataTypeRef)"!]
+  [!IF "node:exists(node:ref(node:ref(J1939NmTxPdu/J1939NmTxPduRef)/MetaDataTypeRef)/MetaDataItem/eb-list::*[MetaDataItemType = 'CAN_ID_32'])"!]
+  [!ELSE!]
+    [!ERROR!]MetaDataItem "CAN_ID_32" is not configured for the reference EcuC Pdu "[!"node:name(as:ref(J1939NmTxPdu/J1939NmTxPduRef))"!]" of J1939NmTxPdu "[!"as:name(J1939NmTxPdu)"!]". MetaDataItemLength shall be configured to 4 for a J1939Nm Tx Pdu.[!ENDERROR!]
+  [!ENDIF!]
+[!ELSE!]
+  [!ERROR!]No proper MetaDataTypeRef "[!"node:ref(J1939NmTxPdu/J1939NmTxPduRef)/MetaDataTypeRef"!]" exist for the reference EcuC Pdu "[!"node:name(as:ref(J1939NmTxPdu/J1939NmTxPduRef))"!]" of J1939NmTxPdu "[!"as:name(J1939NmTxPdu)"!]".[!ENDERROR!]
+[!ENDIF!]            
+                </field>
+                <field>
+  [!IF "node:exists(node:ref(J1939NmTxPdu/J1939NmTxPduRef)/PduId)"!]
+                  <int> [!"node:ref(J1939NmTxPdu/J1939NmTxPduRef)/PduId"!] </int> <!-- EcuC PduId -->
+  [!ELSE!]
+    [!ERROR!]PduId shall be configured for each EcuC Pdu referenced in J1939NmTxPduRef [!ENDERROR!]
+  [!ENDIF!]
+                </field>
+              </field>
+
+              <field> <!-- RxPdu -->
+                <field>
+[!LOOP "util:distinct(node:order(../../../../../../../CanIf/ELEMENTS/CanIf/CanIfInitCfg/eb-list::*/CanIfRxPduCfg/*, 'CanIfRxPduId'))"!]
+  [!IF "as:name(as:ref(CanIfRxPduRef)) = $RxPduRef"!]
+                  <int> [!"node:value(CanIfRxPduId)"!] </int> <!-- CanIF PduId -->
+  [!VAR "RxPduRefSet"= "$RxPduRefSet + 1"!]
+  [!BREAK!]
+  [!ENDIF!]
+[!ENDLOOP!]
+[!IF "$RxPduRefSet = '0'"!]
+  [!ERROR!]The [!"$RxPduRef"!] is not configured in the CanIf Rx configuration.[!ENDERROR!]
+[!ENDIF!]                  
+[!IF "not(node:empty(node:ref(J1939NmRxPdu/J1939NmRxPduRef)/MetaDataTypeRef))"!]
+  [!IF "node:refvalid(node:ref(J1939NmRxPdu/J1939NmRxPduRef)/MetaDataTypeRef)"!]
+    [!IF "node:exists(node:ref(node:ref(J1939NmRxPdu/J1939NmRxPduRef)/MetaDataTypeRef)/MetaDataItem/eb-list::*[MetaDataItemType = 'CAN_ID_32'])"!]
+    [!ELSE!]
+        [!ERROR!]MetaDataItem "CAN_ID_32" is not configured for the reference EcuC Pdu "[!"node:name(as:ref(J1939NmRxPdu/J1939NmRxPduRef))"!]" of J1939NmRxPdu "[!"as:name(J1939NmRxPdu)"!]".[!ENDERROR!]
+    [!ENDIF!]
+  [!ELSE!]
+    [!ERROR!]No proper MetaDataTypeRef "[!"node:ref(J1939NmRxPdu/J1939NmRxPduRef)/MetaDataTypeRef"!]" exist for the reference EcuC Pdu "[!"node:name(as:ref(J1939NmRxPdu/J1939NmRxPduRef))"!]" of J1939NmRxPdu "[!"as:name(J1939NmRxPdu)"!]".[!ENDERROR!]
+  [!ENDIF!]
+[!ELSE!]
+  [!ERROR!] MetaDataItem shall be configured for the reference EcuC Pdu "[!"node:name(as:ref(J1939NmRxPdu/J1939NmRxPduRef))"!]" of J1939NmRxPdu "[!"as:name(J1939NmRxPdu)"!]".[!ENDERROR!]
+[!ENDIF!]                  
+                </field>
+                <field>
+[!IF "node:exists(node:ref(J1939NmRxPdu/J1939NmRxPduRef)/PduId)"!]
+                  <int> [!"node:ref(J1939NmRxPdu/J1939NmRxPduRef)/PduId"!] </int> <!-- EcuC PduId -->
+[!ELSE!]
+  [!ERROR!]PduId shall be configured for each EcuC Pdu referenced in J1939NmRxPduRef [!ENDERROR!]
+[!ENDIF!]                  
+                  
+                </field>
+              </field>
+
+              <field> <!--  Number of event in channel-->
+        [!IF "$EventCounter != '0'"!]        
+                <int>[!"num:i($EventCounter)"!]</int>
+        [!ELSE!]
+                <int>0</int>
+        [!ENDIF!]           
+              </field>
+  [!LOOP "util:distinct(node:order(../../J1939NmNode/eb-list::*))"!]
+    [!LOOP "util:distinct(node:order(J1939NmNodeChannelRef/eb-list::*))"!]
+      [!IF "$ChannelName = as:name(as:ref(.))"!]
+        [!VAR "NodeCounter"= "$NodeCounter + 1"!]
+      [!ENDIF!]
+    [!ENDLOOP!]
+  [!ENDLOOP!]      
+              <field> <!-- Number of nodes in channel -->
+          [!IF "$NodeCounter != '0'"!]
+                <int>[!"num:i($NodeCounter)"!]</int>
+          [!ELSE!]     
+                <int> 0 </int>
+          [!ENDIF!]       
+              </field>
+
+              <field> <!--  Channel Address Arbitration-->
+            [!IF "node:existsAndTrue(node:value(J1939NmChannelUsesAddressArbitration))"!]
+                <int> 1 </int>
+            [!ELSE!]
+                <int> 0 </int>
+            [!ENDIF!]
+              </field>
+
+          </field>
+[!ENDLOOP!]
+        </field>
+
+        </instance>
+      </memory-section>
+    </configuration>
+  </module>
+[!ENDCODE!]
+  <xi:include href="Base.xgen" xpointer="element(/1/1)" />
+</xgen>

@@ -1,0 +1,287 @@
+
+
+/* Deviation MISRAC2012-1 */
+FUNC(Std_ReturnType, NVM_CODE) NvM_1_<Partition>_ASR40_Rte_GetErrorStatus
+(
+  NvM_ASR40_BlockIdType BlockId,
+  P2VAR( NvM_ASR40_RequestResultType,AUTOMATIC,NVM_APPL_DATA ) RequestResultPtr
+)
+{
+  Std_ReturnType ret = E_NOT_OK;
+
+  ret = NvM_ASR40_GetErrorStatus( BlockId, RequestResultPtr );
+
+  return ret;
+}
+
+#if (NVM_API_CONFIG_CLASS != NVM_API_CONFIG_CLASS_1)
+/* Deviation MISRAC2012-1 */
+FUNC(Std_ReturnType, NVM_CODE) NvM_1_<Partition>_ASR40_Rte_SetDataIndex
+(
+  NvM_ASR40_BlockIdType BlockId, uint8 DataIndex
+)
+{
+  Std_ReturnType ret = E_NOT_OK;
+
+  ret = NvM_ASR40_SetDataIndex(BlockId, DataIndex);
+
+  return ret;
+}
+
+/* Deviation MISRAC2012-1 */
+FUNC(Std_ReturnType, NVM_CODE) NvM_1_<Partition>_ASR40_Rte_GetDataIndex
+(
+  NvM_ASR40_BlockIdType                        BlockId,
+  P2VAR( uint8,AUTOMATIC,NVM_APPL_DATA ) DataIndex
+)
+{
+  Std_ReturnType ret = E_NOT_OK;
+
+  ret = NvM_ASR40_GetDataIndex(BlockId, DataIndex);
+
+  return ret;
+}
+#endif /* #if (NVM_API_CONFIG_CLASS != NVM_API_CONFIG_CLASS_1) */
+
+#if (NVM_SET_RAM_BLOCK_STATUS_API == STD_ON)
+/* Deviation MISRAC2012-1 */
+FUNC(Std_ReturnType, NVM_CODE) NvM_1_<Partition>_ASR40_Rte_SetRamBlockStatus
+(
+  NvM_ASR40_BlockIdType BlockId,
+  boolean         BlockChanged
+)
+{
+  Std_ReturnType ret = E_NOT_OK;
+  ret = NvM_ASR40_SetRamBlockStatus(BlockId, BlockChanged);
+  return ret;
+}
+#endif  /* (NVM_SET_RAM_BLOCK_STATUS_API == STD_ON) */
+
+#if (NVM_API_CONFIG_CLASS != NVM_API_CONFIG_CLASS_1)
+/* Deviation MISRAC2012-1 */
+FUNC( Std_ReturnType,NVM_CODE ) NvM_1_<Partition>_ASR40_Rte_ReadBlock
+(
+  NvM_ASR40_BlockIdType                        BlockId,
+  P2VAR(void, AUTOMATIC, NVM_APPL_DATA)  NvM_DstPtr
+)
+{
+  Std_ReturnType ret = E_NOT_OK;
+  uint16 BlockIndex = NvM_CheckCondReadBlock(BlockId, NvM_DstPtr);
+  
+  if(BlockIndex != NVM_TOTAL_NUMBER_OF_NVRAM_BLOCKS)
+  {
+    NVM_QUEUE_WAIT_TO_LOCK();
+    if(E_OK == NvM_Queue_CheckFullStandard(BlockIndex))
+    {
+      /* Increment the satellite job counter */
+      NvM_Std_Initiated_On_Satellite++;
+      /* Clearing the flag as fast as possible. */
+      NVM_QUEUE_LOCK_RELEASE();
+
+      ret = NvM_1_<Partition>_SchMJobCalls.readBlock(BlockIndex, NvM_DstPtr);
+
+      HANDLE_SATELLITE_TO_MASTER_REQUEST_RESULT(ret, BlockIndex);
+    }
+    else
+    {
+      /* Clearing the flag as fast as possible. */
+      NVM_QUEUE_LOCK_RELEASE();
+
+#if (NVM_PROD_ERR_HANDLING_QUEUE_OVERFLOW != TS_PROD_ERR_DISABLE)
+      /* The queue is full and the job could not be accepted. */
+      NvM_Report_Queue_Overflow(BlockIndex, NVM_READ_BLOCK_API_ID);
+#endif
+    }
+  }
+  else
+  {/*Unknown block Id*/
+  }
+
+  return ret;
+}
+
+/* Deviation MISRAC2012-1 */
+FUNC( Std_ReturnType,NVM_CODE ) NvM_1_<Partition>_ASR40_Rte_WriteBlock
+(
+  NvM_ASR40_BlockIdType                         BlockId,
+  P2CONST(void, AUTOMATIC, NVM_APPL_DATA) NvM_SrcPtr
+)
+{
+  Std_ReturnType ret = E_NOT_OK;
+  boolean ConditionValid = FALSE;
+  uint16 BlockIndex = NvM_CheckCondWriteBlock(BlockId, NvM_SrcPtr);
+  
+  if(BlockIndex != NVM_TOTAL_NUMBER_OF_NVRAM_BLOCKS)
+  {
+    NVM_QUEUE_WAIT_TO_LOCK();
+#if (( NVM_JOB_PRIORITIZATION == STD_ON ) && ( NVM_NUMBER_OF_IMMEDIATE_PRIORITY_BLOCKS > 0U ) && ( NVM_SIZE_IMMEDIATE_JOB_QUEUE > 0U))
+    if ( NvM_BlockDescriptorTable[BlockIndex].blockJobPriority == NVM_BLOCK_IMMEDIATE_PRIORITY )
+    {
+      if(NVM_IMMEDIATE_QUEUE_NOT_FULL())
+      {
+        ConditionValid = TRUE;
+        /* Increment the satellite job counter */
+        NvM_Imm_Initiated_On_Satellite++;
+      }
+    }
+    else
+#endif /* #if (( NVM_JOB_PRIORITIZATION == STD_ON ) && ( NVM_NUMBER_OF_IMMEDIATE_PRIORITY_BLOCKS > 0U ) && ( NVM_SIZE_IMMEDIATE_JOB_QUEUE > 0 )) */
+    {
+      if(E_OK == NvM_Queue_CheckFullStandard(BlockIndex))
+      {
+        ConditionValid = TRUE;
+        /* Increment the satellite job counter */
+        NvM_Std_Initiated_On_Satellite++;
+      }
+    }
+    /* Clearing the flag as fast as possible. */
+    NVM_QUEUE_LOCK_RELEASE();
+
+    if(ConditionValid)
+    {
+      ret = NvM_1_<Partition>_SchMJobCalls.writeBlock(BlockIndex, NvM_SrcPtr);
+
+      HANDLE_SATELLITE_TO_MASTER_REQUEST_RESULT(ret, BlockIndex);
+    }
+    else
+    {
+#if (NVM_PROD_ERR_HANDLING_QUEUE_OVERFLOW != TS_PROD_ERR_DISABLE)
+      /* The queue is full and the job could not be accepted. */
+      NvM_Report_Queue_Overflow(BlockIndex, NVM_WRITE_BLOCK_API_ID);
+#endif
+    }
+  }
+  else
+  {/*Unknown block Id*/
+  }
+
+  return ret;
+}
+
+/* Deviation MISRAC2012-1 */
+FUNC( Std_ReturnType,NVM_CODE ) NvM_1_<Partition>_ASR40_Rte_RestoreBlockDefaults
+(
+  NvM_ASR40_BlockIdType                       BlockId,
+  P2VAR(void, AUTOMATIC, NVM_APPL_DATA) NvM_DestPtr
+)
+{
+  Std_ReturnType ret = E_NOT_OK;
+  uint16 BlockIndex = NvM_CheckCondRestoreBlockDefaults(BlockId, NvM_DestPtr);
+
+  if(BlockIndex != NVM_TOTAL_NUMBER_OF_NVRAM_BLOCKS)
+  {
+    NVM_QUEUE_WAIT_TO_LOCK();
+    if(E_OK == NvM_Queue_CheckFullStandard(BlockIndex))
+    {
+      /* Increment the satellite job counter */
+      NvM_Std_Initiated_On_Satellite++;
+      /* Clearing the flag as fast as possible. */
+      NVM_QUEUE_LOCK_RELEASE();
+
+      ret = NvM_1_<Partition>_SchMJobCalls.restoreBlockDefaults(BlockIndex, NvM_DestPtr);
+
+      HANDLE_SATELLITE_TO_MASTER_REQUEST_RESULT(ret, BlockIndex);
+    }
+    else
+    {
+      /* Clearing the flag as fast as possible. */
+      NVM_QUEUE_LOCK_RELEASE();
+
+#if (NVM_PROD_ERR_HANDLING_QUEUE_OVERFLOW != TS_PROD_ERR_DISABLE)
+      /* The queue is full and the job could not be accepted. */
+      NvM_Report_Queue_Overflow(BlockIndex, NVM_RESTORE_BLOCK_DEFAULTS_API_ID);
+#endif
+    }
+  }
+  else
+  {/*Unknown block Id*/
+  }
+
+  return ret;
+}
+#endif /* #if (NVM_API_CONFIG_CLASS != NVM_API_CONFIG_CLASS_1) */
+
+#if (NVM_API_CONFIG_CLASS == NVM_API_CONFIG_CLASS_3)
+/* Deviation MISRAC2012-1 */
+FUNC( Std_ReturnType,NVM_CODE ) NvM_1_<Partition>_ASR40_Rte_EraseNvBlock
+(
+  NvM_ASR40_BlockIdType BlockId
+)
+{
+  Std_ReturnType ret = E_NOT_OK;
+  uint16 BlockIndex = NvM_CheckCondEraseNvBlock(BlockId);
+
+  if(BlockIndex != NVM_TOTAL_NUMBER_OF_NVRAM_BLOCKS)
+  {
+    NVM_QUEUE_WAIT_TO_LOCK();
+    if(E_OK == NvM_Queue_CheckFullStandard(BlockIndex))
+    {
+      /* Increment the satellite job counter */
+      NvM_Std_Initiated_On_Satellite++;
+      /* Clearing the flag as fast as possible. */
+      NVM_QUEUE_LOCK_RELEASE();
+
+      ret = NvM_1_<Partition>_SchMJobCalls.eraseNvBlock(BlockIndex);
+
+      HANDLE_SATELLITE_TO_MASTER_REQUEST_RESULT(ret, BlockIndex);
+    }
+    else
+    {
+      /* Clearing the flag as fast as possible. */
+      NVM_QUEUE_LOCK_RELEASE();
+
+#if (NVM_PROD_ERR_HANDLING_QUEUE_OVERFLOW != TS_PROD_ERR_DISABLE)
+      /* The queue is full and the job could not be accepted. */
+      NvM_Report_Queue_Overflow(BlockIndex, NVM_ERASE_NV_BLOCK_API_ID);
+#endif
+    }
+  }
+  else
+  {/*Unknown block Id*/
+  }
+
+  return ret;
+}
+
+/* Deviation MISRAC2012-1 */
+FUNC( Std_ReturnType,NVM_CODE ) NvM_1_<Partition>_ASR40_Rte_InvalidateNvBlock
+(
+  NvM_ASR40_BlockIdType BlockId
+)
+{
+  Std_ReturnType ret = E_NOT_OK;
+  uint16 BlockIndex = NvM_CheckCondInvalidateNvBlock(BlockId);
+
+  if(BlockIndex != NVM_TOTAL_NUMBER_OF_NVRAM_BLOCKS)
+  {
+    NVM_QUEUE_WAIT_TO_LOCK();
+    if(E_OK == NvM_Queue_CheckFullStandard(BlockIndex))
+    {
+      /* Increment the satellite job counter */
+      NvM_Std_Initiated_On_Satellite++;
+      /* Clearing the flag as fast as possible. */
+      NVM_QUEUE_LOCK_RELEASE();
+
+      ret = NvM_1_<Partition>_SchMJobCalls.invalidateNvBlock(BlockIndex);
+
+      HANDLE_SATELLITE_TO_MASTER_REQUEST_RESULT(ret, BlockIndex);
+    }
+    else
+    {
+      /* Clearing the flag as fast as possible. */
+      NVM_QUEUE_LOCK_RELEASE();
+
+#if (NVM_PROD_ERR_HANDLING_QUEUE_OVERFLOW != TS_PROD_ERR_DISABLE)
+      /* The queue is full and the job could not be accepted. */
+      NvM_Report_Queue_Overflow(BlockIndex, NVM_INVALIDATE_NV_BLOCK_API_ID);
+#endif
+    }
+  }
+  else
+  {/*Unknown block Id*/
+  }
+
+  return ret;
+}
+
+#endif /* #if (NVM_API_CONFIG_CLASS == NVM_API_CONFIG_CLASS_3) */

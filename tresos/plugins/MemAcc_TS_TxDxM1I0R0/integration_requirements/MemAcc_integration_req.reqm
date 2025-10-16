@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<specdocument>
+  <specobjects doctype="lim">
+    <specobject>
+      <id>lim.MemAcc.EB_INTREQ_MemAcc_JobInfo</id>
+      <status>approved</status>
+      <source>EB</source>
+      <version>1</version>
+      <description>
+          <code>MemAcc_GetProcessedLength</code> shall be called from a task that does not preempt
+          the task of the <code>MemAcc_MainFunction</code> in order to obtain consistent data 
+          for the memory area job.
+      </description>
+      <rationale>
+        Internal data for the job is not accessed atomically in the MemAcc module.
+        Protecting the job internal data with a lock would inccur a high runtime overhead 
+        for the MemAcc main function processing, which would be incompatible 
+        with the specified range for <code>MemAccMainFunctionPeriod</code> of [1E-4 .. 1].
+      </rationale>
+      
+    </specobject>
+    <specobject>
+      <id>lim.MemAcc.EB_INTREQ_MemAcc_ProcessedLength</id>
+      <status>approved</status>
+      <source>EB</source>
+      <version>1</version>
+      <description>
+          The MemAcc module returns via <code>MemAcc_GetProcessedLength</code> API
+          the sum of the succesfully processed bytes and 
+          last number of bytes sent to the underlying memory driver.
+      </description>
+      <rationale>
+        Due to the synchronous nature of MemAcc_GetProcessedLength, it is not possible for MemAcc to know
+        whether the last command sent to the underlying memory driver was succesfully processed 
+        when the getter is called.
+      </rationale>
+      
+    </specobject>
+    <specobject>
+      <id>lim.MemAcc.EB_INTREQ_MemAcc_MemoryAlignment</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+        The integrator must ensure the natural alignment of the variables(based on their memory mapping)
+        and of struct fields(no packed stucts)
+      </description>
+      <rationale>
+        Atomic access to variables is needed.
+      </rationale>
+      
+    </specobject>
+  </specobjects>
+</specdocument>

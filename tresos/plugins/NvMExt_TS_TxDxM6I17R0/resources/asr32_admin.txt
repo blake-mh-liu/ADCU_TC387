@@ -1,0 +1,15 @@
+
+#if (NVM_API_CONFIG_CLASS == NVM_API_CONFIG_CLASS_3)
+/* Deviation MISRAC2012-1 */
+FUNC(void, NVM_CODE) NvM_1_<Partition>_ASR32_Rte_SetBlockProtection
+(
+  NvM_ASR32_BlockIdType BlockId,
+  boolean         ProtectionEnabled
+)
+{
+
+  NvM_ASR32_SetBlockProtection(BlockId, ProtectionEnabled);
+
+}
+
+#endif

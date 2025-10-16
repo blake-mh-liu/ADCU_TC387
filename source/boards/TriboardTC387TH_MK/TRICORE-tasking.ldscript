@@ -1,0 +1,607 @@
+// TRICORE-tasking.ldscript - linker-script file for the second generation of Aurix chips (TC3)
+//
+// This file contains a stripped-down CPU description for the Tasking
+// linker. It was created using a trial-and-error
+// method, starting with an empty file and adding only the portions
+// that the linker complained about.
+//
+// (c) Elektrobit Automotive GmbH
+//
+// $Id: TRICORE-tasking.ldscript 43072 2021-05-03 11:16:56Z miwi261726 $
+
+architecture TC
+{
+	endianness
+	{
+		little;
+	}
+
+	space linear
+	{
+		id = 1;
+		mau = 8;
+
+		map (src_offset=0x00000000, dest_offset=0x00000000, size=4G, dest=bus:fpi_bus);
+
+		copytable (align = 1 << 2, copy_unit = 1, dest = linear);
+	}
+
+	bus fpi_bus
+	{
+		mau = 8;
+		width = 32;
+	}
+}
+
+architecture TC1V1.6.2 extends TC
+{
+}
+
+processor mpe
+{
+	derivative = tcxxx;
+}
+
+derivative tcxxx
+{
+	core vtc
+	{
+		architecture = TC1V1.6.2;
+	}
+
+	bus fpi_bus
+	{
+		mau = 8;
+		width = 32;
+		map (dest=bus:vtc:fpi_bus, dest_offset=0, size=4G);
+	}
+}
+
+#define DSPR_BASE_LOCAL_VIEW 0xD0000000
+
+// the GENLD_csaCore<coreId>_NCSA identifiers are replaced by the linker script generator
+#define NCSA_C0 GENLD_csaCore0_NCSA
+#define NCSA_C1 GENLD_csaCore1_NCSA
+#define NCSA_C2 GENLD_csaCore2_NCSA
+#define NCSA_C3 GENLD_csaCore3_NCSA
+#define NCSA_C4 GENLD_csaCore4_NCSA
+#define NCSA_C5 GENLD_csaCore5_NCSA
+
+// DSPR - Space used for CSA
+#define INTRAM_CORE0 (DSPR_CORE0 - NCSA_C0*64)
+
+#ifdef DSPR_CORE1
+#define INTRAM_CORE1 (DSPR_CORE1 - NCSA_C1*64)
+#endif
+
+#ifdef DSPR_CORE2
+#define INTRAM_CORE2 (DSPR_CORE2 - NCSA_C2*64)
+#endif
+
+#ifdef DSPR_CORE3
+#define INTRAM_CORE3 (DSPR_CORE3 - NCSA_C3*64)
+#endif
+
+#ifdef DSPR_CORE4
+#define INTRAM_CORE4 (DSPR_CORE4 - NCSA_C4*64)
+#endif
+
+#ifdef DSPR_CORE5
+#define INTRAM_CORE5 (DSPR_CORE5 - NCSA_C5*64)
+#endif
+
+// size of the initial memory portion int_rom_vect used for vectors
+#define ROM_START_ADDRESS        0x80000000
+#define AB_PARTITION_SIZE        4M
+#define PSPR0_FBL_SIZE           4K
+#define PSPR0_SIZE               4K
+#define PSPR1_SIZE               4K
+#define DLMU0_SIZE               64K
+#define DLMU1_SIZE               64K
+#define LMU0_SIZE                256K
+#define INT_ROM_VECT_SIZE        20k
+#define INT_ROM_APP_HEADER_SIZE  1k
+#define INT_VAR_CORE0_BSS_SIZE   2k
+#define INT_CAL_CORE0_DATA_SIZE  2k
+#define INT_VAR_CORE1_BSS_SIZE   4k
+#define INT_CAL_CORE1_DATA_SIZE  16k
+#define INT_ROM_SIZE             (AB_PARTITION_SIZE - INT_ROM_VECT_SIZE - INT_ROM_APP_HEADER_SIZE - DLMU0_SIZE - INT_CAL_CORE1_DATA_SIZE)
+
+// Flash ROM at 0x80000000, PMU0 (mapped to seg. 8 for cached access)
+memory int_rom_vect
+{
+	mau = 8;
+	size = INT_ROM_VECT_SIZE;
+	type = rom;
+	map (dest=bus:mpe:fpi_bus, dest_offset=ROM_START_ADDRESS, size=INT_ROM_VECT_SIZE);
+}
+
+memory int_rom_header
+{
+	mau = 8;
+	fill = 0x00;
+	size = INT_ROM_APP_HEADER_SIZE;
+	type = rom;
+	map (dest=bus:mpe:fpi_bus, dest_offset=(ROM_START_ADDRESS+INT_ROM_VECT_SIZE), size=(INT_ROM_APP_HEADER_SIZE));
+}
+
+memory int_rom
+{
+	mau = 8;
+	size = INT_ROM_SIZE;
+	type = rom;
+	map (dest=bus:mpe:fpi_bus,
+		dest_offset=(ROM_START_ADDRESS+INT_ROM_VECT_SIZE+INT_ROM_APP_HEADER_SIZE),
+		size=INT_ROM_SIZE);
+}
+
+memory int_cal_core0_rom
+{
+	mau = 8;
+	size = DLMU0_SIZE;
+	fill = 0x00;
+	type = rom;
+	map (dest=bus:mpe:fpi_bus, dest_offset=(ROM_START_ADDRESS+INT_ROM_VECT_SIZE+INT_ROM_APP_HEADER_SIZE+INT_ROM_SIZE), size=DLMU0_SIZE);
+}
+
+memory int_cal_core1_rom
+{
+	mau = 8;
+	size = INT_CAL_CORE1_DATA_SIZE;
+	type = rom;
+	map (dest=bus:mpe:fpi_bus, dest_offset=(ROM_START_ADDRESS+INT_ROM_VECT_SIZE+INT_ROM_APP_HEADER_SIZE+INT_ROM_SIZE+DLMU0_SIZE), size=INT_CAL_CORE1_DATA_SIZE);
+}
+
+memory int_ram_core0_noinit_shared
+{
+  mau = 8;
+  size = 0x200;
+  type = ram;
+  map (dest=bus:mpe:fpi_bus, dest_offset=0x70000000, size=0x200);
+}
+
+// internal DSPRs of the different cores
+memory int_ram_core0
+{
+	mau = 8;
+	size = INTRAM_CORE0 - 0x200 - INT_VAR_CORE0_BSS_SIZE;
+	type = ram;
+	map (dest=bus:mpe:fpi_bus, dest_offset=0x70000200, size=INTRAM_CORE0 - 0x200 - INT_VAR_CORE0_BSS_SIZE);
+}
+
+memory int_ram_var_core0
+{
+	mau = 8;
+	size = INT_VAR_CORE0_BSS_SIZE;
+	type = ram;
+	map (dest=bus:mpe:fpi_bus, dest_offset=0x70000200 + INTRAM_CORE0 - 0x200 - INT_VAR_CORE0_BSS_SIZE, size=INT_VAR_CORE0_BSS_SIZE);
+}
+
+#ifdef DSPR_CORE1
+memory int_ram_core1
+{
+	mau = 8;
+	size = INTRAM_CORE1 - INT_VAR_CORE1_BSS_SIZE;
+	type = ram;
+	map (dest=bus:mpe:fpi_bus, dest_offset=0x60000000, size=INTRAM_CORE1 - INT_VAR_CORE1_BSS_SIZE);
+}
+
+memory int_ram_var_core1
+{
+	mau = 8;
+	size = INT_VAR_CORE1_BSS_SIZE;
+	type = ram;
+	map (dest=bus:mpe:fpi_bus, dest_offset=0x60000000 + INTRAM_CORE1 - INT_VAR_CORE1_BSS_SIZE, size=INT_VAR_CORE1_BSS_SIZE);
+}
+#endif
+
+#ifdef DSPR_CORE2
+memory int_ram_core2
+{
+	mau = 8;
+	size = INTRAM_CORE2;
+	type = ram;
+	map (dest=bus:mpe:fpi_bus, dest_offset=0x50000000, size=INTRAM_CORE2);
+}
+#endif
+
+#ifdef DSPR_CORE3
+memory int_ram_core3
+{
+	mau = 8;
+	size = INTRAM_CORE3;
+	type = ram;
+	map (dest=bus:mpe:fpi_bus, dest_offset=0x40000000, size=INTRAM_CORE3);
+}
+#endif
+
+#ifdef DSPR_CORE4
+memory int_ram_core4
+{
+	mau = 8;
+	size = INTRAM_CORE4;
+	type = ram;
+	map (dest=bus:mpe:fpi_bus, dest_offset=0x30000000, size=INTRAM_CORE4);
+}
+#endif
+
+#ifdef DSPR_CORE5
+memory int_ram_core5
+{
+	mau = 8;
+	size = INTRAM_CORE5;
+	type = ram;
+	map (dest=bus:mpe:fpi_bus, dest_offset=0x10000000, size=INTRAM_CORE5);
+}
+#endif
+
+#ifdef PSPR0_SIZE
+memory pspr_ram_core0
+{
+	mau = 8;
+	size = PSPR0_SIZE;
+	type = ram;
+	map (dest=bus:mpe:fpi_bus, dest_offset=0x70100000+PSPR0_FBL_SIZE, size=PSPR0_SIZE);
+}
+#endif
+
+#ifdef PSPR1_SIZE
+memory pspr_ram_core1
+{
+	mau = 8;
+	size = PSPR1_SIZE;
+	type = ram;
+	map (dest=bus:mpe:fpi_bus, dest_offset=0x60100000, size=PSPR1_SIZE);
+}
+#endif
+
+#ifdef DLMU0_SIZE
+memory int_dlmu0
+{
+	mau = 8;
+	size = DLMU0_SIZE;
+	type = ram;
+	map (dest=bus:mpe:fpi_bus, dest_offset=0xb0000000, size=DLMU0_SIZE);
+}
+#endif
+
+#ifdef DLMU1_SIZE
+memory int_dlmu1
+{
+	mau = 8;
+	size = DLMU1_SIZE;
+	type = ram;
+	map (dest=bus:mpe:fpi_bus, dest_offset=0xb0010000, size=DLMU0_SIZE);
+}
+#endif
+
+#ifdef LMU0_SIZE
+memory int_lmu0
+{
+	mau = 8;
+	size = LMU0_SIZE;
+	type = ram;
+	map (dest=bus:mpe:fpi_bus, dest_offset=0xb0040000, size=LMU0_SIZE);
+}
+#endif
+
+section_layout mpe:vtc:linear
+{
+  group __AREA_databssnoinit (attributes=s, contiguous, ordered, run_addr = mem:int_ram_core0_noinit_shared[0], align=8)
+  {
+    group bssnoinit.TRICORE (contiguous, ordered)
+    {
+      select "*.section_noinit*";
+      select "*.bss.prog_sig*";
+    }
+  }
+}
+// Where the CSA memory is located:
+// MK_RSA_MK_Csa_Cx is the base of the CSA block for core x
+// MK_RLA_MK_Csa_Cx is the limit - i.e. the first address that won't be - for core x
+// used as a CSA
+//
+// These must be aligned on 64-byte boundaries (lower 6 bits all zero),
+// otherwise the initialisation function will round them and you might end
+// up with fewer CSAs than you expect.
+section_layout ::linear
+{
+	"BOARD_C0_RAM_BEG"  = addressof(mem:int_ram_core0);
+	"BOARD_C0_URAM_END" = "BOARD_C0_RAM_BEG" + sizeof(mem:int_ram_core0);
+
+	"MK_RSA_MK_Csa_C0"  := DSPR_BASE_LOCAL_VIEW + INTRAM_CORE0;
+	"MK_RLA_MK_Csa_C0"  := DSPR_BASE_LOCAL_VIEW + DSPR_CORE0;
+#ifdef DSPR_CORE1
+	"BOARD_C1_RAM_BEG"   = addressof(mem:int_ram_core1);
+	"BOARD_C1_URAM_END"  = "BOARD_C1_RAM_BEG" + sizeof(mem:int_ram_core1);
+
+	"MK_RSA_MK_Csa_C1"  := DSPR_BASE_LOCAL_VIEW + INTRAM_CORE1;
+	"MK_RLA_MK_Csa_C1"  := DSPR_BASE_LOCAL_VIEW + DSPR_CORE1;
+#endif
+#ifdef DSPR_CORE2
+	"BOARD_C2_RAM_BEG"   = addressof(mem:int_ram_core2);
+	"BOARD_C2_URAM_END"  = "BOARD_C2_RAM_BEG" + sizeof(mem:int_ram_core2);
+
+	"MK_RSA_MK_Csa_C2"  := DSPR_BASE_LOCAL_VIEW + INTRAM_CORE2;
+	"MK_RLA_MK_Csa_C2"  := DSPR_BASE_LOCAL_VIEW + DSPR_CORE2;
+#endif
+#ifdef DSPR_CORE3
+	"BOARD_C3_RAM_BEG"   = addressof(mem:int_ram_core3);
+	"BOARD_C3_URAM_END"  = "BOARD_C3_RAM_BEG" + sizeof(mem:int_ram_core3);
+
+	"MK_RSA_MK_Csa_C3"  := DSPR_BASE_LOCAL_VIEW + INTRAM_CORE3;
+	"MK_RLA_MK_Csa_C3"  := DSPR_BASE_LOCAL_VIEW + DSPR_CORE3;
+#endif
+#ifdef DSPR_CORE4
+	"BOARD_C4_RAM_BEG"   = addressof(mem:int_ram_core4);
+	"BOARD_C4_URAM_END"  = "BOARD_C4_RAM_BEG" + sizeof(mem:int_ram_core4);
+
+	"MK_RSA_MK_Csa_C4"  := DSPR_BASE_LOCAL_VIEW + INTRAM_CORE4;
+	"MK_RLA_MK_Csa_C4"  := DSPR_BASE_LOCAL_VIEW + DSPR_CORE4;
+#endif
+#ifdef DSPR_CORE5
+	"BOARD_C5_RAM_BEG"   = addressof(mem:int_ram_core5);
+	"BOARD_C5_URAM_END"  = "BOARD_C5_RAM_BEG" + sizeof(mem:int_ram_core5);
+
+	"MK_RSA_MK_Csa_C5"  := DSPR_BASE_LOCAL_VIEW + INTRAM_CORE5;
+	"MK_RLA_MK_Csa_C5"  := DSPR_BASE_LOCAL_VIEW + DSPR_CORE5;
+#endif
+
+	/* Symbols of memory regions not bound to any object file */
+	"MK_RSA_MK_Rom"       = addressof(mem:int_rom_vect); /* Flash */
+	"MK_RLA_MK_Rom"       = addressof(mem:int_rom_header) + sizeof(mem:int_rom_header) + sizeof(mem:int_rom) + sizeof(mem:int_cal_core0_rom) + sizeof(mem:int_cal_core1_rom);
+	"APP_Block_ROM_Size"  = sizeof(mem:int_rom_vect) + sizeof(mem:int_rom_header) + sizeof(mem:int_rom);
+#if defined DSPR_CORE5
+	"MK_RSA_MK_GlobalRam" = addressof(mem:int_ram_core5);
+#elif defined DSPR_CORE4
+	"MK_RSA_MK_GlobalRam" = addressof(mem:int_ram_core4);
+#elif defined DSPR_CORE3
+	"MK_RSA_MK_GlobalRam" = addressof(mem:int_ram_core3);
+#elif defined DSPR_CORE2
+	"MK_RSA_MK_GlobalRam" = addressof(mem:int_ram_core2);
+#elif defined DSPR_CORE1
+	"MK_RSA_MK_GlobalRam" = addressof(mem:int_ram_core1);
+#else
+	"MK_RSA_MK_GlobalRam" = addressof(mem:int_ram_core0);
+#endif
+	"MK_RLA_MK_GlobalRam" = addressof(mem:int_ram_core0) + sizeof(mem:int_ram_core0) + (GENLD_csaCore0_NCSA*64);
+	"MK_RSA_MK_Io"        = 0xF0001000; /* I/O (STMs, SCU, IR, IR SRC) */
+	"MK_RLA_MK_Io"        = 0xF003A000;
+	"MK_RSA_MK_OsIo"      = 0xF0001000; /* OS I/O (STM only!!!) */
+	"MK_RLA_MK_OsIo"      = 0xF0001600;
+
+	/* Symbols for the initialisation of private data areas. */
+	"MK_INITIAL_A0"     := 0;
+	"MK_INITIAL_A1"     := 0;
+	"MK_INITIAL_A8"     := 0; /* reserved for OS use */
+}
+section_layout ::linear
+{
+    group EthBuffer (align=64, nocopy,  run_addr = mem:int_ram_core0)
+    {
+
+            select ".bss.Eth_17_EthMac.Eth_DmaRxDescCntrl0";
+            select ".bss.Eth_17_EthMac.Eth_RxBufferCntrl0";
+
+    }
+}
+
+section_layout ::linear
+{
+	group (contiguous, ordered, run_addr = mem:int_ram_var_core0)
+	{
+		section "VAR_CORE0" (attributes=rw, blocksize=64, size=INT_VAR_CORE0_BSS_SIZE)
+		{
+			select ".bss.SWC_APP_type.*";
+		}
+	}
+
+	group (contiguous, ordered, run_addr = mem:int_ram_var_core1)
+	{
+		section "VAR_CORE1" (attributes=rw, blocksize=64, size=INT_VAR_CORE1_BSS_SIZE)
+		{
+			select ".bss.SWC_ETE_type.*";
+		}
+	}
+}
+
+section_layout ::linear
+{
+    group (contiguous, ordered, run_addr = mem:int_dlmu0)
+	{
+		group (align=64)
+		{
+			section "CAL_CORE0" (attributes=rw, blocksize=64, size=INT_CAL_CORE0_DATA_SIZE)
+			{
+				select ".data.cal_data_core0";
+			}
+			"MK_CAL_CORE0_DATA" = "_lc_ub_CAL_CORE0";
+			"MK_CAL_CORE0_DATA_END" = "_lc_ue_CAL_CORE0";
+		}
+	}
+
+	group (contiguous, ordered, load_addr = mem:int_cal_core0_rom)
+	{
+		group (align=64)
+		{
+			section "initdata.cal_core0" (fill=0, attributes=r, blocksize=64, size=INT_CAL_CORE0_DATA_SIZE)
+			{
+				select "\[.data.cal_data_core0\]";
+			}
+		}
+		"MK_CAL_CORE0_IDAT" = "_lc_ub_initdata.cal_core0";
+	}
+}
+
+section_layout ::linear
+{
+    group (contiguous, ordered, run_addr = mem:int_dlmu1)
+	{
+		group (align=64)
+		{
+			section "CAL_CORE1" (attributes=rw, blocksize=64, size=INT_CAL_CORE1_DATA_SIZE)
+			{
+				select ".data.cal_data_core1";
+			}
+			"MK_CAL_CORE1_DATA" = "_lc_ub_CAL_CORE1";
+			"MK_CAL_CORE1_DATA_END" = "_lc_ue_CAL_CORE1";
+		}
+	}
+
+	group (contiguous, ordered, load_addr = mem:int_cal_core1_rom)
+	{
+		group (align=64)
+		{
+			section "initdata.cal_core1" (fill=0, attributes=r, blocksize=64, size=INT_CAL_CORE1_DATA_SIZE)
+			{
+				select "\[.data.cal_data_core1\]";
+			}
+		}
+		"MK_CAL_CORE1_IDAT" = "_lc_ub_initdata.cal_core1";
+	}
+}
+
+section_layout ::linear
+{
+	group APP_HEADER_CODE_GROUP (ordered, contiguous, fill, run_addr = mem:int_rom_header)
+    {
+        group APP_HEADER_CODE (ordered, contiguous, fill)
+        {
+            section "APP_HEADER_CODE_SEC" (fill, blocksize = 2, attributes = rx)
+            {
+                select "[.]rodata.APP_HEADER";
+            }
+        }
+        "_APP_HEADER_CODE_START" = "_lc_gb_APP_HEADER_CODE";
+        "_APP_HEADER_CODE_END" = ("_lc_ge_APP_HEADER_CODE" == 0) ? 0 : "_lc_ge_APP_HEADER_CODE" - 1;
+        "_APP_HEADER_CODE_LIMIT" = "_lc_ge_APP_HEADER_CODE";
+
+        "_APP_HEADER_CODE_ALL_START" = "_APP_HEADER_CODE_START";
+        "_APP_HEADER_CODE_ALL_END" = "_APP_HEADER_CODE_END";
+        "_APP_HEADER_CODE_ALL_LIMIT" = "_APP_HEADER_CODE_LIMIT";
+    }
+}
+
+section_layout ::linear
+{
+	group (contiguous, ordered, run_addr = mem:int_ram_core1)
+	{
+		group (align=64)
+		{
+			section "CDD_DATA_CORE1" (attributes=rw, blocksize=64)
+			{
+				select ".data.pwm_api.*";
+				select ".data.resolver_api.*";
+				select ".data.data_core1";
+			}
+
+			"MK_CDD_DATA_CORE1" = "_lc_ub_CDD_DATA_CORE1";
+			"MK_CDD_DATA_CORE1_END" = "_lc_ue_CDD_DATA_CORE1";
+		}
+	}
+
+	group (contiguous, ordered, load_addr = mem:int_rom)
+	{
+		group (align=64)
+		{
+			section "initdata.cdd_data_core1" (fill=0, attributes=r, blocksize=64)
+			{
+				select "\[.data.pwm_api.*\]";
+				select "\[.data.resolver_api.*\]";
+				select "\[.data.data_core1\]";
+			}
+		}
+		"MK_CDD_DATA_CORE1_IDAT" = "_lc_ub_initdata.cdd_data_core1";
+	}
+
+	group (contiguous, ordered, run_addr = mem:int_ram_core1)
+	{
+		group (align=64)
+		{
+			section "CDD_BSS_CORE1" (attributes=rw, blocksize=64)
+			{
+				select ".bss.pwm_api.*";
+				select ".bss.resolver_api.*";
+			}
+
+			"MK_CDD_BSS_CORE1" = "_lc_ub_CDD_BSS_CORE1";
+			"MK_CDD_BSS_CORE1_END" = "_lc_ue_CDD_BSS_CORE1";
+		}
+	}
+}
+
+section_layout ::linear
+{
+	group (contiguous, ordered, run_addr = mem:int_lmu0)
+	{
+		group (align=64)
+		{
+			section "CDD_DATA_GLOBAL" (attributes=rw, blocksize=64)
+			{
+				select ".data.data_lmu0";
+			}
+
+			"MK_CDD_DATA_GLOBAL" = "_lc_ub_CDD_DATA_GLOBAL";
+			"MK_CDD_DATA_GLOBAL_END" = "_lc_ue_CDD_DATA_GLOBAL";
+		}
+	}
+
+	group (contiguous, ordered, load_addr = mem:int_rom)
+	{
+		group (align=64)
+		{
+			section "initdata.cdd_data_global" (fill=0, attributes=r, blocksize=64)
+			{
+				select "\[.data.data_lmu0\]";
+			}
+		}
+		"MK_CDD_DATA_GLOBAL_IDAT" = "_lc_ub_initdata.cdd_data_global";
+	}
+}
+
+section_layout ::linear
+{
+	group (contiguous, ordered, run_addr = mem:pspr_ram_core0, copy)
+	{
+		section "pspr_run_core0" (size = PSPR0_SIZE, attributes = rwx, fill)
+		{
+			select "*.pspr0";
+		}
+	}
+	"MK_PSPR_RUN_CORE0" = "_lc_ub_pspr_run_core0";
+	"MK_PSPR_RUN_CORE0_END" = "_lc_ue_pspr_run_core0";
+
+
+	group (contiguous, ordered, load_addr = mem:int_rom)
+	{
+		section "pspr_load_core0" (size = PSPR1_SIZE, attributes = r, fill)
+		{
+			select "\[pspr_run_core0\]";
+		}
+	}
+	"MK_PSPR_LOAD_CORE0_IDAT" = "_lc_ub_pspr_load_core0";
+}
+
+
+section_layout ::linear
+{
+	group (contiguous, ordered, run_addr = mem:pspr_ram_core1, copy)
+	{
+		section "pspr_run_core1" (size = PSPR1_SIZE, attributes = rwx, fill)
+		{
+			select "*.pspr1";
+		}
+	}
+	"MK_PSPR_RUN_CORE1" = "_lc_ub_pspr_run_core1";
+	"MK_PSPR_RUN_CORE1_END" = "_lc_ue_pspr_run_core1";
+
+
+	group (contiguous, ordered, load_addr = mem:int_rom)
+	{
+		section "pspr_load_core1" (size = PSPR1_SIZE, attributes = r, fill)
+		{
+			select "\[pspr_run_core1\]";
+		}
+	}
+	"MK_PSPR_LOAD_CORE1_IDAT" = "_lc_ub_pspr_load_core1";
+}

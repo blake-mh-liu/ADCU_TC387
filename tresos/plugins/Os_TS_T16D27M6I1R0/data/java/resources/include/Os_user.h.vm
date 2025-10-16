@@ -1,0 +1,317 @@
+#parse("CommonVars.vm")
+/* This file is generated automatically. DO NOT EDIT!!
+ *
+ * EB tresos AutoCore OS ${Version.getMajor()}.${Version.getMinor()}.${Version.getPatch()} ${Version.getTarget()}/${Version.getDerivate()}
+ * (Build ${Version.getBuild()})
+ *
+ * (c) 1998-${Version.getCurrentYear()} Elektrobit Automotive GmbH
+ * Am Wolfsmantel 46
+ * 91058 Erlangen
+ * GERMANY
+ *
+ * Date         : ${Version.getDate()}           !!!IGNORE-LINE!!!
+ */
+
+## !LINKSTO Generator.Output.os_user_h.Prologue, 2
+#ifndef OS_USER_H
+\#define OS_USER_H
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+## !LINKSTO Generator.Output.os_user_h.Identification, 1
+\#define OS_GENERATION_ID_OS_H    $OsGenerator.getGenId()
+
+\#define OS_AUTOSAROS_VER         $Version.getMajor()
+
+\#define OS_AUTOSAROS_REV         $Version.getMinor()
+
+\#define OS_AUTOSAROS_CORE_BUILD  $Version.getBuild()
+
+\#define OS_AUTOSAROS_ARCH_BUILD  $Version.getBuild()
+
+#ifndef OS_INTERRUPT_KEYWORD
+\#define OS_INTERRUPT_KEYWORD
+#endif
+
+#if( !$OsModel.isMicroKernel() )
+#* *#\#include <Os_api.h>
+#end
+
+/*===================================================================
+ * Alarms
+ *==================================================================*/
+## !LINKSTO Generator.Output.os_user_h.Alarms, 2
+#foreach( $alarm in $AllAlarmsList.getNonInternalElements() )
+#* *#\#define $alarm.getName()  $AllAlarmsList.getId($alarm)
+#end
+#foreach( $alarm in $AllAlarmsList )
+#* *##if( $alarm.getAlarmAction() == "CALLBACK" )
+#*    *##ifndef OS_ASM
+#*    *#extern void $alarm.getCallbackName()(void);
+#*    *##endif  /* OS_ASM */
+#* *##end
+#end
+
+/*===================================================================
+ * Application modes
+ *==================================================================*/
+## !LINKSTO Generator.Output.os_user_h.StartModes, 2
+#foreach( $mode in $AllAppModesList )
+#*  *#\#define $mode.getName()  $AllAppModesList.getId($mode)
+#end
+
+/*===================================================================
+ * Applications
+ *==================================================================*/
+## !LINKSTO Generator.Output.os_user_h.Applications, 1
+#foreach( $app in $AllApplicationsList )
+#* *##if( !$app.isInternal() )
+#*     *#\#if OS_KERNEL_TYPE != OS_MICROKERNEL
+#*     *#\#define $app.getName()  $AllApplicationsList.getId( $app )
+#*     *##endif
+#* *##end
+#end
+/* Application Hooks */
+#foreach( $app in $AllApplicationsList )
+#* *##if( $app.hasStartupHook() )
+#*    *##ifndef OS_ASM
+#*    *#extern void StartupHook_$app.getName()(void);
+#*    *##endif  /* OS_ASM */
+#* *##end
+#* *##if( $app.hasShutdownHook() )
+#*    *##ifndef OS_ASM
+#*    *#extern void ShutdownHook_$app.getName()(StatusType);
+#*    *##endif  /* OS_ASM */
+#* *##end
+#* *##if( $app.hasErrorHook() )
+#*    *##ifndef OS_ASM
+#*    *#extern void ErrorHook_$app.getName()(StatusType);
+#*    *##endif  /* OS_ASM */
+#* *##end
+#* *##if( !$OsModel.isMicroKernel() )
+#*    *##foreach( $tf in $app.getTrustedFunctions() )
+#*       *##ifndef OS_ASM
+#*       *#extern void TRUSTED_${tf.getName()}(os_functionid_t, void *);
+#*       *##endif  /* OS_ASM */
+#*    *##end
+#* *##end
+#end
+/* Trusted Functions */
+#set( $nTf = 0 )
+#if( !$OsModel.isMicroKernel() )
+#* *##foreach( $app in $AllApplicationsList )
+#*    *##foreach( $tf in $app.getTrustedFunctions() )
+#*       *#\#define $tf.getName()  $nTf
+#*       *##set( $nTf = $nTf + 1 )
+#*    *##end
+#* *##end
+#end
+
+/*===================================================================
+ * CPU Core configuration
+ *==================================================================*/
+#set( $coreNumLimit = $OsConfig.getNumCPUCoresMax() - 1 )
+#foreach( $cpuCoreInd in [0..$coreNumLimit] )
+#*  *#\#define OS_CORE_ID_$cpuCoreInd  $cpuCoreInd
+#end
+
+/*===================================================================
+ * Core Mapping
+ *==================================================================*/
+#if( !$OsModel.isMicroKernel() )
+## !LINKSTO Generator.Processing.Resources.RES_SCHEDULER, 1
+#* *##if( $OsConfig.isUsingResScheduler() && !$OsConfig.hasUserDefinedResScheduler() )
+#*    *##if( $OsModel.getNumUsedCores() == 1 )
+#*       *##set( $resListOnInitCore = $OsModel.getResourcesOnCore( $OsConfig.getPhysicalInitCoreId() ) )
+#*       *#\#define RES_SCHEDULER  ${resListOnInitCore.getId( $resListOnInitCore.getRES_SCHEDULER() )}u
+#*    *##else
+#*    *#\#define RES_SCHEDULER  OS_GetResScheduler()
+#*    *##end
+#* *##end
+#end
+
+/*===================================================================
+ * Counters
+ *==================================================================*/
+/* Macros for the configured counter values and time conversions */
+## !LINKSTO Generator.Output.os_user_h.Counters, 2
+#foreach( $counter in $AllCountersList )
+#* *##set( $counterName = $counter.getName() )
+#* *#\#define OSMAXALLOWEDVALUE_$counterName  OS_U($counter.getMaxAllowedValue())
+#* *#\#define OSTICKSPERBASE_$counterName  OS_U($counter.getTicksPerBase())
+#* *#\#define OSMINCYCLE_$counterName  OS_U($counter.getMinCycle())
+#* *##if( ($counter.getType() == "HARDWARE") && ($counter.getHwTimer() != $null) )
+#*   *##set( $interrupt = $counter.getHwTimer().getTimerInterrupt() )
+#*   *##if ( ($interrupt != $null) && (!($AllHwTimersList.isSharedInterrupt($interrupt))) )
+## Print the forward declarations for timer expiry functions
+## These will be implemented for HW counters
+#*      *##ifndef OS_ASM
+#*      *#extern void ${interrupt.getIsrFuncName()}(void);#* Definition is in the Os_gen.c *#
+#*      *##endif  /* OS_ASM */
+#*    *##end
+## !LINKSTO Generator.Output.os_user_h.Counters.Conversion, 2
+#*    *##set( $hwTimerName = $counter.getHwTimer().getName() )
+#*    *#\#define OS_NsToTicks_${counterName}(x)  OS_NsToTicks_${hwTimerName}((x))
+#*    *#\#define OS_TicksToNs_${counterName}(x)  OS_TicksToNs_${hwTimerName}((x))
+#*    *#\#define OS_TICKS2NS_${counterName}(x)   (OS_TicksToNs_${hwTimerName}((x)))
+#*    *#\#define OS_TICKS2US_${counterName}(x)   (OS_TicksToNs_${hwTimerName}((x))/1000u)
+#*    *#\#define OS_TICKS2MS_${counterName}(x)   (OS_TicksToNs_${hwTimerName}((x))/1000000u)
+#*    *#\#define OS_TICKS2SEC_${counterName}(x)  (OS_TicksToNs_${hwTimerName}((x))/1000000000u)
+#* *##elseif( !$counter.isMkCounter() )
+## Print the forward declarations for timer expiry functions
+## These will be implemented for SW counters with HWIncrementer modules
+#*    *##if( $counter.getHwIncrementer() != $null )
+#*      *##ifndef OS_ASM
+#*      *#extern void OS_CounterIsr_$counterName(void);#* Definition is in the Os_gen.c *#
+#*      *##endif  /* OS_ASM */
+#*    *##end
+#*    *##if( $counter.getNsPerTick() > 0 )
+#*      *#\#if OS_ARCH_HAS_64BIT
+#*        *#\#define OS_NsToTicks_${counterName}(x)  (((os_uint64_t)(x))/OS_U($counter.getNsPerTick()))
+#*        *#\#define OS_TicksToNs_${counterName}(x)  ((((os_uint64_t)(x)) > OS_U($counter.getTicks2NsSat64())) ? 0xffffffffffffffffuLL : (((os_uint64_t)(x))*OS_U($counter.getNsPerTick())))
+#*      *#\#else   /* !OS_ARCH_HAS_64BIT */
+#*        *#\#define OS_NsToTicks_${counterName}(x)  (((os_uint32_t)(x))/OS_U($counter.getNsPerTick()))
+#*        *#\#define OS_TicksToNs_${counterName}(x)  ((((os_uint32_t)(x)) > OS_U($counter.getTicks2NsSat())) ? 0xffffffffu : (((os_uint32_t)(x))*OS_U($counter.getNsPerTick())))
+#*      *##endif  /* OS_ARCH_HAS_64BIT */
+#*      *#\#define OS_TICKS2NS_${counterName}(x)   (OS_TicksToNs_${counterName}((x)))
+#*      *#\#define OS_TICKS2US_${counterName}(x)   (OS_TicksToNs_${counterName}((x)))/1000u
+#*      *#\#define OS_TICKS2MS_${counterName}(x)   (OS_TicksToNs_${counterName}((x)))/1000000u
+#*      *#\#define OS_TICKS2SEC_${counterName}(x)  (OS_TicksToNs_${counterName}((x)))/1000000000u
+#*    *##end
+#* *##end
+#* *##foreach( $tc in $counter.getTimeConstants() )
+#*    *#\#define $tc.getName()  OS_NsToTicks_${counterName}($tc.getNsTimeValue())
+#* *##end
+#end
+#if( $ArchProperties.isTimerInterruptCommon() )
+#* *##foreach( $entry in $AllHwTimersList.getHwTimersWithCommonIsr().entrySet() )
+#*   *##set( $interrupt = ${entry.getKey()} )
+#*   *##set( $commonTimers = ${entry.getValue()} )
+#*   *##if(($commonTimers.size() > 0) && (!$commonTimers.iterator().next().isExecutionTimer()))
+## Print the forward declarations for timer expiry functions
+## These will be implemented for HW counters
+#*     *##ifndef OS_ASM
+#*     *#extern void ${interrupt.getIsrFuncName()}(void);#* Definition is in the Os_gen.c *#
+#*     *##endif  /* OS_ASM */
+#*   *##end
+#* *##end
+#end
+
+/* Non-Internal Counter Ids */
+#foreach( $qmCtr in $AllCountersList.getCsCounters() )
+#* *##if( !$qmCtr.isInternal() )
+#* *#\#define $qmCtr.getName()  $AllCountersList.getCsCounters().getId($qmCtr)
+#* *##end
+#end
+#* Just take the first hardware counter present in the system and use its values for the system counter
+   macros(for historical reasons).
+   There should atleast be one hardware counter. If not cc warning should have been thrown.
+*#
+
+/* System Counter Macros */
+## !LINKSTO Kernel.API.Alarms.SysCounterConstants, 1
+## !LINKSTO Kernel.API.Alarms.TickDuration, 1
+#foreach( $systemCtr in $AllCountersList.getHwCounters() )
+#* *##if( $foreach.index == 0 )
+#*    *#\#define OSMAXALLOWEDVALUE  OSMAXALLOWEDVALUE_$systemCtr.getName()
+#*    *#\#define OSTICKSPERBASE     OSTICKSPERBASE_$systemCtr.getName()
+#*    *#\#define OSMINCYCLE         OSMINCYCLE_$systemCtr.getName()
+#*    *#\#define OSTICKDURATION     OS_TicksToNs_$systemCtr.getName()(1u)
+#* *##end
+#end
+
+/*===================================================================
+ * Events
+ *==================================================================*/
+## !LINKSTO Generator.Output.os_user_h.Events, 2
+#foreach( $event in $AllEventsList.getNonInternalElements() )
+#* *#\#define $event.getName()  $event.getEventMaskHexString()
+#end
+
+/*===================================================================
+ * Interrupts
+ *==================================================================*/
+## !LINKSTO Generator.Output.os_user_h.ISRs, 2
+#foreach( $interrupt in $AllInterruptsList )
+#* *##if( !$interrupt.isInternal() )
+#*    *##ifndef OS_ASM
+#*    *#\#if OS_KERNEL_TYPE != OS_MICROKERNEL
+#*    *##if( $OsOptimize.isCat1DirectCall() && ($interrupt.getCategory().name() == "CAT1") )
+#*       *#extern OS_INTERRUPT_KEYWORD void $interrupt.getIsrPrefix()$interrupt.getName()(void);
+#*    *##else
+#*       *#extern void $interrupt.getIsrPrefix()$interrupt.getName()(void);
+#*    *##end
+#*    *##endif  /* OS_KERNEL_TYPE */
+#*    *##endif  /* OS_ASM */
+#* *##end
+#* *##if( !$interrupt.getCategory().toString().equals("MK") )
+#*    *#\#define ${interrupt.getName()}_ISR_CATEGORY  $interrupt.getCategory().toString()
+#*    *#\#define ${interrupt.getName()}_ISR_VECTOR    $interrupt.getVectorNumber()
+#*    *#\#define ${interrupt.getName()}_ISR_LEVEL     $interrupt.getCalcPriority()
+#* *##end
+#end
+#foreach( $interrupt in $AllInterruptsList.getNonInternalElements() )
+#* *#\#if OS_KERNEL_TYPE != OS_MICROKERNEL
+#*  *#\#define $interrupt.getName()  $AllInterruptsList.getId($interrupt)
+#* *##endif
+#end
+
+/*===================================================================
+ * Resources
+ *==================================================================*/
+## !LINKSTO Generator.Output.os_user_h.Resources, 2
+#set( $nonInternalTypeAllRes         = $AllResourcesList.getUsedNonInternalResources() )
+#set( $nonInternalTypeNonInternalRes = $nonInternalTypeAllRes.getNonInternalElements() )
+#foreach( $res in $nonInternalTypeNonInternalRes )
+#* *#\#if OS_KERNEL_TYPE != OS_MICROKERNEL
+#* *#\#define $res.getName()  $nonInternalTypeAllRes.getId($res)
+#* *##endif
+#end
+
+/*===================================================================
+ * Schedule Tables
+ *==================================================================*/
+## !LINKSTO Generator.Output.os_user_h.ScheduleTables, 1
+#set( $autoCoreScTablesList = $AllScTablesList.getAutocoreScheduleTables() )
+#foreach( $acScTable in $autoCoreScTablesList )
+#* *#\#define $acScTable.getName()  $autoCoreScTablesList.getId($acScTable)
+#end
+
+/*===================================================================
+ * Spinlocks
+ *==================================================================*/
+#foreach( $spinlock in $AllSpinlocksList.getNonInternalElements() )
+#* *#\#if OS_KERNEL_TYPE != OS_MICROKERNEL
+#*    *#\#define $spinlock.getName()  $AllSpinlocksList.getId( $spinlock )
+#* *##endif
+#end
+
+/*===================================================================
+ * Tasks
+ *==================================================================*/
+## !LINKSTO Generator.Output.os_user_h.Tasks, 2
+#foreach( $task in $AllTasksList )
+#* *#\#if OS_KERNEL_TYPE != OS_MICROKERNEL
+#*    *#\#define $task.getName()  $AllTasksList.getId( $task )
+#* *##endif
+#end
+
+/*===================================================================
+ * Time-stamp timer
+ *==================================================================*/
+#if( $OsConfig.getTimestampTimerType() != "NONE" )
+#* *##if( !$OsModel.isMicroKernel() )
+#*   *##if( $OsConfig.getTimestampTimerType() == "HWTIMER" )
+#*     *#\#define OS_TimestampNsToTicks(ns)     OS_NsToTicks_$OsConfig.getTimestampTimer().getName()(ns)
+#*     *#\#define OS_TimestampTicksToNs(ticks)  OS_TicksToNs_$OsConfig.getTimestampTimer().getName()(ticks)
+#*   *##else
+#*     *#\#define OS_TimestampNsToTicks(ns)     OS_NsToTicks_TbTimer(ns)
+#*     *#\#define OS_TimestampTicksToNs(ticks)  OS_TicksToNs_TbTimer(ticks)
+#*   *##end
+#* *##end
+#end
+#ifdef __cplusplus
+}
+#endif
+#endif  /* OS_USER_H */

@@ -1,0 +1,1123 @@
+[!AUTOSPACING!][!//
+[!SELECT "as:modconf('SaSrv')"!][!//
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-0-3.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>SaSrv</SHORT-NAME>
+      <AR-PACKAGES>
+        <!-- ASR:/SaSrv/DataConstraints -->
+        <AR-PACKAGE>
+          <SHORT-NAME>DataConstraints</SHORT-NAME>
+          <ELEMENTS>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <!-- ASR:/SaSrv/CompuMethods -->
+        <AR-PACKAGE>
+          <SHORT-NAME>CompuMethods</SHORT-NAME>
+          <ELEMENTS>
+[!IF "SaSrvGeneral/SaSrvHandleEntropy = 'true'"!][!//
+            <!-- ASR:/SaSrv/CompuMethods/SaSrv_StateRequestType -->
+            <COMPU-METHOD>
+              <SHORT-NAME>SaSrv_StateRequestType</SHORT-NAME>
+              <CATEGORY>TEXTTABLE</CATEGORY>
+              <COMPU-INTERNAL-TO-PHYS>
+                <COMPU-SCALES>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>SASRV_INIT</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">1</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">1</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>SASRV_STOP</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                </COMPU-SCALES>
+              </COMPU-INTERNAL-TO-PHYS>
+            </COMPU-METHOD>
+[!ENDIF!][!//
+            <!-- Dcm -->
+            <!-- ASR:/SaSrv/CompuMethods/CM_SaSrv_Dcm_OpStatusType -->
+            <COMPU-METHOD>
+              <SHORT-NAME>CM_SaSrv_Dcm_OpStatusType</SHORT-NAME>
+              <CATEGORY>TEXTTABLE</CATEGORY>
+              <COMPU-INTERNAL-TO-PHYS>
+                <COMPU-SCALES>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_INITIAL</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">1</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">1</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_PENDING</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">2</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">2</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_CANCEL</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">3</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">3</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_FORCE_RCRRP_OK</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                </COMPU-SCALES>
+              </COMPU-INTERNAL-TO-PHYS>
+            </COMPU-METHOD>
+            <!-- ASR:/SaSrv/CompuMethods/CM_SaSrv_Dcm_NegativeResponseCodeType -->
+            <COMPU-METHOD>
+              <SHORT-NAME>CM_SaSrv_Dcm_NegativeResponseCodeType</SHORT-NAME>
+              <CATEGORY>TEXTTABLE</CATEGORY>
+              <COMPU-INTERNAL-TO-PHYS>
+                <COMPU-SCALES>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_POSITIVERESPONSE</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">16</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">16</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_GENERALREJECT</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">17</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">17</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_SERVICENOTSUPPORTED</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">18</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">18</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_SUBFUNCTIONNOTSUPPORTED</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">19</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">19</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_INCORRECTMESSAGELENGTHORINVALIDFORMAT</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">20</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">20</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_RESPONSETOOLONG</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">33</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">33</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_BUSYREPEATREQUEST</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">34</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">34</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_CONDITIONSNOTCORRECT</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">36</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">36</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_REQUESTSEQUENCEERROR</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">37</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">37</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_NORESPONSEFROMSUBNETCOMPONENT</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">38</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">38</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_FAILUREPREVENTSEXECUTIONOFREQUESTEDACTION</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">49</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">49</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_REQUESTOUTOFRANGE</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">51</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">51</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_SECURITYACCESSDENIED</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">53</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">53</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_INVALIDKEY</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">54</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">54</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_EXCEEDNUMBEROFATTEMPTS</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">55</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">55</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_REQUIREDTIMEDELAYNOTEXPIRED</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">112</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">112</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_UPLOADDOWNLOADNOTACCEPTED</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">113</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">113</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_TRANSFERDATASUSPENDED</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">114</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">114</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_GENERALPROGRAMMINGFAILURE</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">115</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">115</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_WRONGBLOCKSEQUENCECOUNTER</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">120</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">120</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_REQUESTCORRECTLYRECEIVEDRESPONSEPENDING</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">126</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">126</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_SUBFUNCTIONNOTSUPPORTEDINACTIVESESSION</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">127</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">127</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_SERVICENOTSUPPORTEDINACTIVESESSION</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">129</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">129</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_RPMTOOHIGH</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">130</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">130</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_RPMTOOLOW</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">131</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">131</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_ENGINEISRUNNING</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">132</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">132</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_ENGINEISNOTRUNNING</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">133</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">133</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_ENGINERUNTIMETOOLOW</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">134</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">134</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_TEMPERATURETOOHIGH</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">135</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">135</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_TEMPERATURETOOLOW</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">136</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">136</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_VEHICLESPEEDTOOHIGH</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">137</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">137</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_VEHICLESPEEDTOOLOW</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">138</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">138</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_THROTTLE_PEDALTOOHIGH</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">139</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">139</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_THROTTLE_PEDALTOOLOW</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">140</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">140</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_TRANSMISSIONRANGENOTINNEUTRAL</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">141</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">141</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_TRANSMISSIONRANGENOTINGEAR</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">143</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">143</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_BRAKESWITCH_NOTCLOSED</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">144</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">144</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_SHIFTERLEVERNOTINPARK</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">145</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">145</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_TORQUECONVERTERCLUTCHLOCKED</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">146</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">146</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_VOLTAGETOOHIGH</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">147</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">147</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>DCM_E_VOLTAGETOOLOW</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                </COMPU-SCALES>
+              </COMPU-INTERNAL-TO-PHYS>
+            </COMPU-METHOD>
+            <!-- NvM -->
+            <!-- ASR:/SaSrv/CompuMethods/CM_SaSrv_NvM_RequestResultType -->
+            <COMPU-METHOD>
+              <SHORT-NAME>CM_SaSrv_NvM_RequestResultType</SHORT-NAME>
+              <CATEGORY>TEXTTABLE</CATEGORY>
+              <COMPU-INTERNAL-TO-PHYS>
+                <COMPU-SCALES>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>NVM_REQ_OK</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">1</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">1</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>NVM_REQ_NOT_OK</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">2</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">2</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>NVM_REQ_PENDING</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">3</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">3</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>NVM_REQ_INTEGRITY_FAILED</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">4</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">4</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>NVM_REQ_BLOCK_SKIPPED</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">5</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">5</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>NVM_REQ_NV_INVALIDATED</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">6</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">6</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>NVM_REQ_CANCELED</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">7</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">7</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>NVM_REQ_REDUNDANCY_FAILED</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                  <COMPU-SCALE>
+                    <LOWER-LIMIT INTERVAL-TYPE="CLOSED">8</LOWER-LIMIT>
+                    <UPPER-LIMIT INTERVAL-TYPE="CLOSED">8</UPPER-LIMIT>
+                    <COMPU-CONST>
+                      <VT>NVM_REQ_RESTORED_FROM_ROM</VT>
+                    </COMPU-CONST>
+                  </COMPU-SCALE>
+                </COMPU-SCALES>
+              </COMPU-INTERNAL-TO-PHYS>
+            </COMPU-METHOD>
+          </ELEMENTS>
+        </AR-PACKAGE>
+[!IF "SaSrvGeneral/SaSrvHandleEntropy = 'true'"!][!//
+        <AR-PACKAGE>
+          <SHORT-NAME>ModeDeclarationGroups</SHORT-NAME>
+          <ELEMENTS>
+            <!-- ASR:/SaSrv/ModeDeclarationGroups/SaSrv_ModeType -->
+            <MODE-DECLARATION-GROUP>
+            <SHORT-NAME>SaSrv_ModeType</SHORT-NAME>
+            <INITIAL-MODE-REF DEST="MODE-DECLARATION">/SaSrv/ModeDeclarationGroups/SaSrv_ModeType/SASRV_STOP</INITIAL-MODE-REF>
+              <MODE-DECLARATIONS>
+                <MODE-DECLARATION>
+                  <SHORT-NAME>SASRV_INIT</SHORT-NAME>
+                </MODE-DECLARATION>
+                <MODE-DECLARATION>
+                  <SHORT-NAME>SASRV_STOP</SHORT-NAME>
+                </MODE-DECLARATION>
+              </MODE-DECLARATIONS>
+            </MODE-DECLARATION-GROUP>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <!-- ASR:/SaSrv/DataTypeMappingSets -->
+        <AR-PACKAGE>
+          <SHORT-NAME>DataTypeMappingSets</SHORT-NAME>
+          <ELEMENTS>
+            <!-- ASR:/SaSrv/DataTypeMappingSets/SaSrv_ModeRequestTypeMappings -->
+            <DATA-TYPE-MAPPING-SET>
+              <SHORT-NAME>SaSrv_ModeRequestTypeMappings</SHORT-NAME>
+              <DATA-TYPE-MAPS/>
+              <MODE-REQUEST-TYPE-MAPS>
+                 <MODE-REQUEST-TYPE-MAP>
+                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/SaSrv/ImplementationDataTypes/SaSrv_ModeRequestType</IMPLEMENTATION-DATA-TYPE-REF>
+                    <MODE-GROUP-REF DEST="MODE-DECLARATION-GROUP">/SaSrv/ModeDeclarationGroups/SaSrv_ModeType</MODE-GROUP-REF>
+                 </MODE-REQUEST-TYPE-MAP>
+              </MODE-REQUEST-TYPE-MAPS>
+            </DATA-TYPE-MAPPING-SET>
+          </ELEMENTS>
+        </AR-PACKAGE>
+[!ENDIF!][!//
+        <!-- ASR:/SaSrv/ImplementationDataTypes -->
+        <AR-PACKAGE>
+          <SHORT-NAME>ImplementationDataTypes</SHORT-NAME>
+          <ELEMENTS>
+[!IF "SaSrvGeneral/SaSrvHandleEntropy = 'true'"!][!//
+            <!-- ASR:/SaSrv/ImplementationDataTypes/SaSrv_ModeRequestType -->
+            <IMPLEMENTATION-DATA-TYPE>
+              <SHORT-NAME>SaSrv_ModeRequestType</SHORT-NAME>
+              <CATEGORY>TYPE_REFERENCE</CATEGORY>
+              <SW-DATA-DEF-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/SaSrv/CompuMethods/SaSrv_StateRequestType</COMPU-METHOD-REF>
+                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                    <SW-IMPL-POLICY>STANDARD</SW-IMPL-POLICY>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </SW-DATA-DEF-PROPS>
+            </IMPLEMENTATION-DATA-TYPE>
+            <!-- ASR:/SaSrv/ImplementationDataTypes/SaSrv_SWC_Entropy_ArrayType -->
+            <IMPLEMENTATION-DATA-TYPE>
+              <SHORT-NAME>SaSrv_SWC_Entropy_ArrayType</SHORT-NAME>
+              <CATEGORY>ARRAY</CATEGORY>
+              <SUB-ELEMENTS>
+                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  <SHORT-NAME>AuxSaSrv_SWC_Entropy_ArrayType</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  [!VAR "KeyDataLen" = "node:value(node:ref(SaSrvGeneral/RNGEntropyKeyElemReference)/CryptoKeyElementSize)"!][!//
+                  <ARRAY-SIZE>[!"num:i($KeyDataLen)"!]</ARRAY-SIZE>
+                  <ARRAY-SIZE-SEMANTICS>FIXED-SIZE</ARRAY-SIZE-SEMANTICS>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+              </SUB-ELEMENTS>
+            </IMPLEMENTATION-DATA-TYPE>
+[!ENDIF!][!//
+            <!-- Dcm -->
+            <!-- ASR:/SaSrv/ImplementationDataTypes/SaSrv_Dcm_NegativeResponseCodeType -->
+            <IMPLEMENTATION-DATA-TYPE>
+              <SHORT-NAME>SaSrv_Dcm_NegativeResponseCodeType</SHORT-NAME>
+              <CATEGORY>TYPE_REFERENCE</CATEGORY>
+              <SW-DATA-DEF-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/SaSrv/CompuMethods/CM_SaSrv_Dcm_NegativeResponseCodeType</COMPU-METHOD-REF>
+                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </SW-DATA-DEF-PROPS>
+            </IMPLEMENTATION-DATA-TYPE>
+            <!-- ASR:/SaSrv/ImplementationDataTypes/SaSrv_Dcm_OpStatusType -->
+            <IMPLEMENTATION-DATA-TYPE>
+              <SHORT-NAME>SaSrv_Dcm_OpStatusType</SHORT-NAME>
+              <CATEGORY>TYPE_REFERENCE</CATEGORY>
+              <SW-DATA-DEF-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/SaSrv/CompuMethods/CM_SaSrv_Dcm_OpStatusType</COMPU-METHOD-REF>
+                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </SW-DATA-DEF-PROPS>
+            </IMPLEMENTATION-DATA-TYPE>
+[!LOOP "SaSrvSecurityLevelConfig/*"!][!//
+            <!-- ASR:/SaSrv/ImplementationDataTypes/SaSrv_Dcm_SecSeed_[!"node:name(.)"!]_ArrayType -->
+            <IMPLEMENTATION-DATA-TYPE>
+              <SHORT-NAME>SaSrv_Dcm_SecSeed_[!"node:name(.)"!]_ArrayType</SHORT-NAME>
+              <CATEGORY>ARRAY</CATEGORY>
+              <SUB-ELEMENTS>
+                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  <SHORT-NAME>AuxDcm_SecSeed_[!"node:name(.)"!]_ArrayType</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <ARRAY-SIZE>[!"num:i(node:ref(./SaSrvSecurityLevelRef)/DcmDspSecuritySeedSize)"!]</ARRAY-SIZE>
+                  <ARRAY-SIZE-SEMANTICS>FIXED-SIZE</ARRAY-SIZE-SEMANTICS>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+              </SUB-ELEMENTS>
+            </IMPLEMENTATION-DATA-TYPE>
+            <!-- ASR:/SaSrv/ImplementationDataTypes/SaSrv_Dcm_SecKey_[!"node:name(.)"!]_ArrayType -->
+            <IMPLEMENTATION-DATA-TYPE>
+              <SHORT-NAME>SaSrv_Dcm_SecKey_[!"node:name(.)"!]_ArrayType</SHORT-NAME>
+              <CATEGORY>ARRAY</CATEGORY>
+              <SUB-ELEMENTS>
+                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  <SHORT-NAME>AuxDcm_SecKey_[!"node:name(.)"!]_ArrayType</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <ARRAY-SIZE>[!"num:i(node:ref(./SaSrvSecurityLevelRef)/DcmDspSecurityKeySize)"!]</ARRAY-SIZE>
+                  <ARRAY-SIZE-SEMANTICS>FIXED-SIZE</ARRAY-SIZE-SEMANTICS>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+              </SUB-ELEMENTS>
+            </IMPLEMENTATION-DATA-TYPE>
+[!ENDLOOP!][!//
+            <!-- Csm -->
+            <!-- ASR:/SaSrv/ImplementationDataTypes/SaSrv_Csm_RandomGenerateResultType -->
+            <IMPLEMENTATION-DATA-TYPE>
+              <SHORT-NAME>SaSrv_Csm_RandomGenerateResultType</SHORT-NAME>
+              <CATEGORY>ARRAY</CATEGORY>
+              <SUB-ELEMENTS>
+                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  <SHORT-NAME>AuxCsm_RandomGenerateResultType</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <ARRAY-SIZE>[!"num:i(node:value(as:ref(as:ref(SaSrvGeneral/SaSrvRandomGenerateRef)/CsmJobPrimitiveRef)/CsmRandomGenerate/CsmRandomGenerateConfig/CsmRandomGenerateResultLength))"!]</ARRAY-SIZE>
+                  <ARRAY-SIZE-SEMANTICS>FIXED-SIZE</ARRAY-SIZE-SEMANTICS>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+              </SUB-ELEMENTS>
+            </IMPLEMENTATION-DATA-TYPE>
+[!IF "SaSrvGeneral/SaSrvHandleEntropy = 'true'"!][!//
+  [!VAR "KeyName" = "node:name(as:ref(as:ref(SaSrvGeneral/SaSrvRandomGenerateRef)/CsmJobKeyRef))"!][!//
+            <!-- ASR:/SaSrv/ImplementationDataTypes/SaSrv_Csm_SeedDataType_[!"$KeyName"!] -->
+            <IMPLEMENTATION-DATA-TYPE>
+              <SHORT-NAME>SaSrv_Csm_SeedDataType_[!"$KeyName"!]</SHORT-NAME>
+              <CATEGORY>ARRAY</CATEGORY>
+              <SUB-ELEMENTS>
+                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  <SHORT-NAME>AuxCsm_SeedDataType_[!"$KeyName"!]</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+  [!VAR "KeyDataLen" = "num:i(num:max(node:refs(node:ref(node:ref(node:ref(as:ref(as:ref(SaSrvGeneral/SaSrvRandomGenerateRef)/CsmJobKeyRef)/CsmKeyRef)/CryIfKeyRef)/CryptoKeyTypeRef)/CryptoKeyElementRef/*)/CryptoKeyElementSize))"!][!//
+                  <ARRAY-SIZE>[!"num:i($KeyDataLen)"!]</ARRAY-SIZE>
+                  <ARRAY-SIZE-SEMANTICS>FIXED-SIZE</ARRAY-SIZE-SEMANTICS>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+              </SUB-ELEMENTS>
+            </IMPLEMENTATION-DATA-TYPE>
+[!ENDIF!][!//
+            <!-- NvM -->
+            <!-- ASR:/SaSrv/ImplementationDataTypes/SaSrv_NvM_RequestResultPtrType -->
+            <IMPLEMENTATION-DATA-TYPE>
+              <SHORT-NAME>SaSrv_NvM_RequestResultPtrType</SHORT-NAME>
+              <CATEGORY>TYPE_REFERENCE</CATEGORY>
+              <SW-DATA-DEF-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <COMPU-METHOD-REF DEST="COMPU-METHOD">/SaSrv/CompuMethods/CM_SaSrv_NvM_RequestResultType</COMPU-METHOD-REF>
+                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </SW-DATA-DEF-PROPS>
+            </IMPLEMENTATION-DATA-TYPE>
+            <!-- ASR:/SaSrv/ImplementationDataTypes/SaSrv_NvM_SrcPtrType -->
+            <IMPLEMENTATION-DATA-TYPE>
+              <SHORT-NAME>SaSrv_NvM_SrcPtrType</SHORT-NAME>
+              <CATEGORY>DATA_REFERENCE</CATEGORY>
+              <SW-DATA-DEF-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <SW-POINTER-TARGET-PROPS>
+                      <TARGET-CATEGORY>VALUE</TARGET-CATEGORY>
+                      <SW-DATA-DEF-PROPS>
+                        <SW-DATA-DEF-PROPS-VARIANTS>
+                          <SW-DATA-DEF-PROPS-CONDITIONAL>
+                            <BASE-TYPE-REF DEST="SW-BASE-TYPE">/AUTOSAR_Platform/BaseTypes/void</BASE-TYPE-REF>
+                            <SW-IMPL-POLICY>CONST</SW-IMPL-POLICY>
+                          </SW-DATA-DEF-PROPS-CONDITIONAL>
+                        </SW-DATA-DEF-PROPS-VARIANTS>
+                      </SW-DATA-DEF-PROPS>
+                    </SW-POINTER-TARGET-PROPS>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </SW-DATA-DEF-PROPS>
+            </IMPLEMENTATION-DATA-TYPE>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <!-- ASR:/SaSrv/Interfaces -->
+        <AR-PACKAGE>
+          <SHORT-NAME>Interfaces</SHORT-NAME>
+          <ELEMENTS>
+[!IF "SaSrvGeneral/SaSrvHandleEntropy = 'true'"!][!//
+            <!-- !LINKSTO swdd.SwitchState,1 -->
+            <!-- ASR:/SaSrv/Interfaces/SwitchState -->
+            <MODE-SWITCH-INTERFACE>
+              <SHORT-NAME>SwitchState</SHORT-NAME>
+              <IS-SERVICE>true</IS-SERVICE>
+              <!-- !LINKSTO swdd.SwitchState,1 -->
+              <!-- ASR:/SaSrv/Interfaces/SwitchState/currentMode -->
+              <MODE-GROUP>
+                <SHORT-NAME>currentMode</SHORT-NAME>
+                <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/SaSrv/ModeDeclarationGroups/SaSrv_ModeType</TYPE-TREF>
+              </MODE-GROUP>
+            </MODE-SWITCH-INTERFACE>
+            <!-- !LINKSTO swdd.HandleEntropy,1 -->
+            <!-- ASR:/SaSrv/Interfaces/HandleEntropy -->
+            <CLIENT-SERVER-INTERFACE>
+              <SHORT-NAME>HandleEntropy</SHORT-NAME>
+              <IS-SERVICE>true</IS-SERVICE>
+              <OPERATIONS>
+                <!-- !LINKSTO swdd.HandleEntropy,1 -->
+                <!-- ASR:/SaSrv/Interfaces/HandleEntropy/GetEntropy -->
+                <CLIENT-SERVER-OPERATION>
+                  <SHORT-NAME>GetEntropy</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE>
+                      <SHORT-NAME>Entropy</SHORT-NAME>
+                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/SaSrv/ImplementationDataTypes/SaSrv_SWC_Entropy_ArrayType</TYPE-TREF>
+                      <DIRECTION>OUT</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <POSSIBLE-ERROR-REFS>
+                    <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/SaSrv/Interfaces/HandleEntropy/E_NOT_OK</POSSIBLE-ERROR-REF>
+                  </POSSIBLE-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+              </OPERATIONS>
+              <POSSIBLE-ERRORS>
+                <APPLICATION-ERROR>
+                  <SHORT-NAME>E_NOT_OK</SHORT-NAME>
+                  <ERROR-CODE>1</ERROR-CODE>
+                </APPLICATION-ERROR>
+              </POSSIBLE-ERRORS>
+            </CLIENT-SERVER-INTERFACE>
+[!ENDIF!][!//
+            <!-- Dcm -->
+[!LOOP "SaSrvSecurityLevelConfig/*"!][!//
+            <!-- !LINKSTO swdd.Dcm_GetSeed,1 -->
+            <!-- !LINKSTO swdd.Dcm_CompareKey,1 -->
+            <!-- !LINKSTO swdd.Dcm_GetSecurityAttemptCounter,1 -->
+            <!-- !LINKSTO swdd.Dcm_SetSecurityAttemptCounter,1 -->
+            <!-- ASR:/SaSrv/Interfaces/SecurityAccess_[!"node:name(.)"!] -->
+            <CLIENT-SERVER-INTERFACE>
+              <SHORT-NAME>SecurityAccess_[!"node:name(.)"!]</SHORT-NAME>
+              <IS-SERVICE>true</IS-SERVICE>
+              <OPERATIONS>
+                <!-- !LINKSTO swdd.Dcm_GetSeed,1 -->
+                <!-- ASR:/SaSrv/Interfaces/SecurityAccess_[!"node:name(.)"!]/GetSeed -->
+                <CLIENT-SERVER-OPERATION>
+                  <SHORT-NAME>GetSeed</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE>
+                      <SHORT-NAME>OpStatus</SHORT-NAME>
+                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/SaSrv/ImplementationDataTypes/SaSrv_Dcm_OpStatusType</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                    <ARGUMENT-DATA-PROTOTYPE>
+                      <SHORT-NAME>Seed</SHORT-NAME>
+                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/SaSrv/ImplementationDataTypes/SaSrv_Dcm_SecSeed_[!"node:name(.)"!]_ArrayType</TYPE-TREF>
+                      <DIRECTION>OUT</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                    <ARGUMENT-DATA-PROTOTYPE>
+                      <SHORT-NAME>ErrorCode</SHORT-NAME>
+                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/SaSrv/ImplementationDataTypes/SaSrv_Dcm_NegativeResponseCodeType</TYPE-TREF>
+                      <DIRECTION>OUT</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <POSSIBLE-ERROR-REFS>
+                    <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/SaSrv/Interfaces/SecurityAccess_[!"node:name(.)"!]/E_NOT_OK</POSSIBLE-ERROR-REF>
+                    <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/SaSrv/Interfaces/SecurityAccess_[!"node:name(.)"!]/DCM_E_PENDING</POSSIBLE-ERROR-REF>
+                  </POSSIBLE-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+                <!-- !LINKSTO swdd.Dcm_CompareKey,1 -->
+                <!-- ASR:/SaSrv/Interfaces/SecurityAccess_[!"node:name(.)"!]/CompareKey -->
+                <CLIENT-SERVER-OPERATION>
+                  <SHORT-NAME>CompareKey</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE>
+                      <SHORT-NAME>Key</SHORT-NAME>
+                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/SaSrv/ImplementationDataTypes/SaSrv_Dcm_SecKey_[!"node:name(.)"!]_ArrayType</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                    <ARGUMENT-DATA-PROTOTYPE>
+                      <SHORT-NAME>OpStatus</SHORT-NAME>
+                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/SaSrv/ImplementationDataTypes/SaSrv_Dcm_OpStatusType</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                    <ARGUMENT-DATA-PROTOTYPE>
+                      <SHORT-NAME>ErrorCode</SHORT-NAME>
+                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/SaSrv/ImplementationDataTypes/SaSrv_Dcm_NegativeResponseCodeType</TYPE-TREF>
+                      <DIRECTION>OUT</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <POSSIBLE-ERROR-REFS>
+                    <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/SaSrv/Interfaces/SecurityAccess_[!"node:name(.)"!]/E_NOT_OK</POSSIBLE-ERROR-REF>
+                    <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/SaSrv/Interfaces/SecurityAccess_[!"node:name(.)"!]/DCM_E_PENDING</POSSIBLE-ERROR-REF>
+                    <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/SaSrv/Interfaces/SecurityAccess_[!"node:name(.)"!]/DCM_E_COMPARE_KEY_FAILED</POSSIBLE-ERROR-REF>
+                  </POSSIBLE-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+                <!-- !LINKSTO swdd.Dcm_GetSecurityAttemptCounter,1 -->
+                <!-- ASR:/SaSrv/Interfaces/SecurityAccess_[!"node:name(.)"!]/GetSecurityAttemptCounter -->
+                <CLIENT-SERVER-OPERATION>
+                  <SHORT-NAME>GetSecurityAttemptCounter</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE>
+                      <SHORT-NAME>OpStatus</SHORT-NAME>
+                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/SaSrv/ImplementationDataTypes/SaSrv_Dcm_OpStatusType</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                    <ARGUMENT-DATA-PROTOTYPE>
+                      <SHORT-NAME>AttemptCounter</SHORT-NAME>
+                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</TYPE-TREF>
+                      <DIRECTION>OUT</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <POSSIBLE-ERROR-REFS>
+                    <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/SaSrv/Interfaces/SecurityAccess_[!"node:name(.)"!]/E_NOT_OK</POSSIBLE-ERROR-REF>
+                    <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/SaSrv/Interfaces/SecurityAccess_[!"node:name(.)"!]/DCM_E_PENDING</POSSIBLE-ERROR-REF>
+                  </POSSIBLE-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+                <!-- !LINKSTO swdd.Dcm_SetSecurityAttemptCounter,1 -->
+                <!-- ASR:/SaSrv/Interfaces/SecurityAccess_[!"node:name(.)"!]/SetSecurityAttemptCounter -->
+                <CLIENT-SERVER-OPERATION>
+                  <SHORT-NAME>SetSecurityAttemptCounter</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE>
+                      <SHORT-NAME>OpStatus</SHORT-NAME>
+                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/SaSrv/ImplementationDataTypes/SaSrv_Dcm_OpStatusType</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                    <ARGUMENT-DATA-PROTOTYPE>
+                      <SHORT-NAME>AttemptCounter</SHORT-NAME>
+                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <POSSIBLE-ERROR-REFS>
+                    <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/SaSrv/Interfaces/SecurityAccess_[!"node:name(.)"!]/E_NOT_OK</POSSIBLE-ERROR-REF>
+                    <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/SaSrv/Interfaces/SecurityAccess_[!"node:name(.)"!]/DCM_E_PENDING</POSSIBLE-ERROR-REF>
+                    <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/SaSrv/Interfaces/SecurityAccess_[!"node:name(.)"!]/DCM_E_FORCE_RCRRP</POSSIBLE-ERROR-REF>
+                  </POSSIBLE-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+              </OPERATIONS>
+              <POSSIBLE-ERRORS>
+                <APPLICATION-ERROR>
+                  <SHORT-NAME>E_NOT_OK</SHORT-NAME>
+                  <ERROR-CODE>1</ERROR-CODE>
+                </APPLICATION-ERROR>
+                <APPLICATION-ERROR>
+                  <SHORT-NAME>DCM_E_PENDING</SHORT-NAME>
+                  <ERROR-CODE>10</ERROR-CODE>
+                </APPLICATION-ERROR>
+                <APPLICATION-ERROR>
+                  <SHORT-NAME>DCM_E_FORCE_RCRRP</SHORT-NAME>
+                  <ERROR-CODE>12</ERROR-CODE>
+                </APPLICATION-ERROR>
+                <APPLICATION-ERROR>
+                  <SHORT-NAME>DCM_E_COMPARE_KEY_FAILED</SHORT-NAME>
+                  <ERROR-CODE>11</ERROR-CODE>
+                </APPLICATION-ERROR>
+              </POSSIBLE-ERRORS>
+            </CLIENT-SERVER-INTERFACE>
+[!ENDLOOP!][!//
+            <!-- Csm -->
+            <!-- !LINKSTO swdd.Csm_RandomGenerate,1 -->
+            <!-- ASR:/SaSrv/Interfaces/RandomGenerate -->
+            <CLIENT-SERVER-INTERFACE>
+              <SHORT-NAME>RandomGenerate</SHORT-NAME>
+              <IS-SERVICE>true</IS-SERVICE>
+              <OPERATIONS>
+                <!-- !LINKSTO swdd.Csm_RandomGenerate,1 -->
+                <!-- ASR:/SaSrv/Interfaces/RandomGenerate/RandomGenerate -->
+                <CLIENT-SERVER-OPERATION>
+                  <SHORT-NAME>RandomGenerate</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE>
+                      <SHORT-NAME>resultBuffer</SHORT-NAME>
+                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/SaSrv/ImplementationDataTypes/SaSrv_Csm_RandomGenerateResultType</TYPE-TREF>
+                      <DIRECTION>OUT</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                    <ARGUMENT-DATA-PROTOTYPE>
+                      <SHORT-NAME>resultLength</SHORT-NAME>
+                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint32</TYPE-TREF>
+                      <DIRECTION>INOUT</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <POSSIBLE-ERROR-REFS>
+                    <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/SaSrv/Interfaces/RandomGenerate/E_NOT_OK</POSSIBLE-ERROR-REF>
+                    <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/SaSrv/Interfaces/RandomGenerate/CSM_E_BUSY</POSSIBLE-ERROR-REF>
+                    <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/SaSrv/Interfaces/RandomGenerate/CSM_E_ENTROPY_EXHAUSTION</POSSIBLE-ERROR-REF>
+                  </POSSIBLE-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+              </OPERATIONS>
+              <POSSIBLE-ERRORS>
+                <APPLICATION-ERROR>
+                  <SHORT-NAME>E_NOT_OK</SHORT-NAME>
+                  <ERROR-CODE>1</ERROR-CODE>
+                </APPLICATION-ERROR>
+                <APPLICATION-ERROR>
+                  <SHORT-NAME>CSM_E_BUSY</SHORT-NAME>
+                  <ERROR-CODE>2</ERROR-CODE>
+                </APPLICATION-ERROR>
+                <APPLICATION-ERROR>
+                  <SHORT-NAME>CSM_E_ENTROPY_EXHAUSTION</SHORT-NAME>
+                  <ERROR-CODE>4</ERROR-CODE>
+                </APPLICATION-ERROR>
+              </POSSIBLE-ERRORS>
+            </CLIENT-SERVER-INTERFACE>
+[!IF "SaSrvGeneral/SaSrvHandleEntropy = 'true'"!][!//
+  [!VAR "KeyName" = "node:name(as:ref(as:ref(SaSrvGeneral/SaSrvRandomGenerateRef)/CsmJobKeyRef))"!][!//
+            <!-- !LINKSTO swdd.Csm_KeyManagement,1 -->
+            <!-- ASR:/SaSrv/Interfaces/CsmKeyManagement_[!"$KeyName"!] -->
+            <CLIENT-SERVER-INTERFACE>
+              <SHORT-NAME>CsmKeyManagement_[!"$KeyName"!]</SHORT-NAME>
+              <IS-SERVICE>true</IS-SERVICE>
+              <OPERATIONS>
+                <!-- ASR:/SaSrv/Interfaces/CsmKeyManagement_[!"$KeyName"!]/KeySetValid -->
+                <CLIENT-SERVER-OPERATION>
+                  <SHORT-NAME>KeySetValid</SHORT-NAME>
+                  <ARGUMENTS>
+                  </ARGUMENTS>
+                  <POSSIBLE-ERROR-REFS>
+                    <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/SaSrv/Interfaces/CsmKeyManagement_[!"$KeyName"!]/E_NOT_OK</POSSIBLE-ERROR-REF>
+                    <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/SaSrv/Interfaces/CsmKeyManagement_[!"$KeyName"!]/CSM_E_BUSY</POSSIBLE-ERROR-REF>
+                  </POSSIBLE-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+                <!-- !LINKSTO swdd.Csm_KeyManagement,1 -->
+                <!-- ASR:/SaSrv/Interfaces/CsmKeyManagement_[!"$KeyName"!]/RandomSeed -->
+                <CLIENT-SERVER-OPERATION>
+                  <SHORT-NAME>RandomSeed</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE>
+                      <SHORT-NAME>seedPtr</SHORT-NAME>
+                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/SaSrv/ImplementationDataTypes/SaSrv_Csm_SeedDataType_[!"$KeyName"!]</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                    <ARGUMENT-DATA-PROTOTYPE>
+                      <SHORT-NAME>seedLength</SHORT-NAME>
+                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint32</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <POSSIBLE-ERROR-REFS>
+                    <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/SaSrv/Interfaces/CsmKeyManagement_[!"$KeyName"!]/E_NOT_OK</POSSIBLE-ERROR-REF>
+                    <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/SaSrv/Interfaces/CsmKeyManagement_[!"$KeyName"!]/CSM_E_BUSY</POSSIBLE-ERROR-REF>
+                  </POSSIBLE-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+              </OPERATIONS>
+              <POSSIBLE-ERRORS>
+                <APPLICATION-ERROR>
+                  <SHORT-NAME>E_NOT_OK</SHORT-NAME>
+                  <ERROR-CODE>1</ERROR-CODE>
+                </APPLICATION-ERROR>
+                <APPLICATION-ERROR>
+                  <SHORT-NAME>CSM_E_BUSY</SHORT-NAME>
+                  <ERROR-CODE>2</ERROR-CODE>
+                </APPLICATION-ERROR>
+                <APPLICATION-ERROR>
+                  <SHORT-NAME>CSM_E_SMALL_BUFFER</SHORT-NAME>
+                  <ERROR-CODE>3</ERROR-CODE>
+                </APPLICATION-ERROR>
+                <APPLICATION-ERROR>
+                  <SHORT-NAME>CSM_E_KEY_READ_FAIL</SHORT-NAME>
+                  <ERROR-CODE>6</ERROR-CODE>
+                </APPLICATION-ERROR>
+                <APPLICATION-ERROR>
+                  <SHORT-NAME>CSM_E_KEY_WRITE_FAIL</SHORT-NAME>
+                  <ERROR-CODE>7</ERROR-CODE>
+                </APPLICATION-ERROR>
+                <APPLICATION-ERROR>
+                  <SHORT-NAME>CSM_E_KEY_NOT_AVAILABLE</SHORT-NAME>
+                  <ERROR-CODE>8</ERROR-CODE>
+                </APPLICATION-ERROR>
+                <APPLICATION-ERROR>
+                  <SHORT-NAME>CSM_E_KEY_SIZE_MISMATCH</SHORT-NAME>
+                  <ERROR-CODE>10</ERROR-CODE>
+                </APPLICATION-ERROR>
+              </POSSIBLE-ERRORS>
+            </CLIENT-SERVER-INTERFACE>
+[!ENDIF!][!//
+[!IF "node:value(SaSrvGeneral/SaSrvEnableDet) = 'true'"!][!//
+            <!-- Det -->
+            <!-- !LINKSTO swdd.Det_ReportError,1 -->
+            <!-- ASR:/SaSrv/Interfaces/DET_ASR43_Service -->
+            <CLIENT-SERVER-INTERFACE>
+              <SHORT-NAME>DET_ASR43_Service</SHORT-NAME>
+              <IS-SERVICE>true</IS-SERVICE>
+              <OPERATIONS>
+                <!-- !LINKSTO swdd.Det_ReportError,1 -->
+                <!-- ASR:/SaSrv/Interfaces/DET_ASR43_Service/ReportError -->
+                <CLIENT-SERVER-OPERATION>
+                  <SHORT-NAME>ReportError</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE>
+                      <SHORT-NAME>ApiId</SHORT-NAME>
+                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                    <ARGUMENT-DATA-PROTOTYPE>
+                      <SHORT-NAME>ErrorId</SHORT-NAME>
+                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <POSSIBLE-ERROR-REFS>
+                    <!-- although the service does never return E_NOT_OK we need to specify
+                         this so that the function prototype of Det_ReportError() generated by
+                         the Rte matches those of the Det SWS -->
+                    <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/SaSrv/Interfaces/DET_ASR43_Service/E_OK</POSSIBLE-ERROR-REF>
+                  </POSSIBLE-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+                <CLIENT-SERVER-OPERATION>
+                  <SHORT-NAME>ReportRuntimeError</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE>
+                      <SHORT-NAME>ApiId</SHORT-NAME>
+                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                    <ARGUMENT-DATA-PROTOTYPE>
+                      <SHORT-NAME>ErrorId</SHORT-NAME>
+                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <POSSIBLE-ERROR-REFS>
+                    <!-- although the service does never return E_NOT_OK we need to specify
+                         this so that the function prototype of Det_ReportRuntimeError() generated by
+                         the Rte matches those of the Det SWS -->
+                    <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/SaSrv/Interfaces/DET_ASR43_Service/E_OK</POSSIBLE-ERROR-REF>
+                  </POSSIBLE-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+              </OPERATIONS>
+              <POSSIBLE-ERRORS>
+                <APPLICATION-ERROR>
+                  <SHORT-NAME>E_OK</SHORT-NAME>
+                  <ERROR-CODE>0</ERROR-CODE>
+                </APPLICATION-ERROR>
+              </POSSIBLE-ERRORS>
+            </CLIENT-SERVER-INTERFACE>
+[!ENDIF!][!//
+            <!-- NvM -->
+[!LOOP "SaSrvSecurityLevelConfig/*"!][!//
+            <!-- !LINKSTO swdd.NvM_WriteBlock,1 -->
+            <!-- !LINKSTO swdd.NvM_GetErrorStatus,1 -->
+            <!-- ASR:/SaSrv/Interfaces/NvMService_[!"node:name(.)"!] -->
+            <CLIENT-SERVER-INTERFACE>
+              <SHORT-NAME>NvMService_[!"node:name(.)"!]</SHORT-NAME>
+              <IS-SERVICE>true</IS-SERVICE>
+              <OPERATIONS>
+                <!-- !LINKSTO swdd.NvM_GetErrorStatus,1 -->
+                <!-- ASR:/SaSrv/Interfaces/NvMService_[!"node:name(.)"!]/GetErrorStatus -->
+                <CLIENT-SERVER-OPERATION>
+                  <SHORT-NAME>GetErrorStatus</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE>
+                      <SHORT-NAME>RequestResultPtr</SHORT-NAME>
+                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/SaSrv/ImplementationDataTypes/SaSrv_NvM_RequestResultPtrType</TYPE-TREF>
+                      <DIRECTION>OUT</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <POSSIBLE-ERROR-REFS>
+                    <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/SaSrv/Interfaces/NvMService_[!"node:name(.)"!]/E_NOT_OK</POSSIBLE-ERROR-REF>
+                  </POSSIBLE-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+                <!-- !LINKSTO swdd.NvM_WriteBlock,1 -->
+                <!-- ASR:/SaSrv/Interfaces/NvMService_[!"node:name(.)"!]/WriteBlock -->
+                <CLIENT-SERVER-OPERATION>
+                  <SHORT-NAME>WriteBlock</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE>
+                      <SHORT-NAME>SrcPtr</SHORT-NAME>
+                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/SaSrv/ImplementationDataTypes/SaSrv_NvM_SrcPtrType</TYPE-TREF>
+                      <DIRECTION>IN</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <POSSIBLE-ERROR-REFS>
+                    <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/SaSrv/Interfaces/NvMService_[!"node:name(.)"!]/E_NOT_OK</POSSIBLE-ERROR-REF>
+                  </POSSIBLE-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+              </OPERATIONS>
+              <POSSIBLE-ERRORS>
+                <APPLICATION-ERROR>
+                  <SHORT-NAME>E_NOT_OK</SHORT-NAME>
+                  <ERROR-CODE>1</ERROR-CODE>
+                </APPLICATION-ERROR>
+              </POSSIBLE-ERRORS>
+            </CLIENT-SERVER-INTERFACE>
+[!ENDLOOP!][!//
+[!IF "SaSrvGeneral/SaSrvHandleEntropy = 'true'"!][!//
+            <!-- !LINKSTO swdd.NvM_KeyManagement_GetErrorStatus,1 -->
+            <!-- ASR:/SaSrv/Interfaces/NvM_KeyManagement_GetErrorStatus -->
+            <CLIENT-SERVER-INTERFACE>
+              <SHORT-NAME>NvMService_KeyManagement</SHORT-NAME>
+              <IS-SERVICE>true</IS-SERVICE>
+              <OPERATIONS>
+                <!-- !LINKSTO swdd.NvM_KeyManagement_GetErrorStatus,1 -->
+                <!-- ASR:/SaSrv/Interfaces/NvMService_KeyManagement/GetErrorStatus -->
+                <CLIENT-SERVER-OPERATION>
+                  <SHORT-NAME>GetErrorStatus</SHORT-NAME>
+                  <ARGUMENTS>
+                    <ARGUMENT-DATA-PROTOTYPE>
+                      <SHORT-NAME>RequestResultPtr</SHORT-NAME>
+                      <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/SaSrv/ImplementationDataTypes/SaSrv_NvM_RequestResultPtrType</TYPE-TREF>
+                      <DIRECTION>OUT</DIRECTION>
+                    </ARGUMENT-DATA-PROTOTYPE>
+                  </ARGUMENTS>
+                  <POSSIBLE-ERROR-REFS>
+                    <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/SaSrv/Interfaces/NvMService_KeyManagement/E_NOT_OK</POSSIBLE-ERROR-REF>
+                  </POSSIBLE-ERROR-REFS>
+                </CLIENT-SERVER-OPERATION>
+              </OPERATIONS>
+              <POSSIBLE-ERRORS>
+                <APPLICATION-ERROR>
+                  <SHORT-NAME>E_NOT_OK</SHORT-NAME>
+                  <ERROR-CODE>1</ERROR-CODE>
+                </APPLICATION-ERROR>
+              </POSSIBLE-ERRORS>
+            </CLIENT-SERVER-INTERFACE>
+[!ENDIF!][!//
+          </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>
+[!ENDSELECT!][!//

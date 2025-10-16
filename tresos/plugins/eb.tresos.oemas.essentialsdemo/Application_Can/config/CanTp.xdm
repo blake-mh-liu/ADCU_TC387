@@ -1,0 +1,789 @@
+<?xml version='1.0'?>
+<datamodel version="7.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/16/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/16/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar" 
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd" 
+         xmlns:f="http://www.tresos.de/_projects/DataModel2/14/formulaexpr.xsd" 
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd" 
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd"  
+         xmlns:variant="http://www.tresos.de/_projects/DataModel2/11/variant.xsd">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="CanTp" type="AR-PACKAGE">
+        <d:lst type="ELEMENTS">
+          <d:chc name="CanTp" type="AR-ELEMENT" value="MODULE-CONFIGURATION">
+            <d:ctr type="MODULE-CONFIGURATION">
+              <a:a name="DEF" value="ASPath:/TS_TxDxM6I8R0/CanTp"/>
+              <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+              <d:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION" 
+                     value="VariantPostBuild">
+                <a:a name="IMPORTER_INFO" value="@DEF"/>
+              </d:var>
+              <d:ctr name="CanTpDefensiveProgramming" type="IDENTIFIABLE">
+                <d:var name="CanTpDefProgEnabled" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="CanTpPrecondAssertEnabled" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="CanTpPostcondAssertEnabled" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="CanTpStaticAssertEnabled" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="CanTpUnreachAssertEnabled" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="CanTpInvariantAssertEnabled" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+              </d:ctr>
+              <d:ctr name="CanTpGeneral" type="IDENTIFIABLE">
+                <d:var name="CanTpChangeParameterApi" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="CanTpDevErrorDetect" type="BOOLEAN" value="true">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="CanTpPaddingByte" type="INTEGER" value="0">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="CanTpReadParameterApi" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="CanTpVersionInfoApi" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="CanTpChangeTxParameterApi" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="CanTpPaddingByteCanFD" type="INTEGER" >
+                  <a:a name="ENABLE" value="false"/>
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="CanTpRelocatablePbcfgEnable" type="BOOLEAN" 
+                       value="true">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="CanTpDynamicNSaEnabled" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="CanTpCancelReceiveApi" type="BOOLEAN" value="true"/>
+                <d:var name="CanTpCancelTransmitApi" type="BOOLEAN" value="true"/>
+                <d:var name="CanTpGptUsageEnable" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="CanTpMaxParallelTxChannels" type="INTEGER" >
+                  <a:a name="ENABLE" value="false"/>
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="CanTpMaxParallelRxChannels" type="INTEGER" >
+                  <a:a name="ENABLE" value="false"/>
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="CanTpMaxTxChannels" type="INTEGER" value="10">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="CanTpMaxRxChannels" type="INTEGER" value="10">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="CanTpMaxRxNSdus" type="INTEGER" value="20"/>
+                <d:var name="CanTpMaxTxNSdus" type="INTEGER" value="10">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="CanTpMaxFcPdus" type="INTEGER" value="10">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="CanTpFlexibleDataRateSupport" type="BOOLEAN" 
+                       value="true"/>
+                <d:var name="CanTpNbrWaitRepeatedSupport" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+              </d:ctr>
+              <d:ctr name="CanTpJumpTable" type="IDENTIFIABLE">
+                <d:var name="CanTpJumpTableMode" type="ENUMERATION" value="OFF">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="CanTpUseSchMMacros" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="CanTpUseWrapperMacros" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="CanTpJumpTableAddress" type="STRING" value="0x0">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="CanTpJumpTableIncludeFile" type="STRING" value="">
+                  <a:a name="ENABLE" value="false"/>
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+              </d:ctr>
+              <d:lst name="CanTpConfig" type="MAP">
+                <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                <d:ctr name="CanTpConfig" type="IDENTIFIABLE">
+                  <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                  <d:lst name="CanTpChannel" type="MAP">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    <d:ctr name="CanTpChannel_0" type="IDENTIFIABLE">
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                      <d:var name="CanTpChannelMode" type="ENUMERATION" 
+                             value="CANTP_MODE_FULL_DUPLEX">
+                        <a:a name="IMPORTER_INFO" 
+                             value="Import_Ecu_Configuration"/>
+                      </d:var>
+                      <d:var name="CanTpSTminTimeoutHandling" 
+                             type="ENUMERATION" value="CanTpMainFunction">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:lst name="CanTpRxNSdu" type="MAP">
+                        <a:a name="IMPORTER_INFO" 
+                             value="Import_Ecu_Configuration"/>
+                        <d:ctr name="Dcm_Pdu_USDT_CAN_FD_Rx_Func" 
+                               type="IDENTIFIABLE">
+                          <a:a name="IMPORTER_INFO" 
+                               value="Import_Ecu_Configuration"/>
+                          <d:var name="CanTpNbrWaitRepeated" type="FLOAT" 
+                                 value="0.0">
+                            <a:a name="ENABLE" value="false"/>
+                            <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          </d:var>
+                          <d:var name="CanTpRxDl" type="INTEGER" value="1">
+                            <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          </d:var>
+                          <d:var name="CanTpRxNSduId" type="INTEGER" value="0">
+                            <a:a name="IMPORTER_INFO" value="@CALC"/>
+                          </d:var>
+                          <d:ctr name="CanTpNAe" type="IDENTIFIABLE">
+                            <d:var name="CanTpNAe" type="INTEGER" value=""/>
+                          </d:ctr>
+                          <d:ctr name="CanTpNSa" type="IDENTIFIABLE">
+                            <d:var name="CanTpNSa" type="INTEGER" >
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                          </d:ctr>
+                          <d:ctr name="CanTpNTa" type="IDENTIFIABLE">
+                            <d:var name="CanTpNTa" type="INTEGER" >
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                          </d:ctr>
+                          <d:ctr name="CanTpRxNPdu" type="IDENTIFIABLE">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                            <a:a name="SHORT-NAME" 
+                                 value="Dcm_Pdu_USDT_CAN_FD_Rx_Func_N_Pdu_USDT_CAN_FD_Rx_Func_Tp_417070834R"/>
+                            <d:var name="CanTpRxNPduId" type="INTEGER" value="0">
+                              <a:a name="IMPORTER_INFO" value="@CALC"/>
+                            </d:var>
+                            <d:ref name="CanTpRxNPduRef" type="REFERENCE" 
+                                   value="ASPath:/EcuC/EcuC/EcucPduCollection/N_Pdu_USDT_CAN_FD_Rx_Func_Tp_417070834R">
+                              <a:a name="IMPORTER_INFO" 
+                                   value="Import_Ecu_Configuration"/>
+                            </d:ref>
+                          </d:ctr>
+                          <d:ref name="CanTpRxNSduRef" type="REFERENCE" 
+                                 value="ASPath:/EcuC/EcuC/EcucPduCollection/Dcm_Pdu_USDT_CAN_FD_Rx_Func">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:ref>
+                          <d:var name="CanTpRxPaddingActivation" 
+                                 type="ENUMERATION" value="CANTP_ON">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpRxTaType" type="ENUMERATION" 
+                                 value="CANTP_FUNCTIONAL">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpRxAddressingFormat" 
+                                 type="ENUMERATION" value="CANTP_STANDARD">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpBs" type="INTEGER" value="0">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpNbr" type="FLOAT" value="0.1">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpNcr" type="FLOAT" value="0.25">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpRxWftMax" type="INTEGER" value="0">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpNar" type="FLOAT" value="0.25">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpSTmin" type="FLOAT" value="0.0">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:ctr name="CanTpTxFcNPdu" type="IDENTIFIABLE">
+                            <d:var name="CanTpTxFcNPduConfirmationPduId" 
+                                   type="INTEGER" >
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:ref name="CanTpTxFcNPduRef" type="REFERENCE" >
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:ref>
+                          </d:ctr>
+                        </d:ctr>
+                        <d:ctr name="Dcm_Pdu_USDT_CAN_FD_Rx_Phys" 
+                               type="IDENTIFIABLE">
+                          <a:a name="IMPORTER_INFO" 
+                               value="Import_Ecu_Configuration"/>
+                          <d:var name="CanTpNbrWaitRepeated" type="FLOAT" 
+                                 value="0.0">
+                            <a:a name="ENABLE" value="false"/>
+                            <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          </d:var>
+                          <d:var name="CanTpRxDl" type="INTEGER" value="1">
+                            <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          </d:var>
+                          <d:var name="CanTpRxNSduId" type="INTEGER" value="1">
+                            <a:a name="IMPORTER_INFO" value="@CALC"/>
+                          </d:var>
+                          <d:ctr name="CanTpNAe" type="IDENTIFIABLE">
+                            <d:var name="CanTpNAe" type="INTEGER" value=""/>
+                          </d:ctr>
+                          <d:ctr name="CanTpNSa" type="IDENTIFIABLE">
+                            <d:var name="CanTpNSa" type="INTEGER" >
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                          </d:ctr>
+                          <d:ctr name="CanTpNTa" type="IDENTIFIABLE">
+                            <d:var name="CanTpNTa" type="INTEGER" >
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                          </d:ctr>
+                          <d:ctr name="CanTpRxNPdu" type="IDENTIFIABLE">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                            <a:a name="SHORT-NAME" 
+                                 value="Dcm_Pdu_USDT_CAN_FD_Rx_Phys_N_Pdu_USDT_CAN_FD_Rx_Phys_Tp_417000434R"/>
+                            <d:var name="CanTpRxNPduId" type="INTEGER" value="1">
+                              <a:a name="IMPORTER_INFO" value="@CALC"/>
+                            </d:var>
+                            <d:ref name="CanTpRxNPduRef" type="REFERENCE" 
+                                   value="ASPath:/EcuC/EcuC/EcucPduCollection/N_Pdu_USDT_CAN_FD_Rx_Phys_Tp_417000434R">
+                              <a:a name="IMPORTER_INFO" 
+                                   value="Import_Ecu_Configuration"/>
+                            </d:ref>
+                          </d:ctr>
+                          <d:ctr name="CanTpTxFcNPdu" type="IDENTIFIABLE">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                            <a:a name="SHORT-NAME" 
+                                 value="Dcm_Pdu_USDT_CAN_FD_Rx_Phys_N_Pdu_USDT_CAN_FD_Tx_Tp_417002219T"/>
+                            <d:var name="CanTpTxFcNPduConfirmationPduId" 
+                                   type="INTEGER" value="0">
+                              <a:a name="IMPORTER_INFO" value="@CALC"/>
+                            </d:var>
+                            <d:ref name="CanTpTxFcNPduRef" type="REFERENCE" 
+                                   value="ASPath:/EcuC/EcuC/EcucPduCollection/N_Pdu_USDT_CAN_FD_Tx_Tp_417002219T">
+                              <a:a name="IMPORTER_INFO" 
+                                   value="Import_Ecu_Configuration"/>
+                            </d:ref>
+                          </d:ctr>
+                          <d:ref name="CanTpRxNSduRef" type="REFERENCE" 
+                                 value="ASPath:/EcuC/EcuC/EcucPduCollection/Dcm_Pdu_USDT_CAN_FD_Rx_Phys">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:ref>
+                          <d:var name="CanTpRxPaddingActivation" 
+                                 type="ENUMERATION" value="CANTP_ON">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpRxTaType" type="ENUMERATION" 
+                                 value="CANTP_PHYSICAL">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpRxAddressingFormat" 
+                                 type="ENUMERATION" value="CANTP_STANDARD">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpBs" type="INTEGER" value="0">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpNbr" type="FLOAT" value="0.1">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpNcr" type="FLOAT" value="0.25">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpRxWftMax" type="INTEGER" value="0">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpNar" type="FLOAT" value="0.25">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpSTmin" type="FLOAT" value="0.0">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                        </d:ctr>
+                        <d:ctr name="Dcm_Pdu_USDT_CAN_Rx_Func" 
+                               type="IDENTIFIABLE">
+                          <a:a name="IMPORTER_INFO" 
+                               value="Import_Ecu_Configuration"/>
+                          <d:var name="CanTpNbrWaitRepeated" type="FLOAT" 
+                                 value="0.0">
+                            <a:a name="ENABLE" value="false"/>
+                            <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          </d:var>
+                          <d:var name="CanTpRxDl" type="INTEGER" value="1">
+                            <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          </d:var>
+                          <d:var name="CanTpRxNSduId" type="INTEGER" value="2">
+                            <a:a name="IMPORTER_INFO" value="@CALC"/>
+                          </d:var>
+                          <d:ctr name="CanTpNAe" type="IDENTIFIABLE">
+                            <d:var name="CanTpNAe" type="INTEGER" value=""/>
+                          </d:ctr>
+                          <d:ctr name="CanTpNSa" type="IDENTIFIABLE">
+                            <d:var name="CanTpNSa" type="INTEGER" >
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                          </d:ctr>
+                          <d:ctr name="CanTpNTa" type="IDENTIFIABLE">
+                            <d:var name="CanTpNTa" type="INTEGER" >
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                          </d:ctr>
+                          <d:ctr name="CanTpRxNPdu" type="IDENTIFIABLE">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                            <a:a name="SHORT-NAME" 
+                                 value="Dcm_Pdu_USDT_CAN_Rx_Func_N_Pdu_USDT_CAN_Rx_Func_Tp_417070833R"/>
+                            <d:var name="CanTpRxNPduId" type="INTEGER" value="2">
+                              <a:a name="IMPORTER_INFO" value="@CALC"/>
+                            </d:var>
+                            <d:ref name="CanTpRxNPduRef" type="REFERENCE" 
+                                   value="ASPath:/EcuC/EcuC/EcucPduCollection/N_Pdu_USDT_CAN_Rx_Func_Tp_417070833R">
+                              <a:a name="IMPORTER_INFO" 
+                                   value="Import_Ecu_Configuration"/>
+                            </d:ref>
+                          </d:ctr>
+                          <d:ref name="CanTpRxNSduRef" type="REFERENCE" 
+                                 value="ASPath:/EcuC/EcuC/EcucPduCollection/Dcm_Pdu_USDT_CAN_Rx_Func">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:ref>
+                          <d:var name="CanTpRxPaddingActivation" 
+                                 type="ENUMERATION" value="CANTP_ON">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpRxTaType" type="ENUMERATION" 
+                                 value="CANTP_FUNCTIONAL">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpRxAddressingFormat" 
+                                 type="ENUMERATION" value="CANTP_STANDARD">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpBs" type="INTEGER" value="0">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpNbr" type="FLOAT" value="0.1">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpNcr" type="FLOAT" value="0.25">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpRxWftMax" type="INTEGER" value="0">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpNar" type="FLOAT" value="0.25">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpSTmin" type="FLOAT" value="0.0">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:ctr name="CanTpTxFcNPdu" type="IDENTIFIABLE">
+                            <d:var name="CanTpTxFcNPduConfirmationPduId" 
+                                   type="INTEGER" >
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:ref name="CanTpTxFcNPduRef" type="REFERENCE" >
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:ref>
+                          </d:ctr>
+                        </d:ctr>
+                        <d:ctr name="Dcm_Pdu_USDT_CAN_Rx_Phys" 
+                               type="IDENTIFIABLE">
+                          <a:a name="IMPORTER_INFO" 
+                               value="Import_Ecu_Configuration"/>
+                          <d:var name="CanTpNbrWaitRepeated" type="FLOAT" 
+                                 value="0.0">
+                            <a:a name="ENABLE" value="false"/>
+                            <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          </d:var>
+                          <d:var name="CanTpRxDl" type="INTEGER" value="1">
+                            <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          </d:var>
+                          <d:var name="CanTpRxNSduId" type="INTEGER" value="3">
+                            <a:a name="IMPORTER_INFO">
+                              <a:v>@DEF</a:v>
+                              <a:v>@CALC</a:v>
+                            </a:a>
+                          </d:var>
+                          <d:ctr name="CanTpNAe" type="IDENTIFIABLE">
+                            <d:var name="CanTpNAe" type="INTEGER" value=""/>
+                          </d:ctr>
+                          <d:ctr name="CanTpNSa" type="IDENTIFIABLE">
+                            <d:var name="CanTpNSa" type="INTEGER" >
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                          </d:ctr>
+                          <d:ctr name="CanTpNTa" type="IDENTIFIABLE">
+                            <d:var name="CanTpNTa" type="INTEGER" >
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                          </d:ctr>
+                          <d:ctr name="CanTpRxNPdu" type="IDENTIFIABLE">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                            <a:a name="SHORT-NAME" 
+                                 value="Dcm_Pdu_USDT_CAN_Rx_Phys_N_Pdu_USDT_CAN_Rx_Phys_Tp_417000433R"/>
+                            <d:var name="CanTpRxNPduId" type="INTEGER" value="3">
+                              <a:a name="IMPORTER_INFO" value="@CALC"/>
+                            </d:var>
+                            <d:ref name="CanTpRxNPduRef" type="REFERENCE" 
+                                   value="ASPath:/EcuC/EcuC/EcucPduCollection/N_Pdu_USDT_CAN_Rx_Phys_Tp_417000433R">
+                              <a:a name="IMPORTER_INFO" 
+                                   value="Import_Ecu_Configuration"/>
+                            </d:ref>
+                          </d:ctr>
+                          <d:ctr name="CanTpTxFcNPdu" type="IDENTIFIABLE">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                            <a:a name="SHORT-NAME" 
+                                 value="Dcm_Pdu_USDT_CAN_Rx_Phys_N_Pdu_USDT_CAN_Tx_Tp_417001963T"/>
+                            <d:var name="CanTpTxFcNPduConfirmationPduId" 
+                                   type="INTEGER" value="1">
+                              <a:a name="IMPORTER_INFO" value="@CALC"/>
+                            </d:var>
+                            <d:ref name="CanTpTxFcNPduRef" type="REFERENCE" 
+                                   value="ASPath:/EcuC/EcuC/EcucPduCollection/N_Pdu_USDT_CAN_Tx_Tp_417001963T">
+                              <a:a name="IMPORTER_INFO" 
+                                   value="Import_Ecu_Configuration"/>
+                            </d:ref>
+                          </d:ctr>
+                          <d:ref name="CanTpRxNSduRef" type="REFERENCE" 
+                                 value="ASPath:/EcuC/EcuC/EcucPduCollection/Dcm_Pdu_USDT_CAN_Rx_Phys">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:ref>
+                          <d:var name="CanTpRxPaddingActivation" 
+                                 type="ENUMERATION" value="CANTP_ON">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpRxTaType" type="ENUMERATION" 
+                                 value="CANTP_PHYSICAL">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpRxAddressingFormat" 
+                                 type="ENUMERATION" value="CANTP_STANDARD">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpBs" type="INTEGER" value="0">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpNbr" type="FLOAT" value="0.1">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpNcr" type="FLOAT" value="0.25">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpRxWftMax" type="INTEGER" value="0">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpNar" type="FLOAT" value="0.25">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpSTmin" type="FLOAT" value="0.0">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                        </d:ctr>
+                      </d:lst>
+                      <d:var name="CanTpGptChannelId" type="STRING" >
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CanTpGptChannelResolution" type="INTEGER" >
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CanTpGptChannelCallbackName" type="STRING" >
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:lst name="CanTpTxNSdu" type="MAP">
+                        <a:a name="IMPORTER_INFO" 
+                             value="Import_Ecu_Configuration"/>
+                        <d:ctr name="Dcm_Pdu_USDT_CAN_FD_Tx" 
+                               type="IDENTIFIABLE">
+                          <a:a name="IMPORTER_INFO" 
+                               value="Import_Ecu_Configuration"/>
+                          <d:var name="CanTpTc" type="BOOLEAN" value="true">
+                            <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          </d:var>
+                          <d:var name="CanTpTxDl" type="INTEGER" value="1">
+                            <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          </d:var>
+                          <d:var name="CanTpTxNSduId" type="INTEGER" value="0">
+                            <a:a name="IMPORTER_INFO" value="@CALC"/>
+                          </d:var>
+                          <d:ctr name="CanTpNAe" type="IDENTIFIABLE">
+                            <d:var name="CanTpNAe" type="INTEGER" >
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                          </d:ctr>
+                          <d:ctr name="CanTpNSa" type="IDENTIFIABLE">
+                            <d:var name="CanTpNSa" type="INTEGER" >
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                          </d:ctr>
+                          <d:ctr name="CanTpNTa" type="IDENTIFIABLE">
+                            <d:var name="CanTpNTa" type="INTEGER" >
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                          </d:ctr>
+                          <d:ctr name="CanTpTxNPdu" type="IDENTIFIABLE">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                            <a:a name="SHORT-NAME" 
+                                 value="Dcm_Pdu_USDT_CAN_FD_Tx_N_Pdu_USDT_CAN_FD_Tx_Tp_D_417002219T"/>
+                            <d:var name="CanTpTxNPduConfirmationPduId" 
+                                   type="INTEGER" value="2">
+                              <a:a name="IMPORTER_INFO" value="@CALC"/>
+                            </d:var>
+                            <d:ref name="CanTpTxNPduRef" type="REFERENCE" 
+                                   value="ASPath:/EcuC/EcuC/EcucPduCollection/N_Pdu_USDT_CAN_FD_Tx_Tp_D_417002219T">
+                              <a:a name="IMPORTER_INFO" 
+                                   value="Import_Ecu_Configuration"/>
+                            </d:ref>
+                          </d:ctr>
+                          <d:ctr name="CanTpRxFcNPdu" type="IDENTIFIABLE">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                            <a:a name="SHORT-NAME" 
+                                 value="Dcm_Pdu_USDT_CAN_FD_Tx_N_Pdu_USDT_CAN_FD_Rx_Phys_Tp_417000434R"/>
+                            <d:var name="CanTpRxFcNPduId" type="INTEGER" 
+                                   value="1">
+                              <a:a name="IMPORTER_INFO" value="@CALC"/>
+                            </d:var>
+                            <d:ref name="CanTpRxFcNPduRef" type="REFERENCE" 
+                                   value="ASPath:/EcuC/EcuC/EcucPduCollection/N_Pdu_USDT_CAN_FD_Rx_Phys_Tp_417000434R">
+                              <a:a name="IMPORTER_INFO" 
+                                   value="Import_Ecu_Configuration"/>
+                            </d:ref>
+                          </d:ctr>
+                          <d:ref name="CanTpTxNSduRef" type="REFERENCE" 
+                                 value="ASPath:/EcuC/EcuC/EcucPduCollection/Dcm_Pdu_USDT_CAN_FD_Tx">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:ref>
+                          <d:var name="CanTpTxPaddingActivation" 
+                                 type="ENUMERATION" value="CANTP_ON">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpTxTaType" type="ENUMERATION" 
+                                 value="CANTP_PHYSICAL">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpTxAddressingFormat" 
+                                 type="ENUMERATION" value="CANTP_STANDARD">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpNas" type="FLOAT" value="0.25">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpNbs" type="FLOAT" value="0.25">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpNcs" type="FLOAT" value="0.1">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                        </d:ctr>
+                        <d:ctr name="Dcm_Pdu_USDT_CAN_Tx" type="IDENTIFIABLE">
+                          <a:a name="IMPORTER_INFO" 
+                               value="Import_Ecu_Configuration"/>
+                          <d:var name="CanTpTc" type="BOOLEAN" value="true">
+                            <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          </d:var>
+                          <d:var name="CanTpTxDl" type="INTEGER" value="1">
+                            <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          </d:var>
+                          <d:var name="CanTpTxNSduId" type="INTEGER" value="1">
+                            <a:a name="IMPORTER_INFO">
+                              <a:v>@DEF</a:v>
+                              <a:v>@CALC</a:v>
+                            </a:a>
+                          </d:var>
+                          <d:ctr name="CanTpNAe" type="IDENTIFIABLE">
+                            <d:var name="CanTpNAe" type="INTEGER" >
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                          </d:ctr>
+                          <d:ctr name="CanTpNSa" type="IDENTIFIABLE">
+                            <d:var name="CanTpNSa" type="INTEGER" >
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                          </d:ctr>
+                          <d:ctr name="CanTpNTa" type="IDENTIFIABLE">
+                            <d:var name="CanTpNTa" type="INTEGER" >
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                          </d:ctr>
+                          <d:ctr name="CanTpTxNPdu" type="IDENTIFIABLE">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                            <a:a name="SHORT-NAME" 
+                                 value="Dcm_Pdu_USDT_CAN_Tx_N_Pdu_USDT_CAN_Tx_Tp_D_417001963T"/>
+                            <d:var name="CanTpTxNPduConfirmationPduId" 
+                                   type="INTEGER" value="3">
+                              <a:a name="IMPORTER_INFO" value="@CALC"/>
+                            </d:var>
+                            <d:ref name="CanTpTxNPduRef" type="REFERENCE" 
+                                   value="ASPath:/EcuC/EcuC/EcucPduCollection/N_Pdu_USDT_CAN_Tx_Tp_D_417001963T">
+                              <a:a name="IMPORTER_INFO" 
+                                   value="Import_Ecu_Configuration"/>
+                            </d:ref>
+                          </d:ctr>
+                          <d:ctr name="CanTpRxFcNPdu" type="IDENTIFIABLE">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                            <a:a name="SHORT-NAME" 
+                                 value="Dcm_Pdu_USDT_CAN_Tx_N_Pdu_USDT_CAN_Rx_Phys_Tp_417000433R"/>
+                            <d:var name="CanTpRxFcNPduId" type="INTEGER" 
+                                   value="3">
+                              <a:a name="IMPORTER_INFO" value="@CALC"/>
+                            </d:var>
+                            <d:ref name="CanTpRxFcNPduRef" type="REFERENCE" 
+                                   value="ASPath:/EcuC/EcuC/EcucPduCollection/N_Pdu_USDT_CAN_Rx_Phys_Tp_417000433R">
+                              <a:a name="IMPORTER_INFO" 
+                                   value="Import_Ecu_Configuration"/>
+                            </d:ref>
+                          </d:ctr>
+                          <d:ref name="CanTpTxNSduRef" type="REFERENCE" 
+                                 value="ASPath:/EcuC/EcuC/EcucPduCollection/Dcm_Pdu_USDT_CAN_Tx">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:ref>
+                          <d:var name="CanTpTxPaddingActivation" 
+                                 type="ENUMERATION" value="CANTP_ON">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpTxTaType" type="ENUMERATION" 
+                                 value="CANTP_PHYSICAL">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpTxAddressingFormat" 
+                                 type="ENUMERATION" value="CANTP_STANDARD">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpNas" type="FLOAT" value="0.25">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpNbs" type="FLOAT" value="0.25">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                          <d:var name="CanTpNcs" type="FLOAT" value="0.1">
+                            <a:a name="IMPORTER_INFO" 
+                                 value="Import_Ecu_Configuration"/>
+                          </d:var>
+                        </d:ctr>
+                      </d:lst>
+                    </d:ctr>
+                  </d:lst>
+                  <d:var name="CanTpMainFunctionPeriod" type="FLOAT" 
+                         value="0.005">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                  </d:var>
+                </d:ctr>
+              </d:lst>
+              <d:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                <d:var name="ArMajorVersion" type="INTEGER" value="4"/>
+                <d:var name="ArMinorVersion" type="INTEGER" value="0"/>
+                <d:var name="ArPatchVersion" type="INTEGER" value="0"/>
+                <d:var name="SwMajorVersion" type="INTEGER" value="6"/>
+                <d:var name="SwMinorVersion" type="INTEGER" value="8"/>
+                <d:var name="SwPatchVersion" type="INTEGER" value="32"/>
+                <d:var name="ModuleId" type="INTEGER" value="35">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="VendorId" type="INTEGER" value="1">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="Release" type="STRING" value="">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+              </d:ctr>
+              <d:ctr name="PublishedInformation" type="IDENTIFIABLE">
+                <d:var name="PbcfgMSupport" type="BOOLEAN" value="true">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+              </d:ctr>
+            </d:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+
+</datamodel>

@@ -1,0 +1,62 @@
+; t32.cmm - Trace32 flash programming script for TC387Q on TriboardTC3X7TH
+;
+
+
+entry &elffile
+if "&elffile"==""
+(
+	&elffile="../../../output/bin/*.elf"
+)
+
+
+; Initialize and start the debugger
+RESet
+SYStem.CPU TC387Q
+SYStem.Option DUALPORT ON
+SETUP.Var %SpotLight
+
+; Flash programming
+
+; shameless re-use of Lauterbachs flash declarations
+DO ~~/demo/tricore/flash/tc38x.cmm CPU=TC387Q PREPAREONLY
+
+; only flash if necessary
+Data.LOAD.Elf "&elffile" /DIFF /SingleLineAdjacent
+IF FOUND()
+(
+  ; found differences, i.e. flash needs to be re-programmed
+  FLASH.ReProgram ALL
+  Data.LOAD.Elf "&elffile"
+  FLASH.ReProgram OFF
+
+  ; verify programming
+  Data.LOAD.Elf "&elffile" /DIFF
+  IF FOUND()
+  (
+    ; maybe binary uses regions that are not covered by the flash declaration.
+    PRIVATE &diffAddress
+    &diffAddress=TRACK.ADDRESS()
+    DIALOG.MESSAGE "File &elffile has not been fully flashed, difference found at address &diffAddress (check flash declaration)"
+  )
+)
+
+; open some windows
+WAIT 1.s
+Print "Flash Programming successful! Run the GO command to start."
+
+Sys.Down
+Core.Assign 1 2 3 4
+Core.ShowActive
+Sys.Up
+
+; Show instructions and registers.
+l
+r
+
+; Set PC to 0xa000_0000 in case there is no respective bootmode header in DFLASH which does this.
+core.select 0
+r.s pc 0x80000000
+SYStem.Option.RESetBehavior RestoreGo
+TASK.ORTI ../../../workspace/mcu/output/generated/orti/os.orti
+
+ENDDO

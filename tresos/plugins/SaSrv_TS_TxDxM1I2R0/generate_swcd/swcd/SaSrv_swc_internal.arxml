@@ -1,0 +1,492 @@
+[!AUTOSPACING!][!//
+[!SELECT "as:modconf('SaSrv')"!][!//
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-0-3.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>SaSrv</SHORT-NAME>
+      <AR-PACKAGES>
+        <!-- ASR:/SaSrv/SwComponentTypes -->
+        <AR-PACKAGE>
+          <SHORT-NAME>SwComponentTypes</SHORT-NAME>
+          <ELEMENTS>
+            <!-- ASR:/SaSrv/SwComponentTypes/SaSrv -->
+            <APPLICATION-SW-COMPONENT-TYPE>
+              <SHORT-NAME>SaSrv</SHORT-NAME>
+              <PORTS>
+[!IF "SaSrvGeneral/SaSrvHandleEntropy = 'true'"!][!//
+                <!-- !LINKSTO swdd.SwitchState,1 -->
+                <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/SwitchState -->
+                <R-PORT-PROTOTYPE>
+                  <SHORT-NAME>SwitchState</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="MODE-SWITCH-INTERFACE">/SaSrv/Interfaces/SwitchState</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+                <!-- !LINKSTO swdd.HandleEntropy,1 -->
+                <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/HandleEntropy -->
+                <R-PORT-PROTOTYPE>
+                  <SHORT-NAME>HandleEntropy</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/SaSrv/Interfaces/HandleEntropy</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+[!ENDIF!][!//
+[!IF "node:value(SaSrvGeneral/SaSrvEnableDet) = 'true'"!][!//
+                <!-- Det -->
+                <!-- !LINKSTO swdd.Det_ReportError,1 -->
+                <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/DET_ASR43_Service -->
+                <R-PORT-PROTOTYPE>
+                  <SHORT-NAME>DET_ASR43_Service</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/SaSrv/Interfaces/DET_ASR43_Service</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+[!ENDIF!][!//
+                <!-- Dcm -->
+[!LOOP "SaSrvSecurityLevelConfig/*"!][!//
+                <!-- !LINKSTO swdd.Dcm_GetSeed,1 -->
+                <!-- !LINKSTO swdd.Dcm_CompareKey,1 -->
+                <!-- !LINKSTO swdd.Dcm_GetSecurityAttemptCounter,1 -->
+                <!-- !LINKSTO swdd.Dcm_SetSecurityAttemptCounter,1 -->
+                <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/SecurityAccess_[!"node:name(.)"!] -->
+                <P-PORT-PROTOTYPE>
+                  <SHORT-NAME>SecurityAccess_[!"node:name(.)"!]</SHORT-NAME>
+                  <PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/SaSrv/Interfaces/SecurityAccess_[!"node:name(.)"!]</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+[!ENDLOOP!][!//
+                <!-- Csm -->
+                <!-- !LINKSTO swdd.Csm_RandomGenerate,1 -->
+                <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/CsmRandomGenerate -->
+                <R-PORT-PROTOTYPE>
+                  <SHORT-NAME>CsmRandomGenerate</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/SaSrv/Interfaces/RandomGenerate</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+[!LOOP "SaSrvSecurityLevelConfig/*"!][!//
+                <!-- !LINKSTO swdd.Csm_MacGenerate,1 -->
+                <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/CsmMacGenerate_[!"node:name(.)"!] -->
+                <R-PORT-PROTOTYPE>
+                  <SHORT-NAME>CsmMacGenerate_[!"node:name(.)"!]</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/SaSrv/Interfaces/MacGenerate_[!"node:name(.)"!]</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+[!ENDLOOP!][!//
+
+[!IF "SaSrvGeneral/SaSrvHandleEntropy = 'true'"!][!//
+  [!VAR "KeyName" = "node:name(as:ref(as:ref(SaSrvGeneral/SaSrvRandomGenerateRef)/CsmJobKeyRef))"!][!//
+                <!-- !LINKSTO swdd.Csm_KeyManagement,1 -->
+                <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/CsmKeyManagement_[!"$KeyName"!] -->
+                <R-PORT-PROTOTYPE>
+                  <SHORT-NAME>CsmKeyManagement_[!"$KeyName"!]</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/SaSrv/Interfaces/CsmKeyManagement_[!"$KeyName"!]</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+[!ENDIF!][!//
+                <!-- NvM -->
+[!LOOP "SaSrvSecurityLevelConfig/*"!][!//
+                <!-- !LINKSTO swdd.NvM_WriteBlock,1 -->
+                <!-- !LINKSTO swdd.NvM_GetErrorStatus,1 -->
+                <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/NvMService_[!"node:name(.)"!] -->
+                <R-PORT-PROTOTYPE>
+                  <SHORT-NAME>NvMService_[!"node:name(.)"!]</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/SaSrv/Interfaces/NvMService_[!"node:name(.)"!]</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+[!ENDLOOP!][!//
+[!IF "SaSrvGeneral/SaSrvHandleEntropy = 'true'"!][!//
+                <!-- !LINKSTO swdd.NvM_KeyManagement_GetErrorStatus,1 -->
+                <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/NvMService_KeyManagement -->
+                <R-PORT-PROTOTYPE>
+                  <SHORT-NAME>NvMService_KeyManagement</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/SaSrv/Interfaces/NvMService_KeyManagement</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+[!ENDIF!][!//
+              </PORTS>
+              <INTERNAL-BEHAVIORS>
+                <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv -->
+                <SWC-INTERNAL-BEHAVIOR>
+                  <SHORT-NAME>IB_SaSrv</SHORT-NAME>
+[!IF "SaSrvGeneral/SaSrvHandleEntropy = 'true'"!][!//
+                  <DATA-TYPE-MAPPING-REFS>
+                    <DATA-TYPE-MAPPING-REF DEST="DATA-TYPE-MAPPING-SET">/SaSrv/DataTypeMappingSets/SaSrv_ModeRequestTypeMappings</DATA-TYPE-MAPPING-REF>
+                  </DATA-TYPE-MAPPING-REFS>
+[!ENDIF!][!//
+                  <EXCLUSIVE-AREAS>
+                    <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/SaSrv_ExclusiveArea -->
+                    <EXCLUSIVE-AREA>
+                      <SHORT-NAME>SaSrv_ExclusiveArea</SHORT-NAME>
+                    </EXCLUSIVE-AREA>
+                  </EXCLUSIVE-AREAS>
+                  <EVENTS>
+[!IF "SaSrvGeneral/SaSrvHandleEntropy = 'true'"!][!//
+                    <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/MSE_Init -->
+                    <SWC-MODE-SWITCH-EVENT>
+                      <SHORT-NAME>MSE_Init</SHORT-NAME>
+                      <DISABLED-MODE-IREFS/>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/RE_SaSrvInit</START-ON-EVENT-REF>
+                      <ACTIVATION>ON-ENTRY</ACTIVATION>
+                      <MODE-IREFS>
+                        <MODE-IREF>
+                          <CONTEXT-PORT-REF DEST="R-PORT-PROTOTYPE">/SaSrv/SwComponentTypes/SaSrv/SwitchState</CONTEXT-PORT-REF>
+                          <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/SaSrv/Interfaces/SwitchState/currentMode</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                          <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/SaSrv/ModeDeclarationGroups/SaSrv_ModeType/SASRV_INIT</TARGET-MODE-DECLARATION-REF>
+                        </MODE-IREF>
+                      </MODE-IREFS>
+                    </SWC-MODE-SWITCH-EVENT>
+                    <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/MSE_DeInit -->
+                    <SWC-MODE-SWITCH-EVENT>
+                      <SHORT-NAME>MSE_Deinit</SHORT-NAME>
+                      <DISABLED-MODE-IREFS/>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/RE_SaSrvDeInit</START-ON-EVENT-REF>
+                      <ACTIVATION>ON-ENTRY</ACTIVATION>
+                      <MODE-IREFS>
+                        <MODE-IREF>
+                          <CONTEXT-PORT-REF DEST="R-PORT-PROTOTYPE">/SaSrv/SwComponentTypes/SaSrv/SwitchState</CONTEXT-PORT-REF>
+                          <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/SaSrv/Interfaces/SwitchState/currentMode</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                          <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/SaSrv/ModeDeclarationGroups/SaSrv_ModeType/SASRV_STOP</TARGET-MODE-DECLARATION-REF>
+                        </MODE-IREF>
+                      </MODE-IREFS>
+                    </SWC-MODE-SWITCH-EVENT>
+[!ENDIF!][!//
+                    <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/TE_SaSrv_MainFunction -->
+                    <TIMING-EVENT>
+                      <SHORT-NAME>TE_SaSrv_MainFunction</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/RE_SaSrv_MainFunction</START-ON-EVENT-REF>
+                      <PERIOD>[!"(num:i(SaSrvGeneral/SaSrvMainFunctionPeriod)) div 1000"!]</PERIOD>
+                    </TIMING-EVENT>
+[!LOOP "SaSrvSecurityLevelConfig/*"!][!//
+                    <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/OIE_SaSrv_SecurityAccess_[!"node:name(.)"!]_GetSeed -->
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>OIE_SaSrv_SecurityAccess_[!"node:name(.)"!]_GetSeed</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/RE_SaSrv_Dcm_SecurityAccess_[!"node:name(.)"!]_GetSeed</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/SaSrv/SwComponentTypes/SaSrv/SecurityAccess_[!"node:name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/SaSrv/Interfaces/SecurityAccess_[!"node:name(.)"!]/GetSeed</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/OIE_SaSrv_SecurityAccess_[!"node:name(.)"!]_CompareKey -->
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>OIE_SaSrv_SecurityAccess_[!"node:name(.)"!]_CompareKey</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/RE_SaSrv_Dcm_SecurityAccess_[!"node:name(.)"!]_CompareKey</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/SaSrv/SwComponentTypes/SaSrv/SecurityAccess_[!"node:name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/SaSrv/Interfaces/SecurityAccess_[!"node:name(.)"!]/CompareKey</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/OIE_SaSrv_SecurityAccess_[!"node:name(.)"!]_GetSecurityAttemptCounter -->
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>OIE_SaSrv_SecurityAccess_[!"node:name(.)"!]_GetSecurityAttemptCounter</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/RE_SaSrv_Dcm_SecurityAccess_[!"node:name(.)"!]_GetSecurityAttemptCounter</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/SaSrv/SwComponentTypes/SaSrv/SecurityAccess_[!"node:name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/SaSrv/Interfaces/SecurityAccess_[!"node:name(.)"!]/GetSecurityAttemptCounter</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/OIE_SaSrv_SecurityAccess_[!"node:name(.)"!]_SetSecurityAttemptCounter -->
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>OIE_SaSrv_SecurityAccess_[!"node:name(.)"!]_SetSecurityAttemptCounter</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/RE_SaSrv_Dcm_SecurityAccess_[!"node:name(.)"!]_SetSecurityAttemptCounter</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/SaSrv/SwComponentTypes/SaSrv/SecurityAccess_[!"node:name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/SaSrv/Interfaces/SecurityAccess_[!"node:name(.)"!]/SetSecurityAttemptCounter</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+[!ENDLOOP!][!//
+                  </EVENTS>
+                  <HANDLE-TERMINATION-AND-RESTART>NO-SUPPORT</HANDLE-TERMINATION-AND-RESTART>
+                  <RUNNABLES>
+[!IF "SaSrvGeneral/SaSrvHandleEntropy = 'true'"!][!//
+  [!VAR "KeyName" = "node:name(as:ref(as:ref(SaSrvGeneral/SaSrvRandomGenerateRef)/CsmJobKeyRef))"!][!//
+                    <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/RE_SaSrvInit -->
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_SaSrvInit</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SERVER-CALL-POINTS>
+                        <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/RE_SaSrvInit/SSCP_SaSrv_NvM_GetErrorStatus -->
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>SSCP_SaSrv_NvM_GetErrorStatus</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SaSrv/SwComponentTypes/SaSrv/NvMService_KeyManagement</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/SaSrv/Interfaces/NvMService_KeyManagement/GetErrorStatus</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+                        <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/RE_SaSrvInit/SSCP_SaSrv_SWC_GetEntropy -->
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>SSCP_SaSrv_SWC_GetEntropy</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SaSrv/SwComponentTypes/SaSrv/HandleEntropy</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/SaSrv/Interfaces/HandleEntropy/GetEntropy</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+                        <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/RE_SaSrvInit/SSCP_SaSrv_Csm_KeyManagement_[!"$KeyName"!]_KeySetValid -->
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>SSCP_SaSrv_Csm_KeyManagement_[!"$KeyName"!]_KeySetValid</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SaSrv/SwComponentTypes/SaSrv/CsmKeyManagement_[!"$KeyName"!]</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/SaSrv/Interfaces/CsmKeyManagement_[!"$KeyName"!]/KeySetValid</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+                        <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/RE_SaSrvInit/SSCP_SaSrv_Csm_KeyManagement_[!"$KeyName"!]_RandomSeed -->
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>SSCP_SaSrv_Csm_KeyManagement_[!"$KeyName"!]_RandomSeed</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SaSrv/SwComponentTypes/SaSrv/CsmKeyManagement_[!"$KeyName"!]</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/SaSrv/Interfaces/CsmKeyManagement_[!"$KeyName"!]/RandomSeed</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+                      </SERVER-CALL-POINTS>
+                      <SYMBOL>SaSrv_Init</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <!-- ASR:/AUTOSAR_SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/RE_SaSrvDeInit -->
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_SaSrvDeInit</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0.0</MINIMUM-START-INTERVAL>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>SaSrv_DeInit</SYMBOL>
+                    </RUNNABLE-ENTITY>
+[!ENDIF!][!//
+                    <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/RE_SaSrv_MainFunction -->
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_SaSrv_MainFunction</SHORT-NAME>
+                      <CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                        <CAN-ENTER-EXCLUSIVE-AREA-REF DEST="EXCLUSIVE-AREA">/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/SaSrv_ExclusiveArea</CAN-ENTER-EXCLUSIVE-AREA-REF>
+                      </CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SERVER-CALL-POINTS>
+[!IF "node:value(SaSrvGeneral/SaSrvEnableDet) = 'true'"!][!//
+                        <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/RE_SaSrv_MainFunction/SSCP_SaSrv_Det_ReportError -->
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>SSCP_SaSrv_Det_ReportError</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SaSrv/SwComponentTypes/SaSrv/DET_ASR43_Service</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/SaSrv/Interfaces/DET_ASR43_Service/ReportError</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>SSCP_SaSrv_Det_ReportRuntimeError</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SaSrv/SwComponentTypes/SaSrv/DET_ASR43_Service</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/SaSrv/Interfaces/DET_ASR43_Service/ReportRuntimeError</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+[!ENDIF!][!//
+[!LOOP "SaSrvSecurityLevelConfig/*"!][!//
+                        <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/RE_SaSrv_MainFunction/SSCP_SaSrv_NvM_[!"node:name(.)"!]_GetErrorStatus -->
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>SSCP_SaSrv_NvM_[!"node:name(.)"!]_GetErrorStatus</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SaSrv/SwComponentTypes/SaSrv/NvMService_[!"node:name(.)"!]</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/SaSrv/Interfaces/NvMService_[!"node:name(.)"!]/GetErrorStatus</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+[!ENDLOOP!][!//
+                      </SERVER-CALL-POINTS>
+                      <SYMBOL>SaSrv_MainFunction</SYMBOL>
+                    </RUNNABLE-ENTITY>
+[!LOOP "SaSrvSecurityLevelConfig/*"!][!//
+                    <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/RE_SaSrv_Dcm_SecurityAccess_[!"node:name(.)"!]_GetSeed -->
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_SaSrv_Dcm_SecurityAccess_[!"node:name(.)"!]_GetSeed</SHORT-NAME>
+                      <CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                        <CAN-ENTER-EXCLUSIVE-AREA-REF DEST="EXCLUSIVE-AREA">/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/SaSrv_ExclusiveArea</CAN-ENTER-EXCLUSIVE-AREA-REF>
+                      </CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SERVER-CALL-POINTS>
+[!IF "node:value(../../SaSrvGeneral/SaSrvEnableDet) = 'true'"!][!//
+                        <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/RE_SaSrv_Dcm_SecurityAccess_[!"node:name(.)"!]_GetSeed/SSCP_SaSrv_Det_ReportError -->
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>SSCP_SaSrv_Det_ReportError</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SaSrv/SwComponentTypes/SaSrv/DET_ASR43_Service</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/SaSrv/Interfaces/DET_ASR43_Service/ReportError</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>SSCP_SaSrv_Det_ReportRuntimeError</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SaSrv/SwComponentTypes/SaSrv/DET_ASR43_Service</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/SaSrv/Interfaces/DET_ASR43_Service/ReportRuntimeError</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+[!ENDIF!][!//
+                        <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/RE_SaSrv_Dcm_SecurityAccess_[!"node:name(.)"!]_GetSeed/SSCP_SaSrv_Csm_RandomGenerate -->
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>SSCP_SaSrv_Csm_RandomGenerate</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SaSrv/SwComponentTypes/SaSrv/CsmRandomGenerate</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/SaSrv/Interfaces/RandomGenerate/RandomGenerate</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+                        <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/RE_SaSrv_Dcm_SecurityAccess_[!"node:name(.)"!]_GetSeed/SSCP_SaSrv_Csm_MacGenerate_[!"node:name(.)"!] -->
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>SSCP_SaSrv_Csm_MacGenerate_[!"node:name(.)"!]</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SaSrv/SwComponentTypes/SaSrv/CsmMacGenerate_[!"node:name(.)"!]</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/SaSrv/Interfaces/MacGenerate_[!"node:name(.)"!]/MacGenerate</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+
+[!IF "../../SaSrvGeneral/SaSrvHandleEntropy = 'true'"!][!//
+  [!VAR "KeyName" = "node:name(as:ref(as:ref(../../SaSrvGeneral/SaSrvRandomGenerateRef)/CsmJobKeyRef))"!][!//
+                        <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/RE_SaSrv_Dcm_SecurityAccess_[!"node:name(.)"!]_GetSeed/SSCP_SaSrv_SWC_GetEntropy -->
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>SSCP_SaSrv_SWC_GetEntropy</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SaSrv/SwComponentTypes/SaSrv/HandleEntropy</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/SaSrv/Interfaces/HandleEntropy/GetEntropy</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+                        <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/RE_SaSrv_Dcm_SecurityAccess_[!"node:name(.)"!]_GetSeed/SSCP_SaSrv_Csm_KeyManagement_[!"$KeyName"!]_KeySetValid -->
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>SSCP_SaSrv_Csm_KeyManagement_[!"$KeyName"!]_KeySetValid</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SaSrv/SwComponentTypes/SaSrv/CsmKeyManagement_[!"$KeyName"!]</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/SaSrv/Interfaces/CsmKeyManagement_[!"$KeyName"!]/KeySetValid</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+                        <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/RE_SaSrv_Dcm_SecurityAccess_[!"node:name(.)"!]_GetSeed/SSCP_SaSrv_Csm_KeyManagement_[!"$KeyName"!]_RandomSeed -->
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>SSCP_SaSrv_Csm_KeyManagement_[!"$KeyName"!]_RandomSeed</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SaSrv/SwComponentTypes/SaSrv/CsmKeyManagement_[!"$KeyName"!]</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/SaSrv/Interfaces/CsmKeyManagement_[!"$KeyName"!]/RandomSeed</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+[!ENDIF!][!//
+                      </SERVER-CALL-POINTS>
+                      <SYMBOL>SaSrv_SecurityAccess_[!"node:name(.)"!]_GetSeed</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/RE_SaSrv_Dcm_SecurityAccess_[!"node:name(.)"!]_CompareKey -->
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_SaSrv_Dcm_SecurityAccess_[!"node:name(.)"!]_CompareKey</SHORT-NAME>
+                      <CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                        <CAN-ENTER-EXCLUSIVE-AREA-REF DEST="EXCLUSIVE-AREA">/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/SaSrv_ExclusiveArea</CAN-ENTER-EXCLUSIVE-AREA-REF>
+                      </CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SERVER-CALL-POINTS>
+[!IF "node:value(../../SaSrvGeneral/SaSrvEnableDet) = 'true'"!][!//
+                        <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/RE_SaSrv_Dcm_SecurityAccess_[!"node:name(.)"!]_CompareKey/SSCP_SaSrv_Det_ReportError -->
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>SSCP_SaSrv_Det_ReportError</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SaSrv/SwComponentTypes/SaSrv/DET_ASR43_Service</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/SaSrv/Interfaces/DET_ASR43_Service/ReportError</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>SSCP_SaSrv_Det_ReportRuntimeError</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SaSrv/SwComponentTypes/SaSrv/DET_ASR43_Service</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/SaSrv/Interfaces/DET_ASR43_Service/ReportRuntimeError</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+[!ENDIF!][!//
+                      </SERVER-CALL-POINTS>
+                      <SYMBOL>SaSrv_SecurityAccess_[!"node:name(.)"!]_CompareKey</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/RE_SaSrv_Dcm_SecurityAccess_[!"node:name(.)"!]_GetSecurityAttemptCounter -->
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_SaSrv_Dcm_SecurityAccess_[!"node:name(.)"!]_GetSecurityAttemptCounter</SHORT-NAME>
+                      <CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                        <CAN-ENTER-EXCLUSIVE-AREA-REF DEST="EXCLUSIVE-AREA">/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/SaSrv_ExclusiveArea</CAN-ENTER-EXCLUSIVE-AREA-REF>
+                      </CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>SaSrv_SecurityAccess_[!"node:name(.)"!]_GetSecurityAttemptCounter</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/RE_SaSrv_Dcm_SecurityAccess_[!"node:name(.)"!]_SetSecurityAttemptCounter -->
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_SaSrv_Dcm_SecurityAccess_[!"node:name(.)"!]_SetSecurityAttemptCounter</SHORT-NAME>
+                      <CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                        <CAN-ENTER-EXCLUSIVE-AREA-REF DEST="EXCLUSIVE-AREA">/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/SaSrv_ExclusiveArea</CAN-ENTER-EXCLUSIVE-AREA-REF>
+                      </CAN-ENTER-EXCLUSIVE-AREA-REFS>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SERVER-CALL-POINTS>
+                        <!-- ASR:/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv/RE_SaSrv_Dcm_SecurityAccess_[!"node:name(.)"!]_WriteBlock/SSCP_SaSrv_NvM_[!"node:name(.)"!]_WriteBlock -->
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>SSCP_SaSrv_NvM_[!"node:name(.)"!]_WriteBlock</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/SaSrv/SwComponentTypes/SaSrv/NvMService_[!"node:name(.)"!]</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/SaSrv/Interfaces/NvMService_[!"node:name(.)"!]/WriteBlock</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+                      </SERVER-CALL-POINTS>
+                      <SYMBOL>SaSrv_SecurityAccess_[!"node:name(.)"!]_SetSecurityAttemptCounter</SYMBOL>
+                    </RUNNABLE-ENTITY>
+[!ENDLOOP!][!//
+                  </RUNNABLES>
+                  <SUPPORTS-MULTIPLE-INSTANTIATION>false</SUPPORTS-MULTIPLE-INSTANTIATION>
+                </SWC-INTERNAL-BEHAVIOR>
+              </INTERNAL-BEHAVIORS>
+            </APPLICATION-SW-COMPONENT-TYPE>
+            <SWC-IMPLEMENTATION>
+              <SHORT-NAME>SaSrv_Implementation</SHORT-NAME>
+              <CODE-DESCRIPTORS>
+                <CODE>
+                  <SHORT-NAME>Code</SHORT-NAME>
+                  <ARTIFACT-DESCRIPTORS>
+                    <AUTOSAR-ENGINEERING-OBJECT>
+                      <SHORT-LABEL>EngObject</SHORT-LABEL>
+                      <CATEGORY>SWSRC</CATEGORY>
+                    </AUTOSAR-ENGINEERING-OBJECT>
+                  </ARTIFACT-DESCRIPTORS>
+                </CODE>
+              </CODE-DESCRIPTORS>
+              <PROGRAMMING-LANGUAGE>C</PROGRAMMING-LANGUAGE>
+              <RESOURCE-CONSUMPTION>
+                <SHORT-NAME>ResourceConsumption</SHORT-NAME>
+                <MEMORY-SECTIONS>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_INIT_8</SHORT-NAME>
+                    <ALIGNMENT>8</ALIGNMENT>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+[!IF "SaSrvGeneral/SaSrvHandleEntropy = 'true'"!][!//
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_CLEARED_8</SHORT-NAME>
+                    <ALIGNMENT>8</ALIGNMENT>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_CLEARED</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+[!ENDIF!][!//
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>VAR_CLEARED_UNSPECIFIED</SHORT-NAME>
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/VAR_CLEARED</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>CONST_UNSPECIFIED</SHORT-NAME>
+                    <ALIGNMENT>UNSPECIFIED</ALIGNMENT>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/CONST</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                  <MEMORY-SECTION>
+                    <SHORT-NAME>CODE</SHORT-NAME>
+                    <SW-ADDRMETHOD-REF DEST="SW-ADDR-METHOD">/AUTOSAR_MemMap/SwAddrMethods/CODE</SW-ADDRMETHOD-REF>
+                  </MEMORY-SECTION>
+                </MEMORY-SECTIONS>
+              </RESOURCE-CONSUMPTION>
+              <SW-VERSION>1.2.0</SW-VERSION>
+              <VENDOR-ID>1</VENDOR-ID>
+              <BEHAVIOR-REF DEST="SWC-INTERNAL-BEHAVIOR">/SaSrv/SwComponentTypes/SaSrv/IB_SaSrv</BEHAVIOR-REF>
+            </SWC-IMPLEMENTATION>
+          </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>
+[!ENDSELECT!][!//

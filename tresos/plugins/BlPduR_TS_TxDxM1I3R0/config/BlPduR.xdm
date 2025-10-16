@@ -1,0 +1,806 @@
+<?xml version='1.0'?>
+<datamodel version="8.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/18/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/18/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar" 
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:ce="http://www.tresos.de/_projects/DataModel2/18/childenable.xsd" 
+         xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd" 
+         xmlns:f="http://www.tresos.de/_projects/DataModel2/14/formulaexpr.xsd" 
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd" 
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd"  
+         xmlns:variant="http://www.tresos.de/_projects/DataModel2/11/variant.xsd">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="TS_TxDxM1I3R0" type="AR-PACKAGE">
+        <d:lst type="ELEMENTS">
+          <d:chc name="BlPduR" type="AR-ELEMENT" value="MODULE-DEF">
+            <v:ctr type="MODULE-DEF">
+              <a:a name="ADMIN-DATA" type="ADMIN-DATA">
+                <ad:ADMIN-DATA>
+                  <ad:LANGUAGE>EN</ad:LANGUAGE>
+                  <ad:DOC-REVISIONS>
+                    <ad:DOC-REVISION>
+                      <ad:REVISION-LABEL>4.0.3</ad:REVISION-LABEL>
+                      <ad:ISSUED-BY>AUTOSAR</ad:ISSUED-BY>
+                    </ad:DOC-REVISION>
+                    <ad:DOC-REVISION>
+                      <ad:REVISION-LABEL>1.3.0</ad:REVISION-LABEL>
+                      <ad:ISSUED-BY>Elektrobit Automotive GmbH</ad:ISSUED-BY>
+                      <ad:DATE>2024-05-02T23:59:59Z</ad:DATE>
+                    </ad:DOC-REVISION>
+                  </ad:DOC-REVISIONS>
+                </ad:ADMIN-DATA>
+              </a:a>
+              <a:a name="DESC">
+                <a:v>EN:&lt;html&gt;
+                              Configuration of the BlPduR module.
+                        &lt;/html&gt;</a:v>
+              </a:a>
+              <a:a name="LOWER-MULTIPLICITY" value="1"/>
+              <a:a name="RELEASE" value="asc:4.0"/>
+              <a:a name="UPPER-MULTIPLICITY" value="1"/>
+              <a:a name="UUID" value="3d92ddc5-303e-4648-927e-0d2f27850c98"/>
+              <v:ctr name="PublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>EN:
+                    &lt;html&gt;
+                      Additional published parameters not covered by CommonPublishedInformation container.
+                  &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="EB Published Information"/>
+                <a:a name="TAB" value="EB Published Information"/>
+                <a:a name="UUID" 
+                     value="ECUC:cb4128ed-26c1-4ddd-906e-854bed917e07"/>
+                <v:var name="PbcfgMSupport" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Specifies whether or not the BlPduR can use the PbcfgM module for post-build support.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="PbcfgM support"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:eb61002e-69c0-4f16-a910-c27adb75f6ee"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="General" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>EN:&lt;html&gt;
+                              This container describes the general properties of the node.
+                          &lt;/html&gt;</a:v>
+                </a:a>
+                <v:var name="MANAGE_PERIOD" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>EN:&lt;html&gt;
+                              This entry allows to configure the period of the cyclic BlPduR task.
+                          &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="INVALID" type="Range" expr="&gt;=1"/>
+                </v:var>
+                <v:var name="Can_Protocol_Supported" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                            &lt;p&gt;This entry allows to specify if the CAN network shall be supported&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="true"/>
+                </v:var>
+                <v:var name="FlexRay_Protocol_Supported" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                            &lt;p&gt;This entry allows to specify if the FlexRay network shall be supported&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="Eth_Protocol_Supported" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                            &lt;p&gt;This entry allows to specify if the Ethernet network shall be supported&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="Lin_Protocol_Supported" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                            &lt;p&gt;This entry allows to specify if the LIN network shall be supported&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="QueuedManagement" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                &lt;p&gt;Specify if the Queued management feature is enable.&lt;/p&gt;
+                                &lt;p&gt;This feature allows the bootloader to be able to receive a second physical request before finishing processing the response to the first one.&lt;/p&gt;
+                                &lt;p&gt;The Bootloader shall store the second request in a FIFO queue for later processing.&lt;/p&gt;
+                                &lt;p&gt;Queued management is used to reduce download time and latency caused by the gateways.&lt;/p&gt;
+                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Queued Management"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="(node:exists(as:modconf(&apos;ProgVCC&apos;)))"/>
+                  <a:da name="INVALID" type="XPath" 
+                        expr="(as:modconf(&apos;BlPduR&apos;)/General/QueuedManagement = &apos;true&apos;) and (as:modconf(&apos;BlPduR&apos;)/General/MultipleRxBuffer = &apos;true&apos;)" 
+                        true="QueuedManagement and MultipleRxBuffer cannot be enabled at the same time."/>
+                </v:var>
+                <v:var name="MultipleRxBuffer" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                &lt;p&gt;Specify if the multiple receive buffer feature is enable&lt;/p&gt;
+                                &lt;p&gt;This feature allows supporting in parallel data reception and data flash writing.&lt;/p&gt;
+                                &lt;p&gt;Multiple receive buffers is used to improve global downloading time&lt;/p&gt;
+                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Multiple Receive Buffer"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="INVALID" type="XPath" 
+                        expr="(as:modconf(&apos;BlPduR&apos;)/General/QueuedManagement = &apos;true&apos;) and (as:modconf(&apos;BlPduR&apos;)/General/MultipleRxBuffer = &apos;true&apos;)" 
+                        true="QueuedManagement and MultipleRxBuffer cannot be enabled at the same time."/>
+                </v:var>
+                <v:var name="RxPhysicalBufferSize" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                            &lt;p&gt;Define the size of the Rx physical buffer in bytes&lt;/p&gt;
+                            &lt;p&gt;If the multiple buffer is enabled, all physical buffers will have this same size&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Rx Physical Buffer Size"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="4095"/>
+                  <a:da name="INVALID" type="Range" expr="&gt;=64"/>
+                </v:var>
+                <v:var name="RxFunctionalBufferSize" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                            &lt;p&gt;Define the size of the Rx functional buffer in bytes&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Rx Functional Buffer Size"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="8"/>
+                </v:var>
+                <v:var name="RxBufferNum" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                            &lt;p&gt;Define the number of Rx buffer usable in Reception when multiple receive buffer feature or queued management feature is activated&lt;/p&gt;
+                            &lt;p&gt;Maximum 4 buffers are allowed&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Rx Buffer Number"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="4"/>
+                  <a:da name="ENABLE" value="true"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=4"/>
+                    <a:tst expr="&gt;=2"/>
+                  </a:da>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="SleepManagement" type="IDENTIFIABLE">
+                <a:a name="LABEL" value="Sleep Management"/>
+                <a:da name="ENABLE" type="XPath" 
+                      expr="(node:exists(as:modconf(&apos;ProgVAG&apos;)) and (node:exists(as:modconf(&apos;Prog&apos;))) and (as:modconf(&apos;Prog&apos;)/General/Sleep_Management_NM_Message =&apos;true&apos;))"/>
+                <v:var name="Grouping_NM_Message" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                            &lt;p&gt;This entry allows to specify if the Pdu shall belong to a group&lt;/p&gt;
+                            &lt;p&gt;and must be filtered if its group is not selected&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" 
+                       value="NM Message will belong to a Pdu connection group"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="(as:modconf(&apos;BlPduR&apos;)/MultipleIdentifier/MultipleIdentifierGroup != &apos;OFF&apos;)"/>
+                </v:var>
+                <v:ref name="PduConnectionGroupRef" type="REFERENCE">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                              &lt;p&gt;Reference to the Pdu Connection where the NM message shall belong to&lt;/p&gt;
+                          &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Pdu connection group reference"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="(as:modconf(&apos;BlPduR&apos;)/SleepManagement/Grouping_NM_Message = &apos;true&apos;)"/>
+                  <a:da name="INVALID" type="XPath" expr="node:refvalid(.)" 
+                        false="Invalid reference."/>
+                  <a:da name="REF" 
+                        value="ASPathDataOfSchema:/AUTOSAR/BlPduR/PduConnection"/>
+                </v:ref>
+                <v:ref name="IDGroupPDURef" type="REFERENCE">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                              &lt;p&gt;Reference to the &lt;code&gt;PDU&lt;/code&gt; that will contain the information on which Connection Group shall be selected&lt;/p&gt;
+                              &lt;p&gt;This PDU shall also be referenced in the CanIf module of the communication stack&lt;/p&gt;
+                          &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="ID group PDU reference"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:da name="INVALID" type="XPath" expr="node:refvalid(.)" 
+                        false="Invalid reference."/>
+                  <a:da name="REF" 
+                        value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/EcuC/EcucPduCollection/Pdu"/>
+                </v:ref>
+                <v:var name="RxPduId" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>EN:&lt;html&gt;
+                                  This entry allows to configure the RxPduId that shall be used by BlPduR to transmit
+                                  diagnostic response&lt;br/&gt;
+                                  In case of NM Message this field is used to define the MsgIdx of the configured NM Message&lt;br/&gt;
+                              &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="0"/>
+                  <a:da name="INVALID" type="XPath">
+                    <a:tst expr="text:uniq(../../../../*/RxPdu/*/Id, .)" 
+                           false="RxPdu Identifier has to be unique."/>
+                    <a:tst 
+                           expr="node:isconsecutive(../../../../*/RxPdu/*/Id, 0)" 
+                           false="RxPdu Identifier shall be 0-based and consecutive."/>
+                  </a:da>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="MultipleIdentifier" type="IDENTIFIABLE">
+                <v:var name="MultipleIdentifierGroup" type="STRING">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                &lt;p&gt;Specify if the Multiple Identifier Group feature is enable&lt;/p&gt;
+                                &lt;p&gt;This feature allows supporting several connection group and enable only one of them at initialization&lt;/p&gt;
+                                &lt;p&gt;The connection can be selected from different source&lt;/p&gt;
+                                &lt;ul&gt;
+                                    &lt;li&gt;OFF: The feature is disabled&lt;/li&gt;
+                                    &lt;li&gt;CAN_NOTIFICATION: A CAN frame reception will notify which Identifier Group shall be selected&lt;/li&gt;
+                                    &lt;li&gt;EXTERNAL_NOTIFICATION: A callback function will be called at startup to retrieve the Identifier Group&lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Multiple Idenfier Group"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="OFF"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="node:exists(as:modconf(&apos;CanIf&apos;))"/>
+                  <a:da name="RANGE">
+                    <a:v>OFF</a:v>
+                    <a:v>CAN_NOTIFICATION</a:v>
+                    <a:v>EXTERNAL_NOTIFICATION</a:v>
+                  </a:da>
+                </v:var>
+                <v:var name="MultipleIdentifierSelectTimeout" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                &lt;p&gt;Specify The timeout (in ms) to select a default connection group&lt;/p&gt;
+                                &lt;p&gt;In case no connection has been chosen after this timeout the default connection group will be selected&lt;/p&gt;
+                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Multiple Idenfier Timeout"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="500"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="../MultipleIdentifierGroup = &apos;CAN_NOTIFICATION&apos;"/>
+                </v:var>
+                <v:ref name="IDGroupPDURef" type="REFERENCE">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                &lt;p&gt;Reference to the &lt;code&gt;PDU&lt;/code&gt; that will contain the information on which Connection Group shall be selected&lt;/p&gt;
+                                &lt;p&gt;This PDU shall as well be reference in the CanIf module of the communication stack&lt;/p&gt;
+                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="ID group PDU reference"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="../MultipleIdentifierGroup = &apos;CAN_NOTIFICATION&apos;"/>
+                  <a:da name="INVALID" type="XPath" expr="node:refvalid(.)" 
+                        false="Invalid reference."/>
+                  <a:da name="REF" 
+                        value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/EcuC/EcucPduCollection/Pdu"/>
+                </v:ref>
+                <v:var name="IDGroupPDUId" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                            &lt;p&gt;Defines the Pdu ID that will be used by PduR&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="ID group PDU Id"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="0"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="../MultipleIdentifierGroup = &apos;CAN_NOTIFICATION&apos;"/>
+                </v:var>
+                <v:var name="IDGroupByteNum" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                            &lt;p&gt;Defines the index of the byte that contain information regarding the group ID within the data received&lt;/p&gt;
+                            &lt;p&gt;The values allowed are between 0 (LSB) and 7 (MSB) of the received data&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="ID group Byte Number"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="0"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="../MultipleIdentifierGroup = &apos;CAN_NOTIFICATION&apos;"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&gt;=0"/>
+                    <a:tst expr="&lt;=7"/>
+                  </a:da>
+                </v:var>
+                <v:var name="RxPduId" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>EN:&lt;html&gt;
+                                      This entry allows to configure the RxPduId that shall be used by BlPduR to transmit
+                                      diagnostic response&lt;br/&gt;
+                                      In case of Lin connection this field is used to define the MsgIdx of the configured LTP message&lt;br/&gt;
+                                  &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="0"/>
+                  <a:da name="INVALID" type="XPath">
+                    <a:tst expr="text:uniq(../../../../*/RxPdu/*/Id, .)" 
+                           false="RxPdu Identifier has to be unique."/>
+                    <a:tst 
+                           expr="node:isconsecutive(../../../../*/RxPdu/*/Id, 0)" 
+                           false="RxPdu Identifier shall be 0-based and consecutive."/>
+                  </a:da>
+                </v:var>
+              </v:ctr>
+              <v:lst name="PduConnection" type="MAP">
+                <v:ctr name="PduConnection" type="IDENTIFIABLE">
+                  <a:a name="DESC">
+                    <a:v>EN:&lt;html&gt;
+                                Configuration of all the PduConnection&lt;br/&gt;
+                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <v:lst name="RxPdu" type="MAP">
+                    <v:ctr name="RxPdu" type="IDENTIFIABLE">
+                      <a:a name="DESC">
+                        <a:v>EN:&lt;html&gt;
+                                    Configuration of all the RxPdus references&lt;br/&gt;
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <v:ref name="Ref" type="REFERENCE">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                    &lt;p&gt;Reference to &lt;code&gt;Pdu&lt;/code&gt; from the &lt;code&gt;EcucPduCollection&lt;/code&gt;
+                                       configured for this Reception Channel.&lt;/p&gt;
+                                    &lt;p&gt;Through this reference, the &lt;code&gt;PduRouter&lt;/code&gt; can resolve the &lt;code&gt;PduId&lt;/code&gt;
+                                       used for Reception by  &lt;code&gt;BlPduR&lt;/code&gt; in the following APIs:&lt;/p&gt;
+                                    &lt;ul&gt;
+                                        &lt;li&gt;&lt;code&gt;BlPduR_StartOfReception()&lt;/code&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;code&gt;BlPduR_CopyRxData()&lt;/code&gt;&lt;/li&gt;
+                                        &lt;li&gt;&lt;code&gt;BlPduR_TpRxIndication()&lt;/code&gt;&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                  &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="LABEL" value="RxPdu Reference"/>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="UUID" 
+                             value="faf80d47-25fc-474a-9ba7-bb7b7069224f"/>
+                        <a:da name="ENABLE" type="XPath" 
+                              expr="../../../LinConnection = &apos;false&apos;"/>
+                        <a:da name="INVALID" type="XPath" 
+                              expr="node:refvalid(.)" false="Invalid reference."/>
+                        <a:da name="REF" 
+                              value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/EcuC/EcucPduCollection/Pdu"/>
+                      </v:ref>
+                      <v:var name="Type" type="STRING">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                      &lt;p&gt;This entry allows to specify which kind of RxPdu is used.&lt;/p&gt;
+                                      &lt;p&gt;Please select between :&lt;/p&gt;
+                                      &lt;ul&gt;
+                                        &lt;li&gt;PHYSICAL&lt;/li&gt;
+                                        &lt;li&gt;FUNCTIONAL&lt;/li&gt;
+                                      &lt;/ul&gt;
+                                    &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="EB"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:da name="DEFAULT" value="PHYSICAL"/>
+                        <a:da name="INVALID" type="XPath" 
+                              expr="../../../LinConnection = &apos;true&apos; and . = &apos;FUNCTIONAL&apos;" 
+                              true="Functional message are not supported in Lin network"/>
+                        <a:da name="RANGE">
+                          <a:v>PHYSICAL</a:v>
+                          <a:v>FUNCTIONAL</a:v>
+                        </a:da>
+                      </v:var>
+                      <v:var name="Id" type="INTEGER">
+                        <a:a name="DESC">
+                          <a:v>EN:&lt;html&gt;
+                                      This entry allows to configure the RxPduId that shall be used by BlPduR to transmit
+                                      diagnostic response&lt;br/&gt;
+                                      In case of Lin connection this field is used to define the MsgIdx of the configured LTP message&lt;br/&gt;
+                                  &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="EB"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:da name="DEFAULT" value="0"/>
+                        <a:da name="INVALID" type="XPath">
+                          <a:tst expr="text:uniq(../../../../*/RxPdu/*/Id, .)" 
+                                 false="RxPdu Identifier has to be unique."/>
+                          <a:tst 
+                                 expr="node:isconsecutive(../../../../*/RxPdu/*/Id, 0)" 
+                                 false="RxPdu Identifier shall be 0-based and consecutive."/>
+                        </a:da>
+                      </v:var>
+                    </v:ctr>
+                  </v:lst>
+                  <v:ref name="TxPduRef" type="REFERENCE">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                &lt;p&gt;Reference to the &lt;code&gt;Pdu&lt;/code&gt; in the &lt;code&gt;EcucPduCollection&lt;/code&gt;
+                                   configured for this Transmission Channel.&lt;/p&gt;
+                                &lt;p&gt;Through this reference, &lt;code&gt;BlPduR&lt;/code&gt; can resolve the &lt;code&gt;PduId&lt;/code&gt;
+                                   used for Transmission in the &lt;code&gt;PduR_BlPduRTransmit()&lt;/code&gt; API and defined by the
+                                   &lt;code&gt;PduR&lt;/code&gt;.&lt;/p&gt;
+                                &lt;p&gt;Through this reference, &lt;code&gt;PduRouter&lt;/code&gt; can resolve the &lt;code&gt;PduId&lt;/code&gt;
+                                   used for Transmission by in the following APIs:&lt;/p&gt;
+                                &lt;ul&gt;
+                                  &lt;li&gt;&lt;code&gt;BlPduR_CopyTxData()&lt;/code&gt;&lt;/li&gt;
+                                  &lt;li&gt;&lt;code&gt;BlPduR_TpTxConfirmation()&lt;/code&gt;&lt;/li&gt;
+                                &lt;/ul&gt;
+                                &lt;p&gt;and defined by the &lt;code&gt;BlPduR&lt;/code&gt; in &lt;code&gt;TxConfirmationPduId&lt;/code&gt;.&lt;/p&gt;
+                            &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" value="TxPdu Reference"/>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    <a:a name="UUID" 
+                         value="faf80d47-25fc-474a-9ba7-bb7b7069224f"/>
+                    <a:da name="ENABLE" type="XPath" 
+                          expr="../LinConnection = &apos;false&apos;"/>
+                    <a:da name="INVALID" type="XPath" expr="node:refvalid(.)" 
+                          false="Invalid reference."/>
+                    <a:da name="REF" 
+                          value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/EcuC/EcucPduCollection/Pdu"/>
+                  </v:ref>
+                  <v:var name="TxConfPduId" type="INTEGER">
+                    <a:a name="DESC">
+                      <a:v>EN:&lt;html&gt;
+                              This entry allows to configure the TxConfirmationPduId that shall be used by PduR to transmit
+                              Tx confirmation&lt;br/&gt;
+                              In case of Lin connection this field is used to define the MsgIdx of the configured LTP message&lt;br/&gt;
+                          &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" value="TxPdu Identifier"/>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="0"/>
+                    <a:da name="ENABLE" type="XPath" 
+                          expr="../LinConnection = &apos;false&apos;"/>
+                  </v:var>
+                  <v:var name="TesterAddress" type="INTEGER">
+                    <a:a name="COLUMN_TITLE" value="Tester Address"/>
+                    <a:a name="DEFAULT_RADIX" value="HEX"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                              &lt;p&gt;This defines the Tester Address used in source/target address of the current connection&lt;/p&gt;
+                          &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Tester Address"/>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="0"/>
+                    <a:da name="ENABLE" type="XPath" 
+                          expr="../LinConnection = &apos;false&apos;"/>
+                  </v:var>
+                  <v:var name="LinConnection" type="BOOLEAN">
+                    <a:a name="COLUMN_TITLE" value="Lin Connection"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                              &lt;p&gt;Defines if the connection is to managed Lin Pdu&lt;/p&gt;
+                              &lt;p&gt;If so the generation of this connection will be done differently&lt;/p&gt;
+                          &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Lin Connection"/>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="false"/>
+                    <a:da name="INVALID" type="XPath">
+                      <a:tst 
+                             expr="../../../General/Lin_Protocol_Supported = &apos;true&apos; and count(../../*[./LinConnection = &apos;true&apos;]) = &apos;0&apos;" 
+                             true="At least one Lin Connection shall be present in the configuration"/>
+                      <a:tst 
+                             expr="../../../General/Lin_Protocol_Supported = &apos;true&apos; and count(../../*[./LinConnection = &apos;true&apos;]) &gt; &apos;1&apos;" 
+                             true="Only one Lin Connection shall be selected"/>
+                    </a:da>
+                  </v:var>
+                  <v:var name="ShareFunctionalId" type="BOOLEAN">
+                    <a:a name="COLUMN_TITLE" value="Share Functional Id"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                              &lt;p&gt;Defines if this connection shall reuse an existing functional Id from another connection&lt;/p&gt;
+                          &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Share Functional Id"/>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="false"/>
+                  </v:var>
+                  <v:ref name="SharedPduReference" type="REFERENCE">
+                    <a:a name="COLUMN_TITLE" value="Shared Pdu Reference"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                              &lt;p&gt;Reference to the shared Pdu&lt;/p&gt;
+                          &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Shared Pdu Reference"/>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:da name="ENABLE" type="XPath" 
+                          expr="../ShareFunctionalId = &apos;true&apos;"/>
+                    <a:da name="REF" 
+                          value="ASPathDataOfSchema:/AUTOSAR/BlPduR/PduConnection/RxPdu"/>
+                  </v:ref>
+                </v:ctr>
+              </v:lst>
+              <v:lst name="IDGroup" type="MAP">
+                <a:a name="COLUMNS">
+                  <a:v>ConnectionRef</a:v>
+                  <a:v>Default</a:v>
+                  <a:v>ArchitectureId</a:v>
+                </a:a>
+                <a:da name="ENABLE" type="XPath" 
+                      expr="../MultipleIdentifier/MultipleIdentifierGroup != &apos;OFF&apos;"/>
+                <a:da name="MAX" value="4"/>
+                <v:ctr name="IDGroup" type="IDENTIFIABLE">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                            Configuration of all the connection ID Group&lt;br/&gt;
+                          &lt;/html&gt;</a:v>
+                  </a:a>
+                  <v:lst name="ConnectionReflist" type="MAP">
+                    <v:ctr name="ConnectionReflist" type="IDENTIFIABLE">
+                      <v:ref name="ConnectionRef" type="REFERENCE">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                        &lt;p&gt;Reference to the &lt;code&gt;connection&lt;/code&gt; that will be part of the used connection group&lt;/p&gt;
+                                    &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="LABEL" value="Connection reference"/>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:da name="INVALID" type="XPath" 
+                              expr="node:refvalid(.)" false="Invalid reference."/>
+                        <a:da name="REF" 
+                              value="ASPathDataOfSchema:/AUTOSAR/BlPduR/PduConnection"/>
+                      </v:ref>
+                    </v:ctr>
+                  </v:lst>
+                  <v:var name="Default" type="BOOLEAN">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Specify if this IDGroup is the default one&lt;/p&gt;
+                                    &lt;p&gt;Only one ID Group can be selected in the configuration&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Default ID group"/>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="false"/>
+                    <a:da name="INVALID" type="XPath">
+                      <a:tst expr="count(../../*[./Default = &apos;true&apos;]) = &apos;0&apos;" 
+                             true="At least one default ID group shall be selected"/>
+                      <a:tst expr="count(../../*[./Default = &apos;true&apos;]) &gt; &apos;1&apos;" 
+                             true="Only one default ID group shall be selected"/>
+                    </a:da>
+                  </v:var>
+                  <v:var name="ArchitectureId" type="INTEGER">
+                    <a:a name="DEFAULT_RADIX" value="HEX"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                              &lt;p&gt;This defines the Architecture Identification for this group&lt;/p&gt;
+                              &lt;p&gt;This value will be used to find the associated ID to choose link to the received ID in the architecture frame&lt;/p&gt;
+                          &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Architecture Id"/>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="4"/>
+                    <a:da name="ENABLE" type="XPath" 
+                          expr="../../../MultipleIdentifier/MultipleIdentifierGroup = &apos;CAN_NOTIFICATION&apos;"/>
+                    <a:da name="INVALID" type="Range">
+                      <a:tst expr="&gt;=0"/>
+                      <a:tst expr="&lt;=255"/>
+                    </a:da>
+                  </v:var>
+                </v:ctr>
+              </v:lst>
+              <v:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>EN:
+                    &lt;html&gt;
+                      Common container, aggregated by all modules. It contains published information about vendor and versions.
+                  &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="Common Published Information"/>
+                <a:a name="UUID" 
+                     value="ECUC:a00be3e0-8783-9123-2d52-1eb616737ca6"/>
+                <v:var name="ArMajorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Major version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Major Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:948f3f2e-f129-4bc5-b4e1-7a7bdb8599e1"/>
+                  <a:da name="DEFAULT" value="4"/>
+                </v:var>
+                <v:var name="ArMinorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Minor version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Minor Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:2893b920-59d5-4ac2-b2c1-e23742e66d70"/>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="ArPatchVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Patch level version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Patch Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:6428eb9b-8790-488a-b9a3-0fba52d0f59e"/>
+                  <a:da name="DEFAULT" value="3"/>
+                </v:var>
+                <v:var name="SwMajorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Major version number of the vendor specific implementation of the module.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Major Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:605b18ae-3f9a-41d4-9225-67c9c5f6fc34"/>
+                  <a:da name="DEFAULT" value="1"/>
+                </v:var>
+                <v:var name="SwMinorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Minor version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Minor Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a7fe44dc-ea25-4b8d-8fad-9fbcae86d56f"/>
+                  <a:da name="DEFAULT" value="3"/>
+                </v:var>
+                <v:var name="SwPatchVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Patch Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a318d2d9-0e75-49da-ac43-e7e4e682e2f9"/>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="ModuleId" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Module ID of this module from Module List
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Numeric Module ID"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:78bc8362-080f-4253-b3da-804ab69a7154"/>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="VendorId" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Vendor ID"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:01b0f467-6943-4558-b4f2-3fa1fad28449"/>
+                  <a:da name="DEFAULT" value="1"/>
+                </v:var>
+                <v:var name="Release" type="STRING_LABEL">
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Release Information"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:1c68a547-f24e-4a4e-9540-69fbd533ec89"/>
+                  <a:da name="DEFAULT" value=""/>
+                </v:var>
+              </v:ctr>
+            </v:ctr>
+          </d:chc>
+          <d:chc name="myEcuParameterDefinition" type="AR-ELEMENT" 
+                 value="ECU_PARAMETER_DEFINITION">
+            <d:ctr type="AR-ELEMENT">
+              <a:a name="DEF" 
+                   value="ASPath:/AR_PACKAGE_SCHEMA/ECU_PARAMETER_DEFINITION"/>
+              <d:lst name="MODULE_REF">
+                <d:ref type="MODULE_REF" value="ASPath:/TS_TxDxM1I3R0/BlPduR"/>
+              </d:lst>
+            </d:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+
+</datamodel>

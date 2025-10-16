@@ -1,0 +1,146 @@
+########### CORE PART OF THE TEMPLATE - START ###########
+## !LINKSTO Generator.Output.os_config_h, 2
+#parse("include/Os_config.h.vm")
+########### CORE PART OF THE TEMPLATE - END #############
+########### TARGET PART OF THE TEMPLATE - START ###########
+########### Arch specific velocimacros that can be called from the common code parts ###########
+#macro( VM_ArchOsApplication $app )
+## !LINKSTO Generator.Output.os_config_h.Applications.APPCONFIG.archapp, 2
+#* *#    OS_ARCHAPP_INIT(  \
+#* *##if( $OsGenerator.needMakeMemoryRegionSizes() )
+#*   *##if( $app.getOwningApplication() != $OsModel.getDefaultSystemApp() && !$app.getOwningApplication().isTrusted() )
+#*     *#      /* size of the application data region for MPU */                   OS_ARC_MPU_$app.getMpuSizeData()  \
+#*   *##else
+#*     *#      /* size of the application data region for MPU */                   OS_ARC_MPU_SIZE_DISABLED  \
+#*   *##end
+#* *##else
+#*     *#      /* size of the application data region for MPU */                   0  \
+#* *##end
+#* *#    )  \
+#end
+##
+##
+#macro( VM_ArchOsConfigDataInit $coreId )
+#* *#  {  /* arch_kerneldata$coreId */  \
+#* *#     /* currentKernelStackBase */       OS_GetInitialStackPointer(OS_ISTACKBASE_$coreId, OS_ISTACKLEN_$coreId),  \
+#* *#     /* saved CatK priority level */    0xffffffffu,  \
+#* *##if( $ArchProperties.isTrapping() )
+#*   *#     /* currentUserSTATUS32 */          0  \
+#* *##end
+#* *#  },  \
+#end
+##
+##
+#macro( VM_ArchOsConfigInterruptInit )
+#end
+##
+##
+#macro( VM_ArchOsConfigTimestampInit )
+#end
+##
+##
+#macro( VM_ArchOsInterruptInit $interrupt )
+## !LINKSTO Generator.Output.os_config_h.Interrupts.ISRCONFIG.arch, 1
+#* *#    OS_ARCHISR_INIT(  \
+#* *##set( $owningApp = $interrupt.getOwningApplication() )
+#* *##set( $coreId = $owningApp.getPhyCoreAssignment() )
+#* *#      /* Stack base */                                                 $AllInterruptsList.getStack($coreId).getStackBase($interrupt),  \
+#* *#      /* ISR source */                                                 $interrupt.getVectorNumber(),  \
+#* *##if( !$interrupt.getCategory().toString().equals("1") && !$interrupt.getCategory().toString().equals("2") )
+#*   *#      /* ISR priority (Cat K) */                                       $interrupt.getCalcPriority(),  \
+#* *##else
+#*   *#      /* ISR priority */                                               $interrupt.getCalcPriority(),  \
+#* *##end
+#* *#      /* interrupt trigger mode */                                     $interrupt.getTriggerModeForVtl(),  \
+#* *##if( ($owningApp != $OsModel.getDefaultSystemApp()) && !$owningApp.isTrusted() )
+#*   *#      /* size of the private data region for MPU */                    OS_ARC_MPU_$interrupt.getMpuSizeData(),  \
+#*   *#      /* size of the isr stack for MPU */                              OS_ARC_MPU_$ArchProperties.getMpuMemorySize($interrupt.getStackSize())  \
+#* *##else
+#*   *#      /* size of the private data region for MPU */                    OS_ARC_MPU_SIZE_DISABLED,  \
+#*   *#      /* size of the isr stack for MPU */                              OS_ARC_MPU_SIZE_DISABLED  \
+#* *##end
+#* *#    )  \
+#end
+##
+##
+#macro( VM_ArchOsHwTimerInit $timer )
+#end
+##
+##
+#macro( VM_ArchOsTaskInit $task )
+## !LINKSTO Generator.Output.os_config_h.Tasks.TASKCONFIG.arch, 1
+    OS_ARCHTASK_INIT(  \
+#* *##if( $OsGenerator.needMakeMemoryRegionSizes() )
+#*   *##if( !$task.getOwningApplication().isAPP_SYSTEM() && !$task.getOwningApplication().isTrusted() )
+#*     *#      /* size of the private data region for MPU*/                    OS_ARC_MPU_$task.getMpuSizeData(),  \
+#*     *#      /* size of the task stack for MPU*/                             OS_ARC_MPU_$ArchProperties.getMpuMemorySize($task.getAutocoreStackSize())  \
+#*   *##else
+#*     *#      /* size of the private data region for MPU*/                    OS_ARC_MPU_SIZE_DISABLED,  \
+#*     *#      /* size of the task stack for MPU*/                             OS_ARC_MPU_SIZE_DISABLED  \
+#*   *##end
+#* *##else
+#*     *#      /* size of the private data region for MPU*/                    0,  \
+#*     *#      /* size of the task stack for MPU*/                             0  \
+#* *##end
+    )  \
+#end
+
+/*===================================================================
+ * ARC memory protection: Sizes of global memory regions
+ *==================================================================*/
+#if( $OsGenerator.needMakeMemoryRegionSizes() )
+#* *#\#define OS_ARC_MPU_GLOBAL_TEXT_SIZE   OS_ARC_MPU_$OsConfig.getGlobalTextRegionSize()
+#* *#\#define OS_ARC_MPU_GLOBAL_CONST_SIZE  OS_ARC_MPU_$OsConfig.getGlobalConstRegionSize()
+#* *#\#define OS_ARC_MPU_GLOBAL_DATA_SIZE   OS_ARC_MPU_$OsConfig.getGlobalDataRegionSize()
+#* *#\#define OS_ARC_MPU_SHOOK_SIZE         OS_ARC_MPU_$ArchProperties.getMpuMemorySize($AllApplicationsList.getSHooksStackSize())
+#* *#\#define OS_ARC_MPU_EHOOK_SIZE         OS_ARC_MPU_$ArchProperties.getMpuMemorySize($AllApplicationsList.getEHooksStackSize())
+#end
+
+/*===================================================================
+ * ARC Interrupts
+ *==================================================================*/
+## !LINKSTO Generator.Output.os_config_h.Interrupts.Vectors, 1
+#foreach( $interrupt in $AllInterruptsList )
+#* *##set( $phyCoreId   = $interrupt.getOwningApplication().getPhyCoreAssignment() )
+#* *##set( $vectorNumHex = $ClassOfHelpers.toHexString(2, $interrupt.getVectorNumber()) )
+#* *##set( $srcPrefix    = "OS_SRC${vectorNumHex}_C${phyCoreId}" )
+#* *#\#define ${srcPrefix}_NAME                      _OS_VECTOR_$interrupt.getVector()
+#* *#\#define ${srcPrefix}_ISRID                     $interrupt.getName()
+#* *##if( $interrupt.getCategory().toString().equals("1") && $OsOptimize.isCat1DirectCall() )
+#*   *##if(( $interrupt.getCalcPriority() == 0 ) && ($interrupt.getFiqSupport() == true))
+#*     *#\#define ${srcPrefix}_INTTYPE                   _CAT1DIRECT_FAST
+#*   *##else
+#*     *#\#define ${srcPrefix}_INTTYPE                   _CAT1DIRECT_NORM
+#*   *##end
+#* *##else
+#*   *##if(( $interrupt.getCalcPriority() == 0 ) && ($interrupt.getFiqSupport() == true))
+#*     *#\#define ${srcPrefix}_INTTYPE                   _FAST
+#*   *##else
+#*     *#\#define ${srcPrefix}_INTTYPE                   _NORM
+#*   *##end
+#* *##end
+#* *#\#define ${srcPrefix}_HWPRIO                    $interrupt.getCalcPriority()
+## !LINKSTO Generator.Output.os_config_h.Interrupts.Vectors.EntryFunction, 1
+#* *##if( $interrupt.getCategory().toString().equals("1") && $OsOptimize.isCat1DirectCall() )
+#*   *#\#define ${srcPrefix}_ENTRY                     $interrupt.getIsrFuncName()
+#* *##elseif( $interrupt.getCategory().toString().equals("K") )
+#*   *#\#define ${srcPrefix}_ENTRY                     OS_ARC_CatKEntry
+#* *##else
+#*   *#\#define ${srcPrefix}_ENTRY                     OS_Cat$interrupt.getCategory().toString()Entry
+#* *##end
+#* *##if( $interrupt.getCategory().toString().equals("1") )
+#*   *#\#define ${srcPrefix}_EXIT                      OS_ARC_Cat1Exit
+#* *##else
+#*   *#\#define ${srcPrefix}_EXIT                      OS_ARC_Cat2Exit
+#* *##end
+#* *##if( $interrupt.getCategory().toString().equals("1") )
+#*   *#\#define ${srcPrefix}_LOCKLEVEL                 $interrupt.getCalcPriority()
+#* *##else
+#*   *#\#define ${srcPrefix}_LOCKLEVEL                 OS_KERNLOCK
+#* *##end
+#end
+
+#ifdef __cplusplus
+}
+#endif
+#endif  /* OS_CONFIG_H */

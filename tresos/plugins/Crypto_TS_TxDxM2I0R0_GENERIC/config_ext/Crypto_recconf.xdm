@@ -1,0 +1,320 @@
+<?xml version="1.0"?>
+<datamodel version="5.0"
+           xmlns="http://www.tresos.de/_projects/DataModel2/12/root.xsd"
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/12/attribute.xsd"
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd"
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd">
+  <d:ctr factory="autosar"
+         type="AUTOSAR"
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd"
+         xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd"
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd"
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd"
+         xmlns:variant="http://www.tresos.de/_projects/DataModel2/11/variant.xsd">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="TS_TxDxM2I0R0_GENERIC" type="AR-PACKAGE">
+        <d:lst type="ELEMENTS">
+          <!-- !LINKSTO EB_Crypto_01011,1 -->
+          <d:chc name="Crypto_recconf" type="AR-ELEMENT" value="MODULE-CONFIGURATION">
+            <d:ctr type="MODULE-CONFIGURATION">
+
+              <a:a name="DEF" value="ASPath:/TS_TxDxM2I0R0_GENERIC/Crypto"/>
+              <d:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION" value="VariantPreCompile"/>
+              <d:ctr name="PublishedInformation" type="IDENTIFIABLE">
+                <d:var name="PbcfgMSupport" type="BOOLEAN" value="false"/>
+              </d:ctr>
+
+              <d:ctr name="CryptoGeneral" type="IDENTIFIABLE">
+                <d:var name="CryptoDevErrorDetect" type="BOOLEAN" value="true"/>
+                <d:var name="CryptoDetRuntimeChecks" type="BOOLEAN" value="true"/>
+                <d:var name="CryptoVersionInfoApi" type="BOOLEAN" value="true"/>
+                <d:var name="CryptoInstanceId"     type="INTEGER" value="0"/>
+              </d:ctr>
+
+              <d:ctr name="CryptoDriverObjects" type="IDENTIFIABLE">
+                <d:lst name="CryptoDriverObject" type="MAP">
+                  <d:ctr name="CryptoDriverObject_CDO1" type="IDENTIFIABLE">
+                    <d:var name="CryptoDriverObjectId" type="INTEGER" value="0"/>
+                  </d:ctr>
+                </d:lst>
+              </d:ctr>
+
+              <d:ctr name="CryptoKeyElements" type="IDENTIFIABLE">
+                <d:lst name="CryptoKeyElement" type="MAP">
+                  <!-- !LINKSTO EB_Crypto_01012,1 -->
+
+                  <!-- ~~~ Service Cipher/AEAD ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                  <d:ctr name="CryptoKeyElement_CRYPTO_KE_CIPHER_KEY" type="IDENTIFIABLE">
+                    <d:var name="CryptoKeyElementSize"               type="INTEGER"     value="16"/>
+                    <d:var name="CryptoKeyElementPersist"            type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementAllowPartialAccess" type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementReadAccess"         type="ENUMERATION" value="CRYPTO_RA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementWriteAccess"        type="ENUMERATION" value="CRYPTO_WA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementFormat"             type="ENUMERATION" value="CRYPTO_KE_FORMAT_BIN_OCTET"/>
+                  </d:ctr>
+                  <d:ctr name="CryptoKeyElement_CRYPTO_KE_CIPHER_IV" type="IDENTIFIABLE">
+                    <d:var name="CryptoKeyElementSize"               type="INTEGER"     value="16"/>
+                    <d:var name="CryptoKeyElementPersist"            type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementAllowPartialAccess" type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementReadAccess"         type="ENUMERATION" value="CRYPTO_RA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementWriteAccess"        type="ENUMERATION" value="CRYPTO_WA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementFormat"             type="ENUMERATION" value="CRYPTO_KE_FORMAT_BIN_OCTET"/>
+                  </d:ctr>
+                  <d:ctr name="CryptoKeyElement_CRYPTO_KE_CIPHER_PROOF" type="IDENTIFIABLE">
+                    <d:var name="CryptoKeyElementSize"               type="INTEGER"     value="16"/>
+                    <d:var name="CryptoKeyElementPersist"            type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementAllowPartialAccess" type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementReadAccess"         type="ENUMERATION" value="CRYPTO_RA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementWriteAccess"        type="ENUMERATION" value="CRYPTO_WA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementFormat"             type="ENUMERATION" value="CRYPTO_KE_FORMAT_BIN_OCTET"/>
+                  </d:ctr>
+                  <d:ctr name="CryptoKeyElement_CRYPTO_KE_CIPHER_2NDKEY" type="IDENTIFIABLE">
+                    <d:var name="CryptoKeyElementSize"               type="INTEGER"     value="16"/>
+                    <d:var name="CryptoKeyElementPersist"            type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementAllowPartialAccess" type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementReadAccess"         type="ENUMERATION" value="CRYPTO_RA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementWriteAccess"        type="ENUMERATION" value="CRYPTO_WA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementFormat"             type="ENUMERATION" value="CRYPTO_KE_FORMAT_BIN_OCTET"/>
+                  </d:ctr>
+
+                  <d:ctr name="CryptoKeyElement_CRYPTO_XVIX_XAIX_KE_CCM_MAC_LEN" type="IDENTIFIABLE">
+                    <d:var name="CryptoKeyElementSize"               type="INTEGER"     value="1"/>
+                    <d:var name="CryptoKeyElementPersist"            type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementAllowPartialAccess" type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementReadAccess"         type="ENUMERATION" value="CRYPTO_RA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementWriteAccess"        type="ENUMERATION" value="CRYPTO_WA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementFormat"             type="ENUMERATION" value="CRYPTO_KE_FORMAT_BIN_OCTET"/>
+                  </d:ctr>
+
+
+                  <!-- ~~~ Service MAC ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                  <d:ctr name="CryptoKeyElement_CRYPTO_KE_MAC_KEY" type="IDENTIFIABLE">
+                    <d:var name="CryptoKeyElementSize"               type="INTEGER"     value="16"/>
+                    <d:var name="CryptoKeyElementPersist"            type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementAllowPartialAccess" type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementReadAccess"         type="ENUMERATION" value="CRYPTO_RA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementWriteAccess"        type="ENUMERATION" value="CRYPTO_WA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementFormat"             type="ENUMERATION" value="CRYPTO_KE_FORMAT_BIN_OCTET"/>
+                  </d:ctr>
+                  <d:ctr name="CryptoKeyElement_CRYPTO_KE_MAC_PROOF" type="IDENTIFIABLE">
+                    <d:var name="CryptoKeyElementSize"               type="INTEGER"     value="16"/>
+                    <d:var name="CryptoKeyElementPersist"            type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementAllowPartialAccess" type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementReadAccess"         type="ENUMERATION" value="CRYPTO_RA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementWriteAccess"        type="ENUMERATION" value="CRYPTO_WA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementFormat"             type="ENUMERATION" value="CRYPTO_KE_FORMAT_BIN_OCTET"/>
+                  </d:ctr>
+
+                  <!-- ~~~ Service Signature ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                  <d:ctr name="CryptoKeyElement_CRYPTO_KE_SIGNATURE_KEY" type="IDENTIFIABLE">
+                    <d:var name="CryptoKeyElementSize"               type="INTEGER"     value="32"/>
+                    <d:var name="CryptoKeyElementPersist"            type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementAllowPartialAccess" type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementReadAccess"         type="ENUMERATION" value="CRYPTO_RA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementWriteAccess"        type="ENUMERATION" value="CRYPTO_WA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementFormat"             type="ENUMERATION" value="CRYPTO_KE_FORMAT_BIN_OCTET"/>
+                  </d:ctr>
+
+                  <d:ctr name="CryptoKeyElement_CRYPTO_KE_SIGNATURE_CURVETYPE" type="IDENTIFIABLE">
+                    <d:var name="CryptoKeyElementSize"               type="INTEGER"     value="32"/>
+                    <d:var name="CryptoKeyElementPersist"            type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementAllowPartialAccess" type="BOOLEAN"     value="true"/>
+                    <d:var name="CryptoKeyElementReadAccess"         type="ENUMERATION" value="CRYPTO_RA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementWriteAccess"        type="ENUMERATION" value="CRYPTO_WA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementFormat"             type="ENUMERATION" value="CRYPTO_KE_FORMAT_BIN_OCTET"/>
+                  </d:ctr>
+
+                  <!-- ~~~ Service Random ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                  <d:ctr name="CryptoKeyElement_CRYPTO_KE_RANDOM_SEED_STATE" type="IDENTIFIABLE">
+                    <d:var name="CryptoKeyElementId"                 type="INTEGER"     value="3"/>
+                    <d:var name="CryptoKeyElementSize"               type="INTEGER"     value="16"/>
+                    <d:var name="CryptoKeyElementPersist"            type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementAllowPartialAccess" type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementReadAccess"         type="ENUMERATION" value="CRYPTO_RA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementWriteAccess"        type="ENUMERATION" value="CRYPTO_WA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementFormat"             type="ENUMERATION" value="CRYPTO_KE_FORMAT_BIN_OCTET"/>
+                  </d:ctr>
+                  <d:ctr name="CryptoKeyElement_CRYPTO_KE_RANDOM_ALGORITHM" type="IDENTIFIABLE">
+                    <d:var name="CryptoKeyElementSize"               type="INTEGER"     value="2"/>
+                    <d:var name="CryptoKeyElementPersist"            type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementAllowPartialAccess" type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementReadAccess"         type="ENUMERATION" value="CRYPTO_RA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementWriteAccess"        type="ENUMERATION" value="CRYPTO_WA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementFormat"             type="ENUMERATION" value="CRYPTO_KE_FORMAT_BIN_OCTET"/>
+                  </d:ctr>
+
+                  <!-- ~~~ Service Key Exchange ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                  <d:ctr name="CryptoKeyElement_CRYPTO_KE_KEYEXCHANGE_BASE" type="IDENTIFIABLE">
+                    <d:var name="CryptoKeyElementSize"               type="INTEGER"     value="32"/>
+                    <d:var name="CryptoKeyElementPersist"            type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementAllowPartialAccess" type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementReadAccess"         type="ENUMERATION" value="CRYPTO_RA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementWriteAccess"        type="ENUMERATION" value="CRYPTO_WA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementFormat"             type="ENUMERATION" value="CRYPTO_KE_FORMAT_BIN_OCTET"/>
+                  </d:ctr>
+                  <d:ctr name="CryptoKeyElement_CRYPTO_KE_KEYEXCHANGE_PRIVKEY" type="IDENTIFIABLE">
+                    <d:var name="CryptoKeyElementSize"               type="INTEGER"     value="32"/>
+                    <d:var name="CryptoKeyElementPersist"            type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementAllowPartialAccess" type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementReadAccess"         type="ENUMERATION" value="CRYPTO_RA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementWriteAccess"        type="ENUMERATION" value="CRYPTO_WA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementFormat"             type="ENUMERATION" value="CRYPTO_KE_FORMAT_BIN_OCTET"/>
+                  </d:ctr>
+                  <d:ctr name="CryptoKeyElement_CRYPTO_KE_KEYEXCHANGE_OWNPUBKEY" type="IDENTIFIABLE">
+                    <d:var name="CryptoKeyElementSize"               type="INTEGER"     value="32"/>
+                    <d:var name="CryptoKeyElementPersist"            type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementAllowPartialAccess" type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementReadAccess"         type="ENUMERATION" value="CRYPTO_RA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementWriteAccess"        type="ENUMERATION" value="CRYPTO_WA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementFormat"             type="ENUMERATION" value="CRYPTO_KE_FORMAT_BIN_OCTET"/>
+                  </d:ctr>
+                  <d:ctr name="CryptoKeyElement_CYRPTO_KE_KEYEXCHANGE_SHAREDVALUE" type="IDENTIFIABLE">
+                    <d:var name="CryptoKeyElementSize"               type="INTEGER"     value="32"/>
+                    <d:var name="CryptoKeyElementPersist"            type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementAllowPartialAccess" type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementReadAccess"         type="ENUMERATION" value="CRYPTO_RA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementWriteAccess"        type="ENUMERATION" value="CRYPTO_WA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementFormat"             type="ENUMERATION" value="CRYPTO_KE_FORMAT_BIN_OCTET"/>
+                  </d:ctr>
+                  <d:ctr name="CryptoKeyElement_CRYPTO_KE_KEYEXCHANGE_ALGORITHM" type="IDENTIFIABLE">
+                    <d:var name="CryptoKeyElementSize"               type="INTEGER"     value="2"/>
+                    <d:var name="CryptoKeyElementPersist"            type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementAllowPartialAccess" type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementReadAccess"         type="ENUMERATION" value="CRYPTO_RA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementWriteAccess"        type="ENUMERATION" value="CRYPTO_WA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementFormat"             type="ENUMERATION" value="CRYPTO_KE_FORMAT_BIN_OCTET"/>
+                  </d:ctr>
+
+                  <!-- ~~~ Service Key Derivation ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                  <d:ctr name="CryptoKeyElement_CRYPTO_KE_KEYDERIVATION_PASSWORD" type="IDENTIFIABLE">
+                    <d:var name="CryptoKeyElementSize"               type="INTEGER"     value="32"/>
+                    <d:var name="CryptoKeyElementPersist"            type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementAllowPartialAccess" type="BOOLEAN"     value="true"/>
+                    <d:var name="CryptoKeyElementReadAccess"         type="ENUMERATION" value="CRYPTO_RA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementWriteAccess"        type="ENUMERATION" value="CRYPTO_WA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementFormat"             type="ENUMERATION" value="CRYPTO_KE_FORMAT_BIN_OCTET"/>
+                  </d:ctr>
+                  <d:ctr name="CryptoKeyElement_CRYPTO_KE_KEYDERIVATION_SALT" type="IDENTIFIABLE">
+                    <d:var name="CryptoKeyElementSize"               type="INTEGER"     value="32"/>
+                    <d:var name="CryptoKeyElementPersist"            type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementAllowPartialAccess" type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementReadAccess"         type="ENUMERATION" value="CRYPTO_RA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementWriteAccess"        type="ENUMERATION" value="CRYPTO_WA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementFormat"             type="ENUMERATION" value="CRYPTO_KE_FORMAT_BIN_OCTET"/>
+                  </d:ctr>
+                  <d:ctr name="CryptoKeyElement_CRYPTO_KE_KEYDERIVATION_ITERATIONS" type="IDENTIFIABLE">
+                    <d:var name="CryptoKeyElementSize"               type="INTEGER"     value="32"/>
+                    <d:var name="CryptoKeyElementPersist"            type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementAllowPartialAccess" type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementReadAccess"         type="ENUMERATION" value="CRYPTO_RA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementWriteAccess"        type="ENUMERATION" value="CRYPTO_WA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementFormat"             type="ENUMERATION" value="CRYPTO_KE_FORMAT_BIN_OCTET"/>
+                  </d:ctr>
+                  <d:ctr name="CryptoKeyElement_CRYPTO_KE_KEYDERIVATION_ALGORITHM" type="IDENTIFIABLE">
+                    <d:var name="CryptoKeyElementSize"               type="INTEGER"     value="2"/>
+                    <d:var name="CryptoKeyElementPersist"            type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementAllowPartialAccess" type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementReadAccess"         type="ENUMERATION" value="CRYPTO_RA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementWriteAccess"        type="ENUMERATION" value="CRYPTO_WA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementFormat"             type="ENUMERATION" value="CRYPTO_KE_FORMAT_BIN_OCTET"/>
+                  </d:ctr>
+
+                  <d:ctr name="CryptoKeyElement_CRYPTO_XVIX_XAIX_KE_KEYDERIVATION_FIXEDINFOID" type="IDENTIFIABLE">
+                    <d:var name="CryptoKeyElementSize"               type="INTEGER"     value="32"/>
+                    <d:var name="CryptoKeyElementPersist"            type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementAllowPartialAccess" type="BOOLEAN"     value="true"/>
+                    <d:var name="CryptoKeyElementReadAccess"         type="ENUMERATION" value="CRYPTO_RA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementWriteAccess"        type="ENUMERATION" value="CRYPTO_WA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementFormat"             type="ENUMERATION" value="CRYPTO_KE_FORMAT_BIN_OCTET"/>
+                  </d:ctr>
+                  <d:ctr name="CryptoKeyElement_CRYPTO_XVIX_XAIX_INT_KMN_KEYDERIVE_SINGLESTEPKDF_NOTSET_KEYTARGETID" type="IDENTIFIABLE">
+                    <d:var name="CryptoKeyElementSize"               type="INTEGER"     value="64"/>
+                    <d:var name="CryptoKeyElementPersist"            type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementAllowPartialAccess" type="BOOLEAN"     value="true"/>
+                    <d:var name="CryptoKeyElementReadAccess"         type="ENUMERATION" value="CRYPTO_RA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementWriteAccess"        type="ENUMERATION" value="CRYPTO_WA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementFormat"             type="ENUMERATION" value="CRYPTO_KE_FORMAT_BIN_OCTET"/>
+                  </d:ctr>
+
+                  <!-- ~~~ Service Key Generate ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                  <d:ctr name="CryptoKeyElement_CRYPTO_KE_KEYGENERATE_KEY" type="IDENTIFIABLE">
+                    <d:var name="CryptoKeyElementSize"               type="INTEGER"     value="32"/>
+                    <d:var name="CryptoKeyElementPersist"            type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementAllowPartialAccess" type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementReadAccess"         type="ENUMERATION" value="CRYPTO_RA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementWriteAccess"        type="ENUMERATION" value="CRYPTO_WA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementFormat"             type="ENUMERATION" value="CRYPTO_KE_FORMAT_BIN_OCTET"/>
+                  </d:ctr>
+                  <d:ctr name="CryptoKeyElement_CRYPTO_KE_KEYGENERATE_SEED" type="IDENTIFIABLE">
+                    <d:var name="CryptoKeyElementSize"               type="INTEGER"     value="32"/>
+                    <d:var name="CryptoKeyElementPersist"            type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementAllowPartialAccess" type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementReadAccess"         type="ENUMERATION" value="CRYPTO_RA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementWriteAccess"        type="ENUMERATION" value="CRYPTO_WA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementFormat"             type="ENUMERATION" value="CRYPTO_KE_FORMAT_BIN_OCTET"/>
+                  </d:ctr>
+                  <d:ctr name="CryptoKeyElement_CRYPTO_KE_KEYGENERATE_ALGORITHM" type="IDENTIFIABLE">
+                    <d:var name="CryptoKeyElementSize"               type="INTEGER"     value="2"/>
+                    <d:var name="CryptoKeyElementPersist"            type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementAllowPartialAccess" type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementReadAccess"         type="ENUMERATION" value="CRYPTO_RA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementWriteAccess"        type="ENUMERATION" value="CRYPTO_WA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementFormat"             type="ENUMERATION" value="CRYPTO_KE_FORMAT_BIN_OCTET"/>
+                  </d:ctr>
+
+                  <!-- ~~~ Vendor specific key elements ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                  <d:ctr name="CryptoKeyElement_CRYPTO_KE_AES_EXPANDEDKEY" type="IDENTIFIABLE">
+                    <d:var name="CryptoKeyElementSize"               type="INTEGER"     value="240"/>
+                    <d:var name="CryptoKeyElementPersist"            type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementAllowPartialAccess" type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementReadAccess"         type="ENUMERATION" value="CRYPTO_RA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementWriteAccess"        type="ENUMERATION" value="CRYPTO_WA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementFormat"             type="ENUMERATION" value="CRYPTO_KE_FORMAT_BIN_OCTET"/>
+                  </d:ctr>
+                  <d:ctr name="CryptoKeyElement_CRYPTO_KE_CMAC_K1" type="IDENTIFIABLE">
+                    <d:var name="CryptoKeyElementSize"               type="INTEGER"     value="16"/>
+                    <d:var name="CryptoKeyElementPersist"            type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementAllowPartialAccess" type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementReadAccess"         type="ENUMERATION" value="CRYPTO_RA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementWriteAccess"        type="ENUMERATION" value="CRYPTO_WA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementFormat"             type="ENUMERATION" value="CRYPTO_KE_FORMAT_BIN_OCTET"/>
+                  </d:ctr>
+                  <d:ctr name="CryptoKeyElement_CRYPTO_KE_CMAC_K2" type="IDENTIFIABLE">
+                    <d:var name="CryptoKeyElementSize"               type="INTEGER"     value="16"/>
+                    <d:var name="CryptoKeyElementPersist"            type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementAllowPartialAccess" type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementReadAccess"         type="ENUMERATION" value="CRYPTO_RA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementWriteAccess"        type="ENUMERATION" value="CRYPTO_WA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementFormat"             type="ENUMERATION" value="CRYPTO_KE_FORMAT_BIN_OCTET"/>
+                  </d:ctr>
+                  <d:ctr name="CryptoKeyElement_CRYPTO_KE_RSA_BARRETT" type="IDENTIFIABLE">
+                    <d:var name="CryptoKeyElementSize"               type="INTEGER"     value="1"/>
+                    <d:var name="CryptoKeyElementPersist"            type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementAllowPartialAccess" type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementReadAccess"         type="ENUMERATION" value="CRYPTO_RA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementWriteAccess"        type="ENUMERATION" value="CRYPTO_WA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementFormat"             type="ENUMERATION" value="CRYPTO_KE_FORMAT_BIN_OCTET"/>
+                  </d:ctr>
+                  <d:ctr name="CryptoKeyElement_CRYPTO_KE_KMNCOMMON_WORKSPACE" type="IDENTIFIABLE">
+                    <d:var name="CryptoKeyElementSize"               type="INTEGER"     value="408"/>
+                    <d:var name="CryptoKeyElementPersist"            type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementAllowPartialAccess" type="BOOLEAN"     value="false"/>
+                    <d:var name="CryptoKeyElementReadAccess"         type="ENUMERATION" value="CRYPTO_RA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementWriteAccess"        type="ENUMERATION" value="CRYPTO_WA_ALLOWED"/>
+                    <d:var name="CryptoKeyElementFormat"             type="ENUMERATION" value="CRYPTO_KE_FORMAT_BIN_OCTET"/>
+                  </d:ctr>
+
+                  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                </d:lst>
+              </d:ctr>
+              <d:ctr name="CryptoKeyTypes" type="IDENTIFIABLE">
+                <d:lst name="CryptoKeyType" type="MAP">
+                </d:lst>
+              </d:ctr>
+            </d:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+</datamodel>

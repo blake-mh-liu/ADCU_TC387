@@ -1,0 +1,2358 @@
+<?xml version='1.0'?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-0-3.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>TS_TxDxM2I6R0</SHORT-NAME>
+      <ELEMENTS>
+        <ECUC-MODULE-DEF UUID="505e4f69-8af3-4e02-8b8b-4f78165ec8dd">
+          <SHORT-NAME>Cry</SHORT-NAME>
+          <DESC>
+            <L-2 L="EN">Configuration of the Cry (Cryptographic Library Module).</L-2>
+          </DESC>
+          <ADMIN-DATA>
+            <DOC-REVISIONS>
+              <DOC-REVISION>
+                <REVISION-LABEL>0.1.0</REVISION-LABEL>
+                <ISSUED-BY/>
+              </DOC-REVISION>
+            </DOC-REVISIONS>
+          </ADMIN-DATA>
+          <SUPPORTED-CONFIG-VARIANTS>
+            <SUPPORTED-CONFIG-VARIANT>VARIANT-PRE-COMPILE</SUPPORTED-CONFIG-VARIANT>
+          </SUPPORTED-CONFIG-VARIANTS>
+          <CONTAINERS>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="ECUC:a00be3e0-8783-9123-2d52-1eb616737ca6">
+              <SHORT-NAME>CommonPublishedInformation</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">
+                    &lt;html&gt;
+                      Common container, aggregated by all modules. It contains published information about vendor and versions.
+                  &lt;/html&gt;</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-INTEGER-PARAM-DEF UUID="ECUC:948f3f2e-f129-4bc5-b4e1-7a7bdb8599e1">
+                  <SHORT-NAME>ArMajorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                      &lt;html&gt;
+                        Major version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="ECUC:2893b920-59d5-4ac2-b2c1-e23742e66d70">
+                  <SHORT-NAME>ArMinorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                      &lt;html&gt;
+                        Minor version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>2</DEFAULT-VALUE>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="ECUC:6428eb9b-8790-488a-b9a3-0fba52d0f59e">
+                  <SHORT-NAME>ArPatchVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                      &lt;html&gt;
+                        Patch level version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="ECUC:605b18ae-3f9a-41d4-9225-67c9c5f6fc34">
+                  <SHORT-NAME>SwMajorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                      &lt;html&gt;
+                        Major version number of the vendor specific implementation of the module.
+                    &lt;/html&gt;</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>2</DEFAULT-VALUE>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="a7fe44dc-ea25-4b8d-8fad-9fbcae86d56f">
+                  <SHORT-NAME>SwMinorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                      &lt;html&gt;
+                        Minor version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                    &lt;/html&gt;</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>6</DEFAULT-VALUE>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="a318d2d9-0e75-49da-ac43-e7e4e682e2f9">
+                  <SHORT-NAME>SwPatchVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                      &lt;html&gt;
+                        Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                    &lt;/html&gt;</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>6</DEFAULT-VALUE>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="ECUC:78bc8362-080f-4253-b3da-804ab69a7154">
+                  <SHORT-NAME>ModuleId</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                      &lt;html&gt;
+                        Module ID of this module from Module List
+                    &lt;/html&gt;</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="ECUC:01b0f467-6943-4558-b4f2-3fa1fad28449">
+                  <SHORT-NAME>VendorId</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                      &lt;html&gt;
+                        Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list
+                    &lt;/html&gt;</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-STRING-PARAM-DEF UUID="ECUC:1c68a547-f24e-4a4e-9540-69fbd533ec89">
+                  <SHORT-NAME>Release</SHORT-NAME>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <ECUC-STRING-PARAM-DEF-VARIANTS>
+                    <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                      <DEFAULT-VALUE></DEFAULT-VALUE>
+                    </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                  </ECUC-STRING-PARAM-DEF-VARIANTS>
+                </ECUC-STRING-PARAM-DEF>
+              </PARAMETERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF>
+              <SHORT-NAME>CryGeneral</SHORT-NAME>
+              <DESC>
+                <L-2 L="FOR-ALL">&lt;html&gt;
+                        &lt;p&gt;The general configuration&lt;/p&gt;
+                      &lt;/html&gt;</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-ENUMERATION-PARAM-DEF>
+                  <SHORT-NAME>CryLNAlgorithmImplementation</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                          &lt;p&gt;
+                            Selects the implementation variant of long number library.
+                          &lt;/p&gt;
+
+                          &lt;p&gt;Range:&lt;/p&gt;
+                          &lt;ul&gt;
+                            &lt;li&gt;
+                              &lt;code&gt;CRY_LN_MEMORY_OPTIMIZED&lt;/code&gt;
+                              &lt;p&gt;This implementation variant offers a trade-off between RAM usage
+                                 and processing time.
+                              &lt;/p&gt;
+                            &lt;/li&gt;
+
+                            &lt;li&gt;
+                              &lt;code&gt;CRY_LN_SPEED_OPTIMIZED&lt;/code&gt;
+                              &lt;p&gt;
+                                This implementation variant allocates RAM on the stack during
+                                the execution of long number functions to achieve a shorter
+                                processing time.
+                              &lt;/p&gt;
+                            &lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/html&gt;</L-2>
+                  </DESC>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>CRY_LN_MEMORY_OPTIMIZED</DEFAULT-VALUE>
+                  <LITERALS>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>CRY_LN_MEMORY_OPTIMIZED</SHORT-NAME>
+                      <ORIGIN>unknown</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>CRY_LN_SPEED_OPTIMIZED</SHORT-NAME>
+                      <ORIGIN>unknown</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                  </LITERALS>
+                </ECUC-ENUMERATION-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF>
+                  <SHORT-NAME>CryInterruptableLN</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                        &lt;p&gt;
+                          If disabled, the Cry module will process all operations related to
+                          long numbers in a single main function call.
+
+                          This implementation variant trades CPU usage per main function call
+                          for achieving a smaller total processing time of the algorithm.
+                        &lt;/p&gt;
+                        &lt;p&gt;
+                          If enabled, the Cry module splits all operations related to
+                          long numbers across several main function calls.
+
+                          This implementation variant offers a trade-off between the total
+                          processing time of the algorithm and CPU usage per main function call.
+                        &lt;/p&gt;
+
+                        &lt;p&gt;
+                          Note: this configuration parameter is only available if the
+                          &quot;memory optimized&quot; long number library implementation variant is used
+                          (&lt;code&gt;CryLNAlgorithmImplementation&lt;/code&gt; = &lt;code&gt;CRY_LN_MEMORY_OPTIMIZED&lt;/code&gt;).
+                        &lt;/p&gt;
+                      &lt;/html&gt;</L-2>
+                  </DESC>
+                  <!-- @Calculated /TS_TxDxM2I6R0/Cry/CryGeneral/CryInterruptableLN: ENABLE(XPath: ((node:exists(as:modconf(&apos;Cry&apos;)/CryGeneral/CryLNAlgorithmImplementation)) and (as:modconf(&apos;Cry&apos;)/CryGeneral/CryLNAlgorithmImplementation = &apos;CRY_LN_MEMORY_OPTIMIZED&apos;)))-->
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <!-- @CalculatedEnd -->
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <DEFAULT-VALUE>true</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF>
+                  <SHORT-NAME>CryLNPlatformDoubleWordSupport</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                            &lt;p&gt;
+                              Switch to enable/disable support for double words (words having
+                              the length equal to double the platform size).
+                            &lt;/p&gt;
+
+                            &lt;ul&gt;
+                              &lt;li&gt;
+                                &lt;code&gt;FALSE&lt;/code&gt;: The Cry module uses single words for
+                                calculating partial results during long number operations by
+                                splitting the operands in lower/upper parts.
+                              &lt;/li&gt;
+
+                              &lt;li&gt;
+                                &lt;code&gt;TRUE&lt;/code&gt;: The Cry module uses double words for
+                                calculating partial results during long number operations.
+                              &lt;/li&gt;
+                            &lt;/ul&gt;
+
+                            &lt;p&gt;
+                              Note: this configuration parameter is only available if the
+                              &quot;speed optimized&quot; long number library implementation variant is used
+                              (&lt;code&gt;CryLNAlgorithmImplementation&lt;/code&gt; = &lt;code&gt;CRY_LN_SPEED_OPTIMIZED&lt;/code&gt;).
+                            &lt;/p&gt;
+                          &lt;/html&gt;</L-2>
+                  </DESC>
+                  <!-- @Calculated /TS_TxDxM2I6R0/Cry/CryGeneral/CryLNPlatformDoubleWordSupport: ENABLE(XPath: ((node:exists(as:modconf(&apos;Cry&apos;)/CryGeneral/CryLNAlgorithmImplementation)) and (as:modconf(&apos;Cry&apos;)/CryGeneral/CryLNAlgorithmImplementation = &apos;CRY_LN_SPEED_OPTIMIZED&apos;)))-->
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <!-- @CalculatedEnd -->
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-ENUMERATION-PARAM-DEF>
+                  <SHORT-NAME>CrySHAOneAndTwoImplementation</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                          &lt;p&gt;Selects the implementation variant of the SHA-1 and SHA-2 hashing algorithms.&lt;/p&gt;
+
+                          &lt;p&gt;Range:&lt;/p&gt;
+                          &lt;ul&gt;
+                            &lt;li&gt;
+                              &lt;code&gt;CRY_SHAONEANDTWO_INTERRUPTABLE&lt;/code&gt;
+                              &lt;p&gt;The Cry module splits SHA-1/SHA-2 hash computations across several main
+                                 function calls.
+                              &lt;/p&gt;
+                              &lt;p&gt;This implementation variant offers a trade-off between
+                                 the total processing time of the algorithm and CPU usage per
+                                 main function call.
+                              &lt;/p&gt;
+                            &lt;/li&gt;
+
+                            &lt;li&gt;
+                              &lt;code&gt;CRY_SHAONEANDTWO_FAST&lt;/code&gt;
+                              &lt;p&gt;The Cry module performs as many SHA-1/SHA-2 hash computations as
+                                 possible per main function call.
+                              &lt;/p&gt;
+                              &lt;p&gt;This implementation variant trades CPU usage per main function call
+                                 for achieving a smaller total processing time of the algorithm.
+                              &lt;/p&gt;
+                            &lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/html&gt;</L-2>
+                  </DESC>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>CRY_SHAONEANDTWO_INTERRUPTABLE</DEFAULT-VALUE>
+                  <LITERALS>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>CRY_SHAONEANDTWO_INTERRUPTABLE</SHORT-NAME>
+                      <ORIGIN>unknown</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>CRY_SHAONEANDTWO_FAST</SHORT-NAME>
+                      <ORIGIN>unknown</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                  </LITERALS>
+                </ECUC-ENUMERATION-PARAM-DEF>
+                <ECUC-ENUMERATION-PARAM-DEF>
+                  <SHORT-NAME>CryCrcImplementationVariant</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                              Selects the implementation variant of crcTable.
+                            &lt;/html&gt;</L-2>
+                  </DESC>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>CRY_CRC_MEMORY_OPTIMIZED</DEFAULT-VALUE>
+                  <LITERALS>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>CRY_CRC_SPEED_OPTIMIZED</SHORT-NAME>
+                      <ORIGIN>unknown</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>CRY_CRC_MEMORY_OPTIMIZED</SHORT-NAME>
+                      <ORIGIN>unknown</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                  </LITERALS>
+                </ECUC-ENUMERATION-PARAM-DEF>
+              </PARAMETERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF>
+              <SHORT-NAME>CrySHA1</SHORT-NAME>
+              <DESC>
+                <L-2 L="FOR-ALL">&lt;html&gt;
+                        The configurations of SHA1
+                      &lt;/html&gt;</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF>
+                  <SHORT-NAME>CrySHA1ImmediateRestartEnabled</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                         Enable the cancelation of an ongoing calculation regardless of the configuration ID.
+                      &lt;/html&gt;</L-2>
+                  </DESC>
+                  <!-- @Calculated /TS_TxDxM2I6R0/Cry/CrySHA1/CrySHA1ImmediateRestartEnabled: ENABLE(XPath: node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmHash/CsmHashImmediateRestart))-->
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <!-- @CalculatedEnd -->
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+              </PARAMETERS>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF>
+                  <SHORT-NAME>CrySHA1Config</SHORT-NAME>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>32</UPPER-MULTIPLICITY>
+                  <PARAMETERS>
+                    <ECUC-ENUMERATION-PARAM-DEF>
+                      <SHORT-NAME>CrySHA1Type</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              Prime used
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>CRY_SHA_1</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_SHA_1</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF>
+                      <SHORT-NAME>CrySHA1IterationsPerMain</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                            &lt;p&gt;
+                              Defines the number of SHA1 algoritm iterations per
+                              Cry_SHA1MainFunction() call during the compression phase.
+                              This allows to fine tune the execution time per main function call
+                              and thus the number of calls. The value 0 means that the number of
+                              iterations shall not be limited.
+                            &lt;/p&gt;
+
+                            &lt;p&gt;
+                              Note: This configuration parameter is available only if SHA-1/SHA-2 interruptable
+                              code variant is used (&lt;code&gt;CrySHAOneAndTwoImplementation&lt;/code&gt; =
+                              &lt;code&gt;CRY_SHAONEANDTWO_INTERRUPTABLE&lt;/code&gt;)
+                            &lt;/p&gt;
+                          &lt;/html&gt;</L-2>
+                      </DESC>
+                      <!-- @Calculated /TS_TxDxM2I6R0/Cry/CrySHA1/CrySHA1Config/CrySHA1IterationsPerMain: ENABLE(XPath: as:modconf(&apos;Cry&apos;)/CryGeneral/CrySHAOneAndTwoImplementation = &apos;CRY_SHAONEANDTWO_INTERRUPTABLE&apos;)-->
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <!-- @CalculatedEnd -->
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                      <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                      <MAX>65535</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                  </PARAMETERS>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF>
+              <SHORT-NAME>CrySHA2</SHORT-NAME>
+              <DESC>
+                <L-2 L="FOR-ALL">&lt;html&gt;
+                        The configurations of SHA2
+                      &lt;/html&gt;</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF>
+                  <SHORT-NAME>CrySHA2ImmediateRestartEnabled</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                         Enable the cancelation of an ongoing calculation regardless of the configuration ID.
+                      &lt;/html&gt;</L-2>
+                  </DESC>
+                  <!-- @Calculated /TS_TxDxM2I6R0/Cry/CrySHA2/CrySHA2ImmediateRestartEnabled: ENABLE(XPath: node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmHash/CsmHashImmediateRestart))-->
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <!-- @CalculatedEnd -->
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+              </PARAMETERS>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF>
+                  <SHORT-NAME>CrySHA2Config</SHORT-NAME>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>32</UPPER-MULTIPLICITY>
+                  <PARAMETERS>
+                    <ECUC-ENUMERATION-PARAM-DEF>
+                      <SHORT-NAME>CrySHA2Type</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              Prime used
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>CRY_SHA_256</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_SHA_224</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_SHA_256</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_SHA_384</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_SHA_512</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF>
+                      <SHORT-NAME>CrySHA2IterationsPerMain</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              &lt;p&gt;
+                                Defines the number of SHA-2 algoritm iterations per
+                                Cry_SHA2MainFunction() call during the compression phase.
+                                This allows to fine tune the execution time per main function call
+                                and thus the number of calls. The value 0 means that the number of
+                                iterations shall not be limited.
+                              &lt;/p&gt;
+
+                              &lt;p&gt;
+                                Note: This configuration parameter is available only if SHA-1/SHA-2 interruptable
+                                code variant is used (&lt;code&gt;CrySHAOneAndTwoImplementation&lt;/code&gt; =
+                                &lt;code&gt;CRY_SHAONEANDTWO_INTERRUPTABLE&lt;/code&gt;)
+                              &lt;/p&gt;
+                          &lt;/html&gt;</L-2>
+                      </DESC>
+                      <!-- @Calculated /TS_TxDxM2I6R0/Cry/CrySHA2/CrySHA2Config/CrySHA2IterationsPerMain: ENABLE(XPath: as:modconf(&apos;Cry&apos;)/CryGeneral/CrySHAOneAndTwoImplementation = &apos;CRY_SHAONEANDTWO_INTERRUPTABLE&apos;)-->
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <!-- @CalculatedEnd -->
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                      <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                      <MAX>65535</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF>
+                      <SHORT-NAME>CrySHA2SupportRestart</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                             If enabled, the restart feature of the service is enabled.&lt;br/&gt;
+                             &lt;b&gt;Important:&lt;/b&gt; If Cry_SHA2Start can interrupt Cry_SHA2MainFunction,
+                             a service should only be restarted after the last expected callback
+                             notification has been called. Otherwise, callback notifications
+                             related to the canceled calculation might be called.&lt;br/&gt;
+                             Please ensure that the corresponding parameter CsmHashEnableRestart
+                             in the CSM has the same value as this parameter.
+                          &lt;/html&gt;</L-2>
+                      </DESC>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                  </PARAMETERS>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF>
+              <SHORT-NAME>CrySHA3</SHORT-NAME>
+              <DESC>
+                <L-2 L="FOR-ALL">&lt;html&gt;
+                        The configurations of SHA3
+                      &lt;/html&gt;</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF>
+                  <SHORT-NAME>CrySHA3ImmediateRestartEnabled</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                        Enable the cancelation of an ongoing calculation regardless of the configuration ID.
+                      &lt;/html&gt;</L-2>
+                  </DESC>
+                  <!-- @Calculated /TS_TxDxM2I6R0/Cry/CrySHA3/CrySHA3ImmediateRestartEnabled: ENABLE(XPath: node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmHash/CsmHashImmediateRestart))-->
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <!-- @CalculatedEnd -->
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+              </PARAMETERS>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF>
+                  <SHORT-NAME>CrySHA3Config</SHORT-NAME>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>32</UPPER-MULTIPLICITY>
+                  <PARAMETERS>
+                    <ECUC-ENUMERATION-PARAM-DEF>
+                      <SHORT-NAME>CrySHA3Type</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              Prime used
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>CRY_SHA3_256</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_SHA3_224</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_SHA3_256</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_SHA3_384</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_SHA3_512</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF>
+                      <SHORT-NAME>CrySHA3SupportRestart</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                             If enabled, the restart feature of the service is enabled.&lt;br/&gt;
+                             &lt;b&gt;Important:&lt;/b&gt; If Cry_SHA3Start can interrupt Cry_SHA3MainFunction,
+                             a service should only be restarted after the last expected callback
+                             notification has been called. Otherwise, callback notifications
+                             related to the canceled calculation might be called.&lt;br/&gt;
+                             Please ensure that the corresponding parameter CsmHashEnableRestart
+                             in the CSM has the same value as this parameter.
+                          &lt;/html&gt;</L-2>
+                      </DESC>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                  </PARAMETERS>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF>
+              <SHORT-NAME>CryRsaSsaPssVerify</SHORT-NAME>
+              <DESC>
+                <L-2 L="FOR-ALL">&lt;html&gt;
+                        The configurations of Signature RsaSsa PSS Verify
+                      &lt;/html&gt;</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF>
+                  <SHORT-NAME>CryRsaSsaPssVerifyImmediateRestartEnabled</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                         Enable the cancelation of an ongoing calculation regardless of the configuration ID.
+                      &lt;/html&gt;</L-2>
+                  </DESC>
+                  <!-- @Calculated /TS_TxDxM2I6R0/Cry/CryRsaSsaPssVerify/CryRsaSsaPssVerifyImmediateRestartEnabled: ENABLE(XPath: node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmSignatureVerify/CsmSignatureVerifyImmediateRestart))-->
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <!-- @CalculatedEnd -->
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF>
+                  <SHORT-NAME>CryRsaSsaPssVerifyUseTimeSlices</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                           If enabled, the signature verification is split into time slices.
+                           Specifically, the modular exponentiation performed during signature
+                           verification is split into several steps.
+                        &lt;/html&gt;</L-2>
+                  </DESC>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF>
+                  <SHORT-NAME>CryRsaSsaPssVerifyNumberOfTimeSlices</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                             The maximum number of steps of the modular exponentiation
+                             performed in one Cry main function call during the
+                             RSASSA-PSS signature verification.
+                             NOTE: This configuration parameter is disabled, when
+                             CryRsaSsaPssVerifyUseCbk configuration parameter is enabled.
+                          &lt;/html&gt;</L-2>
+                  </DESC>
+                  <!-- @Calculated /TS_TxDxM2I6R0/Cry/CryRsaSsaPssVerify/CryRsaSsaPssVerifyNumberOfTimeSlices: ENABLE(XPath: as:modconf(&apos;Cry&apos;)[1]/CryRsaSsaPssVerify/CryRsaSsaPssVerifyUseTimeSlices = &apos;true&apos;  and                                (as:modconf(&apos;Cry&apos;)[1]/CryRsaSsaPssVerify/CryRsaSsaPssVerifyUseCbk = &apos;false&apos;))-->
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <!-- @CalculatedEnd -->
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF>
+                  <SHORT-NAME>CryRsaSsaPssVerifyUseCbk</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                           If enabled, the configuration parameter CryRsaSsaPssTimeSlicesCbk is
+                           enabled, to configure the name of a callback which returns the maximum
+                           number of time slices to be used during RSASSA-PSS signature verification.
+                        &lt;/html&gt;</L-2>
+                  </DESC>
+                  <!-- @Calculated /TS_TxDxM2I6R0/Cry/CryRsaSsaPssVerify/CryRsaSsaPssVerifyUseCbk: ENABLE(XPath: as:modconf(&apos;Cry&apos;)[1]/CryRsaSsaPssVerify/CryRsaSsaPssVerifyUseTimeSlices = &apos;true&apos;)-->
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <!-- @CalculatedEnd -->
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-FUNCTION-NAME-DEF>
+                  <SHORT-NAME>CryRsaSsaPssTimeSlicesCbk</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">Optional configuration parameter which can be used to configure
+                         the name of the callback which returns the maximum number of
+                         time slices to be used during RSASSA-PSS signature verification.
+                         NOTE: This configuration parameter is enabled, only when
+                         CryRsaSsaPssVerifyUseCbk configuration parameter is enabled.</L-2>
+                  </DESC>
+                  <!-- @Calculated /TS_TxDxM2I6R0/Cry/CryRsaSsaPssVerify/CryRsaSsaPssTimeSlicesCbk: ENABLE(XPath: (as:modconf(&apos;Cry&apos;)[1]/CryRsaSsaPssVerify/CryRsaSsaPssVerifyUseTimeSlices = &apos;true&apos;) and                               (as:modconf(&apos;Cry&apos;)[1]/CryRsaSsaPssVerify/CryRsaSsaPssVerifyUseCbk = &apos;true&apos;))-->
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <!-- @CalculatedEnd -->
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                </ECUC-FUNCTION-NAME-DEF>
+              </PARAMETERS>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF>
+                  <SHORT-NAME>CryRsaSsaPssVerifyConfig</SHORT-NAME>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>32</UPPER-MULTIPLICITY>
+                  <PARAMETERS>
+                    <ECUC-INTEGER-PARAM-DEF>
+                      <SHORT-NAME>CryRsaSsaPssVerifyKeyLength</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              Key Length in bytes used in the signature verification
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>384</DEFAULT-VALUE>
+                      <MAX>4294967295</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF>
+                      <SHORT-NAME>CryRsaSsaPssVerifySaltLength</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              Salt Length in bytes used in the signature verification
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>384</DEFAULT-VALUE>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF>
+                      <SHORT-NAME>CryRsaSsaPssVerifyB64Encoded</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                            The signature is Base64-encoded.
+                          &lt;/html&gt;</L-2>
+                      </DESC>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF>
+                      <SHORT-NAME>CryRsaSsaPssVerifyUseBarrett</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                            If enabled, the Barret reduction is used to verify the signature.
+                          &lt;/html&gt;</L-2>
+                      </DESC>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF>
+                      <SHORT-NAME>CryRsaSsaPssVerifySupportRestart</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                             If enabled, the restart feature of the service is enabled.&lt;br/&gt;
+                             &lt;b&gt;Important:&lt;/b&gt; If Cry_RsaSsaPssVerifyStart can interrupt
+                             Cry_RsaSsaPssVerifyMainFunction, a service should only be restarted
+                             after the last expected callback notification has been called.
+                             Otherwise, callback notifications related to the canceled calculation
+                             might be called.&lt;br/&gt;
+                             Please ensure that the corresponding parameter CsmSignatureVerifyEnableRestart
+                             in the CSM has the same value as this parameter.
+                          &lt;/html&gt;</L-2>
+                      </DESC>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                  </PARAMETERS>
+                  <REFERENCES>
+                    <ECUC-REFERENCE-DEF>
+                      <SHORT-NAME>CryRsaSsaPssVerifyHashCfgRef</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              Hash configuration used
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/Csm/CsmHash/CsmHashConfig</DESTINATION-REF>
+                    </ECUC-REFERENCE-DEF>
+                  </REFERENCES>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF>
+              <SHORT-NAME>CryRsaSsaV15Generate</SHORT-NAME>
+              <DESC>
+                <L-2 L="FOR-ALL">&lt;html&gt;
+                        The configurations of RsaSsa V15(PKCS1) Signature Generate
+                      &lt;/html&gt;</L-2>
+              </DESC>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF>
+                  <SHORT-NAME>CryRsaSsaV15GenerateConfig</SHORT-NAME>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>32</UPPER-MULTIPLICITY>
+                  <PARAMETERS>
+                    <ECUC-INTEGER-PARAM-DEF>
+                      <SHORT-NAME>CryRsaSsaV15GenerateKeyLength</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              Key length in bytes used in the signature generation
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>384</DEFAULT-VALUE>
+                      <MAX>4294967295</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                  </PARAMETERS>
+                  <REFERENCES>
+                    <ECUC-REFERENCE-DEF>
+                      <SHORT-NAME>CryRsaSsaV15GenerateHashCfgRef</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              Hash configuration used
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/Csm/CsmHash/CsmHashConfig</DESTINATION-REF>
+                    </ECUC-REFERENCE-DEF>
+                  </REFERENCES>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF>
+              <SHORT-NAME>CryRsaSsaV15Verify</SHORT-NAME>
+              <DESC>
+                <L-2 L="FOR-ALL">&lt;html&gt;
+                        The configurations of Signature RsaSsa V15(PKCS1) Verify
+                      &lt;/html&gt;</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF>
+                  <SHORT-NAME>CryRsaSsaV15VerifyImmediateRestartEnabled</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                         Enable the cancelation of an ongoing calculation regardless of the configuration ID.
+                      &lt;/html&gt;</L-2>
+                  </DESC>
+                  <!-- @Calculated /TS_TxDxM2I6R0/Cry/CryRsaSsaV15Verify/CryRsaSsaV15VerifyImmediateRestartEnabled: ENABLE(XPath: node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmSignatureVerify/CsmSignatureVerifyImmediateRestart))-->
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <!-- @CalculatedEnd -->
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF>
+                  <SHORT-NAME>CryRsaSsaV15VerifyUseTimeSlices</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                           If enabled, the signature verification is split into time slices.
+                           Specifically, the modular exponentiation performed during
+                           RSASSA-PKCS1-v1_5 signature verification is split into several steps.
+                        &lt;/html&gt;</L-2>
+                  </DESC>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF>
+                  <SHORT-NAME>CryRsaSsaV15VerifyNumberOfTimeSlices</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                             The maximum number of steps of the modular exponentiation
+                             performed in one Cry main function call during the
+                             RSASSA-PKCS1-v1_5 signature verification.
+                             NOTE: This configuration parameter is disabled, when
+                             CryRsaSsaV15VerifyUseCbk configuration parameter is enabled.
+                          &lt;/html&gt;</L-2>
+                  </DESC>
+                  <!-- @Calculated /TS_TxDxM2I6R0/Cry/CryRsaSsaV15Verify/CryRsaSsaV15VerifyNumberOfTimeSlices: ENABLE(XPath: (as:modconf(&apos;Cry&apos;)[1]/CryRsaSsaV15Verify/CryRsaSsaV15VerifyUseTimeSlices = &apos;true&apos;) and                                 (as:modconf(&apos;Cry&apos;)[1]/CryRsaSsaV15Verify/CryRsaSsaV15VerifyUseCbk = &apos;false&apos;))-->
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <!-- @CalculatedEnd -->
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF>
+                  <SHORT-NAME>CryRsaSsaV15VerifyUseCbk</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                           If enabled, the configuration parameter CryRsaSsaV15TimeSlicesCbk is
+                           enabled, to configure the name of a callback which returns the maximum
+                           number of time slices to be used during RSASSA-PKCS1-v1_5 signature
+                           verification.
+                        &lt;/html&gt;</L-2>
+                  </DESC>
+                  <!-- @Calculated /TS_TxDxM2I6R0/Cry/CryRsaSsaV15Verify/CryRsaSsaV15VerifyUseCbk: ENABLE(XPath: (as:modconf(&apos;Cry&apos;)[1]/CryRsaSsaV15Verify/CryRsaSsaV15VerifyUseTimeSlices = &apos;true&apos;))-->
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <!-- @CalculatedEnd -->
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-FUNCTION-NAME-DEF>
+                  <SHORT-NAME>CryRsaSsaV15TimeSlicesCbk</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">Optional configuration parameter which can be used to configure
+                         the name of the callback which returns the maximum number of
+                         time slices to be used during RSASSA-PKCS1-v1_5 signature verification.
+                         NOTE: This configuration parameter is enabled, only when
+                         CryRsaSsaV15VerifyUseCbk configuration parameter is enabled.</L-2>
+                  </DESC>
+                  <!-- @Calculated /TS_TxDxM2I6R0/Cry/CryRsaSsaV15Verify/CryRsaSsaV15TimeSlicesCbk: ENABLE(XPath: (as:modconf(&apos;Cry&apos;)[1]/CryRsaSsaV15Verify/CryRsaSsaV15VerifyUseTimeSlices = &apos;true&apos;) and                               (as:modconf(&apos;Cry&apos;)[1]/CryRsaSsaV15Verify/CryRsaSsaV15VerifyUseCbk = &apos;true&apos;))-->
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <!-- @CalculatedEnd -->
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                </ECUC-FUNCTION-NAME-DEF>
+              </PARAMETERS>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF>
+                  <SHORT-NAME>CryRsaSsaV15VerifyConfig</SHORT-NAME>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>32</UPPER-MULTIPLICITY>
+                  <PARAMETERS>
+                    <ECUC-INTEGER-PARAM-DEF>
+                      <SHORT-NAME>CryRsaSsaV15VerifyKeyLength</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              Key Length in bytes used in the signature verification
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>384</DEFAULT-VALUE>
+                      <MAX>4294967295</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF>
+                      <SHORT-NAME>CryRsaSsaV15VerifyB64Encoded</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                            The signature is Base64-encoded.
+                          &lt;/html&gt;</L-2>
+                      </DESC>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF>
+                      <SHORT-NAME>CryRsaSsaV15VerifyUseBarrett</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                            If enabled, the Barret reduction is used to verify the signature.
+                          &lt;/html&gt;</L-2>
+                      </DESC>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF>
+                      <SHORT-NAME>CryRsaSsaV15VerifySupportRestart</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                             If enabled, the restart feature of the service is enabled.&lt;br/&gt;
+                             &lt;b&gt;Important:&lt;/b&gt; If Cry_RsaSsaV15VerifyStart can interrupt
+                             Cry_RsaSsaV15VerifyMainFunction, a service should only be restarted
+                             after the last expected callback notification has been called.
+                             Otherwise, callback notifications related to the canceled calculation
+                             might be called.&lt;br/&gt;
+                             Please ensure that the corresponding parameter CsmSignatureVerifyEnableRestart
+                             in the CSM has the same value as this parameter.
+                          &lt;/html&gt;</L-2>
+                      </DESC>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                  </PARAMETERS>
+                  <REFERENCES>
+                    <ECUC-REFERENCE-DEF>
+                      <SHORT-NAME>CryRsaSsaV15VerifyHashCfgRef</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              Hash configuration used
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/Csm/CsmHash/CsmHashConfig</DESTINATION-REF>
+                    </ECUC-REFERENCE-DEF>
+                  </REFERENCES>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF>
+              <SHORT-NAME>CryEdDSAVrfy</SHORT-NAME>
+              <DESC>
+                <L-2 L="FOR-ALL">&lt;html&gt;
+                        The configurations of EdDSA verification with Ed25519ph curve
+                      &lt;/html&gt;</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF>
+                  <SHORT-NAME>CryEdDSAVrfyImmediateRestartEnabled</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                         Enable the cancelation of an ongoing calculation regardless of the configuration ID.
+                      &lt;/html&gt;</L-2>
+                  </DESC>
+                  <!-- @Calculated /TS_TxDxM2I6R0/Cry/CryEdDSAVrfy/CryEdDSAVrfyImmediateRestartEnabled: ENABLE(XPath: node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmSignatureVerify/CsmSignatureVerifyImmediateRestart))-->
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <!-- @CalculatedEnd -->
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+              </PARAMETERS>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF>
+                  <SHORT-NAME>CryEdDSAVrfyConfig</SHORT-NAME>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>32</UPPER-MULTIPLICITY>
+                  <PARAMETERS>
+                    <ECUC-BOOLEAN-PARAM-DEF>
+                      <SHORT-NAME>CryEdDSAVrfySupportRestart</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                            If enabled, the restart feature of the service is enabled.&lt;br/&gt;
+                            &lt;b&gt;Important:&lt;/b&gt; If Cry_EdDSAVrfyStart can interrupt Cry_EdDSAVrfyMainFunction,
+                            a service should only be restarted after the last expected callback
+                            notification has been called. Otherwise, callback notifications
+                            related to the canceled calculation might be called.&lt;br/&gt;
+                            Please ensure that the corresponding parameter CsmHashEnableRestart
+                            in the CSM has the same value as this parameter.
+                         &lt;/html&gt;</L-2>
+                      </DESC>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF>
+                      <SHORT-NAME>CryEdDSAVrfyNumberOfTimeSlices</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              &lt;p&gt;
+                                The maximum number of steps of the point operations performed in
+                                one Cry main function call during the EdDSA signature verification.
+                              &lt;/p&gt;
+
+                              &lt;p&gt;
+                                Note: The value of this configuration parameter allows the integrator
+                                of the Cry module to achieve a balance between the total processing
+                                time of the algorithm and the CPU usage per main function call.
+                              &lt;/p&gt;
+                              &lt;ul&gt;
+                                &lt;li&gt;
+                                  &lt;code&gt;0&lt;/code&gt;: The Cry module does not limit the number of
+                                  time slices per &lt;code&gt;Cry_EdDSAVrfyMainFunction()&lt;/code&gt; function
+                                  call.
+                                &lt;/li&gt;
+                                &lt;li&gt;
+                                  &lt;code&gt;1&lt;/code&gt;: The Cry module processes a single time slice
+                                  (i.e. the slicing mechanism is disabled) per
+                                  &lt;code&gt;Cry_EdDSAVrfyMainFunction()&lt;/code&gt; function call.
+                                &lt;/li&gt;
+                                &lt;li&gt;
+                                  &lt;code&gt;&gt; 1&lt;/code&gt;: The Cry module processes the configured number
+                                  of slices &lt;code&gt;Cry_EdDSAVrfyMainFunction()&lt;/code&gt; function call.
+                                &lt;/li&gt;
+                              &lt;/ul&gt;
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                      <MAX>65535</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                  </PARAMETERS>
+                  <REFERENCES>
+                    <ECUC-REFERENCE-DEF>
+                      <SHORT-NAME>CryEdDSAVrfyHashCfgRef</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              &lt;p&gt;
+                                Hash configuration used
+                              &lt;/p&gt;
+                              &lt;p&gt;
+                                A reference to SHA-512 is mandatory.
+                              &lt;/p&gt;
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/Csm/CsmHash/CsmHashConfig</DESTINATION-REF>
+                    </ECUC-REFERENCE-DEF>
+                  </REFERENCES>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF>
+              <SHORT-NAME>CryEdDSAGen</SHORT-NAME>
+              <DESC>
+                <L-2 L="FOR-ALL">&lt;html&gt;
+                        The configurations of ECDSA generation with Ed25519ph curve
+                      &lt;/html&gt;</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF>
+                  <SHORT-NAME>CryEdDSAGenImmediateRestartEnabled</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                         Enable the cancelation of an ongoing calculation regardless of the configuration ID.
+                      &lt;/html&gt;</L-2>
+                  </DESC>
+                  <!-- @Calculated /TS_TxDxM2I6R0/Cry/CryEdDSAGen/CryEdDSAGenImmediateRestartEnabled: ENABLE(XPath: node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmSignatureGenerate/CsmSignatureGenerateImmediateRestart))-->
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <!-- @CalculatedEnd -->
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+              </PARAMETERS>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF>
+                  <SHORT-NAME>CryEdDSAGenConfig</SHORT-NAME>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>32</UPPER-MULTIPLICITY>
+                  <PARAMETERS>
+                    <ECUC-BOOLEAN-PARAM-DEF>
+                      <SHORT-NAME>CryEdDSAGenSupportRestart</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                            If enabled, the restart feature of the service is enabled.&lt;br/&gt;
+                            &lt;b&gt;Important:&lt;/b&gt; If Cry_EdDSAGenStart can interrupt Cry_EdDSAGenMainFunction,
+                            a service should only be restarted after the last expected callback
+                            notification has been called. Otherwise, callback notifications
+                            related to the canceled calculation might be called.&lt;br/&gt;
+                            Please ensure that the corresponding parameter CsmHashEnableRestart
+                            in the CSM has the same value as this parameter.
+                         &lt;/html&gt;</L-2>
+                      </DESC>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF>
+                      <SHORT-NAME>CryEdDSAGenNumberOfTimeSlices</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              &lt;p&gt;
+                                The maximum number of steps of the point operations performed in
+                                one Cry main function call during the EdDSA signature generation.
+                              &lt;/p&gt;
+
+                              &lt;p&gt;
+                                Note: The value of this configuration parameter allows the integrator
+                                of the Cry module to achieve a balance between the total processing
+                                time of the algorithm and the CPU usage per main function call.
+                              &lt;/p&gt;
+                              &lt;ul&gt;
+                                &lt;li&gt;
+                                  &lt;code&gt;0&lt;/code&gt;: The Cry module does not limit the number of
+                                  time slices per &lt;code&gt;Cry_EdDSAGenMainFunction()&lt;/code&gt; function
+                                  call.
+                                &lt;/li&gt;
+                                &lt;li&gt;
+                                  &lt;code&gt;1&lt;/code&gt;: The Cry module processes a single time slice
+                                  (i.e. the slicing mechanism is disabled) per
+                                  &lt;code&gt;Cry_EdDSAGenMainFunction()&lt;/code&gt; function call.
+                                &lt;/li&gt;
+                                &lt;li&gt;
+                                  &lt;code&gt;&gt; 1&lt;/code&gt;: The Cry module processes the configured number
+                                  of slices &lt;code&gt;Cry_EdDSAGenMainFunction()&lt;/code&gt; function call.
+                                &lt;/li&gt;
+                              &lt;/ul&gt;
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                      <MAX>65535</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                  </PARAMETERS>
+                  <REFERENCES>
+                    <ECUC-REFERENCE-DEF>
+                      <SHORT-NAME>CryEdDSAGenHashCfgRef</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              &lt;p&gt;
+                                Hash configuration used
+                              &lt;/p&gt;
+                              &lt;p&gt;
+                                A reference to SHA-512 is mandatory.
+                              &lt;/p&gt;
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/Csm/CsmHash/CsmHashConfig</DESTINATION-REF>
+                    </ECUC-REFERENCE-DEF>
+                  </REFERENCES>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF>
+              <SHORT-NAME>CryMD5</SHORT-NAME>
+              <DESC>
+                <L-2 L="FOR-ALL">&lt;html&gt;
+                        The configurations of MD5
+                      &lt;/html&gt;</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF>
+                  <SHORT-NAME>CryMD5ImmediateRestartEnabled</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                         Enable the cancelation of an ongoing calculation regardless of the configuration ID.
+                      &lt;/html&gt;</L-2>
+                  </DESC>
+                  <!-- @Calculated /TS_TxDxM2I6R0/Cry/CryMD5/CryMD5ImmediateRestartEnabled: ENABLE(XPath: node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmHash/CsmHashImmediateRestart))-->
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <!-- @CalculatedEnd -->
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+              </PARAMETERS>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF>
+                  <SHORT-NAME>CryMD5Config</SHORT-NAME>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>32</UPPER-MULTIPLICITY>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF>
+              <SHORT-NAME>CryAESEncrypt</SHORT-NAME>
+              <DESC>
+                <L-2 L="FOR-ALL">The configurations of AES encrypt</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF>
+                  <SHORT-NAME>PZ1ACryOptimEncry</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                          &lt;p&gt;Enables the possibility for interruption of the main function execution for the AES Encrypt algorithm.&lt;/p&gt;
+                          &lt;p&gt;If enabled, the execution of the main function is divided in small execution steps, allowing to have OS interruptions between them.
+                             As a consequence the total time execution of a Cry job will take longer, as it can be interupted by other running processes/tasks.
+                          &lt;/p&gt;
+                          &lt;p&gt;This is useful when processing large amount of data with Cry (which takes a long time), enabling non-blocking operation of other processes/tasks.
+                          &lt;/p&gt;
+                        &lt;/html&gt;</L-2>
+                  </DESC>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-ENUMERATION-PARAM-DEF>
+                  <SHORT-NAME>CryAESEncryptImplementation</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                          &lt;p&gt;Selects the implementation variant of the AES encryption algorithm.&lt;/p&gt;
+
+                          &lt;p&gt;Range:&lt;/p&gt;
+                          &lt;ul&gt;
+                            &lt;li&gt;&lt;code&gt;CRY_AES_ENCRYPT_RESOURCE_EFFICIENT&lt;/code&gt;
+                                &lt;p&gt;This implementation variant offers a trade-off between RAM usage
+                                   the number of CPU instructions.&lt;/p&gt;
+                                &lt;p&gt;Requires 1279 bytes for look-up tables, which are shared between
+                                   encryption and decryption.&lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;&lt;code&gt;CRY_AES_ENCRYPT_FAST&lt;/code&gt;
+                                &lt;p&gt;This implementation variant trades the number of CPU instructions
+                                   for RAM usage.&lt;/p&gt;
+                                &lt;p&gt;Requires 1064 bytes for look-up tables only for the encryption part
+                                   and an additional 512 bytes for tables shared between encryption
+                                   and decryption.&lt;/p&gt;
+                            &lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/html&gt;</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>CRY_AES_ENCRYPT_RESOURCE_EFFICIENT</DEFAULT-VALUE>
+                  <LITERALS>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>CRY_AES_ENCRYPT_RESOURCE_EFFICIENT</SHORT-NAME>
+                      <ORIGIN>unknown</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>CRY_AES_ENCRYPT_FAST</SHORT-NAME>
+                      <ORIGIN>unknown</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                  </LITERALS>
+                </ECUC-ENUMERATION-PARAM-DEF>
+              </PARAMETERS>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF>
+                  <SHORT-NAME>CryAESEncryptConfig</SHORT-NAME>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>32</UPPER-MULTIPLICITY>
+                  <PARAMETERS>
+                    <ECUC-ENUMERATION-PARAM-DEF>
+                      <SHORT-NAME>CryAESEncryptType</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">Key Length used</L-2>
+                      </DESC>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>CRY_AES_KEY_256</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_AES_KEY_128</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_AES_KEY_192</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_AES_KEY_256</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                  </PARAMETERS>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF>
+              <SHORT-NAME>CryAESDecrypt</SHORT-NAME>
+              <DESC>
+                <L-2 L="FOR-ALL">The configurations of AES decrypt</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF>
+                  <SHORT-NAME>PZ1ACryOptimDecry</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                          &lt;p&gt;Enables the possibility for interruption of the main function execution for the AES Decrypt algorithm.&lt;/p&gt;
+                          &lt;p&gt;If enabled, the execution of the main function is divided in small execution steps, allowing to have OS interruptions between them.
+                             As a consequence the total time execution of a Cry job will take longer, as it can be interupted by other running processes/tasks.
+                          &lt;/p&gt;
+                          &lt;p&gt;This is useful when processing large amount of data with Cry (which takes a long time), enabling non-blocking operation of other processes/tasks.
+                          &lt;/p&gt;
+                        &lt;/html&gt;</L-2>
+                  </DESC>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-ENUMERATION-PARAM-DEF>
+                  <SHORT-NAME>CryAESDecryptImplementation</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                          &lt;p&gt;Selects the implementation variant of the AES decryption algorithm.&lt;/p&gt;
+
+                          &lt;p&gt;Range:&lt;/p&gt;
+                          &lt;ul&gt;
+                            &lt;li&gt;&lt;code&gt;CRY_AES_DECRYPT_RESOURCE_EFFICIENT&lt;/code&gt;
+                                &lt;p&gt;This implementation variant offers a trade-off between RAM usage
+                                   the number of CPU instructions.&lt;/p&gt;
+                                &lt;p&gt;Requires 1279 bytes for look-up tables, which are shared between
+                                   decryption and encryption.&lt;/p&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;&lt;code&gt;CRY_AES_DECRYPT_FAST&lt;/code&gt;
+                                &lt;p&gt;This implementation variant trades the number of CPU instructions
+                                   for RAM usage.&lt;/p&gt;
+                                &lt;p&gt;Requires 1064 bytes for look-up tables only for the decryption part
+                                   and an additional 512 bytes for tables shared between decryption
+                                   and encryption.&lt;/p&gt;
+                            &lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/html&gt;</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>CRY_AES_DECRYPT_RESOURCE_EFFICIENT</DEFAULT-VALUE>
+                  <LITERALS>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>CRY_AES_DECRYPT_RESOURCE_EFFICIENT</SHORT-NAME>
+                      <ORIGIN>unknown</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                    <ECUC-ENUMERATION-LITERAL-DEF>
+                      <SHORT-NAME>CRY_AES_DECRYPT_FAST</SHORT-NAME>
+                      <ORIGIN>unknown</ORIGIN>
+                    </ECUC-ENUMERATION-LITERAL-DEF>
+                  </LITERALS>
+                </ECUC-ENUMERATION-PARAM-DEF>
+              </PARAMETERS>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF>
+                  <SHORT-NAME>CryAESDecryptConfig</SHORT-NAME>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>32</UPPER-MULTIPLICITY>
+                  <PARAMETERS>
+                    <ECUC-ENUMERATION-PARAM-DEF>
+                      <SHORT-NAME>CryAESDecryptType</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">Key Length used</L-2>
+                      </DESC>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>CRY_AES_KEY_256</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_AES_KEY_128</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_AES_KEY_192</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_AES_KEY_256</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                  </PARAMETERS>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF>
+              <SHORT-NAME>CryCMACVrfy</SHORT-NAME>
+              <DESC>
+                <L-2 L="FOR-ALL">The configurations of CMAC</L-2>
+              </DESC>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF>
+                  <SHORT-NAME>CryCMACVrfyConfig</SHORT-NAME>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>32</UPPER-MULTIPLICITY>
+                  <PARAMETERS>
+                    <ECUC-ENUMERATION-PARAM-DEF>
+                      <SHORT-NAME>CryCMACVrfyType</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                            Type of One-Key CBC MAC:
+                            &lt;p&gt;
+                              CMAC which is equivalent with OMAC1.
+                            &lt;/p&gt;
+                            &lt;p&gt;
+                              OMAC2
+                            &lt;/p&gt;
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>CMAC</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CMAC</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>OMAC2</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                  </PARAMETERS>
+                  <REFERENCES>
+                    <ECUC-REFERENCE-DEF>
+                      <SHORT-NAME>CryCMACVrfySymBlockEncryptCfgRef</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">SymBlockEncrypt configuration used</L-2>
+                      </DESC>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/Csm/CsmSymBlockEncrypt/CsmSymBlockEncryptConfig</DESTINATION-REF>
+                    </ECUC-REFERENCE-DEF>
+                  </REFERENCES>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF>
+              <SHORT-NAME>CryCMACGen</SHORT-NAME>
+              <DESC>
+                <L-2 L="FOR-ALL">The configurations of CMAC</L-2>
+              </DESC>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF>
+                  <SHORT-NAME>CryCMACGenConfig</SHORT-NAME>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>32</UPPER-MULTIPLICITY>
+                  <PARAMETERS>
+                    <ECUC-ENUMERATION-PARAM-DEF>
+                      <SHORT-NAME>CryCMACGenType</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                            Type of One-Key CBC MAC:
+                            &lt;p&gt;
+                              CMAC which is equivalent with OMAC1.
+                            &lt;/p&gt;
+                            &lt;p&gt;
+                              OMAC2
+                            &lt;/p&gt;
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>CMAC</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CMAC</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>OMAC2</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                  </PARAMETERS>
+                  <REFERENCES>
+                    <ECUC-REFERENCE-DEF>
+                      <SHORT-NAME>CryCMACGenSymBlockEncryptCfgRef</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">SymBlockEncrypt configuration used</L-2>
+                      </DESC>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/Csm/CsmSymBlockEncrypt/CsmSymBlockEncryptConfig</DESTINATION-REF>
+                    </ECUC-REFERENCE-DEF>
+                  </REFERENCES>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF>
+              <SHORT-NAME>CrySSGGenerate</SHORT-NAME>
+              <DESC>
+                <L-2 L="FOR-ALL">The configurations of the self shrinking generator</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF>
+                  <SHORT-NAME>CrySSGGenerateImmediateRestartEnabled</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                         Enable the cancelation of an ongoing calculation regardless of the configuration ID.
+                      &lt;/html&gt;</L-2>
+                  </DESC>
+                  <!-- @Calculated /TS_TxDxM2I6R0/Cry/CrySSGGenerate/CrySSGGenerateImmediateRestartEnabled: ENABLE(XPath: node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmRandomGenerate/CsmRandomGenerateImmediateRestart))-->
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <!-- @CalculatedEnd -->
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+              </PARAMETERS>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF>
+                  <SHORT-NAME>CrySSGGenerateConfig</SHORT-NAME>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>32</UPPER-MULTIPLICITY>
+                  <REFERENCES>
+                    <ECUC-REFERENCE-DEF>
+                      <SHORT-NAME>CrySSGRandomStateRef</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">Random state used</L-2>
+                      </DESC>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/Cry/CrySSGState/CrySSGStateConfig</DESTINATION-REF>
+                    </ECUC-REFERENCE-DEF>
+                  </REFERENCES>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF>
+              <SHORT-NAME>CrySSGSeed</SHORT-NAME>
+              <DESC>
+                <L-2 L="FOR-ALL">The configurations of the self shrinking generator</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF>
+                  <SHORT-NAME>CrySSGSeedImmediateRestartEnabled</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                         Enable the cancelation of an ongoing calculation regardless of the configuration ID.
+                      &lt;/html&gt;</L-2>
+                  </DESC>
+                  <!-- @Calculated /TS_TxDxM2I6R0/Cry/CrySSGSeed/CrySSGSeedImmediateRestartEnabled: ENABLE(XPath: node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmRandomSeed/CsmRandomSeedImmediateRestart))-->
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <!-- @CalculatedEnd -->
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+              </PARAMETERS>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF>
+                  <SHORT-NAME>CrySSGSeedConfig</SHORT-NAME>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>32</UPPER-MULTIPLICITY>
+                  <REFERENCES>
+                    <ECUC-REFERENCE-DEF>
+                      <SHORT-NAME>CrySSGRandomStateRef</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">Random state used</L-2>
+                      </DESC>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/Cry/CrySSGState/CrySSGStateConfig</DESTINATION-REF>
+                    </ECUC-REFERENCE-DEF>
+                  </REFERENCES>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF>
+              <SHORT-NAME>CrySSGState</SHORT-NAME>
+              <DESC>
+                <L-2 L="FOR-ALL">The configurations of the self shrinking generator</L-2>
+              </DESC>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF>
+                  <SHORT-NAME>CrySSGStateConfig</SHORT-NAME>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>32</UPPER-MULTIPLICITY>
+                  <PARAMETERS>
+                    <ECUC-INTEGER-PARAM-DEF>
+                      <SHORT-NAME>CrySSGStateSize</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                                &lt;p&gt;
+                                  The size in bytes of the LFSR used during SSG Random Generate.
+                                &lt;/p&gt;
+                              &lt;/html&gt;</L-2>
+                      </DESC>
+                      <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                      <MAX>20</MAX>
+                      <MIN>1</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                  </PARAMETERS>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF>
+              <SHORT-NAME>CryKeyExtractSym</SHORT-NAME>
+              <DESC>
+                <L-2 L="FOR-ALL">The configurations of symmmetrical key extract</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF>
+                  <SHORT-NAME>CryKeyExtractSymImmediateRestartEnabled</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                         Enable the cancelation of an ongoing calculation regardless of the configuration ID.
+                      &lt;/html&gt;</L-2>
+                  </DESC>
+                  <!-- @Calculated /TS_TxDxM2I6R0/Cry/CryKeyExtractSym/CryKeyExtractSymImmediateRestartEnabled: ENABLE(XPath: node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmSymKeyExtract/CsmSymKeyExtractImmediateRestart))-->
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <!-- @CalculatedEnd -->
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+              </PARAMETERS>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF>
+                  <SHORT-NAME>CryKeyExtractSymConfig</SHORT-NAME>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>8</UPPER-MULTIPLICITY>
+                  <PARAMETERS>
+                    <ECUC-ENUMERATION-PARAM-DEF>
+                      <SHORT-NAME>CryKeyExtractSymType</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">Key Length used</L-2>
+                      </DESC>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>CRY_KEY_SYM_256</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_KEY_SYM_128</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_KEY_SYM_192</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_KEY_SYM_256</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                  </PARAMETERS>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF>
+              <SHORT-NAME>CryCVCPublicKeyExtract</SHORT-NAME>
+              <DESC>
+                <L-2 L="FOR-ALL">&lt;html&gt;
+                        The configurations of the CVC public key extract
+                      &lt;/html&gt;</L-2>
+              </DESC>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF>
+                  <SHORT-NAME>CryCVCPublicKeyExtractConfig</SHORT-NAME>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>32</UPPER-MULTIPLICITY>
+                  <PARAMETERS>
+                    <ECUC-INTEGER-PARAM-DEF>
+                      <SHORT-NAME>CryExtractCVCRootCertificateLength</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              Length of the issuing certificate (in bytes) which is used
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <!-- @Calculated /TS_TxDxM2I6R0/Cry/CryCVCPublicKeyExtract/CryCVCPublicKeyExtractConfig/CryExtractCVCRootCertificateLength: ENABLE(XPath: ../CryCVCPublicKeyExtractEnableCertChain = &apos;true&apos;)-->
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <!-- @CalculatedEnd -->
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF>
+                      <SHORT-NAME>CryExtractCVCSigCertificateLength</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              Length of the key certificate (in bytes) which is used
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF>
+                      <SHORT-NAME>CryCVCPublicKeyExtractLength</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              Key Length used
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                      <MAX>4294967295</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF>
+                      <SHORT-NAME>CryCVCPublicKeyExtractEnableCertChain</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                                This configuration parameter enables or disables the verification of the certificate chain.
+                                &lt;br/&gt;
+                                True: The key certificate is verified (i.e. its dates and signature) against the issuing certificate.
+                                &lt;br/&gt;
+                                False: The key is extracted from the key certificate without verifying the certificate against its issuing certificate
+                              &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>true</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                  </PARAMETERS>
+                  <REFERENCES>
+                    <ECUC-REFERENCE-DEF>
+                      <SHORT-NAME>CryCVCPublicKeyExtractCfgRef</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              Signature verify configuration which is used
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <!-- @Calculated /TS_TxDxM2I6R0/Cry/CryCVCPublicKeyExtract/CryCVCPublicKeyExtractConfig/CryCVCPublicKeyExtractCfgRef: ENABLE(XPath: ../CryCVCPublicKeyExtractEnableCertChain = &apos;true&apos;)-->
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <!-- @CalculatedEnd -->
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/Csm/CsmSignatureVerify/CsmSignatureVerifyConfig</DESTINATION-REF>
+                    </ECUC-REFERENCE-DEF>
+                  </REFERENCES>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF>
+              <SHORT-NAME>CryCbcPkcs7Encrypt</SHORT-NAME>
+              <DESC>
+                <L-2 L="FOR-ALL">&lt;html&gt;
+                        The configurations of CBC encryption with PKCS#7 padding
+                      &lt;/html&gt;</L-2>
+              </DESC>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF>
+                  <SHORT-NAME>CryCbcPkcs7EncryptConfig</SHORT-NAME>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>32</UPPER-MULTIPLICITY>
+                  <REFERENCES>
+                    <ECUC-REFERENCE-DEF>
+                      <SHORT-NAME>CryCbcPkcs7EncryptSymBlockEncryptCfgRef</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              Symmetrical block encryption configuration used
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/Csm/CsmSymBlockEncrypt/CsmSymBlockEncryptConfig</DESTINATION-REF>
+                    </ECUC-REFERENCE-DEF>
+                  </REFERENCES>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF>
+              <SHORT-NAME>CryCbcPkcs7Decrypt</SHORT-NAME>
+              <DESC>
+                <L-2 L="FOR-ALL">&lt;html&gt;
+                        The configurations of CBC decryption with PKCS#7 padding
+                      &lt;/html&gt;</L-2>
+              </DESC>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF>
+                  <SHORT-NAME>CryCbcPkcs7DecryptConfig</SHORT-NAME>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>32</UPPER-MULTIPLICITY>
+                  <REFERENCES>
+                    <ECUC-REFERENCE-DEF>
+                      <SHORT-NAME>CryCbcPkcs7DecryptSymBlockDecryptCfgRef</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              Symmetrical block decryption configuration used
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/Csm/CsmSymBlockDecrypt/CsmSymBlockDecryptConfig</DESTINATION-REF>
+                    </ECUC-REFERENCE-DEF>
+                  </REFERENCES>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF>
+              <SHORT-NAME>CryCcmEncrypt</SHORT-NAME>
+              <DESC>
+                <L-2 L="FOR-ALL">&lt;html&gt;
+                        The configurations of Ccm encryption
+                      &lt;/html&gt;</L-2>
+              </DESC>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF>
+                  <SHORT-NAME>CryCcmEncryptConfig</SHORT-NAME>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>32</UPPER-MULTIPLICITY>
+                  <PARAMETERS>
+                    <ECUC-ENUMERATION-PARAM-DEF>
+                      <SHORT-NAME>CryCCMMacLength</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              &lt;p&gt;
+                                The octet length of the MAC.
+                              &lt;/p&gt;
+                              &lt;p&gt;
+                                t parameter in the &quot;NIST Special Publication 800-38C&quot;.
+                              &lt;/p&gt;
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>CRY_CCM_MAC_8_BYTES</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_CCM_MAC_4_BYTES</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_CCM_MAC_6_BYTES</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_CCM_MAC_8_BYTES</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_CCM_MAC_10_BYTES</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_CCM_MAC_12_BYTES</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_CCM_MAC_14_BYTES</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_CCM_MAC_16_BYTES</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF>
+                      <SHORT-NAME>CryCCMLengthFieldSize</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                            &lt;p&gt;
+                              The octet length of the binary representation of the octet length of the payload.
+                            &lt;/p&gt;
+                            &lt;p&gt;
+                              q parameter in the &quot;NIST Special Publication 800-38C&quot;.
+                            &lt;/p&gt;
+                          &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>CRY_CCM_LEN_FIELD_2_BYTES</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_CCM_LEN_FIELD_2_BYTES</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_CCM_LEN_FIELD_3_BYTES</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_CCM_LEN_FIELD_4_BYTES</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF>
+                      <SHORT-NAME>CryCCMAdataLen</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              The length of the authenticated data
+                          &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>8</DEFAULT-VALUE>
+                    </ECUC-INTEGER-PARAM-DEF>
+                  </PARAMETERS>
+                  <REFERENCES>
+                    <ECUC-REFERENCE-DEF>
+                      <SHORT-NAME>CryCcmEncryptSymBlockEncryptCfgRef</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              Symmetrical block encryption configuration used
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/Csm/CsmSymBlockEncrypt/CsmSymBlockEncryptConfig</DESTINATION-REF>
+                    </ECUC-REFERENCE-DEF>
+                  </REFERENCES>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF>
+              <SHORT-NAME>CryCcmDecrypt</SHORT-NAME>
+              <DESC>
+                <L-2 L="FOR-ALL">&lt;html&gt;
+                        The configurations of Ccm decryption
+                      &lt;/html&gt;</L-2>
+              </DESC>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF>
+                  <SHORT-NAME>CryCcmDecryptConfig</SHORT-NAME>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>32</UPPER-MULTIPLICITY>
+                  <PARAMETERS>
+                    <ECUC-ENUMERATION-PARAM-DEF>
+                      <SHORT-NAME>CryCCMMacLength</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              &lt;p&gt;
+                                The octet length of the MAC.
+                              &lt;/p&gt;
+                              &lt;p&gt;
+                                t parameter in the &quot;NIST Special Publication 800-38C&quot;.
+                              &lt;/p&gt;
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>CRY_CCM_MAC_8_BYTES</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_CCM_MAC_4_BYTES</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_CCM_MAC_6_BYTES</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_CCM_MAC_8_BYTES</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_CCM_MAC_10_BYTES</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_CCM_MAC_12_BYTES</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_CCM_MAC_14_BYTES</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_CCM_MAC_16_BYTES</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-ENUMERATION-PARAM-DEF>
+                      <SHORT-NAME>CryCCMLengthFieldSize</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                            &lt;p&gt;
+                              The octet length of the binary representation of the octet length of the payload.
+                            &lt;/p&gt;
+                            &lt;p&gt;
+                              q parameter in the &quot;NIST Special Publication 800-38C&quot;.
+                            &lt;/p&gt;
+                          &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>CRY_CCM_LEN_FIELD_2_BYTES</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_CCM_LEN_FIELD_2_BYTES</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_CCM_LEN_FIELD_3_BYTES</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_CCM_LEN_FIELD_4_BYTES</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF>
+                      <SHORT-NAME>CryCCMAdataLen</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              The length of the authenticated data
+                          &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>8</DEFAULT-VALUE>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF>
+                      <SHORT-NAME>CryCCMMaxPayloadSize</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                            &lt;p&gt;
+                              The maximum payload data length in bytes.
+                            &lt;/p&gt;
+                            &lt;p&gt;
+                              Please note that the memory consumption of the algorithm is proportional with this value.
+                            &lt;/p&gt;
+                          &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>8</DEFAULT-VALUE>
+                    </ECUC-INTEGER-PARAM-DEF>
+                  </PARAMETERS>
+                  <REFERENCES>
+                    <ECUC-REFERENCE-DEF>
+                      <SHORT-NAME>CryCcmEncryptSymBlockEncryptCfgRef</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              Symmetrical block encryption configuration used
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/Csm/CsmSymBlockEncrypt/CsmSymBlockEncryptConfig</DESTINATION-REF>
+                    </ECUC-REFERENCE-DEF>
+                  </REFERENCES>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF>
+              <SHORT-NAME>CryHMACVrfy</SHORT-NAME>
+              <DESC>
+                <L-2 L="FOR-ALL">&lt;html&gt;
+                        The configurations of HMAC Verify
+                      &lt;/html&gt;</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF>
+                  <SHORT-NAME>CryHMACVrfyImmediateRestartEnabled</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                         Enable the cancelation of an ongoing calculation regardless of the configuration ID.
+                      &lt;/html&gt;</L-2>
+                  </DESC>
+                  <!-- @Calculated /TS_TxDxM2I6R0/Cry/CryHMACVrfy/CryHMACVrfyImmediateRestartEnabled: ENABLE(XPath: node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmMacVerify/CsmMacVerifyImmediateRestart))-->
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <!-- @CalculatedEnd -->
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+              </PARAMETERS>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF>
+                  <SHORT-NAME>CryHMACVrfyConfig</SHORT-NAME>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>32</UPPER-MULTIPLICITY>
+                  <PARAMETERS>
+                    <ECUC-INTEGER-PARAM-DEF>
+                      <SHORT-NAME>CryHMACKeyLength</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              Key Length used in the HMAC verification
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>64</DEFAULT-VALUE>
+                      <MAX>4294967295</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                  </PARAMETERS>
+                  <REFERENCES>
+                    <ECUC-REFERENCE-DEF>
+                      <SHORT-NAME>CryHMACVrfyHashCfgRef</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              Hash configuration used
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/Csm/CsmHash/CsmHashConfig</DESTINATION-REF>
+                    </ECUC-REFERENCE-DEF>
+                  </REFERENCES>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF>
+              <SHORT-NAME>CryHMACGen</SHORT-NAME>
+              <DESC>
+                <L-2 L="FOR-ALL">&lt;html&gt;
+                        The configurations of HMAC Generate
+                      &lt;/html&gt;</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF>
+                  <SHORT-NAME>CryHMACGenImmediateRestartEnabled</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                         Enable the cancelation of an ongoing calculation regardless of the configuration ID.
+                      &lt;/html&gt;</L-2>
+                  </DESC>
+                  <!-- @Calculated /TS_TxDxM2I6R0/Cry/CryHMACGen/CryHMACGenImmediateRestartEnabled: ENABLE(XPath: node:exists(as:modconf(&apos;Csm&apos;)[1]/CsmMacGenerate/CsmMacGenerateImmediateRestart))-->
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <!-- @CalculatedEnd -->
+                  <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+              </PARAMETERS>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF>
+                  <SHORT-NAME>CryHMACGenConfig</SHORT-NAME>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>32</UPPER-MULTIPLICITY>
+                  <PARAMETERS>
+                    <ECUC-INTEGER-PARAM-DEF>
+                      <SHORT-NAME>CryHMACKeyLength</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              Key Length used in the HMAC generation
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>64</DEFAULT-VALUE>
+                      <MAX>4294967295</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                  </PARAMETERS>
+                  <REFERENCES>
+                    <ECUC-REFERENCE-DEF>
+                      <SHORT-NAME>CryHMACGenHashCfgRef</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              Hash configuration used
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/Csm/CsmHash/CsmHashConfig</DESTINATION-REF>
+                    </ECUC-REFERENCE-DEF>
+                  </REFERENCES>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF>
+              <SHORT-NAME>CryExtractRsaPublicKey</SHORT-NAME>
+              <DESC>
+                <L-2 L="FOR-ALL">&lt;html&gt;
+                        The configurations of RSA public key extract
+                      &lt;/html&gt;</L-2>
+              </DESC>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF>
+                  <SHORT-NAME>CryExtractRsaPublicKeyConfig</SHORT-NAME>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>32</UPPER-MULTIPLICITY>
+                  <PARAMETERS>
+                    <ECUC-INTEGER-PARAM-DEF>
+                      <SHORT-NAME>CryExtractRsaPublicKeyLength</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              Key Length used
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>384</DEFAULT-VALUE>
+                      <MAX>4294967295</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                  </PARAMETERS>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF>
+              <SHORT-NAME>CryCrc</SHORT-NAME>
+              <DESC>
+                <L-2 L="FOR-ALL">&lt;html&gt;
+                        The configurations of cyclic redundancy check
+                      &lt;/html&gt;</L-2>
+              </DESC>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF>
+                  <SHORT-NAME>CryCrcConfig</SHORT-NAME>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>32</UPPER-MULTIPLICITY>
+                  <PARAMETERS>
+                    <ECUC-ENUMERATION-PARAM-DEF>
+                      <SHORT-NAME>CryCrcType</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              Order of polynom that is used for cyclic redundancy check
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>CRY_CRC_32</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_CRC_8</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_CRC_16</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_CRC_32</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF>
+                      <SHORT-NAME>CryCrcPoly</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              Generator Polynom that is used for cyclic redundancy check
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF>
+                      <SHORT-NAME>CryCrcIputXor</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              Polynom with which the input data is XORed
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF>
+                      <SHORT-NAME>CryCrcOputXor</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              Polynom with which the output data is XORed
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>0</DEFAULT-VALUE>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF>
+                      <SHORT-NAME>CryCrcIputReflect</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              Shall the input data be reflected?
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-BOOLEAN-PARAM-DEF>
+                      <SHORT-NAME>CryCrcOputReflect</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              Shall the output data be reflected?
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                    </ECUC-BOOLEAN-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF>
+                      <SHORT-NAME>CryCrcMaxBytesPerCycle</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              maximal number of Bytes given by set of Bytes by Csm_ChecksumUpdate that are processed during a single task cycle
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>32</DEFAULT-VALUE>
+                    </ECUC-INTEGER-PARAM-DEF>
+                  </PARAMETERS>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF>
+              <SHORT-NAME>CryExtractECPubKey</SHORT-NAME>
+              <DESC>
+                <L-2 L="FOR-ALL">&lt;html&gt;
+                        The configurations of public elliptic key extract
+                      &lt;/html&gt;</L-2>
+              </DESC>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF>
+                  <SHORT-NAME>CryExtractECPubKeyConfig</SHORT-NAME>
+                  <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY>32</UPPER-MULTIPLICITY>
+                  <PARAMETERS>
+                    <ECUC-ENUMERATION-PARAM-DEF>
+                      <SHORT-NAME>CryEllipticCurve</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                              Elliptic curve used
+                            &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <DEFAULT-VALUE>CRY_EDC_255</DEFAULT-VALUE>
+                      <LITERALS>
+                        <ECUC-ENUMERATION-LITERAL-DEF>
+                          <SHORT-NAME>CRY_EDC_255</SHORT-NAME>
+                          <ORIGIN>unknown</ORIGIN>
+                        </ECUC-ENUMERATION-LITERAL-DEF>
+                      </LITERALS>
+                    </ECUC-ENUMERATION-PARAM-DEF>
+                  </PARAMETERS>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="ECUC:cb4128ed-26c1-4ddd-906e-854bed917e07">
+              <SHORT-NAME>PublishedInformation</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">
+                    &lt;html&gt;
+                      Additional published parameters not covered by CommonPublishedInformation container.
+                  &lt;/html&gt;</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="ECUC:eb61002e-69c0-4f16-a910-c27adb75f6ee">
+                  <SHORT-NAME>PbcfgMSupport</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                      &lt;html&gt;
+                        Specifies whether or not the Cry can use the PbcfgM module for post-build support.
+                    &lt;/html&gt;</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+              </PARAMETERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+          </CONTAINERS>
+        </ECUC-MODULE-DEF>
+      </ELEMENTS>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

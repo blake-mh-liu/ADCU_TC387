@@ -1,0 +1,144 @@
+########### CORE PART OF THE TEMPLATE - START ###########
+## !LINKSTO Generator.Output.os_config_h, 2
+#parse("include/Os_config.h.vm")
+########### CORE PART OF THE TEMPLATE - END #############
+########### TARGET PART OF THE TEMPLATE - START ###########
+########### Arch specific velocimacros that can be called from the common code parts ###########
+#macro( VM_ArchOsApplication $application )
+## !LINKSTO Generator.Output.os_config_h.Applications.APPCONFIG.archapp, 2
+## !LINKSTO Generator.Output.os_config_h.Applications.APPCONFIG.archapp.TRICORE, 1
+#* *#    OS_ARCHAPP_INIT(  \
+#* *#      /* Flags */                                   $application.getPswFlags()  \
+#* *#    )  \
+#end
+##
+##
+#macro( VM_ArchOsConfigDataInit $coreId )
+#end
+##
+##
+#macro( VM_ArchOsConfigInterruptInit )
+#end
+##
+##
+#macro( VM_ArchOsConfigTimestampInit )
+#end
+##
+##
+#macro( VM_ArchOsTaskInit $task )
+## !LINKSTO Generator.Output.os_config_h.Tasks.TASKCONFIG.arch, 1
+    OS_ARCHTASK_INIT(  \
+      0  \
+    )  \
+#end
+##
+##
+#macro( VM_ArchOsHwTimerInit $timer )
+#end
+##
+##
+#macro( VM_ArchOsInterruptInit $interrupt )
+## !LINKSTO Generator.Output.os_config_h.Interrupts.ISRCONFIG.arch, 1
+#* *#    OS_ARCHISR_INIT(  \
+## !LINKSTO Generator.Output.os_config_h.Interrupts.TRICORE.ISRCONFIG.srn, 1
+#* *#      /* Service request node */          &$interrupt.getControlReg(),  \
+## !LINKSTO Generator.Output.os_config_h.Interrupts.TRICORE.ISRCONFIG.arbPrio, 1
+#* *#      /* Arbitration priority */          $interrupt.getArbitrationPriority(),  \
+## !LINKSTO Generator.Output.os_config_h.Interrupts.TRICORE.ISRCONFIG.runPrio, 1
+#* *#      /* Run priority */                  $interrupt.getCalcPriority()  \
+#* *#    )  \
+#end
+
+/*===================================================================
+ * Tricore Interrupts
+ *==================================================================*/
+#if( !$OsModel.isMicroKernel() )
+#* *##foreach( $interrupt in $AllInterruptsList )
+#*      *##set( $owningApp = $interrupt.getOwningApplication() )
+#*      *##set( $coreId    = $owningApp.getPhyCoreAssignment() )
+#*      *##if( ($interrupt.getCategory().toString() != "CC" ) || ($OsConfig.getPhysicalInitCoreId() == $coreId) )
+#*         *### Cross core interrupts all have the same level and thus they all sit at the same IRQ slot.
+#*         *### They therefore, would redefine these macros over and over. Hence, we only define them for the
+#*         *### master core.
+## !LINKSTO Generator.Output.os_config_h.Interrupts.Vectors, 1
+## !LINKSTO Generator.Output.os_config_h.Interrupts.TRICORE.Vectors, 1
+#*         *##set( $vectorNum = $ClassOfHelpers.toHexString(2, $interrupt.getArbitrationPriority()) )
+## !LINKSTO Generator.Output.os_config_h.Interrupts.TRICORE.Vectors.NAME, 1
+#*         *#\#define OS_IRQ${vectorNum}_NAME      OS_VECTOR_$interrupt.getVector()
+## !LINKSTO Generator.Output.os_config_h.Interrupts.TRICORE.Vectors.ISRID, 1
+#*         *#\#define OS_IRQ${vectorNum}_ISRID     $interrupt.getName()
+## !LINKSTO Generator.Output.os_config_h.Interrupts.Vectors.EntryFunction, 1
+## !LINKSTO Generator.Output.os_config_h.Interrupts.TRICORE.Vectors.ENTRY, 1
+#*         *##if( $interrupt.getCategory().toString() == "CC" )
+#*            *#\#define OS_IRQ${vectorNum}_ENTRY     OS_CrossCoreNotifyIsr
+#*         *##elseif( ($interrupt.getCategory().name() == "CAT1") && $OsOptimize.isCat1DirectCall() )
+#*            *#\#define OS_IRQ${vectorNum}_ENTRY     $interrupt.getIsrFuncName()
+#*         *##else
+#*            *#\#define OS_IRQ${vectorNum}_ENTRY     OS_Cat$interrupt.getCategory()Handler
+#*         *##end
+## !LINKSTO Generator.Output.os_config_h.Interrupts.TRICORE.Vectors.TYPE, 1
+#*         *#\#define OS_IRQ${vectorNum}_TYPE      OS_VECTOR_TYPE_CAT$interrupt.getCategory()
+## !LINKSTO Generator.Output.os_config_h.Interrupts.TRICORE.Vectors.EXIT, 1
+#*         *#\#define OS_IRQ${vectorNum}_EXIT      OS_Cat$interrupt.getCategory()Exit
+## !LINKSTO Generator.Output.os_config_h.Interrupts.TRICORE.Vectors.BISRPRIO, 1
+#*         *#\#define OS_IRQ${vectorNum}_BISRPRIO  $interrupt.getBisrPrio()
+#*      *##end
+#* *##end
+#end
+
+## !LINKSTO Generator.VirtualizationSupport.TRICORE, 1
+#if( $OsConfig.hasInterruptConfigurationDriverOverride() )
+#* *#/*===================================================================
+#* *# * Tricore Interrupt Router Configuration Override
+#* *# *==================================================================*/
+#* *#\#define OS_CFG_OVERRIDE_INT_IR_CONFIG_DRIVER 1
+#end
+
+/*===================================================================
+ * TRICORE CSAs
+ *==================================================================*/
+#if( !$OsModel.isMicroKernel() )
+#* *##foreach( $csaPerCore in $OsConfig.getPerCoreCSAs() )
+#*    *#/* Deviation MISRAC2012-1 <START> */
+#*    *##ifndef OS_ASM
+#*    *#extern os_cx_t    OS_csaCore${csaPerCore.getKey()}_BEGIN;
+#*    *#extern os_uint8_t OS_csaCore${csaPerCore.getKey()}_NCSA;
+#*    *##endif  /* OS_ASM */
+#*    *#/* Deviation MISRAC2012-1 <STOP> */
+#* *##end
+#end
+
+\#define OS_CFG_INITCORECSAS     /* CSA initialization */#if( !$OsModel.isMicroKernel() )  \\$newLine#else$newLine#end
+#if( !$OsModel.isMicroKernel() )
+#* *##foreach( $csaPerCore in $OsConfig.getPerCoreCSAs() )
+#*    *#    {  \
+#*    *#      /* begin */     &OS_csaCore${csaPerCore.getKey()}_BEGIN,  \
+#*    *#      /* size */      (os_uint32_t) &OS_csaCore${csaPerCore.getKey()}_NCSA  \
+#*    *##if($foreach.hasNext)
+#*       *#    },  \
+#*    *##else
+#*       *#    }
+#*    *##end
+#* *##end
+#end
+
+/*===================================================================
+ * Tricore specific data
+ *==================================================================*/
+#if( $OsConfig.hasTimestampSTM() )
+#* *#\#define OS_TRICORE_TIMESTAMPSTMBASE  OS_${OsConfig.getTimestampSTM()}_BASE
+#end
+#if( $OsConfig.getNumCPUCores() > 1 )
+#* *##foreach( $vector in $OsConfig.getCrossCoreInterruptSources() )
+#*    *##if( $foreach.index == 0 )
+#*      *#\#define OS_TRICORE_XCORESRCS {  \
+#*    *##end
+#*      *#  $vector#if( $foreach.hasNext ),  \\$newLine#else  \\$newLine#end
+#*    *##if( !$foreach.hasNext )}#end
+#*  *##end
+#end
+
+#ifdef __cplusplus
+}
+#endif
+#endif  /* OS_CONFIG_H */

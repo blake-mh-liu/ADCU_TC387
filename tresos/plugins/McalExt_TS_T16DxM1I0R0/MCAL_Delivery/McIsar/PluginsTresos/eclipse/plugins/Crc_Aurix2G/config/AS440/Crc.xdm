@@ -1,0 +1,985 @@
+<?xml version='1.0'?>
+<!--
+/*******************************************************************************
+**                                                                            **
+** Copyright (C) Infineon Technologies (2022)                                 **
+**                                                                            **
+** All rights reserved.                                                       **
+**                                                                            **
+** This document contains proprietary information belonging to Infineon       **
+** Technologies. Passing on and copying of this document, and communication   **
+** of its contents is not permitted without prior written authorization.      **
+**                                                                            **
+********************************************************************************
+**                                                                            **
+**  FILENAME  : Crc.xdm                                                       **
+**                                                                            **
+**  VERSION   : 7.0.0                                                         **
+**                                                                            **
+**  DATE      : 2022-06-16                                                    **
+**                                                                            **
+**  VARIANT   : Variant PC                                                    **
+**                                                                            **
+**  PLATFORM  : Infineon AURIX2G                                              **
+**                                                                            **
+**  AUTHOR    : DL-AUTOSAR-Engineering                                        **
+**                                                                            **
+**  VENDOR    : Infineon Technologies                                         **
+**                                                                            **
+**  TRACEABILITY : [cover parentID]                                           **
+**                                                                            **
+**  DESCRIPTION  : XML data model for CRC driver                              **
+**                                                                            **
+**  [/cover]                                                                  **
+**                                                                            **
+**  SPECIFICATION(S) : Specification of CRC Driver, AUTOSAR Release 4.4.0     **
+**                                                                            **
+**  MAY BE CHANGED BY USER : no                                               **
+**                                                                            **
+*******************************************************************************/
+-->
+<!-- [cover parentID={BDE616FE-5D39-4b9d-9390-8351CC6C490C}]  [/cover] -->
+<!-- [cover parentID={28B439E6-2159-4436-9302-E49DA7F78EA0}]  [/cover] -->
+<datamodel version="5.0"
+           xmlns="http://www.tresos.de/_projects/DataModel2/12/root.xsd"
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/12/attribute.xsd"
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd"
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar"
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd"
+         xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd"
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd"
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd"
+         xmlns:variant="http://www.tresos.de/_projects/DataModel2/11/variant.xsd">
+    <!-- [cover parentID={BD607180-6DDB-4175-9E75-6DCCAEBFBD5C}]  [/cover] -->
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="AURIX2G" type="AR-PACKAGE">
+        <a:a name="UUID" value="ECUC:AUTOSAR"/>
+        <d:lst type="TOP-LEVEL-PACKAGES">
+        <d:ctr name="EcucDefs" type="AR-PACKAGE">
+        <a:a name="UUID" value="ECUC:ECUCDEFS"/>
+            <!-- [cover parentID={8FC09477-4D31-48bf-9FCC-0F2E51345AAD}] Configuration of the CRC module  [/cover] -->
+            <d:lst type="ELEMENTS">
+              <d:chc name="Crc" type="AR-ELEMENT" value="MODULE-DEF">
+                <v:ctr type="MODULE-DEF">
+                  <a:a name="ADMIN-DATA" type="ADMIN-DATA">
+                    <ad:ADMIN-DATA>
+                      <ad:DOC-REVISIONS>
+                        <ad:DOC-REVISION>
+                          <ad:REVISION-LABEL>4.4.0</ad:REVISION-LABEL>
+                          <ad:ISSUED-BY>AUTOSAR</ad:ISSUED-BY>
+                          <ad:DATE>2014-10-31</ad:DATE>
+                        </ad:DOC-REVISION>
+                      </ad:DOC-REVISIONS>
+                    </ad:ADMIN-DATA>
+                  </a:a>
+                  <a:a name="DESC"
+                       value="EN: Configuration of the Crc (Crc routines) module."/>
+                  <a:a name="LOWER-MULTIPLICITY" value="0"/>
+                  <a:a name="POSTBUILDVARIANTSUPPORT" value="false"/>
+                  <a:a name="RELEASE" value="asc:4.4.0"/>
+                  <d:ref type="REFINED_MODULE_DEF" value="ASPath:/AUTOSAR/EcucDefs/Crc"/>
+                  <a:a name="UPPER-MULTIPLICITY" value="1"/>
+                  <a:a name="UUID"
+                       value="ECUC:8fc09477-4d31-48bf-9fcc-0f2e51345aad"/>
+                  <v:var name="POST_BUILD_VARIANT_USED" type="BOOLEAN">
+                    <a:a name="DESC"
+                         value="Indicates whether a module implementation has or plans to have (i.e., introduced at link or post-build time) new post-build variation points."/>
+                    <a:a name="LABEL" value="Post Build Variant Used"/>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="false"/>
+                    <a:da name="READONLY" value="TRUE"/>
+                  </v:var>
+                  <v:var name="IMPLEMENTATION_CONFIG_VARIANT"
+                         type="ENUMERATION">
+                    <a:a name="LABEL" value="Config Variant"/>
+                    <a:da name="DEFAULT" value="VariantPreCompile"/>
+                    <a:da name="RANGE" value="VariantPreCompile"/>
+                  </v:var>
+              <!--***********************************************-->
+              <!--******** CRC General Container - Start ********-->
+              <!--***********************************************-->
+            <!-- [cover parentID={022760EC-AE2E-4125-96AD-CA206D355F95}]  [/cover] -->
+            <v:ctr name="CrcGeneral" type="IDENTIFIABLE">
+                    <a:a name="DESC"
+                         value="EN: General configuration of CRC module"/>
+                    <a:a name="UUID"
+                         value="ECUC:022760ec-ae2e-4125-96ad-ca206d355f95"/>
+            <!-- [cover parentID={53D2C3DF-1A3E-4db4-8495-492BEC023959}] Crc16ARCMode [/cover] -->
+                    <v:lst name="Crc16ARCMode">
+                      <a:da name="MAX" value="1"/>
+                      <v:var name="Crc16ARCMode" type="ENUMERATION">
+                        <a:a name="DESC"
+                             value="EN: Switch to select one of the available 16 bits CRC16ARC polynomial methods"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                          <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID"
+                             value="ECUC:f5200da9-3201-4437-9fab-df223f93111e"/>
+                        <a:da name="RANGE">
+                          <a:v>CRC_16_ARC_HARDWARE</a:v>
+                          <a:v>CRC_16_ARC_RUNTIME</a:v>
+                          <a:v>CRC_16_ARC_TABLE</a:v>
+                        </a:da>
+                       <a:da name="DEFAULT" value="CRC_16_ARC_HARDWARE"/>
+                      </v:var>
+                     </v:lst>
+             <!-- [cover parentID={17071BA5-9DB3-4cb9-A8EC-B5C97E935977}] Crc32Mode [/cover] -->
+                    <v:lst name="Crc16Mode">
+                      <a:da name="MAX" value="1"/>
+                  <a:da name="MIN" value="0"/>
+                      <v:var name="Crc16Mode" type="ENUMERATION">
+                        <a:a name="DESC"
+                             value="EN: Switch to select one of the available CRC 16-bit (CCITT) calculation methods"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                          <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="false"/>
+                        <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID"
+                             value="ECUC:57dcff50-89c4-444b-b345-2c797a2880f7"/>
+                        <a:da name="RANGE">
+                          <a:v>CRC_16_HARDWARE</a:v>
+                          <a:v>CRC_16_RUNTIME</a:v>
+                          <a:v>CRC_16_TABLE</a:v>
+                        </a:da>
+                        <a:da name="DEFAULT" value="CRC_16_HARDWARE"/>
+                      </v:var>
+                    </v:lst>
+                    <!-- [cover parentID={17071BA5-9DB3-4cb9-A8EC-B5C97E935977}] Crc32Mode [/cover] -->
+                    <v:lst name="Crc32Mode">
+                      <a:da name="MAX" value="1"/>
+                  <a:da name="MIN" value="0"/>
+                      <v:var name="Crc32Mode" type="ENUMERATION">
+                        <a:a name="DESC"
+                             value="EN: Switch to select one of the available CRC 32-bit (IEEE-802.3 CRC32 Ethernet Standard) calculation methods"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                          <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="false"/>
+                        <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID"
+                             value="ECUC:17071ba5-9db3-4cb9-a8ec-b5c97e935977"/>
+                        <a:da name="RANGE">
+                          <a:v>CRC_32_HARDWARE</a:v>
+                          <a:v>CRC_32_RUNTIME</a:v>
+                          <a:v>CRC_32_TABLE</a:v>
+                        </a:da>
+                    <a:da name="DEFAULT" value="CRC_32_HARDWARE"/>
+                      </v:var>
+                    </v:lst>
+                    <!-- [cover parentID={27A43B49-5515-4849-A334-4E1C9703D3DE}] Crc32P4Mode [/cover] -->
+                    <v:lst name="Crc32P4Mode">
+                      <a:da name="MAX" value="1"/>
+                  <a:da name="MIN" value="0"/>
+                      <v:var name="Crc32P4Mode" type="ENUMERATION">
+                        <a:a name="DESC"
+                        value="EN: Switch to select one of the available CRC 32-bit E2E Profile 4 calculation methods."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                        type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="false"/>
+                        <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID"
+                             value="ECUC:27a43b49-5515-4849-a334-4e1c9703d3de"/>
+                        <a:da name="RANGE">
+                          <a:v>CRC_32P4_RUNTIME</a:v>
+                          <a:v>CRC_32P4_TABLE</a:v>
+                        </a:da>
+                    <a:da name="DEFAULT" value="CRC_32P4_TABLE"/>
+                      </v:var>
+                    </v:lst>
+                    <!-- [cover parentID={33AC1F0B-FA33-4b56-B750-96EA5FA92070}] Crc64Mode [/cover] -->
+                    <v:lst name="Crc64Mode">
+                      <a:da name="MAX" value="1"/>
+                      <v:var name="Crc64Mode" type="ENUMERATION">
+                        <a:a name="DESC"
+                             value="EN: Switch to select one of the available CRC 64-bit calculation methods."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                          <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID"
+                             value="ECUC:33ac1f0b-Fa33-4b56-B750-96ea5fa92070"/>
+                        <a:da name="RANGE">
+                          <a:v>CRC_64_RUNTIME</a:v>
+                          <a:v>CRC_64_TABLE</a:v>
+                        </a:da>
+              <a:da name="DEFAULT" value="CRC_64_TABLE"/>
+                      </v:var>
+                    </v:lst>
+                    <!-- [cover parentID={4E2ED5E0-022E-415d-9E9C-CE4263E08B97}] Crc8H2FMode [/cover] -->
+                    <v:lst name="Crc8H2FMode">
+                      <a:da name="MAX" value="1"/>
+                  <a:da name="MIN" value="0"/>
+                      <v:var name="Crc8H2FMode" type="ENUMERATION">
+                        <a:a name="DESC"
+                             value="EN: Switch to select one of the available CRC 8-bit (2Fh polynomial) calculation methods"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                          <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="false"/>
+                        <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID"
+                             value="ECUC:4e2ed5e0-022e-415d-9e9c-ce4263e08b97"/>
+                        <a:da name="RANGE">
+                          <a:v>CRC_8H2F_HARDWARE</a:v>
+                          <a:v>CRC_8H2F_RUNTIME</a:v>
+                          <a:v>CRC_8H2F_TABLE</a:v>
+                        </a:da>
+                      <a:da name="DEFAULT" value="CRC_8H2F_HARDWARE"/>
+                      </v:var>
+                    </v:lst>
+                    <!-- [cover parentID={965DD362-CB66-40a5-BDB1-1B6521FC6A0E}] Crc8Mode [/cover] -->
+                    <v:lst name="Crc8Mode">
+                      <a:da name="MAX" value="1"/>
+                  <a:da name="MIN" value="0"/>
+                      <v:var name="Crc8Mode" type="ENUMERATION">
+                        <a:a name="DESC"
+                             value="EN: Switch to select one of the available CRC 8-bit (SAE J1850) calculation methods"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                          <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="false"/>
+                        <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID"
+                             value="ECUC:965dd362-cb66-40a5-bdb1-1b6521fc6a0e"/>
+                        <a:da name="RANGE">
+                          <a:v>CRC_8_HARDWARE</a:v>
+                          <a:v>CRC_8_RUNTIME</a:v>
+                          <a:v>CRC_8_TABLE</a:v>
+                        </a:da>
+                    <a:da name="DEFAULT" value="CRC_8_HARDWARE"/>
+                      </v:var>
+                    </v:lst>
+                  <!-- [cover parentID={042905FE-C8B1-408d-8C22-B55CD190EA7C}] CrcVersionInfoApi [/cover] -->
+                <v:var name="CrcVersionInfoApi" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="EN: Pre-processor switch to enable / disable the API to read out the modules version information."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID"
+                       value="ECUC:5b2dc178-9f79-43a7-a2d5-f492d356b36b"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <!-- [cover parentID={E37FE302-7DFC-4ece-A14B-CCB72292E749}] CrcSafetyEnable [/cover] -->
+                <v:var name="CrcSafetyEnable" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="EN: Pre-processor switch to enable / disable the Safety checks for all APIs"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID"
+                       value="ECUC:5b2dc178-9f79-43a7-a2d5-f492d356b36c"/>
+                  <a:da name="DEFAULT" value="true"/>
+                </v:var>
+                <!-- [cover parentID={CE568C3C-C765-4119-ABEE-B4F181DEACAA}] CrcDma8bitApi [/cover] -->
+                <v:var name="CrcDma8bitApi" type="BOOLEAN">
+                       <a:a name="DESC"
+                           value="EN: Switch to enable/disable 8-bit SAE J1850 polynomial for CRC calculation while using the DMA based API."/>
+                       <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                      <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID"
+                           value="ECUC:5b2dc178-9f79-43a7-a2d5-f492d356b37a"/>
+                      <a:da name="DEFAULT" value="false"/>
+                      </v:var>
+                    <!-- [cover parentID={446BDFA4-49B0-4e47-AE42-AE1F1E8AFC7B}] CrcDma16bitApi [/cover] -->
+                    <v:var name="CrcDma16bitApi"  type="BOOLEAN">
+                       <a:a name="DESC"
+                           value="EN: Switch to enable/disable 16-bit CCITT-FALSE CRC16 polynomial for CRC calculation while using the DMA based API."/>
+                       <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                      <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID"
+                           value="ECUC:5b2dc178-9f79-43a7-a2d5-f492d356b37b"/>
+                      <a:da name="DEFAULT" value="false"/>
+                    </v:var>
+                    <!-- [cover parentID={3206F5AC-50AF-47fe-A4E6-5BA78E78852D}] CrcDma32bitApi [/cover] -->
+                    <v:var name="CrcDma32bitApi" type="BOOLEAN">
+                       <a:a name="DESC"
+                           value="EN: Switch to enable/disable 32-bit IEEE-802.3 polynomial for CRC calculation while using the DMA based API."/>
+                       <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                      <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID"
+                           value="ECUC:5b2dc178-9f79-43a7-a2d5-f492d356b37c"/>
+                      <a:da name="DEFAULT" value="false"/>
+                    </v:var>
+                    <!-- [cover parentID={3206F5AC-50AF-47fe-A4E6-5BA78E78852D}] CrcDma32P4bitApi [/cover] -->
+                    <v:var name="CrcDma32P4bitApi" type="BOOLEAN">
+                       <a:a name="DESC"
+                           value="EN: Switch to enable/disable 32-bit (0xF4ACFB13) polynomail for CRC calculation while using the DMA based API."/>
+                       <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                      <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID"
+                           value="ECUC:5b2dc178-9f79-43a7-a2d5-f492d356b52d"/>
+                      <a:da name="DEFAULT" value="false"/>
+                    </v:var>
+                    <!-- [cover parentID={E520AC8A-5446-49f3-A192-089A2B812D94}] CrcRuntimeApiMode [/cover] -->
+                    <v:var name="CrcRuntimeApiMode" type="ENUMERATION">
+                    <a:a name="DESC"
+                         value="EN: Switch to select one of the available CRC implementation mode"/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                    <a:a name="SCOPE" value="LOCAL"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:a name="UUID"
+                         value="ECUC:965dd362-cb66-40a5-bdb1-1b6521fc6a0d"/>
+                    <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="((../CrcDma8bitApi = 'true') or (../CrcDma16bitApi = 'true') or (../CrcDma32bitApi = 'true') or (../CrcDma32P4bitApi = 'true'))"/>
+                    </a:da>
+                    <a:da name="RANGE">
+                      <a:v>CRC_MCAL_SUPERVISOR</a:v>
+                      <a:v>CRC_MCAL_USER1</a:v>
+                    </a:da>
+                <a:da name="DEFAULT" value="CRC_MCAL_SUPERVISOR"/>
+                  </v:var>
+
+                <v:var name="Crc8ReturnErrorValue" type="INTEGER">
+                  <a:a name="DESC"
+                       value="EN: Error value that will be returned in case of an invalid input parameter."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+
+                  <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID"
+                       value="ECUC:5b2dc178-9f79-43a7-a2d5-f492d356b36d"/>
+                  <a:a name="DEFAULT_RADIX" value="HEX" />
+                  <a:da name="DEFAULT" value="0"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&gt;= 0"/>
+                    <a:tst expr="&lt;= 255"/>
+                  </a:da>
+                  <a:da name="EDITABLE" type="XPath">
+                    <a:tst expr="((./../CrcSafetyEnable = 'true') and ((../Crc8Mode/__1 = 'CRC_8_HARDWARE') or (../Crc8Mode/__1 = 'CRC_8_RUNTIME') or (../Crc8Mode/__1 = 'CRC_8_TABLE')))"/>
+                  </a:da>
+                </v:var>
+                <v:var name="Crc8H2FReturnErrorValue" type="INTEGER">
+                  <a:a name="DESC"
+                       value="EN: Error value that will be returned in case of an invalid input parameter."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                  <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID"
+                       value="ECUC:5b2dc178-9f79-43a7-a2d5-f492d356b36e"/>
+                  <a:a name="DEFAULT_RADIX" value="HEX" />
+                  <a:da name="DEFAULT" value="0"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&gt;= 0"/>
+                    <a:tst expr="&lt;= 255"/>
+                  </a:da>
+                  <a:da name="EDITABLE" type="XPath">
+                    <a:tst expr="((./../CrcSafetyEnable = 'true') and ((../Crc8H2FMode/__1 = 'CRC_8H2F_HARDWARE') or (../Crc8H2FMode/__1 = 'CRC_8H2F_RUNTIME') or (../Crc8H2FMode/__1 = 'CRC_8H2F_TABLE')))"/>
+                  </a:da>
+                </v:var>
+                <v:var name="Crc16ReturnErrorValue" type="INTEGER">
+                  <a:a name="DESC"
+                       value="EN: Error value that will be returned in case of an invalid input parameter."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                  <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID"
+                       value="ECUC:5b2dc178-9f79-43a7-a2d5-f492d356b36f"/>
+                  <a:a name="DEFAULT_RADIX" value="HEX" />
+                  <a:da name="DEFAULT" value="0"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&gt;= 0"/>
+                    <a:tst expr="&lt;= 65535"/>
+                  </a:da>
+                  <a:da name="EDITABLE" type="XPath">
+                    <a:tst expr="((./../CrcSafetyEnable = 'true') and ((../Crc16Mode/__1 = 'CRC_16_HARDWARE') or (../Crc16Mode/__1 = 'CRC_16_RUNTIME') or (../Crc16Mode/__1 = 'CRC_16_TABLE')))"/>
+                  </a:da>
+                </v:var>
+                <v:var name="Crc16ARCReturnErrorValue" type="INTEGER">
+                  <a:a name="DESC"
+                       value="EN: Error value that will be returned in case of an invalid input parameter."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                  <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID"
+                       value="ECUC:5b2dc178-9f79-43a7-a2d5-f492d356b37f"/>
+                  <a:a name="DEFAULT_RADIX" value="HEX" />
+                  <a:da name="DEFAULT" value="0"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&gt;= 0"/>
+                    <a:tst expr="&lt;= 65535"/>
+                  </a:da>
+                  <a:da name="EDITABLE" type="XPath">
+                    <a:tst expr="((./../CrcSafetyEnable = 'true') and ((../Crc16ARCMode/__1 = 'CRC_16_ARC_HARDWARE') or (../Crc16ARCMode/__1 = 'CRC_16_ARC_RUNTIME') or (../Crc16ARCMode/__1 = 'CRC_16_ARC_TABLE')))"/>
+                  </a:da>
+                </v:var>
+                <v:var name="Crc32ReturnErrorValue" type="INTEGER">
+                  <a:a name="DESC"
+                       value="EN: Error value that will be returned in case of an invalid input parameter."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                  <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID"
+                       value="ECUC:5b2dc178-9f79-43a7-a2d5-f492d356b370"/>
+                  <a:a name="DEFAULT_RADIX" value="HEX" />
+                  <a:da name="DEFAULT" value="0"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&gt;= 0"/>
+                    <a:tst expr="&lt;= 4294967295"/>
+                  </a:da>
+                  <a:da name="EDITABLE" type="XPath">
+                    <a:tst expr="((./../CrcSafetyEnable = 'true') and ((../Crc32Mode/__1 = 'CRC_32_HARDWARE') or (../Crc32Mode/__1 = 'CRC_32_RUNTIME') or (../Crc32Mode/__1 = 'CRC_32_TABLE')))"/>
+                  </a:da>
+                </v:var>
+                <v:var name="Crc32P4ReturnErrorValue" type="INTEGER">
+                  <a:a name="DESC"
+                       value="EN: Error value that will be returned in case of an invalid input parameter."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                  <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID"
+                       value="ECUC:5b2dc178-9f79-43a7-a2d5-f492d356b371"/>
+                  <a:a name="DEFAULT_RADIX" value="HEX" />
+                  <a:da name="DEFAULT" value="0"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&gt;= 0"/>
+                    <a:tst expr="&lt;= 4294967295"/>
+                  </a:da>
+                  <a:da name="EDITABLE" type="XPath">
+                    <a:tst expr="((./../CrcSafetyEnable = 'true') and ((../Crc32P4Mode/__1 = 'CRC_32P4_RUNTIME') or (../Crc32P4Mode/__1 = 'CRC_32P4_TABLE')))"/>
+                  </a:da>
+                </v:var>
+                <v:var name="Crc64ReturnErrorValue" type="INTEGER">
+                  <a:a name="DESC"
+                       value="EN: Error value that will be returned in case of an invalid input parameter."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                  <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID"
+                       value="ECUC:5b2dc178-9f79-43a7-a2d5-f492d356b37d"/>
+                  <a:a name="DEFAULT_RADIX" value="HEX" />
+                  <a:da name="DEFAULT" value="0"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&gt;= 0"/>
+                    <a:tst expr="&lt;= 9223372036854775807"/>
+                  </a:da>
+                  <a:da name="EDITABLE" type="XPath">
+                    <a:tst expr="((./../CrcSafetyEnable = 'true') and ((../Crc64Mode/__1 = 'CRC_64_RUNTIME') or (../Crc64Mode/__1 = 'CRC_64_TABLE')))"/>
+                  </a:da>
+                </v:var>
+              </v:ctr>
+              <v:lst name="CrcChannelConfig" type="MAP">
+              <!-- [cover parentID={758D9310-181A-4f69-9EA5-D84441200E5A}] CrcChannelConfig [/cover] -->
+              <!-- [cover parentID={9C669472-7372-41d7-BEF3-104B04333BD6}] CrcChannelConfig [/cover] -->
+               <a:da name="MIN" value="0"/>
+               <a:da name="MAX" type="XPath" expr="ecu:get('Mcu.NoOfCoreAvailable')"/>
+                <a:da name="EDITABLE" type="XPath">
+                  <a:tst expr="((../CrcGeneral/CrcDma32P4bitApi = 'true') or (../CrcGeneral/CrcDma32bitApi = 'true')
+                  or (../CrcGeneral/CrcDma16bitApi = 'true') or (../CrcGeneral/CrcDma8bitApi = 'true'))"/>
+                </a:da>
+               <a:da name="INVALID" type="Multi">
+                  <mt:xpath expr="(((../CrcGeneral/CrcDma32P4bitApi = 'true') or (../CrcGeneral/CrcDma32bitApi = 'true')
+                  or (../CrcGeneral/CrcDma16bitApi = 'true') or (../CrcGeneral/CrcDma8bitApi = 'true')) and (count(./*) = 0 ))" true ="CRC - CrcChannelConfig container should have atleast one of the Resource configured when DMA based APIs are enabled."/>
+                  
+                  <mt:xpath expr="(((../CrcGeneral/CrcDma32P4bitApi != 'true') and (../CrcGeneral/CrcDma32bitApi != 'true')
+                  and (../CrcGeneral/CrcDma16bitApi != 'true') and (../CrcGeneral/CrcDma8bitApi != 'true')) and (count(./*) > 0 ))" true="CRC - CrcChannelConfig container should not have any Resource allocation when none of the DMA based API is enabled."/>
+              </a:da>
+               <v:ctr name="CrcChannelConfig" type="IDENTIFIABLE">
+                  <a:a name="DESC" value="EN: CRC Configuration of FCE channels, callback functions and alloctaion of DMA channel"/>
+                  <a:a name="UUID" value="ECUC:c03229fe-2dca-418e-a47c-1ab11e6c1922"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                       <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <v:var name="CrcChannelId" type="INTEGER">
+                  <!-- [cover parentID={2626D68B-2E28-4114-A544-BC2CAF335933}] CrcChannelId [/cover] -->
+                      <a:da name="DESC" value="EN: CRC Allocation of FCE channels"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:da name="INVALID" type="Multi">
+                      <mt:xpath expr="text:uniq(../../*/CrcChannelId,.)"  false="EN: CRC - Channel IDs shall be unique"/>
+                      <mt:range>
+                          <mt:tst expr="&lt;=7"/>
+                          <mt:tst expr="&gt;=0"/>
+                      </mt:range>
+                      </a:da>
+                      <a:da name="DEFAULT" type="XPath" expr="node:fallback(node:current()/../@index,'0')"/>
+                      <a:a name="UUID" value="ECUC:c03229fe-3aca-418e-a47c-1ab11e6c2032"/>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  </v:var>
+                  <v:ref name="CrcDmaChannel" type="REFERENCE">
+                  <!-- [cover parentID={C8636ABD-2E27-48a0-AD81-C1F3CE906084}] CrcDmaChannel [/cover] -->
+                      <a:a name="DESC"
+                         value="EN: This parameter contains reference to DMA resource allocated to FCE"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                         <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                      <a:a name="SCOPE" value="ECU"/>
+                      <a:a name="UUID"
+                         value="ECUC:c945dd5e-1a5b-4bcc-a8ab-0a4d19ec3585"/>
+                      <a:da name="REF">
+                      <a:v>ASPathDataOfSchema:/AURIX2G/EcucDefs/Dma/DmaChannelConfig</a:v>
+                      </a:da>
+                      <a:da name="INVALID" type="XPath">
+                        <a:tst expr="text:uniq(../../*/CrcDmaChannel,.)" false="DMA channel should be unique."/>
+                        <a:tst expr=" node:refvalid(.)" false="The configured node does not exist or may not be referenced."/>
+                      </a:da>
+                   </v:ref>
+                   <v:var name="CrcResultNotification" type="FUNCTION-NAME">
+                   <!-- [cover parentID={CFCFE54B-A375-43a4-B946-F7A2EFA0C942}] CrcResultNotification [/cover] -->
+                      <a:da name="DESC" value="EN: User defined result callback function">
+                          <a:v>EN: This callback function will be called by the CRC driver on successful CRC calculation</a:v>
+                      </a:da>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:da name="INVALID" type="XPath">
+                          <a:tst expr="(. = '')" true="EN: CRC Error handler - Invalid Configuration, Function pointer cannot be blank."/>
+                          <a:tst expr= "text:grep(., '.*\s.*')" true="EN: CRC - Invalid Configuration, Spaces not expected in the function pointer"/>
+                      </a:da>
+                      <a:da name="DEFAULT" value="NULL_PTR" />
+                      <a:a name="UUID" value="ECUC:c03229fe-5dca-418e-a47c-1ab11e6c2252"/>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  </v:var>
+                  <v:var name="CrcErrorNotification" type="FUNCTION-NAME">
+                   <!-- [cover parentID={76A49D44-9B6C-4426-A15E-2D3EA8010873}] CrcErrorNotification [/cover] -->
+                      <a:da name="DESC" value="EN: User defined error callback functionr">
+                          <a:v>EN: This is a callback functio will be called by the CRC driver if an error occured due to move engine</a:v>
+                      </a:da>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:da name="INVALID" type="XPath">
+                          <a:tst expr="(. = '')" true="EN: CRC Error handler - Invalid Configuration, Function pointer cannot be blank."/>
+                          <a:tst expr= "text:grep(., '.*\s.*')" true="EN: CRC - Invalid Configuration, Spaces not expected in the function pointer"/>
+                      </a:da>
+                      <a:da name="DEFAULT" value="NULL_PTR" />
+                      <a:a name="UUID" value="ECUC:c03229fe-5dca-418e-a47c-1ab11e6c2253"/>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  </v:var>
+                  </v:ctr>
+                  </v:lst>
+              <!--*****************************************************-->
+              <!--************ CRC General Container - End ************-->
+              <!--*****************************************************-->
+
+              <!--*****************************************************-->
+              <!--********* CRC Published Information - Start *********-->
+              <!--*****************************************************-->
+              <!-- [cover parentID={68D474A8-3275-4b57-9BA3-2CD282DD86B3}] CrcPublishedInformation [/cover] -->
+               <v:ctr name="CrcPublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>EN: Additional published parameters not covered by CommonPublishedInformation container.
+
+Note that these parameters do not have any configuration class setting, since they are published information.</a:v>
+                </a:a>
+                <a:a name="UUID"
+                     value="ECUC:9e1f6afd-afe0-45c8-a88c-30d587a71e8d"/>
+                <!-- [cover parentID={2BBC6CBF-860A-4d21-B7C4-C91534621369}] CrcInitialValue16 [/cover] -->
+                <v:var name="CrcInitialValue16" type="INTEGER_LABEL">
+                <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="DESC"
+                       value="EN: Initial value for the 16-bit CRC calculation."/>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID"
+                       value="ECUC:9647a421-47c3-4e83-83ca-3f409051a573"/>
+                 <a:da name="DEFAULT" value="65535"/>
+                 <a:da name="EDITABLE" value="false"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=65535"/>
+                  </a:da>
+                </v:var>
+                <!-- [cover parentID={DAFC2A17-625E-47ba-8D21-90A2846CCC1C}] CrcInitialValue16ARC [/cover] -->
+                <v:var name="CrcInitialValue16ARC" type="INTEGER_LABEL">
+                <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="DESC"
+                       value="EN: Initial value for the 16-bit CRC16ARC calculation"/>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID"
+                       value="ECUC:9647a421-47c3-4e83-83ca-3f409051cc1c"/>
+                 <a:da name="DEFAULT" value="0"/>
+                 <a:da name="EDITABLE" value="false"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=0"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                </v:var>
+                <!-- [cover parentID={C9867342-4F31-46b8-8666-67B746EC13F7}] CrcInitialValue8 [/cover] -->
+                <v:var name="CrcInitialValue8" type="INTEGER_LABEL">
+                       <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="DESC"
+                       value="EN: Initial value for the 8-bit CRC calculation."/>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID"
+                       value="ECUC:9647a421-47c3-4e83-83ca-3f409051a572"/>
+                 <a:da name="DEFAULT" value="255"/>
+                 <a:da name="EDITABLE" value="false"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=255"/>
+                    <a:tst expr="&gt;=255"/>
+                  </a:da>
+                </v:var>
+                <!-- [cover parentID={0E1B28A8-1589-4b7a-93F3-C0F9A12F110F}] CrcInitialValue8H2F [/cover] -->
+                <v:var name="CrcInitialValue8H2F" type="INTEGER_LABEL">
+                <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="DESC"
+                       value="EN: Initial value for the 8-bit CRC8H2F calculation."/>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID"
+                       value="ECUC:9647a421-47c3-4e83-83ca-3f409051a571"/>
+                 <a:da name="DEFAULT" value="255"/>
+                 <a:da name="EDITABLE" value="false"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=255"/>
+                    <a:tst expr="&gt;=255"/>
+                  </a:da>
+                </v:var>
+                <!-- [cover parentID={3070A2D8-78AF-4f6d-ABBE-137118D96989}] CrcInitialValue32 [/cover] -->
+                <v:var name="CrcInitialValue32" type="INTEGER_LABEL">
+                <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="DESC"
+                       value="EN: Initial value for the 32-bit CRC calculation."/>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID"
+                       value="ECUC:3c5bfda0-c90e-4757-aafd-2e297b37168b"/>
+                   <a:da name="DEFAULT" value="4294967295"/>
+                   <a:da name="EDITABLE" value="false"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=4294967295"/>
+                    <a:tst expr="&gt;=4294967295"/>
+                  </a:da>
+                </v:var>
+                <!-- [cover parentID={E682253B-DC80-4ca3-8049-3F67EEEC027C}] CrcInitialValue32P4 [/cover] -->
+                <v:var name="CrcInitialValue32P4" type="INTEGER_LABEL">
+                <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="DESC"
+                       value="EN: Initial value for the 32-bit CRC32P4 calculation."/>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID"
+                       value="ECUC:3c5bfda0-c90e-4757-aafd-2e287b27177c"/>
+                   <a:da name="DEFAULT" value="4294967295"/>
+                   <a:da name="EDITABLE" value="false"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=4294967295"/>
+                    <a:tst expr="&gt;=4294967295"/>
+                  </a:da>
+                </v:var>
+                <!-- [cover parentID={17278EA2-586F-4a46-B3CF-0918F6AE14A1}] CrcInitialValue64 [/cover] -->
+                <v:var name="CrcInitialValue64" type="INTEGER">
+                <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="DESC"
+                       value="EN: Initial value for the 64-bit CRC64 calculation."/>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID"
+                       value="ECUC:3c5bfda0-c90e-4757-aafd-2e287b27178b"/>
+                   <a:da name="DEFAULT" value="18446744073709551615"/>
+                   <a:da name="EDITABLE" value="false"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=18446744073709551615"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                </v:var>
+              </v:ctr>
+
+              <!--***********************************************************-->
+              <!--************* CRC Published Information - End *************-->
+              <!--***********************************************************-->
+
+              <!--************************************************************-->
+              <!--********* CRC Common Published Information - Start *********-->
+              <!--************************************************************-->
+              <!-- [cover parentID={84E662C8-44AF-4c3a-8732-69DC56F65846}] CommonPublishedInformation [/cover] -->
+              <v:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC" value="EN: Common container, aggregated by all modules. It contains published information about vendor and versions."/>
+                <a:a name="UUID" value="492f8482-3e2c-4bf1-b27f-01fd7ac35788"/>
+                <!-- [cover parentID={3BFF0C11-0863-4e31-ACBE-62312AA5B62B}] ArMajorVersion [/cover] -->
+                <v:var name="ArMajorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC" value="EN: Major version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="bd0a8d38-4d8c-4ee9-88fe-1166b258bb8a"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=255"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="4"/>
+                </v:var>
+                <!-- [cover parentID={754C0200-47DE-4240-A256-65D4DCA92807}] ARMinorVersion [/cover] -->
+                <v:var name="ArMinorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC" value="EN: Minor version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="73f87c7f-e230-4178-bff0-eb2704aae656"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=255"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="4"/>
+                </v:var>
+                <!-- [cover parentID={72436358-44BE-4bdc-ADB5-9E91FE8775D3}] ARPatchVersion [/cover] -->
+                <v:var name="ArPatchVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC" value="EN: Patch level version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="2380135d-6778-417a-a34b-e10017d4dd54"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=255"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <!-- [cover parentID={02583BF9-4BE1-45bf-8EBD-94B91CD50BD0}] SwMajorVersion [/cover] -->
+                <v:var name="SwMajorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC" value="EN: Major version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="fca015e3-5f28-4cbe-8949-8f4b87d86827"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=255"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="20"/>
+                </v:var>
+                <!-- [cover parentID={7FC9C1DD-1582-4f30-B4C8-F3B834BE1496}] SwMinorVersion [/cover] -->
+                <v:var name="SwMinorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC" value="EN: Minor version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="14ab81e0-3d80-43dc-8b92-247e5a542df9"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=255"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="20"/>
+                </v:var>
+                <!-- [cover parentID={D36D2C8A-F991-4c9c-8559-E6546A90808B}] SwPatchVersion [/cover] -->
+                <v:var name="SwPatchVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC" value="EN: Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="32e37bfd-18b6-41d1-9248-a81dbe0fe4c5"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=255"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <!-- [cover parentID={D6AD4CA7-6232-4ce6-9869-982C440E5E16}] ModuleId [/cover] -->
+                <v:var name="ModuleId" type="INTEGER_LABEL">
+                  <a:a name="DESC" value="EN: Module ID of this module from Module List"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="3b407478-6902-4f80-b7cf-f33b0854e638"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="201"/>
+                </v:var>
+                <!-- [cover parentID={E7BBCBF8-E038-4d68-80B9-A60FDCCA3538}] VendorId [/cover] -->
+                <v:var name="VendorId" type="INTEGER_LABEL">
+                  <a:a name="DESC" value="EN: Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="7d650b2d-4adb-41f0-a68e-5f0c416501d1"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                  <a:da name="DEFAULT" value="17"/>
+                </v:var>
+                <v:var name="Release" type="STRING_LABEL">
+                  <a:a name="DESC" value="EN: Aurix derivative used for the implementation"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="3b407478-6902-4f40-b7cf-f33b0854e638"/>
+                  <a:da name="DEFAULT" type="XPath" expr="ecu:get('Rel.Derivate')"/>
+                </v:var>
+              </v:ctr>
+              <!--**********************************************************-->
+              <!--********* CRC Common Published Information - End *********-->
+              <!--**********************************************************-->
+            </v:ctr>
+          </d:chc>
+
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+ </d:lst>
+</d:ctr>
+</datamodel>

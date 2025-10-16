@@ -1,0 +1,953 @@
+<?xml version='1.0'?>
+<!--
+/*******************************************************************************
+**                                                                            **
+** Copyright (C) Infineon Technologies (2020)                                 **
+**                                                                            **
+** All rights reserved.                                                       **
+**                                                                            **
+** This document contains proprietary information belonging to Infineon       **
+** Technologies. Passing on and copying of this document, and communication   **
+** of its contents is not permitted without prior written authorization.      **
+**                                                                            **
+********************************************************************************
+**                                                                            **
+**  FILENAME  : Hssl.xdm                                                      **
+**                                                                            **
+**  VERSION   : 7.0.0                                                         **
+**                                                                            **
+**  DATE      : 2020-10-11                                                    **
+**                                                                            **
+**  VARIANT   : Variant PC                                                    **
+**                                                                            **
+**  PLATFORM  : Infineon AURIX2G                                              **
+**                                                                            **
+**  AUTHOR    : DL-AUTOSAR-Engineering                                        **
+**                                                                            **
+**  VENDOR    : Infineon Technologies                                         **
+**                                                                            **
+**  TRACEABILITY : [cover parentID]                                           **
+**                                                                            **
+**  DESCRIPTION  : XML data model for Hssl driver                             **
+**                                                                            **
+**  [/cover]                                                                  **
+**                                                                            **
+**  SPECIFICATION(S) : NA                                                     **
+**                                                                            **
+**  MAY BE CHANGED BY USER : no                                               **
+**                                                                            **
+*******************************************************************************/
+-->
+<datamodel version="7.0"
+           xmlns="http://www.tresos.de/_projects/DataModel2/16/root.xsd"
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/16/attribute.xsd"
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd"
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar"
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd"
+         xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd"
+         xmlns:f="http://www.tresos.de/_projects/DataModel2/14/formulaexpr.xsd"
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd"
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd"
+         xmlns:variant="http://www.tresos.de/_projects/DataModel2/11/variant.xsd">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="AURIX2G" type="AR-PACKAGE">
+        <a:a name="UUID" value="ECUC:c03239fe-1dca-415e-a47c-1ae11e6c1812"/>
+        <d:lst type="TOP-LEVEL-PACKAGES">
+          <d:ctr name="EcucDefs" type="AR-PACKAGE">
+            <a:a name="UUID" value="ECUC:ECUCDEFS"/>
+        <d:lst type="ELEMENTS">
+          <d:chc name="Hssl" type="AR-ELEMENT" value="MODULE-DEF">
+            <v:ctr type="MODULE-DEF">
+              <a:a name="ADMIN-DATA" type="ADMIN-DATA">
+                <ad:ADMIN-DATA>
+                  <ad:DOC-REVISIONS>
+                    <ad:DOC-REVISION>
+                      <ad:REVISION-LABEL>4.4.0</ad:REVISION-LABEL>
+                      <ad:ISSUED-BY>AUTOSAR</ad:ISSUED-BY>
+                      <ad:DATE>2014-10-31</ad:DATE>
+                    </ad:DOC-REVISION>
+                  </ad:DOC-REVISIONS>
+                </ad:ADMIN-DATA>
+              </a:a>
+              <a:a name="DESC"
+                   value="EN: Configuration of the Hssl module."/>
+              <a:a name="LOWER-MULTIPLICITY" value="0"/>
+              <a:a name="UPPER-MULTIPLICITY" value="1"/>
+              <a:a name="RELEASE" value="asc:4.4.0"/>
+              <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1202"/>
+              <v:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION">
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Config Variant"/>
+                  <a:da name="DEFAULT" value="VariantPreCompile"/>
+                  <a:da name="RANGE">
+                      <a:v>VariantPreCompile</a:v>
+                  </a:da>
+              </v:var>
+              <v:ctr name="HsslGeneral" type="IDENTIFIABLE">
+                  <a:a name="DESC" value="EN: General configuration of Hssl Driver module"/>
+                  <a:a name="UUID" value="ECUC:c03229fe-4dca-416e-a48d-1ae11e6c1206"/>
+                  <v:var name="HsslDevErrorDetect" type="BOOLEAN">
+                      <a:a name="DESC" value="EN: Enables / Disables development error detection"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                      <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1210"/>
+                      <a:da name="DEFAULT" value="false"/>
+                  </v:var>
+
+                  <v:var name="HsslVersionInfoApi" type="BOOLEAN">
+                      <a:a name="DESC" value="EN: Enables / Disables the Get version Info API"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                      <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1234"/>
+                      <a:da name="DEFAULT" value="false"/>
+                  </v:var>
+                  <v:var name="HsslInitApiMode" type="ENUMERATION">
+                      <a:a name="DESC">
+                        <a:v>EN: This parameter selects the operating modes for HSSL driver initialization
+                        </a:v>
+                      </a:a>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS"  type="IMPLEMENTATIONCONFIGCLASS">
+                       <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                      <a:a name="UUID"  value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1236"/>
+                      <a:da name="DEFAULT" value="HSSL_MCAL_SUPERVISOR"/>
+                      <a:da name="INVALID" type="XPath">
+                          <a:tst expr="((../HsslRuntimeApiMode = 'HSSL_MCAL_SUPERVISOR') and (../HsslInitApiMode = 'HSSL_MCAL_USER1'))"
+                                 true="If Runtime APIs are configured for Supervisory mode, the Initialization and De-Initialization API should also be configured in Supervisory mode."/>
+                      </a:da>
+                      <a:da name="RANGE">
+                        <a:v>HSSL_MCAL_SUPERVISOR</a:v>
+                        <a:v>HSSL_MCAL_USER1</a:v>
+                      </a:da>
+                    </v:var>
+                    <v:var name="HsslRuntimeApiMode" type="ENUMERATION">
+                      <a:a name="DESC">
+                        <a:v>EN: This parameter selects the runtime operating modes for HSSL driver
+                        </a:v>
+                      </a:a>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS"  type="IMPLEMENTATIONCONFIGCLASS">
+                       <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                      <a:a name="UUID"  value="ECUC:c15229fe-3dca-435e-a48d-1ae11e6c1236"/>
+                      <a:da name="DEFAULT" value="HSSL_MCAL_SUPERVISOR"/>
+                      <a:da name="RANGE">
+                        <a:v>HSSL_MCAL_SUPERVISOR</a:v>
+                        <a:v>HSSL_MCAL_USER1</a:v>
+                      </a:da>
+                    </v:var>
+                    <v:var name="HsslMultiSlaveMode" type="BOOLEAN">
+                      <a:a name="DESC" value="EN: Enables / Disables multi slave mode"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                      <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1352"/>
+                      <a:da name="DEFAULT" value="false"/>
+                  </v:var>
+                    <v:var name="Hsslclockpredivider" type="INTEGER">
+                            <a:a name="DESC" value="EN: Defines the Address pointer containing the address of the memory location containing the unique ID data"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1356"/>
+                            <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=16383"/>
+                            <a:tst expr="&gt;=0"/>
+                            </a:da>
+                            <a:da name="DEFAULT" value="255"/>
+                        </v:var>
+                        <v:var name="HsslInterfaceMode" type="ENUMERATION">
+                            <a:a name="DESC"
+                            value="EN:The parameter represents the Interface mode. The values correspond to the following modes:
+                                                    0 - HSSL_MASTER,
+                                                    1 - HSSL_SLAVE "/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1334"/>
+                            <a:da name="RANGE">
+                            <a:v>HSSL_MASTER</a:v>
+                            <a:v>HSSL_SLAVE</a:v>
+                            </a:da>
+                            <a:da name="DEFAULT" value="HSSL_MASTER"/>
+                            <a:da name="INVALID" type="XPath">
+                            <a:tst expr="(. &lt; 0) or (. &gt; 1)" true="Master interface"/>
+                            </a:da>
+                        </v:var>
+                        <v:var name="HsslOperatingMode" type="ENUMERATION">
+                            <a:a name="DESC"
+                            value="EN:The parameter represents the Interface mode. The values correspond to the following modes:
+                                                    0 - HSSL_POLLING_MODE,
+                                                    1 - HSSL_INTERUPT_MODE "/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1360"/>
+                            <a:da name="RANGE">
+                            <a:v>HSSL_POLLING_MODE</a:v>
+                            <a:v>HSSL_INTERUPT_MODE</a:v>
+                            </a:da>
+                            <a:da name="DEFAULT" value="HSSL_POLLING_MODE"/>
+                            <a:da name="INVALID" type="XPath">
+                            <a:tst expr="(. &lt; 0) or (. &gt; 1)" true="Master interface"/>
+                            </a:da>
+                        </v:var>
+
+              </v:ctr>
+                <!--********************************************************-->
+                <!--************** HSSL configuration ***************-->
+                <!--********************************************************-->
+                <v:lst name="HsslConfig" type="MAP">
+                    <a:da name="MAX" type="XPath" expr="ecu:get('Hssl.MaxControllers')"/>
+                    <a:da name="MIN" value="1"/>
+                    <v:ctr name="HsslConfig" type="IDENTIFIABLE">
+                        <a:a name="DESC" value="EN: Hssl Configuration"/>
+                        <a:a name="UUID" value="ECUC:c03229fe-2dca-418e-a47c-1ab11e6c1922"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                        </a:a>
+                        <v:var name="HsslInstanceID" type="INTEGER">
+                            <a:da name="DESC" value="EN: HSSL Instance ID"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:da name="INVALID" type="Multi">
+                            <mt:xpath expr="text:uniq(../../*/HsslInstanceID,.)"  false="EN: HSSL Instance ID must be unique."/>
+                            <mt:range>
+                            <mt:tst expr="&lt;=255"/>
+                            <mt:tst expr="&gt;=0"/>
+                            </mt:range>
+                            </a:da>
+                            <a:da name="DEFAULT" type="XPath" expr="node:fallback(node:current()/../@index,'0')"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3aca-418e-a47c-1ab11e6c2032"/>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                        </v:var>
+                        <v:var name="HsslCh2Mode" type="ENUMERATION">
+                            <a:a name="DESC" value="EN: Defines if the channel 2 is used in a streaming or command mode."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1214"/>
+                            <a:da name="DEFAULT" value="HSSL_CH2_COMMAND"/>
+                            <a:da name="RANGE">
+                            <a:v>HSSL_CH2_COMMAND</a:v>
+                            <a:v>HSSL_CH2_STREAMING</a:v>
+                            </a:da>
+                        </v:var>
+                        <v:var name="HsslStreamingModeTx" type="ENUMERATION">
+                            <a:a name="DESC"
+                            value="EN: Defines the Streaming Mode for Transmitter to be either Continuous or Streaming.
+                                                                        - if ON, Single
+                                                                        - if OFF, Continuous "/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1218"/>
+                            <a:da name="DEFAULT" value="HSSL_STREAMING_MODE_CONTINOUS"/>
+                            <a:da name="RANGE">
+                            <a:v>HSSL_STREAMING_MODE_SINGLE</a:v>
+                            <a:v>HSSL_STREAMING_MODE_CONTINOUS</a:v>
+                            </a:da>
+                            <a:da name="EDITABLE" type="XPath">
+                          <a:tst expr="../HsslCh2Mode = 'HSSL_CH2_STREAMING'" />
+                          </a:da>
+                        </v:var>
+                        <v:var name="HsslEXICallbackFunction" type="STRING">
+                            <a:a name="DESC" value="EN: User function to handle Global error event for HSSL."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1240"/>
+                            <a:da name="DEFAULT" value="NULL_PTR"/>
+                        </v:var>
+                        <v:var name="HsslStreamingModeRx" type="ENUMERATION">
+                            <a:a name="DESC"
+                            value="EN: Defines the Streaming Mode for Receiver to be either Continuous or Streaming.
+                                                                        - if ON, Single
+                                                                        - if OFF, Continuous "/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1222"/>
+                            <a:da name="DEFAULT" value="HSSL_STREAMING_MODE_CONTINOUS"/>
+                            <a:da name="RANGE">
+                            <a:v>HSSL_STREAMING_MODE_SINGLE</a:v>
+                            <a:v>HSSL_STREAMING_MODE_CONTINOUS</a:v>
+                            </a:da>
+                            <a:da name="EDITABLE" type="XPath">
+                          <a:tst expr="../HsslCh2Mode = 'HSSL_CH2_STREAMING'" />
+                          </a:da>
+                        </v:var>
+                        <v:var name="HsslTargetIDAddr" type="INTEGER">
+                            <a:a name="DESC" value="EN: Defines the Address pointer containing the address of the memory location containing the unique ID data"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1226"/>
+                            <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=4294967295"/>
+                            <a:tst expr="&gt;=0"/>
+                            </a:da>
+                            <a:da name="DEFAULT" value="0"/>
+                        </v:var>
+                        <v:ref name="HsslDmaMultiWriteChannelRef" type="REFERENCE">
+                            <a:a name="DESC" value="EN: This parameter refers to DMA Tx Channel configuration in MCU. Used for HSSL."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1244"/>
+                            <a:da name="REF" value="ASPathDataOfSchema:/AURIX2G/EcucDefs/Dma/DmaChannelConfig"/>
+                        </v:ref>
+                        <v:var name="HsslDmaMultiWriteCallback" type="STRING">
+                            <a:a name="DESC" value="EN: User function to handle Write completion event for HSSL channel-0."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1440"/>
+                            <a:da name="DEFAULT" value="NULL_PTR"/>
+                        </v:var>
+                        <v:ref name="HsslDmaMultiReadTxChannelRef" type="REFERENCE">
+                            <a:a name="DESC" value="EN: This parameter refers to DMA Tx Channel configuration in MCU. Used for HSSL."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1428"/>
+                            <a:da name="REF" value="ASPathDataOfSchema:/AURIX2G/EcucDefs/Dma/DmaChannelConfig"/>
+                        </v:ref>
+                        <v:ref name="HsslDmaMultiReadRxChannelRef" type="REFERENCE">
+                            <a:a name="DESC" value="EN: This parameter refers to DMA Rx Channel configuration in MCU. Used for HSSL."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1354"/>
+                            <a:da name="REF" value="ASPathDataOfSchema:/AURIX2G/EcucDefs/Dma/DmaChannelConfig"/>
+                        </v:ref>
+                        <v:var name="HsslDmaMultiReadCallback" type="STRING">
+                            <a:a name="DESC" value="EN: User function to handle Write completion event for HSSL channel-0."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1432"/>
+                            <a:da name="DEFAULT" value="NULL_PTR"/>
+                        </v:var>
+                        <v:var name="HsslAcessWindowStartAddr0" type="INTEGER">
+                            <a:a name="DESC" value="EN: Defines the upper 24 bits of the start address of the corresponding access window"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1252"/>
+                            <a:da name="DEFAULT" value="0"/>
+                            <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=4294967295"/>
+                            <a:tst expr="&gt;=0"/>
+                            </a:da>
+                            <a:da name="EDITABLE" value="true"/>
+                        </v:var>
+                        <v:var name="HsslAcessWindowStartAddr1" type="INTEGER">
+                            <a:a name="DESC" value="EN: Defines the upper 24 bits of the start address of the corresponding access window"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1256"/>
+                            <a:da name="DEFAULT" value="0"/>
+                            <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=4294967295"/>
+                            <a:tst expr="&gt;=0"/>
+                            </a:da>
+                            <a:da name="EDITABLE" value="true"/>
+                        </v:var>
+                        <v:var name="HsslAcessWindowStartAddr2" type="INTEGER">
+                            <a:a name="DESC" value="EN: Defines the upper 24 bits of the start address of the corresponding access window"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1260"/>
+                            <a:da name="DEFAULT" value="0"/>
+                            <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=4294967295"/>
+                            <a:tst expr="&gt;=0"/>
+                            </a:da>
+                            <a:da name="EDITABLE" value="true"/>
+                        </v:var>
+                        <v:var name="HsslAcessWindowStartAddr3" type="INTEGER">
+                            <a:a name="DESC" value="EN: Defines the upper 24 bits of the start address of the corresponding access window"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1264"/>
+                            <a:da name="DEFAULT" value="0"/>
+                            <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=4294967295"/>
+                            <a:tst expr="&gt;=0"/>
+                            </a:da>
+                            <a:da name="EDITABLE" value="true"/>
+                        </v:var>
+                        <v:var name="HsslAcessWindowEndAddr0" type="INTEGER">
+                            <a:a name="DESC" value="EN: Defines the upper 24 bits of the End address of the corresponding access window"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1268"/>
+                            <a:da name="DEFAULT" value="0"/>
+                            <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=4294967295"/>
+                            <a:tst expr="&gt;=0"/>
+                            </a:da>
+                            <a:da name="EDITABLE" value="true"/>
+                        </v:var>
+                        <v:var name="HsslAcessWindowEndAddr1" type="INTEGER">
+                            <a:a name="DESC" value="EN: Defines the upper 24 bits of the End address of the corresponding access window"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1272"/>
+                            <a:da name="DEFAULT" value="0"/>
+                            <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=4294967295"/>
+                            <a:tst expr="&gt;=0"/>
+                            </a:da>
+                            <a:da name="EDITABLE" value="true"/>
+                        </v:var>
+                        <v:var name="HsslAcessWindowEndAddr2" type="INTEGER">
+                            <a:a name="DESC" value="EN: Defines the upper 24 bits of the End address of the corresponding access window"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1276"/>
+                            <a:da name="DEFAULT" value="0"/>
+                            <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=4294967295"/>
+                            <a:tst expr="&gt;=0"/>
+                            </a:da>
+                            <a:da name="EDITABLE" value="true"/>
+                        </v:var>
+                        <v:var name="HsslAcessWindowEndAddr3" type="INTEGER">
+                            <a:a name="DESC" value="EN: Defines the upper 24 bits of the End address of the corresponding access window"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1280"/>
+                            <a:da name="DEFAULT" value="0"/>
+                            <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=4294967295"/>
+                            <a:tst expr="&gt;=0"/>
+                            </a:da>
+                            <a:da name="EDITABLE" value="true"/>
+                        </v:var>
+                        <v:var name="HsslAcessRuleWindow0" type="ENUMERATION">
+                            <a:a name="DESC"
+                            value="EN:The parameter represents the Access Rules for Window 0. The values correspond to the following modes:
+                                                    0 - HSSL_NO_ACCESS,
+                                                    1 - HSSL_READ_ACCESS,
+                                                    2 - HSSL_WRITE_ACCESS,
+                                                    3 - HSSL_READ_WRITE_ACCESS "/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1284"/>
+                            <a:da name="RANGE">
+                            <a:v>NO_ACCESS</a:v>
+                            <a:v>READ</a:v>
+                            <a:v>WRITE</a:v>
+                            <a:v>READ_WRITE</a:v>
+                            </a:da>
+                            <a:da name="DEFAULT" value="NO_ACCESS"/>
+                            <a:da name="INVALID" type="XPath">
+                            <a:tst expr="(. &lt; 0) or (. &gt; 3)" true="Access Rule is Not Valid"/>
+                            </a:da>
+                        </v:var>
+                        <v:var name="HsslAcessRuleWindow1" type="ENUMERATION">
+                            <a:a name="DESC"
+                            value="EN:The parameter represents the Access Rules for Window 0. The values correspond to the following modes:
+                                                    0 - HSSL_NO_ACCESS,
+                                                    1 - HSSL_READ_ACCESS,
+                                                    2 - HSSL_WRITE_ACCESS,
+                                                    3 - HSSL_READ_WRITE_ACCESS "/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1288"/>
+                            <a:da name="RANGE">
+                            <a:v>NO_ACCESS</a:v>
+                            <a:v>READ</a:v>
+                            <a:v>WRITE</a:v>
+                            <a:v>READ_WRITE</a:v>
+                            </a:da>
+                            <a:da name="DEFAULT" value="NO_ACCESS"/>
+                            <a:da name="INVALID" type="XPath">
+                            <a:tst expr="(. &lt; 0) or (. &gt; 3)" true="Access Rule is Not Valid"/>
+                            </a:da>
+                        </v:var>
+                        <v:var name="HsslAcessRuleWindow2" type="ENUMERATION">
+                            <a:a name="DESC"
+                            value="EN:The parameter represents the Access Rules for Window 0. The values correspond to the following modes:
+                                                    0 - HSSL_NO_ACCESS,
+                                                    1 - HSSL_READ_ACCESS,
+                                                    2 - HSSL_WRITE_ACCESS,
+                                                    3 - HSSL_READ_WRITE_ACCESS "/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1292"/>
+                            <a:da name="RANGE">
+                            <a:v>NO_ACCESS</a:v>
+                            <a:v>READ</a:v>
+                            <a:v>WRITE</a:v>
+                            <a:v>READ_WRITE</a:v>
+                            </a:da>
+                            <a:da name="DEFAULT" value="NO_ACCESS"/>
+                            <a:da name="INVALID" type="XPath">
+                            <a:tst expr="(. &lt; 0) or (. &gt; 3)" true="Access Rule is Not Valid"/>
+                            </a:da>
+                        </v:var>
+                        <v:var name="HsslAcessRuleWindow3" type="ENUMERATION">
+                            <a:a name="DESC"
+                            value="EN:The parameter represents the Access Rules for Window 0. The values correspond to the following modes:
+                                                    0 - HSSL_NO_ACCESS,
+                                                    1 - HSSL_READ_ACCESS,
+                                                    2 - HSSL_WRITE_ACCESS,
+                                                    3 - HSSL_READ_WRITE_ACCESS "/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1296"/>
+                            <a:da name="RANGE">
+                            <a:v>NO_ACCESS</a:v>
+                            <a:v>READ</a:v>
+                            <a:v>WRITE</a:v>
+                            <a:v>READ_WRITE</a:v>
+                            </a:da>
+                            <a:da name="DEFAULT" value="NO_ACCESS"/>
+                            <a:da name="INVALID" type="XPath">
+                            <a:tst expr="(. &lt; 0) or (. &gt; 3)" true="Access Rule is Not Valid"/>
+                            </a:da>
+                        </v:var>
+                        <v:var name="HsslReferenceClock" type="ENUMERATION">
+                            <a:a name="DESC"
+                            value="EN:The parameter represents the Interface mode. The values correspond to the following modes:
+                                                    0 - REFCLK 10MHz, LS 5MBaud, MS n.a.,
+                                                    1 - REFCLK 20MHz, LS 5MBaud, MS=20MBaud,
+                                                    2 - REFCLK 40MHz, LS 5MBaud, MS=20MBaud "/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1336"/>
+                            <a:da name="RANGE">
+                            <a:v>HSSL_10MHZ</a:v>
+                            <a:v>HSSL_20MHZ</a:v>
+                            <a:v>HSSL_40MHZ</a:v>
+                            </a:da>
+                            <a:da name="DEFAULT" value="HSSL_20MHZ"/>
+                            <a:da name="INVALID" type="XPath">
+                            <a:tst expr="(. &lt; 0) or (. &gt; 2)" true="REFCLK HSSL_20MHZ"/>
+                            </a:da>
+                        </v:var>
+                        <v:var name="HsslSystemClockDivider" type="ENUMERATION">
+                            <a:a name="DESC"
+                            value="EN:The parameter represents the System Clock Frequency Divider. The values correspond to the following modes:
+                                                    0 - SYSCLK DIV 1/1,
+                                                    1 - SYSCLK DIV 1/2,
+                                                    2 - SYSCLK DIV 1/4 "/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1340"/>
+                            <a:da name="RANGE">
+                            <a:v>SYSCLK_DIV_1</a:v>
+                            <a:v>SYSCLK_DIV_2</a:v>
+                            <a:v>SYSCLK_DIV_4</a:v>
+                            </a:da>
+                            <a:da name="DEFAULT" value="SYSCLK_DIV_1"/>
+                            <a:da name="INVALID" type="XPath">
+                            <a:tst expr="(. &lt; 0) or (. &gt; 2)" true="SYSCLK DIV 1/1"/>
+                            </a:da>
+                        </v:var>
+                        <v:var name="HsslMasterTxSpeed" type="ENUMERATION">
+                            <a:a name="DESC"
+                            value="EN:The parameter represents the Master mode TX speed. The values correspond to the following modes:
+                                                    0 - LOW SPEED,
+                                                    2 - HIGH SPEED "/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1344"/>
+                            <a:da name="RANGE">
+                            <a:v>LOW_SPEED</a:v>
+                            <a:v>HIGH_SPEED</a:v>
+                            </a:da>
+                            <a:da name="DEFAULT" value="LOW_SPEED"/>
+                            <a:da name="INVALID" type="XPath">
+                            <a:tst expr="(. &lt; 0) or (. &gt; 1)" true="LOW SPEED"/>
+                            </a:da>
+                        </v:var>
+                        <v:var name="HsslMasterRxSpeed" type="ENUMERATION">
+                            <a:a name="DESC"
+                            value="EN:The parameter represents the Master mode RX speed. The values correspond to the following modes:
+                                                    0 - LOW SPEED,
+                                                    1 - MEDIUM SPEED,
+                                                    2 - HIGH SPEED "/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1348"/>
+                            <a:da name="RANGE">
+                            <a:v>LOW_SPEED</a:v>
+                            <a:v>MEDIUM_SPEED</a:v>
+                            <a:v>HIGH_SPEED</a:v>
+                            </a:da>
+                            <a:da name="DEFAULT" value="LOW_SPEED"/>
+                            <a:da name="INVALID" type="XPath">
+                            <a:tst expr="(. &lt; 0) or (. &gt; 2)" true="LOW SPEED"/>
+                            </a:da>
+                        </v:var>
+                        <v:ctr name="HsslChannelCallbackConfig" type="IDENTIFIABLE">
+                        <a:a name="DESC" value="EN: Hssl Channel callback configuration"/>
+                        <a:a name="UUID" value="ECUC:c03229fe-2dca-418e-a47c-1ab11e6c1926"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                        </a:a>
+                        <v:var name="HsslCh0COKCallbackFunction" type="STRING">
+                            <a:a name="DESC" value="EN: User function to handle Write completion event for HSSL channel-0."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1364"/>
+                            <a:da name="DEFAULT" value="NULL_PTR"/>
+                        </v:var>
+                        <v:var name="HsslCh1COKCallbackFunction" type="STRING">
+                            <a:a name="DESC" value="EN: User function to handle Write completion event for HSSL channel-1."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1368"/>
+                            <a:da name="DEFAULT" value="NULL_PTR"/>
+                        </v:var>
+                        <v:var name="HsslCh2COKCallbackFunction" type="STRING">
+                            <a:a name="DESC" value="EN: User function to handle Write completion event for HSSL channel-2."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1372"/>
+                            <a:da name="DEFAULT" value="NULL_PTR"/>
+                        </v:var>
+                        <v:var name="HsslCh3COKCallbackFunction" type="STRING">
+                            <a:a name="DESC" value="EN: User function to handle Write completion event for HSSL channel-3."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1376"/>
+                            <a:da name="DEFAULT" value="NULL_PTR"/>
+                        </v:var>
+                        <v:var name="HsslCh0RDICallbackFunction" type="STRING">
+                            <a:a name="DESC" value="EN: User function to handle Read completion event for HSSL channel-0."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1380"/>
+                            <a:da name="DEFAULT" value="NULL_PTR"/>
+                        </v:var>
+                        <v:var name="HsslCh1RDICallbackFunction" type="STRING">
+                            <a:a name="DESC" value="EN: User function to handle Read completion event for HSSL channel-1."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1384"/>
+                            <a:da name="DEFAULT" value="NULL_PTR"/>
+                        </v:var>
+                        <v:var name="HsslCh2RDICallbackFunction" type="STRING">
+                            <a:a name="DESC" value="EN: User function to handle Read completion event for HSSL channel-2."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1388"/>
+                            <a:da name="DEFAULT" value="NULL_PTR"/>
+                             <a:da name="EDITABLE" type="XPath">
+                                <a:tst expr="../../HsslCh2Mode = 'HSSL_CH2_COMMAND'"/>
+                              </a:da>
+                        </v:var>
+                        <v:var name="HsslCh3RDICallbackFunction" type="STRING">
+                            <a:a name="DESC" value="EN: User function to handle Read completion event for HSSL channel-3."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1392"/>
+                            <a:da name="DEFAULT" value="NULL_PTR"/>
+                        </v:var>
+                        <v:var name="HsslCh0TRGCallbackFunction" type="STRING">
+                            <a:a name="DESC" value="EN: User function to handle Trigger event for HSSL channel-0."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1396"/>
+                            <a:da name="DEFAULT" value="NULL_PTR"/>
+                        </v:var>
+                        <v:var name="HsslCh1TRGCallbackFunction" type="STRING">
+                            <a:a name="DESC" value="EN: User function to handle Trigger event for HSSL channel-1."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1400"/>
+                            <a:da name="DEFAULT" value="NULL_PTR"/>
+                        </v:var>
+                        <v:var name="HsslCh2TRGCallbackFunction" type="STRING">
+                            <a:a name="DESC" value="EN: User function to handle Trigger event for HSSL channel-2."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1404"/>
+                            <a:da name="DEFAULT" value="NULL_PTR"/>
+                        </v:var>
+                        <v:var name="HsslCh3TRGCallbackFunction" type="STRING">
+                            <a:a name="DESC" value="EN: User function to handle Trigger event for HSSL channel-3."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1408"/>
+                            <a:da name="DEFAULT" value="NULL_PTR"/>
+                        </v:var>
+                        <v:var name="HsslCh0ERRCallbackFunction" type="STRING">
+                            <a:a name="DESC" value="EN: User function to handle Error event for HSSL channel-0."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1412"/>
+                            <a:da name="DEFAULT" value="NULL_PTR"/>
+                        </v:var>
+                        <v:var name="HsslCh1ERRCallbackFunction" type="STRING">
+                            <a:a name="DESC" value="EN: User function to handle Error event for HSSL channel-1."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1416"/>
+                            <a:da name="DEFAULT" value="NULL_PTR"/>
+                        </v:var>
+                        <v:var name="HsslCh2ERRCallbackFunction" type="STRING">
+                            <a:a name="DESC" value="EN: User function to handle Error event for HSSL channel-2."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1420"/>
+                            <a:da name="DEFAULT" value="NULL_PTR"/>
+                        </v:var>
+                        <v:var name="HsslCh3ERRCallbackFunction" type="STRING">
+                            <a:a name="DESC" value="EN: User function to handle Error event for HSSL channel-3."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="UUID" value="ECUC:c03229fe-3dca-435e-a48d-1ae11e6c1424"/>
+                            <a:da name="DEFAULT" value="NULL_PTR"/>
+                        </v:var>
+                    </v:ctr>
+                    </v:ctr>
+                </v:lst>
+                    <v:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                        <a:a name="DESC" value="EN: Common container, aggregated by all modules. It contains published information about vendor and versions."/>
+                        <a:a name="UUID" value="ECUC:c03229fe-4dca-416e-a48d-1ae11e6c1300"/>
+                        <v:var name="ArMajorVersion" type="INTEGER">
+                        <a:a name="DESC" value="EN: Major version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" value="bd0a8d38-4d8c-4ee9-888d-1166b2581304"/>
+                        <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=65535"/>
+                        <a:tst expr="&gt;=0"/>
+                        </a:da>
+                        <a:da name="DEFAULT" value="4"/>
+                        </v:var>
+                        <v:var name="ArMinorVersion" type="INTEGER">
+                            <a:a name="DESC" value="EN: Minor version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" value="bd0a8d38-4d8c-4ee9-888d-1166b2581308"/>
+                            <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=65535"/>
+                            <a:tst expr="&gt;=0"/>
+                            </a:da>
+                            <a:da name="DEFAULT" value="4"/>
+                        </v:var>
+                        <v:var name="ArPatchVersion" type="INTEGER">
+                            <a:a name="DESC" value="EN: Patch level version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" value="bd0a8d38-4d8c-4ee9-888d-1166b2581312"/>
+                            <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=65535"/>
+                            <a:tst expr="&gt;=0"/>
+                            </a:da>
+                            <a:da name="DEFAULT" value="0"/>
+                        </v:var>
+                        <v:var name="SwMajorVersion" type="INTEGER">
+                            <a:a name="DESC" value="EN: Major version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" value="bd0a8d38-4d8c-4ee9-888d-1166b2581316"/>
+                            <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=65535"/>
+                            <a:tst expr="&gt;=0"/>
+                            </a:da>
+                            <a:da name="DEFAULT" value="20"/>
+                        </v:var>
+                        <v:var name="SwMinorVersion" type="INTEGER">
+                            <a:a name="DESC" value="EN: Minor version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" value="bd0a8d38-4d8c-4ee9-888d-1166b2581320"/>
+                            <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=65535"/>
+                            <a:tst expr="&gt;=0"/>
+                            </a:da>
+                            <a:da name="DEFAULT" value="0"/>
+                        </v:var>
+                        <v:var name="SwPatchVersion" type="INTEGER">
+                            <a:a name="DESC" value="EN: Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" value="bd0a8d38-4d8c-4ee9-888d-1166b2581322"/>
+                            <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=65535"/>
+                            <a:tst expr="&gt;=0"/>
+                            </a:da>
+                            <a:da name="DEFAULT" value="1"/>
+                        </v:var>
+                        <v:var name="ModuleId" type="INTEGER">
+                            <a:a name="DESC" value="EN: Module ID of this module from Module List"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" value="bd0a8d38-4d8c-4ee9-888d-1166b2581324"/>
+                            <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=65535"/>
+                            <a:tst expr="&gt;=0"/>
+                            </a:da>
+                            <a:da name="DEFAULT" value="255"/>
+                        </v:var>
+                        <v:var name="VendorId" type="INTEGER">
+                            <a:a name="DESC" value="EN: Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" value="bd0a8d38-4d8c-4ee9-888d-1166b2581328"/>
+                            <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=65535"/>
+                            <a:tst expr="&gt;=0"/>
+                            </a:da>
+                            <a:da name="DEFAULT" value="17"/>
+                        </v:var>
+                                  <v:var name="Release" type="STRING_LABEL">
+                  <a:a name="DESC" value="EN: Aurix2G derivative used for the implementation"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                   <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                   </a:a>
+
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="bd0a8d38-4d8c-4ee9-888d-1166b2581360"/>
+                  <a:da name="DEFAULT" type="XPath" expr="ecu:get('Rel.Derivate')"/>
+                </v:var>
+                 </v:ctr>
+                </v:ctr>
+              </d:chc>
+            </d:lst>
+          </d:ctr>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+
+</datamodel>

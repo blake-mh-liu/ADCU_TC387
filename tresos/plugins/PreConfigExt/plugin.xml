@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (C) Elektrobit Automotive GmbH - All rights reserved.
+-->
+<plugin>
+   <extension-point id="preconfig_module_information" name="moduleinformation" schema="schema/preconfig_module_information.exsd"/>
+
+   <extension
+         point="dreisoft.tresos.guidedconfig.api.plugin.guidedconfigwizard">
+      <guidedconfigwizard
+            id="plugin.PreConfig.Autosar.guidedconfigwizard">
+         <backend class="eb.tresos.solutions.tools4oem.preconfig.Backend"/>
+         <gui class="eb.tresos.solutions.tools4oem.preconfig.Page"/>
+         <resultGui class="dreisoft.tresos.guidedconfig.api.gui.page.ChangedDCtxtsResultWidget"/>
+      </guidedconfigwizard>
+   </extension>
+
+   <extension
+         point="dreisoft.tresos.guidedconfig.api.plugin.trigger">
+      <trigger>
+         <autoconfigure
+               id="PreConfig_Autoconfiguration"
+               wizardId="plugin.PreConfig.Autosar.guidedconfigwizard">
+            <visibility></visibility>
+            <display
+                  label="PreConfig Autoconfiguration"
+                  tooltip="PreConfig Autoconfiguration">
+            </display>
+         </autoconfigure>
+      </trigger>
+   </extension>
+
+    <extension
+             point="dreisoft.tresos.datamodel2.api.plugin.xpathregistration">
+          <xpathfunction>
+             <!--
+                Only a single class may register a certain namespace.
+                Therefore, we need to use a suffix after the module
+                name to prevent conflicts.
+             -->
+             <classregistration
+                   class="eb.tresos.solutions.tools4oem.preconfig.xpath.XPathFunctions"
+                   description="Helper functions for on-line configuration parameter validation"
+                   namespace="PreConfig">
+             </classregistration>
+          </xpathfunction>
+       </extension>
+    </plugin>

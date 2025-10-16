@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+  Copyright (C) Elektrobit Automotive GmbH - All rights reserved.
+-->
+<plugin>
+
+  <!--
+    SWC ARXML generator
+  -->
+  <extension
+      id="ServiceApplTemplate"
+      point="dreisoft.tresos.generator.api.plugin.generator">
+    <!--
+      !LINKSTO SERVICEAPPLTEMPLATE_0018, 1
+      !LINKSTO SERVICEAPPLTEMPLATE_0019, 1
+    -->
+    <generator
+          class="eb.tresos.serviceappltemplate.generator.ServiceApplTemplateGenerator"
+          id="ServiceApplTemplate_Generator"
+          modes="generate_swcd"
+          moduleId="ServiceApplTemplate_TS_TxDxM1I3R0">
+    </generator>
+  </extension>
+
+  <extension point="dreisoft.tresos.datamodel2.api.plugin.xpathregistration">
+    <xpathfunction>
+      <classregistration
+        class="eb.tresos.serviceappltemplate.xpath.XPathFunctions"
+        description="ServiceApplTemplate helper XPath functions"
+        namespace="ServiceApplTemplate">
+      </classregistration>
+    </xpathfunction>
+  </extension>
+
+</plugin>

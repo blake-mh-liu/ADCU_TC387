@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+  <!--
+    ** brief AUTOSAR Os_TS_T16D27M6I1R0_AS45 plugin
+    ** project AUTOSAR Standard Core
+    **
+    ** All rights exclusively reserved for Elektrobit Automotive GmbH,
+    ** unless expressly agreed to otherwise.
+  -->
+
+  <!-- this is the AS45 wrapper plugin; the sources are stored in the
+       Os_TS_T16D27M6I1R0 plugin -->
+  <extension point="dreisoft.tresos.launcher2.plugin.module"
+             id="Os_TS_T16D27M6I1R0_AS45_ModuleId"
+             name="Os_TS_T16D27M6I1R0_AS45 Module">
+    <module id="Os_TS_T16D27M6I1R0_AS45"
+            label="Os"
+            mandatory="false"
+            allowMultiple="false"
+            description="ACM-OS: AUTOSAR Os module"
+            copyright="(c) 1998-2024 Elektrobit Automotive GmbH"
+            swVersionMajor="6"
+            swVersionMinor="1"
+            swVersionPatch="256"
+            swVersionSuffix="000"
+            specVersionMajor="4"
+            specVersionMinor="5"
+            specVersionPatch="0"
+            specVersionSuffix="0"
+            relVersionMajor="4"
+            relVersionMinor="5"
+            relVersionPatch="0"
+            categoryType="Os"
+            categoryLayer="System Services"
+            categoryCategory="OS/RTE"
+            categoryComponent="ECUC">
+      <ecuType target="TRICORE" derivate="TC38XQ"/>
+      <cluster name="Basic Services"/>
+<cluster name="OS/RTE"/>
+    </module>
+  </extension>
+
+  <extension point="dreisoft.tresos.launcher2.plugin.configuration"
+             id="Os_TS_T16D27M6I1R0_AS45_ConfigId"
+             name="Os_TS_T16D27M6I1R0_AS45 Configuration">
+    <configuration moduleId="Os_TS_T16D27M6I1R0_AS45">
+      <schema>
+        <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarSchemaManager">
+          <parameter name="include" value="data/OIL"/>
+        </manager>
+        <resource value="config/Os.xdm" type="xdm" id="res_default"/>
+      </schema>
+
+      <data>
+        <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarConfigManager"/>
+        <schemaNode path="ASPath:/TS_T16D27M6I1R0_AS45/Os"/>
+      </data>
+
+      <editor id="Os_TS_T16D27M6I1R0_AS45_EditorId"
+              label="Default"
+              tooltip="ACM-OS: AUTOSAR Os module">
+        <class class="dreisoft.tresos.launcher2.editor.GenericConfigEditor">
+          <parameter name="schema" value="ASPath:/TS_T16D27M6I1R0_AS45/Os"/>
+          <parameter name="title" value="Os"/>
+          <parameter name="noTabs" value="false"/>
+          <parameter name="noLinks" value="true"/>
+          <parameter name="groupLinks" value="false"/>
+          <parameter name="groupContainers" value="false"/>
+          <parameter name="groupTables" value="true"/>
+          <parameter name="optionalGeneralTab" value="true"/>
+        </class>
+      </editor>
+    </configuration>
+  </extension>
+
+  <extension id="asc_Os_TS_T16D27M6I1R0_AS45_generator"
+             name="Os TS_T16D27M6I1R0_AS45 Generator"
+             point="dreisoft.tresos.generator.api.plugin.generator">
+
+      <generator class="com.elektrobit.asr.outputframework.generator.AbstractGenerator"
+              id="asc_Os.generator_TS_T16D27M6I1R0_AS45"
+              moduleId="Os_TS_T16D27M6I1R0_AS45">
+
+      <parameter name="os_target" value="TRICORE"/>
+      <parameter name="os_derivat" value="TC38XQ"/>
+    </generator>
+  </extension>
+
+  <extension point="dreisoft.tresos.launcher2.plugin.generator"
+              id="Os_TS_T16D27M6I1R0_AS45_SWCD_GeneratorId"
+              name="Os_TS_T16D27M6I1R0_AS45 SWCD Generator">
+    <generator moduleId="Os_TS_T16D27M6I1R0_AS45"
+               class="dreisoft.tresos.launcher2.generator.TemplateBasedCodeGenerator"
+               id="asc_Os.SWCD_generator_TS_T16D27M6I1R0_AS45">
+
+
+      <!-- swcd modes and template path parameters -->
+      <parameter name="mode_type"
+                 mode="generate_swcd" value="generate"/>
+
+      <parameter name="mode_type"
+                 mode="verify_swcd" value="verify"/>
+
+      <parameter name="templates"
+                 mode="generate_swcd,verify_swcd" value="generate_swcd"/>
+
+    </generator>
+  </extension>
+
+
+   <extension id="Os_TS_T16D27M6I1R0_AS45LegacyId"
+              name="Os TS_T16D27M6I1R0_AS45 Legacy"
+              point="dreisoft.tresos.launcher2.plugin.legacyhandler">
+       <legacyhandler prio="10">
+          <handler class="dreisoft.tresos.oilparser.OilLegacyHandler"
+               plugin="dreisoft.tresos.oilparser.plugin">
+              <parameter name="target" value="TRICORE"/>
+              <parameter name="derivate" value="TC38XQ"/>
+              <parameter name="variant" value="TS_T16D27M6I1R0_AS45"/>
+              <parameter name="moduleId" value="Os_TS_T16D27M6I1R0_AS45"/>
+              <parameter name="include" value="data/OIL"/>
+              <parameter name="package" value="Os"/>
+              <parameter name="config" value="Os"/>
+              <parameter name="oilversion" value="31"/>
+              <parameter
+                    name="generaltranslatorfile"
+                    value="data/OIL/translator.txt"/>
+              <parameter
+                    name="archtranslatorfile"
+                    value="data/OIL/translatorTRICORE.txt"/>
+          </handler>
+       </legacyhandler>
+   </extension>
+
+
+</plugin>

@@ -1,0 +1,228 @@
+<?xml version='1.0'?>
+<datamodel version="7.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/16/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/16/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar" 
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd" 
+         xmlns:f="http://www.tresos.de/_projects/DataModel2/14/formulaexpr.xsd" 
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd" 
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd"  
+         xmlns:variant="http://www.tresos.de/_projects/DataModel2/11/variant.xsd">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="Nm" type="AR-PACKAGE">
+        <d:lst type="ELEMENTS">
+          <d:chc name="Nm" type="AR-ELEMENT" value="MODULE-CONFIGURATION">
+            <d:ctr type="MODULE-CONFIGURATION">
+              <a:a name="DEF" value="ASPath:/TS_TxDxM5I12R0/Nm"/>
+              <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+              <d:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                <d:var name="ArMajorVersion" type="INTEGER" value="3"/>
+                <d:var name="ArMinorVersion" type="INTEGER" value="0"/>
+                <d:var name="ArPatchVersion" type="INTEGER" value="0"/>
+                <d:var name="SwMajorVersion" type="INTEGER" value="5"/>
+                <d:var name="SwMinorVersion" type="INTEGER" value="12"/>
+                <d:var name="SwPatchVersion" type="INTEGER" value="5"/>
+                <d:var name="ModuleId" type="INTEGER" value="29">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="VendorId" type="INTEGER" value="1">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="Release" type="STRING" value="">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+              </d:ctr>
+              <d:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION" 
+                     value="VariantPreCompile">
+                <a:a name="IMPORTER_INFO" value="@DEF"/>
+              </d:var>
+              <d:lst name="NmChannelConfig" type="MAP">
+                <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                <d:ctr name="CanNmCluster" type="IDENTIFIABLE">
+                  <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                  <d:var name="NmActiveCoordinator" type="BOOLEAN" value="false">
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="NmChannelId" type="INTEGER" value="0">
+                    <a:a name="IMPORTER_INFO">
+                      <a:v>@DEF</a:v>
+                      <a:v>@CALC</a:v>
+                    </a:a>
+                  </d:var>
+                  <d:var name="NmCoordClusterIndex" type="INTEGER" value="0">
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="NmPassiveModeEnabled" type="BOOLEAN" 
+                         value="false">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                  </d:var>
+                  <d:var name="NmSynchronizingNetwork" type="BOOLEAN" 
+                         value="false">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                  </d:var>
+                  <d:var name="NmChannelSleepMaster" type="BOOLEAN" 
+                         value="false">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                  </d:var>
+                  <d:var name="NmNodeDetectionEnabled" type="BOOLEAN" 
+                         value="false">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                  </d:var>
+                  <d:var name="NmShutdownDelayTimer" type="FLOAT" value="0.0">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="NmStateReportEnabled" type="BOOLEAN" 
+                         value="false">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="NmNodeIdEnabled" type="BOOLEAN" value="true">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                  </d:var>
+                  <d:var name="NmRepeatMsgIndEnabled" type="BOOLEAN" 
+                         value="false">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                  </d:var>
+                  <d:ref name="NmComMChannelRef" type="REFERENCE" 
+                         value="ASPath:/ComM/ComM/ComMConfigSet/CanNetwork">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                  </d:ref>
+                  <d:ref name="NmStateReportSignalRef" type="REFERENCE" >
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:ref>
+                  <d:var name="NmWaitForShutdownTime" type="FLOAT" value="0.0">
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:chc name="NmBusType" type="IDENTIFIABLE" 
+                         value="NmStandardBusNmConfig">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                    <d:ctr name="NmGenericBusNmConfig" type="IDENTIFIABLE">
+                      <d:var name="NmGenericBusNmPrefix" type="STRING" >
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                    </d:ctr>
+                    <d:ctr name="NmStandardBusNmConfig" type="IDENTIFIABLE">
+                      <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                      <d:var name="NmStandardBusType" type="ENUMERATION" 
+                             value="NM_BUSNM_CANNM">
+                        <a:a name="IMPORTER_INFO" 
+                             value="Import_Ecu_Configuration"/>
+                      </d:var>
+                    </d:ctr>
+                  </d:chc>
+                </d:ctr>
+              </d:lst>
+              <d:ctr name="NmGlobalConfig" type="IDENTIFIABLE">
+                <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                <d:ctr name="NmGlobalConstants" type="IDENTIFIABLE">
+                  <d:var name="NmNumberOfChannels" type="INTEGER" value="1"/>
+                </d:ctr>
+                <d:ctr name="NmGlobalFeatures" type="IDENTIFIABLE">
+                  <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                  <d:var name="NmMultiCoreSupport" type="BOOLEAN" value="false">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="NmComControlEnabled" type="BOOLEAN" value="true">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                  </d:var>
+                  <d:var name="NmCarWakeUpCallback" type="FUNCTION-NAME" 
+                         value="">
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="NmProvideRemoteSleepCallbacks" type="BOOLEAN" 
+                         value="false">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="NmRemoteSleepIndicationCallback" 
+                         type="FUNCTION-NAME" value="">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="NmRemoteSleepCancellationCallback" 
+                         type="FUNCTION-NAME" value="">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="NmUserDataEnabled" type="BOOLEAN" value="true">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                  </d:var>
+                  <d:var name="NmCoordinatorSupportEnabled" type="BOOLEAN" 
+                         value="false">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="NmCoordinatorSyncSupport" type="BOOLEAN" 
+                         value="false">
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="NmGlobalCoordinatorTime" type="FLOAT" value="0.0">
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="NmPduRxIndicationEnabled" type="BOOLEAN" 
+                         value="false">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                  </d:var>
+                  <d:var name="NmStateChangeIndEnabled" type="BOOLEAN" 
+                         value="false">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                  </d:var>
+                  <d:var name="NmPassiveModeEnabled" type="BOOLEAN" 
+                         value="false">
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="NmRemoteSleepIndEnabled" type="BOOLEAN" 
+                         value="false">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                  </d:var>
+                  <d:var name="NmBusSynchronizationEnabled" type="BOOLEAN" 
+                         value="false">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                  </d:var>
+                  <d:var name="NmComUserDataSupport" type="BOOLEAN" value="true">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                  </d:var>
+                  <d:var name="NmStateChangeNotificationCallout" type="BOOLEAN" 
+                         value="false">
+                    <a:a name="ENABLE" value="false"/>
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="NmCarWakeUpRxEnabled" type="BOOLEAN" 
+                         value="false">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                  </d:var>
+                </d:ctr>
+                <d:ctr name="NmGlobalProperties" type="IDENTIFIABLE">
+                  <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                  <d:var name="NmCycletimeMainFunction" type="FLOAT" 
+                         value="0.02">
+                    <a:a name="IMPORTER_INFO" value="Import_Ecu_Configuration"/>
+                  </d:var>
+                  <d:var name="NmDevErrorDetect" type="BOOLEAN" value="true">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="NmVersionInfoApi" type="BOOLEAN" value="false">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                </d:ctr>
+              </d:ctr>
+              <d:ctr name="PublishedInformation" type="IDENTIFIABLE">
+                <d:var name="PbcfgMSupport" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+              </d:ctr>
+            </d:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+
+</datamodel>

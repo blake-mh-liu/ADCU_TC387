@@ -1,0 +1,334 @@
+<?xml version='1.0'?>
+<!--
+/*******************************************************************************
+**                                                                            **
+** Copyright (C) Infineon Technologies (2023)                                 **
+**                                                                            **
+** All rights reserved.                                                       **
+**                                                                            **
+** This document contains proprietary information belonging to Infineon       **
+** Technologies. Passing on and copying of this document, and communication   **
+** of its contents is not permitted without prior written authorization.      **
+**                                                                            **
+********************************************************************************
+**                                                                            **
+**  FILENAME  : Stm.xdm                                                       **
+**                                                                            **
+**  VERSION   : 2.0.0                                                         **
+**                                                                            **
+**  DATE      : 2023-05-23                                                    **
+**                                                                            **
+**  VARIANT   : Variant PC                                                    **
+**                                                                            **
+**  PLATFORM  : Infineon AURIX2G                                              **
+**                                                                            **
+**  AUTHOR    : DL-AUTOSAR-Engineering                                        **
+**                                                                            **
+**  VENDOR    : Infineon Technologies                                         **
+**                                                                            **
+**  DESCRIPTION  : XML data model for Stm driver                              **
+**                                                                            **
+**  SPECIFICATION(S) : Specification of Stm Driver                            **
+**                                                                            **
+**  MAY BE CHANGED BY USER : no                                               **
+**                                                                            **
+*******************************************************************************/
+-->
+<datamodel version="7.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/16/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/16/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar" 
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd" 
+         xmlns:f="http://www.tresos.de/_projects/DataModel2/14/formulaexpr.xsd"
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd" 
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd"  
+         xmlns:variant="http://www.tresos.de/_projects/DataModel2/11/variant.xsd">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="AURIX2G" type="AR-PACKAGE">
+        <a:a name="UUID" value="ECUC:AUTOSAR"/>
+        <d:lst type="TOP-LEVEL-PACKAGES">
+          <d:ctr name="EcucDefs" type="AR-PACKAGE">
+            <a:a name="UUID" value="ECUC:ECUCDEFS"/>
+            <d:lst type="ELEMENTS">
+              <d:chc name="Stm" type="AR-ELEMENT" value="MODULE-DEF">
+                <v:ctr type="MODULE-DEF">
+                  <a:a name="ADMIN-DATA" type="ADMIN-DATA">
+                    <ad:ADMIN-DATA>
+                      <ad:DOC-REVISIONS>
+                        <ad:DOC-REVISION>
+                          <ad:REVISION-LABEL>4.4.0</ad:REVISION-LABEL>
+                          <ad:ISSUED-BY>INFINEON</ad:ISSUED-BY>
+                          <ad:DATE>2017-07-27</ad:DATE>
+                        </ad:DOC-REVISION>
+                      </ad:DOC-REVISIONS>
+                    </ad:ADMIN-DATA>
+                  </a:a>
+                  <a:a name="DESC" value="EN: Configuration of the Stm module."/>
+                  <a:a name="LOWER-MULTIPLICITY" value="0"/>
+                  <a:a name="POSTBUILDVARIANTSUPPORT" value="false"/>
+                  <a:a name="RELEASE" value="asc:4.4.0"/>
+                  <a:a name="UPPER-MULTIPLICITY" value="1"/>
+                  <a:a name="UUID" 
+                       value="ECUC:8fc09477-4d31-48bf-9fcc-0f2e51345aad"/>
+                  <v:var name="IMPLEMENTATION_CONFIG_VARIANT" 
+                         type="ENUMERATION">
+                    <a:a name="LABEL" value="Config Variant"/>
+                    <a:da name="DEFAULT" value="VariantPreCompile"/>
+                    <a:da name="RANGE" value="VariantPreCompile"/>
+                  </v:var>
+                  <v:ctr name="StmGeneral" type="IDENTIFIABLE">
+                    <a:a name="DESC" 
+                         value="EN: General configuration of STM module"/>
+                    <a:a name="UUID" 
+                         value="ECUC:022760ec-ae2e-4125-96ad-ca206d355f96"/>
+                  <v:var name="StmDevErrorDetect" type="BOOLEAN">
+                  <a:a name="DESC"
+                       value="EN: Switches the Default Error Tracer (Det) detection and notification ON or OFF."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                    type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="SCOPE" value="LOCAL"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="true"/>
+                  <a:a name="UUID"
+                       value="ECUC:412da385-6bf4-4819-87e4-8ec226fb5b17"/>
+                </v:var>             
+                <v:var name="StmVersionInfoApi" type="BOOLEAN">
+                      <a:a name="DESC" 
+                           value="EN: Switches the Stm_GetVersionInfo() API ON or OFF."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                       <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="ECUC:52d00b4f-174c-453b-8884-271b69795d80"/>
+                      <a:da name="DEFAULT" value="false"/>
+                    </v:var>
+                    <v:var name="StmRuntimeApiMode" type="ENUMERATION">
+                      <a:a name="DESC" 
+                           value="EN: Defines the level of Pretended Networking."/>
+                       <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                       <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                       </a:a>
+                      <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                      <a:a name="SCOPE" value="ECU"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID" 
+                           value="ECUC:6386bf05-7b63-43d6-960e-42e2c45d4cd0"/>
+                      <a:da name="DEFAULT" value="STM_MCAL_SUPERVISOR"/>
+                      <a:da name="RANGE">
+                        <a:v>STM_MCAL_USER1</a:v>                 
+                        <a:v>STM_MCAL_SUPERVISOR</a:v>
+                      </a:da>         
+                    </v:var>
+                  </v:ctr>    
+               <v:lst name="StmDemEventParameterRefsConf" type="MAP">
+                <a:da name="MIN" value="0"/>
+                <a:da name="MAX" value="1"/>
+                <v:ctr name="StmDemEventParameterRefsConf" type="IDENTIFIABLE">
+                  <a:a name="DESC"
+                       value="EN: Container for the references to DemEventParameter elements which shall be invoked using the API Mcal_Wrapper_Dem_SetEventStatus API in case the corresponding error occurs. The EventId is taken from the referenced DemEventParameter&apos;s DemEventId symbolic name. The standardized errors are provided in the container and can be extended by vendor specific error references."/>
+                  <a:a name="UUID"
+                       value="ECUC:4c697a37-02d8-42df-8696-0c9f59aab8c7"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="false"/>
+                  <v:lst name="STM_E_CLC_ENABLE_ERR">
+                    <a:da name="MAX" value="1"/>
+                    <v:ref name="STM_E_CLC_ENABLE_ERR"
+                           type="SYMBOLIC-NAME-REFERENCE">
+                      <a:a name="DESC"
+                           value="EN:Reference to the DemEventParameter which shall be raised on Oscillator Failure "/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                       <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                       <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="false"/>
+                      <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="UUID"
+                           value="ECUC:66C8E900-6197-42a3-8E25-A695AA21721E"/>
+                      <a:da name="REF"
+                            value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter"/>
+                      <a:da name="INVALID" type="XPath">
+                        <a:tst expr="node:refvalid(.)" false="EN: STM - The configured node does not exist or may not be referenced."/>
+                      </a:da>
+                    </v:ref>
+                  </v:lst>                 
+                </v:ctr>
+              </v:lst>                     
+                  <v:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                    <a:a name="DESC" 
+                         value="EN: Common container, aggregated by all modules. It contains published information about vendor and versions."/>
+                    <a:a name="UUID" 
+                         value="ECUC:c03229fe-3dca-416e-a47c-1ae11e6c1832"/>
+                    <v:var name="VendorId" type="INTEGER_LABEL">
+                      <a:a name="DESC" value="EN: STM Vendor ID"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                      <a:a name="UUID" 
+                           value="ECUC:c03229fe-4dca-445e-a47c-1ae11e6c1842"/>
+                      <a:da name="DEFAULT" value="17"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=65535"/>
+                        <a:tst expr="&gt;=0"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="ModuleId" type="INTEGER_LABEL">
+                      <a:a name="DESC" value="EN: STM Module ID"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                      <a:a name="UUID" 
+                           value="ECUC:c03229fe-5dca-455e-a47c-1ae11e6c1852"/>
+                      <a:da name="DEFAULT" value="255"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=65535"/>
+                        <a:tst expr="&gt;=0"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="ArMajorVersion" type="INTEGER_LABEL">
+                      <a:a name="DESC" value="EN: STM Autosar major version"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                      <a:a name="UUID" 
+                           value="ECUC:c03229fe-6dca-465e-a47c-1ae11e6c1862"/>
+                      <a:da name="DEFAULT" value="4"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=255"/>
+                        <a:tst expr="&gt;=0"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="ArMinorVersion" type="INTEGER_LABEL">
+                      <a:a name="DESC" value="EN: STM Autosar mivor version"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                      <a:a name="UUID" 
+                           value="ECUC:c03229fe-7dca-475e-a47c-1ae11e6c1872"/>
+                      <a:da name="DEFAULT" value="4"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=255"/>
+                        <a:tst expr="&gt;=0"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="ArPatchVersion" type="INTEGER_LABEL">
+                      <a:a name="DESC" value="EN: STM Autosar major version"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                      <a:a name="UUID" 
+                           value="ECUC:c03229fe-8dca-485e-a47c-1ae11e6c1882"/>
+                      <a:da name="DEFAULT" value="0"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=255"/>
+                        <a:tst expr="&gt;=0"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="SwMajorVersion" type="INTEGER_LABEL">
+                      <a:a name="DESC" 
+                           value="EN: Major version number of the vendor specific implementation of the module. The numbering is vendor specific"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                      <a:a name="UUID" 
+                           value="ECUC:c03229fe-9dca-495e-a47c-1ae11e6c1892"/>
+                      <a:da name="DEFAULT" value="20"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=255"/>
+                        <a:tst expr="&gt;=0"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="SwMinorVersion" type="INTEGER_LABEL">
+                      <a:a name="DESC" 
+                           value="EN: Minor version number of the vendor specific implementation of the module. The numbering is vendor specific"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                      <a:a name="UUID" 
+                           value="ECUC:c03229fe-1dca-415e-a47c-1ae11e6c1812"/>
+                      <a:da name="DEFAULT" value="25"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=255"/>
+                        <a:tst expr="&gt;=0"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="SwPatchVersion" type="INTEGER_LABEL">
+                      <a:a name="DESC" 
+                           value="EN: Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                      <a:a name="UUID" 
+                           value="ECUC:c03229fe-2dca-425e-a47c-1ae11e6c1822"/>
+                      <a:da name="DEFAULT" value="0"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=255"/>
+                        <a:tst expr="&gt;=0"/>
+                      </a:da>
+                    </v:var>
+                  <v:var name="Release" type="STRING">
+                  <a:a name="DESC" value="EN: Aurix2G derivative used for the implementation"/>
+                   <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PublishedInformation">VariantPreCompile</icc:v>
+                   </a:a>
+                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                  <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="3b407478-6902-4f40-b7cf-f33b0854e638"/>
+                  <a:da name="DEFAULT" type="XPath" expr="ecu:get('Rel.Derivate')"/>
+                 </v:var>
+                  </v:ctr>
+                </v:ctr>
+              </d:chc>
+            </d:lst>
+          </d:ctr>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+</datamodel>

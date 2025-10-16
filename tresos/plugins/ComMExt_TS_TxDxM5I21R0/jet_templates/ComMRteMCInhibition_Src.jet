@@ -1,0 +1,91 @@
+<%@ jet
+    package="com.elektrobit.comm.generated.templates"
+    class="ComMRteMCInhibitionSrc"
+    imports="java.io.IOException
+             dreisoft.tresos.generator.ng.api.ant.JavaGenContext
+             com.elektrobit.comm.generator.ComMGenContext
+             com.elektrobit.comm.generator.ComMJetContext" %>
+<%
+    JavaGenContext javaGenContext = (JavaGenContext) argument;
+    ComMGenContext comMGenContext = (ComMGenContext) javaGenContext.gen.getVariable(ComMGenContext.COMM_GEN_CONTEXT, ComMGenContext.class, null);
+    comMGenContext.getWriter().startRedirect(stringBuffer);
+    ComMJetContext comMJetContext = comMGenContext.getComMJetContext();
+%><%@ include file="file-comment.c.txt" %>
+
+#include <Std_Types.h>
+#include <TSAutosar.h>
+#include <ComM_Trace.h>
+#include <ComM_BSW.h>
+#include <Rte_ComM_Inhibition_<%=comMJetContext.getInhibitionOsApplication()%>.h>
+
+#define COMM_START_SEC_CODE
+#include <ComM_MemMap.h>
+
+FUNC(Std_ReturnType, COMM_CODE) ComM_Rte_LimitECUToNoComMode_<%=comMJetContext.getInhibitionOsApplication()%>
+(
+  boolean Status
+)
+{
+  Std_ReturnType ret;
+  DBG_COMM_RTE_LIMITECUTONOCOMMODE_ENTRY(Status);
+  ret = ComM_ASR40_LimitECUToNoComMode(Status);
+  DBG_COMM_RTE_LIMITECUTONOCOMMODE_EXIT(ret, Status);
+  return ret;
+}
+<%
+    if(comMJetContext.isModeLimitationEnabled() && comMJetContext.isWakeupInhibitionEnabled())
+    {
+%>
+
+FUNC(Std_ReturnType, COMM_CODE) ComM_Rte_ReadInhibitCounter_<%=comMJetContext.getInhibitionOsApplication()%>
+(
+  P2VAR(uint16, AUTOMATIC, COMM_APPL_DATA) CounterValue
+)
+{
+  Std_ReturnType ret;
+  DBG_COMM_RTE_READINHIBITCOUNTER_ENTRY(CounterValue);
+  ret = ComM_ASR40_ReadInhibitCounter(CounterValue);
+  DBG_COMM_RTE_READINHIBITCOUNTER_EXIT(ret, CounterValue);
+  return ret;
+}
+
+FUNC(Std_ReturnType, COMM_CODE) ComM_Rte_ResetInhibitCounter_<%=comMJetContext.getInhibitionOsApplication()%>
+(
+  void
+)
+{
+  Std_ReturnType ret;
+  DBG_COMM_RTE_RESETINHIBITCOUNTER_ENTRY();
+  ret = ComM_ASR40_ResetInhibitCounter();
+  DBG_COMM_RTE_RESETINHIBITCOUNTER_EXIT(ret);
+  return ret;
+}
+
+FUNC(Std_ReturnType, COMM_CODE) ComM_Rte_SetECUGroupClassification_<%=comMJetContext.getInhibitionOsApplication()%>
+(
+  ComM_InhibitionStatusType Status
+)
+{
+  Std_ReturnType ret;
+  DBG_COMM_RTE_SETECUGROUPCLASSIFICATION_ENTRY(Status);
+  ret = ComM_ASR40_SetECUGroupClassification(Status);
+  DBG_COMM_RTE_SETECUGROUPCLASSIFICATION_EXIT(ret, Status);
+  return ret;
+}
+<%
+    }
+%>
+
+#define COMM_STOP_SEC_CODE
+#include <ComM_MemMap.h>
+
+<%
+    try
+    {
+        comMGenContext.getWriter().stopRedirected(false);
+    }
+    catch (IOException e)
+    {
+        e.printStackTrace();
+    }
+%>

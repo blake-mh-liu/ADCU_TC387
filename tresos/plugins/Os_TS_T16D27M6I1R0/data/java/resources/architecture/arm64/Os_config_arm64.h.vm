@@ -1,0 +1,130 @@
+########### CORE PART OF THE TEMPLATE - START ###########
+## !LINKSTO Generator.Output.os_config_h, 2
+#parse("include/Os_config.h.vm")
+########### CORE PART OF THE TEMPLATE - END #############
+########### TARGET PART OF THE TEMPLATE - START ###########
+########### Arch specific velocimacros that can be called from the common code parts ###########
+#macro( VM_ArchOsApplication $application )
+## !LINKSTO Generator.Output.os_config_h.Applications.APPCONFIG.archapp, 2
+    OS_ARCHAPP_INIT(  \
+      0  \
+    )  \
+#end
+##
+##
+#macro( VM_ArchOsConfigDataInit $coreId )
+#* *#  {  /* arch_kerneldata$coreId */  \
+#* *#     /* currentIntDisableLevel */       OS_ARM64_ALL_INT_ENABLED_LEVEL,  \
+#* *##if( $OsConfig.getNumCPUCoresMax() > 1 )
+#*   *#     /* ackForCore */                   0,  \
+#*   *#     /* core */                         $coreId  \
+#* *##end
+#* *#  },  \
+#end
+##
+##
+#macro( VM_ArchOsConfigInterruptInit )
+#end
+##
+##
+#macro( VM_ArchOsConfigTimestampInit )
+#end
+#macro( VM_ArchOsTaskInit $task )
+## !LINKSTO Generator.Output.os_config_h.Tasks.TASKCONFIG.arch, 1
+    OS_ARCHTASK_INIT(  \
+      0  \
+    )  \
+#end
+##
+##
+#macro( VM_ArchOsHwTimerInit $timer )
+#end
+##
+##
+#macro( VM_ArchOsInterruptInit $interrupt )
+## !LINKSTO Generator.Output.os_config_h.Interrupts.ISRCONFIG.arch, 1
+#* *#    OS_ARCHISR_INIT(  \
+#* *##set( $owningApp = $interrupt.getOwningApplication() )
+#* *##set( $coreId = $owningApp.getPhyCoreAssignment() )
+#* *#      /* Stack base */                                $AllInterruptsList.getStack($coreId).getStackBase($interrupt),  \
+#* *#      /* ISR source */                                $interrupt.getVectorNumber(),  \
+#* *##if( !$interrupt.getCategory().toString().equals("1") && !$interrupt.getCategory().toString().equals("2") )
+#*   *#      /* ISR priority (Cat K) */                      $interrupt.getCalcPriority(),  \
+#* *##else
+#*   *#      /* ISR priority */                              $interrupt.getCalcPriority(),  \
+#* *##end
+#* *##if( $ArchProperties.getNumCPUCoresMax() > 1 )
+#*   *#      /* Target core */                               OS_ARM64_INT_GIC_TARGET_C$coreId  \
+#* *##end
+#* *#    )  \
+#end
+
+/*===================================================================
+ * ARM64 Interrupts
+ *==================================================================*/
+#foreach( $interrupt in $AllInterruptsList )
+#* *##set( $calcPrioHex = $ClassOfHelpers.toHexString(2, $interrupt.getCalcPriority()) )
+#* *##set( $phyCoreId   = $interrupt.getOwningApplication().getPhyCoreAssignment() )
+#* *##set( $irqPrefix   = "OS_IRQ${calcPrioHex}_C${phyCoreId}" )
+#* *##ifndef ${irqPrefix}_NAME
+#* *#\#define ${irqPrefix}_NAME                    _OS_VECTOR_$interrupt.getVector()
+#* *##endif /* ${irqPrefix}_NAME */
+#* *##ifndef ${irqPrefix}_ISRID
+#* *#\#define ${irqPrefix}_ISRID                   $interrupt.getName()
+#* *##endif /* ${irqPrefix}_ISRID */
+## !LINKSTO Generator.Output.os_config_h.Interrupts.Vectors.EntryFunction, 1
+#* *##ifndef ${irqPrefix}_ENTRY
+#* *##if( $interrupt.getCategory().toString().equals("CC") )
+#*   *#\#define ${irqPrefix}_ENTRY                   OS_CrossCoreNotifyIsr
+#* *##elseif( $interrupt.getCategory().toString().equals("1") && $OsOptimize.isCat1DirectCall() )
+#*   *#\#define ${irqPrefix}_ENTRY                    $interrupt.getIsrFuncName()
+#* *##elseif( $interrupt.getCategory().toString().equals("K") )
+#*   *#\#define ${irqPrefix}_ENTRY                    OS_Cat$interrupt.getCategory().toString()PreEntry
+#* *##else
+#*   *#\#define ${irqPrefix}_ENTRY                   OS_Cat$interrupt.getCategory().toString()Entry
+#* *##end
+#* *##endif /* ${irqPrefix}_ENTRY */
+#* *##ifndef ${irqPrefix}_EXIT
+#* *##if( $interrupt.getCategory().toString().equals("1") )
+#*   *#\#define ${irqPrefix}_EXIT                    OS_ARM64_IntCat1Exit
+#* *##else
+#*   *#\#define ${irqPrefix}_EXIT                    OS_ARM64_IntCat2Exit
+#* *##end
+#* *##endif /* ${irqPrefix}_EXIT */
+#* *##ifndef ${irqPrefix}_LOCKLEVEL
+#* *##if( $interrupt.getCategory().toString().equals("1") )
+#*   *#\#define ${irqPrefix}_LOCKLEVEL               $interrupt.getCalcPriority()
+#* *##else
+#*   *#\#define ${irqPrefix}_LOCKLEVEL               OS_KERNLOCK
+#* *##end
+#* *##endif /* ${irqPrefix}_LOCKLEVEL */
+## !LINKSTO Generator.Output.os_config_h.Interrupts.Vectors, 1
+#* *##set( $vectorNumHex = $ClassOfHelpers.toHexString(2, $interrupt.getVectorNumber()) )
+#* *##set( $srcPrefix    = "OS_SRC${vectorNumHex}_C${phyCoreId}" )
+#* *#\#define ${srcPrefix}_NAME                    _OS_VECTOR_$interrupt.getVector()
+#* *#\#define ${srcPrefix}_ISRID                   $interrupt.getName()
+#* *##if( $interrupt.getCategory().toString().equals("CC") )
+#*   *#\#define ${srcPrefix}_ENTRY                   OS_CrossCoreNotifyIsr
+#* *##elseif( $interrupt.getCategory().toString().equals("1") && $OsOptimize.isCat1DirectCall() )
+#*   *#\#define ${srcPrefix}_ENTRY                    $interrupt.getIsrFuncName()
+#* *##elseif( $interrupt.getCategory().toString().equals("K") )
+#*   *#\#define ${srcPrefix}_ENTRY                    OS_Cat$interrupt.getCategory().toString()PreEntry
+#* *##else
+#*   *#\#define ${srcPrefix}_ENTRY                   OS_Cat$interrupt.getCategory().toString()Entry
+#* *##end
+#* *##if( $interrupt.getCategory().toString().equals("1") )
+#*   *#\#define ${srcPrefix}_EXIT                    OS_ARM64_IntCat1Exit
+#* *##else
+#*   *#\#define ${srcPrefix}_EXIT                    OS_ARM64_IntCat2Exit
+#* *##end
+#* *##if( $interrupt.getCategory().toString().equals("1") )
+#*   *#\#define ${srcPrefix}_LOCKLEVEL               $interrupt.getCalcPriority()
+#* *##else
+#*   *#\#define ${srcPrefix}_LOCKLEVEL               OS_KERNLOCK
+#* *##end
+#end
+
+#ifdef __cplusplus
+}
+#endif
+#endif  /* OS_CONFIG_H */

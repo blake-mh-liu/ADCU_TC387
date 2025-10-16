@@ -1,0 +1,1244 @@
+<?xml version="1.0"?>
+<!--
+/*******************************************************************************
+**                                                                            **
+** Copyright (C) Infineon Technologies (2023)                                 **
+**                                                                            **
+** All rights reserved.                                                       **
+**                                                                            **
+** This document contains proprietary information belonging to Infineon       **
+** Technologies. Passing on and copying of this document, and communication   **
+** of its contents is not permitted without prior written authorization.      **
+**                                                                            **
+********************************************************************************
+**                                                                            **
+**  FILENAME  : CanTrcv_17_W9255.xdm                                          **
+**                                                                            **
+**  VERSION   : 8.0.0                                                         **
+**                                                                            **
+**  DATE      : 2021-05-22                                                    **
+**                                                                            **
+**  VARIANT   : Variant PC                                                    **
+**                                                                            **
+**  PLATFORM  : Infineon AURIX2G                                              **
+**                                                                            **
+**  AUTHOR    : DL-AUTOSAR-Engineering                                        **
+**                                                                            **
+**  VENDOR    : Infineon Technologies                                         **
+**                                                                            **
+**  TRACEABILITY : [cover parentID={DB6E252D-1C94-42b9-AE3A-22F167F100EB}]    **
+**                 [cover parentID={C776AC56-63FB-4314-AB32-65F021F6D046}]    **
+**                 [cover parentID={F5CF0050-FA3F-4e14-8C3E-FD0E8CB08831}]    **
+**                                                                            **
+**  DESCRIPTION  : XML data model for CanTrcv 9255 driver                     **
+**                                                                            **
+**  [/cover]                                                                  **
+**                                                                            **
+**  SPECIFICATION(S) : Specification of CanTrcv Driver, AUTOSAR Release 4.4.0 **
+**                                                                            **
+**  MAY BE CHANGED BY USER : no                                               **
+**                                                                            **
+*******************************************************************************/
+-->
+<datamodel version="7.0"
+           xmlns="http://www.tresos.de/_projects/DataModel2/16/root.xsd"
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/16/attribute.xsd"
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd"
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar"
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd"
+         xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd"
+         xmlns:f="http://www.tresos.de/_projects/DataModel2/14/formulaexpr.xsd"
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd"
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd"
+         xmlns:variant="http://www.tresos.de/_projects/DataModel2/11/variant.xsd">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="AURIX2G_W9255" type="AR-PACKAGE">
+        <a:a name="UUID" value="ECUC:AUTOSAR"/>
+        <d:lst type="TOP-LEVEL-PACKAGES">
+          <d:ctr name="EcucDefs" type="AR-PACKAGE">
+            <a:a name="UUID" value="ECUC:ECUCDEFS"/>
+            <d:lst type="ELEMENTS">
+                <!-- [cover parentID={0DFCF00F-1AE1-4a66-AAE9-83BFD65A4027}]CanTrcv [/cover] -->
+              <d:chc name="CanTrcv" type="AR-ELEMENT" value="MODULE-DEF">
+                <v:ctr type="MODULE-DEF">
+                  <a:a name="ADMIN-DATA" type="ADMIN-DATA">
+                    <ad:ADMIN-DATA>
+                      <ad:DOC-REVISIONS>
+                        <ad:DOC-REVISION>
+                          <ad:REVISION-LABEL>4.4.0</ad:REVISION-LABEL>
+                          <ad:ISSUED-BY>AUTOSAR</ad:ISSUED-BY>
+                        </ad:DOC-REVISION>
+                      </ad:DOC-REVISIONS>
+                    </ad:ADMIN-DATA>
+                  </a:a>
+                  <a:a name="DESC"
+                       value="EN: Configuration of the CanTrcv (CAN Transceiver driver) module."/>
+                  <a:a name="LOWER-MULTIPLICITY" value="0"/>
+                  <a:a name="POSTBUILDVARIANTSUPPORT" value="false"/>
+                  <!-- [cover parentID={4B04EABD-5CD0-45d9-87CB-7322FE61E620}]Autosar 422 [/cover] -->
+                  <a:a name="RELEASE" value="asc:4.4.0"/>
+                  <d:ref type="REFINED_MODULE_DEF" value="ASPath:/AUTOSAR/EcucDefs/CanTrcv"/>
+                  <a:a name="UPPER-MULTIPLICITY" value="*"/>
+                  <a:a name="UUID"
+                       value="ECUC:e1256557-38d2-4224-8563-f273b12e1ee8"/>
+                  <v:var name="POST_BUILD_VARIANT_USED" type="BOOLEAN">
+                    <a:a name="DESC"
+                         value="Indicates whether a module implementation has or plans to have (i.e., introduced at link or post-build time) new post-build variation points."/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Post Build Variant Used"/>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="false"/>
+                    <a:da name="READONLY" value="FALSE"/>
+                </v:var>
+                  <v:var name="IMPLEMENTATION_CONFIG_VARIANT"
+                         type="ENUMERATION">
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Config Variant"/>
+                    <a:da name="DEFAULT" value="VariantPreCompile"/>
+                    <a:da name="RANGE">
+                      <a:v>VariantPreCompile</a:v>
+                    </a:da>
+                  </v:var>
+                  <!-- [cover parentID={782F9037-FAA4-4de1-AF58-8CBC77B114D1}] CanTrcvConfigSet [/cover] -->
+                  <v:ctr name="CanTrcvConfigSet" type="IDENTIFIABLE">
+                    <a:a name="DESC"
+                    value="EN: This container contains the configuration parameters and sub containers of the AUTOSAR CAN Transceiver module."/>
+                    <a:a name="UUID"
+                         value="ECUC:c20cd1af-0232-48fa-9f0b-f3d531f2fe20"/>
+                         <!-- [cover parentID={04992DFD-6C7A-461d-A11C-0A5345ECB5D9}] CanTrcvSPICommRetries [/cover] -->
+                    <v:var name="CanTrcvSPICommRetries" type="INTEGER">
+                      <a:a name="DESC"
+                      value="EN: Indicates the maximum number of communication retries in case of a failed SPI communication (applies both to timed out communication and to errors/NACK in the response data). If configured value is '0', no retry is allowed."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID"
+                           value="ECUC:093c3711-8c92-4094-994a-a67de25b2cea"/>
+                      <a:da name="DEFAULT" value="0"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=255"/>
+                        <a:tst expr="&gt;=0"/>
+                      </a:da>
+                      <a:da name="EDITABLE" type="XPath"
+                      expr="node:refexists(node:current()/../CanTrcvChannel/*/CanTrcvAccess/CanTrcvSpiSequence/*/CanTrcvSpiSequenceName/*)"/>
+                    </v:var>
+                    <!-- [cover parentID={DEB40126-D1FA-43f0-BFE4-648B667A24A9}] CanTrcvSPICommTimeout [/cover] -->
+                    <!-- [cover parentID={9EDC4A94-FDFF-4650-993C-8FB20D2C54EE}] Synchronous SPI implementation followed[/cover] -->
+                    <v:var name="CanTrcvSPICommTimeout" type="INTEGER">
+                      <a:a name="DESC"
+                      value="EN: Indicates the maximum time allowed to the CanTrcv for replying (either positively or negatively) to an SPI command. Timeout is configured in milliseconds. Timeout value of '0' means that no specific timeout is to be used by the CAN Transceiver and the communication is executed at the best of the SPI Hardware capacity."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID"
+                      value="ECUC:a8bda218-8bf9-4dc0-86b1-cb9fa70fd9df"/>
+                      <a:da name="DEFAULT" value="0"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=100"/>
+                        <a:tst expr="&gt;=0"/>
+                      </a:da>
+                      <a:da name="EDITABLE" value="false"/>
+                    </v:var>
+                    <!-- [cover parentID={49F38917-EC57-4ff1-8C72-321F858E9678}] CanTrcvChannel [/cover] -->
+                    <v:lst name="CanTrcvChannel" type="MAP">
+                      <a:da name="MIN" value="1"/>
+                      <a:da name="MAX" value="12"/>
+                      <v:ctr name="CanTrcvChannel" type="IDENTIFIABLE">
+                        <a:a name="DESC"
+                        value="EN: This container gives CAN transceiver driver information about a single CAN transceiver (channel)."/>
+                        <a:a name="UUID"
+                             value="ECUC:4e6513a4-4c5a-4486-a836-f269d7e92dd9"/>
+                             <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                             <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                             </a:a>
+                             <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="false"/>
+                        <!-- [cover parentID={C26D88C2-0FDB-4c80-9DC9-85948DFD074D}] CanTrcvChannelId [/cover] -->
+                        <v:var name="CanTrcvChannelId" type="INTEGER">
+                          <a:a name="DESC"
+                               value="EN: Unique identifier of the CAN Transceiver Channel."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SCOPE" value="ECU"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                          <a:a name="UUID"
+                               value="ECUC:f1f3dba5-d4d7-43d3-8d03-2e0bb504e860"/>
+                          <a:da name="DEFAULT" type="XPath" expr="node:fallback(node:current()/../@index,'0')"/>
+                          <a:da name="INVALID" type="Multi">
+                              <mt:xpath expr="text:uniq(../../*/CanTrcvChannelId,.)" false="Channel Id  should be unique. Enter a different value"/>
+                              <mt:xpath expr="node:isconsecutive(../../*/CanTrcvChannelId,0)" false="CanTrcvChannelId not Consecutive"/>
+                              <mt:range>
+                                  <mt:tst expr="&gt;=0"/>
+                                  <mt:tst expr="&lt;=11"/>
+                          </mt:range>
+                          </a:da>
+                        </v:var>
+                        <!-- [cover parentID={BE522ACC-3207-47b2-B948-26691919C530}] CanTrcvChannelUsed [/cover] -->
+                        <v:var name="CanTrcvChannelUsed" type="BOOLEAN">
+                          <a:a name="DESC"
+                          value="EN: This parameter specifies if the respective CAN transceiver channel is enabled or not."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID"
+                               value="ECUC:88536366-15ed-4967-80dd-9974891b652e"/>
+                          <a:da name="DEFAULT" value="true"/>
+                        </v:var>
+                        <!-- [cover parentID={645F0C12-FEF7-4321-9E53-9F07B2C74617}] CanTrcvControlsPowerSupply [/cover] -->
+                        <v:var name="CanTrcvControlsPowerSupply" type="BOOLEAN">
+                          <a:a name="DESC"
+                          value="EN: Indicates if the ECU power supply is controlled or not by the transceiver.
+                            TRUE = Controlled by the transceiver
+                            FALSE = Not controlled by the transceiver"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID"
+                               value="ECUC:1ab6ed3e-bf66-41ba-b2f6-a4d964b54744"/>
+                          <a:da name="DEFAULT" value="false"/>
+                          <a:da name="EDITABLE" value="false"/>
+                        </v:var>
+                        <!-- [cover parentID={CE7724C2-958E-438e-AE81-8991CBBAD502}] CanTrcvHwPnSupport [/cover] -->
+                        <v:var name="CanTrcvHwPnSupport" type="BOOLEAN">
+                          <a:a name="DESC"
+                          value="EN: Indicates whether the TLE9255W hardware supports the selective wake-up feature.
+                          TRUE = Selective wakeup feature is supported by the transceiver
+                          FALSE = Selective wakeup feature is not supported by the transceiver"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID"
+                          value="ECUC:ad140e6f-373b-4f3e-a7a5-87ba8b29e7e3"/>
+                          <a:da name="DEFAULT" value="true"/>
+                          <a:da name="EDITABLE" value="false"/>
+                        </v:var>
+                        <!-- [cover parentID={1265B5F9-8B34-47c5-972E-103DC7815486}] CanTrcvInitState [/cover] -->
+                        <v:var name="CanTrcvInitState" type="ENUMERATION">
+                          <a:a name="DESC"
+                          value="EN: State of CAN transceiver after call to CanTrcv_17_W9255_Init API."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID"
+                               value="ECUC:8e511d66-410f-4c0c-8540-01776a793337"/>
+                          <a:da name="DEFAULT" value="CANTRCV_17_W9255_OP_MODE_NORMAL"/>
+                          <a:da name="RANGE">
+                            <a:v>CANTRCV_17_W9255_OP_MODE_NORMAL</a:v>
+                             <a:v>CANTRCV_17_W9255_OP_MODE_SLEEP</a:v>
+                            <a:v>CANTRCV_17_W9255_OP_MODE_STANDBY</a:v>
+                          </a:da>
+                        </v:var>
+                        <!-- [cover parentID={628B2712-FC72-4b1f-8848-EB4671F5389B}] CanTrcvMaxBaudrate [/cover] -->
+                        <v:var name="CanTrcvMaxBaudrate" type="INTEGER">
+                          <a:a name="DESC"
+                          value="EN: Max baudrate for transceiver hardware type. Unit of the parameter is kbps."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID"
+                               value="ECUC:b89bc632-1e2a-4709-ab62-957c7252e0fe"/>
+                          <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=5000"/>
+                              <a:tst expr="&gt;=0"/>
+                          </a:da>
+                            <a:da name="DEFAULT" value="5000"/>
+                        </v:var>
+                        <!-- [cover parentID={9E72D318-F8DD-4e38-9E29-6F09941A43F7}] CanTrcvWakeupByBusUsed [/cover] -->
+                          <v:var name="CanTrcvWakeupByBusUsed" type="BOOLEAN">
+                            <a:a name="DESC"
+                            value="EN: Indicates whether wake up by bus is  supported or not. If CAN transceiver hardware does not support wake up by bus, value is always FALSE. If CAN transceiver hardware supports wake up by bus, value is TRUE or FALSE depending whether it is used or not.
+                                TRUE = Bus is used.
+                                FALSE = Bus is not used."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SCOPE" value="LOCAL"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="ECUC:52db1d3e-02dd-4437-a377-00108ef8a886"/>
+                            <a:da name="DEFAULT" value="false"/>
+                        <!-- [cover parentID={BB81D52E-71F0-45bc-8D84-A0048143C464}] CanTrcvChannelEcucPartitionRef [/cover] -->
+                          </v:var>
+                        <v:lst name="CanTrcvChannelEcucPartitionRef">
+                          <a:da name="MAX" value="1"/>
+                          <v:ref name="CanTrcvChannelEcucPartitionRef"
+                                 type="REFERENCE">
+                            <a:a name="DESC">
+                              <a:v>EN: Maps the CAN transceiver channel to zero or one ECUC partitions. The ECUC partition referenced is a subset of the ECUC partitions where the CAN transceiver driver is mapped to.</a:v>
+                              <a:v>EN: Tags: atp.Status=draft</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                              <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="POSTBUILDVARIANTMULTIPLICITY"
+                                 value="false"/>
+                            <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                            <a:a name="SCOPE" value="ECU"/>
+                            <a:a name="UUID"
+                                 value="ECUC:ef79fb65-16bd-422b-9980-92704822e296"/>
+                            <a:da name="REF"
+                                  value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/EcuC/EcucPartitionCollection/EcucPartition"/>
+                            <a:da name="EDITABLE" value="false"/>
+                          </v:ref>
+                        </v:lst>
+            <!-- [cover parentID={6F4445C5-CE80-4027-886A-D513910C9375}] CanTrcvIcuChannelRef [/cover] -->
+                        <v:lst name="CanTrcvIcuChannelRef">
+                          <a:da name="MAX" value="1"/>
+                          <v:ref name="CanTrcvIcuChannelRef" type="REFERENCE">
+                            <a:a name="DESC"
+                            value="EN: Reference to the IcuChannel to enable/disable the interrupts for wakeups."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                              <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="REQUIRES-SYMBOLIC-NAME-VALUE"
+                                 value="true"/>
+                            <a:a name="UUID"
+                                 value="ECUC:48ecab98-2903-4a77-928b-7e25ca8db5f9"/>
+                            <a:da name="REF"
+                                  value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Icu/IcuConfigSet/IcuChannel"/>
+                                  <a:da name="INVALID" type="Multi">
+                                  <mt:xpath  expr="((not(node:refexists(node:current()))) and (../../CanTrcvChannelUsed = 'true') and (../../../../../CanTrcvGeneral/CanTrcvWakeUpSupport = 'CANTRCV_17_W9255_WAKE_UP_BY_INTERRUPT'))"
+                                  true="Configure ICU channel reference"/>
+                                  <mt:xpath expr="(text:uniq(../../../../CanTrcvChannel/*/CanTrcvIcuChannelRef/*,.) or (../../../../../CanTrcvGeneral/CanTrcvWakeUpSupport = 'CANTRCV_17_W9255_WAKE_UP_BY_POLLING'))" false="ICU Channel Id  should be unique. Enter a different value"/>
+                          </a:da>
+                        </v:ref>
+                        </v:lst>
+                    <!-- [cover parentID={73DEC08A-A676-4e3b-9B29-2981DBF70147}] CanTrcvWakeupSourceRef [/cover] -->
+                          <!--
+                                Note: Elektrobit Automotive GmbH modified the original code provided
+        by the third party supplier. The modification is provided for
+        convenience.
+        Please use the modification on your discretion and account, or
+        use the unmodified files provided with this distribution. 
+  Please see for the reasons in the file ImportantNotes.txt for tag
+
+													 
+                              ASCINFINEON-849 CanTrcvWakeupSourceRef parameter should not be present as a list because it is not readable by CanIf
+                          -->
+                          <v:ref name="CanTrcvWakeupSourceRef" type="REFERENCE">
+                            <a:a name="DESC"
+                            value="EN: This parameter contains a reference to the wakeup source for this channel in the EcuM configuration."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                              <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="REQUIRES-SYMBOLIC-NAME-VALUE"
+                                 value="true"/>
+                            <a:a name="SCOPE" value="ECU"/>
+                            <a:a name="UUID"
+                                 value="ECUC:b00d0abd-0eaa-4026-9ec9-b035bb76ae17"/>
+                            <a:da name="REF"
+                                  value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/EcuM/EcuMConfiguration/EcuMCommonConfiguration/EcuMWakeupSource"/>
+                                                    
+                          <a:da name="EDITABLE" type="XPath">
+                          <a:tst expr="(../CanTrcvWakeupByBusUsed ='true')"/>
+                          </a:da>
+                        </v:ref>
+                        <!-- [cover parentID={5BBC1D35-480F-43ca-B2D3-6095DBE76EE7}] CanTrcvPorWakeupSourceRef [/cover] -->
+                        <v:lst name="CanTrcvPorWakeupSourceRef">
+                        <a:da name="MIN" value="1"/>
+                          <a:da name="MAX" value="1"/>
+                          <v:ref name="CanTrcvPorWakeupSourceRef"
+                                 type="REFERENCE">
+                            <a:a name="DESC"
+                            value="EN: This parameter contains symbolic name reference to specify the wakeup source for this channel that should be used in the calls to EcuM_SetWakeupEvent if POR flag is set in the TLE9255W hardware."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="REQUIRES-SYMBOLIC-NAME-VALUE"
+                                 value="true"/>
+                            <a:a name="SCOPE" value="ECU"/>
+                            <a:a name="UUID"
+                                 value="ECUC:3c27835c-3aa5-4f75-99ab-9057175882a3"/>
+                            <a:da name="REF"
+                                  value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/EcuM/EcuMConfiguration/EcuMCommonConfiguration/EcuMWakeupSource"/>
+                          </v:ref>
+                        </v:lst>
+                        <!-- [cover parentID={6E058778-44F3-4c40-BA54-72B6B7FCF3C4}] CanTrcvSyserrWakeupSourceRef [/cover] -->
+                        <v:lst name="CanTrcvSyserrWakeupSourceRef">
+                        <a:da name="MIN" value="1"/>
+                          <a:da name="MAX" value="1"/>
+                          <v:ref name="CanTrcvSyserrWakeupSourceRef"
+                                 type="REFERENCE">
+                            <a:a name="DESC"
+                            value="EN: This parameter contains symbolic name reference to specify the wakeup source for this channel that should be used in the calls to EcuM_SetWakeupEvent if SYSERR flag is set in the TLE9255W hardware."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="REQUIRES-SYMBOLIC-NAME-VALUE"
+                                 value="true"/>
+                            <a:a name="SCOPE" value="ECU"/>
+                            <a:a name="UUID"
+                                 value="ECUC:06352f6c-b381-4050-9a16-0ee4e98bfd2e"/>
+                            <a:da name="REF"
+                                  value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/EcuM/EcuMConfiguration/EcuMCommonConfiguration/EcuMWakeupSource"/>
+                          </v:ref>
+                        </v:lst>
+                        <!-- [cover parentID={6D264BA1-3DFF-40b4-9890-0A03DB251498}] CanTrcvAccess [/cover] -->
+                        <v:chc name="CanTrcvAccess" type="IDENTIFIABLE">
+                          <a:a name="DESC"
+                          value="EN: This container gives CAN Transceiver Driver information about access to a single CAN transceiver.
+                          Note: As TLE9255W hardware supports only SPI interface, the container CanTrcvSpiAccess is set as the default choice."/>
+                          <a:a name="UUID"
+                               value="ECUC:9175045e-5280-4caf-a0c4-9033cb129316"/>
+                          <!-- [cover parentID={A01FA5BB-C38A-4e89-819E-32A80175EA9F}] CanTrcvSpiAccess [/cover] -->
+                          <v:ctr name="CanTrcvSpiAccess" type="IDENTIFIABLE">
+                            <a:a name="DESC"
+                            value="EN: Container gives CAN transceiver driver information about accessing SPI."/>
+                            <a:a name="UUID"
+                                 value="ECUC:6fc13cdf-28b9-463d-8789-df298ca055bb"/>
+                            <v:lst name="CanTrcvSpiSequence" type="MAP">
+                              <a:da name="MIN" value="1"/>
+                              <a:da name="MAX" value="1"/>
+                              <!-- [cover parentID={3624CF11-3DA3-4afc-80A0-E5BA608E618F}] CanTrcvSpiSequence [/cover] -->
+                              <v:ctr name="CanTrcvSpiSequence"
+                                     type="IDENTIFIABLE">
+                                <a:a name="DESC"
+                                value="EN: Container gives CAN transceiver driver information about one SPI sequence.
+                                Note: One SPI sequence used by CAN transceiver driver is in exclusive use for it. No other driver is allowed to access this sequence."/>
+                                <a:a name="UUID"
+                                     value="ECUC:9b42b06c-0a7a-45e1-bd04-40ea181004db"/>
+                                <!-- [cover parentID={F5F76562-E5D6-419b-9FE4-0E377E336A69}] CanTrcvSpiAccessSynchronous [/cover] -->
+                                <v:lst name="CanTrcvSpiAccessSynchronous">
+                                  <a:da name="MAX" value="1"/>
+                                  <a:da name="MIN" value="1"/>
+                                  <v:var name="CanTrcvSpiAccessSynchronous"
+                                         type="BOOLEAN">
+                                    <a:a name="DESC"
+                                    value="EN: This parameter is used to define whether the access to the SPI sequence is synchronous or asynchronous.
+                                    TRUE: SPI access is synchronous
+                                    FALSE: SPI access is asynchronous
+                                    This parameter is set to True by default and made non-editable as the CAN Transceiver driver always accesses SPI synchronously."/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                         type="IMPLEMENTATIONCONFIGCLASS">
+                                      <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID"
+                                    value="ECUC:7bcf2b70-75a7-41b5-ad47-bc7bfd282257"/>
+                                    <a:da name="DEFAULT" value="true"/>
+                                    <a:da name="EDITABLE" value="false"/>
+                                  </v:var>
+                                </v:lst>
+                                <!-- [cover parentID={FA2983B7-0D9F-4304-8A2C-9A65CD64D0D4}] CanTrcvSpiSequenceName [/cover] -->
+                                <v:lst name="CanTrcvSpiSequenceName">
+                                <a:da name="MIN" value="1"/>
+                                <a:da name="MAX" value="1"/>
+                                  <v:ref name="CanTrcvSpiSequenceName"
+                                         type="REFERENCE">
+                                    <a:a name="DESC"
+                                         value="EN: Reference to a Spi sequence configuration container."/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                         type="IMPLEMENTATIONCONFIGCLASS">
+                                      <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                    <a:a name="REQUIRES-SYMBOLIC-NAME-VALUE"
+                                         value="true"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="UUID"
+                                         value="ECUC:67fba62d-4920-4112-80e9-839907bcc46a"/>
+                                    <a:da name="REF"
+                                          value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Spi/SpiDriver/SpiSequence"/>
+                                          <a:da name="INVALID" type="Multi">
+                                          <mt:xpath expr="node:refvalid(.)" false="EN: CanTrcv_17_W9255 - The configured node does not exist or may not be referenced."/>
+                                          <mt:xpath expr="text:uniq(../../../../../../../CanTrcvChannel/*/CanTrcvAccess/CanTrcvSpiSequence/*[1]/CanTrcvSpiSequenceName/*,.)" false="SPI Sequence Id  should be unique. Enter a different value"/>
+                                          </a:da>
+                                  </v:ref>
+                                </v:lst>
+                              </v:ctr>
+                            </v:lst>
+                          </v:ctr>
+                          <!-- [cover parentID={78340DF1-015A-4adf-AD30-792308106F66}] CanTrcvDioAccess [/cover] -->
+              <v:ctr name="CanTrcvDioAccess" type="IDENTIFIABLE">
+                            <a:a name="DESC"
+                            value="EN: Container gives CAN transceiver driver information about accessing ports and port pins. In addition relation between CAN transceiver hardware pin names and DIO port access information is given. If CAN transceiver hardware has no DIO interface, there is no instance of this container.
+                                Note: Since TLE9255W transceiver hardware has no DIO interface, there is no instance of this container."/>
+                            <a:a name="UUID"
+                                 value="ECUC:1d8e654e-9746-428f-929d-ddefe3a44578"/>
+                            <!-- [cover parentID={3B3A84C2-B243-4482-9FC9-30DB6CD4E841}] CanTrcvDioChannelAccess [/cover] -->
+                            <v:lst name="CanTrcvDioChannelAccess" type="MAP">
+                            <a:da name="MAX" value="1"/>
+                              <a:da name="MIN" value="1"/>
+                              <v:ctr name="CanTrcvDioChannelAccess"
+                                     type="IDENTIFIABLE">
+                                <a:a name="DESC"
+                                value="EN: Container gives DIO channel access by single CAN transceiver channel.
+                                    Note: Since TLE9255W transceiver hardware has no DIO interface, there is no instance of this container."/>
+                                <a:a name="UUID"
+                                     value="ECUC:f3735ce7-dc10-4544-b55e-626808f713e0"/>
+                                <!-- [cover parentID={088783AB-A3C5-483c-B041-4E0E6D73F521}] CanTrcvHardwareInterfaceName [/cover] -->
+                                <v:var name="CanTrcvHardwareInterfaceName"
+                                       type="STRING">
+                                  <a:a name="DESC"
+                                  value="EN: This parameter specifies CAN transceiver hardware interface name. It is typically the name of a CAN transceiver pin."/>
+                                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                       type="IMPLEMENTATIONCONFIGCLASS">
+                                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                  </a:a>
+                                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                  <a:a name="SCOPE" value="LOCAL"/>
+                                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                  <a:a name="UUID"
+                                  value="ECUC:0ec03d65-0055-4853-8dc8-5fcd1ef5a43e"/>
+                                  <a:da name="EDITABLE" value="false"/>
+                                  <a:da name="DEFAULT" type="XPath">
+                                  <a:tst expr="text:split('STB', ' ')[position()-1 = node:fallback(node:current()/../@index,'0')]"/>
+                                  </a:da>
+                                </v:var>
+                                <!-- [cover parentID={A0537BCB-1FC4-4c79-B2A2-B7169D5A1F48}] CanTrcvDioSymNameRef [/cover] -->
+                                <v:ref name="CanTrcvDioSymNameRef"
+                                       type="CHOICE-REFERENCE">
+                                  <a:a name="DESC"
+                                  value="EN: This parameter gives the reference to a configured DIO channel."/>
+                                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                       type="IMPLEMENTATIONCONFIGCLASS">
+                                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                  </a:a>
+                                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                  <a:a name="UUID"
+                                       value="ECUC:1e464264-ce16-4a16-87d1-89aab53d6a2b"/>
+                                  <a:da name="REF">
+                                    <a:v>ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dio/DioConfig/DioPort/DioChannel</a:v>
+                                    <a:v>ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dio/DioConfig/DioPort/DioChannelGroup</a:v>
+                                    <a:v>ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dio/DioConfig/DioPort</a:v>
+                                  </a:da>
+                                  <a:da name="INVALID" type="Multi">
+                                  <mt:xpath expr="text:uniq(../../../../../../CanTrcvChannel/*/CanTrcvAccess/*/CanTrcvDioChannelAccess/CanTrcvDioSymNameRef,.)" false="CanTrcvDioSymNameRef should be unique. Map different reference"/>
+                                  <mt:xpath  expr="node:refvalid(.)" false="EN: CanTrcv_9251 - For DIO channel reference the configured node does not exist or may not be referenced."/>
+                                  </a:da>
+                                </v:ref>
+                              </v:ctr>
+                            </v:lst>
+                          </v:ctr>
+                          <a:da name="EDITABLE" value="false"/>
+                        </v:chc>
+                        <!-- [cover parentID={31DCE54B-BF84-4685-BFA3-6B014F782E9E}] CanTrcvDemEventParameterRefs [/cover] -->
+                        <v:lst name="CanTrcvDemEventParameterRefs" type="MAP">
+                          <a:da name="MAX" value="1"/>
+                          <v:ctr name="CanTrcvDemEventParameterRefs"
+                                 type="IDENTIFIABLE">
+                            <a:a name="DESC"
+                            value="EN: Container for the references to DemEventParameter elements which shall be invoked using the API Dem_ReportErrorStatus in case the corresponding error occurs. The EventId is taken from the referenced DemEventParameter's DemEventId value.
+                            Note: Since TLE9255W hardware cannot detect bus failure, this container is not applicable and made non-editable."/>
+                            <a:a name="UUID"
+                                 value="ECUC:e99decc0-3e63-41f8-8d65-49e10979c5e7"/>
+                                 <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                                 <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                                 </a:a>
+                                 <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="false"/>
+                            <!-- [cover parentID={186E4D50-ECF5-4552-9784-3527FE24294A}] CANTRCV_17_W9255_E_BUS_ERROR [/cover] -->
+                            <v:lst name="CANTRCV_E_BUS_ERROR">
+                              <a:da name="MAX" value="1"/>
+                              <v:ref name="CANTRCV_E_BUS_ERROR"
+                                     type="REFERENCE">
+                                <a:a name="DESC"
+                                value="EN: Reference to the DemEventParameter which shall be issued when bus error has occurred.
+                                Note: Since TLE9255W hardware cannot detect bus failure, the module does not raise any DEMs. Therefore, this parameter is not applicable and made non-editable."/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                     type="IMPLEMENTATIONCONFIGCLASS">
+                                  <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                                  <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                <a:a name="REQUIRES-SYMBOLIC-NAME-VALUE"
+                                     value="true"/>
+                                <a:a name="SCOPE" value="ECU"/>
+                                <a:a name="UUID"
+                                     value="ECUC:1e290b8e-041e-46cf-841e-6ed13488287a"/>
+                                <a:da name="REF"
+                                      value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter"/>
+                                <a:da name="EDITABLE" value="FALSE"/>
+                              </v:ref>
+                            </v:lst>
+                          </v:ctr>
+                          <a:da name="EDITABLE" value="FALSE"/>
+                        </v:lst>
+                        <!-- [cover parentID={A0E8DF95-F1AD-4e59-9429-4ADC09A5864B}] CanTrcvPartialNetwork [/cover] -->
+                        <v:lst name="CanTrcvPartialNetwork" type="MAP">
+                        <a:da name="MIN" value="0"/>
+                          <a:da name="MAX" value="1"/>
+                          <v:ctr name="CanTrcvPartialNetwork"
+                                 type="IDENTIFIABLE">
+                            <a:a name="DESC"
+                                 value="EN: Container gives CAN transceiver driver information about the configuration of Partial Networking functionality."/>
+                            <a:a name="UUID"
+                                 value="ECUC:ca5b30fc-a757-4af2-bd25-7f0bf8a13690"/>
+                                 <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                                 <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                                 </a:a>
+                                 <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="false"/>
+                            <!-- [cover parentID={59E2793A-A00E-4965-8603-B21F615184A1}] CanTrcvBaudRate [/cover] -->
+                            <v:var name="CanTrcvBaudRate" type="INTEGER">
+                              <a:a name="DESC"
+                              value="EN: Indicates the CAN Bus communication baud rate in kbps."/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                              <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                              <a:a name="SCOPE" value="LOCAL"/>
+                              <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                              <a:a name="UUID"
+                                   value="ECUC:9ab3dac1-5cd1-4a6b-a556-dbcb6bf39ff5"/>
+                                   <a:da name="DEFAULT" value="500"/>
+                                   <a:da name="RANGE">
+                                   <a:v>125</a:v>
+                                   <a:v>250</a:v>
+                                   <a:v>500</a:v>
+                                   <a:v>1000</a:v>
+                              </a:da>
+                              <a:da name="INVALID" type="Range">
+                              <a:tst expr="&lt;=1000"/>
+                              <a:tst expr="&gt;=125"/>
+                              </a:da>
+                            </v:var>
+                            <!-- [cover parentID={EE5D64CE-D0F2-4450-8DDB-D59E67DE5D47}] CanTrcvBusErrFlag [/cover] -->
+                            <v:var name="CanTrcvBusErrFlag" type="BOOLEAN">
+                              <a:a name="DESC"
+                              value="EN: Indicates if the Bus Error (BUSERR) flag is managed by the BSW. This flag is set if a bus failure is detected by the transceiver.
+                              Note: Since TLE9255W hardware cannot detect bus error, this parameter is not applicable. Hence, this parameter is set FALSE by default and made non-editable."/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                              <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                              <a:a name="SCOPE" value="LOCAL"/>
+                              <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                              <a:a name="UUID"
+                                   value="ECUC:e7104ca6-1fad-4cfd-92c2-b18fac5c8a05"/>
+                              <a:da name="DEFAULT" value="false"/>
+                              <a:da name="EDITABLE" value="false"/>
+                            </v:var>
+                            <!-- [cover parentID={4DEF619F-0066-46a4-83A9-C68A85A545A1}] CanTrcvPnCanIdIsExtended [/cover] -->
+                            <v:var name="CanTrcvPnCanIdIsExtended"
+                                   type="BOOLEAN">
+                              <a:a name="DESC"
+                              value="EN: Indicates whether extended or standard ID is used.
+                              TRUE = Extended CAN identifier is used
+                              FALSE = Standard CAN identifier is used"/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                              <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                              <a:a name="SCOPE" value="LOCAL"/>
+                              <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                              <a:a name="UUID"
+                                   value="ECUC:bce803d7-e415-4177-a29f-ff17bdac4793"/>
+                              <a:da name="DEFAULT" value="false"/>
+                            </v:var>
+                            <!-- [cover parentID={807D2273-5FAC-4b68-9440-193954B1099C}] CanTrcvPnEnabled [/cover] -->
+                            <v:var name="CanTrcvPnEnabled" type="BOOLEAN">
+                              <a:a name="DESC"
+                              value="EN: Indicates whether the selective wake-up functionality is enabled or disabled in CAN Transceiver hardware."/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                              <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                              <a:a name="SCOPE" value="LOCAL"/>
+                              <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                              <a:a name="UUID"
+                                   value="ECUC:a5cd2332-0b8f-4e8b-93f0-8c20e953d527"/>
+                              <a:da name="DEFAULT" value="false"/>
+                            </v:var>
+                            <!-- [cover parentID={30083B15-BBBF-4099-BF1A-9F560FD0EF05}] CanTrcvPnFrameCanId [/cover] -->
+                            <v:var name="CanTrcvPnFrameCanId" type="INTEGER">
+                              <a:a name="DESC"
+                                   value="EN: CAN ID of the Wake-up Frame (WUF)."/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                              <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                              <a:a name="SCOPE" value="LOCAL"/>
+                              <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                              <a:a name="UUID"
+                                   value="ECUC:4eadd3d6-3770-462b-a515-9a677fe5d057"/>
+                              <a:da name="INVALID" type="Range">
+                                <a:tst expr="&lt;=4294967295"/>
+                                <a:tst expr="&gt;=0"/>
+                              </a:da>
+                              <a:da name="DEFAULT" value="0"/>
+                            </v:var>
+                            <!-- [cover parentID={57B80C15-F2EE-41d9-BD12-F2413366F2EC}] CanTrcvPnFrameCanIdMask [/cover] -->
+                            <v:var name="CanTrcvPnFrameCanIdMask"
+                                   type="INTEGER">
+                              <a:a name="DESC"
+                              value="EN: ID Mask for the selective activation of the transceiver. It is used to enable Wake-up Frame(WUF) on a group of IDs."/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                              <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                              <a:a name="SCOPE" value="LOCAL"/>
+                              <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                              <a:a name="UUID"
+                                   value="ECUC:138f069a-dcc3-403d-9398-9d247ccefbf8"/>
+                              <a:da name="INVALID" type="Range">
+                                <a:tst expr="&lt;=4294967295"/>
+                                <a:tst expr="&gt;=0"/>
+                              </a:da>
+                              <a:da name="DEFAULT" value="0"/>
+                            </v:var>
+                            <!-- [cover parentID={5E1F80F4-FD92-4fc6-B769-5B1E30099BBD}] CanTrcvPnFrameDlc [/cover] -->
+                            <v:var name="CanTrcvPnFrameDlc" type="INTEGER">
+                              <a:a name="DESC"
+                              value="EN: Data Length Code of the Wake-up Frame (WUF)."/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                              <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                              <a:a name="SCOPE" value="LOCAL"/>
+                              <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                              <a:a name="UUID"
+                                   value="ECUC:35e1b603-21c3-4bad-aca7-ff1081d6f632"/>
+                              <a:da name="INVALID" type="Range">
+                                <a:tst expr="&lt;=8"/>
+                                <a:tst expr="&gt;=1"/>
+                              </a:da>
+                              <a:da name="DEFAULT" value="1"/>
+                            </v:var>
+                            <!-- [cover parentID={6466B1F1-83D6-497a-BD92-D9D1DDCE5E33}] CanTrcvPowerOnFlag [/cover] -->
+                            <v:var name="CanTrcvPowerOnFlag" type="BOOLEAN">
+                              <a:a name="DESC"
+                              value="EN: Indicates if the Power On Reset (POR) flag is available and is managed by the transceiver.
+                              TRUE = Supported by Hardware
+                              FALSE = Not supported by Hardware
+                              Since TLE9255W hardware supports partial networking, this parameter is set TRUE by default and made non-editable."/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                              <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                              <a:a name="SCOPE" value="LOCAL"/>
+                              <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                              <a:a name="UUID"
+                              value="ECUC:869324cb-1350-4b1c-b366-5b8b609b4ffc"/>
+                              <a:da name="DEFAULT" value="true"/>
+                              <a:da name="EDITABLE" value="false"/>
+                            </v:var>
+                            <!-- [cover parentID={C6CA5900-08B3-4e8e-BE5A-CDFBE5B1B13F}] CanTrcvPnFrameDataMaskSpec [/cover] -->
+                            <v:lst name="CanTrcvPnFrameDataMaskSpec" type="MAP">
+                            <a:da name="MIN" value="1"/>
+                              <a:da name="MAX" value="8"/>
+                              <v:ctr name="CanTrcvPnFrameDataMaskSpec"
+                                     type="IDENTIFIABLE">
+                                <a:a name="DESC"
+                                     value="EN: Defines data payload mask to be used on the received payload in order to determine if the transceiver must be woken up by the received Wake-up Frame (WUF)."/>
+                                 <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                     type="IMPLEMENTATIONCONFIGCLASS">
+                                   <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                                 </a:a>
+                               <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="false"/>
+                                <a:a name="UUID"
+                                     value="ECUC:a8cf14ab-3c00-4929-adf3-38a776992bf6"/>
+                                     <!-- [cover parentID={C32757AF-FFA8-43bd-BFF1-AF050B50EC0D}] CanTrcvPnFrameDataMask [/cover] -->
+                                <v:var name="CanTrcvPnFrameDataMask"
+                                       type="INTEGER">
+                                  <a:a name="DESC"
+                                       value="EN: Defines the n byte (Byte0 = LSB) of the data payload mask to be used on the received payload in order to determine if the transceiver must be woken up by the received Wake-up Frame (WUF)."/>
+                                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                       type="IMPLEMENTATIONCONFIGCLASS">
+                                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                  </a:a>
+                                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                  <a:a name="SCOPE" value="LOCAL"/>
+                                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                  <a:a name="UUID"
+                                       value="ECUC:656a6966-3a40-4948-9b0a-562933acdeb9"/>
+                                  <a:da name="INVALID" type="Range">
+                                    <a:tst expr="&lt;=255"/>
+                                    <a:tst expr="&gt;=0"/>
+                                  </a:da>
+                                  <a:da name="DEFAULT" value="255"/>
+                                </v:var>
+                                <!-- [cover parentID={0B35CDB0-715B-4719-9D93-24C7FCF0ADEC}] CanTrcvPnFrameDataMaskIndex [/cover] -->
+                                <v:var name="CanTrcvPnFrameDataMaskIndex"
+                                       type="INTEGER">
+                                  <a:a name="DESC"
+                                       value="EN: holds the position n in frame of the mask-part"/>
+                                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                       type="IMPLEMENTATIONCONFIGCLASS">
+                                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                                  </a:a>
+                                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                  <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                  <a:a name="SCOPE" value="LOCAL"/>
+                                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                  <a:a name="UUID"
+                                       value="ECUC:9693190e-eb2c-4688-a833-a834acc4d8d2"/>
+                                       <a:da name="DEFAULT" value="0"/>
+                                  <a:da name="INVALID" type="Range">
+                                    <a:tst expr="&lt;=7"/>
+                                    <a:tst expr="&gt;=0"/>
+                                  </a:da>
+                                  <a:da name="INVALID" type="Multi">
+                                  <mt:xpath expr=". &gt; num:i((./../../../CanTrcvPnFrameDlc)-1)" true="EN: CanTrcv_17_W9255 - PnFrameDataMaskIndex value should be lesser than the configured DLC value"/>
+                                  <mt:xpath expr="text:uniq(../../*/CanTrcvPnFrameDataMaskIndex,.)" false="Data mask index should be unique. Enter a different value"/>
+                                  </a:da>
+                                </v:var>
+                              </v:ctr>
+                            </v:lst>
+                          </v:ctr>
+                          <a:da name="EDITABLE" type="XPath">
+                          <a:tst expr="(node:current()/../CanTrcvHwPnSupport  = 'true')"/>
+                          </a:da>
+                        </v:lst>
+                      </v:ctr>
+                    </v:lst>
+                  </v:ctr>
+                  <!-- [cover parentID={DF9D9C67-636A-4941-927A-A9487F3A3ED3}] CanTrcvGeneral [/cover] -->
+                  <v:ctr name="CanTrcvGeneral" type="IDENTIFIABLE">
+                    <a:a name="DESC"
+                    value="EN: This container gives basic information about CAN transceiver driver. "/>
+                    <a:a name="UUID"
+                    value="ECUC:fce14966-e5e5-4705-80b8-c0fedce975d9"/>
+                    <!-- [cover parentID={17ACD976-A5FF-43d8-B5EF-CFDEC92056B6}] CanTrcvDevErrorDetect [/cover] -->
+                    <v:var name="CanTrcvDevErrorDetect" type="BOOLEAN">
+                      <a:a name="DESC"
+                      value="EN: Parameter enables or disables the Default Error Tracer (DET) detection and reporting."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID"
+                           value="ECUC:305a9a10-11cc-4baf-a909-107f41bc5ad4"/>
+                      <a:da name="DEFAULT" value="false"/>
+                    </v:var>
+                    <!-- [cover parentID={77358FC0-A6F9-4056-B9FD-025A0FD9B2E3}] CanTrcvRunTimeErrorDetect [/cover] -->
+                     <v:var name="CanTrcvRunTimeErrorDetect" type="BOOLEAN">
+                      <a:a name="DESC"
+                           value="EN: This parameter enables or disables the Runtime errors reporting"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:da name="DEFAULT" value="true"/>
+                      <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                      <a:a name="UUID"
+                           value="ECUC:a50f2a2c-5374-496e-a509-6073192fe0a6"/>
+                    </v:var>
+                    <!-- [cover parentID={CBED70A6-A6E3-4342-BF84-EE096FF173A1}] CanTrcvGetVersionInfo [/cover] -->
+                    <v:var name="CanTrcvVersionInfoApi" type="BOOLEAN">
+                      <a:a name="DESC"
+                      value="EN: Parameter adds or removes the API CanTrcv_17_W9255_GetVersionInfo() from the code."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID"
+                           value="ECUC:2d33aa8f-dca2-4d91-bad7-b9cd268b182e"/>
+                      <a:da name="DEFAULT" value="false"/>
+                    </v:var>
+                    <!-- [cover parentID={FC5657CF-D94E-4e76-A7A5-C865FAEACC95}] CanTrcvIndex [/cover] -->
+                    <v:var name="CanTrcvIndex" type="INTEGER">
+                      <a:a name="DESC"
+                           value="EN: Specifies the InstanceId of this module instance. If only one instance is present it shall have the Id 0."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID"
+                           value="ECUC:a6124181-f0a6-4cfb-aa36-84c0ba86cc0b"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=255"/>
+                        <a:tst expr="&gt;=0"/>
+                      </a:da>
+                                            <a:da name="DEFAULT" value="0"/>
+                    </v:var>
+                    <!-- [cover parentID={55250655-8680-4044-8A32-FFDF50322458}] CanTrcvMainFunctionDiagnosticsPeriod [/cover] -->
+                    <v:lst name="CanTrcvMainFunctionDiagnosticsPeriod">
+                      <a:da name="MAX" value="1"/>
+                      <v:var name="CanTrcvMainFunctionDiagnosticsPeriod"
+                             type="FLOAT">
+                        <a:a name="DESC"
+                        value="EN: This parameter describes the period for cyclic call to CanTrcv_17_W9255_MainFunctionDiagnostics. Unit of the parameter is seconds. Note: Since TLE9255W hardware cannot detect bus failure, the module does not raise any DEMs. Therefore, this parameter is not applicable and made non-editable."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                          <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID"
+                             value="ECUC:55d3de41-e38f-42ae-8081-37a9385fde8f"/>
+                        <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=65.535"/>
+                        <a:tst expr="&gt;=0.001"/>
+                        </a:da>
+                        <a:da name="EDITABLE" value="FALSE"/>
+                        <a:da name="DEFAULT" value="0.005"/>
+                      </v:var>
+                      <a:da name="EDITABLE" value="FALSE"/>
+                    </v:lst>
+                    <!-- [cover parentID={8F9B2745-865E-4dd5-92F8-E9FE06862F49}] CanTrcvMainFunctionPeriod [/cover] -->
+                    <v:lst name="CanTrcvMainFunctionPeriod">
+                    <a:da name="MIN" value="1"/>
+                      <a:da name="MAX" value="1"/>
+                      <v:var name="CanTrcvMainFunctionPeriod" type="FLOAT">
+                        <a:a name="DESC"
+                        value="EN: This parameter describes the period for cyclic call to CanTrcv_17_W9255_MainFunction. Unit of the parameter is seconds."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID"
+                             value="ECUC:ed82ca57-c973-4968-9127-b9a25d11b517"/>
+                        <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=65.535"/>
+                        <a:tst expr="&gt;=0.001"/>
+                        </a:da>
+                        <a:da name="DEFAULT" value="0.005"/>
+                      </v:var>
+                    </v:lst>
+                    <!-- [cover parentID={1E3109F8-0A56-4a55-96BE-F984CC059493}] CanTrcvTimerType [/cover] -->
+                    <v:lst name="CanTrcvTimerType">
+                    <a:da name="MIN" value="0"/>
+                      <a:da name="MAX" value="1"/>
+                      <v:var name="CanTrcvTimerType" type="ENUMERATION">
+                        <a:a name="DESC"
+                             value="EN: Type of the Time Service Predefined Timer."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                          <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID"
+                        value="ECUC:73e00676-a32a-4bba-be49-bd8fdc8464d5"/>
+                        <a:da name="DEFAULT" value="None"/>
+                        <a:da name="RANGE">
+                          <a:v>None</a:v>
+                          <a:v>Timer_1us16bit</a:v>
+                        </a:da>
+                        <a:da name="EDITABLE" value="false"/>
+                      </v:var>
+                    </v:lst>
+                    <!-- [cover parentID={FD71E0D1-2019-4911-8A97-96BE5875A0E0}] CanTrcvWaitTime [/cover] -->
+                    <v:lst name="CanTrcvWaitTime">
+                    <a:da name="MIN" value="1"/>
+                      <a:da name="MAX" value="1"/>
+                      <v:var name="CanTrcvWaitTime" type="FLOAT">
+                        <a:a name="DESC"
+                        value="EN: Wait time for transceiver mode changes. Unit of the parameter is seconds."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID"
+                             value="ECUC:ad3eac7a-29c4-4c59-a87b-da7e551c3403"/>
+                        <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=2.55E-4"/>
+                          <a:tst expr="&gt;=0.20E-4"/>
+                        </a:da>
+                        <a:da name="DEFAULT" value="20E-6"/>
+                        <a:da name="EDITABLE" value="false"/>
+                      </v:var>
+                    </v:lst>
+                    <!-- [cover parentID={1EE673E2-4B7B-4d27-A27D-01BDB89FC488}] CanTrcvWakeUpSupport [/cover] -->
+                    <!-- [cover parentID={F2C3A07C-4F84-4e31-987D-E3D896A5B6F1}] Interrupt support [/cover] -->
+                    <v:var name="CanTrcvWakeUpSupport" type="ENUMERATION">
+                      <a:a name="DESC"
+                      value="EN: Informs whether wake up is supported by polling or interrupt."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID"
+                      value="ECUC:95db2b45-712c-42e8-88d9-8ca25bf4cd4d"/>
+                      <a:da name="DEFAULT" value="CANTRCV_17_W9255_WAKE_UP_BY_POLLING"/>
+                      <a:da name="RANGE">
+                      <a:v>CANTRCV_17_W9255_WAKE_UP_BY_POLLING</a:v>
+                      <a:v>CANTRCV_17_W9255_WAKE_UP_BY_INTERRUPT</a:v>
+                      </a:da>
+                      <!-- [cover parentID={7141EF07-7A1C-47a0-8333-D2726C32F3F3}] CanTrcvEcucPartitionRef [/cover] -->
+                    </v:var>
+                    <v:lst name="CanTrcvEcucPartitionRef">
+                      <v:ref name="CanTrcvEcucPartitionRef" type="REFERENCE">
+                        <a:a name="DESC">
+                          <a:v>EN: Maps the CAN transceiver driver to zero or multiple ECUC partitions to make the modules API available in this partition. The module will operate as an independent instance in each of the partitions.</a:v>
+                          <a:v>EN: Tags: atp.Status=draft</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                          <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="false"/>
+                        <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                        <a:a name="SCOPE" value="ECU"/>
+                        <a:a name="UUID"
+                             value="ECUC:2bf2f51f-2425-405b-b54a-b585bd18f612"/>
+                        <a:da name="REF"
+                              value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/EcuC/EcucPartitionCollection/EcucPartition"/>
+            <a:da name="EDITABLE" value="false"/>
+                      </v:ref>
+                    </v:lst>
+                  </v:ctr>
+                                    <!-- [cover parentID={F3E63804-3447-4ebf-B12F-48DF5D250D59}] CommonPublished Information [/cover] -->
+                                    <v:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                                        <a:a name="DESC" value="EN:This container contains the common published information of the CAN Transceiver 9255 driver."/>
+                                        <a:a name="UUID" value="492f8482-3e2c-4bf1-b27f-01fd7ac35788"/>
+                                        <!-- [cover parentID={844BC8E0-989B-45e5-B401-04E54A5DF611}] ArMajorVersion [/cover] -->
+                                        <v:var name="ArMajorVersion" type="INTEGER_LABEL">
+                                            <a:a name="DESC" value="EN: Parameter provides the major version of the AUTOSAR Specification."/>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                                type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                                            </a:a>
+                                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="UUID" value="bd0a8d38-4d8c-4ee9-88fe-1166b258bb8a"/>
+                                            <a:da name="INVALID" type="Range">
+                                                <a:tst expr="&lt;=255"/>
+                                                <a:tst expr="&gt;=0"/>
+                                            </a:da>
+                                            <a:da name="DEFAULT" value="4"/>
+                                        </v:var>
+                                        <!-- [cover parentID={BDABA297-D683-46c5-B867-1C1BC2742743}] ArMinorVersion [/cover] -->
+                                        <v:var name="ArMinorVersion" type="INTEGER_LABEL">
+                                            <a:a name="DESC" value="EN: Parameter provides the minor version of the AUTOSAR Specification."/>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                                type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                                    </a:a>
+                                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="UUID" value="73f87c7f-e230-4178-bff0-eb2704aae656"/>
+                                            <a:da name="INVALID" type="Range">
+                                                <a:tst expr="&lt;=255"/>
+                                                <a:tst expr="&gt;=0"/>
+                                            </a:da>
+                                            <a:da name="DEFAULT" value="4"/>
+                                        </v:var>
+                                        <!-- [cover parentID={63A94FD6-B8C2-46cb-B1A2-1758BB427BE1}] ArPatchVersion [/cover] -->
+                                        <v:var name="ArPatchVersion" type="INTEGER_LABEL">
+                                                <a:a name="DESC" value="EN: Parameter provides the patch version of the AUTOSAR Specification"/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                        type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                                            </a:a>
+                                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="UUID" value="2380135d-6778-417a-a34b-e10017d4dd54"/>
+                                            <a:da name="INVALID" type="Range">
+                                                <a:tst expr="&lt;=255"/>
+                                                <a:tst expr="&gt;=0"/>
+                                            </a:da>
+                                            <a:da name="DEFAULT" value="0"/>
+                                        </v:var>
+                                        <!-- [cover parentID={B139F397-88CC-4e1d-9F47-FDC19EA3AB6A}] SwMajorVersion [/cover] -->
+                                        <v:var name="SwMajorVersion" type="INTEGER_LABEL">
+                                            <a:a name="DESC" value="EN:Parameter provides the major version of the Software."/>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                                type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                                            </a:a>
+                                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="UUID" value="fca015e3-5f28-4cbe-8949-8f4b87d86827"/>
+                                            <a:da name="INVALID" type="Range">
+                                                <a:tst expr="&lt;=255"/>
+                                                <a:tst expr="&gt;=0"/>
+                                            </a:da>
+                                            <a:da name="DEFAULT" value="20"/>
+                                        </v:var>
+                                        <!-- [cover parentID={07C0B98D-B7B7-4ff6-B63E-4AB4114672F0}] SwMinorVersion [/cover] -->
+                                        <v:var name="SwMinorVersion" type="INTEGER_LABEL">
+                                            <a:a name="DESC" value="EN: Parameter provides the minor version of the Software."/>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                                type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                                            </a:a>
+                                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="UUID" value="14ab81e0-3d80-43dc-8b92-247e5a542df9"/>
+                                            <a:da name="INVALID" type="Range">
+                                                <a:tst expr="&lt;=255"/>
+                                                <a:tst expr="&gt;=0"/>
+                                            </a:da>
+                                            <a:da name="DEFAULT" value="25"/>
+                                        </v:var>
+                                        <!-- [cover parentID={38EB08DD-8D55-4bec-BEC1-491F519EA019}] SwPatchVersion [/cover] -->
+                                        <v:var name="SwPatchVersion" type="INTEGER_LABEL">
+                                            <a:a name="DESC" value="EN: Parameter provides the patch version of the Software."/>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                                type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                                            </a:a>
+                                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="UUID" value="32e37bfd-18b6-41d1-9248-a81dbe0fe4c5"/>
+                                            <a:da name="INVALID" type="Range">
+                                                <a:tst expr="&lt;=255"/>
+                                                <a:tst expr="&gt;=0"/>
+                                            </a:da>
+                                            <a:da name="DEFAULT" value="0"/>
+                                        </v:var>
+                                        <!-- [cover parentID={742C45D8-DD55-4e34-BE5C-9AC27D2F2559}] ModuleId [/cover] -->
+                                        <v:var name="ModuleId" type="INTEGER_LABEL">
+                                            <a:a name="DESC" value="EN: Module ID of this module from Module List."/>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                                type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                                            </a:a>
+                                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="UUID" value="3b407478-6902-4f80-b7cf-f33b0854e638"/>
+                                            <a:da name="INVALID" type="Range">
+                                                <a:tst expr="&lt;=65535"/>
+                                                <a:tst expr="&gt;=0"/>
+                                            </a:da>
+                                            <a:da name="DEFAULT" value="70"/>
+                                        </v:var>
+                                        <!-- [cover parentID={CE523B2C-5E73-4705-B2D6-26A36F1955DA}] VendorId [/cover] -->
+                                        <v:var name="VendorId" type="INTEGER_LABEL">
+                                            <a:a name="DESC" value="EN: Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list."/>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                                type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                                </a:a>
+                                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="UUID" value="7d650b2d-4adb-41f0-a68e-5f0c416501d1"/>
+                                            <a:da name="INVALID" type="Range">
+                                                <a:tst expr="&lt;=65535"/>
+                                                <a:tst expr="&gt;=0"/>
+                                            </a:da>
+                                            <a:da name="DEFAULT" value="17"/>
+                                        </v:var>
+                                        <!-- [cover parentID={F5CF6D84-D62E-4917-BC53-EAE3BED8F670}] VendorApiInfix [/cover] -->
+                                        <v:var name="VendorApiInfix" type="STRING_LABEL">
+                                            <a:a name="DESC">
+                                                <a:v>The parameter is used to specify the vendor specific name.</a:v>
+                                            </a:a>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                                type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                                            </a:a>
+                                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="UUID" value="ad363b41-e945-4717-b12f-c2f800ef138e"/>
+                                            <a:da name="EDITABLE" value="true"/>
+                                            <a:da name="DEFAULT" value="W9255"/>
+                                        </v:var>
+                                        <!-- [cover parentID={0B296642-26F7-40e5-83E0-4A20561DCDE9}] Release [/cover] -->
+                                        <v:var name="Release" type="STRING">
+                                            <a:a name="DESC" value="EN: Aurix derivative used for the implementation."/>
+                                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                                type="IMPLEMENTATIONCONFIGCLASS">
+                                                <icc:v class="PublishedInformation">VariantPreCompile</icc:v>
+                                            </a:a>
+                                            <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                            <a:a name="UUID" value="3b407478-6902-4f40-b7cf-f33b0854e638"/>
+                                            <a:da name="DEFAULT" type="XPath" expr="ecu:get('Rel.Derivate')"/>
+                                        </v:var>
+                  </v:ctr>
+                </v:ctr>
+              </d:chc>
+            </d:lst>
+          </d:ctr>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+</datamodel>

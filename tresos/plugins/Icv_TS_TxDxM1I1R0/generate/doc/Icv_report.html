@@ -1,0 +1,351 @@
+[!SKIPFILE "as:modconf('Icv')[1]/IcvConfigSet/*[1]/GenerateReport = 'false'"!]
+[!AUTOSPACING!]
+[!VAR "documentTitle" = "'Icv report'"!]
+<html>
+  <head>
+    <title>[!"$documentTitle"!]</title>
+
+    <style>
+      td, th {
+        margin: 0;
+        padding: 5px;
+        border: none;
+      }
+
+      th { border-bottom: 2px solid black; }
+      td { border: 1px solid #999; }
+
+      td.green   { background-color: #008000; }
+      td.orange  { background-color: #FFA500; }
+      td.red     { background-color: #FF0000; }
+      td.darkred { background-color: #8B0000; }
+
+      button.accordion {
+        background-color: #eee;
+        color: #444;
+        font-weight: bold;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        text-align: left;
+        border: none;
+        outline: none;
+        transition: 0.4s;
+      }
+
+      button.accordion.active, button.accordion:hover {
+        background-color: #ddd;
+      }
+
+      button.accordion:after {
+        content: '\002B';
+        color: #777;
+        font-weight: bold;
+        float: left;
+        margin-right: 15px;
+      }
+
+      button.accordion.active:after { content: "\2212"; }
+
+      div.panel {
+        padding: 0 18px;
+        background-color: white;
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>[!"$documentTitle"!]</h1>
+
+
+    <!--
+         summary for whole Icv configuration
+    -->
+
+[!// Calculating the numbers during HTML generation and printing the summary
+[!// table afterwards would avoid duplicate calculations. However, we currently
+[!// assume that the additional overhead does not impact our generation time
+[!// too much and prefer better code readability here. Same argumentation for
+[!// usage of '//' in XPath expressions here. If a negative performance impact
+[!// is observed, this can still be changed.
+[!VAR "numExpressionsTotal" = "count(as:modconf('Icv')[1]/IcvConfigSet/*[1]//XPathExpressionList/*)"!]
+[!VAR "numExpressionsPassedTotal" = "count(as:modconf('Icv')[1]/IcvConfigSet/*[1]//XPathExpressionList/*[RuleEnabled = 'true' and SWICV:ExecuteXPathFunction(XPathExpression) = true()])"!]
+[!VAR "numExpressionsFailedTotal" = "count(as:modconf('Icv')[1]/IcvConfigSet/*[1]//XPathExpressionList/*[RuleEnabled = 'true' and SWICV:ExecuteXPathFunction(XPathExpression) = false()])"!]
+[!VAR "numExpressionsDisabledTotal" = "count(as:modconf('Icv')[1]/IcvConfigSet/*[1]//XPathExpressionList/*[RuleEnabled = 'false'])"!]
+
+    <table>
+      <tr>
+        <th>Expressions total</th>
+        <th><font color="green">passed</font></th>
+        <th><font color="red">failed</font></th>
+        <th><font color="orange">disabled</font></th>
+      </tr>
+      <tr>
+        <th>[!"num:i($numExpressionsTotal)"!]</th>
+        <th>[!"num:i($numExpressionsPassedTotal)"!]</th>
+        <th>[!"num:i($numExpressionsFailedTotal)"!]</th>
+        <th>[!"num:i($numExpressionsDisabledTotal)"!]</th>
+      </tr>
+    </table>
+
+
+    <button class="accordion">Detailed results</button>
+    <div class="panel">
+      <p>
+        <input type="checkbox" id="showFailedGroupsRulesOnly" onclick="cbFunction()"/>
+        <label for="showFailedGroupsRulesOnly">Show failed groups/rules only</label>
+      </p>
+      <p>
+        <input type="checkbox" id="showFailedExpressionsOnly" onclick="cbFunction()"/>
+        <label for="showFailedExpressionsOnly">Show failed expressions only</label>
+      </p>
+
+
+[!LOOP "as:modconf('Icv')[1]/IcvConfigSet/*[1]/Group/*"!]
+  [!IF "GroupEnabled = 'true' and count(Rule/*[RulesEnabled='true' and State!='rejected']) > 0"!]
+    [!VAR "groupResult" = "'PASSED'"!]
+    [!VAR "groupColor" = "'green'"!]
+    [!LOOP "Rule/*"!]
+      [!IF "RulesEnabled = 'true' and State != 'rejected'"!]
+        [!VAR "testFailed" = "false()"!]
+        [!VAR "noEnabledRuleExists" = "true()"!]
+        [!LOOP "XPathExpressionList/*"!]
+          [!IF "RuleEnabled = 'true'"!]
+            [!VAR "noEnabledRuleExists" = "false()"!]
+            [!SELECT "XPathExpression"!]
+              [!IF "SWICV:ExecuteXPathFunction(.)"!]
+              [!ELSE!]
+                [!VAR "testFailed" = "true()"!]
+                [!BREAK!]
+              [!ENDIF!]
+            [!ENDSELECT!]
+          [!ENDIF!]
+        [!ENDLOOP!]
+        [!IF "$noEnabledRuleExists"!]
+          [!VAR "groupResult" = "'ERROR'"!]
+          [!VAR "groupColor" = "'darkred'"!]
+          [!BREAK!]
+        [!ELSEIF "$testFailed"!]
+          [!VAR "groupResult" = "'FAILED'"!]
+          [!VAR "groupColor" = "'red'"!]
+        [!ENDIF!]
+      [!ENDIF!]
+    [!ENDLOOP!]
+    [!IF "normalize-space(Variant) = ''"!]
+      <button class="accordion" result="[!"text:tolower($groupResult)"!]">[!"name(.)"!]: [!"Id"!] - <font color="[!"$groupColor"!]">[!"$groupResult"!]</font></button>
+    [!ELSE!]
+      <button class="accordion" result="[!"text:tolower($groupResult)"!]">[!"name(.)"!]: [!"Id"!] - [!"Variant"!] - <font color="[!"$groupColor"!]">[!"$groupResult"!]</font></button>
+    [!ENDIF!]
+
+      <div class="panel">
+
+
+
+      <!--
+           summary for this Group
+      -->
+
+    [!VAR "numExpressionsTotalInGroup" = "count(.//XPathExpressionList/*)"!]
+    [!VAR "numExpressionsPassedInGroup" = "count(.//XPathExpressionList/*[RuleEnabled = 'true' and SWICV:ExecuteXPathFunction(XPathExpression) = true()])"!]
+    [!VAR "numExpressionsFailedInGroup" = "count(.//XPathExpressionList/*[RuleEnabled = 'true' and SWICV:ExecuteXPathFunction(XPathExpression) = false()])"!]
+    [!VAR "numExpressionsDisabledInGroup" = "count(.//XPathExpressionList/*[RuleEnabled = 'false'])"!]
+
+      <table>
+        <tr>
+          <th>Expressions total</th>
+          <th><font color="green">passed</font></th>
+          <th><font color="red">failed</font></th>
+          <th><font color="orange">disabled</font></th>
+        </tr>
+        <tr>
+          <th>[!"num:i($numExpressionsTotalInGroup)"!]</th>
+          <th>[!"num:i($numExpressionsPassedInGroup)"!]</th>
+          <th>[!"num:i($numExpressionsFailedInGroup)"!]</th>
+          <th>[!"num:i($numExpressionsDisabledInGroup)"!]</th>
+        </tr>
+      </table>
+
+
+    [!LOOP "Rule/*[RulesEnabled = 'true' and State != 'rejected']"!]
+        [!VAR "testFailed" = "false()"!]
+        [!VAR "noEnabledRuleExists" = "true()"!]
+        [!LOOP "XPathExpressionList/*"!]
+          [!IF "RuleEnabled = 'true'"!]
+            [!VAR "noEnabledRuleExists" = "false()"!]
+            [!SELECT "XPathExpression"!]
+              [!IF "SWICV:ExecuteXPathFunction(.)"!]
+              [!ELSE!]
+                [!VAR "testFailed" = "true()"!]
+                [!BREAK!]
+              [!ENDIF!]
+            [!ENDSELECT!]
+          [!ENDIF!]
+        [!ENDLOOP!]
+        [!IF "$noEnabledRuleExists"!]
+          [!VAR "ruleResult" = "'ERROR'"!]
+          [!VAR "ruleColor" = "'darkred'"!]
+        [!ELSEIF "$testFailed"!]
+          [!VAR "ruleResult" = "'FAILED'"!]
+          [!VAR "ruleColor" = "'red'"!]
+        [!ELSE!]
+          [!VAR "ruleResult" = "'PASSED'"!]
+          [!VAR "ruleColor" = "'green'"!]
+        [!ENDIF!]
+      <button class="accordion" result="[!"text:tolower($ruleResult)"!]">[!"name(.)"!]: [!"text:replace(Id,'SwIntTS.','')"!] - <font color="[!"$ruleColor"!]">[!"$ruleResult"!]</font></button>
+        <div class="panel">
+        [!IF "$noEnabledRuleExists"!]
+          <p><font color="[!"$ruleColor"!]">No enabled rule exists in the XPath expression list!</font></p>
+        [!ELSE!]
+        [!IF "normalize-space(Description) != ''"!]
+        <p>[!"Description"!]</p>
+        [!ENDIF!]
+
+
+          <!--
+               summary for this Rule
+          -->
+
+        [!VAR "numExpressionsTotalInRule" = "count(XPathExpressionList/*)"!]
+        [!VAR "numExpressionsPassedInRule" = "count(XPathExpressionList/*[RuleEnabled = 'true' and SWICV:ExecuteXPathFunction(XPathExpression) = true()])"!]
+        [!VAR "numExpressionsFailedInRule" = "count(XPathExpressionList/*[RuleEnabled = 'true' and SWICV:ExecuteXPathFunction(XPathExpression) = false()])"!]
+        [!VAR "numExpressionsDisabledInRule" = "count(XPathExpressionList/*[RuleEnabled = 'false'])"!]
+
+        <table>
+          <tr>
+            <th>Expressions total</th>
+            <th><font color="green">passed</font></th>
+            <th><font color="red">failed</font></th>
+            <th><font color="orange">disabled</font></th>
+          </tr>
+          <tr>
+            <th>[!"num:i($numExpressionsTotalInRule)"!]</th>
+            <th>[!"num:i($numExpressionsPassedInRule)"!]</th>
+            <th>[!"num:i($numExpressionsFailedInRule)"!]</th>
+            <th>[!"num:i($numExpressionsDisabledInRule)"!]</th>
+          </tr>
+        </table>
+
+
+        <br/>
+
+        <table class="exprTable" result="[!"text:tolower($ruleResult)"!]">
+          <tr>
+            <th>Expression Name</th>
+            <th>Description / Expression</th>
+          </tr>
+          [!LOOP "XPathExpressionList/*[RuleEnabled = 'true']"!]
+              [!VAR "expressionResult" = "'error'"!]
+              [!VAR "expressionColor" = "'darkred'"!]
+              [!SELECT "XPathExpression"!]
+                [!IF "SWICV:ExecuteXPathFunction(.)"!]
+                  [!VAR "expressionResult" = "'passed'"!]
+                  [!VAR "expressionColor" = "'green'"!]
+                [!ELSE!]
+                  [!VAR "expressionColor" = "'red'"!]
+                  [!VAR "expressionResult" = "'failed'"!]
+                [!ENDIF!]
+              [!ENDSELECT!]
+              [!IF "normalize-space(Description) != ''"!]
+          <tr class="exprRow" result="[!"$expressionResult"!]">
+            <td class="[!"$expressionColor"!]" rowspan="2">[!"name(.)"!]</td>
+              <td>[!"Description"!]</td>
+          </tr>
+          <tr class="exprRow" result="[!"$expressionResult"!]">
+            <td>[!"XPathExpression"!]</td>
+          </tr>
+              [!ELSE!]
+          <tr class="exprRow" result="[!"$expressionResult"!]">
+            <td class="[!"$expressionColor"!]">[!"name(.)"!]</td>
+              <td>[!"XPathExpression"!]</td>
+          </tr>
+              [!ENDIF!]
+          [!ENDLOOP!]
+        </table>
+        [!ENDIF!]
+        </div>
+    [!ENDLOOP!]
+      </div>
+  [!ENDIF!]
+[!ENDLOOP!]
+    </div>
+
+    <script>
+      var acc = document.getElementsByClassName("accordion");
+      var i;
+
+      for (i = 0; i < acc.length; i++) {
+        acc[i].onclick = function(){
+          /*
+           * Toggle between adding and removing the "active" class,
+           * to highlight the button that controls the panel
+           */
+          this.classList.toggle("active");
+
+          /* Toggle between hiding and showing the active panel */
+          var panel = this.nextElementSibling;
+          if (panel.style.display === "block") {
+            panel.style.display = "none";
+          } else {
+            panel.style.display = "block";
+          }
+        }
+      }
+
+      var exprTables = document.getElementsByClassName("exprTable");
+      var exprRows = document.getElementsByClassName("exprRow");
+
+      function cbFunction(){
+        var j;
+        cb1 = document.getElementById("showFailedGroupsRulesOnly")
+        cb2 = document.getElementById("showFailedExpressionsOnly")
+
+        if (cb1.checked) {
+          for (j = 0; j < acc.length; j++) {
+            if (acc[j].getAttribute("result") === "passed") {
+              var panel;
+
+              acc[j].style.display = "none";
+              panel = acc[j].nextElementSibling;
+              if (panel.style.display === "block") {
+                panel.style.display = "none";
+                acc[j].classList.toggle("active");
+              }
+            }
+          }
+        } else {
+          for (j = 0; j < acc.length; j++) {
+            if (acc[j].getAttribute("result") === "passed")
+            {
+              acc[j].style.display = "inline-block";
+            }
+          }
+        }
+
+        if (cb2.checked) {
+          for (j = 0; j < exprRows.length; j++) {
+            if (exprRows[j].getAttribute("result") === "passed") {
+              exprRows[j].style.display = "none";
+            }
+          }
+          for (j = 0; j < exprTables.length; j++) {
+            if (exprTables[j].getAttribute("result") === "passed") {
+              exprTables[j].style.display = "none";
+            }
+          }
+        } else {
+          for (j = 0; j < exprRows.length; j++) {
+            if (exprRows[j].getAttribute("result") === "passed") {
+              exprRows[j].style.display = "table-row";
+            }
+          }
+          for (j = 0; j < exprTables.length; j++) {
+            if (exprTables[j].getAttribute("result") === "passed") {
+              exprTables[j].style.display = "table";
+            }
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

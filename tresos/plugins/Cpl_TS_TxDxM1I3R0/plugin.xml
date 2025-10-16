@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+  <!--
+    AUTOSAR Cpl_TS_TxDxM1I3R0 plugin
+    Project: EB tresos AutoCore
+
+    Copyright 2005-2020 by Elektrobit Automotive GmbH
+    All rights exclusively reserved for Elektrobit Automotive GmbH,
+    unless expressly agreed to otherwise.
+  -->
+
+  <extension point="dreisoft.tresos.launcher2.plugin.module"
+             id="Cpl_TS_TxDxM1I3R0_ModuleId"
+             name="Cpl_TS_TxDxM1I3R0 Module">
+
+    <module id="Cpl_TS_TxDxM1I3R0"
+            label="Cpl"
+            mandatory="false"
+            allowMultiple="false"
+            description="EBtresosAutoCore: Cryptographic Primitive Library"
+            copyright="(c) 2005-2020 Elektrobit Automotive GmbH"
+            swVersionMajor="1"
+            swVersionMinor="3"
+            swVersionPatch="3"
+            swVersionSuffix="Bprmo271853"
+            specVersionMajor="1"
+            specVersionMinor="2"
+            specVersionPatch="0"
+            specVersionSuffix="0000"
+            relVersionMajor="4"
+            relVersionMinor="0"
+            relVersionPatch="3"
+            categoryType="Cpl"
+            categoryLayer="Standard Library"
+            categoryCategory="System Services"
+            categoryComponent="ECUC">
+
+      <cluster name="Libraries"/>
+
+    </module>
+  </extension>
+
+
+  <extension point="dreisoft.tresos.launcher2.plugin.configuration"
+             id="Cpl_TS_TxDxM1I3R0_ConfigId"
+             name="Cpl_TS_TxDxM1I3R0 Configuration">
+    <configuration moduleId="Cpl_TS_TxDxM1I3R0">
+      <schema>
+        <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarSchemaManager"/>
+        <resource value="config/Cpl.xdm" type="xdm" id="res_default"/>
+      </schema>
+
+      <data>
+        <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarConfigManager"/>
+        <schemaNode path="ASPath:/TS_TxDxM1I3R0/Cpl"/>
+      </data>
+
+      <editor id="Cpl_TS_TxDxM1I3R0_EditorId"
+              label="Default"
+              tooltip="EBtresosAutoCore: Cryptographic Primitive Library">
+        <class class="dreisoft.tresos.launcher2.editor.GenericConfigEditor">
+          <parameter name="schema" value="ASPath:/TS_TxDxM1I3R0/Cpl"/>
+          <parameter name="title" value="Cpl"/>
+          <parameter name="noTabs" value="false"/>
+          <parameter name="noLinks" value="true"/>
+          <parameter name="groupLinks" value="false"/>
+          <parameter name="groupContainers" value="false"/>
+          <parameter name="groupTables" value="true"/>
+          <parameter name="optionalGeneralTab" value="true"/>
+        </class>
+      </editor>
+    </configuration>
+  </extension>
+
+
+
+
+
+
+
+  <extension point="dreisoft.tresos.launcher2.plugin.generator"
+             id="Cpl_TS_TxDxM1I3R0_GeneratorId"
+             name="Cpl_TS_TxDxM1I3R0 Generator">
+    <generator class="dreisoft.tresos.launcher2.generator.TemplateBasedCodeGenerator"
+               id="Cpl_TS_TxDxM1I3R0_TemplateBasedCodeGeneratorId"
+               moduleId="Cpl_TS_TxDxM1I3R0">
+
+      <!-- common template path parameters -->
+      <parameter name="templates"
+                 mode="generate,verify" value="generate"/>
+
+      <!-- swcd modes and template path parameters -->
+      <parameter name="mode_type"
+                 mode="generate_swcd" value="generate"/>
+
+      <parameter name="mode_type"
+                 mode="verify_swcd" value="verify"/>
+
+      <parameter name="templates"
+                 mode="generate_swcd,verify_swcd" value="generate_swcd"/>
+
+
+
+
+    </generator>
+  </extension>
+
+
+
+
+
+
+
+  <extension point="org.eclipse.help.toc">
+    <toc file="anchors.xml" primary="true" />
+    <toc file="$nl$/toc.xml" primary="false"/>
+  </extension>
+
+
+
+
+
+
+
+</plugin>
+

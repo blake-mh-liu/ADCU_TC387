@@ -1,0 +1,73 @@
+[!SKIPFILE "as:modconf('Icv')[1]/IcvConfigSet/*[1]/GenerateReport = 'false'"!][!//
+/**
+ * \file
+ *
+ * \brief Icv SwIntTS
+ *
+ * This file contains the Icv software integration test specification.
+ *
+ * \author Elektrobit Automotive GmbH, 91058 Erlangen, Germany
+ *
+ * Copyright 2005 - 2016 Elektrobit Automotive GmbH
+ * All rights exclusively reserved for Elektrobit Automotive GmbH,
+ * unless expressly agreed to otherwise.
+ */
+
+[!AUTOSPACING!]
+  [!LOOP "as:modconf('Icv')[1]/IcvConfigSet/*[1]/Group/*"!][!//
+    [!IF "GroupEnabled = 'true' and count(Rule/*[RulesEnabled='true'])>0"!][!//
+/**
+      [!IF "normalize-space(Variant) = ''"!][!//
+ * Enabled SwIntTS specobjects for [!"name(.)"!] - [!"Id"!]
+      [!ELSE!][!//
+ * Enabled SwIntTS specobjects for [!"name(.)"!] - [!"Id"!] ([!"Variant"!])
+      [!ENDIF!][!//
+      [!LOOP "./Rule/*"!][!//
+        [!IF "RulesEnabled = 'true'"!][!//
+ *
+ * !SPECOBJECT
+ * !id               [!"Id"!]
+          [!IF "normalize-space(Variant) = ''"!][!//
+            [!VAR "vers" = "'unversioned'"!][!//
+          [!ELSE!][!//
+            [!VAR "vers" = "normalize-space(Variant)"!][!//
+          [!ENDIF!][!//
+ * !version          [!"$vers"!]
+ * !status           [!"State"!]
+          [!IF "normalize-space(Description) != ''"!][!//
+ * !description      [!"normalize-space(Description)"!]
+ * !                 [!"name(.)"!] verifies the accuracy of the configuration requirements by evaluating the following XPath expression(s):
+          [!ELSE!][!//
+ * !description      [!"name(.)"!] verifies the accuracy of the configuration requirements by evaluating the following XPath expression(s):
+          [!ENDIF!][!//
+          [!VAR "noEnabledRuleExists" = "true()"!][!//
+          [!LOOP "./XPathExpressionList/*"!][!//
+            [!IF "RuleEnabled = 'true'"!][!//
+              [!VAR "noEnabledRuleExists" = "false()"!][!//
+              [!IF "normalize-space(./Description) = ''"!][!//
+ * !                 - [!"name(.)"!]: [!"./XPathExpression"!]
+              [!ELSE!][!//
+ * !                 - [!"name(.)"!]: [!"./XPathExpression"!]  ->  [!"normalize-space(./Description)"!]
+              [!ENDIF!][!//
+            [!ENDIF!][!//
+          [!ENDLOOP!][!//
+          [!IF "$noEnabledRuleExists"!][!//
+ * !                 - No enabled rule exists in the XPath expression list!
+          [!ENDIF!][!//
+          [!IF "State = 'rejected' or normalize-space(Rationale) != ''"!][!//
+ * !rationale        [!"Rationale"!]
+          [!ENDIF!][!//
+          [!IF "State != 'rejected'"!][!//
+ * !fulfilledby      [!"text:replace(Id,'SwIntTS','SwIntTR')"!],SwIntTR,[!"$vers"!]
+          [!ENDIF!][!//
+ * !testin           Project configuration
+ * !testexec         The test is supposed to verify the configuration by evaluating the XPath expression(s) mentioned in the description.
+ * !testout          The verified configuration is compliant to the related configuration requirement(s).
+ * !testpasscrit     Successful evaluation of the specified XPath expression(s).
+ * !doctype          SwIntTS
+        [!ENDIF!][!//
+      [!ENDLOOP!][!//
+ */
+
+    [!ENDIF!][!//
+  [!ENDLOOP!][!//

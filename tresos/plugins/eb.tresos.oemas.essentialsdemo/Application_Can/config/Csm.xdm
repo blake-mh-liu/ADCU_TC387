@@ -1,0 +1,1197 @@
+<?xml version='1.0'?>
+<datamodel version="7.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/16/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/16/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar" 
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd" 
+         xmlns:f="http://www.tresos.de/_projects/DataModel2/14/formulaexpr.xsd" 
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd" 
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd"  
+         xmlns:variant="http://www.tresos.de/_projects/DataModel2/11/variant.xsd">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="Csm" type="AR-PACKAGE">
+        <d:lst type="ELEMENTS">
+          <d:chc name="Csm" type="AR-ELEMENT" value="MODULE-CONFIGURATION">
+            <d:ctr type="MODULE-CONFIGURATION">
+              <a:a name="DEF" value="ASPath:/TS_TxDxM3I1R0/Csm"/>
+              <d:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                <d:var name="ArMajorVersion" type="INTEGER" value="4">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="ArMinorVersion" type="INTEGER" value="3">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="ArPatchVersion" type="INTEGER" value="0">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="SwMajorVersion" type="INTEGER" value="3">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="SwMinorVersion" type="INTEGER" value="1"/>
+                <d:var name="SwPatchVersion" type="INTEGER" value="4"/>
+                <d:var name="ModuleId" type="INTEGER" value="110">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="VendorId" type="INTEGER" value="1">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="Release" type="STRING" value="">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+              </d:ctr>
+              <d:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION" 
+                     value="VariantPreCompile">
+                <a:a name="IMPORTER_INFO" value="@DEF"/>
+              </d:var>
+              <d:ctr name="CsmGeneral" type="IDENTIFIABLE">
+                <d:var name="CsmAsymPrivateKeyMaxLength" type="INTEGER" 
+                       value="1">
+                  <a:a name="ENABLE" value="false"/>
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="CsmAsymPublicKeyMaxLength" type="INTEGER" value="1">
+                  <a:a name="ENABLE" value="false"/>
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="CsmDevErrorDetect" type="BOOLEAN" value="true">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="CsmMainFunctionPeriod" type="FLOAT" value="0.01">
+                  <a:a name="ENABLE" value="false"/>
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="CsmSymKeyMaxLength" type="INTEGER" value="1">
+                  <a:a name="ENABLE" value="false"/>
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="CsmUseDeprecated" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="CsmVersionInfoApi" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+              </d:ctr>
+              <d:ctr name="CsmCallbacks" type="IDENTIFIABLE">
+                <d:lst name="CsmCallback" type="MAP"/>
+              </d:ctr>
+              <d:ctr name="CsmJobs" type="IDENTIFIABLE">
+                <d:lst name="CsmJob" type="MAP">
+                  <d:ctr name="CsmJob_Pdu_SecuredOut_277T" type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="@CALC"/>
+                    <d:var name="CsmJobId" type="INTEGER" value="0"/>
+                    <d:ref name="CsmJobKeyRef" type="REFERENCE" 
+                           value="ASPath:/Csm/Csm/CsmKeys/CsmConf_CsmKey_Pdu_SecuredOut_277T">
+                      <a:a name="IMPORTER_INFO" value="@CALC"/>
+                    </d:ref>
+                    <d:ref name="CsmJobPrimitiveCallbackRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:var name="CsmJobPrimitiveCallbackUpdateNotification" 
+                           type="BOOLEAN" value="false">
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                    <d:ref name="CsmJobPrimitiveRef" type="REFERENCE" 
+                           value="ASPath:/Csm/Csm/CsmPrim_MacGen_SecOC">
+                      <a:a name="IMPORTER_INFO" value="@CALC"/>
+                    </d:ref>
+                    <d:var name="CsmJobPriority" type="INTEGER" value="0">
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                    <d:ref name="CsmJobQueueRef" type="REFERENCE" 
+                           value="ASPath:/Csm/Csm/CsmQueues/CsmQueue_Crypto">
+                      <a:a name="IMPORTER_INFO" value="@CALC"/>
+                    </d:ref>
+                    <d:var name="CsmJobUsePort" type="BOOLEAN" value="false">
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ctr name="CsmJob_Pdu_SecuredIn_261R" type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="@CALC"/>
+                    <d:var name="CsmJobId" type="INTEGER" value="1"/>
+                    <d:ref name="CsmJobKeyRef" type="REFERENCE" 
+                           value="ASPath:/Csm/Csm/CsmKeys/CsmConf_CsmKey_Pdu_SecuredIn_261R">
+                      <a:a name="IMPORTER_INFO" value="@CALC"/>
+                    </d:ref>
+                    <d:ref name="CsmJobPrimitiveCallbackRef" type="REFERENCE" >
+                      <a:a name="ENABLE" value="false"/>
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:ref>
+                    <d:var name="CsmJobPrimitiveCallbackUpdateNotification" 
+                           type="BOOLEAN" value="false">
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                    <d:ref name="CsmJobPrimitiveRef" type="REFERENCE" 
+                           value="ASPath:/Csm/Csm/CsmPrim_MacVer_SecOC">
+                      <a:a name="IMPORTER_INFO" value="@CALC"/>
+                    </d:ref>
+                    <d:var name="CsmJobPriority" type="INTEGER" value="0">
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                    <d:ref name="CsmJobQueueRef" type="REFERENCE" 
+                           value="ASPath:/Csm/Csm/CsmQueues/CsmQueue_Crypto">
+                      <a:a name="IMPORTER_INFO" value="@CALC"/>
+                    </d:ref>
+                    <d:var name="CsmJobUsePort" type="BOOLEAN" value="false">
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                </d:lst>
+              </d:ctr>
+              <d:ctr name="CsmKeys" type="IDENTIFIABLE">
+                <d:lst name="CsmKey" type="MAP">
+                  <d:ctr name="CsmConf_CsmKey_Pdu_SecuredOut_277T" 
+                         type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="@CALC"/>
+                    <d:var name="CsmKeyId" type="INTEGER" value="0">
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                    <d:ref name="CsmKeyRef" type="REFERENCE" 
+                           value="ASPath:/CryIf/CryIf/CryIfKey_Pdu_SecuredOut_277T">
+                      <a:a name="IMPORTER_INFO" value="@CALC"/>
+                    </d:ref>
+                    <d:var name="CsmKeyUsePort" type="BOOLEAN" value="false">
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                  <d:ctr name="CsmConf_CsmKey_Pdu_SecuredIn_261R" 
+                         type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="@CALC"/>
+                    <d:var name="CsmKeyId" type="INTEGER" value="1">
+                      <a:a name="IMPORTER_INFO" value="@CALC"/>
+                    </d:var>
+                    <d:ref name="CsmKeyRef" type="REFERENCE" 
+                           value="ASPath:/CryIf/CryIf/CryIfKey_Pdu_SecuredIn_261R">
+                      <a:a name="IMPORTER_INFO" value="@CALC"/>
+                    </d:ref>
+                    <d:var name="CsmKeyUsePort" type="BOOLEAN" value="false">
+                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                    </d:var>
+                  </d:ctr>
+                </d:lst>
+              </d:ctr>
+              <d:lst name="CsmPrimitives" type="MAP">
+                <d:ctr name="CsmPrim_MacGen_SecOC" type="IDENTIFIABLE">
+                  <a:a name="IMPORTER_INFO" value="@CALC"/>
+                  <d:ctr name="CsmAEADDecrypt" type="IDENTIFIABLE">
+                    <a:a name="ENABLE" value="false"/>
+                    <d:ctr name="CsmAEADDecryptConfig" type="IDENTIFIABLE">
+                      <d:var name="CsmAEADDecryptAlgorithmFamiliy" 
+                             type="ENUMERATION" value="CRYPTO_ALGOFAM_AES">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmAEADDecryptAlgorithmFamilyCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmAEADDecryptAlgorithmKeyLength" 
+                             type="INTEGER" value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmAEADDecryptAlgorithmMode" 
+                             type="ENUMERATION" value="CRYPTO_ALGOMODE_GCM">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmAEADDecryptAlgorithmModeCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmAEADDecryptAssociatedDataMaxLength" 
+                             type="INTEGER" value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmAEADDecryptCiphertextMaxLength" 
+                             type="INTEGER" value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:ref name="CsmAEADDecryptKeyRef" type="REFERENCE" >
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:ref>
+                      <d:var name="CsmAEADDecryptPlaintextMaxLength" 
+                             type="INTEGER" value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmAEADDecryptProcessing" type="ENUMERATION" 
+                             value="CSM_ASYNCHRONOUS">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:ref name="CsmAEADDecryptQueueRef" type="REFERENCE" >
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:ref>
+                      <d:var name="CsmAEADDecryptTagLength" type="INTEGER" 
+                             value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                    </d:ctr>
+                  </d:ctr>
+                  <d:ctr name="CsmAEADEncrypt" type="IDENTIFIABLE">
+                    <a:a name="ENABLE" value="false"/>
+                    <d:ctr name="CsmAEADEncryptConfig" type="IDENTIFIABLE">
+                      <d:var name="CsmAEADEncryptAlgorithmFamiliy" 
+                             type="ENUMERATION" value="CRYPTO_ALGOFAM_AES">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmAEADEncryptAlgorithmFamilyCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmAEADEncryptAlgorithmKeyLength" 
+                             type="INTEGER" value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmAEADEncryptAlgorithmMode" 
+                             type="ENUMERATION" value="CRYPTO_ALGOMODE_GCM">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmAEADEncryptAlgorithmModeCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmAEADEncryptAssociatedDataMaxLength" 
+                             type="INTEGER" value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmAEADEncryptCiphertextMaxLength" 
+                             type="INTEGER" value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:ref name="CsmAEADEncryptKeyRef" type="REFERENCE" >
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:ref>
+                      <d:var name="CsmAEADEncryptPlaintextMaxLength" 
+                             type="INTEGER" value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmAEADEncryptProcessing" type="ENUMERATION" 
+                             value="CSM_ASYNCHRONOUS">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:ref name="CsmAEADEncryptQueueRef" type="REFERENCE" >
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:ref>
+                      <d:var name="CsmAEADEncryptTagLength" type="INTEGER" 
+                             value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                    </d:ctr>
+                  </d:ctr>
+                  <d:ctr name="CsmDecrypt" type="IDENTIFIABLE">
+                    <a:a name="ENABLE" value="false"/>
+                    <d:ctr name="CsmDecryptConfig" type="IDENTIFIABLE">
+                      <d:var name="CsmDecryptAlgorithmFamiliy" 
+                             type="ENUMERATION" value="CRYPTO_ALGOFAM_AES">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmDecryptAlgorithmFamilyCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmDecryptAlgorithmKeyLength" type="INTEGER" 
+                             value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmDecryptAlgorithmMode" type="ENUMERATION" 
+                             value="CRYPTO_ALGOMODE_ECB">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmDecryptAlgorithmModeCustom" type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmDecryptAlgorithmSecondaryFamily" 
+                             type="ENUMERATION" value="CRYPTO_ALGOFAM_NOT_SET">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmDecryptAlgorithmSecondaryFamilyCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmDecryptDataMaxLength" type="INTEGER" 
+                             value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmDecryptProcessing" type="ENUMERATION" 
+                             value="CSM_ASYNCHRONOUS">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmDecryptResultMaxLength" type="INTEGER" 
+                             value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                    </d:ctr>
+                  </d:ctr>
+                  <d:ctr name="CsmEncrypt" type="IDENTIFIABLE">
+                    <a:a name="ENABLE" value="false"/>
+                    <d:ctr name="CsmEncryptConfig" type="IDENTIFIABLE">
+                      <d:var name="CsmEncryptAlgorithmFamiliy" 
+                             type="ENUMERATION" value="CRYPTO_ALGOFAM_AES">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmEncryptAlgorithmFamilyCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmEncryptAlgorithmKeyLength" type="INTEGER" 
+                             value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmEncryptAlgorithmMode" type="ENUMERATION" 
+                             value="CRYPTO_ALGOMODE_ECB">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmEncryptAlgorithmModeCustom" type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmEncryptAlgorithmSecondaryFamily" 
+                             type="ENUMERATION" value="CRYPTO_ALGOFAM_NOT_SET">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmEncryptAlgorithmSecondaryFamilyCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmEncryptDataMaxLength" type="INTEGER" 
+                             value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmEncryptProcessing" type="ENUMERATION" 
+                             value="CSM_ASYNCHRONOUS">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmEncryptResultMaxLength" type="INTEGER" 
+                             value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                    </d:ctr>
+                  </d:ctr>
+                  <d:ctr name="CsmHash" type="IDENTIFIABLE">
+                    <a:a name="ENABLE" value="false"/>
+                    <d:ctr name="CsmHashConfig" type="IDENTIFIABLE">
+                      <d:var name="CsmHashAlgorithmFamiliy" type="ENUMERATION" 
+                             value="CRYPTO_ALGOFAM_SHA2_256">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmHashAlgorithmFamilyCustom" type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmHashAlgorithmMode" type="ENUMERATION" 
+                             value="CRYPTO_ALGOMODE_NOT_SET">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmHashAlgorithmModeCustom" type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmHashAlgorithmSecondaryFamily" 
+                             type="ENUMERATION" value="CRYPTO_ALGOFAM_NOT_SET">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmHashAlgorithmSecondaryFamilyCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmHashDataMaxLength" type="INTEGER" 
+                             value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmHashProcessing" type="ENUMERATION" 
+                             value="CSM_ASYNCHRONOUS">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmHashResultLength" type="INTEGER" value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                    </d:ctr>
+                  </d:ctr>
+                  <d:ctr name="CsmMacGenerate" type="IDENTIFIABLE">
+                    <a:a name="ENABLE" value="TRUE"/>
+                    <a:a name="IMPORTER_INFO" value="@CALC"/>
+                    <d:ctr name="CsmMacGenerateConfig" type="IDENTIFIABLE">
+                      <d:var name="CsmMacGenerateAlgorithmFamiliy" 
+                             type="ENUMERATION" value="CRYPTO_ALGOFAM_AES">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmMacGenerateAlgorithmFamilyCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmMacGenerateAlgorithmKeyLength" 
+                             type="INTEGER" value="16">
+                        <a:a name="IMPORTER_INFO" value="@CALC"/>
+                      </d:var>
+                      <d:var name="CsmMacGenerateAlgorithmMode" 
+                             type="ENUMERATION" value="CRYPTO_ALGOMODE_CMAC">
+                        <a:a name="IMPORTER_INFO" value="@CALC"/>
+                      </d:var>
+                      <d:var name="CsmMacGenerateAlgorithmModeCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmMacGenerateAlgorithmSecondaryFamily" 
+                             type="ENUMERATION" value="CRYPTO_ALGOFAM_NOT_SET">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var 
+                             name="CsmMacGenerateAlgorithmSecondaryFamilyCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmMacGenerateDataMaxLength" type="INTEGER" 
+                             value="16">
+                        <a:a name="IMPORTER_INFO" value="@CALC"/>
+                      </d:var>
+                      <d:var name="CsmMacGenerateProcessing" type="ENUMERATION" 
+                             value="CSM_SYNCHRONOUS">
+                        <a:a name="IMPORTER_INFO" value="@CALC"/>
+                      </d:var>
+                      <d:var name="CsmMacGenerateResultLength" type="INTEGER" 
+                             value="3">
+                        <a:a name="IMPORTER_INFO" value="@CALC"/>
+                      </d:var>
+                    </d:ctr>
+                  </d:ctr>
+                  <d:ctr name="CsmMacVerify" type="IDENTIFIABLE">
+                    <a:a name="ENABLE" value="false"/>
+                    <d:ctr name="CsmMacVerifyConfig" type="IDENTIFIABLE">
+                      <d:var name="CsmMacVerifyAlgorithmFamiliy" 
+                             type="ENUMERATION" value="CRYPTO_ALGOFAM_AES">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmMacVerifyAlgorithmFamilyCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmMacVerifyAlgorithmKeyLength" 
+                             type="INTEGER" value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmMacVerifyAlgorithmMode" 
+                             type="ENUMERATION" value="CRYPTO_ALGOMODE_NOT_SET">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmMacVerifyAlgorithmModeCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmMacVerifyAlgorithmSecondaryFamily" 
+                             type="ENUMERATION" value="CRYPTO_ALGOFAM_NOT_SET">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmMacVerifyAlgorithmSecondaryFamilyCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmMacVerifyCompareLength" type="INTEGER" 
+                             value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmMacVerifyDataMaxLength" type="INTEGER" 
+                             value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmMacVerifyProcessing" type="ENUMERATION" 
+                             value="CSM_ASYNCHRONOUS">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                    </d:ctr>
+                  </d:ctr>
+                  <d:ctr name="CsmRandomGenerate" type="IDENTIFIABLE">
+                    <a:a name="ENABLE" value="false"/>
+                    <d:ctr name="CsmRandomGenerateConfig" type="IDENTIFIABLE">
+                      <d:var name="CsmRandomGenerateAlgorithmFamiliy" 
+                             type="ENUMERATION" value="CRYPTO_ALGOFAM_AES">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmRandomGenerateAlgorithmFamilyCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmRandomGenerateAlgorithmMode" 
+                             type="ENUMERATION" value="CRYPTO_ALGOMODE_NOT_SET">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmRandomGenerateAlgorithmModeCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmRandomGenerateAlgorithmSecondaryFamily" 
+                             type="ENUMERATION" value="CRYPTO_ALGOFAM_NOT_SET">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var 
+                             name="CsmRandomGenerateAlgorithmSecondaryFamilyCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmRandomGenerateProcessing" 
+                             type="ENUMERATION" value="CSM_ASYNCHRONOUS">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmRandomGenerateResultLength" 
+                             type="INTEGER" value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                    </d:ctr>
+                  </d:ctr>
+                  <d:ctr name="CsmSecureCounter" type="IDENTIFIABLE">
+                    <a:a name="ENABLE" value="false"/>
+                    <d:ctr name="CsmSecureCounterConfig" type="IDENTIFIABLE">
+                      <d:ref name="CsmSecureCounterQueueRef" type="REFERENCE" >
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:ref>
+                    </d:ctr>
+                  </d:ctr>
+                  <d:ctr name="CsmSignatureGenerate" type="IDENTIFIABLE">
+                    <a:a name="ENABLE" value="false"/>
+                    <d:ctr name="CsmSignatureGenerateConfig" 
+                           type="IDENTIFIABLE">
+                      <d:var name="CsmSignatureGenerateAlgorithmFamiliy" 
+                             type="ENUMERATION" value="CRYPTO_ALGOFAM_BRAINPOOL">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmSignatureGenerateAlgorithmFamilyCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmSignatureGenerateAlgorithmMode" 
+                             type="ENUMERATION" value="CRYPTO_ALGOMODE_NOT_SET">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmSignatureGenerateAlgorithmModeCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var 
+                             name="CsmSignatureGenerateAlgorithmSecondaryFamily" 
+                             type="ENUMERATION" value="CRYPTO_ALGOFAM_NOT_SET">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var 
+                             name="CsmSignatureGenerateAlgorithmSecondaryFamilyCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmSignatureGenerateDataMaxLength" 
+                             type="INTEGER" value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmSignatureGenerateKeyLength" 
+                             type="INTEGER" value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmSignatureGenerateProcessing" 
+                             type="ENUMERATION" value="CSM_ASYNCHRONOUS">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmSignatureGenerateResultLength" 
+                             type="INTEGER" value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                    </d:ctr>
+                  </d:ctr>
+                  <d:ctr name="CsmSignatureVerify" type="IDENTIFIABLE">
+                    <a:a name="ENABLE" value="false"/>
+                    <d:ctr name="CsmSignatureVerifyConfig" type="IDENTIFIABLE">
+                      <d:var name="CsmSignatureVerifyAlgorithmFamiliy" 
+                             type="ENUMERATION" value="CRYPTO_ALGOFAM_BRAINPOOL">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmSignatureVerifyAlgorithmFamilyCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmSignatureVerifyAlgorithmMode" 
+                             type="ENUMERATION" value="CRYPTO_ALGOMODE_NOT_SET">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmSignatureVerifyAlgorithmModeCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmSignatureVerifyAlgorithmSecondaryFamily" 
+                             type="ENUMERATION" value="CRYPTO_ALGOFAM_NOT_SET">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var 
+                             name="CsmSignatureVerifyAlgorithmSecondaryFamilyCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmSignatureVerifyCompareLength" 
+                             type="INTEGER" value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmSignatureVerifyDataMaxLength" 
+                             type="INTEGER" value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmSignatureVerifyKeyLength" type="INTEGER" 
+                             value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmSignatureVerifyProcessing" 
+                             type="ENUMERATION" value="CSM_ASYNCHRONOUS">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                    </d:ctr>
+                  </d:ctr>
+                </d:ctr>
+                <d:ctr name="CsmPrim_MacVer_SecOC" type="IDENTIFIABLE">
+                  <a:a name="IMPORTER_INFO" value="@CALC"/>
+                  <d:ctr name="CsmAEADDecrypt" type="IDENTIFIABLE">
+                    <a:a name="ENABLE" value="false"/>
+                    <d:ctr name="CsmAEADDecryptConfig" type="IDENTIFIABLE">
+                      <d:var name="CsmAEADDecryptAlgorithmFamiliy" 
+                             type="ENUMERATION" value="CRYPTO_ALGOFAM_AES">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmAEADDecryptAlgorithmFamilyCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmAEADDecryptAlgorithmKeyLength" 
+                             type="INTEGER" value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmAEADDecryptAlgorithmMode" 
+                             type="ENUMERATION" value="CRYPTO_ALGOMODE_GCM">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmAEADDecryptAlgorithmModeCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmAEADDecryptAssociatedDataMaxLength" 
+                             type="INTEGER" value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmAEADDecryptCiphertextMaxLength" 
+                             type="INTEGER" value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:ref name="CsmAEADDecryptKeyRef" type="REFERENCE" >
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:ref>
+                      <d:var name="CsmAEADDecryptPlaintextMaxLength" 
+                             type="INTEGER" value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmAEADDecryptProcessing" type="ENUMERATION" 
+                             value="CSM_ASYNCHRONOUS">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:ref name="CsmAEADDecryptQueueRef" type="REFERENCE" >
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:ref>
+                      <d:var name="CsmAEADDecryptTagLength" type="INTEGER" 
+                             value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                    </d:ctr>
+                  </d:ctr>
+                  <d:ctr name="CsmAEADEncrypt" type="IDENTIFIABLE">
+                    <a:a name="ENABLE" value="false"/>
+                    <d:ctr name="CsmAEADEncryptConfig" type="IDENTIFIABLE">
+                      <d:var name="CsmAEADEncryptAlgorithmFamiliy" 
+                             type="ENUMERATION" value="CRYPTO_ALGOFAM_AES">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmAEADEncryptAlgorithmFamilyCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmAEADEncryptAlgorithmKeyLength" 
+                             type="INTEGER" value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmAEADEncryptAlgorithmMode" 
+                             type="ENUMERATION" value="CRYPTO_ALGOMODE_GCM">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmAEADEncryptAlgorithmModeCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmAEADEncryptAssociatedDataMaxLength" 
+                             type="INTEGER" value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmAEADEncryptCiphertextMaxLength" 
+                             type="INTEGER" value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:ref name="CsmAEADEncryptKeyRef" type="REFERENCE" >
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:ref>
+                      <d:var name="CsmAEADEncryptPlaintextMaxLength" 
+                             type="INTEGER" value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmAEADEncryptProcessing" type="ENUMERATION" 
+                             value="CSM_ASYNCHRONOUS">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:ref name="CsmAEADEncryptQueueRef" type="REFERENCE" >
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:ref>
+                      <d:var name="CsmAEADEncryptTagLength" type="INTEGER" 
+                             value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                    </d:ctr>
+                  </d:ctr>
+                  <d:ctr name="CsmDecrypt" type="IDENTIFIABLE">
+                    <a:a name="ENABLE" value="false"/>
+                    <d:ctr name="CsmDecryptConfig" type="IDENTIFIABLE">
+                      <d:var name="CsmDecryptAlgorithmFamiliy" 
+                             type="ENUMERATION" value="CRYPTO_ALGOFAM_AES">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmDecryptAlgorithmFamilyCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmDecryptAlgorithmKeyLength" type="INTEGER" 
+                             value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmDecryptAlgorithmMode" type="ENUMERATION" 
+                             value="CRYPTO_ALGOMODE_ECB">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmDecryptAlgorithmModeCustom" type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmDecryptAlgorithmSecondaryFamily" 
+                             type="ENUMERATION" value="CRYPTO_ALGOFAM_NOT_SET">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmDecryptAlgorithmSecondaryFamilyCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmDecryptDataMaxLength" type="INTEGER" 
+                             value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmDecryptProcessing" type="ENUMERATION" 
+                             value="CSM_ASYNCHRONOUS">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmDecryptResultMaxLength" type="INTEGER" 
+                             value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                    </d:ctr>
+                  </d:ctr>
+                  <d:ctr name="CsmEncrypt" type="IDENTIFIABLE">
+                    <a:a name="ENABLE" value="false"/>
+                    <d:ctr name="CsmEncryptConfig" type="IDENTIFIABLE">
+                      <d:var name="CsmEncryptAlgorithmFamiliy" 
+                             type="ENUMERATION" value="CRYPTO_ALGOFAM_AES">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmEncryptAlgorithmFamilyCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmEncryptAlgorithmKeyLength" type="INTEGER" 
+                             value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmEncryptAlgorithmMode" type="ENUMERATION" 
+                             value="CRYPTO_ALGOMODE_ECB">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmEncryptAlgorithmModeCustom" type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmEncryptAlgorithmSecondaryFamily" 
+                             type="ENUMERATION" value="CRYPTO_ALGOFAM_NOT_SET">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmEncryptAlgorithmSecondaryFamilyCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmEncryptDataMaxLength" type="INTEGER" 
+                             value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmEncryptProcessing" type="ENUMERATION" 
+                             value="CSM_ASYNCHRONOUS">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmEncryptResultMaxLength" type="INTEGER" 
+                             value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                    </d:ctr>
+                  </d:ctr>
+                  <d:ctr name="CsmHash" type="IDENTIFIABLE">
+                    <a:a name="ENABLE" value="false"/>
+                    <d:ctr name="CsmHashConfig" type="IDENTIFIABLE">
+                      <d:var name="CsmHashAlgorithmFamiliy" type="ENUMERATION" 
+                             value="CRYPTO_ALGOFAM_SHA2_256">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmHashAlgorithmFamilyCustom" type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmHashAlgorithmMode" type="ENUMERATION" 
+                             value="CRYPTO_ALGOMODE_NOT_SET">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmHashAlgorithmModeCustom" type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmHashAlgorithmSecondaryFamily" 
+                             type="ENUMERATION" value="CRYPTO_ALGOFAM_NOT_SET">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmHashAlgorithmSecondaryFamilyCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmHashDataMaxLength" type="INTEGER" 
+                             value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmHashProcessing" type="ENUMERATION" 
+                             value="CSM_ASYNCHRONOUS">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmHashResultLength" type="INTEGER" value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                    </d:ctr>
+                  </d:ctr>
+                  <d:ctr name="CsmMacGenerate" type="IDENTIFIABLE">
+                    <a:a name="ENABLE" value="false"/>
+                    <d:ctr name="CsmMacGenerateConfig" type="IDENTIFIABLE">
+                      <d:var name="CsmMacGenerateAlgorithmFamiliy" 
+                             type="ENUMERATION" value="CRYPTO_ALGOFAM_AES">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmMacGenerateAlgorithmFamilyCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmMacGenerateAlgorithmKeyLength" 
+                             type="INTEGER" value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmMacGenerateAlgorithmMode" 
+                             type="ENUMERATION" value="CRYPTO_ALGOMODE_NOT_SET">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmMacGenerateAlgorithmModeCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmMacGenerateAlgorithmSecondaryFamily" 
+                             type="ENUMERATION" value="CRYPTO_ALGOFAM_NOT_SET">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var 
+                             name="CsmMacGenerateAlgorithmSecondaryFamilyCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmMacGenerateDataMaxLength" type="INTEGER" 
+                             value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmMacGenerateProcessing" type="ENUMERATION" 
+                             value="CSM_ASYNCHRONOUS">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmMacGenerateResultLength" type="INTEGER" 
+                             value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                    </d:ctr>
+                  </d:ctr>
+                  <d:ctr name="CsmMacVerify" type="IDENTIFIABLE">
+                    <a:a name="ENABLE" value="TRUE"/>
+                    <a:a name="IMPORTER_INFO" value="@CALC"/>
+                    <d:ctr name="CsmMacVerifyConfig" type="IDENTIFIABLE">
+                      <d:var name="CsmMacVerifyAlgorithmFamiliy" 
+                             type="ENUMERATION" value="CRYPTO_ALGOFAM_AES">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmMacVerifyAlgorithmFamilyCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmMacVerifyAlgorithmKeyLength" 
+                             type="INTEGER" value="16">
+                        <a:a name="IMPORTER_INFO" value="@CALC"/>
+                      </d:var>
+                      <d:var name="CsmMacVerifyAlgorithmMode" 
+                             type="ENUMERATION" value="CRYPTO_ALGOMODE_CMAC">
+                        <a:a name="IMPORTER_INFO" value="@CALC"/>
+                      </d:var>
+                      <d:var name="CsmMacVerifyAlgorithmModeCustom" 
+                             type="STRING" value="CRYPTO_ALGOMODE_NOT_SET">
+                        <a:a name="ENABLE" value="true"/>
+                      </d:var>
+                      <d:var name="CsmMacVerifyAlgorithmSecondaryFamily" 
+                             type="ENUMERATION" value="CRYPTO_ALGOFAM_NOT_SET">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmMacVerifyAlgorithmSecondaryFamilyCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmMacVerifyCompareLength" type="INTEGER" 
+                             value="24">
+                        <a:a name="IMPORTER_INFO" value="@CALC"/>
+                      </d:var>
+                      <d:var name="CsmMacVerifyDataMaxLength" type="INTEGER" 
+                             value="16">
+                        <a:a name="IMPORTER_INFO" value="@CALC"/>
+                      </d:var>
+                      <d:var name="CsmMacVerifyProcessing" type="ENUMERATION" 
+                             value="CSM_SYNCHRONOUS">
+                        <a:a name="IMPORTER_INFO" value="@CALC"/>
+                      </d:var>
+                    </d:ctr>
+                  </d:ctr>
+                  <d:ctr name="CsmRandomGenerate" type="IDENTIFIABLE">
+                    <a:a name="ENABLE" value="false"/>
+                    <d:ctr name="CsmRandomGenerateConfig" type="IDENTIFIABLE">
+                      <d:var name="CsmRandomGenerateAlgorithmFamiliy" 
+                             type="ENUMERATION" value="CRYPTO_ALGOFAM_AES">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmRandomGenerateAlgorithmFamilyCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmRandomGenerateAlgorithmMode" 
+                             type="ENUMERATION" value="CRYPTO_ALGOMODE_NOT_SET">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmRandomGenerateAlgorithmModeCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmRandomGenerateAlgorithmSecondaryFamily" 
+                             type="ENUMERATION" value="CRYPTO_ALGOFAM_NOT_SET">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var 
+                             name="CsmRandomGenerateAlgorithmSecondaryFamilyCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmRandomGenerateProcessing" 
+                             type="ENUMERATION" value="CSM_ASYNCHRONOUS">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmRandomGenerateResultLength" 
+                             type="INTEGER" value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                    </d:ctr>
+                  </d:ctr>
+                  <d:ctr name="CsmSecureCounter" type="IDENTIFIABLE">
+                    <a:a name="ENABLE" value="false"/>
+                    <d:ctr name="CsmSecureCounterConfig" type="IDENTIFIABLE">
+                      <d:ref name="CsmSecureCounterQueueRef" type="REFERENCE" >
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:ref>
+                    </d:ctr>
+                  </d:ctr>
+                  <d:ctr name="CsmSignatureGenerate" type="IDENTIFIABLE">
+                    <a:a name="ENABLE" value="false"/>
+                    <d:ctr name="CsmSignatureGenerateConfig" 
+                           type="IDENTIFIABLE">
+                      <d:var name="CsmSignatureGenerateAlgorithmFamiliy" 
+                             type="ENUMERATION" value="CRYPTO_ALGOFAM_BRAINPOOL">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmSignatureGenerateAlgorithmFamilyCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmSignatureGenerateAlgorithmMode" 
+                             type="ENUMERATION" value="CRYPTO_ALGOMODE_NOT_SET">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmSignatureGenerateAlgorithmModeCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var 
+                             name="CsmSignatureGenerateAlgorithmSecondaryFamily" 
+                             type="ENUMERATION" value="CRYPTO_ALGOFAM_NOT_SET">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var 
+                             name="CsmSignatureGenerateAlgorithmSecondaryFamilyCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmSignatureGenerateDataMaxLength" 
+                             type="INTEGER" value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmSignatureGenerateKeyLength" 
+                             type="INTEGER" value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmSignatureGenerateProcessing" 
+                             type="ENUMERATION" value="CSM_ASYNCHRONOUS">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmSignatureGenerateResultLength" 
+                             type="INTEGER" value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                    </d:ctr>
+                  </d:ctr>
+                  <d:ctr name="CsmSignatureVerify" type="IDENTIFIABLE">
+                    <a:a name="ENABLE" value="false"/>
+                    <d:ctr name="CsmSignatureVerifyConfig" type="IDENTIFIABLE">
+                      <d:var name="CsmSignatureVerifyAlgorithmFamiliy" 
+                             type="ENUMERATION" value="CRYPTO_ALGOFAM_BRAINPOOL">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmSignatureVerifyAlgorithmFamilyCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmSignatureVerifyAlgorithmMode" 
+                             type="ENUMERATION" value="CRYPTO_ALGOMODE_NOT_SET">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmSignatureVerifyAlgorithmModeCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmSignatureVerifyAlgorithmSecondaryFamily" 
+                             type="ENUMERATION" value="CRYPTO_ALGOFAM_NOT_SET">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var 
+                             name="CsmSignatureVerifyAlgorithmSecondaryFamilyCustom" 
+                             type="STRING" >
+                        <a:a name="ENABLE" value="false"/>
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmSignatureVerifyCompareLength" 
+                             type="INTEGER" value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmSignatureVerifyDataMaxLength" 
+                             type="INTEGER" value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmSignatureVerifyKeyLength" type="INTEGER" 
+                             value="1">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:var name="CsmSignatureVerifyProcessing" 
+                             type="ENUMERATION" value="CSM_ASYNCHRONOUS">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                    </d:ctr>
+                  </d:ctr>
+                </d:ctr>
+              </d:lst>
+              <d:ctr name="CsmQueues" type="IDENTIFIABLE">
+                <d:lst name="CsmQueue" type="MAP">
+                  <d:ctr name="CsmQueue_Crypto" type="IDENTIFIABLE">
+                    <a:a name="IMPORTER_INFO" value="@CALC"/>
+                    <d:ref name="CsmChannelRef" type="REFERENCE" 
+                           value="ASPath:/CryIf/CryIf/CryIfChannel_Crypto">
+                      <a:a name="IMPORTER_INFO" value="@CALC"/>
+                    </d:ref>
+                    <d:var name="CsmQueueSize" type="INTEGER" value="11">
+                      <a:a name="IMPORTER_INFO" value="@CALC"/>
+                    </d:var>
+                  </d:ctr>
+                </d:lst>
+              </d:ctr>
+              <d:ctr name="CsmEbGeneral" type="IDENTIFIABLE">
+                <d:ctr name="CsmEbMisc" type="IDENTIFIABLE">
+                  <d:var name="CsmEbAutosarApiVersion" type="ENUMERATION" 
+                         value="CSM_API_VERSION_EB"/>
+                  <d:var 
+                         name="CsmEbCorrectionCsiCsmKeyManagementCsoKeyElementGet" 
+                         type="BOOLEAN" value="false">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                </d:ctr>
+              </d:ctr>
+              <d:ctr name="PublishedInformation" type="IDENTIFIABLE">
+                <d:var name="PbcfgMSupport" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+              </d:ctr>
+            </d:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+
+</datamodel>

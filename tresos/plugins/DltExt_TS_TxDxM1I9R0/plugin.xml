@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<?eclipse version="3.2"?>
+<plugin>
+  <extension
+    id="Dlt_TS_TxDxM1I9R0_GeneratorExt"
+    point="dreisoft.tresos.generator.api.plugin.generator">
+    <generator
+      class="dreisoft.tresos.dlt.generator.DltGenerator"
+      id="Dlt_TS_TxDxM1I9R0_Generator"
+      moduleId="Dlt_TS_TxDxM1I9R0">
+    </generator>
+  </extension>
+  <extension
+    point="dreisoft.tresos.datamodel2.api.plugin.xpathregistration">
+    <xpathfunction>
+       <classregistration
+         class="dreisoft.tresos.dlt.xpath.CustomXPathFunctions"
+         namespace="asc_dlt">
+       </classregistration>
+    </xpathfunction>
+  </extension>
+</plugin>

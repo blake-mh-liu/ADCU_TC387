@@ -1,0 +1,570 @@
+<?xml version='1.0'?>
+<datamodel version="7.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/16/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/16/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar" 
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd" 
+         xmlns:f="http://www.tresos.de/_projects/DataModel2/14/formulaexpr.xsd" 
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd" 
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd"  
+         xmlns:variant="http://www.tresos.de/_projects/DataModel2/11/variant.xsd">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="TS_TxDxM1I3R0" type="AR-PACKAGE">
+        <d:lst type="ELEMENTS">
+          <d:chc name="Cpl" type="AR-ELEMENT" value="MODULE-DEF">
+            <v:ctr type="MODULE-DEF">
+              <a:a name="ADMIN-DATA" type="ADMIN-DATA">
+                <ad:ADMIN-DATA>
+                  <ad:LANGUAGE>EN</ad:LANGUAGE>
+                </ad:ADMIN-DATA>
+              </a:a>
+              <a:a name="DESC" 
+                   value="EN: Configuration of the Cpl (Crypto Primitive Library) module."/>
+              <a:a name="LOWER-MULTIPLICITY" value="1"/>
+              <a:a name="RELEASE" value="asc:4.0"/>
+              <a:a name="UPPER-MULTIPLICITY" value="1"/>
+              <a:a name="UUID" value="43397096-d2eb-49b0-95f3-ab73b7f5e1db"/>
+              <v:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>EN:
+                    &lt;html&gt;
+                      Common container, aggregated by all modules. It contains published information about vendor and versions.
+                  &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="Common Published Information"/>
+                <a:a name="UUID" 
+                     value="ECUC:a00be3e0-8783-9123-2d52-1eb616737ca6"/>
+                <v:var name="ArMajorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Major version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Major Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:948f3f2e-f129-4bc5-b4e1-7a7bdb8599e1"/>
+                  <a:da name="DEFAULT" value="1"/>
+                </v:var>
+                <v:var name="ArMinorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Minor version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Minor Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:2893b920-59d5-4ac2-b2c1-e23742e66d70"/>
+                  <a:da name="DEFAULT" value="2"/>
+                </v:var>
+                <v:var name="ArPatchVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Patch level version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Patch Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:6428eb9b-8790-488a-b9a3-0fba52d0f59e"/>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="SwMajorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Major version number of the vendor specific implementation of the module.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Major Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:605b18ae-3f9a-41d4-9225-67c9c5f6fc34"/>
+                  <a:da name="DEFAULT" value="1"/>
+                </v:var>
+                <v:var name="SwMinorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Minor version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Minor Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a7fe44dc-ea25-4b8d-8fad-9fbcae86d56f"/>
+                  <a:da name="DEFAULT" value="3"/>
+                </v:var>
+                <v:var name="SwPatchVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Patch Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a318d2d9-0e75-49da-ac43-e7e4e682e2f9"/>
+                  <a:da name="DEFAULT" value="3"/>
+                </v:var>
+                <v:var name="ModuleId" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Module ID of this module from Module List
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Numeric Module ID"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:78bc8362-080f-4253-b3da-804ab69a7154"/>
+                  <a:da name="DEFAULT" value="206"/>
+                </v:var>
+                <v:var name="VendorId" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Vendor ID"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:01b0f467-6943-4558-b4f2-3fa1fad28449"/>
+                  <a:da name="DEFAULT" value="1"/>
+                </v:var>
+                <v:var name="Release" type="STRING_LABEL">
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Release Information"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:1c68a547-f24e-4a4e-9540-69fbd533ec89"/>
+                  <a:da name="DEFAULT" value=""/>
+                </v:var>
+              </v:ctr>
+              <v:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                        Select the configuration variant. Currently only PreCompile is supported.
+                      &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="Config Variant"/>
+                <a:a name="UUID" value="cc52dc0c-d4a1-463d-9ec1-b1c6cc185737"/>
+                <a:da name="DEFAULT" value="VariantPreCompile"/>
+                <a:da name="ENABLE" value="false"/>
+                <a:da name="RANGE" value="VariantPreCompile"/>
+              </v:var>
+              <v:ctr name="CplGeneral" type="IDENTIFIABLE">
+                <v:var name="CplVersionInfoApi" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                        Version info API
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Version info API"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="CplLzssCompress" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                      The LZSS configuration for compression.
+                    &lt;/html&gt;</a:v>
+                </a:a>
+                <v:lst name="CplLzssCompressConfig" type="MAP">
+                  <a:a name="COLUMNS">
+                    <a:v>CplLzssCompressLengthBitsPerBlock</a:v>
+                    <a:v>CplLzssCompressIterationsBeforeInterruption</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="LZSSCompress configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CplLzssCompressConfig" type="IDENTIFIABLE">
+                    <v:var name="CplLzssCompressLengthBitsPerBlock" 
+                           type="INTEGER">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                            The number of bits used to encode the &apos;length&apos; in a two-byte block.
+                            The two-byte block references a previous sequence of bytes in the input
+                            stream.
+                            2^2 lteq &apos;length&apos; lteq 2^8.
+                            The remaining bits are used to encode the &apos;offset&apos;.
+                          &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" 
+                           value="Number of bits to encode the Length"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:da name="DEFAULT" value="6"/>
+                      <a:da name="INVALID" type="Multi">
+                        <mt:range>
+                          <mt:tst expr="&gt;=2"/>
+                          <mt:tst expr="&lt;=8"/>
+                        </mt:range>
+                        <mt:xpath 
+                                  true="CalCompressMaxCtxBufByteSize too small. It should be greater than &apos;48&apos;." 
+                                  expr="( num:i(as:modconf(&apos;Cal&apos;)[1]/CalCompress/CalCompressMaxCtxBufByteSize) &lt; num:i(48) )"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="CplLzssCompressIterationsBeforeInterruption" 
+                           type="INTEGER">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                            The number of prefix match loop iterations before the execution is
+                            interrupted.
+                          &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" 
+                           value="Number of iterations before interruption"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:da name="DEFAULT" value="10"/>
+                      <a:da name="RANGE" type="Range">
+                        <a:tst expr="&gt;=2"/>
+                        <a:tst expr="&lt;=4294967295"/>
+                      </a:da>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CplLzssDecompress" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                      The LZSS configuration for decompression.
+                    &lt;/html&gt;</a:v>
+                </a:a>
+                <v:lst name="CplLzssDecompressConfig" type="MAP">
+                  <a:a name="COLUMNS" 
+                       value="CplLzssDecompressLengthBitsPerBlock"/>
+                  <a:a name="LABEL" value="LZSSDecompress configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CplLzssDecompressConfig" type="IDENTIFIABLE">
+                    <v:var name="CplLzssDecompressLengthBitsPerBlock" 
+                           type="INTEGER">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                            The number of bits of &apos;length&apos; in a two-byte (lenght/offset) encoding
+                            which denote a compressed sequence of data.
+                            Note: 2 greater than or equal to &apos;length&apos; greater than or equal to 8.
+                          &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="BitsOfLength"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:da name="DEFAULT" value="6"/>
+                      <a:da name="INVALID" type="Multi">
+                        <mt:range>
+                          <mt:tst expr="&gt;=2"/>
+                          <mt:tst expr="&lt;=8"/>
+                        </mt:range>
+                        <mt:xpath 
+                                  true="CalDecompressMaxCtxBufByteSize too small. It should be greater than &apos;((1 &lt;&lt; (16-CplLzssDecompressLengthBitsPerBlock)) - 1) + 29&apos;." 
+                                  expr="( num:i(as:modconf(&apos;Cal&apos;)[1]/CalDecompress/CalDecompressMaxCtxBufByteSize) &lt; num:i(bit:shl(1,(16-.))-1 + 29) )"/>
+                      </a:da>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CplLzmaDecompress" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                    &lt;p&gt;
+                      The LZMA configuration for decompression.
+                    &lt;/p&gt;
+                    &lt;/html&gt;</a:v>
+                </a:a>
+                <v:lst name="CplLzmaDecompressConfig" type="MAP">
+                  <a:a name="LABEL" value="LZMADecompress configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CplLzmaDecompressConfig" type="IDENTIFIABLE">
+                    <v:var name="CplLzmaDecompressDictionarySize" 
+                           type="INTEGER">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                          &lt;p&gt;
+                            LZMA dictionary size.
+                          &lt;/p&gt;
+                          &lt;p&gt;
+                            Valid values between: 2^12 - 2^32
+                          &lt;/p&gt;
+                          &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="DictionarySize"/>
+                      <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                      <a:da name="DEFAULT" value="65536"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&gt;=4096"/>
+                        <a:tst expr="&lt;=4294967296"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="CplLzmaDecompressLP" type="INTEGER">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                          &lt;p&gt;
+                            LZMA LP parameter.
+                          &lt;/p&gt;
+
+                          &lt;p&gt;
+                            Number of literal position bits
+                          &lt;/p&gt;
+
+                          &lt;p&gt;
+                            LP affects what kind of alignment in the uncompressed data is
+                            assumed when encoding literals.
+                          &lt;/p&gt;
+                          &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="LP"/>
+                      <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                      <a:da name="DEFAULT" value="1"/>
+                      <a:da name="INVALID" type="Multi">
+                        <mt:range>
+                          <mt:tst expr="&gt;=0"/>
+                          <mt:tst expr="&lt;=4"/>
+                        </mt:range>
+                        <mt:xpath 
+                                  true="Invalid LC, PB, LP values! The following equality must be fullfiled: (PB * 5 + LP) * 9 + LC &lt; 9 * 5 * 5" 
+                                  expr="((../CplLzmaDecompressPB * 5 + .) * 9 + ../CplLzmaDecompressLC) &gt;= (9 * 5 * 5)"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="CplLzmaDecompressLC" type="INTEGER">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                          &lt;p&gt;
+                            LZMA LC parameter.
+                          &lt;/p&gt;
+
+                          &lt;p&gt;
+                            Number of literal context bits
+                          &lt;/p&gt;
+
+                          &lt;p&gt;
+                            How many of the highest bits of the previous uncompressed
+                            byte (the literal) are taken into account when predicting
+                            the bits of the next literal.
+                          &lt;/p&gt;
+                          &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="LC"/>
+                      <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                      <a:da name="DEFAULT" value="1"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&gt;=0"/>
+                        <a:tst expr="&lt;=8"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="CplLzmaDecompressPB" type="INTEGER">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                          &lt;p&gt;
+                            LZMA PB parameter.
+                          &lt;/p&gt;
+                          &lt;p&gt;
+                            PB affects what kind of alignment in the
+                            uncompressed data is assumed in general.
+                          &lt;/p&gt;
+                          &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="PB"/>
+                      <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                      <a:da name="DEFAULT" value="1"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&gt;=0"/>
+                        <a:tst expr="&lt;=4"/>
+                      </a:da>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CplRleCompress" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                      The RLE configuration for compression.
+                    &lt;/html&gt;</a:v>
+                </a:a>
+                <v:lst name="CplRleCompressConfig" type="MAP">
+                  <a:a name="COLUMNS" value="CplRleCompressVariant"/>
+                  <a:a name="LABEL" value="RLECompress configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CplRleCompressConfig" type="IDENTIFIABLE">
+                    <v:var name="CplRleCompressVariant" type="ENUMERATION">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                            The variant of the RLE.
+                          &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Variant"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:da name="DEFAULT" value="CPL_RLE_VARIANT_CTRLBIT"/>
+                      <a:da name="EDITABLE" value="true"/>
+                      <a:da name="INVALID" type="XPath" 
+                            expr="( num:i(as:modconf(&apos;Cal&apos;)[1]/CalCompress/CalCompressMaxCtxBufByteSize) &lt; num:i(13) )" 
+                            true="CalCompressMaxCtxBufByteSize too small. It should be greater than &apos;13&apos;."/>
+                      <a:da name="RANGE">
+                        <a:v>CPL_RLE_VARIANT_8BIT</a:v>
+                        <a:v>CPL_RLE_VARIANT_CTRLBIT</a:v>
+                      </a:da>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CplRleDecompress" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                      The RLE configuration for decompression.
+                    &lt;/html&gt;</a:v>
+                </a:a>
+                <v:lst name="CplRleDecompressConfig" type="MAP">
+                  <a:a name="COLUMNS" value="CplRleDecompressVariant"/>
+                  <a:a name="LABEL" value="RLEDecompress configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CplRleDecompressConfig" type="IDENTIFIABLE">
+                    <v:var name="CplRleDecompressVariant" type="ENUMERATION">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                            The variant of the RLE.
+                          &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Variant"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:da name="DEFAULT" value="CPL_RLE_VARIANT_CTRLBIT"/>
+                      <a:da name="EDITABLE" value="true"/>
+                      <a:da name="INVALID" type="XPath" 
+                            expr="( num:i(as:modconf(&apos;Cal&apos;)[1]/CalDecompress/CalDecompressMaxCtxBufByteSize) &lt; num:i(14) )" 
+                            true="CalDecompressMaxCtxBufByteSize too small. It should be greater than &apos;14&apos;."/>
+                      <a:da name="RANGE">
+                        <a:v>CPL_RLE_VARIANT_8BIT</a:v>
+                        <a:v>CPL_RLE_VARIANT_CTRLBIT</a:v>
+                      </a:da>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CplArleDecompress" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                      The ARLE configuration for decompression.
+                    &lt;/html&gt;</a:v>
+                </a:a>
+                <v:lst name="CplArleDecompressConfig" type="MAP">
+                  <a:a name="LABEL" value="ARLEDecompress configurations"/>
+                  <a:da name="MAX" value="1"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CplArleDecompressConfig" type="IDENTIFIABLE">
+                    <a:da name="INVALID" type="XPath" 
+                          expr="( num:i(as:modconf(&apos;Cal&apos;)[1]/CalDecompress/CalDecompressMaxCtxBufByteSize) &lt; num:i(12) )" 
+                          true="CalDecompressMaxCtxBufByteSize too small. It should be greater than &apos;16&apos;."/>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="PublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>EN:
+                    &lt;html&gt;
+                      Additional published parameters not covered by CommonPublishedInformation container.
+                  &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="EB Published Information"/>
+                <a:a name="TAB" value="EB Published Information"/>
+                <a:a name="UUID" 
+                     value="ECUC:cb4128ed-26c1-4ddd-906e-854bed917e07"/>
+                <v:var name="PbcfgMSupport" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Specifies whether or not the Cpl can use the PbcfgM module for post-build support.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="PbcfgM support"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:eb61002e-69c0-4f16-a910-c27adb75f6ee"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+              </v:ctr>
+            </v:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+
+</datamodel>

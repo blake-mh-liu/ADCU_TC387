@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+  <!--
+    ** \brief AUTOSAR Scriptor_TS_TxDxM1I0R0 plugin
+    ** \project AUTOSAR Standard Core
+    ** \file plugin.xml
+    **
+    ** Copyright 2012 by Elektrobit Automotive GmbH
+    ** All rights exclusively reserved for Elektrobit Automotive GmbH,
+    ** unless expressly agreed to otherwise.
+  -->
+
+  <extension point="dreisoft.tresos.launcher2.plugin.module"
+             id="Scriptor_TS_TxDxM1I0R0_ModuleId"
+             name="Scriptor_TS_TxDxM1I0R0 Module">
+    <module id="Scriptor_TS_TxDxM1I0R0"
+            label="Scriptor"
+            mandatory="false"
+            allowMultiple="false"
+            description="ACG-Base: Scriptor"
+            copyright="(c) 2005-2024 Elektrobit Automotive GmbH"
+            swVersionMajor="1"
+            swVersionMinor="0"
+            swVersionPatch="17"
+            swVersionSuffix="B871482"
+            specVersionMajor="4"
+            specVersionMinor="0"
+            specVersionPatch="3"
+            specVersionSuffix="0000"
+            relVersionMajor="4"
+            relVersionMinor="0"
+            relVersionPatch="3"
+            categoryType="Scriptor"
+            categoryLayer="Basic Services"
+            categoryCategory="Tools"
+            categoryComponent="ECUC">
+      <cluster name="Basic Services"/>
+    </module>
+  </extension>
+
+
+
+  <extension point="dreisoft.tresos.launcher2.plugin.configuration"
+             id="Scriptor_TS_TxDxM1I0R0_ConfigId"
+             name="Scriptor_TS_TxDxM1I0R0 Configuration">
+    <configuration moduleId="Scriptor_TS_TxDxM1I0R0">
+      <schema>
+        <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarSchemaManager"/>
+        <resource value="config/Scriptor.xdm" type="xdm"/>
+		 <resource
+              id="ScriptorDefault"
+              type="xdm"
+              value="config_ext/ScriptorDefault.xdm">
+        </resource>
+        <recconfig
+              default="true"
+              description="Default configuration for Scriptor"
+              id="ScriptorDefault"
+              name="ScriptorDefault"
+              path="ASPath:/TS_TxDxM1I0R0/Scriptor_recconf"
+              resourceId="ScriptorDefault">
+        </recconfig>
+      </schema>
+
+      <data>
+        <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarConfigManager"/>
+        <schemaNode path="ASPath:/TS_TxDxM1I0R0/Scriptor"/>
+      </data>
+
+      <editor id="Scriptor_TS_TxDxM1I0R0_GenEditorId"
+              label="Generic Editor"
+              tooltip="Generic configuration editor for the Scriptor module">
+        <class class="dreisoft.tresos.launcher2.editor.GenericConfigEditor">
+          <parameter name="schema" value="ASPath:/TS_TxDxM1I0R0/Scriptor"/>
+          <parameter name="title" value="Scriptor"/>
+          <parameter name="groupLinks" value="true"/>
+        </class>
+      </editor>
+
+    </configuration>
+  </extension>
+
+</plugin>
+

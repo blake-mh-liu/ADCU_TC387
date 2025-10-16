@@ -1,0 +1,16 @@
+[!SKIPFILE "as:modconf('Icv')[1]/IcvConfigSet/*[1]/GenerateReport = 'false'"!][!//
+Enabled Groups Overview
+=======================
+
+[!LOOP "as:modconf('Icv')[1]/IcvConfigSet/*[1]/Group/*[GroupEnabled='true']"!][!//
+* Group [!"name(.)"!]
+[!LOOP "Rule/*"!][!//
+** Rule [!"name(.)"!]
+*** Description: [!"Description"!]
+*** Rationale: [!"Rationale"!]
+*** results
+[!LOOP "XPathExpressionList/*[RuleEnabled='true']"!][!//
+**** [!"name(.)"!]: [!"SWICV:ExecuteXPathFunction(XPathExpression)"!]
+[!ENDLOOP!][!//
+[!ENDLOOP!][!//
+[!ENDLOOP!][!//

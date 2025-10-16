@@ -1,0 +1,1245 @@
+<?xml version='1.0'?>
+<datamodel version="8.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/18/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/18/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar" 
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:ce="http://www.tresos.de/_projects/DataModel2/18/childenable.xsd" 
+         xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd" 
+         xmlns:f="http://www.tresos.de/_projects/DataModel2/14/formulaexpr.xsd" 
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd" 
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd"  
+         xmlns:variant="http://www.tresos.de/_projects/DataModel2/11/variant.xsd">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="TS_TxDxM1I1R0" type="AR-PACKAGE">
+        <d:lst type="ELEMENTS">
+          <d:chc name="J1939Dcm" type="AR-ELEMENT" value="MODULE-DEF">
+            <v:ctr type="MODULE-DEF">
+              <a:a name="ADMIN-DATA" type="ADMIN-DATA">
+                <ad:ADMIN-DATA>
+                  <ad:LANGUAGE>EN</ad:LANGUAGE>
+                  <ad:DOC-REVISIONS>
+                    <ad:DOC-REVISION>
+                      <ad:REVISION-LABEL>4.2.2</ad:REVISION-LABEL>
+                      <ad:ISSUED-BY>AUTOSAR</ad:ISSUED-BY>
+                    </ad:DOC-REVISION>
+                    <ad:DOC-REVISION>
+                      <ad:REVISION-LABEL>1.1.14</ad:REVISION-LABEL>
+                      <ad:ISSUED-BY>Elektrobit Automotive GmbH</ad:ISSUED-BY>
+                      <ad:DATE>2024-05-02T23:59:59Z</ad:DATE>
+                    </ad:DOC-REVISION>
+                  </ad:DOC-REVISIONS>
+                </ad:ADMIN-DATA>
+              </a:a>
+              <a:a name="DESC" value="EN: The SAE J1939 Dcm module"/>
+              <a:a name="LOWER-MULTIPLICITY" value="1"/>
+              <a:a name="POSTBUILDVARIANTSUPPORT" value="true"/>
+              <a:a name="RELEASE" value="asc:4.2.1"/>
+              <a:a name="UPPER-MULTIPLICITY" value="1"/>
+              <a:a name="UUID" value="c9c05f22-348b-4669-b6f0-dc4cfd2eede5"/>
+              <v:ctr name="PublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>EN:
+                    &lt;html&gt;
+                      Additional published parameters not covered by CommonPublishedInformation container.
+                  &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="EB Published Information"/>
+                <a:a name="TAB" value="EB Published Information"/>
+                <a:a name="UUID" 
+                     value="ECUC:cb4128ed-26c1-4ddd-906e-854bed917e07"/>
+                <v:var name="PbcfgMSupport" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Specifies whether or not the J1939Dcm can use the PbcfgM module for post-build support.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="PbcfgM support"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:eb61002e-69c0-4f16-a910-c27adb75f6ee"/>
+                  <a:da name="DEFAULT" value="true"/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>EN:
+                    &lt;html&gt;
+                      Common container, aggregated by all modules. It contains published information about vendor and versions.
+                  &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="Common Published Information"/>
+                <a:a name="UUID" 
+                     value="ECUC:a00be3e0-8783-9123-2d52-1eb616737ca6"/>
+                <v:var name="ArMajorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Major version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Major Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:948f3f2e-f129-4bc5-b4e1-7a7bdb8599e1"/>
+                  <a:da name="DEFAULT" value="4"/>
+                </v:var>
+                <v:var name="ArMinorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Minor version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Minor Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:2893b920-59d5-4ac2-b2c1-e23742e66d70"/>
+                  <a:da name="DEFAULT" value="2"/>
+                </v:var>
+                <v:var name="ArPatchVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Patch level version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Patch Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:6428eb9b-8790-488a-b9a3-0fba52d0f59e"/>
+                  <a:da name="DEFAULT" value="2"/>
+                </v:var>
+                <v:var name="SwMajorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Major version number of the vendor specific implementation of the module.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Major Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:605b18ae-3f9a-41d4-9225-67c9c5f6fc34"/>
+                  <a:da name="DEFAULT" value="1"/>
+                </v:var>
+                <v:var name="SwMinorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Minor version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Minor Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a7fe44dc-ea25-4b8d-8fad-9fbcae86d56f"/>
+                  <a:da name="DEFAULT" value="1"/>
+                </v:var>
+                <v:var name="SwPatchVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Patch Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a318d2d9-0e75-49da-ac43-e7e4e682e2f9"/>
+                  <a:da name="DEFAULT" value="14"/>
+                </v:var>
+                <v:var name="ModuleId" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Module ID of this module from Module List
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Numeric Module ID"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:78bc8362-080f-4253-b3da-804ab69a7154"/>
+                  <a:da name="DEFAULT" value="58"/>
+                </v:var>
+                <v:var name="VendorId" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Vendor ID"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:01b0f467-6943-4558-b4f2-3fa1fad28449"/>
+                  <a:da name="DEFAULT" value="1"/>
+                </v:var>
+                <v:var name="Release" type="STRING_LABEL">
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Release Information"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:1c68a547-f24e-4a4e-9540-69fbd533ec89"/>
+                  <a:da name="DEFAULT" value=""/>
+                </v:var>
+              </v:ctr>
+              <v:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION">
+                <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                     type="IMPLEMENTATIONCONFIGCLASS">
+                  <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                </a:a>
+                <a:a name="LABEL" value="Config Variant"/>
+                <a:a name="UUID" value="40672d39-0b9a-4efa-920d-7ffc35a8238c"/>
+                <a:da name="DEFAULT" value="VariantPostBuild"/>
+                <a:da name="RANGE">
+                  <a:v>VariantPostBuild</a:v>
+                  <a:v>VariantPreCompile</a:v>
+                </a:da>
+              </v:var>
+              <v:var name="POST_BUILD_VARIANT_USED" type="BOOLEAN">
+                <a:a name="DESC" 
+                     value="Indicates whether Postbuild Selectable is able to use or not"/>
+                <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                     type="IMPLEMENTATIONCONFIGCLASS">
+                  <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                </a:a>
+                <a:a name="LABEL" value="Post Build Variant Used"/>
+                <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                <a:da name="DEFAULT" value="false"/>
+                <a:da name="READONLY" value="false"/>
+                <a:da name="TOOLTIP" 
+                      value="Indicates whether Postbuild Selectable is able to use or not"/>
+              </v:var>
+              <v:lst name="J1939DcmConfigSet" 
+                     type="MULTIPLE-CONFIGURATION-CONTAINER">
+                <a:da name="INVALID" type="XPath" expr="(count(*) &gt; 0)" 
+                      false="The number of configured J1939DcmConfigSet shall be greater than 0."/>
+                <a:da name="MAX" value="1"/>
+                <a:da name="MIN" value="1"/>
+                <v:ctr name="J1939DcmConfigSet" 
+                       type="MULTIPLE-CONFIGURATION-CONTAINER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;Defines this container contains the configuration parameters and sub 
+                          containers of the AUTOSAR J1939Dcm module.&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="UUID" value="6532c7f6-5e94-4b33-ae20-2769e37a7024"/>
+                  <v:lst name="J1939DcmChannel" type="MAP">
+                    <a:da name="MIN" value="1"/>
+                    <v:ctr name="J1939DcmChannel" type="IDENTIFIABLE">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                            &lt;p&gt;Defines the configuration of J1939Dcm channels.&lt;/p&gt;
+                            &lt;p&gt;&lt;strong&gt;Optimization Effect:&lt;/strong&gt;&lt;/p&gt;
+                            &lt;ul&gt;
+                              &lt;li class=&quot;optimization.config.ram.reduction&quot;&gt;
+                                &lt;strong&gt;RAM reduction (config):&lt;/strong&gt;
+                                Configuring less J1939Dcm channels reduces the RAM
+                                consumption of the module configuration.
+                              &lt;/li&gt;
+                              &lt;li class=&quot;optimization.config.rom.reduction&quot;&gt;
+                                &lt;strong&gt;ROM reduction (config):&lt;/strong&gt;
+                                Configuring less J1939Dcm channels reduces the ROM
+                                consumption of the module configuration.
+                              &lt;/li&gt;
+                              &lt;li class=&quot;optimization.code.exetime.reduction&quot;&gt;
+                                &lt;strong&gt;Execution time reduction (code):&lt;/strong&gt;
+                                Configuring less J1939Dcm channels reduces the
+                                execution time of the module code.
+                              &lt;/li&gt;
+                            &lt;/ul&gt;
+                          &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="UUID" 
+                           value="b2798fd6-cfc8-4b0b-b489-0413e4f1feae"/>
+                      <v:var name="J1939DcmBusType" type="ENUMERATION">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;Defines the type of communication port.&lt;/p&gt;
+                                &lt;p&gt;J1939DCM_ISO9141: Identifies the ISO 9141 communications port.
+                                J1939DCM_J1587: Identifies the J1587 communication port.
+                                J1939DCM_J1850: Identifies the J1850 communication port.
+                                J1939DCM_J1922: Identifies the J1922 communication port.
+                                J1939DCM_J1939_NETWORK_1: Identifies the J1939 Network #1, Primary
+                                                          Vehicle Network communication port.
+                                J1939DCM_J1939_NETWORK_2: Identifies the J1939 Network #2
+                                                          communication port.
+                                J1939DCM_J1939_NETWORK_3: Identifies the J1939 Network #3
+                                                          communication port.
+                                J1939DCM_J1939_NETWORK_4: Identifies the J1939 Network #4
+                                                          communication port.
+                                J1939DCM_OTHER: Identifies the ?Other, Manufacture Specified Port?
+                                                          communication port.
+                                J1939DCM_PROPRIETARY_NETWORK_1: Identifies the Proprietary Network #1
+                                                          communication port.
+                                J1939DCM_PROPRIETARY_NETWORK_2: Identifies the Proprietary Network #2
+                                                          communication port.&lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID" 
+                             value="a11a298e-f873-491f-870b-d1ca81ff39a6"/>
+                        <a:da name="RANGE">
+                          <a:v>J1939DCM_ISO9141</a:v>
+                          <a:v>J1939DCM_J1587</a:v>
+                          <a:v>J1939DCM_J1850</a:v>
+                          <a:v>J1939DCM_J1922</a:v>
+                          <a:v>J1939DCM_J1939_NETWORK_1</a:v>
+                          <a:v>J1939DCM_J1939_NETWORK_2</a:v>
+                          <a:v>J1939DCM_J1939_NETWORK_3</a:v>
+                          <a:v>J1939DCM_J1939_NETWORK_4</a:v>
+                          <a:v>J1939DCM_OTHER</a:v>
+                          <a:v>J1939DCM_PROPRIETARY_NETWORK_1</a:v>
+                          <a:v>J1939DCM_PROPRIETARY_NETWORK_2</a:v>
+                        </a:da>
+                      </v:var>
+                      <v:ref name="J1939DcmComMChannelRef" 
+                             type="SYMBOLIC-NAME-REFERENCE">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;Reference to the ComM channel.&lt;/p&gt;
+                                &lt;p&gt;Dependency on parameter(s):&lt;/p&gt;
+                                &lt;ul&gt;
+                                  &lt;li&gt;A valid reference to ComM has to be provided.&lt;/li&gt;
+                                  &lt;li&gt;It is not allowed to configured the same channel as reference
+                                  for both &lt;code&gt;J1939DcmChannel&lt;/code&gt;It is not allowed to configure 
+                                  the same ComM channel reference for more than one &lt;code&gt;J1939DcmChannel&lt;/code&gt;.&lt;/li&gt;
+                                &lt;/ul&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                        <a:a name="SCOPE" value="ECU"/>
+                        <a:a name="UUID" 
+                             value="05063bd3-7555-4539-8d3b-3c07490803d8"/>
+                        <a:da name="INVALID" type="XPath">
+                          <a:tst expr="node:refvalid(.)" 
+                                 false="Invalid reference. A valid reference to a J1939DcmComMChannelRef shall be provided."/>
+                          <a:tst 
+                                 expr="count(../../../../../J1939DcmConfigSet/eb-list::*/J1939DcmChannel/eb-list::*[(node:refvalid(J1939DcmComMChannelRef)) and (as:name(node:ref(J1939DcmComMChannelRef)) = as:name(node:ref(node:current())))]) &gt; 1" 
+                                 true="ComM channel reference shall be unique across J1939Dcm channels."/>
+                        </a:da>
+                        <a:da name="REF" 
+                              value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/ComM/ComMConfigSet/ComMChannel"/>
+                      </v:ref>
+                    </v:ctr>
+                  </v:lst>
+                  <v:lst name="J1939DcmNode" type="MAP">
+                    <a:da name="MIN" value="1"/>
+                    <v:ctr name="J1939DcmNode" type="IDENTIFIABLE">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                              &lt;p&gt;Defines logical node representing the parameters for the support of
+                                a logical J1939 node (identified by an ECU address).&lt;/p&gt;
+                            &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="UUID" 
+                           value="dd49d0b2-0784-4b3e-8e1d-a800d82b0d42"/>
+                      <v:lst name="J1939DcmSPNsInDataStream">
+                        <a:a name="VISIBLE" value="false"/>
+                        <a:da name="INVALID" type="XPath" 
+                              expr="(count(./eb-list::*) &gt; 0) and (count(../J1939DcmDiagnosticMessageSupport/eb-list::*[(not(node:empty(J1939DcmDmxSupport))) and (J1939DcmDmxSupport = &apos;J1939DCM_DM24_SUPPORT&apos;)]) &gt; 0)" 
+                              true="J1939DcmSPNsInDataStream shall be configured only if J1939DcmDmxSupport is set to J1939DCM_DM24_SUPPORT."/>
+                        <v:var name="J1939DcmSPNsInDataStream" type="INTEGER">
+                          <a:a name="DESC">
+                            <a:v>&lt;html&gt;
+                                  &lt;p&gt;Defines the SPNs available in data stream for use in DM24.&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                          </a:a>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                            <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID" 
+                               value="c6c612ab-35b4-4e32-ba4e-0db5a86d655d"/>
+                          <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=524287"/>
+                            <a:tst expr="&gt;=0"/>
+                          </a:da>
+                        </v:var>
+                      </v:lst>
+                      <v:ref name="J1939DcmNmNodeRef" 
+                             type="SYMBOLIC-NAME-REFERENCE">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;Reference to the corresponding J1939Nm node.&lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="UUID" 
+                             value="4f981449-9900-4c5f-a83a-f47cb2ea8edf"/>
+                        <a:da name="INVALID" type="XPath" 
+                              expr="node:refvalid(.)" 
+                              false="Invalid reference. A valid reference to an J1939DcmNmNode must be provided."/>
+                        <a:da name="REF" 
+                              value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/J1939Nm/J1939NmConfigSet/J1939NmNode"/>
+                      </v:ref>
+                      <v:ref name="J1939DcmNodeRmUserRef" 
+                             type="SYMBOLIC-NAME-REFERENCE">
+                        <a:a name="DESC">
+                          <a:v>&lt;html&gt;
+                                &lt;p&gt;Reference to the J1939RmUser used by J1939Dcm.&lt;/p&gt;
+                              &lt;/html&gt;</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="UUID" 
+                             value="42077389-21c8-4f73-b25d-b9a6b4e930e5"/>
+                        <a:da name="INVALID" type="XPath" 
+                              expr="node:refvalid(.)" 
+                              false="Invalid reference. A valid reference to an J1939DcmNodeRmUser must be provided."/>
+                        <a:da name="REF" 
+                              value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/J1939Rm/J1939RmConfigSet/J1939RmNode/J1939RmUser"/>
+                      </v:ref>
+                      <v:lst name="J1939DcmDiagnosticMessageSupport" type="MAP">
+                        <a:da name="MIN" value="1"/>
+                        <v:ctr name="J1939DcmDiagnosticMessageSupport" 
+                               type="IDENTIFIABLE">
+                          <a:a name="DESC">
+                            <a:v>&lt;html&gt;
+                                  &lt;p&gt;Defines a configuration of the diagnostic message support.&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                          </a:a>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                          </a:a>
+                          <a:a name="UUID" 
+                               value="06667bd2-ef15-48a4-b4c9-843ccd28543c"/>
+                          <a:da name="INVALID" type="Multi">
+                            <mt:xpath>
+                              <mt:tst 
+                                      true="J1939DcmDiagnosticMessageSupport shall contain J1939DcmTxPdu ." 
+                                      expr="((not(node:exists(J1939DcmTxPdu))) and (J1939DcmDmxSupport != &apos;J1939DCM_DM03_SUPPORT&apos; and  (J1939DcmDmxSupport !=&apos;J1939DCM_DM11_SUPPORT&apos; and J1939DcmDmxSupport != &apos;J1939DCM_DM13_SUPPORT&apos;) ))"/>
+                              <mt:tst 
+                                      true="J1939DCM_DM13_SUPPORT shall contain J1939DcmRxPdu." 
+                                      expr="((not(node:exists(J1939DcmRxPdu))) and (J1939DcmDmxSupport=&apos;J1939DCM_DM13_SUPPORT&apos;))"/>
+                            </mt:xpath>
+                          </a:da>
+                          <v:var name="J1939DcmDmxSupport" type="ENUMERATION">
+                            <a:a name="DESC">
+                              <a:v>&lt;html&gt;
+                                    &lt;p&gt;Defines a parameter is used to identify the actual
+                                    DMx((Diagnostic Message 0-57) message.&lt;/p&gt;
+                                    &lt;ul&gt;
+                                      &lt;li&gt;J1939DCM_DM01_SUPPORT: Active Diagnostic Trouble Codes.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM02_SUPPORT: Previously Active Diagnostic Trouble Codes.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM03_SUPPORT: Diagnostic Data Clear/Reset for Previously Active DTCs.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM04_SUPPORT: Freeze Frame Parameters.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM05_SUPPORT: Diagnostic Readiness 1.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM06_SUPPORT: Emission Related Pending DTCs.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM07_SUPPORT: Command Non-continuously Monitored Test.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM08_SUPPORT: Test Results for Non-continuously Monitored Systems.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM09_SUPPORT: Oxygen Sensor Test Results.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM10_SUPPORT: Non-continuously Monitored System Test Identifiers Support.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM11_SUPPORT: Diagnostic Data Clear/Reset for Active DTCs.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM12_SUPPORT: Emissions Related Active DTCs.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM13_SUPPORT: Stop Start Broadcast.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM14_SUPPORT: Memory Access Request.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM15_SUPPORT: Memory Access Response.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM16_SUPPORT: Binary Data Transfer.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM17_SUPPORT: Boot Load Data.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM18_SUPPORT: Data Security.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM19_SUPPORT: Calibration Information.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM20_SUPPORT: Monitor Performance Ratio.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM21_SUPPORT: Diagnostic Readiness 2.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM22_SUPPORT: Individual Clear/Reset of Active and Previously Active DTC.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM23_SUPPORT: Emission Related Previously Active DTCs.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM24_SUPPORT: SPN Support.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM25_SUPPORT: Expanded Freeze Frame.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM26_SUPPORT: Diagnostic Readiness 3.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM27_SUPPORT: All Pending DTCs.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM28_SUPPORT: Permanent DTCs.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM29_SUPPORT: Regulated DTC Counts.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM30_SUPPORT: Scaled Test Results.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM31_SUPPORT: DTC to Lamp Association.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM32_SUPPORT: Regulated Exhaust Emission Level Exceedance.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM33_SUPPORT: Emission Increasing Auxiliary Emission Control Device Active Time.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM34_SUPPORT: NTE Status.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM35_SUPPORT: Immediate Fault Status.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM36_SUPPORT: Harmonized Roadworthiness - Vehicle(HRWV).&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM37_SUPPORT: Harmonized Roadworthiness ? System(HRWS).&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM38_SUPPORT: Harmonized Global Regulation Description(HGRD).&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM39_SUPPORT: Harmonized Cumulative Continuous Malfunction Indicator ? System (HCMI).&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM40_SUPPORT: Harmonized B1 Failure Counts (HB1C).&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM41_SUPPORT: DTCs - A, Pending.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM42_SUPPORT: DTCs - A, Confirmed and Active.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM43_SUPPORT: DTCs - A, Previously Active.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM44_SUPPORT: DTCs - B1, Pending.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM45_SUPPORT: DTCs - B1, Confirmed and Active.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM46_SUPPORT: DTCs - B1, Previously Active.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM47_SUPPORT: DTCs - B2, Pending.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM48_SUPPORT: DTCs - B2, Confirmed and Active.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM49_SUPPORT: DTCs - B2, Previously Active.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM50_SUPPORT: DTCs - C, Pending.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM51_SUPPORT: DTCs - C, Confirmed and Active.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM52_SUPPORT: DTCs - C, Previously Active.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM53_SUPPORT: Active Service Only DTCs.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM54_SUPPORT: Previously Active Service Only DTCs.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM55_SUPPORT: Clear All Service Only DTCs.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM56_SUPPORT: Engine Emissions Certification Information.&lt;/li&gt;
+                                      &lt;li&gt;J1939DCM_DM57_SUPPORT: OBD Information.&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                  &lt;/html&gt;</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SCOPE" value="LOCAL"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="8b944b26-5870-4e75-8978-6bda3691edaf"/>
+                            <a:da name="RANGE">
+                              <a:v>J1939DCM_DM01_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM02_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM03_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM04_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM05_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM06_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM07_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM08_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM09_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM10_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM11_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM12_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM13_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM14_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM15_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM16_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM17_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM18_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM19_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM20_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM21_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM22_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM23_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM24_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM25_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM26_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM27_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM28_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM29_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM30_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM31_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM32_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM33_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM34_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM35_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM36_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM37_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM38_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM39_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM40_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM41_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM42_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM43_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM44_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM45_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM46_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM47_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM48_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM49_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM50_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM51_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM52_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM53_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM54_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM55_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM56_SUPPORT</a:v>
+                              <a:v>J1939DCM_DM57_SUPPORT</a:v>
+                            </a:da>
+                          </v:var>
+                          <v:var name="J1939DcmDiscardDM" type="BOOLEAN">
+                            <a:a name="DESC">
+                              <a:v>&lt;html&gt;
+                                    &lt;ul&gt;
+                                      &lt;li&gt;True - Enables customer specific implementation of a DM and disables generic processing of DM.&lt;/li&gt;
+                                      &lt;li&gt;False - Disables customer specific implementation of a DM and enables generic processing of DM.&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                  &lt;/html&gt;</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                              <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="OPTIONAL" value="true"/>
+                            <a:a name="ORIGIN" 
+                                 value="Elektrobit Automotive GmbH"/>
+                            <a:a name="SCOPE" value="LOCAL"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="b762d111-2996-4b02-babf-5e59e2bd2782"/>
+                            <a:da name="ENABLE" value="false"/>
+                            <a:da name="INVALID" type="XPath" 
+                                  expr="(node:exists(.)) and (node:existsAndTrue(.)) and not(node:exists(../J1939DcmUserFnc))" 
+                                  true="The J1939DcmUserFnc shall be configured, if J1939DcmDiscardDM is enabled"/>
+                          </v:var>
+                          <v:var name="J1939DcmUserFnc" type="FUNCTION-NAME">
+                            <a:a name="DESC">
+                              <a:v>&lt;html&gt;
+                                    &lt;p&gt;Defines a function for customer specific implementation of DM.&lt;/p&gt;
+                                  &lt;/html&gt;</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                              <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="OPTIONAL" value="true"/>
+                            <a:a name="ORIGIN" 
+                                 value="Elektrobit Automotive GmbH"/>
+                            <a:a name="SCOPE" value="LOCAL"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID" 
+                                 value="45d2a296-906f-42dc-99c3-34d4db867a82"/>
+                            <a:da name="ENABLE" value="false"/>
+                            <a:da name="INVALID" type="XPath" 
+                                  expr="(node:exists(.)) and (node:empty(.))" 
+                                  true="The J1939DcmUserFnc shall be configured, if J1939DcmDiscardDM is enabled"/>
+                          </v:var>
+                          <v:ref 
+                                 name="J1939DcmDiagnosticMessageSupportChannelRef" 
+                                 type="REFERENCE">
+                            <a:a name="DESC">
+                              <a:v>&lt;html&gt;
+                                    &lt;p&gt;Reference to J1939DcmChannel for which this diagnostic
+                                    message is supported.&lt;/p&gt;
+                                  &lt;/html&gt;</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SCOPE" value="LOCAL"/>
+                            <a:a name="UUID" 
+                                 value="45365d12-ff24-4844-878f-10aeb8b7d2c8"/>
+                            <a:da name="INVALID" type="XPath" 
+                                  expr="node:refvalid(.)" 
+                                  false="Invalid reference. A valid reference to a J1939DcmDiagnosticMessageSupportChannelRef must be provided."/>
+                            <a:da name="REF" 
+                                  value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/J1939Dcm/J1939DcmConfigSet/J1939DcmChannel"/>
+                          </v:ref>
+                          <v:ctr name="J1939DcmRxPdu" type="IDENTIFIABLE">
+                            <a:a name="DESC">
+                              <a:v>&lt;html&gt;
+                                    &lt;p&gt;Defines a configuration for the J1939DcmRxPdu.&lt;/p&gt;
+                                  &lt;/html&gt;</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="OPTIONAL" value="true"/>
+                            <a:a name="UUID" 
+                                 value="04963995-d144-4970-b5e8-443019ceb245"/>
+                            <a:a name="VISIBLE" value="true"/>
+                            <a:da name="ENABLE" value="false"/>
+                            <a:da name="INVALID" type="XPath" 
+                                  expr="count(../../../../../../../J1939DcmConfigSet/eb-list::*/J1939DcmNode/eb-list::*/J1939DcmDiagnosticMessageSupport/eb-list::*[(node:exists(J1939DcmRxPdu)) and (as:name(J1939DcmRxPdu) = as:name(node:current()))]) &gt; 1" 
+                                  true="J1939DcmRxPdu name shall be unique across all J1939DcmRxPdu&apos;s."/>
+                            <v:var name="J1939DcmRxPduId" type="INTEGER">
+                              <a:a name="DESC">
+                                <a:v>&lt;html&gt;
+                                      &lt;p&gt;Defines the I-PDU identifier used for communication with
+                                      PduR.&lt;/p&gt;
+                                      &lt;p&gt;A symbolic Name (preprocessor macro) is also generated for
+                                      each PDU ID.&lt;/p&gt;
+                                      &lt;p&gt;The J1939DcmRxPdu ids has to be zero based and consecutive.
+                                      &lt;/p&gt;
+                                      &lt;p&gt;Range: 0 .. 65535&lt;/p&gt;
+                                    &lt;/html&gt;</a:v>
+                              </a:a>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                              <a:a name="SCOPE" value="ECU"/>
+                              <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                              <a:a name="UUID" 
+                                   value="25c1a683-43a6-4236-8c78-65af75b0eb35"/>
+                              <a:da name="INVALID" type="Multi">
+                                <mt:range>
+                                  <mt:tst expr="&lt;=65535"/>
+                                  <mt:tst expr="&gt;=0"/>
+                                </mt:range>
+                                <mt:xpath 
+                                          false="J1939DcmRxPduId shall be zero based and consecutive." 
+                                          expr="node:isconsecutive(../../../../../../../../J1939DcmConfigSet/eb-list::*/J1939DcmNode/eb-list::*/J1939DcmDiagnosticMessageSupport/eb-list::*/J1939DcmRxPdu/J1939DcmRxPduId,0)"/>
+                              </a:da>
+                            </v:var>
+                            <v:ref name="J1939DcmRxPduRef" type="REFERENCE">
+                              <a:a name="DESC">
+                                <a:v>&lt;html&gt;
+                                      &lt;p&gt;Reference to the external Rx I-PDU definition in the EcuC module.&lt;/p&gt;
+                                      &lt;p&gt;Dependency on parameter(s):&lt;/p&gt;
+                                      &lt;ul&gt;
+                                        &lt;li&gt;A valid reference to EcuC&apos;s &lt;code&gt;Pdu&lt;/code&gt; parameters has to be provided.&lt;/li&gt;
+                                        &lt;li&gt;Unique EcuC PDU has to be provided as reference for each J1939DcmRxPdu.&lt;/li&gt;
+                                        &lt;li&gt;It is not allowed to configured bidirectional J1939Dcm PDUs(the same PDU cannot be given
+                                            as reference for both &lt;code&gt;J1939DcmRxPdu&lt;/code&gt; and &lt;code&gt;J1939DcmTxPdu&lt;/code&gt;.&lt;/li&gt;
+                                      &lt;/ul&gt;
+                                    &lt;/html&gt;</a:v>
+                              </a:a>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                              <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                              <a:a name="SCOPE" value="LOCAL"/>
+                              <a:a name="UUID" 
+                                   value="3bb8fe94-e844-4415-ad2b-9fda4a1149b2"/>
+                              <a:da name="INVALID" type="XPath">
+                                <a:tst expr="node:refvalid(.)" 
+                                       false="Invalid reference. A valid reference to a J1939DcmRxPdu must be provided."/>
+                                <a:tst 
+                                       expr="count(../../../../../../../../J1939DcmConfigSet/eb-list::*/J1939DcmNode/eb-list::*/J1939DcmDiagnosticMessageSupport/eb-list::*[(node:exists(J1939DcmRxPdu)) and (node:refvalid(J1939DcmRxPdu/J1939DcmRxPduRef)) and (as:name(node:ref(J1939DcmRxPdu/J1939DcmRxPduRef)) = as:name(node:ref(node:current())))]) &gt; 1" 
+                                       true="Unique EcuC PDU shall be provided as reference for each J1939DcmRxPdu."/>
+                                <a:tst 
+                                       expr="count(../../../../../../../../J1939DcmConfigSet/eb-list::*/J1939DcmNode/eb-list::*/J1939DcmDiagnosticMessageSupport/eb-list::*[(node:exists(J1939DcmTxPdu)) and (node:refvalid(J1939DcmTxPdu/J1939DcmTxPduRef)) and (as:name(node:ref(J1939DcmTxPdu/J1939DcmTxPduRef)) = as:name(node:ref(node:current())))]) &gt; 0" 
+                                       true="The referenced EcuC PDU is bidirectional(has both Tx and Rx direction). It is not allowed to configured bidirectional J1939DcmRxPdu."/>
+                              </a:da>
+                              <a:da name="REF" 
+                                    value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/EcuC/EcucPduCollection/Pdu"/>
+                            </v:ref>
+                          </v:ctr>
+                          <v:ctr name="J1939DcmTxPdu" type="IDENTIFIABLE">
+                            <a:a name="DESC">
+                              <a:v>&lt;html&gt;
+                                    &lt;p&gt;Defines a configuration for the J1939DcmTxPdu.&lt;/p&gt;
+                                  &lt;/html&gt;</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                            </a:a>
+                            <a:a name="OPTIONAL" value="true"/>
+                            <a:a name="UUID" 
+                                 value="e025f8f5-ba7f-436b-8629-0987e0e5a774"/>
+                            <a:da name="ENABLE" value="false"/>
+                            <a:da name="INVALID" type="XPath" 
+                                  expr="count(../../../../../../../J1939DcmConfigSet/eb-list::*/J1939DcmNode/eb-list::*/J1939DcmDiagnosticMessageSupport/eb-list::*[(node:exists(J1939DcmTxPdu)) and (as:name(J1939DcmTxPdu) = as:name(node:current()))]) &gt; 1" 
+                                  true="J1939DcmTxPdu name shall be unique across all J1939DcmTxPdu&apos;s."/>
+                            <v:var name="J1939DcmTxPduId" type="INTEGER">
+                              <a:a name="DESC">
+                                <a:v>&lt;html&gt;
+                                      &lt;p&gt;Defines the I-PDU identifier used to identify the Tx
+                                      message.&lt;/p&gt;
+                                      &lt;p&gt;A symbolic Name (preprocessor macro) is also generated for
+                                      each PDU ID.&lt;/p&gt;
+                                      &lt;p&gt;The J1939Dcm Tx Pdu ids has to be zero based and
+                                      consecutive.&lt;/p&gt;
+                                      &lt;p&gt;Range: 0 .. 65535&lt;/p&gt;
+                                    &lt;/html&gt;</a:v>
+                              </a:a>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                              <a:a name="SCOPE" value="ECU"/>
+                              <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                              <a:a name="UUID" 
+                                   value="608814b1-abdf-4539-9715-ae66a1038a39"/>
+                              <a:da name="INVALID" type="Multi">
+                                <mt:range>
+                                  <mt:tst expr="&lt;=65535"/>
+                                  <mt:tst expr="&gt;=0"/>
+                                </mt:range>
+                                <mt:xpath 
+                                          false="J1939DcmTxPduId shall be zero based and consecutive." 
+                                          expr="node:isconsecutive(../../../../../../../../J1939DcmConfigSet/eb-list::*/J1939DcmNode/eb-list::*/J1939DcmDiagnosticMessageSupport/eb-list::*/J1939DcmTxPdu/J1939DcmTxPduId,0)"/>
+                              </a:da>
+                            </v:var>
+                            <v:ref name="J1939DcmTxPduRef" type="REFERENCE">
+                              <a:a name="DESC">
+                                <a:v>&lt;html&gt;
+                                      &lt;p&gt;Reference to the external Tx I-PDU definition in the EcuC module.&lt;/p&gt;
+                                      &lt;p&gt;Dependency on parameter(s):&lt;/p&gt;
+                                      &lt;ul&gt;
+                                        &lt;li&gt;A valid reference to EcuC&apos;s &lt;code&gt;Pdu&lt;/code&gt; parameters has to be provided.&lt;/li&gt;
+                                        &lt;li&gt;Unique EcuC PDU has to be provided as reference for each J1939DcmTxPdu.&lt;/li&gt;
+                                        &lt;li&gt;It is not allowed to configured bidirectional J1939Dcm PDUs(the same PDU cannot be given
+                                            as reference for both &lt;code&gt;J1939DcmTxPdu&lt;/code&gt; and &lt;code&gt;J1939DcmRxPdu&lt;/code&gt;.&lt;/li&gt;
+                                      &lt;/ul&gt;
+                                    &lt;/html&gt;</a:v>
+                              </a:a>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                              </a:a>
+                              <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                              <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                              <a:a name="SCOPE" value="LOCAL"/>
+                              <a:a name="UUID" 
+                                   value="abf94fd2-5b7c-431e-be41-3c26d0e86c33"/>
+                              <a:da name="INVALID" type="XPath">
+                                <a:tst expr="node:refvalid(.)" 
+                                       false="Invalid reference. A valid reference to a J1939DcmTxPdu must be provided."/>
+                                <a:tst 
+                                       expr="count(../../../../../../../../J1939DcmConfigSet/eb-list::*/J1939DcmNode/eb-list::*/J1939DcmDiagnosticMessageSupport/eb-list::*[(node:exists(J1939DcmTxPdu)) and (node:refvalid(J1939DcmTxPdu/J1939DcmTxPduRef)) and (as:name(node:ref(J1939DcmTxPdu/J1939DcmTxPduRef)) = as:name(node:ref(node:current())))]) &gt; 1" 
+                                       true="Unique EcuC PDU shall be provided as reference for each J1939DcmTxPdu."/>
+                                <a:tst 
+                                       expr="count(../../../../../../../../J1939DcmConfigSet/eb-list::*/J1939DcmNode/eb-list::*/J1939DcmDiagnosticMessageSupport/eb-list::*[(node:exists(J1939DcmRxPdu)) and (node:refvalid(J1939DcmRxPdu/J1939DcmRxPduRef)) and (as:name(node:ref(J1939DcmRxPdu/J1939DcmRxPduRef)) = as:name(node:ref(node:current())))]) &gt; 0" 
+                                       true="The referenced EcuC PDU is bidirectional(has both Tx and Rx direction). It is not allowed to configured bidirectional J1939DcmTxPdu."/>
+                              </a:da>
+                              <a:da name="REF" 
+                                    value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/EcuC/EcucPduCollection/Pdu"/>
+                            </v:ref>
+                          </v:ctr>
+                        </v:ctr>
+                      </v:lst>
+                    </v:ctr>
+                  </v:lst>
+                </v:ctr>
+              </v:lst>
+              <v:ctr name="J1939DcmGeneral" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                        &lt;p&gt;Defines the the general configuration parameters of the J1939Dcm module.
+                        &lt;/p&gt;
+                      &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="UUID" value="c8e20311-3b61-4c13-9ddb-6ebcc233ecb7"/>
+                <a:da name="INVALID" type="XPath">
+                  <a:tst 
+                         expr="(count(../J1939DcmConfigSet/eb-list::*[1]/J1939DcmNode/eb-list::*/J1939DcmDiagnosticMessageSupport/eb-list::*[(not(node:empty(J1939DcmDmxSupport))) and (J1939DcmDmxSupport = &apos;J1939DCM_DM01_SUPPORT&apos;)]) &gt; 0) and (not(node:exists(J1939DcmDM01BufferSize)))" 
+                         true="The J1939DcmDM01BufferSize shall be set, if Node has configured for the diagnostic message J1939DCM_DM01_SUPPORT."/>
+                  <a:tst 
+                         expr="(count(../J1939DcmConfigSet/eb-list::*[1]/J1939DcmNode/eb-list::*/J1939DcmDiagnosticMessageSupport/eb-list::*[(not(node:empty(J1939DcmDmxSupport))) and (J1939DcmDmxSupport = &apos;J1939DCM_DM01_SUPPORT&apos;)]) &gt; 0) and (not(node:exists(J1939DcmDM01Priority)))" 
+                         true="The J1939DcmDM01Priority shall be set, if Node has configured for the diagnostic message J1939DCM_DM01_SUPPORT."/>
+                  <a:tst 
+                         expr="(count(../J1939DcmConfigSet/eb-list::*[1]/J1939DcmNode/eb-list::*/J1939DcmDiagnosticMessageSupport/eb-list::*[(not(node:empty(J1939DcmDmxSupport))) and (J1939DcmDmxSupport = &apos;J1939DCM_DM01_SUPPORT&apos;)]) &gt; 0) and (not(node:exists(J1939DcmMaxNbOfDTCTriggeredByDEM)))" 
+                         true="The J1939DcmMaxNbOfDTCTriggeredByDEM shall be set, if Node has configured for the diagnostic message J1939DCM_DM01_SUPPORT."/>
+                  <a:tst 
+                         expr="(count(../J1939DcmConfigSet/eb-list::*[1]/J1939DcmNode/eb-list::*/J1939DcmDiagnosticMessageSupport/eb-list::*[(not(node:empty(J1939DcmDmxSupport))) and (J1939DcmDmxSupport = &apos;J1939DCM_DM20_SUPPORT&apos;)]) &gt; 0) and (not(node:exists(J1939DcmMaxRatiosPerMainFunction)))" 
+                         true="The J1939DcmMaxRatiosPerMainFunction shall be set, if Node has configured for the diagnostic message J1939DCM_DM20_SUPPORT."/>
+                </a:da>
+                <v:var name="J1939DcmCommonBufferSize" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;Defines the size of common buffer (in Bytes).&lt;/p&gt;
+                          &lt;p&gt;The buffer size should be as large as the longest command or response
+                          message.&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SCOPE" value="LOCAL"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="40ecda40-7ef8-45b7-a771-267c75c7456a"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=65535"/>
+                    <a:tst expr="&gt;=1"/>
+                  </a:da>
+                </v:var>
+                <v:var name="J1939DcmDM01BufferSize" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;Defines the size of DM01 buffer (in Bytes).&lt;/p&gt;
+                          &lt;p&gt;The buffer size should be as large as the longest DM01 response
+                          message.&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="OPTIONAL" value="true"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SCOPE" value="LOCAL"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="437543f1-3d95-4001-b340-c23bf50fb804"/>
+                  <a:da name="ENABLE" value="false"/>
+                  <a:da name="INVALID" type="Multi">
+                    <mt:range>
+                      <mt:tst expr="&lt;=65535"/>
+                      <mt:tst expr="&gt;=1"/>
+                    </mt:range>
+                    <mt:xpath 
+                              true="The J1939DcmDM01BufferSize shall not be set, it&apos;s required only if diagnostic message J1939DcmDmxSupport has configured for J1939DCM_DM01_SUPPORT." 
+                              expr="(not(node:empty(.))) and (not(count(../../J1939DcmConfigSet/eb-list::*/J1939DcmNode/eb-list::*/J1939DcmDiagnosticMessageSupport/eb-list::*[(not(node:empty(J1939DcmDmxSupport))) and (J1939DcmDmxSupport = &apos;J1939DCM_DM01_SUPPORT&apos;)]) &gt; 0))"/>
+                  </a:da>
+                </v:var>
+                <v:var name="J1939DcmDM01Priority" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;Defines the priority of DM01 message.&lt;/p&gt;
+                          &lt;p&gt;This will be used to DM01 responses until an DM01 request is received.
+                          &lt;/p&gt;
+                          &lt;p&gt;Default value will be 6.&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="OPTIONAL" value="true"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SCOPE" value="LOCAL"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="87e9f671-1521-4274-982d-2db069f3456f"/>
+                  <a:da name="DEFAULT" value="6"/>
+                  <a:da name="ENABLE" value="false"/>
+                  <a:da name="INVALID" type="Multi">
+                    <mt:range>
+                      <mt:tst expr="&lt;=7"/>
+                      <mt:tst expr="&gt;=1"/>
+                    </mt:range>
+                    <mt:xpath 
+                              true="The J1939DcmDM01Priority shall not be set, it&apos;s required only if diagnostic message J1939DcmDmxSupport has configured for J1939DCM_DM01_SUPPORT." 
+                              expr="(not(node:empty(.))) and (not(count(../../J1939DcmConfigSet/eb-list::*/J1939DcmNode/eb-list::*/J1939DcmDiagnosticMessageSupport/eb-list::*[(not(node:empty(J1939DcmDmxSupport))) and (J1939DcmDmxSupport = &apos;J1939DCM_DM01_SUPPORT&apos;)]) &gt; 0))"/>
+                  </a:da>
+                </v:var>
+                <v:var name="J1939DcmDevErrorDetect" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;ul&gt;
+                            &lt;li&gt;True - Enables the detection of development errors during development.&lt;/li&gt;
+                            &lt;li&gt;False - Disables the detection of development errors during development.&lt;/li&gt;
+                          &lt;/ul&gt;
+                         &lt;p&gt;&lt;strong&gt;Optimization Effect:&lt;/strong&gt;&lt;/p&gt;
+                         &lt;ul&gt;
+                           &lt;li class=&quot;optimization.code.rom.reduction&quot;&gt;
+                             &lt;strong&gt;ROM reduction (code):&lt;/strong&gt;
+                             Disabling this parameter reduces the ROM consumption of the module
+                             code.
+                           &lt;/li&gt;
+                           &lt;li class=&quot;optimization.code.exetime.reduction&quot;&gt;
+                             &lt;strong&gt;Execution time reduction(code):&lt;/strong&gt;
+                             Disabling this parameter reduces the execution time of the module
+                             code.
+                           &lt;/li&gt;
+                         &lt;/ul&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SCOPE" value="LOCAL"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="7d64a6ed-a528-46f8-806a-f6e3ef2ea41e"/>
+                </v:var>
+                <v:var name="J1939DcmMainFunctionPeriod" type="FLOAT">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;Defines the execution cycle of J1939Dcm_MainFunction in seconds.&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SCOPE" value="ECU"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="5584f187-3f15-4249-a9c6-594ed2d7004f"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=0.255"/>
+                    <a:tst expr="&gt;=0.001"/>
+                  </a:da>
+                </v:var>
+                <v:var name="J1939DcmMaxDTCsPerMainFunction" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;Defines the maximum threshold of DTCs filtered in a single MainFunction
+                          cycle.&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="OPTIONAL" value="true"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SCOPE" value="LOCAL"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="2cb39ede-fe8e-45af-8aa0-87c75e5a4650"/>
+                  <a:da name="ENABLE" value="false"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=255"/>
+                    <a:tst expr="&gt;=1"/>
+                  </a:da>
+                </v:var>
+                <v:var name="J1939DcmMaxFreezeFramesPerMainFunction" 
+                       type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;Defines the maximum threshold of FreezeFrames filtered in a single
+                          MainFunction cycle.&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="OPTIONAL" value="true"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SCOPE" value="LOCAL"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="52f06869-fdc4-4811-852d-b8ac658c6fec"/>
+                  <a:da name="ENABLE" value="false"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=255"/>
+                    <a:tst expr="&gt;=1"/>
+                  </a:da>
+                </v:var>
+                <v:var name="J1939DcmMaxRatiosPerMainFunction" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;Defines the maximum threshold of Ratios filtered in a single
+                          MainFunction cycle.&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="OPTIONAL" value="true"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SCOPE" value="LOCAL"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="3015d2e4-10b9-41ce-b5f6-5bcdc4336855"/>
+                  <a:da name="ENABLE" value="false"/>
+                  <a:da name="INVALID" type="Multi">
+                    <mt:range>
+                      <mt:tst expr="&lt;=255"/>
+                      <mt:tst expr="&gt;=1"/>
+                    </mt:range>
+                    <mt:xpath 
+                              true="The J1939DcmMaxRatiosPerMainFunction shall not be set, it&apos;s required only if diagnostic message J1939DcmDmxSupport has configured for J1939DCM_DM20_SUPPORT." 
+                              expr="(not(node:empty(.))) and (not(count(../../J1939DcmConfigSet/eb-list::*/J1939DcmNode/eb-list::*/J1939DcmDiagnosticMessageSupport/eb-list::*[(not(node:empty(J1939DcmDmxSupport))) and (J1939DcmDmxSupport = &apos;J1939DCM_DM20_SUPPORT&apos;)]) &gt; 0))"/>
+                  </a:da>
+                </v:var>
+                <v:var name="J1939DcmVersionInfoApi" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;ul&gt;
+                            &lt;li&gt;True - Enables the version information API (&lt;code&gt;J1939Dcm_GetVersionInfo()&lt;/code&gt;)&lt;/li&gt;
+                            &lt;li&gt;False - Disables the version information API (&lt;code&gt;J1939Dcm_GetVersionInfo()&lt;/code&gt;)&lt;/li&gt;
+                          &lt;/ul&gt;
+                          &lt;p&gt;&lt;strong&gt;Optimization Effect:&lt;/strong&gt;&lt;/p&gt;
+                          &lt;ul&gt;
+                            &lt;li class=&quot;optimization.code.rom.reduction&quot;&gt;
+                              &lt;strong&gt;ROM reduction (code):&lt;/strong&gt;
+                              Disabling this parameter reduces the ROM consumption of the module code.
+                            &lt;/li&gt;
+                          &lt;/ul&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:a name="SCOPE" value="LOCAL"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="64d0845a-22da-41e2-a3dd-586065a68a17"/>
+                </v:var>
+                <v:var name="J1939DcmHeaderFiles" type="STRING">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;Defines the possibility to configure specific header files to be
+                          included in the generated files for customer specific DM implementations.
+                          &lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="OPTIONAL" value="true"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SCOPE" value="LOCAL"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="1623b64d-6f06-4272-baf9-6b65af87254f"/>
+                  <a:da name="ENABLE" value="false"/>
+                </v:var>
+                <v:var name="J1939DcmMaxNbOfDTCTriggeredByDEM" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                          &lt;p&gt;Defines the maximum number of DTCs that can be triggered by DEM per one second.&lt;/p&gt;
+                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v mclass="PreCompile">VariantPreCompile</icc:v>
+                    <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="OPTIONAL" value="true"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SCOPE" value="LOCAL"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="9426dd0a-a15f-4854-a9e6-9204d57483f8"/>
+                  <a:da name="ENABLE" value="false"/>
+                  <a:da name="INVALID" type="Multi">
+                    <mt:range>
+                      <mt:tst expr="&lt;=255"/>
+                      <mt:tst expr="&gt;=1"/>
+                    </mt:range>
+                    <mt:xpath 
+                              true="The J1939DcmMaxNbOfDTCTriggeredByDEM shall not be set, it&apos;s required only if diagnostic message J1939DcmDmxSupport has configured for J1939DCM_DM01_SUPPORT." 
+                              expr="(not(node:empty(.))) and (not(count(../../J1939DcmConfigSet/eb-list::*/J1939DcmNode/eb-list::*/J1939DcmDiagnosticMessageSupport/eb-list::*[(not(node:empty(J1939DcmDmxSupport))) and (J1939DcmDmxSupport = &apos;J1939DCM_DM01_SUPPORT&apos;)]) &gt; 0))"/>
+                  </a:da>
+                </v:var>
+                <v:var name="J1939DcmIfTxConfTimeout" type="FLOAT">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                        &lt;p&gt;Transmission Timeout of IF Transmission.&lt;/p&gt;
+
+                        &lt;p&gt;If there is no transmission confirmation
+                        by the PduR within this timeout,
+                        the J1939Dcm module shall give an error.&lt;/p&gt;
+
+                        &lt;p&gt;Dependencies:&lt;/p&gt;
+                        &lt;ul&gt;
+                          &lt;li&gt;If no Dmx that requires direct IF Transmission via PduR
+                          this parameter is ignored.&lt;/li&gt;
+
+                          &lt;li&gt;Value must be a multiple of
+                          the Main Function Period.&lt;/li&gt;
+                        &lt;/ul&gt;
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="J1939DcmIfTxConfTimeout[Second]"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="eca72a63-c9a4-4da1-a7c0-834ecc182335"/>
+                  <a:da name="DEFAULT" value="0.2"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="node:exists(as:modconf(&apos;J1939Dcm&apos;)[1]/J1939DcmConfigSet/eb-list::*/J1939DcmNode/eb-list::*/J1939DcmDiagnosticMessageSupport/eb-list::*[J1939DcmDmxSupport=&apos;J1939DCM_DM05_SUPPORT&apos; or J1939DcmDmxSupport=&apos;J1939DCM_DM13_SUPPORT&apos; or J1939DcmDmxSupport=&apos;J1939DCM_DM21_SUPPORT&apos; or J1939DcmDmxSupport=&apos;J1939DCM_DM24_SUPPORT&apos; or J1939DcmDmxSupport=&apos;J1939DCM_DM29_SUPPORT&apos;])"/>
+                  <a:da name="INVALID" type="Multi">
+                    <mt:range>
+                      <mt:tst expr="&lt;=65.535"/>
+                      <mt:tst expr="&gt;=0.001"/>
+                    </mt:range>
+                    <mt:xpath 
+                              true="The confirmation Timeout Time must be a multiple of the Main Function Period." 
+                              expr=" (((. * 1000) mod (../J1939DcmMainFunctionPeriod * 1000)) != 0)"/>
+                  </a:da>
+                </v:var>
+                <v:var name="J1939DcmSpnCmVersion" type="ENUMERATION">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                        &lt;p&gt;Defines the SPN conversion method.&lt;/p&gt;
+                        &lt;p&gt;It affects follwoing DM&apos;s:&lt;/p&gt;
+                        &lt;p&gt;DTC status DMs ( DM01, DM02, DM06, DM12, DM23, DM28, DM35)&lt;/p&gt;
+                        &lt;p&gt;DM4 and DM25&lt;/p&gt;
+                        &lt;p&gt;Default conversion method is selected to 
+                           J1939DCM_DTC_CM_04.&lt;/p&gt;
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="J1939DcmSpnCmVersion"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="27d981e5-cb15-47f2-a3e1-308d24be3291 "/>
+                  <a:da name="DEFAULT" value="J1939DCM_DTC_CM_04"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="node:exists(as:modconf(&apos;J1939Dcm&apos;)[1]/J1939DcmConfigSet/eb-list::*/J1939DcmNode/eb-list::*/J1939DcmDiagnosticMessageSupport/eb-list::*[J1939DcmDmxSupport=&apos;J1939DCM_DM01_SUPPORT&apos; or J1939DcmDmxSupport=&apos;J1939DCM_DM06_SUPPORT&apos; or J1939DcmDmxSupport=&apos;J1939DCM_DM02_SUPPORT&apos; or J1939DcmDmxSupport=&apos;J1939DCM_DM12_SUPPORT&apos; or J1939DcmDmxSupport=&apos;J1939DCM_DM23_SUPPORT&apos; or J1939DcmDmxSupport=&apos;J1939DCM_DM28_SUPPORT&apos; or J1939DcmDmxSupport=&apos;J1939DCM_DM35_SUPPORT&apos;  or J1939DcmDmxSupport=&apos;J1939DCM_DM04_SUPPORT&apos;  or J1939DcmDmxSupport=&apos;J1939DCM_DM25_SUPPORT&apos;])"/>
+                  <a:da name="RANGE">
+                    <a:v>J1939DCM_DTC_CM_01</a:v>
+                    <a:v>J1939DCM_DTC_CM_02</a:v>
+                    <a:v>J1939DCM_DTC_CM_03</a:v>
+                    <a:v>J1939DCM_DTC_CM_04</a:v>
+                  </a:da>
+                </v:var>
+              </v:ctr>
+              <d:ref type="REFINED_MODULE_DEF" 
+                     value="ASPath:/AUTOSAR/EcucDefs/J1939Dcm"/>
+            </v:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+
+</datamodel>

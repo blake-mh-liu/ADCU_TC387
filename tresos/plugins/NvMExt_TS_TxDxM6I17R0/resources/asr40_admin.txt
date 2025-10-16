@@ -1,0 +1,14 @@
+
+#if (NVM_API_CONFIG_CLASS == NVM_API_CONFIG_CLASS_3)
+/* Deviation MISRAC2012-1 */
+FUNC(Std_ReturnType, NVM_CODE) NvM_1_<Partition>_ASR40_Rte_SetBlockProtection
+(
+  NvM_ASR40_BlockIdType BlockId,
+  boolean         ProtectionEnabled
+)
+{
+  Std_ReturnType ret = E_NOT_OK;
+  ret = NvM_ASR40_SetBlockProtection(BlockId, ProtectionEnabled);
+  return ret;
+}
+#endif

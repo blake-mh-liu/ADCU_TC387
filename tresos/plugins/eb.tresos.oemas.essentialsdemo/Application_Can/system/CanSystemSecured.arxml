@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-2-1.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>CanSystem</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE T="2019-07-29T10:51:20+03:00">
+          <SHORT-NAME>ISIGNALS</SHORT-NAME>
+          <ELEMENTS>
+            <I-SIGNAL T="2019-07-29T10:51:20+03:00">
+              <SHORT-NAME>SecuredDataIn</SHORT-NAME>
+              <DATA-TYPE-POLICY>PORT-INTERFACE-DEFINITION</DATA-TYPE-POLICY>
+              <LENGTH>8</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL />
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CanSystem/SYSSIGNALS/SecuredDataIn</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL T="2019-07-29T10:51:20+03:00">
+              <SHORT-NAME>SecuredDataOut</SHORT-NAME>
+              <DATA-TYPE-POLICY>PORT-INTERFACE-DEFINITION</DATA-TYPE-POLICY>
+              <LENGTH>8</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL />
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CanSystem/SYSSIGNALS/SecuredDataOut</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <AR-PACKAGE T="2019-07-29T10:51:20+03:00">
+          <SHORT-NAME>PDUS</SHORT-NAME>
+          <ELEMENTS>
+            <I-SIGNAL-I-PDU T="2019-07-29T10:51:20+03:00">
+              <SHORT-NAME>Pdu_SecuredPayloadIn</SHORT-NAME>
+              <LENGTH>9</LENGTH>
+              <I-PDU-TIMING-SPECIFICATIONS>
+                <I-PDU-TIMING>
+                  <TRANSMISSION-MODE-DECLARATION>
+                    <TRANSMISSION-MODE-CONDITIONS>
+                      <TRANSMISSION-MODE-CONDITION>
+                        <DATA-FILTER>
+                          <DATA-FILTER-TYPE>ALWAYS</DATA-FILTER-TYPE>
+                        </DATA-FILTER>
+                        <I-SIGNAL-IN-I-PDU-REF DEST="I-SIGNAL-TO-I-PDU-MAPPING">/CanSystem/PDUS/Pdu_SecuredPayloadIn/SecureDataIn</I-SIGNAL-IN-I-PDU-REF>
+                      </TRANSMISSION-MODE-CONDITION>
+                    </TRANSMISSION-MODE-CONDITIONS>
+                    <TRANSMISSION-MODE-TRUE-TIMING>
+                      <EVENT-CONTROLLED-TIMING>
+                        <NUMBER-OF-REPETITIONS>1</NUMBER-OF-REPETITIONS>
+                        <REPETITION-PERIOD>
+                          <VALUE>1.0</VALUE>
+                        </REPETITION-PERIOD>
+                      </EVENT-CONTROLLED-TIMING>
+                    </TRANSMISSION-MODE-TRUE-TIMING>
+                  </TRANSMISSION-MODE-DECLARATION>
+                </I-PDU-TIMING>
+              </I-PDU-TIMING-SPECIFICATIONS>
+              <I-SIGNAL-TO-PDU-MAPPINGS>
+                <I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>SecureDataIn</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/CanSystem/ISIGNALS/SecuredDataIn</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-FIRST</PACKING-BYTE-ORDER>
+                  <START-POSITION>7</START-POSITION>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+              </I-SIGNAL-TO-PDU-MAPPINGS>
+              <UNUSED-BIT-PATTERN>0</UNUSED-BIT-PATTERN>
+            </I-SIGNAL-I-PDU>
+            <I-SIGNAL-I-PDU T="2019-07-29T10:51:20+03:00">
+              <SHORT-NAME>Pdu_SecuredPayloadOut</SHORT-NAME>
+              <LENGTH>9</LENGTH>
+              <I-PDU-TIMING-SPECIFICATIONS>
+                <I-PDU-TIMING>
+                  <TRANSMISSION-MODE-DECLARATION>
+                    <TRANSMISSION-MODE-CONDITIONS>
+                      <TRANSMISSION-MODE-CONDITION>
+                        <DATA-FILTER>
+                          <DATA-FILTER-TYPE>ALWAYS</DATA-FILTER-TYPE>
+                        </DATA-FILTER>
+                        <I-SIGNAL-IN-I-PDU-REF DEST="I-SIGNAL-TO-I-PDU-MAPPING">/CanSystem/PDUS/Pdu_SecuredPayloadOut/SecureDataOut</I-SIGNAL-IN-I-PDU-REF>
+                      </TRANSMISSION-MODE-CONDITION>
+                    </TRANSMISSION-MODE-CONDITIONS>
+                    <TRANSMISSION-MODE-TRUE-TIMING>
+                      <EVENT-CONTROLLED-TIMING>
+                        <NUMBER-OF-REPETITIONS>1</NUMBER-OF-REPETITIONS>
+                        <REPETITION-PERIOD>
+                          <VALUE>1.0</VALUE>
+                        </REPETITION-PERIOD>
+                      </EVENT-CONTROLLED-TIMING>
+                    </TRANSMISSION-MODE-TRUE-TIMING>
+                  </TRANSMISSION-MODE-DECLARATION>
+                </I-PDU-TIMING>
+              </I-PDU-TIMING-SPECIFICATIONS>
+              <I-SIGNAL-TO-PDU-MAPPINGS>
+                <I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>SecureDataOut</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/CanSystem/ISIGNALS/SecuredDataOut</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-FIRST</PACKING-BYTE-ORDER>
+                  <START-POSITION>7</START-POSITION>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+              </I-SIGNAL-TO-PDU-MAPPINGS>
+              <UNUSED-BIT-PATTERN>0</UNUSED-BIT-PATTERN>
+            </I-SIGNAL-I-PDU>
+            <SECURED-I-PDU>
+              <SHORT-NAME>Pdu_SecuredIn</SHORT-NAME>
+              <LENGTH>13</LENGTH>
+              <PAYLOAD-REF DEST="PDU-TRIGGERING">/CanSystem/CLUSTERS/CanNetwork/CanChannel/PT_Pdu_SecuredPayloadDataIn</PAYLOAD-REF>
+              <SECURE-COMMUNICATION-PROPS>
+                <AUTH-ALGORITHM>CMAC/AES-128</AUTH-ALGORITHM>
+                <AUTH-INFO-TX-LENGTH>24</AUTH-INFO-TX-LENGTH>
+                <AUTHENTICATION-RETRIES>2</AUTHENTICATION-RETRIES>
+                <DATA-ID>12345</DATA-ID>
+                <FRESHNESS-TIMESTAMP-TIME-PERIOD-FACTOR>10000</FRESHNESS-TIMESTAMP-TIME-PERIOD-FACTOR>
+                <FRESHNESS-VALUE-ID>0</FRESHNESS-VALUE-ID>
+                <FRESHNESS-VALUE-LENGTH>40</FRESHNESS-VALUE-LENGTH>
+                <FRESHNESS-VALUE-TX-LENGTH>8</FRESHNESS-VALUE-TX-LENGTH>
+                <USE-FRESHNESS-TIMESTAMP>true</USE-FRESHNESS-TIMESTAMP>
+              </SECURE-COMMUNICATION-PROPS>
+            </SECURED-I-PDU>
+            <SECURED-I-PDU>
+              <SHORT-NAME>Pdu_SecuredOut</SHORT-NAME>
+              <LENGTH>13</LENGTH>
+              <PAYLOAD-REF DEST="PDU-TRIGGERING">/CanSystem/CLUSTERS/CanNetwork/CanChannel/PT_Pdu_SecuredPayloadDataOut</PAYLOAD-REF>
+              <SECURE-COMMUNICATION-PROPS>
+                <AUTH-ALGORITHM>CMAC/AES-128</AUTH-ALGORITHM>
+                <AUTH-INFO-TX-LENGTH>24</AUTH-INFO-TX-LENGTH>
+                <AUTHENTICATION-RETRIES>2</AUTHENTICATION-RETRIES>
+                <DATA-ID>12345</DATA-ID>
+                <FRESHNESS-TIMESTAMP-TIME-PERIOD-FACTOR>10000</FRESHNESS-TIMESTAMP-TIME-PERIOD-FACTOR>
+                <FRESHNESS-VALUE-ID>1</FRESHNESS-VALUE-ID>
+                <FRESHNESS-VALUE-LENGTH>40</FRESHNESS-VALUE-LENGTH>
+                <FRESHNESS-VALUE-TX-LENGTH>8</FRESHNESS-VALUE-TX-LENGTH>
+                <USE-FRESHNESS-TIMESTAMP>true</USE-FRESHNESS-TIMESTAMP>
+              </SECURE-COMMUNICATION-PROPS>
+            </SECURED-I-PDU>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <AR-PACKAGE T="2019-07-29T10:51:20+03:00">
+          <SHORT-NAME>SYSSIGNALS</SHORT-NAME>
+          <ELEMENTS>
+            <SYSTEM-SIGNAL T="2019-07-29T10:51:20+03:00">
+              <SHORT-NAME>SecuredDataIn</SHORT-NAME>
+              <DYNAMIC-LENGTH>false</DYNAMIC-LENGTH>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL T="2019-07-29T10:51:20+03:00">
+              <SHORT-NAME>SecuredDataOut</SHORT-NAME>
+              <DYNAMIC-LENGTH>false</DYNAMIC-LENGTH>
+            </SYSTEM-SIGNAL>
+          </ELEMENTS>
+        </AR-PACKAGE>
+        <AR-PACKAGE>
+          <SHORT-NAME>FRAMES</SHORT-NAME>
+          <ELEMENTS>
+            <FLEXRAY-FRAME>
+              <SHORT-NAME>Pdu_SecuredDataIn</SHORT-NAME>
+              <FRAME-LENGTH>8</FRAME-LENGTH>
+              <PDU-TO-FRAME-MAPPINGS>
+                <PDU-TO-FRAME-MAPPING>
+                  <SHORT-NAME>PduToFrame_Pdu_SecuredDataIn</SHORT-NAME>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+                  <PDU-REF DEST="SECURED-I-PDU">/CanSystem/PDUS/Pdu_SecuredIn</PDU-REF>
+                  <START-POSITION>0</START-POSITION>
+                </PDU-TO-FRAME-MAPPING>
+              </PDU-TO-FRAME-MAPPINGS>
+            </FLEXRAY-FRAME>
+            <FLEXRAY-FRAME>
+              <SHORT-NAME>Pdu_SecuredDataOut</SHORT-NAME>
+              <FRAME-LENGTH>8</FRAME-LENGTH>
+              <PDU-TO-FRAME-MAPPINGS>
+                <PDU-TO-FRAME-MAPPING>
+                  <SHORT-NAME>PduToFrame_Pdu_SecuredDataOut</SHORT-NAME>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+                  <PDU-REF DEST="SECURED-I-PDU">/CanSystem/PDUS/Pdu_SecuredOut</PDU-REF>
+                  <START-POSITION>0</START-POSITION>
+                </PDU-TO-FRAME-MAPPING>
+              </PDU-TO-FRAME-MAPPINGS>
+            </FLEXRAY-FRAME>
+          </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>
+

@@ -1,0 +1,35 @@
+
+FUNC( void,NVM_CODE ) NvM_1_<Partition>_MainFunction( void )
+{
+  /* enter protected section to check and set reentrance protection */
+  SchM_Enter_NvM_1_<Partition>_SCHM_NVM_EXCLUSIVE_AREA();
+ 
+  if( NvM_<Partition>_MFReentrance == FALSE )
+  {
+    
+    NvM_<Partition>_MFReentrance = TRUE;
+    /* leave protected section */
+    SchM_Exit_NvM_1_<Partition>_SCHM_NVM_EXCLUSIVE_AREA();
+    NvM_Satellite_MainFunction((uint8)<OsApplicationSymbolicName>);
+    NvM_<Partition>_MFReentrance = FALSE;
+  }
+  else
+  {
+    /* leave protected section */
+    SchM_Exit_NvM_1_<Partition>_SCHM_NVM_EXCLUSIVE_AREA();
+  }
+}
+
+FUNC(void, NVM_CODE) NvM_1_<Partition>_SchM_JobFinished
+(
+  uint16 BlockIndex,
+  uint8 ServiceId,
+  uint8 ErrorStatus
+)
+{
+  NvM_InvokeSingleBlockCallback(BlockIndex, ServiceId, ErrorStatus);
+}
+
+FUNC(void, NVM_CODE) NvM_1_<Partition>_Dummy_SatelliteContext(void)
+{
+}

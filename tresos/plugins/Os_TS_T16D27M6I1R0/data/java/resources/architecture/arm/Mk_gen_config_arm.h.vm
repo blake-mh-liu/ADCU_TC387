@@ -1,0 +1,74 @@
+########### CORE PART OF THE TEMPLATE - START ###########
+#parse("include/Mk_gen_config.h.vm")
+########### CORE PART OF THE TEMPLATE - END #############
+########### TARGET PART OF THE TEMPLATE - START ###########
+########### Arch specific velocimacros that can be called from the common code parts ###########
+#macro( VM_ArchOsConfigIncludeFiles )
+#* *#\#include <private/Mk_accounting.h>
+#end
+##
+##
+#macro( VM_ArchOsConfigDataInit )
+#end
+##
+##
+#macro( VM_ArchOsConfigInterruptInit )
+#end
+##
+##
+#macro( VM_ArchOsConfigTimestampInit )
+#end
+
+/*===================================================================
+ * ARM Memory Partitions
+ *==================================================================*/
+#if( $ArchProperties.hasMpuV8() )
+#* *##foreach( $coreId in $OsModel.getUsedCoreIds() )
+#*   *##if( $OsModel.isCoreInUse($coreId) )
+#*     *##set( $cMkGlobalPartition = $ArchProperties.getMkGlobalPartition($coreId) )
+#*     *#\#define MK_CFG_C${coreId}_GLOBAL_SIZE  $cMkGlobalPartition.size()
+#*   *##end
+#* *##end
+#end
+
+/*===================================================================
+ * Memory partitions for ARM
+ *==================================================================*/
+#foreach( $coreId in $OsModel.getUsedCoreIds() )
+## the trusted function thread's partition is set dynamically from the trusted functions' configurations
+#* *#\#define MK_CFG_C${coreId}_TF_MEMPART             -1
+#end
+
+#if( $Version.getDerivate() == "ZUXEVCR5" )
+/*=====================================================================
+ * Macros related to dual redundancy scheme implementation on ZUXEVCR5
+ *====================================================================*/
+#* *##if( $MkConfig.hasDualRedundancyScheme() )
+#*   *#\#define MK_CFG_TTC_DUAL_REDUNDANCY_SCHEME_USED    1
+#*   *### MK IO region/subregion size
+#*   *#\#define MK_MPU_MK_IO1_SIZE                    (MK_ARM_MPU_SIZE_512K | 0xF900)
+#*   *### MK IO region/subregion permission
+#*   *#\#define MK_MPU_MK_IO1_PERM                    MK_MPERM_S_RW_U_R
+#*   *### Counter subsystem IO region/subregion size
+#*   *#\#define MK_MPU_${MkCtrsubPrefix}_IO_SIZE_0                 (MK_ARM_MPU_SIZE_512K | 0xE700)
+#*   *### Number of TTC modules available to applications
+#*   *#\#define OS_ARM_TTC_NMODULES                   2
+#* *##else
+#*   *#\#define MK_CFG_TTC_DUAL_REDUNDANCY_SCHEME_USED    0
+#*   *### MK IO region/subregion size
+#*   *#\#define MK_MPU_MK_IO1_SIZE                    (MK_ARM_MPU_SIZE_512K | 0xFD00)
+#*   *### MK IO region/subregion permission
+#*   *#\#define MK_MPU_MK_IO1_PERM                    MK_MPERM_S_RW_U_R
+#*   *### Counter subsystem IO region/subregion size
+#*   *#\#define MK_MPU_${MkCtrsubPrefix}_IO_SIZE_0                 (MK_ARM_MPU_SIZE_512K | 0xE300)
+#*   *### Number of TTC modules available to applications
+#*   *#\#define OS_ARM_TTC_NMODULES                   3
+#*   *### TTC1 is available to applications when dual redundancy scheme is not used
+#*   *#\#define OS_ARM_TTC1_MODULE_USED               1
+#* *##end
+#end
+
+#ifdef __cplusplus
+}
+#endif
+#endif  /* MK_GEN_CONFIG_H */

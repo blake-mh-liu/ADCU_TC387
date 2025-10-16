@@ -1,0 +1,1283 @@
+#parse("CommonVars.vm")
+/* This file is generated automatically. DO NOT EDIT!!
+ * 
+ * EB tresos AutoCore OS ${Version.getMajor()}.${Version.getMinor()}.${Version.getPatch()} ${Version.getTarget()}/${Version.getDerivate()}
+ * (Build ${Version.getBuild()})
+ * 
+ * (c) 1998-${Version.getCurrentYear()} Elektrobit Automotive GmbH
+ * Am Wolfsmantel 46
+ * 91058 Erlangen
+ * GERMANY
+ * 
+ * Date         : ${Version.getDate()}           !!!IGNORE-LINE!!!
+ */
+
+## !LINKSTO Generator.Output.os_config_h.Prologue, 2
+#ifndef OS_CONFIG_H
+\#define OS_CONFIG_H
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+## !LINKSTO Generator.Output.os_config_h.MISRACDeviations, 1
+/*
+ * MISRA-C:2012 Deviation List
+ *
+ * MISRAC2012-1) Deviated Rule: 8.6 (required)
+ * An identifier with external linkage shall have exactly one external definition.
+ *
+ * Reason:
+ * These symbols are defined in assembly language files and hence,
+ * are not visible to the MISRA-C analyzer.
+ */
+\#include <Os.h>
+\#include <Os_tool.h>
+## !LINKSTO Generator.Output.os_config_h.HwTimers.HeaderInclude, 1
+#foreach( $timer in $AllHwTimersList.getTimerDriverIncludeFiles() )
+#* *#\#include <$Version.getTarget()/${timer}.h>
+#end
+
+## !LINKSTO Generator.Output.os_config_h.Identification, 1
+\#define OS_GENERATION_ID_OS_CONF_H  $OsGenerator.getGenId()
+
+\#define OS_AUTOSAROS_VER            $Version.getMajor()
+
+\#define OS_AUTOSAROS_REV            $Version.getMinor()
+
+\#define OS_AUTOSAROS_CORE_BUILD     $Version.getBuild()
+
+\#define OS_AUTOSAROS_ARCH_BUILD     $Version.getBuild()
+
+## GenBuildIds to validated the versions of generated source files
+#ifndef OS_ASM
+extern const os_uint32_t OS_os_GenBuildId;
+#endif  /* OS_ASM */
+#foreach( $app in $AllApplicationsList )
+#* *##ifndef OS_ASM
+#* *#extern const os_uint32_t OS_$app.getName()GenBuildId;
+#* *##endif  /* OS_ASM */
+#end
+
+/*===================================================================
+ * Advanced Logical Core Interface
+ *==================================================================*/
+#if( !$OsModel.isMicroKernel() )
+#* *#/* Advanced Logical Core Interface preprocessor macros. */
+#* *##foreach( $log2PhyMacro in $OsConfig.getAlciL2PMacros() )
+#*   *#\#define $log2PhyMacro
+#* *##end
+#* *#
+#* *##foreach( $lphy2LogMacro in $OsConfig.getAlciP2LMacros() )
+#*   *#\#define $lphy2LogMacro
+#* *##end
+#end
+
+/*===================================================================
+ * Alarms
+ *==================================================================*/
+## !LINKSTO Generator.Output.os_config_h.Alarms.NALARMS, 1
+\#define OS_NALARMS  $AllAlarmsList.getNumNonInternalElements()
+## !LINKSTO Generator.Output.os_config_h.Alarms.NALARMCALLBACKS, 1
+\#define OS_NALARMCALLBACKS  $AllAlarmsList.getNumCallbackFuncs()
+## !LINKSTO Generator.Output.os_config_h.Alarms.ALARMCALLBACK, 1
+#foreach( $cbName in $AllAlarmsList.getCallbackFuncs() )
+#* *##if( $foreach.index == 0 )
+#*    *#\#define OS_ALARMCALLBACK    \
+#*  *##end
+#*  *#  /* $foreach.index */  $cbName#if( $foreach.hasNext ),  \\$newLine#else$newLine#end
+#end
+
+#foreach( $alarm in $AllAlarmsList.getInternalElements() )
+#* *##if( $AllAlarmsList.getId( $alarm ) != -1 )
+#*    *#\#define $alarm.getName()  $AllAlarmsList.getId( $alarm )
+#* *##end
+#end
+
+## !LINKSTO Generator.Output.os_config_h.Alarms.ALARM, 1
+#foreach ( $alarm in $AllAlarmsList )
+#* *##if( $foreach.index == 0 )
+#*     *#\#define OS_ALARM  OS_ALARM_INIT(    /* $alarm.getName() */  \
+#* *##else
+#*    *#OS_ALARM_INIT(    /* $alarm.getName() */  \
+#* *##end
+## !LINKSTO Generator.Output.os_config_h.Alarms.ALARM.app, 3
+#* *#  /* Application id */                        $alarm.getOwningApplication(),  \
+## !LINKSTO Generator.Output.os_config_h.Alarms.ALARM.app_ptr, 1
+#* *#  /* Application pointer */                   &OS_appTable[$alarm.getOwningApplication()],  \
+## !LINKSTO Generator.Output.os_config_h.Alarms.ALARM.permissions, 2
+#* *#  /* Permissions */                           $alarm.getPermissionsMask(),  \
+#*     Mult lines for alarm act config           *#$alarm.getAlarmActionCfg(),  \
+## !LINKSTO Generator.Output.os_config_h.Alarms.ALARM.counter, 2
+#* *#  /* Alarm counter */                         $alarm.getCounter().getName(),  \
+#* *##set( $coreId = $alarm.getOwningApplication().getPhyCoreAssignment() )
+#* *##set( $alarmLocalId = $OsModel.getAlarmsOnCore($coreId).getId($alarm) )
+#* *#  /* dynamic data */                          &OS_alarmDynamic_core${coreId}[$alarmLocalId]  \
+#* *#)#if( $foreach.hasNext ),  \\$newLine#end
+#end
+
+#set( $nonInternalAlarmList = $AllAlarmsList.getNonInternalElements() )
+#foreach ( $logCoreId in [0..$OsModel.getMaxCoreId()] )
+#* *#\#define OS_NALARMS_CORE$logCoreId  $nonInternalAlarmList.getElementsOnCore($logCoreId).size()
+#end
+
+/*===================================================================
+ * Application modes
+ *==================================================================*/
+## !LINKSTO Generator.Output.os_config_h.StartModes.NSTARTMODES, 1
+\#define OS_NSTARTMODES  $AllAppModesList.getNumOfAppModes()
+## !LINKSTO Generator.Output.os_config_h.StartModes, 2
+/* Autostart Tasks */
+#foreach( $pair in $AllAppModesList.getAutostartTasksWithIds() )
+#* *##if( $foreach.index == 0 )
+## !LINKSTO Generator.Output.os_config_h.StartModes.AUTOSTARTTASKS, 1
+#*    *#\#define OS_AUTOSTARTTASKS  \
+#* *##end
+#* *##foreach( $taskName in $pair.getSecond() )
+#*    *#  $taskName#if( $foreach.hasNext || $foreach.parent.hasNext ),  \\$newLine#else$newLine#end
+#* *##end
+#end
+
+#foreach( $pair in $AllAppModesList.getAutostartTasksWithIds() )
+#* *##if( $foreach.index == 0 )
+## !LINKSTO Generator.Output.os_config_h.StartModes.STARTMODETASKS, 1
+#*    *#\#define OS_STARTMODETASKS  \
+#* *##end
+#* *#  $pair.getFirst()#if( $foreach.hasNext ),  \\$newLine#else$newLine#end
+#end
+
+/* Autostart Alarms */
+#foreach( $pair in $AllAppModesList.getAutostartAlarmsWithIds() )
+#* *##if( $foreach.index == 0 )
+## !LINKSTO Generator.Output.os_config_h.StartModes.AUTOSTARTALARMS, 2
+#*    *#\#define OS_AUTOSTARTALARMS  \
+#* *##end
+#* *##foreach( $alarm in $pair.getSecond() )
+#*    *##if( !$foreach.hasNext )
+#*       *#    {  \
+#*       *#      OS_NULLALARM,  \
+#*       *#      OS_STARTMETHOD_REL,  \
+#*       *#      0,  \
+#*       *#      0  \
+#*       *##if( !$foreach.parent.hasNext )
+#*       *#    }
+#*       *##else
+#*       *#    },  \
+#*       *##end
+#*    *##else
+#*       *#    {  \
+#*       *#      $alarm.getName(),  \
+#*       *#      $alarm.getStartType().getStartMethodType(),  \
+#*       *##if( $alarm.getTimeUnit() == "NS" )
+#*          *#      OS_NsToTicks_${alarm.getCounter().getName()}(OS_U($alarm.getAlarmTime())),  \
+#*          *#      OS_NsToTicks_${alarm.getCounter().getName()}(OS_U($alarm.getCycleTime()))  \
+#*       *##else
+#*          *#      $alarm.getAlarmTime(),  \
+#*          *#      $alarm.getCycleTime()  \
+#*       *##end
+#*       *#    },  \
+#*    *##end
+#* *##end
+#end
+
+#foreach( $pair in $AllAppModesList.getAutostartAlarmsWithIds() )
+#* *##if( $foreach.index == 0 )
+## !LINKSTO Generator.Output.os_config_h.StartModes.STARTMODEALARMS, 1
+#*    *#\#define OS_STARTMODEALARMS  \
+#* *##end
+#* *#  $pair.getFirst()#if( $foreach.hasNext ),  \\$newLine#else$newLine#end
+#end
+
+/* Autostart ScheduleTables */
+#foreach( $pair in $AllAppModesList.getAutostartSchTblsWithIds() )
+#* *##if( $foreach.index == 0 )
+## !LINKSTO Generator.Output.os_config_h.StartModes.AUTOSTARTSCHEDULES, 1
+#*    *#\#define OS_AUTOSTARTSCHEDULES  \
+#* *##end
+#* *##foreach( $schTbl in $pair.getSecond() )
+#*    *##if( !$foreach.hasNext )
+#*       *#    {  \
+#*       *#      OS_NULLSCHEDULE,  \
+#*       *#      OS_STARTMETHOD_REL,  \
+#*       *#      0  \
+#*       *##if( !$foreach.parent.hasNext )
+#*       *#    }
+#*       *##else
+#*       *#    },  \
+#*       *##end
+#*    *##else
+#*       *#    {  \
+#*       *#      $schTbl.getName(),  \
+#*       *#      $schTbl.getStartType().getStartMethodType(),  \
+#*              *##if($schTbl.getTimeUnit() == "NS")
+#*                 *#      OS_NsToTicks_$schTbl.getCounter().getName()($schTbl.getStartValue())  \
+#*              *##else
+#*                 *#      $schTbl.getStartValue()  \
+#*              *##end
+#*       *#    },  \
+#*    *##end
+#* *##end
+#end
+
+#foreach( $pair in $AllAppModesList.getAutostartSchTblsWithIds() )
+#* *##if( $foreach.index == 0 )
+## !LINKSTO Generator.Output.os_config_h.StartModes.STARTMODESCHEDULES, 1
+#*    *#\#define OS_STARTMODESCHEDULES  \
+#* *##end
+#* *#  $pair.getFirst()#if( $foreach.hasNext ),  \\$newLine#else$newLine#end
+#end
+
+/*===================================================================
+ * Applications
+ *==================================================================*/
+#foreach( $app in $AllApplicationsList )
+#* *##if( $app.getMemRegLinkerSymbolStart("DATA") != "OS_NULL" )
+#*     *##ifndef OS_ASM
+#*     *##ifndef EB_STATIC_CHECK
+#*     *#\#if OS_KERNEL_TYPE != OS_MICROKERNEL
+#*     *#$app.getMemRegLinkerSymbolStart("DATA");
+#*     *##endif  /* OS_KERNEL_TYPE != OS_MICROKERNEL */
+#*     *##endif  /* EB_STATIC_CHECK */
+#*     *##endif  /* OS_ASM */
+#* *##end
+#* *##if( $app.getMemRegLinkerSymbolEnd("DATA") != "OS_NULL" )
+#*     *##ifndef OS_ASM
+#*     *##ifndef EB_STATIC_CHECK
+#*     *#\#if OS_KERNEL_TYPE != OS_MICROKERNEL
+#*     *#$app.getMemRegLinkerSymbolEnd("DATA");
+#*     *##endif  /* OS_KERNEL_TYPE != OS_MICROKERNEL */
+#*     *##endif  /* EB_STATIC_CHECK */
+#*     *##endif  /* OS_ASM */
+#* *##end
+#* *##if( $app.getMemRegLinkerSymbolStart("INIT") != "OS_NULL" )
+#*     *##ifndef OS_ASM
+#*     *##ifndef EB_STATIC_CHECK
+#*     *#\#if OS_KERNEL_TYPE != OS_MICROKERNEL
+#*     *#$app.getMemRegLinkerSymbolStart("INIT");
+#*     *##endif  /* OS_KERNEL_TYPE != OS_MICROKERNEL */
+#*     *##endif  /* EB_STATIC_CHECK */
+#*     *##endif  /* OS_ASM */
+#* *##end
+#* *##if( $app.getMemRegLinkerSymbolEnd("INIT") != "OS_NULL" )
+#*     *##ifndef OS_ASM
+#*     *##ifndef EB_STATIC_CHECK
+#*     *#\#if OS_KERNEL_TYPE != OS_MICROKERNEL
+#*     *#$app.getMemRegLinkerSymbolEnd("INIT");
+#*     *##endif  /* OS_KERNEL_TYPE != OS_MICROKERNEL */
+#*     *##endif  /* EB_STATIC_CHECK */
+#*     *##endif  /* OS_ASM */
+#* *##end
+#end
+## !LINKSTO Generator.Output.os_config_h.Applications.NAPPS, 1
+\#define OS_NAPPS        $AllApplicationsList.size()
+## !LINKSTO Generator.Output.os_config_h.Applications.NAPPSNONPRIV, 1
+\#define OS_NAPPSNONPRIV  $AllApplicationsList.getNumNonTrusted()
+#foreach( $app in $AllApplicationsList )
+#* *##if( $app.isInternal() )
+#* *#\#if OS_KERNEL_TYPE != OS_MICROKERNEL
+#*    *#\#define $app.getName()  $AllApplicationsList.getId( $app )
+#* *##endif
+#* *##end
+#end
+
+#if( !$AllApplicationsList.isEmpty() )
+#* *##foreach( $app in $AllApplicationsList )
+#*    *##set( $owningApp       = $app.getOwningApplication() )
+#*    *##set( $coreOfOwningApp = $owningApp.getPhyCoreAssignment() )
+#*    *##set( $owningAppId     = $OsModel.getApplicationsOnCore($coreOfOwningApp).getId($app) )
+#*    *##if( $foreach.index == 0 )
+## !LINKSTO Generator.Output.os_config_h.Applications.APPCONFIG, 2
+#*       *#\#define OS_APPCONFIG  OS_APPCONFIG_INIT(    /* $app.getName() */  \
+#*    *##else
+#*       *#OS_APPCONFIG_INIT(    /* $app.getName() */  \
+#*    *##end
+## !LINKSTO Generator.Output.os_config_h.Applications.APPCONFIG.buildId, 2
+#*    *#  /* Build ID */                                    &OS_$app.getName()GenBuildId,  \
+## !LINKSTO Generator.Output.os_config_h.Applications.APPCONFIG.startupHook, 2
+#*    *##if( $app.hasStartupHook() )
+#*    *#  /* Startup Hook */                                StartupHook_$app.getName(),  \
+#*    *##else
+#*    *#  /* Startup Hook */                                OS_NULL,  \
+#*    *##end
+## !LINKSTO Generator.Output.os_config_h.Applications.APPCONFIG.shutdownHook, 2
+#*    *##if( $app.hasShutdownHook() )
+#*    *#  /* Shutdown Hook */                               ShutdownHook_$app.getName(),  \
+#*    *##else
+#*    *#  /* Shutdown Hook */                               OS_NULL,  \
+#*    *##end
+## !LINKSTO Generator.Output.os_config_h.Applications.APPCONFIG.errorHook, 2
+#*    *##if( $app.hasErrorHook() )
+#*    *#  /* Error hook */                                  ErrorHook_$app.getName(),  \
+#*    *##else
+#*    *#  /* Error hook */                                  OS_NULL,  \
+#*    *##end
+## !LINKSTO Generator.Output.os_config_h.Applications.APPCONFIG.dataStart, 2
+## !LINKSTO Generator.Output.os_config_h.Applications.APPCONFIG.dataEnd, 2
+## !LINKSTO Generator.Output.os_config_h.Applications.APPCONFIG.idataStart, 2
+## !LINKSTO Generator.Output.os_config_h.Applications.APPCONFIG.idataEnd, 2
+#*    *#  /* start of data/bss */                           $app.getMemRegionStart("DATA"),  \
+#*    *#  /* end of data/bss */                             $app.getMemRegionEnd("DATA"),  \
+#*    *#  /* start of initial data */                       $app.getMemRegionStart("INIT"),  \
+#*    *#  /* end of initial data */                         $app.getMemRegionEnd("INIT"),  \
+## !LINKSTO Generator.Output.os_config_h.Applications.APPCONFIG.permission, 2
+#*    *#  /* Permission Bit */                              0x$ClassOfHelpers.toHexString($app.getPermissionMask()),  \
+#*    *#  /* Accessing applications */                      0x$ClassOfHelpers.toHexString($app.getAppAccessMask()),  \
+#*    *#  /* Startup hook stack */                          $app.getStartupHookStack(),  \
+#*    *#  /* Shutdown hook stack */                         $app.getShutdownHookStack(),  \
+#*    *#  /* Error hook stack */                            $app.getErrorHookStack(),  \
+#*    *##if( $app.hasRestartTask() )
+#*    *#  /* Restart Task */                                $app.getRestartTask().getName(),  \
+#*    *##else
+## !LINKSTO Generator.Output.os_config_h.Applications.APPCONFIG.restartTask, 2
+#*    *#  /* Restart Task */                                OS_NULLTASK,  \
+#*    *##end
+## !LINKSTO Generator.Output.os_config_h.Applications.APPCONFIG.flags, 2
+## !LINKSTO Generator.Output.os_config_h.Applications.APPCONFIG.flags.TRUSTED, 1
+#*    *#  /* Flags */                                       $app.getflags(),  \
+## !LINKSTO Generator.Output.os_config_h.Applications.APPCONFIG.appId, 1
+#*    *#  /* Application ID */                              $app.getName(),  \
+#*    *#  /* dynamic data */                                &OS_appDynamic_core${coreOfOwningApp}[$owningAppId],  \
+## !LINKSTO Generator.Output.os_config_h.Applications.APPCONFIG.core, 1
+#*    *#  /* CPU core */                                    $app.getPhyCoreAssignment(),  \
+#*      *##VM_ArchOsApplication( $app )
+#*    *#)#if( $foreach.hasNext ),  \\$newLine#else$newLine#end
+#* *##end
+#end
+
+/* Trusted Functions */
+#set( $totalTrustedFunctions = $AllApplicationsList.getNumTrustedFunctions() )
+\#define OS_NFUNCTIONS  $totalTrustedFunctions
+#set( $nTf = 0 )
+#if( $totalTrustedFunctions > 0 )
+#* *#\#define OS_FUNCTIONCONFIG    \
+#* *##foreach( $app in $AllApplicationsList )
+#*    *##foreach( $tf in $app.getTrustedFunctions() )
+#*          *#   {  \
+#*          *#      /* Application */                  &OS_appTable[$app.getName()],  \
+#*          *#      /* Function name */                TRUSTED_$tf.getName(),  \
+#*          *#      /* Permissions */                  $ClassOfHelpers.toHexStringUnsigned($AllApplicationsList.getAllPermissionsMask()),  \
+#*          *##if( $tf.getStackSize() == 0 )
+#*             *#      /* Stack size */                   TF_STACK_$tf.getName(),  \
+#*          *##else
+#*             *#      /* Stack size */                   $tf.getStackSize()u  \
+#*          *##end
+#*          *#   }#if( $nTf < ( $totalTrustedFunctions - 1 ) ),  \\$newLine#else$newLine#end
+#*          *##set( $nTf = $nTf + 1 )
+#*    *##end
+#* *##end
+#end
+
+\#define OS_SHOOKSTACKLEN  $AllApplicationsList.getSHooksStackSize()
+\#define OS_EHOOKSTACKLEN  $AllApplicationsList.getEHooksStackSize()
+#foreach( $coreId in [0..$OsModel.getMaxCoreId()] )
+#* *#\#define OS_NAPPS_CORE$coreId    $AllApplicationsList.getElementsOnCore($coreId).size()
+#end
+
+/*===================================================================
+ * CPU Core configuration
+ *==================================================================*/
+#set( $nCores = $OsConfig.getNumCPUCoresMax() - 1 )
+#foreach( $cpuCoreInd in [0..$nCores] )
+#* *##if( $OsModel.isCoreInUse( $cpuCoreInd ) )
+#*    *#\#define OS_PROPERTIES_CORE$cpuCoreInd  (OS_U(0)|OS_COREPROP_USED_BIT)
+#* *##else
+#*    *#\#define OS_PROPERTIES_CORE$cpuCoreInd  (OS_U(0))
+#* *##end
+#end
+
+/*===================================================================
+ * Channel Initializers
+ *==================================================================*/
+## !LINKSTO Generator.Output.os_config_h.Ioc.IOCENABLED, 1
+#if( $IocCommsList.requiresIocCode() )
+#* *#\#define OS_IOC_ENABLED  1
+#else
+#* *#\#define OS_IOC_ENABLED  0
+#end
+
+/*===================================================================
+ * Configured Modes
+ *==================================================================*/
+## !LINKSTO Generator.Output.os_config_h.CONFIG_MODE, 1
+\#define OS_CONFIGMODE        ($OsConfig.getOsModes())
+\#define OS_IECMODE           ($OsOptimize.getInterruptLockingChecks().getInterruptLockingChecksMacro())
+\#define OS_HOOKSELECTION     $OsConfig.getHooksSelection()
+#if( $OsOptimize.isStrictServiceProtection() )
+#* *#\#define OS_PERMITTEDCONTEXT  (OS_permittedContextAutosar)
+#else
+#* *#\#define OS_PERMITTEDCONTEXT  (OS_permittedContextOsek)
+#end
+#if( $OsConfig.isGenerateSwcd() )
+#* *#\#define OS_INCLUDE_RTE       1
+#else
+#* *#\#define OS_INCLUDE_RTE       0
+#end
+
+/*===================================================================
+ * Counters
+ *==================================================================*/
+\#define OS_NSHAREDHWCOUNTERTIMESTAMP         $AllCountersList.getSharedHwCounterTimestamp()
+\#define OS_SHAREDHWCOUNTERTIMESTAMP_ALARMID  $AllCountersList.getSharedHwCounterTimestampAlarmId()
+\#define OS_SHAREDHWCOUNTERTIMESTAMP_COREID   $AllCountersList.getSharedHwCounterTimestampCoreId()
+#if( $ArchProperties.isTimerInterruptCommon() )
+#* *##foreach( $hwTimer in $AllHwTimersList )
+#*   *##if( $hwTimer.getTimerType() != "EXECUTION" )
+#*     *##set( $channelDemux = $hwTimer.getChannelDemux() )
+#*     *##if( $channelDemux != $null )
+#*       *#$channelDemux.getFirst()
+#*       *#$channelDemux.getSecond()
+#*     *##end
+#*   *##end
+#* *##end
+#end
+## !LINKSTO Generator.Output.os_config_h.Counters.COUNTER, 1
+#set( $allQmCtrsList = $AllCountersList.getCsCounters() )
+## !LINKSTO Generator.Output.os_config_h.Counters.NCOUNTERS, 1
+\#define OS_NCOUNTERS    $AllCountersList.getNumCsCounters()
+## !LINKSTO Generator.Output.os_config_h.Counters.NSWCOUNTERS, 1
+\#define OS_NSWCOUNTERS  $AllCountersList.getNumSwCounters()
+
+#foreach( $qmCtr in $allQmCtrsList )
+#* *##if( $qmCtr.isInternal() )
+#* *#\#define $qmCtr.getName()  $allQmCtrsList.getId($qmCtr)
+#* *##end
+#end
+#if( !$AllCountersList.isEmpty() )
+#* *##foreach( $ctrSubCtr in $AllCountersList.getCsCounters() )
+#*     *##set( $coreId     = $ctrSubCtr.getOwningApplication().getPhyCoreAssignment() )
+#*     *##set( $ctrLocalId = $OsModel.getCountersOnCore($coreId).getId($ctrSubCtr) )
+#*     *##if( $foreach.index == 0 )
+#*        *#\#define OS_COUNTER  OS_COUNTER_INIT(    /* $ctrSubCtr.getName() */  \
+#*     *##else
+#*        *#OS_COUNTER_INIT(    /* $ctrSubCtr.getName() */  \
+#*     *##end
+## !LINKSTO Generator.Output.os_config_h.Counters.COUNTER.app, 2
+#*     *#  /* Application id */       $ctrSubCtr.getOwningApplication().getName(),  \
+#*     *#  /* Application pointer */  &OS_appTable[$ctrSubCtr.getOwningApplication().getName()],  \
+## !LINKSTO Generator.Output.os_config_h.Counters.COUNTER.updFunc, 1
+#*     *#  /* Update function */      $ctrSubCtr.getUpdateFunction(),  \
+## !LINKSTO Generator.Output.os_config_h.Counters.COUNTER.permissions, 2
+#*     *#  /* Permissions */          $ClassOfHelpers.toHexStringUnsigned($ctrSubCtr.getAppAccessMask()),  \
+## !LINKSTO Generator.Output.os_config_h.Counters.COUNTER.hwt, 1
+#*     *##if( $ctrSubCtr.getType() == "HARDWARE" )
+#*        *#  /* Hardware timer */       &OS_hwTimer[$AllHwTimersList.getId($ctrSubCtr.getHwTimer())],  \
+#*     *##else
+#*        *#  /* Hardware timer */       OS_NULL,  \
+#*     *##end
+## !LINKSTO Generator.Output.os_config_h.Counters.COUNTER.maxallowedvalue, 2
+#*     *#  /* Max allowed value */    (os_tick_t)$ctrSubCtr.getMaxAllowedValue()u,  \
+## !LINKSTO Generator.Output.os_config_h.Counters.COUNTER.ticksperbase, 2
+#*     *#  /* Ticks per base */       (os_tick_t)$ctrSubCtr.getTicksPerBase()u,  \
+## !LINKSTO Generator.Output.os_config_h.Counters.COUNTER.mincycle, 2
+#*     *#  /* Min cycle */            (os_tick_t)$ctrSubCtr.getMinCycle()u,  \
+#*     *#  /* dynamic data */         &OS_counterDynamic_core${coreId}[$ctrLocalId]  \
+#*     *##if( $foreach.hasNext )),  \\$newLine#else)$newLine#end
+#* *##end
+#end
+
+#if( !$OsModel.isMicroKernel() )
+## !LINKSTO Generator.Output.os_config_h.Counters.NINTERNALTICKERS, 1
+\#define OS_NINTERNALTICKERS  $AllCountersList.getNumHwDrivenCounters()
+#* *##foreach( $hwCtr in $AllCountersList.getHwDrivenCounters() )
+#*     *##if( $foreach.index == 0 )
+## !LINKSTO Generator.Output.os_config_h.Counters.STARTINTERNALTICKERS, 1
+#*         *#\#define OS_STARTINTERNALTICKERS() do {  \
+#*     *##end
+#*     *##if( $hwCtr.getType() == "SOFTWARE" )
+#*        *#  OS_${hwCtr.getHwIncrementer()}_Init(OS_NsToTicks_${hwCtr.getHwIncrementer()}(${hwCtr.getNsPerTick()}));  \
+#*     *##end
+#*     *##if( !$foreach.hasNext() )
+#*         *#} while(0)
+#*     *##end
+#* *##end
+#end
+/* Number of counters available on cores */
+#foreach( $coreId in [0..$OsModel.getMaxCoreId()] )
+#* *#\#define OS_NCOUNTERS_CORE$coreId  $OsModel.getCountersOnCore($coreId).size()
+#end
+
+/*===================================================================
+ * Events
+ *==================================================================*/
+\#define OS_NEVENTS  $AllEventsList.size()
+
+/*===================================================================
+ * Execution timer
+ *==================================================================*/
+#foreach( $cc in $OsConfig.getAllCoreConfig() )
+#* *##if( ($cc != $null) && ($cc.getExecutionTimer() != $null) && $OsModel.isCoreInUse( $cc.getPhysicalCoreId() ) )
+#*    *#\#define OS_ExecutionNsToTicksCore${cc.getPhysicalCoreId()}(ns)      OS_NsToTicks_${cc.getExecutionTimer().getName()}(ns)
+#*    *#\#define OS_ExecutionTicksToNsCore${cc.getPhysicalCoreId()}(ticks)   OS_TicksToNs_${cc.getExecutionTimer().getName()}(ticks)
+#*    *#\#define OS_EXECUTIONTIMERINDEX_CORE$cc.getPhysicalCoreId()        $AllHwTimersList.getId($cc.getExecutionTimer() )
+#*    *##if( ( $OsModel.getNumUsedCores() == 1 ) && ( $cc.getPhysicalCoreId() == $OsConfig.getPhysicalInitCoreId() ) )
+#*       *#\#define OS_ExecutionNsToTicks               OS_ExecutionNsToTicksCore$cc.getPhysicalCoreId()
+#*       *#\#define OS_ExecutionTicksToNs               OS_ExecutionTicksToNsCore$cc.getPhysicalCoreId()
+#*    *##end
+#* *##end
+#end
+##
+#set( $coreNumLimit = $OsConfig.getNumCPUCoresMax() - 1 )
+#foreach( $coreId in [0..$coreNumLimit] )
+#* *##set( $cc = $OsConfig.getCoreConfig($coreId) )
+#* *##if( $foreach.index == 0 )
+#*   *#\#define OS_EXECUTIONTIMER_INIT     /* Execution timer init */  \
+#* *##end
+#* *##if( ($cc != $null) && ($cc.getExecutionTimer() != $null) && $OsModel.isCoreInUse($coreId) )
+#*    *#  &OS_hwTimer[OS_EXECUTIONTIMERINDEX_CORE$cc.getPhysicalCoreId()]#if($foreach.hasNext), \\$newLine#else$newLine#end
+#* *##else
+#*    *#  OS_NULL#if($foreach.hasNext), \\$newLine#else$newLine#end
+#* *##end
+#end
+
+/*===================================================================
+ * Time-stamp timer
+ *==================================================================*/
+## !LINKSTO Generator.Output.os_config_h.TimeStamp, 1
+#if( !$OsModel.isMicroKernel() )
+#* *##if( $OsConfig.getTimestampTimerType() == "HWTIMER" )
+#*    *#\#define OS_TIMESTAMPTIMERINDEX  $AllHwTimersList.getId($OsConfig.getTimestampTimer())
+#* *##end
+#end
+
+/*===================================================================
+ * Hardware Timers
+ *==================================================================*/
+## !LINKSTO Generator.Output.os_config_h.HwTimers.NHWTIMERS, 1
+\#define OS_NHWTIMERS        $AllHwTimersList.size()
+## !LINKSTO Generator.Output.os_config_h.HwTimers.NHWTIMERS_COREX, 1
+#foreach( $coreId in $OsModel.getUsedCoreIds() )
+#* *#\#define OS_NHWTIMERS_CORE$coreId  $AllHwTimersList.getHwTimersOnCore($coreId).size()
+#end
+
+#if( !$AllHwTimersList.isEmpty() )
+#* *##foreach( $hwTmr in $AllHwTimersList )
+#* *##set( $owningApp          = $hwTmr.getOwningApplication() )
+#* *##set( $coreId             = $owningApp.getPhyCoreAssignment() )
+#* *##set( $cLocalHwTimersList = $AllHwTimersList.getHwTimersOnCore($coreId) )
+## !LINKSTO Generator.Output.os_config_h.HwTimers.HWTIMER, 2
+#* *##if( $foreach.index == 0 )
+#*    *#\#define OS_HWTIMER {    /* $hwTmr.getName() */  \
+#* *##else
+#*    *#{    /* $hwTmr.getName() */  \
+#* *##end
+## !LINKSTO Generator.Output.os_config_h.HwTimers.HWTIMER.driver, 1
+#* *#  /* Driver table */                     &$hwTmr.getDriverTable(),  \
+## !LINKSTO Generator.Output.os_config_h.HwTimers.HWTIMER.lastValue, 1
+#* *#  /* HwTimer Last Value */               &OS_hwtLastValue_core${coreId}[$cLocalHwTimersList.getId($hwTmr)],  \
+## !LINKSTO Generator.Output.os_config_h.HwTimers.HWTIMER.maxDelta, 1
+#* *#  /* Max delta */                        $hwTmr.getMaxDelta()u,  \
+## !LINKSTO Generator.Output.os_config_h.HwTimers.HWTIMER.defDelta, 1
+#* *#  /* Default delta if max exceeded */    $hwTmr.getDefDelta()u,  \
+## !LINKSTO Generator.Output.os_config_h.HwTimers.HWTIMER.wrapMask, 1
+#* *#  /* Wrap mask */                        $hwTmr.getWrapValue()u,  \
+## !LINKSTO Generator.Output.os_config_h.HwTimers.HWTIMER.major, 1
+#* *#  /* Driver number */                    $hwTmr.getDrvNumber()u,  \
+## !LINKSTO Generator.Output.os_config_h.HwTimers.HWTIMER.minor, 1
+#* *#  /* Driver channel */                   $hwTmr.getDrvChannel()u,  \
+#* *#  /* core */                             ${coreId}u,  \
+#* *##VM_ArchOsHwTimerInit($hwTmr)
+#* *#}#if( $foreach.hasNext ),  \\$newLine#else$newLine#end
+#* *##end
+#end
+
+/*===================================================================
+ * Hook Functions
+ *==================================================================*/
+## !LINKSTO Generator.Output.os_config_h.HookFunctions.ErrorHook, 1
+#if( $OsConfig.hasErrorHook() )
+#* *#\#define OS_ERRORHOOK       &ErrorHook
+#end
+## !LINKSTO Generator.Output.os_config_h.HookFunctions.PreTaskHook, 1
+#if( $OsConfig.hasPreTaskHook() )
+#* *#\#define OS_PRETASKHOOK     &PreTaskHook
+#end
+## !LINKSTO Generator.Output.os_config_h.HookFunctions.PostTaskHook, 1
+#if( $OsConfig.hasPostTaskHook() )
+#* *#\#define OS_POSTTASKHOOK    &PostTaskHook
+#end
+## !LINKSTO Generator.Output.os_config_h.HookFunctions.StartupHook, 1
+#if( $OsConfig.hasStartupHook() )
+#* *#\#define OS_STARTUPHOOK     &StartupHook
+#end
+## !LINKSTO Generator.Output.os_config_h.HookFunctions.ShutdownHook, 1
+#if( $OsConfig.hasShutdownHook() )
+#* *#\#define OS_SHUTDOWNHOOK    &ShutdownHook
+#end
+## !LINKSTO Generator.Output.os_config_h.HookFunctions.PreIsrHook, 1
+#if( $OsConfig.hasPreISRHook() )
+#* *#\#define OS_PREISRHOOK      &PreIsrHook
+#end
+## !LINKSTO Generator.Output.os_config_h.HookFunctions.PostIsrHook, 1
+#if( $OsConfig.hasPostISRHook() )
+#* *#\#define OS_POSTISRHOOK     &PostIsrHook
+#end
+## !LINKSTO Generator.Output.os_config_h.HookFunctions.ProtectionHook, 1
+#if( $OsConfig.hasProtectionHook() )
+#* *#\#define OS_PROTECTIONHOOK  &ProtectionHook
+#end
+
+/*===================================================================
+ * Interrupts
+ *==================================================================*/
+#foreach( $interrupt in $AllInterruptsList )
+#* *##if( !$interrupt.getCategory().toString().equals("MK") )
+#*    *##if( $interrupt.getMemRegLinkerSymbolStart("DATA") != "OS_NULL" )
+#*        *##ifndef OS_ASM
+#*        *##ifndef EB_STATIC_CHECK
+#*        *#\#if OS_KERNEL_TYPE != OS_MICROKERNEL
+#*        *#$interrupt.getMemRegLinkerSymbolStart("DATA");
+#*        *##endif  /* OS_KERNEL_TYPE != OS_MICROKERNEL */
+#*        *##endif  /* EB_STATIC_CHECK */
+#*        *##endif  /* OS_ASM */
+#*    *##end
+#*    *##if( $interrupt.getMemRegLinkerSymbolEnd("DATA") != "OS_NULL" )
+#*        *##ifndef OS_ASM
+#*        *##ifndef EB_STATIC_CHECK
+#*        *#\#if OS_KERNEL_TYPE != OS_MICROKERNEL
+#*        *#$interrupt.getMemRegLinkerSymbolEnd("DATA");
+#*        *##endif  /* OS_KERNEL_TYPE != OS_MICROKERNEL */
+#*        *##endif  /* EB_STATIC_CHECK */
+#*        *##endif  /* OS_ASM */
+#*    *##end
+#*    *##if( $interrupt.getMemRegLinkerSymbolStart("INIT") != "OS_NULL" )
+#*        *##ifndef OS_ASM
+#*        *##ifndef EB_STATIC_CHECK
+#*        *#\#if OS_KERNEL_TYPE != OS_MICROKERNEL
+#*        *#$interrupt.getMemRegLinkerSymbolStart("INIT");
+#*        *##endif  /* OS_KERNEL_TYPE != OS_MICROKERNEL */
+#*        *##endif  /* EB_STATIC_CHECK */
+#*        *##endif  /* OS_ASM */
+#*    *##end
+#*    *##if( $interrupt.getMemRegLinkerSymbolEnd("INIT") != "OS_NULL" )
+#*        *##ifndef OS_ASM
+#*        *##ifndef EB_STATIC_CHECK
+#*        *#\#if OS_KERNEL_TYPE != OS_MICROKERNEL
+#*        *#$interrupt.getMemRegLinkerSymbolEnd("INIT");
+#*        *##endif  /* OS_KERNEL_TYPE != OS_MICROKERNEL */
+#*        *##endif  /* EB_STATIC_CHECK */
+#*        *##endif  /* OS_ASM */
+#*    *##end
+#* *##end
+#end
+
+## !LINKSTO Generator.Output.os_config_h.Interrupts.NINTERRUPTS, 1
+\#define OS_NINTERRUPTS         OS_U($AllInterruptsList.size())
+## !LINKSTO Generator.Output.os_config_h.Interrupts.NCAT1_INTERRUPTS, 1
+\#define OS_NCAT1_INTERRUPTS    OS_U($AllInterruptsList.getNumCat1())
+## !LINKSTO Generator.Output.os_config_h.Interrupts.NCAT2_INTERRUPTS, 1
+\#define OS_NCAT2_INTERRUPTS    OS_U($AllInterruptsList.getCat2User().size())
+## !LINKSTO Generator.Output.os_config_h.Interrupts.NCATK_INTERRUPTS, 1
+\#define OS_NCATK_INTERRUPTS    OS_U($AllInterruptsList.getNumKernelInterrupts())
+## !LINKSTO Generator.Output.os_config_h.Interrupts.NCAT2K_INTERRUPTS, 1
+\#define OS_NCAT2K_INTERRUPTS   OS_U($AllInterruptsList.getNumCat2K())
+## !LINKSTO Generator.Output.os_config_h.Interrupts.NISRSEXECTIMELIMIT, 1
+\#define OS_NISRSEXECTIMELIMIT  OS_U($AllInterruptsList.getNumExecTimeBudget())
+## !LINKSTO Generator.Output.os_config_h.Interrupts.NISRSINTLOCKLIMIT, 1
+\#define OS_NISRSINTLOCKLIMIT   OS_U($AllInterruptsList.getNumIntLockBudget())
+## !LINKSTO Generator.Output.os_config_h.Interrupts.NISRSRESLOCKLIMIT, 1
+\#define OS_NISRSRESLOCKLIMIT   OS_U($AllInterruptsList.getNumResLockBudget())
+## !LINKSTO Generator.Output.os_config_h.Interrupts.NISRACCOUNTING, 1
+\#define OS_NISRACCOUNTING      OS_U($AllInterruptsList.getNumAccounting())
+## !LINKSTO Generator.Output.os_config_h.Interrupts.CAT1LOCK, 1
+\#define OS_CAT1LOCK            OS_U($AllInterruptsList.getCat1LockLevel())
+## !LINKSTO Generator.Output.os_config_h.Interrupts.CAT2LOCK, 1
+\#define OS_CAT2LOCK            OS_U($AllInterruptsList.getCat2LockLevel())
+## LINKSTO Generator.Output.os_config_h.Interrupts.CATKLOCK, 1
+\#define OS_KERNLOCK            OS_U($AllInterruptsList.getCatKLockLevel())
+## !LINKSTO Generator.Output.os_config_h.Interrupts.XCOREUNLOCK, 1
+#if( $AllInterruptsList.getCrossCoreUnlockLevel() == -1 )
+#* *#\#define OS_XCOREUNLOCK         OS_KERNLOCK
+#else
+#* *#\#define OS_XCOREUNLOCK         OS_U($AllInterruptsList.getCrossCoreUnlockLevel())
+#end
+\#define OS_ENABLEALLLOCK       OS_U($ArchProperties.getMinIntPriority())
+
+/* Internal Interrupt Ids */
+#foreach( $interrupt in $AllInterruptsList )
+#* *##if( $interrupt.isInternal() && ($AllInterruptsList.getId($interrupt) >= 0) )
+#*     *#\#if OS_KERNEL_TYPE != OS_MICROKERNEL
+#*     *#\#define $interrupt.getName()  $AllInterruptsList.getId($interrupt)
+#*     *##endif
+#* *##end
+#end
+
+/* Isr Config Struct Init Macros. */
+#foreach( $interrupt in $AllInterruptsList )
+#* *##if( $foreach.index == 0 )
+## !LINKSTO Generator.Output.os_config_h.Interrupts.ISRCONFIG, 1
+#*    *#\#define OS_ISRCONFIG  OS_ISRCONFIG_INIT(    /* $interrupt.getName() */  \
+#* *##else
+#*    *#OS_ISRCONFIG_INIT(    /* $interrupt.getName() */  \
+#* *##end
+#* *##set( $owningApp        = $interrupt.getOwningApplication() )
+#* *##set( $owningCore       = $owningApp.getPhyCoreAssignment() )
+#* *##set( $clocalinterrupts = $OsModel.getInterruptsOnCore($owningCore) )
+## !LINKSTO Generator.Output.os_config_h.Interrupts.ISRCONFIG.app, 1
+#* *#  /* Application */                       &OS_appTable[$owningApp.getName()],  \
+#* *#  /* Permissions */                       $ClassOfHelpers.toHexStringUnsigned($interrupt.getAppAccessMask()),  \
+## !LINKSTO Generator.Output.os_config_h.Interrupts.ISRCONFIG.accounting, 1
+#* *##if( $interrupt.hasAccounting() )
+#* *#  /* Accounting structure */              &OS_isrAccounting_core${owningCore}[$interrupt.getAccountingIndex($owningCore)],  \
+#* *##else
+#* *#  /* Accounting structure */              OS_NULL,  \
+#* *##end
+## !LINKSTO Generator.Output.os_config_h.Interrupts.ISRCONFIG.dataStart, 2
+#* *#  /* start of data/bss */                 $interrupt.getMemRegionStart("DATA"),  \
+## !LINKSTO Generator.Output.os_config_h.Interrupts.ISRCONFIG.dataEnd, 2
+#* *#  /* end of data/bss */                   $interrupt.getMemRegionEnd("DATA"),  \
+## !LINKSTO Generator.Output.os_config_h.Interrupts.ISRCONFIG.idataStart, 2
+#* *#  /* start of initial data */             $interrupt.getMemRegionStart("INIT"),  \
+## !LINKSTO Generator.Output.os_config_h.Interrupts.ISRCONFIG.idataEnd, 2
+#* *#  /* end of initial data */               $interrupt.getMemRegionEnd("INIT"),  \
+## !LINKSTO Generator.Output.os_config_h.Interrupts.ISRCONFIG.func, 1
+#* *#  /* Interrupt entry */                   &$interrupt.getIsrFuncName(),  \
+## !LINKSTO Generator.Output.os_config_h.Interrupts.ISRCONFIG.execBudget, 2
+## !LINKSTO Generator.Output.os_config_h.Interrupts.ISRCONFIG.osLockTime, 1
+## !LINKSTO Generator.Output.os_config_h.Interrupts.ISRCONFIG.allLockTime, 1
+## !LINKSTO Generator.Output.os_config_h.Interrupts.ISRCONFIG.resourceLockTime, 2
+#* *##if( $interrupt.hasAccounting() && $interrupt.hasTimingProtection() )
+#*    *#  /* Execution budget */               OS_ExecutionNsToTicksCore${owningCore}($interrupt.getExecutionBudget()u),  \
+#*    *#  /* Os interrupt lock budget */       OS_ExecutionNsToTicksCore${owningCore}($interrupt.getOsInterruptLockBudget()u),  \
+#*    *#  /* All interrupt lock budget */      OS_ExecutionNsToTicksCore${owningCore}($interrupt.getAllInterruptLockBudget()u),  \
+#*    *##if( $interrupt.hasResourceLocks() )
+#*       *#  /* Resource lock budget */              $ResLockOptimizer.structEntryOf($interrupt),  \
+#*    *##else
+#*       *#  /* Resource lock budget */              OS_NULL,  \
+#*    *##end
+#* *##else
+#*    *#  /* Execution budget */                  0u,  \
+#*    *#  /* Os interrupt lock budget */          0u,  \
+#*    *#  /* All interrupt lock budget */         0u,  \
+#*    *#  /* Resource lock budget */              OS_NULL,  \
+#* *##end
+## !LINKSTO Generator.Output.os_config_h.Interrupts.ISRCONFIG.stackLen, 2
+#* *#  /* Stack size */                        $interrupt.getStackSize()u,  \
+## !LINKSTO Generator.Output.os_config_h.Interrupts.ISRCONFIG.rateMonitor, 1
+#* *##if( $interrupt.hasRateMonitor() )
+#*    *#  /* Rate monitor */                      $interrupt.getRateMonitor().getName(),  \
+#* *##else
+#*    *#  /* Rate monitor */                      OS_NULLRATEMONITOR,  \
+#* *##end
+## !LINKSTO Generator.Output.os_config_h.Interrupts.ISRCONFIG.isrId, 1
+#* *#  /* Isr id */                            $interrupt.getName(),  \
+#* *#  /* dynamic data */                      &OS_isrDynamic_core${owningCore}[$clocalinterrupts.getId($interrupt)],  \
+## !LINKSTO Generator.Output.os_config_h.Interrupts.ISRCONFIG.flags, 1
+#* *#  /* Flags */                             $interrupt.getInterruptFlags(),  \
+#* *##VM_ArchOsInterruptInit($interrupt)
+#* *#)#if($foreach.hasNext),  \\$newLine#else$newLine#end
+#end
+
+/* Stack Macros */
+#foreach( $stack in $AllInterruptsList.getStacks() )
+## !LINKSTO Generator.Output.os_config_h.Stacks, 1
+#* *##if( $stack.getSuffix() != $null )
+#*    *#\#define OS_ISTACKBASE_$stack.getSuffix()          $stack.getSlotVarName( $stack.get(0) )
+#*    *#\#define OS_ISTACKLEN_$stack.getSuffix()           OS_U( $ArchProperties.getAlignedStackSize($stack.get(0).getSlotSize()) )
+#* *##else
+#*    *#\#define OS_ISTACKBASE           $stack.getSlotVarName( $stack.get(0) )
+#*    *#\#define OS_ISTACKLEN            OS_U( $ArchProperties.getAlignedStackSize($stack.get(0).getSlotSize()) )
+#* *##end
+#end
+#foreach( $coreId in [0..$OsModel.getMaxCoreId()] )
+#* *##set( $cLocalInterruptsList = $AllInterruptsList.getInterruptsOnCore($coreId) )
+#* *#\#define OS_NINTERRUPTS_CORE$coreId     $cLocalInterruptsList.size()
+#* *#\#define OS_NISRACCOUNTING_CORE$coreId  $cLocalInterruptsList.getNumAccounting()
+#end
+
+/*===================================================================
+ * Kernel data
+ *==================================================================*/
+#if( !$OsModel.isMicroKernel() )
+#* *##foreach( $coreId in $OsModel.getUsedCoreIds() )
+#*    *#\#define OS_KERNELDATA_INIT_CORE$coreId  /* kernel data core $coreId */  \
+#*    *##VM_ArchOsConfigDataInit( $coreId )
+#*    *#  /* taskQueueHead */            OS_NULL,  \
+#*    *#  /* taskCurrent */              OS_NULL,  \
+#*    *#  /* iSpInitial */               OS_GetInitialStackPointer( OS_ISTACKBASE_$coreId, OS_ISTACKLEN_$coreId ),  \
+#*    *#  /* hookApp */                  OS_NULL,  \
+#*    *##VM_ArchOsConfigInterruptInit()
+#*    *##if( $OsConfig.isTrapping() )
+#*    *#  /* inKernel */                 0,  \
+#*    *##else
+#*    *#  /* inKernel */                 1,  \
+#*    *##end
+#*    *#  /* idleMode */                 IDLE_NO_HALT,  \
+#*    *#  /* inFunction */               0,  \
+#*    *#  /* tfCalledFrom */             0,  \
+#*    *#  /* iStackBase */               OS_ISTACKBASE_$coreId,  \
+#*    *#  /* iStackLen */                OS_ISTACKLEN_$coreId,  \
+#*    *#  /* isrCurrent */               OS_NULLISR,  \
+#*    *#  /* isrLastLock */              OS_NULLOBJECT,  \
+#*    *#  /* oldSuspendOs */             0,  \
+#*    *#  /* oldSuspendAll */            0,  \
+#*    *#  /* nestSuspendOs */            0,  \
+#*    *#  /* nestSuspendAll */           0,  \
+#*    *#  /* errorStatus */              OS_ERRORSTATUS_INIT,  \
+#*    *#  /* sHookContext */             OS_HOOKCONTEXT_INIT,  \
+#*    *#  /* eHookContext */             OS_HOOKCONTEXT_INIT,  \
+#*    *#  /* errorHookNesting */         0,  \
+#*    *#  /* accounting */               OS_ACCOUNTINGS_INIT,  \
+#*    *#  /* appsStarted */              0,  \
+#*    *##VM_ArchOsConfigTimestampInit()
+#*    *#  /* panicCode */                OS_PANIC_NONE
+#* *##end
+#end
+
+/*===================================================================
+ * Optimization
+ *==================================================================*/
+#if( $OsOptimize.isCat1DirectCall() )
+\#define OS_CAT1_DIRECTCALL  1
+#else
+\#define OS_CAT1_DIRECTCALL  0
+#end
+
+/*===================================================================
+ * Rate Monitor
+ *==================================================================*/
+## !LINKSTO Generator.Output.os_config_h.RateMonitor, 1
+## !LINKSTO Generator.Output.os_config_h.RateMonitor.NRATEMONS, 1
+\#define OS_NRATEMONS  $AllRateMonitorsList.size()
+#foreach( $coreId in [0..$OsModel.getMaxCoreId()] )
+#* *#\#define OS_NRATEMONS_CORE$coreId  $AllRateMonitorsList.getRateMonitorsOnCore($coreId).size()
+#end
+#if( $AllRateMonitorsList.size() > 0 )
+#* *##foreach( $coreId in [0..$OsModel.getMaxCoreId()] )
+#*    *##set( $cLocRateMonitorsList = $AllRateMonitorsList.getRateMonitorsOnCore($coreId) )
+#*    *#\#define OS_NRATETIMERS_CORE$coreId  $cLocRateMonitorsList.getRateMonitorsCountLimit()
+#* *##end
+#* *##foreach( $coreId in [0..$OsModel.getMaxCoreId()] )
+#*    *##set( $cLocRateMonitorsList = $AllRateMonitorsList.getRateMonitorsOnCore($coreId) )
+#*    *##foreach( $rateMon in $cLocRateMonitorsList )
+#*       *#\#define $rateMon.getName()  $cLocRateMonitorsList.getId($rateMon)
+#*    *##end
+#*    *#\#define OS_RATEMONCONFIG_CORE$coreId  \
+#*    *##if( $cLocRateMonitorsList.size() == 0 )
+#*       *#  {}
+#*    *##else
+#*       *##foreach( $rateMon in $cLocRateMonitorsList )
+#*        *#  {  /* $rateMon.getName() */  \
+## !LINKSTO Generator.Output.os_config_h.RateMonitor.RATEMONCONFIG.ringBuffer, 2
+#*        *#     /* Rate monitor timer */    ${rateMon.getTimerArrayName()}[$rateMon.getRingBufferCountLimit()],  \
+## !LINKSTO Generator.Output.os_config_h.RateMonitor.RATEMONCONFIG.timeLimit, 2
+#*        *#     /* Time frame */            OS_TimestampNsToTicks($rateMon.getTimeFrame()),  \
+## !LINKSTO Generator.Output.os_config_h.RateMonitor.RATEMONCONFIG.countLimit, 2
+#*        *#     /* Count limit */            $rateMon.getCountLimit(),  \
+#*        *#  }#if( $foreach.hasNext ),  \\$newLine#else$newLine#end
+#*       *##end
+#*    *##end
+#* *##end
+#end
+
+#if( $OsModel.getNumUsedCores() == 1 )
+## !LINKSTO Generator.Output.os_config_h.RateMonitor.NRATETIMERS, 1
+#* *#\#define OS_NRATETIMERS    OS_NRATETIMERS_CORE$OsConfig.getPhysicalInitCoreId()
+## !LINKSTO Generator.Output.os_config_h.RateMonitor.RATEMONCONFIG, 1
+#* *#\#define OS_RATEMONCONFIG  OS_RATEMONCONFIG_CORE$OsConfig.getPhysicalInitCoreId()
+#end
+
+/*===================================================================
+ * Resource Lock Timing
+ *==================================================================*/
+## !LINKSTO Generator.Output.os_config_h.RESLOCKTIMES, 1
+\#define OS_NRESLOCKTIMES  $ResLockOptimizer.getNumResourceLockTimes()
+## Create for every resource present in the system time budget value,
+## if accounting is not enabled for a resource set the macro value to 0
+#foreach( $mergedResLock in $ResLockOptimizer.getMergedResourceLocks() )
+#* *##if( $foreach.index == 0 )
+#*    *#\#define OS_RESLOCKTIMES  \
+#* *##end
+#* *##foreach( $res in $AllResourcesList )
+#*   *##set( $newLineOption = ",  \" )
+#*   *##if( !$foreach.hasNext && !$foreach.parent.hasNext )
+#*       *##set( $newLineOption = "" )
+#*   *##end
+#*    *##if( $mergedResLock.hasResourceLock($res) )
+#*      *##set( $resLock   = $mergedResLock.getResourceLock($res) )
+#*      *##set( $owningApp = $resLock.getLockResource().getOwningApplication() )
+#*      *##set( $coreId    = $owningApp.getPhyCoreAssignment() )
+#*      *#  OS_ExecutionNsToTicksCore$coreId($resLock.getLockBudget())$newLineOption
+#*      *##else
+#*      *#  0$newLineOption
+#*      *##end
+#* *##end
+#end
+
+/*===================================================================
+ * Resources
+ *==================================================================*/
+#set( $nonInternalUsedResources = $AllResourcesList.getUsedNonInternalResources() )
+## !LINKSTO Generator.Output.os_config_h.Resources.NRESOURCES, 1
+\#define OS_NRESOURCES  $nonInternalUsedResources.size()
+
+#set( $internallyUsedNonInternalResources = $AllResourcesList.getInternallyUsedNonInternalResources() )
+#foreach( $res in $internallyUsedNonInternalResources )
+#* *#\#if OS_KERNEL_TYPE != OS_MICROKERNEL
+#* *#\#define $res.getName() $nonInternalUsedResources.getId($res)
+#* *##endif
+#end
+
+#foreach( $res in $nonInternalUsedResources )
+#*  *##set( $owningApp  = $res.getOwningApplication() )
+#*  *##set( $coreId     = $owningApp.getPhyCoreAssignment() )
+#*  *##set( $resLocalId = $OsModel.getResourcesOnCore($coreId).getUsedNonInternalResources().getId($res) )
+#*  *##if( $foreach.index == 0 )
+## !LINKSTO Generator.Output.os_config_h.Resources.RESOURCES, 1
+#*     *#\#define OS_RESOURCES  OS_RESOURCES_INIT(    /* $res.getName() */  \
+#*  *##else
+#*     *#OS_RESOURCES_INIT(    /* $res.getName() */  \
+#*  *##end
+## !LINKSTO Generator.Output.os_config_h.Resources.RESOURCES.app, 2
+#*  *#  /* Application */          &OS_appTable[$owningApp.getName()],  \
+## !LINKSTO Generator.Output.os_config_h.Resources.RESOURCES.permissions, 2
+#*  *#  /* Permissions */          $ClassOfHelpers.toHexStringUnsigned($res.getAppAccessMask()),  \
+## !LINKSTO Generator.Output.os_config_h.Resources.RESOURCES.prio, 2
+#*  *#  /* Priority */             $res.getResourceRunPriority(),  \
+#*  *#  /* dynamic data */         &OS_resourceDynamic_core${coreId}[$resLocalId]  \
+#*  *#)#if($foreach.hasNext),  \\$newLine#end
+#end
+
+/* Number of Non-Internal Used resources on cores */
+#foreach( $coreId in [0..$OsModel.getMaxCoreId()] )
+#* *##set( $cLocalResList = $OsModel.getResourcesOnCore($coreId) )
+#* *#\#define OS_NRESOURCES_CORE$coreId  $cLocalResList.getUsedNonInternalResources().size()
+#end
+
+/*===================================================================
+ * Schedule Tables
+ *==================================================================*/
+## !LINKSTO Generator.Output.os_config_h.Schedules.NSCHEDULES, 1
+\#define OS_NSCHEDULES      $AllScTablesList.getNumAutocoreScheduleTables()
+\#define OS_NSCHEDULESSYNC  $AllScTablesList.getNumAutocoreSynchScheduleTables()
+
+#if( !$AllScTablesList.isEmpty() )
+#* *##foreach( $sc in $AllScTablesList.getAutocoreScheduleTables() )
+#*    *##set( $owningApp               = $sc.getOwningApplication() )
+#*    *##set( $coreId                  = $owningApp.getPhyCoreAssignment() )
+#*    *##set( $cLocalAutocoreScTblList = $AllScTablesList.getAutocoreScheduleTables($coreId) )
+#*    *##if( $foreach.index == 0 )
+## !LINKSTO Generator.Output.os_config_h.Schedules.STCONFIG, 1
+#*       *#\#define OS_STCONFIG  OS_STCONFIG_INIT(    /* $sc.getName() */  \
+#*    *##else
+#*       *#OS_STCONFIG_INIT(    /* $sc.getName() */  \
+#*    *##end
+## !LINKSTO Generator.Output.os_config_h.Schedules.STCONFIG.app, 3
+#*    *#  /* Application id */                $owningApp.getName(),  \
+## !LINKSTO Generator.Output.os_config_h.Schedules.STCONFIG.appptr, 1
+#*    *#  /* Application pointer */           &OS_appTable[$owningApp.getName()], \
+## !LINKSTO Generator.Output.os_config_h.Schedules.STCONFIG.permissions, 2
+#*    *#  /* Permissions */                   $ClassOfHelpers.toHexStringUnsigned($sc.getAppAccessMask()),  \
+## !LINKSTO Generator.Output.os_config_h.Schedules.STCONFIG.table, 2
+#*    *#  /* Schedule table entries */        &OS_stEntries[$sc.getNumberOfPriorEPActions()],  \
+## !LINKSTO Generator.Output.os_config_h.Schedules.STCONFIG.period, 2
+## !LINKSTO Generator.Output.os_config_h.Schedules.STCONFIG.dirCutoff, 2
+## !LINKSTO Generator.Output.os_config_h.Schedules.STCONFIG.tolerance, 2
+#*    *##if( $sc.getTimeUnit() == "NS" )
+#*    *#  /* Duration */                      OS_NsToTicks_${sc.getCounter().getName()}($sc.getDuration()),  \
+#*    *#  /* Cut off */                       OS_NsToTicks_${sc.getCounter().getName()}($sc.getcutOff()),  \
+#*    *#  /* Precision */                     OS_NsToTicks_${sc.getCounter().getName()}($sc.getPrecision()),  \
+#*    *##else
+#*    *#  /* Duration */                      $sc.getDuration(),  \
+#*    *#  /* Cut off */                       $sc.getcutOff(),  \
+#*    *#  /* Precision */                     $sc.getPrecision(),  \
+#*    *##end
+## !LINKSTO Generator.Output.os_config_h.Schedules.STCONFIG.alarm, 2
+#*    *#  /* Alarm ID */                      $AllAlarmsList.getId($sc.getstAlarm()),  \
+## !LINKSTO Generator.Output.os_config_h.Schedules.STCONFIG.nEntries, 2
+#*    *#  /* Number of expiry points */       $sc.getNumberOfEPActions(),  \
+## !LINKSTO Generator.Output.os_config_h.Schedules.STCONFIG.flags, 2
+#*    *#  /* Flags */                         $sc.getScConfigFlags(),  \
+#*    *#  /* dynamic data */                  &OS_scheduleDynamic_core${coreId}[$cLocalAutocoreScTblList.getId($sc)]  \
+#*    *#)#if($foreach.hasNext),  \\$newLine#else$newLine#end
+#* *##end
+#end
+
+/* ScheduleTables expiry points */
+#set( $acExpiryPoints = $AllScTablesList.getExpiryPoints("AUTOCORE") )
+#if( !$acExpiryPoints.isEmpty() )
+## !LINKSTO Kernel.Autosar.ScheduleTable.ExpiryPoint.Actions.Order, 1
+#* *##macro( VM_ExpiryPointPrinter $_timeunit $_ctrName $_offset $_maxAdv $_maxRet $_event $_task )
+#*    *##if( $_timeunit == "NS" )
+#*    *#    /* Offset */                      OS_NsToTicks_$_ctrName($_offset),  \
+#*    *#    /* Max advance */                 OS_NsToTicks_$_ctrName($_maxAdv),  \
+#*    *#    /* Max retard */                  OS_NsToTicks_$_ctrName($_maxRet),  \
+#*    *##else
+#*    *#    /* Offset */                      $_offset,  \
+#*    *#    /* Max advance */                 $_maxAdv,  \
+#*    *#    /* Max retard */                  $_maxRet,  \
+#*    *##end
+#*    *#    /* Event */                       $_event,  \
+#*    *#    /* Task */                        $_task  \
+#* *##end
+#* *##set( $nExpPointActions = $AllScTablesList.getNumberOfEPActions($acExpiryPoints) )
+#* *##set( $actionInd = 0 )
+## !LINKSTO Generator.Output.os_config_h.Schedules.NSTENTRIES, 2
+#* *#\#define OS_NSTENTRIES  $nExpPointActions
+## !LINKSTO Generator.Output.os_config_h.Schedules.STENTRIES, 2
+#* *#\#define OS_STENTRIES  \
+#* *##foreach( $ep in $acExpiryPoints )
+#*    *### ActivateTask Expiry Points if any configured
+#*    *##foreach( $task in $ep.getActivateTasks() )
+#*       *##set( $actionInd = $actionInd + 1 )
+#*       *#  /* $ep.getName() */  \
+#*       *#  {  \
+## !LINKSTO Generator.Output.os_config_h.Schedules.STENTRIES.offset, 2
+## !LINKSTO Generator.Output.os_config_h.Schedules.STENTRIES.maxIncrease, 1
+## !LINKSTO Generator.Output.os_config_h.Schedules.STENTRIES.maxDecrease, 1
+## !LINKSTO Generator.Output.os_config_h.Schedules.STENTRIES.task, 1
+#*       *##VM_ExpiryPointPrinter( $ep.getTimeUnitVtl() $ep.getCounterVtl().getName() $ep.getOffset() $ep.getMaxAdvance() $ep.getMaxRetard() 0 $task.getName() )
+#*       *#  }#if( $actionInd < $nExpPointActions ),  \\$newLine#else$newLine#end
+#*    *##end
+#*    *### SetEvents Expiry Points if any configured
+## !LINKSTO Generator.Output.os_config_h.Schedules.STENTRIES.event, 2
+## !LINKSTO Generator.Output.os_config_h.Schedules.STENTRIES.event.combining, 2
+#*    *##foreach( $eventForTaskEntry in $ep.getCombinedSetEvents().entrySet() )
+#*       *##set( $actionInd = $actionInd + 1 )
+#*       *#  {  /* $ep.getName() */  \
+#*          *##VM_ExpiryPointPrinter( $ep.getTimeUnitVtl() $ep.getCounterVtl().getName() $ep.getOffset() $ep.getMaxAdvance() $ep.getMaxRetard() $eventForTaskEntry.getValue() $eventForTaskEntry.getKey().getName() )
+#*       *#  }#if( $actionInd < $nExpPointActions ),  \\$newLine#else$newLine#end
+#*    *##end
+#* *##end
+#end
+
+#foreach( $coreId in [0..$OsModel.getMaxCoreId()] )
+#* *#\#define OS_NSCHEDULES_CORE$coreId  $AllScTablesList.getNumAutocoreScheduleTables($coreId)
+#end
+
+/*===================================================================
+ * Spinlocks
+ *==================================================================*/
+## !LINKSTO Generator.Output.os_config_h.Spinlocks.NAUTOSARSPINLOCKS, 1
+\#define OS_NAUTOSARSPINLOCKS  $AllSpinlocksList.size()
+#foreach( $spinlock in $AllSpinlocksList.getInternalElements() )
+#* *#\#if OS_KERNEL_TYPE != OS_MICROKERNEL
+#*    *#\#define $spinlock.getName()  $AllSpinlocksList.getId( $spinlock )
+#* *##endif
+#end
+#foreach( $spinlock in $AllSpinlocksList )
+#* *##if( $foreach.index == 0 )
+## !LINKSTO Generator.Output.os_config_h.Spinlocks.AUTOSARSPINLOCKCONFIG, 1
+#*    *#\#define OS_AUTOSARSPINLOCKCONFIG  \
+#* *##end
+#* *#{       /* $spinlock.getName() */  \
+## !LINKSTO Generator.Output.os_config_h.Spinlocks.AUTOSARSPINLOCKCONFIG.dynamic, 1
+#* *#   /* Dynamic spinlock structure */             &OS_autosarSpinlockDynamic[$spinlock.getName()],  \
+## !LINKSTO Generator.Output.os_config_h.Spinlocks.AUTOSARSPINLOCKCONFIG.successor, 1
+#* *##if( $spinlock.hasSuccessor() )
+#* *#   /* Successor spinlock */                     $spinlock.getSuccessor().getName(),  \
+#* *##else
+#* *#   /* Successor spinlock */                     OS_NULLSPINLOCK,  \
+#* *##end
+## !LINKSTO Generator.Output.os_config_h.Spinlocks.AUTOSARSPINLOCKCONFIG.access, 1
+#* *#   /* Accessing Applications */                 0x$ClassOfHelpers.toHexString($spinlock.getAppAccessMask()),  \
+## !LINKSTO Generator.Output.os_config_h.Spinlocks.AUTOSARSPINLOCKCONFIG.id, 1
+#* *#   /* Spinlock ID */                            $spinlock.getName(),  \
+## !LINKSTO Generator.Output.os_config_h.Spinlocks.AUTOSARSPINLOCKCONFIG.lockMethod, 1
+#* *#   /* Lock method */                            OS_SPINLOCKLM_$spinlock.getLockMethod().toString()  \
+#* *#}#if($foreach.hasNext),  \\$newLine#else$newLine#end
+#end
+
+/*===================================================================
+ * Stacks
+ *==================================================================*/
+#if( !$OsModel.isMicroKernel() )
+#* *#\#define OS_STACK_REGION_ALIGNMENT  $ArchProperties.getStackRegionAlignment()
+#end
+/* Task Stacks */
+#foreach( $stack in $AllTasksList.getStacks() )
+#* *##foreach( $slot in $stack )
+#*    *##set( $slotName = $stack.getSlotVarName($slot) )
+#*    *##ifndef OS_ASM
+#*    *#\#if OS_KERNEL_TYPE != OS_MICROKERNEL
+#*    *#extern OS_GEN_STACK_DECL( $slotName, $stack.getSectionName($slotName), $slot.getArchSlotSize(), $ArchProperties.getStackRegionAlignment() );
+#*    *##endif
+#*    *##endif  /* OS_ASM */
+#* *##end
+#end
+/* Interrupt Stacks */
+#foreach( $stack in $AllInterruptsList.getStacks() )
+#* *##foreach( $slot in $stack )
+#*    *##set( $slotName = $stack.getSlotVarName($slot) )
+#*    *##ifndef OS_ASM
+#*    *#\#if OS_KERNEL_TYPE != OS_MICROKERNEL
+#*    *#extern OS_GEN_STACK_DECL( $slotName, $stack.getSectionName($slotName), $slot.getArchSlotSize(), $ArchProperties.getStackRegionAlignment() );
+#*    *##endif
+#*    *##endif  /* OS_ASM */
+#* *##end
+#end
+
+/*===================================================================
+ * Tasks
+ *==================================================================*/
+#foreach( $task in $AllTasksList )
+#* *##if( $task.getMemRegLinkerSymbolStart("DATA") != "OS_NULL" )
+#*     *##ifndef OS_ASM
+#*     *##ifndef EB_STATIC_CHECK
+#*     *#\#if OS_KERNEL_TYPE != OS_MICROKERNEL
+#*     *#$task.getMemRegLinkerSymbolStart("DATA");
+#*     *##endif  /* OS_KERNEL_TYPE != OS_MICROKERNEL */
+#*     *##endif  /* EB_STATIC_CHECK */
+#*     *##endif  /* OS_ASM */
+#* *##end
+#* *##if( $task.getMemRegLinkerSymbolEnd("DATA") != "OS_NULL" )
+#*     *##ifndef OS_ASM
+#*     *##ifndef EB_STATIC_CHECK
+#*     *#\#if OS_KERNEL_TYPE != OS_MICROKERNEL
+#*     *#$task.getMemRegLinkerSymbolEnd("DATA");
+#*     *##endif  /* OS_KERNEL_TYPE != OS_MICROKERNEL */
+#*     *##endif  /* EB_STATIC_CHECK */
+#*     *##endif  /* OS_ASM */
+#* *##end
+#* *##if( $task.getMemRegLinkerSymbolStart("INIT") != "OS_NULL" )
+#*     *##ifndef OS_ASM
+#*     *##ifndef EB_STATIC_CHECK
+#*     *#\#if OS_KERNEL_TYPE != OS_MICROKERNEL
+#*     *#$task.getMemRegLinkerSymbolStart("INIT");
+#*     *##endif  /* OS_KERNEL_TYPE != OS_MICROKERNEL */
+#*     *##endif  /* EB_STATIC_CHECK */
+#*     *##endif  /* OS_ASM */
+#* *##end
+#* *##if( $task.getMemRegLinkerSymbolEnd("INIT") != "OS_NULL" )
+#*     *##ifndef OS_ASM
+#*     *##ifndef EB_STATIC_CHECK
+#*     *#\#if OS_KERNEL_TYPE != OS_MICROKERNEL
+#*     *#$task.getMemRegLinkerSymbolEnd("INIT");
+#*     *##endif  /* OS_KERNEL_TYPE != OS_MICROKERNEL */
+#*     *##endif  /* EB_STATIC_CHECK */
+#*     *##endif  /* OS_ASM */
+#* *##end
+#* *##ifndef OS_ASM
+#* *#\#if OS_KERNEL_TYPE != OS_MICROKERNEL
+#* *#DeclareTask($task.getName());
+#* *##endif  /* OS_KERNEL_TYPE != OS_MICROKERNEL */
+#* *##endif  /* OS_ASM */
+#end
+
+## !LINKSTO Generator.Output.os_config_h.Tasks.NTASKS, 1
+\#define OS_NTASKS               $AllTasksList.size()
+## !LINKSTO Generator.Output.os_config_h.Tasks.NETASKS, 1
+\#define OS_NETASKS              $AllTasksList.getNumExtendedTasks()
+## !LINKSTO Generator.Output.os_config_h.Tasks.NTASKSEXECTIMELIMIT, 1
+\#define OS_NTASKSEXECTIMELIMIT  $AllTasksList.getNumExecTimeBudget()
+## !LINKSTO Generator.Output.os_config_h.Tasks.NTASKSINTLOCKLIMIT, 1
+\#define OS_NTASKSINTLOCKLIMIT   $AllTasksList.getNumIntLockBudget()
+## !LINKSTO Generator.Output.os_config_h.Tasks.NTASKSRESLOCKLIMIT, 1
+\#define OS_NTASKSRESLOCKLIMIT   $AllTasksList.getNumResLockBudget()
+#if( !$AllTasksList.isEmpty() )
+#* *##foreach( $task in $AllTasksList )
+#*    *##set( $owningApp  = $task.getOwningApplication() )
+#*    *##set( $owningCore = $owningApp.getPhyCoreAssignment() )
+#*    *##set( $localTasks = $OsModel.getTasksOnCore($owningCore) )
+#*    *##if( $foreach.index == 0 )
+## !LINKSTO Generator.Output.os_config_h.Tasks.TASKCONFIG, 1
+## !LINKSTO Generator.Output.os_config_h.Tasks.TASKACTIVATIONS, 2
+#*       *#\#define OS_TASKCONFIG  OS_TASKCONFIG_INIT(    /* $task.getName() */  \
+#*    *##else
+#*       *#OS_TASKCONFIG_INIT(    /* $task.getName() */  \
+#*    *##end
+## !LINKSTO Generator.Output.os_config_h.Tasks.TASKCONFIG.dynamic, 2
+#*    *#  /* Dynamic task structure */         &OS_taskDynamic_core${owningCore}[$localTasks.getId($task)],  \
+## !LINKSTO Generator.Output.os_config_h.Tasks.TASKCONFIG.runPrio, 2
+#*    *#  /* Run priority */                   $task.getRunPriority()u,  \
+## !LINKSTO Generator.Output.os_config_h.Tasks.TASKCONFIG.queuePrio, 2
+#*    *#  /* Queuing priority */               $task.getCalcPriority()u,  \
+## !LINKSTO Generator.Output.os_config_h.Tasks.TASKCONFIG.linkBase, 2
+#*    *#  /* Activation index */               $task.getActivationIndex(),  \
+## !LINKSTO Generator.Output.os_config_h.Tasks.TASKCONFIG.entry, 2
+#*    *#  /* Task entry */                     &$task.getEntryFunction(),  \
+## !LINKSTO Generator.Output.os_config_h.Tasks.TASKCONFIG.stackBase, 2
+#*    *#  /* Stack base */                     $task.getAutocoreStackBase(),  \
+## !LINKSTO Generator.Output.os_config_h.Tasks.TASKCONFIG.stackLen, 2
+#*    *#  /* Stack size */                     $task.getAutocoreStackSize()u,  \
+#*    *##set( $activations = $task.getActivation() - 1 )
+## !LINKSTO Generator.Output.os_config_h.Tasks.TASKCONFIG.maxAct, 2
+#*    *#  /* Max. activations */               ${activations}u,  \
+## !LINKSTO Generator.Output.os_config_h.Tasks.TASKCONFIG.flags, 2
+#*    *#  /* Flags */                          $task.getTaskFlags(),  \
+## !LINKSTO Generator.Output.os_config_h.Tasks.TASKCONFIG.taskId, 1
+#*    *#  /* Task ID */                        $task.getName(),  \
+## !LINKSTO Generator.Output.os_config_h.Tasks.TASKCONFIG.accounting, 1
+#*    *##if( $task.hasAccounting() )
+#*      *#  /* Accounting structure */           &OS_taskAccounting_core${owningCore}[$task.getAccountingIndex($owningCore)],  \
+#*    *##else
+#*      *#  /* Accounting structure */           OS_NULL,  \
+#*    *##end
+## !LINKSTO Generator.Output.os_config_h.Tasks.TASKCONFIG.dataStart, 2
+## !LINKSTO Generator.Output.os_config_h.Tasks.TASKCONFIG.dataEnd, 2
+## !LINKSTO Generator.Output.os_config_h.Tasks.TASKCONFIG.idataStart, 2
+## !LINKSTO Generator.Output.os_config_h.Tasks.TASKCONFIG.idataEnd, 2
+#*    *#  /* start of data/bss */              $task.getMemRegionStart("DATA"),  \
+#*    *#  /* end of data/bss */                $task.getMemRegionEnd("DATA"),  \
+#*    *#  /* start of initial data */          $task.getMemRegionStart("INIT"),  \
+#*    *#  /* end of initial data */            $task.getMemRegionEnd("INIT"),  \
+#*    *##if( $task.hasAccounting() && $task.hasTimingProtection() )
+## !LINKSTO Generator.Output.os_config_h.Tasks.TASKCONFIG.execBudget, 2
+## !LINKSTO Generator.Output.os_config_h.Tasks.TASKCONFIG.osLockTime, 1
+## !LINKSTO Generator.Output.os_config_h.Tasks.TASKCONFIG.allLockTime, 1
+## !LINKSTO Generator.Output.os_config_h.Tasks.TASKCONFIG.resourceLockTime, 2
+#*       *#  /* Execution budget */               OS_ExecutionNsToTicksCore${owningCore}($task.getExecutionBudget()u),  \
+#*       *#  /* Os interrupt lock budget */       OS_ExecutionNsToTicksCore${owningCore}($task.getOsInterruptLockBudget()u),  \
+#*       *#  /* All interrupt lock budget */      OS_ExecutionNsToTicksCore${owningCore}($task.getAllInterruptLockBudget()u),  \
+#*       *##if( $task.hasResourceLocks() )
+#*          *#  /* Resource lock budget */           $ResLockOptimizer.structEntryOf($task),  \
+#*       *##else
+#*          *#  /* Resource lock budget */           OS_NULL,  \
+#*       *##end
+#*    *##else
+#*       *#  /* Execution budget */               0u,  \
+#*       *#  /* Os interrupt lock budget */       0u,  \
+#*       *#  /* All interrupt lock budget */      0u,  \
+#*       *#  /* Resource lock budget */           OS_NULL,  \
+#*    *##end
+## !LINKSTO Generator.Output.os_config_h.Tasks.TASKCONFIG.rateMonitor, 2
+#*    *##if( $task.hasRateMonitor() )
+#*       *#  /* Rate monitor */                   $task.getRateMonitor().getName(),  \
+#*    *##else
+#*       *#  /* Rate monitor */                   OS_NULLRATEMONITOR,  \
+#*    *##end
+## !LINKSTO Generator.Output.os_config_h.Tasks.TASKCONFIG.app, 2
+#*    *#  /* Application */                    &OS_appTable[$owningApp.getName()],  \
+## !LINKSTO Generator.Output.os_config_h.Tasks.TASKCONFIG.permissions, 2
+#*    *#  /* Permissions */                    $ClassOfHelpers.toHexStringUnsigned($task.getAppAccessMask()),  \
+#*    *##VM_ArchOsTaskInit($task)
+#*    *#)#if($foreach.hasNext),  \\$newLine#else$newLine#end
+#* *##end
+#end
+#foreach( $coreId in $OsModel.getUsedCoreIds() )
+#* *##set( $clocalTasksList = $OsModel.getTasksOnCore($coreId) )
+#* *#\#define OS_NTASKS_CORE$coreId  $clocalTasksList.size()
+#end
+
+/*===================================================================
+ * Tasks Common Scheduling
+ *==================================================================*/
+#set( $excludeEnd = $OsConfig.getNumCPUCoresMax() - 1 )
+#foreach( $coreId in [0..$excludeEnd] )
+#* *##set( $localTasksList = $OsModel.getTasksOnCore($coreId) )
+## !LINKSTO Generator.Output.os_config_h.Tasks.NPRIORITIES, 1
+#* *#\#define OS_NPRIORITIES_CORE$coreId  $localTasksList.getNumRunPriorities($coreId)
+#end
+
+/*===================================================================
+ * Tasks Linked List Scheduling
+ *==================================================================*/
+## !LINKSTO Generator.Output.os_config_h.Tasks.NTASKACCOUNTING, 1
+\#define OS_NTASKACCOUNTING  $AllTasksList.getNumAccountingTasks()
+## !LINKSTO Generator.Output.os_config_h.Tasks.NTASKACTIVATIONS, 1
+\#define OS_NTASKACTIVATIONS  $AllTasksList.getNumTasksActivations()
+#set( $excludeEnd = $OsModel.getEndOfCoreIds() - 1 )
+#foreach( $coreId in [0..$excludeEnd] )
+#* *##set( $localTasksList = $OsModel.getTasksOnCore($coreId) )
+#* *##set( $cLocalActInd = 0 )
+#* *#\#define OS_NTASKACCOUNTING_CORE$coreId   $localTasksList.getNumAccountingTasks()
+#* *#\#define OS_NTASKACTIVATIONS_CORE$coreId  $localTasksList.getNumTasksActivations()
+#* *##foreach( $localTask in $localTasksList )
+#*     *##if( $foreach.index == 0 )
+#*     *##set( $cLocalActInd = 0 )
+#*        *#\#define OS_TASKACTIVATIONS_CORE$coreId   \
+#*     *##end
+#*     *##foreach( $activationInd in [1..$localTask.getActivation()] )
+#*        *#  /* $cLocalActInd */ &OS_taskTable[$localTask.getName()]#if($foreach.hasNext || $foreach.parent.hasNext ),    \\$newLine#else$newLine#end
+#*        *##set( $cLocalActInd = $cLocalActInd + 1 )
+#*     *##end
+#* *##end
+#end

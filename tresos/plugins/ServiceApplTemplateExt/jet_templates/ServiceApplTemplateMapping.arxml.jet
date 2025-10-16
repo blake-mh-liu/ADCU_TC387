@@ -1,0 +1,96 @@
+<%@ jet package="eb.tresos.serviceappltemplate.generated"
+        class="ServiceApplTemplateMappingArxmlGenerator"
+        imports="
+                 dreisoft.tresos.datamodel2.api.model.DCtxt
+                 dreisoft.tresos.generator.ng.api.ant.JavaGenContext
+                 dreisoft.tresos.tresosdb.api.model.v2.swcomponenttemplate.composition.*
+                 eb.tresos.serviceappltemplate.IntermediateModel
+                 java.util.Arrays
+                 java.util.Deque
+                 java.util.LinkedList
+                "
+%>
+<% if(IntermediateModel.isDuplicateArPackage){%>
+<%
+/*
+ * See tresos Studio developer's guide for further information on the usage of JET templates
+ * in tresos Studio plugins.
+ *
+ * !LINKSTO SERVICEAPPLTEMPLATE_0014, 1
+ */
+%>
+<%
+JavaGenContext context = (JavaGenContext) argument;
+DCtxt dctxt = context.gen.getDCtxtVariable();
+
+String argumentKey = "swc_template_name";
+String generatedSwcName = context.gen.getStringVariable(argumentKey, null);
+if (generatedSwcName == null)
+{
+    throw new NullPointerException("lookup of variable '" + argumentKey + "' via getStringVariable() returned null (no value found), which is unexpected");
+}
+IntermediateModel model = new IntermediateModel(dctxt, generatedSwcName);
+%>
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR <%= model.createArxmlNameSpaceString() %>>
+
+  <AR-PACKAGES>
+  	<!--
+      generate the System Mappings. The System path has to be the same path as the final application uses.
+	-->
+	<%
+      /*
+       * !LINKSTO SERVICEAPPLTEMPLATE_0006, 1
+       */
+    %>
+    <AR-PACKAGE>
+    <%
+      // "/foo/bar" is split into "", "foo", "bar"
+      Deque<String> systemPackages = new LinkedList<>(Arrays.asList(model.getSystemPath().split("/")));
+      systemPackages.removeFirst(); // remove ""
+      systemPackages.removeLast(); // remove "bar"
+    %>
+    <SHORT-NAME><%= systemPackages.removeFirst() %></SHORT-NAME>
+    <% for (String pkg : systemPackages) { %>
+    <AR-PACKAGES>
+      <AR-PACKAGE>
+        <SHORT-NAME><%= pkg %></SHORT-NAME>
+    <% } %>
+      <ELEMENTS>
+        <SYSTEM>
+          <SHORT-NAME><%= model.getSystemName() %></SHORT-NAME>
+          <MAPPINGS>
+            <SYSTEM-MAPPING>
+              <SHORT-NAME><%= model.getServiceApplTemplateSwComponentPrototypeName() %>SystemMappings</SHORT-NAME>
+              <SW-MAPPINGS>
+                <%
+                  /*
+                   * !LINKSTO SERVICEAPPLTEMPLATE_0007, 2
+                   */
+                %>
+                <SWC-TO-ECU-MAPPING>
+                  <SHORT-NAME><%= model.getServiceApplTemplateSwComponentPrototypeName() %>SwcToEcuMapping</SHORT-NAME>
+                  <COMPONENT-IREFS>
+                    <COMPONENT-IREF>
+                      <CONTEXT-COMPOSITION-REF DEST="ROOT-SW-COMPOSITION-PROTOTYPE"><%= IntermediateModel.getASPathChecked(model.getSystem().getRootSoftwareComposition()) %></CONTEXT-COMPOSITION-REF>
+                      <% for (ISwComponentPrototype compositionPrototype : model.getIntermediateLayerCompositionPrototypes()) { %>
+                        <CONTEXT-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE"><%= IntermediateModel.getASPathChecked(compositionPrototype) %></CONTEXT-COMPONENT-REF>
+                      <% } %>
+                      <TARGET-COMPONENT-REF DEST="SW-COMPONENT-PROTOTYPE"><%= IntermediateModel.createPath(model.getCompositionSwComponentTypePath(), model.getServiceApplTemplateSwComponentPrototypeName()) %></TARGET-COMPONENT-REF>
+                    </COMPONENT-IREF>
+                  </COMPONENT-IREFS>
+                  <ECU-INSTANCE-REF DEST="ECU-INSTANCE"><%= IntermediateModel.getASPathChecked(model.getEcuInstance()) %></ECU-INSTANCE-REF>
+                </SWC-TO-ECU-MAPPING>
+              </SW-MAPPINGS>
+            </SYSTEM-MAPPING>
+          </MAPPINGS>
+        </SYSTEM>
+      </ELEMENTS>
+    <% for (String pkg : systemPackages) { %>
+      </AR-PACKAGE>
+    </AR-PACKAGES>
+    <% } %>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>
+<% } %>

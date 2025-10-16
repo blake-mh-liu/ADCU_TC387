@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<root xmlns="http://www.infineon.com/BifacesConfig"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.infineon.com/BifacesConfig BifacesConfig.xsd ">
+	
+	<!-- Primary architecture configuration -->
+	<primaryArchitecture name="Tricore"/>
+	
+	<!-- Architecture congfigurations -->
+	<architecture name="Tricore" primaryToolchain="Ghs2021">
+		<!-- Target congfigurations -->
+		<target name="Tc" enable="true">
+			<output type="elf" enable="true" fileName="$(PROJ_NAME)_tc.elf" tool="Ld"/>
+			<output type="hex" enable="true" fileName="$(PROJ_NAME)_tc.hex" tool="Hex">
+				<input siblingTypes="elf" useObjects="false"/>
+			</output>
+			<output type="srec" enable="false" fileName="$(PROJ_NAME)_tc.srec" tool="Srec">
+				<input siblingTypes="elf" useObjects="false"/>
+			</output>
+			<output type="lib" enable="false" fileName="$(PROJ_NAME)_tc.a" tool="Archiver"/>
+		</target>
+
+		<!-- Toolchain configurations -->
+		<toolchain name="Ghs2021" enable="true"
+			path="$(B_GHS_TRICORE_PATH)" configFolder="$(B_CONFIG_FILES_FOLDER)/Config_Tricore_Ghs2021"
+			configFiles="1_ToolEnv/0_Build/1_Config/Config.mk, Config_Ghs2021.mk">
+			<tool name="Cc" type="COMPILER" command="cctri">
+				<optionSet id="Common">-DAPP_SW=DEMO_APP -DDEMO_APP=1 -DTEST_APP=2 -DDEV_APP=3 -DAURIX2G_MCAL_DEMOAPP=1U -DDEMO_APP_NODE_1 $(B_GHS_TRICORE_CC_OPTIONS)</optionSet>
+				<argument template="{kw:options} @{kw:incpaths_listfile} -c ${kw:lt} -o $@ --make_depends" />
+			</tool>
+			<tool name="As" type="ASSEMBLER" command="easetri">
+				<optionSet id="Common">$(B_GHS_TRICORE_ASM_OPTIONS)</optionSet>
+				<argument template="{kw:options} @{kw:incpaths_listfile} -o $@ -Xmake-dependency=4 -Xmake-dependency-savefile=$(@:.o=.d) ${kw:lt}" />
+			</tool>
+			<tool name="Ld" type="LINKER" command="cctri">
+				<optionSet id="Common">$(B_GHS_TRICORE_LD_OPTIONS)</optionSet>
+				<argument template='{kw:options} -T {kw:linkerfile} -map={kw:mapfile} -o $@  $(B_GHS_TRICORE_LIBS) $(B_GHS_TRICORE_LIB_INC) @{kw:objfiles_listfile} {kw:custobjfiles} -srec=$(@:.elf=.srec)' ></argument>
+			</tool>
+			<tool name="Hex" type="OTHER" command="gsrec">
+				<argument template="-hex386 ${kw:lt} -o $@" />
+			</tool>
+			<tool name="Srec" type="OTHER" command="gsrec">
+				<argument template="${kw:lt} -o $@" />
+			</tool>
+			<tool name="Ar" type="ARCHIVER" command="ax">
+				<argument template="-rc $@ @{kw:objfiles_listfile} {kw:custobjfiles}" />
+			</tool>
+		</toolchain>
+	</architecture>
+	
+	<!-- Toolchain configurations -->
+	<specificInclude internalPaths="*/Sfr/TC39xB*, /BaseSw/*/Tricore, */BaseSw/*/Platform, */BaseSw/*/CpuGeneric"/>
+	<specificInclude externalPaths=""/>
+    <sourceFolder paths="../../../McIsar"/>
+    <selection enable="true">
+        <use files="*0_Src*,*Src/Infra_Prod/Platform*,*Src/Infra_Prod/Sfr/TC39xB/*,*Src/Mcal/*,*Stm_Irq/*"/>
+        <discard files="*Plugins*,*AS422*,*Ifx_Cfg_SswBmhd*,*Msc*,*/CfgMcal/*"/>
+    </selection>
+</root>

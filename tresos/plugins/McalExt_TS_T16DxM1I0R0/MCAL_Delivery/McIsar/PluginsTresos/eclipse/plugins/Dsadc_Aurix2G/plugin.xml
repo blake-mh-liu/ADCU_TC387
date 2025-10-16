@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+/*******************************************************************************
+**                                                                            **
+** Copyright (C) Infineon Technologies (2023)                                 **
+**                                                                            **
+** All rights reserved.                                                       **
+**                                                                            **
+** This document contains proprietary information belonging to Infineon       **
+** Technologies. Passing on and copying of this document, and communication   **
+** of its contents is not permitted without prior written authorization.      **
+**                                                                            **
+********************************************************************************
+**                                                                            **
+**  FILENAME  : plugin.xml                                                    **
+**                                                                            **
+**  VERSION   : 6.0.0                                                         **
+**                                                                            **
+**  DATE      : 2023-05-17                                                    **
+**                                                                            **
+**  VARIANT   : Variant PB                                                    **
+**                                                                            **
+**  PLATFORM  : Infineon AURIX2G                                              **
+**                                                                            **
+**  AUTHOR    : DL-AUTOSAR-Engineering                                        **
+**                                                                            **
+**  VENDOR    : Infineon Technologies                                         **
+**                                                                            **
+**  TRACEABILITY : [cover parentID={32EB69EF-D070-4a49-8177-4DA73F9FFC1C},    **
+**                                 {7308312D-496A-418a-BA3F-AF37C50CA8D6},    **
+**                                 {D42FF07C-9C43-4779-AE6B-1CB6B969232B}]    **
+**                                                                            **
+**  DESCRIPTION  : Tresos plugin for Dsadc Driver                             **
+**                                                                            **
+**  [/cover]                                                                  **
+**                                                                            **
+**  SPECIFICATION(S) : Specification of Dsadc Driver                          **
+**                                                                            **
+**  MAY BE CHANGED BY USER : no                                               **
+**                                                                            **
+*******************************************************************************/
+-->
+<!-- [cover parentID={F5CF0050-FA3F-4e14-8C3E-FD0E8CB08831}][/cover]-->
+<plugin>
+
+ <extension point="dreisoft.tresos.launcher2.plugin.module"
+             id="Dsadc_Aurix2GAS440_ModuleExt"
+             name="Dsadc Module with code template generator">
+
+    <module id="Dsadc_Aurix2GAS440"
+            label="%ModuleLabel"
+            mandatory="false"
+            allowMultiple="true"
+            description="%ModuleDesc"
+            copyright="(c) 2023 Infineon Technologies"
+            swVersionMajor="20"
+            swVersionMinor="25"
+            swVersionPatch="0"
+            specVersionMajor="4"
+            specVersionMinor="4"
+            specVersionPatch="0"
+            relVersionMajor="4"
+            relVersionMinor="4"
+            relVersionPatch="0"
+            categoryType="%ModuleName"
+            categoryLayer="MCAL"
+            categoryCategory="ECU Firmware"
+            categoryComponent="ECUC">
+      <!-- [cover parentID={C51935FA-440B-4817-9B64-39FC40BAB98B}] Cluster MCAL [/cover] -->
+      <cluster name="MCAL"/>
+      <ecuType target="AURIX2G" derivate="TC364_LQFP"/>
+      <ecuType target="AURIX2G" derivate="TC364_TQFP"/>
+      <ecuType target="AURIX2G" derivate="TC365"/>
+      <ecuType target="AURIX2G" derivate="TC366"/>
+      <ecuType target="AURIX2G" derivate="TC367"/>
+      <ecuType target="AURIX2G" derivate="TC374_ED"/>
+      <ecuType target="AURIX2G" derivate="TC375"/>
+      <ecuType target="AURIX2G" derivate="TC375_ED"/>
+      <ecuType target="AURIX2G" derivate="TC377"/>
+      <ecuType target="AURIX2G" derivate="TC377_ED"/>
+      <ecuType target="AURIX2G" derivate="TC377_ED_EX"/>
+      <ecuType target="AURIX2G" derivate="TC3E7"/>
+      <ecuType target="AURIX2G" derivate="TC387"/>
+      <ecuType target="AURIX2G" derivate="TC389"/>
+      <ecuType target="AURIX2G" derivate="TC397"/>
+      <ecuType target="AURIX2G" derivate="TC397_ADAS"/>
+      <ecuType target="AURIX2G" derivate="TC399"/>
+    </module>
+  </extension>
+
+    <extension point="dreisoft.tresos.launcher2.plugin.configuration"
+             id="Dsadc_Aurix2GAS440_ConfigExt"
+             name="Dsadc_Aurix2G Configuration">
+    <configuration moduleId="Dsadc_Aurix2GAS440">
+      <schema>
+        <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarSchemaManager"/>
+        <resource value="config/AS440/Dsadc.xdm" type="xdm"/>
+      </schema>
+
+      <data>
+        <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarConfigManager"/>
+        <schemaNode path="ASPath:/AURIX2G/EcucDefs/Dsadc"/>
+      </data>
+
+      <editor id="Dsadc_Aurix2GAS440_Edit"
+              label="%ModuleName"
+              tooltip="%ModuleDesc">
+        <class class="dreisoft.tresos.launcher2.editor.GenericConfigEditor">
+          <parameter name="schema" value="ASPath:/AURIX2G/EcucDefs/Dsadc"/>
+          <parameter name="title" value="Dsadc"/>
+          <parameter name="noTabs" value="false"/>
+          <parameter name="noLinks" value="true"/>
+          <parameter name="groupLinks" value="false"/>
+          <parameter name="groupContainers" value="false"/>
+          <parameter name="groupTables" value="true"/>
+          <parameter name="optionalGeneralTab" value="true"/>
+        </class>
+      </editor>
+    </configuration>
+  </extension>
+
+   <!-- this extension point needs to be defined and point to the configuratin parameters for the Loadable and the Selectable use case -->
+  <extension
+      point="dreisoft.tresos.autosar2.api.plugin.postbuildSetup"
+      id="Dsadc_Aurix2GAS440_PostBuildExt">
+    <configuration
+         activeLoadableRef="ASPath:/AURIX2G/EcucDefs/EcuC/EcucSelectedLoadableVariant/EcucSelectedLoadableRef"
+         activeSelectableRef="ASPath:/AURIX2G/EcucDefs/EcuC/EcucPostBuildVariants/EcucSelectedPostBuildVariantRef"
+         selectableRefs="ASPath:/AURIX2G/EcucDefs/EcuC/EcucPostBuildVariants/EcucPostBuildVariantRef">
+     </configuration>
+  </extension>
+  <extension point="dreisoft.tresos.launcher2.plugin.generator"
+              id="Dsadc_Aurix2GAS440_GenExt"
+              name="Dsadc_Aurix2G Generator">
+    <generator moduleId="Dsadc_Aurix2GAS440"
+               class="dreisoft.tresos.launcher2.generator.TemplateBasedCodeGenerator">
+
+      <!-- common template path parameters -->
+      <parameter name="templates"
+                 mode="generate,verify" value="generate/template"/>
+
+      <!-- swcd modes and template path parameters -->
+      <parameter name="mode_type"
+                 mode="generate_swcd" value="generate/template"/>
+
+      <parameter name="mode_type"
+                 mode="verify_swcd" value="verify"/>
+
+      <parameter name="templates"
+                 mode="generate_swcd,verify_swcd" value="generate_swcd"/>
+
+    <!-- only having this parameter set to true, a generator is called once for each variant! -->
+      <parameter name="variantAware" value="true"/>
+
+    </generator>
+
+    </extension>
+
+
+  <!-- this post-generator just calls an ant script which renames the file created by the TemplateBasedCodeGenerator defined above
+       otherwise the next run of the TemplateBasedCodeGenerator for another variant would overwrite the file -->
+  <extension point="dreisoft.tresos.generator.api.plugin.generator"
+             id="Dsadc_Aurix2GAS440_Gen_Template_MoveFile">
+    <generator moduleId="Dsadc_Aurix2GAS440"
+               id="Dsadc_Aurix2GAS440_Gen_Template_MoveFile"
+               class="dreisoft.tresos.generator.ng.api.NGGenerator"
+               modes="generate,Template_withPostRename"
+               step="post">
+      <!-- Specify the ant build script as parameter to the NGGenerator. -->
+      <parameter name="buildfile"  value="generate/template_ant/ant_generator.xml"/>
+
+      <!-- only having this parameter set to true, a generator is called once for each variant! -->
+      <parameter name="variantAware" value="true"/>
+    </generator>
+  </extension>
+
+</plugin>
+

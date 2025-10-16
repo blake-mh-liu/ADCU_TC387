@@ -1,0 +1,98 @@
+#parse("CommonVars.vm")
+## !LINKSTO Generator.Output.os_gen_c.MISRACDeviations, 1
+/* This file is generated automatically. DO NOT EDIT!!
+ *
+ * EB tresos AutoCore OS ${Version.getMajor()}.${Version.getMinor()}.${Version.getPatch()} ${Version.getTarget()}/${Version.getDerivate()}
+ * (Build ${Version.getBuild()})
+ *
+ * (c) 1998-${Version.getCurrentYear()} Elektrobit Automotive GmbH
+ * Am Wolfsmantel 46
+ * 91058 Erlangen
+ * GERMANY
+ *
+ * Date         : ${Version.getDate()}           !!!IGNORE-LINE!!!
+ */
+
+\#include <Os_config.h>
+\#include <Os_kernel.h>
+\#include <Os_tool.h>
+
+## !LINKSTO Generator.Output.os_gen_c.Identification, 1
+\#if OS_GENERATION_ID_OS_H!=$OsGenerator.getGenId()
+#error "Build-Ids of src\Os_gen.c and include\Os_user.h did not match! Hint: A wrong include\Os_user.h was most probably included."
+#endif
+\#if OS_GENERATION_ID_OS_CONF_H!=$OsGenerator.getGenId()
+#error "Build-Ids of src\Os_gen.c and include\Os_config.h did not match! Hint: A wrong include\Os_config.h was most probably included."
+#endif
+\#if OS_GENERATION_ID_OS_KCONF_H!=$OsGenerator.getGenId()
+#error "Build-Ids of src\Os_gen.c and include\Os_kconfig.h did not match! Hint: A wrong include\Os_kconfig.h was most probably included."
+#endif
+
+const os_uint32_t OS_os_GenBuildId = $OsGenerator.getGenId();
+
+/*===================================================================
+ * Counters
+ *==================================================================*/
+
+#foreach( $counter in $AllCountersList )
+#* *##if( ($counter.getType() == "HARDWARE") && ($counter.getHwTimer() != $null) )
+#*   *##set( $interrupt = $counter.getHwTimer().getTimerInterrupt() )
+#*   *##if ( ($interrupt != $null) && (!($AllHwTimersList.isSharedInterrupt($interrupt))) )
+## !LINKSTO Generator.Output.os_gen_c.ISR, 1
+#*     *#void ${interrupt.getIsrFuncName()}(void)
+#*     *#{
+## !LINKSTO Generator.Output.os_gen_c.ISR.HwCounterInterrupt, 1
+#*       *#  ${counter.getHwTimer().getExpiryAction()};
+#*     *#}
+#*   *##end
+#* *##elseif( (!$counter.isMkCounter()) && ($counter.getHwIncrementer() != $null) )
+## !LINKSTO Generator.Output.os_gen_c.ISR.SwCounterInterrupt, 1
+#*   *#void OS_CounterIsr_$counter.getName()(void)
+#*   *#{
+#*     *#  OS_$counter.getHwIncrementer()_Clear( OS_NsToTicks_$counter.getHwIncrementer()($counter.getNsPerTick()) );
+#*     *#  OS_TickSwCounter( $counter.getName() );
+#*   *#}
+#* *##end
+#end
+#if( $ArchProperties.isTimerInterruptCommon() )
+#* *##foreach( $entry in $AllHwTimersList.getHwTimersWithCommonIsr().entrySet() )
+#*   *##set( $interrupt = ${entry.getKey()} )
+#*   *##set( $commonTimers = ${entry.getValue()} )
+#*   *##if(($commonTimers.size() > 0) && (!$commonTimers.iterator().next().isExecutionTimer()))
+## !LINKSTO Generator.Output.os_gen_c.ISR, 1
+#*     *#void ${interrupt.getIsrFuncName()}(void)
+#*     *#{
+## !LINKSTO Generator.Output.os_gen_c.ISR.HwCounterInterrupt, 1
+#*      *#  ${commonTimers.iterator().next().getExpiryAction()};
+#*     *#}
+#*   *##end
+#* *##end
+#end
+
+/*===================================================================
+ * Stacks
+ *==================================================================*/
+## !LINKSTO Generator.Output.os_gen_c.KernelStack, 1
+/* Task stacks */
+#set( $AllTasksList   = $OsModel.getAllTasks() )
+#foreach( $stack in $AllTasksList.getStacks() )
+#* *##foreach( $slot in $stack )
+#*    *##set( $slotName = $stack.getSlotVarName($slot) )
+## !LINKSTO Generator.Output.os_gen_c.StackExclusion, 1
+#*    *#\#if OS_KERNEL_TYPE != OS_MICROKERNEL
+#*    *#OS_GEN_STACK($slotName, $stack.getSectionName($slotName), $slot.getArchSlotSize(), ${ArchProperties.getStackRegionAlignment()});
+#*    *##endif
+#* *##end
+#end
+
+/* Interrupt stacks */
+#set( $AllInterruptsList = $OsModel.getAllInterrupts() )
+#foreach( $stack in $AllInterruptsList.getStacks() )
+#* *##foreach( $slot in $stack )
+#*    *##set( $slotName = $stack.getSlotVarName($slot) )
+## !LINKSTO Generator.Output.os_gen_c.StackExclusion, 1
+#*    *#\#if OS_KERNEL_TYPE != OS_MICROKERNEL
+#*    *#OS_GEN_STACK($slotName, $stack.getSectionName($slotName), $slot.getArchSlotSize(), ${ArchProperties.getStackRegionAlignment()});
+#*    *##endif
+#* *##end
+#end

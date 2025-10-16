@@ -1,0 +1,1244 @@
+<?xml version='1.0'?>
+<datamodel version="3.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/08/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/08/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar" 
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd" 
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd" >
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="TS_TxDxM1I2R0" type="AR-PACKAGE">
+        <d:lst type="ELEMENTS">
+          <d:chc name="Cal" type="AR-ELEMENT" value="MODULE-DEF">
+            <v:ctr type="MODULE-DEF">
+              <a:a name="ADMIN-DATA" type="ADMIN-DATA">
+                <ad:ADMIN-DATA>
+                  <ad:LANGUAGE>EN</ad:LANGUAGE>
+                </ad:ADMIN-DATA>
+              </a:a>
+              <a:a name="DESC" 
+                   value="EN: Configuration of the Cal (Crypto Abstraction Library) module."/>
+              <a:a name="LOWER-MULTIPLICITY" value="1"/>
+              <a:a name="RELEASE" value="asc:4.0"/>
+              <a:a name="UPPER-MULTIPLICITY" value="1"/>
+              <a:a name="UUID" value="505e4f69-8af3-4e02-8b8b-4f78165ec8dd"/>
+              <v:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                        Select the configuration variant. Currently only PreCompile is supported.
+                      &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="Config Variant"/>
+                <a:a name="UUID" value="a11623fa-c3fe-4548-809f-007dd3b09dc5"/>
+                <a:da name="DEFAULT" value="VariantPreCompile"/>
+                <a:da name="ENABLE" value="false"/>
+                <a:da name="RANGE" value="VariantPreCompile"/>
+              </v:var>
+              <v:ctr name="CalAsymPublicKeyExtract" type="IDENTIFIABLE">
+                <a:a name="DESC" 
+                     value="The configuration of AsymPublicKeyExtract services"/>
+                <v:var name="CalAsymPublicKeyExtractMaxCtxBufByteSize" 
+                       type="INTEGER">
+                  <a:a name="DESC" 
+                       value="Maximal size of all context buffers used for extraction of                     asymmetrical public keys.                     Must be at least the size, of the maximal required context buffer size of the                     primitives used for extraction of asymmetrical public keys."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Maximal context buffer size"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:da name="DEFAULT" value="100"/>
+                  <a:da name="RANGE" type="Range">
+                    <a:tst expr="&gt;=1"/>
+                    <a:tst expr="&lt;=4294967295"/>
+                  </a:da>
+                </v:var>
+                <v:var name="CalAsymPublicKeyExtractMaxKeySize" type="INTEGER">
+                  <a:a name="DESC" 
+                       value="Maximal size in bytes of all keys used in all                     CPL primitives which are used for extraction of asymmetrical public keys."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Maximal key size"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:da name="DEFAULT" value="1"/>
+                  <a:da name="RANGE" type="Range">
+                    <a:tst expr="&gt;=1"/>
+                    <a:tst expr="&lt;=4294967295"/>
+                  </a:da>
+                </v:var>
+                <v:lst name="CalAsymPublicKeyExtractConfig" type="MAP">
+                  <a:a name="COLUMNS">
+                    <a:v>CalAsymPublicKeyExtractInitConfiguration</a:v>
+                    <a:v>CalAsymPublicKeyExtractPrimitiveName</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="AsymPublicKeyExtract configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CalAsymPublicKeyExtractConfig" 
+                         type="IDENTIFIABLE">
+                    <v:var name="CalAsymPublicKeyExtractInitConfiguration" 
+                           type="STRING">
+                      <a:a name="DESC" 
+                           value="The configuration of the primitive"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Primitive configuration"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    </v:var>
+                    <v:var name="CalAsymPublicKeyExtractPrimitiveName" 
+                           type="STRING">
+                      <a:a name="DESC" value="Name of the Cpl primitive."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Primitive name"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CalCompress" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                    The configuration of CalCompress services.
+                    &lt;/html&gt;</a:v>
+                </a:a>
+                <v:var name="CalCompressMaxCtxBufByteSize" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                      The size of a context buffer (in bytes) used for compression.
+                      The maximal size must be at least the size of the largest context buffer
+                      of all the primitives used for compression.
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Maximal context buffer size"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:da name="DEFAULT" value="100"/>
+                  <a:da name="RANGE" type="Range">
+                    <a:tst expr="&gt;=1"/>
+                    <a:tst expr="&lt;=4294967295"/>
+                  </a:da>
+                </v:var>
+                <v:lst name="CalCompressConfig" type="MAP">
+                  <a:a name="COLUMNS">
+                    <a:v>CalCompressInitConfiguration</a:v>
+                    <a:v>CalCompressPrimitiveName</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Compression configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CalCompressConfig" type="IDENTIFIABLE">
+                    <v:var name="CalCompressInitConfiguration" type="STRING">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                          The configuration of the primitive.
+                          &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Primitive configuration"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    </v:var>
+                    <v:var name="CalCompressPrimitiveName" type="STRING">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                          Name of the Cpl primitive.
+                          &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Primitive name"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CalDecompress" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                    The configuration of CalDecompress services.
+                    &lt;/html&gt;</a:v>
+                </a:a>
+                <v:var name="CalDecompressMaxCtxBufByteSize" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                      The size of a context buffer (in bytes) used for decompression.
+                      The maximal size must be at least the size of the largest context buffer
+                      of all the primitives used for decompression.
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Maximal context buffer size"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:da name="DEFAULT" value="100"/>
+                  <a:da name="RANGE" type="Range">
+                    <a:tst expr="&gt;=1"/>
+                    <a:tst expr="&lt;=4294967295"/>
+                  </a:da>
+                </v:var>
+                <v:lst name="CalDecompressConfig" type="MAP">
+                  <a:a name="COLUMNS">
+                    <a:v>CalDecompressInitConfiguration</a:v>
+                    <a:v>CalDecompressPrimitiveName</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Decompression configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CalDecompressConfig" type="IDENTIFIABLE">
+                    <v:var name="CalDecompressInitConfiguration" type="STRING">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                          The configuration of the primitive.
+                          &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Primitive configuration"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    </v:var>
+                    <v:var name="CalDecompressPrimitiveName" type="STRING">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                          Name of the Cpl primitive.
+                          &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Primitive name"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CalGeneral" type="IDENTIFIABLE">
+                <v:var name="CalMaxAlignScalarType" type="STRING">
+                  <a:a name="DESC" 
+                       value="Type with maximal alignment restrictions"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" 
+                       value="Type with maximal alignment restrictions"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:da name="DEFAULT" value="uint32"/>
+                </v:var>
+                <v:var name="CalVersionInfoApi" type="BOOLEAN">
+                  <a:a name="DESC" value="Version info API"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Version info API"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="CalHash" type="IDENTIFIABLE">
+                <a:a name="DESC" value="The Hash configuration."/>
+                <v:var name="CalHashMaxCtxBufByteSize" type="INTEGER">
+                  <a:a name="DESC" 
+                       value="Maximal size of all context buffers used for hashing.                     Must by at least the size, of the maximal required context buffer size of the primitives used for hashing."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Maximal context buffer size"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:da name="DEFAULT" value="316"/>
+                  <a:da name="RANGE" type="Range">
+                    <a:tst expr="&gt;=1"/>
+                    <a:tst expr="&lt;=4294967295"/>
+                  </a:da>
+                </v:var>
+                <v:lst name="CalHashConfig" type="MAP">
+                  <a:a name="COLUMNS">
+                    <a:v>CalHashInitConfiguration</a:v>
+                    <a:v>CalHashPrimitiveName</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Hash configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CalHashConfig" type="IDENTIFIABLE">
+                    <v:var name="CalHashInitConfiguration" type="STRING">
+                      <a:a name="DESC" 
+                           value="The configuration of the primitive"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Primitive configuration"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    </v:var>
+                    <v:var name="CalHashPrimitiveName" type="STRING">
+                      <a:a name="DESC" value="Name of the Cpl primitive."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Primitive name"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CalKeyDerive" type="IDENTIFIABLE">
+                <a:a name="DESC" value="The configuration of KeyDerive services"/>
+                <v:var name="CalKeyDeriveMaxCtxBufByteSize" type="INTEGER">
+                  <a:a name="DESC" 
+                       value="Maximal size of all context buffers used for key derivation.                     Must be at least the size, of the maximal required context buffer size of the                     primitives used for key derivation."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Maximal context buffer size"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:da name="DEFAULT" value="100"/>
+                  <a:da name="RANGE" type="Range">
+                    <a:tst expr="&gt;=1"/>
+                    <a:tst expr="&lt;=4294967295"/>
+                  </a:da>
+                </v:var>
+                <v:var name="CalKeyDeriveMaxKeySize" type="INTEGER">
+                  <a:a name="DESC" 
+                       value="Maximal size of all keys used in KeyDerive computations."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Maximal key size"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:da name="DEFAULT" value="1"/>
+                  <a:da name="RANGE" type="Range">
+                    <a:tst expr="&gt;=1"/>
+                    <a:tst expr="&lt;=4294967295"/>
+                  </a:da>
+                </v:var>
+                <v:lst name="CalKeyDeriveConfig" type="MAP">
+                  <a:a name="COLUMNS">
+                    <a:v>CalKeyDeriveInitConfiguration</a:v>
+                    <a:v>CalKeyDerivePrimitiveName</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="KeyDerive configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CalKeyDeriveConfig" type="IDENTIFIABLE">
+                    <v:var name="CalKeyDeriveInitConfiguration" type="STRING">
+                      <a:a name="DESC" 
+                           value="The configuration of the primitive"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Primitive configuration"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    </v:var>
+                    <v:var name="CalKeyDerivePrimitiveName" type="STRING">
+                      <a:a name="DESC" value="Name of the Cpl primitive."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Primitive name"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CalKeyExchangeCalcPubVal" type="IDENTIFIABLE">
+                <a:a name="DESC" 
+                     value="The configuration of KeyExchangeCalcPubVal services"/>
+                <v:var name="CalKeyExchangeCalcPubValMaxBaseTypeSize" 
+                       type="INTEGER">
+                  <a:a name="DESC" 
+                       value="The maximum length, in bytes, of all base types used in                     all CPL primitives which implement a public value calculation."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Maximal base type size"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:da name="DEFAULT" value="1"/>
+                  <a:da name="RANGE" type="Range">
+                    <a:tst expr="&gt;=1"/>
+                    <a:tst expr="&lt;=4294967295"/>
+                  </a:da>
+                </v:var>
+                <v:var name="CalKeyExchangeCalcPubValMaxCtxBufByteSize" 
+                       type="INTEGER">
+                  <a:a name="DESC" 
+                       value="Maximal size of all context buffers used for calculation                     of the public value during a key exchange.                     Must be at least the size, of the maximal required context buffer size of the                     used primitives."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Maximal context buffer size"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:da name="DEFAULT" value="100"/>
+                  <a:da name="RANGE" type="Range">
+                    <a:tst expr="&gt;=1"/>
+                    <a:tst expr="&lt;=4294967295"/>
+                  </a:da>
+                </v:var>
+                <v:var name="CalKeyExchangeCalcPubValMaxPrivateTypeSize" 
+                       type="INTEGER">
+                  <a:a name="DESC" 
+                       value="The maximum length, in bytes, of all private types used in                     all CPL primitives which implement a public value calculation."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Maximal private type size"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:da name="DEFAULT" value="1"/>
+                  <a:da name="RANGE" type="Range">
+                    <a:tst expr="&gt;=1"/>
+                    <a:tst expr="&lt;=4294967295"/>
+                  </a:da>
+                </v:var>
+                <v:lst name="CalKeyExchangeCalcPubValConfig" type="MAP">
+                  <a:a name="COLUMNS">
+                    <a:v>CalKeyExchangeCalcPubValInitConfiguration</a:v>
+                    <a:v>CalKeyExchangeCalcPubValPrimitiveName</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="KeyExchangeCalcPubVal configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CalKeyExchangeCalcPubValConfig" 
+                         type="IDENTIFIABLE">
+                    <v:var name="CalKeyExchangeCalcPubValInitConfiguration" 
+                           type="STRING">
+                      <a:a name="DESC" 
+                           value="The configuration of the primitive"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Primitive configuration"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    </v:var>
+                    <v:var name="CalKeyExchangeCalcPubValPrimitiveName" 
+                           type="STRING">
+                      <a:a name="DESC" value="Name of the Cpl primitive."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Primitive name"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CalKeyExchangeCalcSecret" type="IDENTIFIABLE">
+                <a:a name="DESC" 
+                     value="The configuration of KeyExchangeCalcSecret services"/>
+                <v:var name="CalKeyExchangeCalcSecretMaxBaseTypeSize" 
+                       type="INTEGER">
+                  <a:a name="DESC" 
+                       value="The maximum length, in bytes, of all base types used in                     all CPL primitives which implement a public value calculation."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Maximal base type size"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:da name="DEFAULT" value="1"/>
+                  <a:da name="RANGE" type="Range">
+                    <a:tst expr="&gt;=1"/>
+                    <a:tst expr="&lt;=4294967295"/>
+                  </a:da>
+                </v:var>
+                <v:var name="CalKeyExchangeCalcSecretMaxCtxBufByteSize" 
+                       type="INTEGER">
+                  <a:a name="DESC" 
+                       value="Maximal size of all context buffers used for calculation                     of the secret during a key exchange.                     Must be at least the size, of the maximal required context buffer size of the                     used primitives."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Maximal context buffer size"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:da name="DEFAULT" value="100"/>
+                  <a:da name="RANGE" type="Range">
+                    <a:tst expr="&gt;=1"/>
+                    <a:tst expr="&lt;=4294967295"/>
+                  </a:da>
+                </v:var>
+                <v:var name="CalKeyExchangeCalcSecretMaxPrivateTypeSize" 
+                       type="INTEGER">
+                  <a:a name="DESC" 
+                       value="The maximum length, in bytes, of all private types used in                     all CPL primitives which implement a Secret calculation for a key exchange."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Maximal private type size"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:da name="DEFAULT" value="1"/>
+                  <a:da name="RANGE" type="Range">
+                    <a:tst expr="&gt;=1"/>
+                    <a:tst expr="&lt;=4294967295"/>
+                  </a:da>
+                </v:var>
+                <v:lst name="CalKeyExchangeCalcSecretConfig" type="MAP">
+                  <a:a name="COLUMNS">
+                    <a:v>CalKeyExchangeCalcSecretInitConfiguration</a:v>
+                    <a:v>CalKeyExchangeCalcSecretPrimitiveName</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="KeyExchangeCalcSecret configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CalKeyExchangeCalcSecretConfig" 
+                         type="IDENTIFIABLE">
+                    <v:var name="CalKeyExchangeCalcSecretInitConfiguration" 
+                           type="STRING">
+                      <a:a name="DESC" 
+                           value="The configuration of the primitive"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Primitive configuration"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    </v:var>
+                    <v:var name="CalKeyExchangeCalcSecretPrimitiveName" 
+                           type="STRING">
+                      <a:a name="DESC" value="Name of the Cpl primitive."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Primitive name"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CalMacGenerate" type="IDENTIFIABLE">
+                <a:a name="DESC" 
+                     value="The configuration of MacGenerate primitives"/>
+                <v:var name="CalMacGenerateMaxCtxBufByteSize" type="INTEGER">
+                  <a:a name="DESC" 
+                       value="Maximal size of all context buffers used for Mac generation.                     Must be at least the size, of the maximal required context buffer size of the primitives used for Mac generation."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Maximal context buffer size"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:da name="DEFAULT" value="404"/>
+                  <a:da name="RANGE" type="Range">
+                    <a:tst expr="&gt;=1"/>
+                    <a:tst expr="&lt;=4294967295"/>
+                  </a:da>
+                </v:var>
+                <v:var name="CalMacGenerateMaxKeySize" type="INTEGER">
+                  <a:a name="DESC" 
+                       value="Maximal size of all keys used in MAC computations"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Maximal key size"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:da name="DEFAULT" value="1"/>
+                  <a:da name="RANGE" type="Range">
+                    <a:tst expr="&gt;=1"/>
+                    <a:tst expr="&lt;=4294967295"/>
+                  </a:da>
+                </v:var>
+                <v:lst name="CalMacGenerateConfig" type="MAP">
+                  <a:a name="COLUMNS">
+                    <a:v>CalMacGenerateInitConfiguration</a:v>
+                    <a:v>CalMacGeneratePrimitiveName</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="MacGenerate configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CalMacGenerateConfig" type="IDENTIFIABLE">
+                    <v:var name="CalMacGenerateInitConfiguration" type="STRING">
+                      <a:a name="DESC" 
+                           value="The configuration of the primitive"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Primitive configuration"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    </v:var>
+                    <v:var name="CalMacGeneratePrimitiveName" type="STRING">
+                      <a:a name="DESC" value="Name of the Cpl primitive."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Primitive name"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CalMacVerify" type="IDENTIFIABLE">
+                <a:a name="DESC" value="The configuration of MacVerify services"/>
+                <v:var name="CalMacVerifyMaxCtxBufByteSize" type="INTEGER">
+                  <a:a name="DESC" 
+                       value="Maximal size of all context buffers used for Mac verification.                     Must be at least the size, of the maximal required context buffer size of the primitives used for Mac verification."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Maximal context buffer size"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:da name="DEFAULT" value="404"/>
+                  <a:da name="RANGE" type="Range">
+                    <a:tst expr="&gt;=1"/>
+                    <a:tst expr="&lt;=4294967295"/>
+                  </a:da>
+                </v:var>
+                <v:var name="CalMacVerifyMaxKeySize" type="INTEGER">
+                  <a:a name="DESC" 
+                       value="Maximal size of all keys used in MAC computations"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Maximal key size"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:da name="DEFAULT" value="1"/>
+                  <a:da name="RANGE" type="Range">
+                    <a:tst expr="&gt;=1"/>
+                    <a:tst expr="&lt;=4294967295"/>
+                  </a:da>
+                </v:var>
+                <v:lst name="CalMacVerifyConfig" type="MAP">
+                  <a:a name="COLUMNS">
+                    <a:v>CalMacVerifyInitConfiguration</a:v>
+                    <a:v>CalMacVerifyPrimitiveName</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="MacVerify configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CalMacVerifyConfig" type="IDENTIFIABLE">
+                    <v:var name="CalMacVerifyInitConfiguration" type="STRING">
+                      <a:a name="DESC" 
+                           value="The configuration of the primitive"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Primitive configuration"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    </v:var>
+                    <v:var name="CalMacVerifyPrimitiveName" type="STRING">
+                      <a:a name="DESC" value="Name of the Cpl primitive."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Primitive name"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CalRandomGenerate" type="IDENTIFIABLE">
+                <a:a name="DESC" 
+                     value="The configuration of RandomGenerate services"/>
+                <v:lst name="CalRandomGenerateConfig" type="MAP">
+                  <a:a name="COLUMNS">
+                    <a:v>CalRandomGenerateInitConfiguration</a:v>
+                    <a:v>CalRandomGeneratePrimitiveName</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="RandomGenerate configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CalRandomGenerateConfig" type="IDENTIFIABLE">
+                    <v:var name="CalRandomGenerateInitConfiguration" 
+                           type="STRING">
+                      <a:a name="DESC" 
+                           value="The configuration of the primitive"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Primitive configuration"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    </v:var>
+                    <v:var name="CalRandomGeneratePrimitiveName" type="STRING">
+                      <a:a name="DESC" value="Name of the Cpl primitive."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Primitive name"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CalRandomSeed" type="IDENTIFIABLE">
+                <a:a name="DESC" 
+                     value="The configuration of RandomSeed services"/>
+                <v:var name="CalRandomMaxCtxBufByteSize" type="INTEGER">
+                  <a:a name="DESC" 
+                       value="Maximal size of all context buffers used for random number generators.                     Must be at least the size, of the maximal required context buffer size of the                     primitives used for seeding and generating of random numbers."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Maximal context buffer size"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:da name="DEFAULT" value="24"/>
+                  <a:da name="RANGE" type="Range">
+                    <a:tst expr="&gt;=1"/>
+                    <a:tst expr="&lt;=4294967295"/>
+                  </a:da>
+                </v:var>
+                <v:lst name="CalRandomSeedConfig" type="MAP">
+                  <a:a name="COLUMNS">
+                    <a:v>CalRandomSeedInitConfiguration</a:v>
+                    <a:v>CalRandomSeedPrimitiveName</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="RandomSeed configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CalRandomSeedConfig" type="IDENTIFIABLE">
+                    <v:var name="CalRandomSeedInitConfiguration" type="STRING">
+                      <a:a name="DESC" 
+                           value="The configuration of the primitive"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Primitive configuration"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    </v:var>
+                    <v:var name="CalRandomSeedPrimitiveName" type="STRING">
+                      <a:a name="DESC" value="Name of the Cpl primitive."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Primitive name"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CalSignatureVerify" type="IDENTIFIABLE">
+                <a:a name="DESC" 
+                     value="The configuration of SignatureVerify services"/>
+                <v:var name="CalSignatureVerifyMaxCtxBufByteSize" 
+                       type="INTEGER">
+                  <a:a name="DESC" 
+                       value="Maximal size of all context buffers used for signature verification.                     Must be at least the size, of the maximal required context buffer size of the                     primitives used for signature verification."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Maximal context buffer size"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:da name="DEFAULT" value="100"/>
+                  <a:da name="RANGE" type="Range">
+                    <a:tst expr="&gt;=1"/>
+                    <a:tst expr="&lt;=4294967295"/>
+                  </a:da>
+                </v:var>
+                <v:var name="CalSignatureVerifyMaxKeySize" type="INTEGER">
+                  <a:a name="DESC" 
+                       value="Maximal size in bytes of all keys used in all                     CPL primitives which are used for signature verification."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Maximal key size"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:da name="DEFAULT" value="1"/>
+                  <a:da name="RANGE" type="Range">
+                    <a:tst expr="&gt;=1"/>
+                    <a:tst expr="&lt;=4294967295"/>
+                  </a:da>
+                </v:var>
+                <v:lst name="CalSignatureVerifyConfig" type="MAP">
+                  <a:a name="COLUMNS">
+                    <a:v>CalSignatureVerifyInitConfiguration</a:v>
+                    <a:v>CalSignatureVerifyPrimitiveName</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="SignatureVerify configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CalSignatureVerifyConfig" type="IDENTIFIABLE">
+                    <v:var name="CalSignatureVerifyInitConfiguration" 
+                           type="STRING">
+                      <a:a name="DESC" 
+                           value="The configuration of the primitive"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Primitive configuration"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    </v:var>
+                    <v:var name="CalSignatureVerifyPrimitiveName" type="STRING">
+                      <a:a name="DESC" value="Name of the Cpl primitive."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Primitive name"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CalSymBlockDecrypt" type="IDENTIFIABLE">
+                <a:a name="DESC" value="The SymBlockDecrypt configuration."/>
+                <v:var name="CalSymBlockDecryptMaxCtxBufByteSize" 
+                       type="INTEGER">
+                  <a:a name="DESC" 
+                       value="Maximal size of all context buffers used in symmetrical decryption.                     Must be at least the size, of the maximal required context buffer size of the primitives used for symmetrical decryption."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Maximal context buffer size"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:da name="DEFAULT" value="348"/>
+                  <a:da name="RANGE" type="Range">
+                    <a:tst expr="&gt;=1"/>
+                    <a:tst expr="&lt;=4294967295"/>
+                  </a:da>
+                </v:var>
+                <v:var name="CalSymBlockDecryptMaxKeySize" type="INTEGER">
+                  <a:a name="DESC" 
+                       value="Maximal size of all keys used in symmetrical decryption"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Maximal key size"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:da name="DEFAULT" value="1"/>
+                  <a:da name="RANGE" type="Range">
+                    <a:tst expr="&gt;=1"/>
+                    <a:tst expr="&lt;=4294967295"/>
+                  </a:da>
+                </v:var>
+                <v:lst name="CalSymBlockDecryptConfig" type="MAP">
+                  <a:a name="COLUMNS">
+                    <a:v>CalSymBlockDecryptInitConfiguration</a:v>
+                    <a:v>CalSymBlockDecryptPrimitiveName</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="SymBlockDecrypt configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CalSymBlockDecryptConfig" type="IDENTIFIABLE">
+                    <v:var name="CalSymBlockDecryptInitConfiguration" 
+                           type="STRING">
+                      <a:a name="DESC" 
+                           value="The configuration of the primitive"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Primitive configuration"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    </v:var>
+                    <v:var name="CalSymBlockDecryptPrimitiveName" type="STRING">
+                      <a:a name="DESC" value="Name of the Cpl primitive."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Primitive name"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CalSymBlockEncrypt" type="IDENTIFIABLE">
+                <a:a name="DESC" value="The SymBlockEncrypt configuration."/>
+                <v:var name="CalSymBlockEncryptMaxCtxBufByteSize" 
+                       type="INTEGER">
+                  <a:a name="DESC" 
+                       value="Maximal size of all context buffers used in symmetrical encryption.                     Must by at least the size, of the maximal required context buffer size of the primitives used for symmetrical encryption."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Maximal context buffer size"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:da name="DEFAULT" value="348"/>
+                  <a:da name="RANGE" type="Range">
+                    <a:tst expr="&gt;=1"/>
+                    <a:tst expr="&lt;=4294967295"/>
+                  </a:da>
+                </v:var>
+                <v:var name="CalSymBlockEncryptMaxKeySize" type="INTEGER">
+                  <a:a name="DESC" 
+                       value="Maximal size of all keys used in symmetrical encryption"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Maximal key size"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:da name="DEFAULT" value="16"/>
+                  <a:da name="RANGE" type="Range">
+                    <a:tst expr="&gt;=1"/>
+                    <a:tst expr="&lt;=4294967295"/>
+                  </a:da>
+                </v:var>
+                <v:lst name="CalSymBlockEncryptConfig" type="MAP">
+                  <a:a name="COLUMNS">
+                    <a:v>CalSymBlockEncryptInitConfiguration</a:v>
+                    <a:v>CalSymBlockEncryptPrimitiveName</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="SymBlockEncrypt configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CalSymBlockEncryptConfig" type="IDENTIFIABLE">
+                    <v:var name="CalSymBlockEncryptInitConfiguration" 
+                           type="STRING">
+                      <a:a name="DESC" 
+                           value="The configuration of the primitive"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Primitive configuration"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    </v:var>
+                    <v:var name="CalSymBlockEncryptPrimitiveName" type="STRING">
+                      <a:a name="DESC" value="Name of the Cpl primitive."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Primitive name"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CalSymDecrypt" type="IDENTIFIABLE">
+                <a:a name="DESC" 
+                     value="The configuration of the SymDecrypt services."/>
+                <v:var name="CalSymDecryptMaxCtxBufByteSize" type="INTEGER">
+                  <a:a name="DESC" 
+                       value="Maximal size of all context buffers used for symmetrical decryption.                     Must be at least the size, of the maximal required context buffer size of the primitives used for symmetrical decryption."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Maximal context buffer size"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:da name="DEFAULT" value="428"/>
+                  <a:da name="RANGE" type="Range">
+                    <a:tst expr="&gt;=1"/>
+                    <a:tst expr="&lt;=4294967295"/>
+                  </a:da>
+                </v:var>
+                <v:var name="CalSymDecryptMaxKeySize" type="INTEGER">
+                  <a:a name="DESC" 
+                       value="Maximal size of all keys used for symmetrical decryption."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Maximal key size"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:da name="DEFAULT" value="1"/>
+                  <a:da name="RANGE" type="Range">
+                    <a:tst expr="&gt;=1"/>
+                    <a:tst expr="&lt;=4294967295"/>
+                  </a:da>
+                </v:var>
+                <v:lst name="CalSymDecryptConfig" type="MAP">
+                  <a:a name="COLUMNS">
+                    <a:v>CalSymDecryptInitConfiguration</a:v>
+                    <a:v>CalSymDecryptPrimitiveName</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="SymDecrypt configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CalSymDecryptConfig" type="IDENTIFIABLE">
+                    <v:var name="CalSymDecryptInitConfiguration" type="STRING">
+                      <a:a name="DESC" 
+                           value="The configuration of the primitive"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Primitive configuration"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    </v:var>
+                    <v:var name="CalSymDecryptPrimitiveName" type="STRING">
+                      <a:a name="DESC" value="Name of the Cpl primitive."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Primitive name"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CalSymKeyExtract" type="IDENTIFIABLE">
+                <a:a name="DESC" 
+                     value="The configuration of SymKeyExtract services"/>
+                <v:var name="CalSymKeyExtractMaxCtxBufByteSize" type="INTEGER">
+                  <a:a name="DESC" 
+                       value="Maximal size of all context buffers used for symmetrical key extraction.                     Must be at least the size, of the maximal required context buffer size of the primitives used for symmetrical key extraction."/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Maximal context buffer size"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:da name="DEFAULT" value="72"/>
+                  <a:da name="RANGE" type="Range">
+                    <a:tst expr="&gt;=1"/>
+                    <a:tst expr="&lt;=4294967295"/>
+                  </a:da>
+                </v:var>
+                <v:var name="CalSymKeyExtractMaxKeySize" type="INTEGER">
+                  <a:a name="DESC" 
+                       value="Maximal size of all keys used in SymKeyExtract computations"/>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       type="IMPLEMENTATIONCONFIGCLASS">
+                    <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Maximal key size"/>
+                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                  <a:da name="DEFAULT" value="1"/>
+                  <a:da name="RANGE" type="Range">
+                    <a:tst expr="&gt;=1"/>
+                    <a:tst expr="&lt;=4294967295"/>
+                  </a:da>
+                </v:var>
+                <v:lst name="CalSymKeyExtractConfig" type="MAP">
+                  <a:a name="COLUMNS">
+                    <a:v>CalSymKeyExtractInitConfiguration</a:v>
+                    <a:v>CalSymKeyExtractPrimitiveName</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="SymKeyExtract configurations"/>
+                  <a:da name="MAX" value="32"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:ctr name="CalSymKeyExtractConfig" type="IDENTIFIABLE">
+                    <v:var name="CalSymKeyExtractInitConfiguration" 
+                           type="STRING">
+                      <a:a name="DESC" 
+                           value="The configuration of the primitive"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Primitive configuration"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    </v:var>
+                    <v:var name="CalSymKeyExtractPrimitiveName" type="STRING">
+                      <a:a name="DESC" value="Name of the Cpl primitive."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Primitive name"/>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>EN:
+                    &lt;html&gt;
+                      Common container, aggregated by all modules. It contains published information about vendor and versions.
+                  &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="Common Published Information"/>
+                <a:a name="UUID" 
+                     value="ECUC:a00be3e0-8783-9123-2d52-1eb616737ca6"/>
+                <v:var name="ArMajorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Major version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Major Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:948f3f2e-f129-4bc5-b4e1-7a7bdb8599e1"/>
+                  <a:da name="DEFAULT" value="1"/>
+                </v:var>
+                <v:var name="ArMinorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Minor version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Minor Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:2893b920-59d5-4ac2-b2c1-e23742e66d70"/>
+                  <a:da name="DEFAULT" value="2"/>
+                </v:var>
+                <v:var name="ArPatchVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Patch level version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Patch Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:6428eb9b-8790-488a-b9a3-0fba52d0f59e"/>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="SwMajorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Major version number of the vendor specific implementation of the module.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Major Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:605b18ae-3f9a-41d4-9225-67c9c5f6fc34"/>
+                  <a:da name="DEFAULT" value="1"/>
+                </v:var>
+                <v:var name="SwMinorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Minor version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Minor Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a7fe44dc-ea25-4b8d-8fad-9fbcae86d56f"/>
+                  <a:da name="DEFAULT" value="2"/>
+                </v:var>
+                <v:var name="SwPatchVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Patch Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a318d2d9-0e75-49da-ac43-e7e4e682e2f9"/>
+                  <a:da name="DEFAULT" value="2"/>
+                </v:var>
+                <v:var name="ModuleId" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Module ID of this module from Module List
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Numeric Module ID"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:78bc8362-080f-4253-b3da-804ab69a7154"/>
+                  <a:da name="DEFAULT" value="206"/>
+                </v:var>
+                <v:var name="VendorId" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Vendor ID"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:01b0f467-6943-4558-b4f2-3fa1fad28449"/>
+                  <a:da name="DEFAULT" value="1"/>
+                </v:var>
+                <v:var name="VendorApiInfix" type="STRING_LABEL">
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Vendor API Infix"/>
+                  <a:a name="OPTIONAL" value="true"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:1c68a547-f24e-4a4e-9540-69fbd466ec89"/>
+                  <a:a name="VISIBLE" value="false"/>
+                  <a:da name="DEFAULT" value=""/>
+                  <a:da name="ENABLE" value="false"/>
+                </v:var>
+                <v:var name="Release" type="STRING_LABEL">
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Release Information"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:1c68a547-f24e-4a4e-9540-69fbd533ec89"/>
+                  <a:da name="DEFAULT" value=""/>
+                </v:var>
+              </v:ctr>
+            </v:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+
+</datamodel>

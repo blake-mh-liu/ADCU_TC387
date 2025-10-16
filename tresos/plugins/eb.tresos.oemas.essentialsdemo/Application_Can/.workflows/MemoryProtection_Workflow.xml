@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< tresos Studio Workflow >>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+<workflow xmlns="http://www.tresos.de/_projects/tresos/workflow_1_0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.tresos.de/_projects/tresos/workflow_1_0.xsd http://www.tresos.de/_projects/tresos/workflow_1_0.xsd" id="EBTresosSolutionsMemoryProtection_workflow" version="1.0" label="EB tresos Solutions Memory Protection" description="The EB tresos workflow is a step-by-step instruction to guide you through the configuration of a project.
+                       The workflow represents a sequence of steps to accomplish the task of building an application.">
+  <group id="EBTresosSolutionsMemoryProtection" label="EB tresos Solutions Memory Protection add on">
+    <description>
+      <![CDATA[     
+       <h2 style="color:#00c400";><b>DESCRIPTION</b></h2>
+       <p>
+       The workflow helps you start a Memory-protection project with EB tresos Solutions.
+       </p>
+          <h2 style="color:#00c400";><b>PRECONDITION</b></h2>
+           <p>As the Memory-protection workflow extends the EB tresos Solutions workflow, it is required that a project with the EB tresos Solutions 
+           workflow has already been executed.</p>
+		   <p>A system description file is required which provide the needed interfaces to connect the SafetySystem Software component to the system.</p> 
+        ]]>
+    </description>
+
+    <group id="SYSTEM_CFG_UPDATE" label="System Configuration update" type="sequence">
+      <description>
+        <![CDATA[
+        <h2 style="color:#00c400";><b>GOAL</b></h2>
+        <p>To update the system model with the Safety SWC, the needed ports and system configuration. </p>
+        <h2 style="color:#00c400";><b>PROCEDURE</b></h2>
+          <ol> 
+<li>Extend the existing <tt>SystemExtract_SystemModel</tt> importer with the arxml files that
+contain the system description and SWC description.</li> 
+<li>Update the system model.</li> 
+</ol>
+          ]]></description>
+    
+      <action label="Update System Description Importer" id="BSW_UPDATEIMPORTER">
+        <command description="Update Imp_System importer" serialization="dreisoft.tresos.launcher2.api.plugin.ImporterExporterCommand"/>
+        <description>
+          <![CDATA[
+            <h2 style="color:#00c400";><b>GOAL</b></h2>
+            <p>To extend the <tt>SystemExtract_SystemModel </tt> importer with the arxml files containing the system description and SWC description.</p>
+           <h2 style="color:#00c400";><b>PROCEDURE</b></h2>
+        <ol>
+<li>In the <strong>Workflows</strong> pane, double-click <strong>Update system Description Importer</strong> to open the <strong>Create, manage and run im- and exporters</strong> window.</li>
+<li>Select the <font face="Courier New">SystemExtract_SystemModel</font>, and go to the <strong>All Models</strong> tab.</li>
+<li>Select <strong>Add</strong> to add a file, and go to <tt>Project
+root/system/MemoryProtection.arxml </tt> or select <strong>New</strong> and go to
+<tt>MemoryProtection.arxml.</tt></li>
+<li>Select <strong>Add</strong> to add a file, and go to <tt>Project root/system/SWC_Safety.arxml
+</tt> or select <strong>New</strong>, and go to <tt>system/SWC_Safety.arxml.</tt></li>
+<li>Select <strong>OK</strong>. </li>
+</ol>
+
+<p><strong style="color:#ff9900";>Tip:</strong> Use relative paths for the input files of the importer. Relative paths work regardless of the location of the project.</p>
+         ]]>
+        </description>
+      </action>
+
+	  
+      <action label="Run import" id="MANUAL_RUNIMPORT_1">
+        <description>
+          <![CDATA[
+         <h2 style="color:#00c400";><b>GOAL</b></h2>
+				<p>To run the System Description Import (<font face="Courier New">SystemExtract_SystemModel</font>) and create the ECU extract.</p>
+               ]]>
+        </description>
+        <command description="Open Import batch" type="configure" serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureDialogCommand(triggerId=SystemDescriptionImport_Run)"/>
+        <command description="Run Import batch" serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureTriggerCommand(triggerId=SystemDescriptionImport_Run)"/>
+      </action>
+      
+      
+    </group>
+
+
+    <group id="MEMORY_PROT_CFG" label="Memory protection configuration" type="sequence">
+      <description>
+        <![CDATA[
+        <h2 style="color:#00c400";><b>GOAL</b></h2>
+        <p>To configure the basic software modules.</p>
+        <ul>
+            <li><a href="workflow:///MEMORY_PROT_CFG_OS">Os</a>: extends the OS configuration with needed artifacts.</li>
+            <li><a href="workflow:///MMEMORY_PROT_CFG_BSWM">BswM</a>: adapts the startup behavior.</li>
+          </ul>
+        <h2 style="color:#00c400";><b>PROCEDURE</b></h2>
+          <p>Double-click the respective action step in the <strong>Workflows</strong> view or double-click the module in the <strong>Project Explorer</strong> tree view.</p>
+   
+<p><strong style="color:#ff9900";>Tip:</strong> To search for configuration parameter names project-wide, use the <strong>Ctrl+T </strong>keys.</p>
+          
+          ]]></description>
+      <action label="Configure the Os module" id="MEMORY_PROT_CFG_OS">
+        <command description="Open Os configuration" serialization="dreisoft.tresos.launcher2.api.plugin.EditConfigurationCommand(moduleType=Os)" autoadvance="false"/>
+        <description>
+          <![CDATA[
+           <h2 style="color:#00c400";><b>GOAL</b></h2>
+            <p>To configure the Os module.</p>
+              <h2 style="color:#00c400";><b>PROCEDURE</b></h2>
+     <ol>
+<li>In the <strong>Workflows</strong> pane, double-click <strong>Configure the Os module</strong> to
+open the Os editor.</li>
+<li>On the <strong>OsOS</strong> tab:</li>
+<ol>
+<li>Set <tt>OsProtection</tt> to <tt>ON</tt>.</li>
+<li>Set <tt>OsUseLastError</tt> to <tt>True</tt>.</li>
+<li>Set <tt>OsProtectionHook</tt> to <tt>True</tt>.</li>
+</ol>
+<li>Create <strong>OsCounter</strong> for the second partition:</li>
+<ol>
+<li>Rename the existing <tt>HwCounter to HwCounter_Qm.</tt></li>
+<li>Duplicate <tt>HwCounter_Qm</tt> to <tt>HwCounter_Safety.</tt></li>
+<li>In <tt>HwCounter_Safety</tt>, change <tt>OsCounterTricoreTimer</tt> to a timer which is not used, for example <tt>STM0_T1</tt>.</li>
+</ol>
+<li>Create <strong>OsTasks</strong> for the second core. New tasks are needed for initialization,
+execution of Rte events and inter partition communication.</li>
+<li>On the <strong>OsTasks </strong> tab:</li>
+<ol>
+<li>Duplicate the existing <tt>Rte_Event_Task</tt> and change its name, for example
+<tt>Safety_Event</tt>. This is used to execute the events from Safety SWC.</li>
+<li>Create a new task <tt>BSW_Com</tt> used by Rte to handle interpretation communication.</li>
+<ol>
+<li>In <strong>BSW_Com</strong><tt>, set OsTaskPriority to </tt><tt>49</tt>.</li>
+<li>In <strong>BSW_Com</strong><tt>, set OsStacksize to </tt><tt>512</tt>.</li>
+</ol>
+<li>Create a new task <tt>Rte_Start_Qm</tt> to start the Rte on the Qm partition.</li>
+<ol>
+<li>In <strong>Rte_Start_Qm</strong><tt>, set OsTaskPriority to </tt><tt>51</tt>.</li>
+<li>In <strong>Rte_Start_Qm</strong><tt>, set OsStacksize to </tt><tt>512</tt>.</li>
+</ol>
+<li>Create a new task <tt>Rte_Stop_Qm</tt> to stop the Rte on the Qm partition.</li>
+<ol>
+<li>In <strong>Rte_Stop_Qm</strong><tt>, set OsTaskPriority to </tt><tt>51</tt>.</li>
+<li>In <strong>Rte_Stop_Qm</strong><tt>, set OsStacksize to </tt><tt>512</tt>.</li>
+</ol>
+<li>Create a new task <tt>Rte_Start_Safety</tt> to start the Rte on the Safety partition.</li>
+<ol>
+<li>In <strong>Rte_Start_Safety</strong><tt>, set OsTaskPriority to </tt><tt>51</tt>.</li>
+<li>In <strong>Rte_Start_Safety</strong><tt>, set OsStacksize to </tt><tt>512</tt>.</li>
+</ol>
+<li>Create a new task <tt>Rte_Stop_Safety</tt> to start the Rte on the Safety partition.</li>
+<ol>
+<li>In <strong>Rte_Stop_Safety</strong><tt>, set OsTaskPriority to </tt><tt>51</tt>.</li>
+<li>In <strong>Rte_Stop_Safety</strong><tt>, set OsStacksize to </tt><tt>512</tt>.</li>
+</ol>
+</ol>
+<li>On the <strong>OsMikrokernel</strong> tab under <strong>MkMemoryProtection</strong>: </li>
+<ol>
+<li>Create a new MkMemoryRegion <tt>Io</tt> to define the IO space. </li>
+<ol>
+<li> In <strong>Io</strong>, set <tt>MkMemoryRegionInitThreadAccess</tt> to True.</li>
+<li> In <strong>Io</strong>, set <tt>MkMemoryRegionOsThreadAccess </tt> to True.</li>
+<li> In <strong>Io</strong>, set <tt>MkMemoryRegionShutdownAccess  </tt> to True. </li>
+<li> In <strong>Io</strong>, set <tt>MkMemoryRegionGlobal  </tt> to True.</li>
+<li> In <strong>Io</strong>, set <tt>MkMemoryRegionShutdownHookAccess </tt> to True.</li>
+<li> In <strong>Io</strong>, set <tt>MkMemoryRegionKernelAccess  </tt> to True.</li>
+</ol>
+<li>Create a new MkMemoryRegion <tt>Fee</tt> to define the region needed for Flash emulated EEPROM. </li>
+<li>Create a new MkMemoryRegion <tt>EthBuffer</tt> to define the region for the buffers needed by
+the eth driver. </li>
+<li>Create a new MkMemoryRegion <tt>OsApp_Qm</tt> to define the region for Qm Os Application. </li>
+<ol>
+<li> In <strong>OsApp_Qm </strong> set <tt>MkMemoryRegionInitThreadAccess</tt> to True.</li>
+<li> In <strong>OsApp_Qm </strong> set <tt>MkMemoryRegionOsThreadAccess</tt> to True.</li>
+<li> In <strong>OsApp_Qm </strong> set <tt>MkMemoryRegionProtHookAccess</tt> to True.</li>
+<li> In <strong>OsApp_Qm </strong> set <tt>MkMemoryRegionShutdownAccess</tt> to True.</li>
+<li> In <strong>OsApp_Qm </strong> set <tt>MkMemoryRegionIdleThreadAccess</tt> to True.</li>
+<li> In <strong>OsApp_Qm </strong> set <tt>MkMemoryRegionErrorHookAccess</tt> to True.</li>
+<li> In <strong>OsApp_Qm </strong> set <tt>MkMemoryRegionShutdownHookAccess</tt> to True. </li>
+<li> In <strong>OsApp_Qm </strong> set <tt>MkMemoryRegionKernelAccess</tt> to True.</li>
+</ol>
+<li>Create a new MkMemoryRegion <tt>OsApp_Safety</tt> to define the region for Safety Os
+Application. </li>
+</ol>
+<li>On the <strong>OsMikrokernel</strong> tab under <strong>MkThreadCustomization</strong>: </li>
+<ol>
+<li>Enable <tt>MkInitThreadMode</tt>, and set it to <tt>SUPERVISOR</tt>.</li>
+<li>Enable <tt>MkShutdownThreadMode </tt>, and set it to <tt>SUPERVISOR</tt>.</li>
+<li>Enable <tt>MkShutdownHookMode </tt>, and set it to <tt>SUPERVISOR</tt>. </li>
+</ol>
+<li>On the <strong>OsApplication</strong> tab: </li>
+<ol>
+<li>Create a new application named <tt>OsApp_Safety</tt>. </li>
+<li>Rename the existing one to <tt>OsApp_Qm</tt>. </li>
+</ol>
+<li>Open the <tt>OsApplication</tt>, and map each artefact with the corresponding <tt>OsApplication</tt>.&nbsp;
+<ol>
+<li>The following artefacts must be mapped to the newly created <tt>OsApplication OsApp_Safety</tt>:
+<ul>
+<li><tt>OSAppCounterRef: HwCounter_Safety </tt></li>
+<li><tt>OSAppTaskRef: Safety_Event, Rte_Start_Safety, Rte_Stop_Safety</tt></li>
+<li><tt>OsAppMkMemoryRegionRef: Io </tt></li>
+</ul>
+</li>
+<li>The following artefacts must be mapped to the newly created <tt>OsApplication OsApp_Qm</tt>:
+<ul>
+<li><tt>OSAppCounterRef: HwCounter_Qm </tt></li>
+<li><tt>OSAppTaskRef: BSW_Com. Rte_Start_Qm, Rte_Stop_Qm </tt></li>
+<li><tt>OsAppMkMemoryRegionRef: Io, Fee, EthBuffer </tt></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><tt>OsApp_Qm</tt> must have the right to start the Rte_Start and Rte_Stop tasks of each
+partition. To do so, on the <strong>OsTask</strong> tab: </li>
+<ol>
+<li>Open <tt>Rte_Start_Safety</tt> and in <tt>OsTaskAccessingApplication</tt> tab, add
+<tt>OsApp_Qm</tt>.</li>
+<li>Open <tt>Rte_Stop_Safety</tt> and in <tt>OsTaskAccessingApplication</tt> tab, add
+<tt>OsApp_Qm</tt>.</li>
+<li>Open <tt>Rte_Start_Qm</tt> and on <tt>OsTaskAccessingApplication</tt> tab, add
+<tt>OsApp_Qm</tt>.</li>
+<li>Open <tt>Rte_Stop_Qm</tt> and on <tt>OsTaskAccessingApplication</tt> tab, add <tt>OsApp_Qm</tt>.</li>
+
+</ol>
+</ol>
+            ]]>
+        </description>
+      </action>
+      <action label="Configure the BswM module" id="MULTICORE_CFG_BSWM">
+        <command description="Open BswM configuration" serialization="dreisoft.tresos.launcher2.api.plugin.EditConfigurationCommand(moduleType=BswM)" autoadvance="false"/>
+        <description>
+          <![CDATA[
+           <h2 style="color:#00c400";><b>GOAL</b></h2>
+            <p>Rte start has been moved from BswM action to a partition specific task activation which is done in a callout function.</p>
+             <h2 style="color:#00c400";><b>PROCEDURE</b></h2>
+            
+<ol><li>In the <strong>Workflows</strong> pane, double-click <strong>Configure the BswM
+module</strong> to open the BswM editor.</li>
+<li>In the <strong>BswMAction</strong> tab, in <strong>BswMConfig</strong>, open <tt>BswM_Act_RteStart</tt>.</li>
+<li>Change the <tt>BswMUserCalloutFunction</tt>, to Eb_Intgr_Rte_Start().</li>
+</ol>
+
+            ]]>
+        </description>
+      </action>
+      
+      <action label="Generate swcd" id="MANUAL_GENERATESWCD_2">
+        <description>
+          <![CDATA[
+            <h2 style="color:#00c400";><b>GOAL</b></h2>
+				<p>To generate the service component interfaces.</p>
+          ]]>
+        </description>
+        <command description="Generate swcd" serialization="dreisoft.tresos.launcher2.api.plugin.GeneratorCommand(mode=generate_swcd)"/>
+      </action>
+      
+      <action label="Run import" id="MANUAL_RUNIMPORT_2">
+        <description>
+          <![CDATA[
+            <h2 style="color:#00c400";><b>GOAL</b></h2>
+				<p>To run the System Description Import (SystemExtract_SystemModel), and create the ECU extract.</p>
+               ]]>
+        </description>
+        <command description="Open Import batch" type="configure" serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureDialogCommand(triggerId=SystemDescriptionImport_Run)"/>
+        <command description="Run Import batch" serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureTriggerCommand(triggerId=SystemDescriptionImport_Run)"/>
+      </action>
+      <action label="Connect Software Components with Basic Software" id="CONNECT_PORTS_1">
+        <description>
+          <![CDATA[
+         	<h2 style="color:#00c400";><b>GOAL</b></h2>
+				<p>To connect the software components with basic software.</p>
+<h2 style="color:#00c400";><b>PROCEDURE</b></h2>
+				<p>To run the <b>Compositions and Connections editor</b>, double-click this action step in the <strong>Workflows</strong> view, or select <strong>Edit Compositions and Connections</strong> from the <strong>System </strong>category in the <strong>Sidebar</strong> view.</p>
+<p><strong>Adding Component Prototypes</strong>:</p>
+<ol>
+<li>Right-click on <strong>TopLevelComposition</strong> in the <strong>Entity </strong>list, and select <strong>Add Prototypes</strong>.</li>
+<li>Select the <tt>SWC_Safety </tt> component types.</li>
+<li>Select <strong>OK</strong> to add a component prototype for each selected component type.</li>
+</ol>
+<p><strong>Adding connections</strong>:</p>
+<ol>
+<li>To make the assignment, expand a prototype, right-click on the port of the prototype, and select <strong>Add Connector</strong>.</li>
+<li>Expand a component prototype and select a port.</li>
+<li>Select<strong> OK</strong> to add the connection.</li>
+<li>Connect each port for <tt>SWC_Safety</tt> with a compatible port. Only one compatible port should be available.</li>
+</ol>
+<p><strong style="color:#ff9900">Note:</strong> If the <strong>OK</strong> button is disabled, the selected port is incompatible. Use the buttons in the <strong>Add Connector</strong>&nbsp;window, 
+you can set the tree to show or hide both incompatible and already connected ports. 
+With the <strong>type filter text</strong>&nbsp;textbox, you can filter the ports by name.</p>
+<p style="padding-left: 30px;">&nbsp;</p>
+<p style="padding-left: 30px;">&nbsp;</p>
+<p>&nbsp;</p>
+               ]]>
+        </description>
+        <command serialization="dreisoft.tresos.guidedconfig.api.plugin.SidebarTriggerCommand(triggerId=ConnectionEditor_Trigger)" autoadvance="false"/>
+      </action>
+      
+      <action label="Run import" id="MANUAL_RUNIMPORT_3">
+        <description>
+          <![CDATA[
+          	<h2 style="color:#00c400";><b>GOAL</b></h2>
+				<p>To run the System Description Import (<font face="Courier New">SystemExtract_SystemModel</font>) and create the ECU extract.</p>
+               ]]>
+        </description>
+        <command description="Open Import batch" type="configure" serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureDialogCommand(triggerId=SystemDescriptionImport_Run)"/>
+        <command description="Run Import batch" serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureTriggerCommand(triggerId=SystemDescriptionImport_Run)"/>
+      </action>
+      
+      <action label="Configure the Rte module" id="BSW_RTE_1">
+        <command description="Open Rte configuration" serialization="dreisoft.tresos.launcher2.api.plugin.EditConfigurationCommand(moduleType=Rte)" autoadvance="false"/>
+        <description>
+          <![CDATA[
+          	<h2 style="color:#00c400";><b>GOAL</b></h2>
+          	<p>To configure the Rte module.</p>
+          	<h2 style="color:#00c400";><b>PROCEDURE</b></h2>
+			
+<ol>
+<li>Double-click this action step in the <strong>Workflows </strong>view.</li>
+<li>Select <strong>Rte Editor</strong>.&nbsp;</li>
+<li>Open the <strong>Partitioning</strong> tab, and set <tt>Partitioning support</tt> to <tt>SharedMemory</tt>.</li>
+<li>Enable <tt>BSW Os task required</tt>.</li>
+<li>Set <tt>BSW Os task</tt> to <tt>BSW_Com</tt>.</li>
+<li>Set a valid number to <tt>BSW send signal queue length</tt> and <tt>BSW send signal group queue length</tt>. For our use case, 2 should be enough.</li>
+<li>In <strong>Software components instance partitioning</strong> map, set <tt>Os application</tt> for <tt>SWC_Safety</tt> to OsApp_Safety.</li>
+<li>In <strong>Basic module instance name</strong>, map the <tt>Os application</tt> for every entry to OsApp_Qm.</li>
+<li>In <strong>Os counter partition assignment</strong>, map <tt>HwCounter_Qm</tt> to <tt>Os application</tt> OsApp_Qm.</li>
+<li>In <strong>Os counter partition assignment</strong>, map <tt>HwCounter_Safety</tt> to <tt>Os application</tt> OsApp_Safety.</li>
+<li>Select the <strong>Event Mapping </strong>tab, and select a task in the <strong>Task</strong> drop-down list box, then select&nbsp;<strong>Map the runnable entity selected above to the task selected below</strong>.
+<ul>
+<li>Map to <tt>Safety_Event</tt>: <tt>UpdateSafeData</tt>.</li>
+</ul>
+</ol>
+
+				]]>
+        </description>
+      </action>
+    </group>      
+      <action label="Integration Code" id="CODE_UPDATE">
+        <description>
+          <![CDATA[
+        
+         <h2 style="color: #00c400;"><strong>GOAL</strong></h2>
+<p>To describe the changes in the integration code which are triggered by the memory protection configuration.</p>
+<h2 style="color: #00c400;"><strong>PROCEDURE</strong></h2>
+<p>This procedure is not a step-by-step instruction but an overview of the needed modifications. Some files and some defined names are extended with the OsApplication names because of the use of partitioning.</p>
+<ol>
+<ol>
+<li><strong>Include files</strong>: Rte generates separate source and header files for each partition, and the included Rte files must be updated in the integration code.</li>
+<li><strong>Task activation for Rte start stop</strong>: apply the following changes in the <tt>Eb_Intgr_BswM_UserCallouts.c</tt> file:</li>
+<ol>
+<li>Replace call to <tt>Rte_Stop()</tt> with task activation for <tt>Rte_Stop_Qm</tt> and <tt>Rte_Stop_Safety.</tt></li>
+<li>Create the <tt>Eb_Intgr_Rte_Start</tt> function where the <tt>Rte_Start_Qm</tt> and <tt>Rte_Start_Safety</tt> tasks are activated.</li>
+<li>In <tt>Eb_Intgr_BswM_UserCallouts.h</tt>, add the function prototype for <tt>Eb_Intgr_Rte_Start</tt>.</li>
+<li>Create a new file named <tt>Eb_Intgr_Rte_Tasks.c</tt>, and implement the tasks for <tt>Rte_Stop_Qm, Rte_Stop_Safety, Rte_Start_Qm, Rte_Start_Safety</tt> to call the corresponding <tt>Rte_Start_xxx, Rte_Stop_xxx</tt> function for the partitions.</li>
+</ol>
+<li><strong>Protection Hook:</strong> a protection hook must be implemented.</li>
+<ul>
+<li>Create a new file named <tt>Eb_Intgr_Os_Hooks.c</tt> and implement the <tt>ProtectionHook</tt> function.</li>
+</ul>
+<li><strong>SWC Safety:</strong></li>
+<ul>
+<li>Create a new file named <tt>SWC_Safety.c</tt> and implement the <tt>SWC_Safe_Data_Received</tt> runnable entity.</li>
+</ul>
+<li><strong>Linker script generation:</strong> the linker script generator must be adapted to define the memory regions by address or by symbol inside the make files.</li>
+<ul>
+<li>In genld-TRICORE-Mk.pl, search for the code section where "symbols for user configured memory region" is handled, and replace:
+<p style="padding-left: 30px;"><tt>$LdBackend-&gt;printSymbolDefinition($mr_sym, $dest_adr);</tt></p>
+with:
+<p style="padding-left: 30px;"><tt># check if the memory region is defined by address or by name if((rindex $dest_adr, "0x", 0) ){ $LdBackend-&gt;printSymbolDefinition($mr_sym, "\"$dest_adr\""); } else { $LdBackend-&gt;printSymbolDefinition($mr_sym, $dest_adr); }</tt></p>
+<p><strong style="color: #ff9900;">Note:</strong> The linker script is generated only if there is no linker script available in the "output\generated\" folder.</p>
+</li>
+</ul>
+<li><strong>Objects assignation to Os Applications:</strong> The object files must be assigned to the corresponding OS Applications. This is done in a make file. In the <tt><tt>Merged_Makefile.mak<tt></tt> from util folder do the assignment as described below:&nbsp;</tt></tt>
+<blockquote style="margin: 0 0 0 40px; border: none; padding: 0px;">OBJS_OsApp_XXX:= obj_file_name*\</blockquote>
+<blockquote style="margin: 0 0 0 40px; border: none; padding: 0px;">.......................</blockquote>
+<blockquote style="margin: 0 0 0 40px; border: none; padding: 0px;">obj_file_name*\</blockquote>
+<ul>
+<li>OBJS_OsApp_Qm must contain all the object files from the basic software, and all the SWC's
+beside SWC_Safety.</li>
+<li>OBJS_OsApp_Safety must contain all the object files which are related to SWC_Safety, this
+include the generated ones from Rte.</li>
+</ul>
+<p><strong style="color: #ff9900;">Note:</strong>&nbsp; All the object files are successfully mapped if the anon sections from the generated map file are empty.</p>
+</li>
+<li><strong>Memory region address assignment:</strong> for each memory region defined inside the OS,
+the configuration address assignment must be defined in a make file. In the Merged_Makefile.mak from
+the util folder, do the assignment as follows:</li>
+</ol>
+</ol>
+<ul>
+<li>Memory region Io: this memory region is HW dependent. The example below is valid for TC29XT. Check your hardware manual for correct values.
+<p style="padding-left: 30px;">MK_MR_START_Io = "MK_RSA_Io=0xC3F88000"</p>
+<p style="padding-left: 30px;">MK_MR_LIMIT_Io = "MK_RLA_Io=0xFFFFC000"</p>
+</li>
+<li>Memory region <tt>Fee</tt>: this memory region defines the area needed for FlashEmulated EEPROM.
+It is HW and configuration dependent. The example below is valid for TC29XT. Check your hardware
+manual and tresos configuration for correct values. <tt>FlsBaseAddress</tt> defines the start address and <tt>FlsTotalSize the size of the region</tt>.
+<p style="padding-left: 30px;">MK_MR_START_Fee = "MK_RSA_Fee=0xAF000000"</p>
+<p style="padding-left: 30px;">MK_MR_LIMIT_Fee = "MK_RLA_Fee=0xAF0C0000"</p>
+</li>
+<li>Memory region <tt>EthBuffer</tt>: this memory region is HW dependent. The example below is valid
+for TC29XT. Check your hardware manual and linker script for correct values.
+<p style="padding-left: 30px;">MK_MR_START_EthBuffer = "MK_RSA_EthBuffer=_lc_gb_EthBuffer"</p>
+<p style="padding-left: 30px;">MK_MR_LIMIT_EthBuffer = "MK_RLA_EthBuffer=_lc_ge_EthBuffer"</p>
+</li>
+<li>Memory region <tt>OsApp_Qm:</tt> this memory region is used for the Qm Os Application.
+<p style="padding-left: 30px;">MK_MR_START_OsApp_Qm = "MK_RSA_OsApp_Qm=_lc_ub_data_C0.OsApp_Qm"</p>
+<p style="padding-left: 30px;">MK_MR_LIMIT_OsApp_Qm = "MK_RLA_OsApp_Qm=_lc_ue_bss_C0.OsApp_Qm"</p>
+</li>
+<li>Memory region <tt>OsApp_Safety:</tt> this memory region is used for the Safety Os Application.
+<p style="padding-left: 30px;">MK_MR_START_OsApp_Safety = "MK_RSA_OsApp_Safety=_lc_ub_data_C0.OsApp_Safety"</p>
+<p style="padding-left: 30px;">MK_MR_LIMIT_OsApp_Safety = "MK_RLA_OsApp_Safety=_lc_ue_bss_C0.OsApp_Safety"</p>
+</li>
+</ul>
+
+          ]]></description>
+      </action>
+      
+   
+    <action label="Run EB tresos solutions Workflow" id="SOLUTIONS_WORKFLOW">
+      <description>
+        <![CDATA[
+      <h2 style="color:#00c400";><b>GOAL</b></h2>
+        <p>To update the changes in the system model, generate compile and run the application.
+         <h2 style="color:#00c400";><b>PROCEDURE</b></h2>
+          <p>Execute the <B>EB tresos Solutions</B> workflow.
+		<p> <strong style="color:#ff9900">Note:</strong> For the demo_can on TC29XT, the following update must be done:</p>
+		  <ul>
+	
+		  <li>CAN Buffer Assignment Editor must be run to reassign the Hardware
+		  Objects (HOH) to the PDU’s.</li>
+		  <li>Uncheck <tt>allow MIXED HTHs</tt>. 
+		  <li>Each Tx PDU must have its own HOH assigned.</li>
+		  </ul>
+        
+         ]]></description>
+    </action>
+    
+  </group>
+</workflow>

@@ -1,0 +1,102 @@
+########### CORE PART OF THE TEMPLATE - START ###########
+## !LINKSTO Generator.Output.os_config_h, 2
+#parse("include/Os_config.h.vm")
+########### CORE PART OF THE TEMPLATE - END #############
+########### TARGET PART OF THE TEMPLATE - START ###########
+########### Arch specific velocimacros that can be called from the common code parts ###########
+#macro( VM_ArchOsApplication )
+## !LINKSTO Generator.Output.os_config_h.Applications.APPCONFIG.archapp, 2
+#* *#    OS_ARCHAPP_INIT(  \
+#* *#      /* Arch specific App config */                OS_ARCHAPP_INIT(0)  \
+#* *#    )  \
+#end
+##
+##
+#macro( VM_ArchOsConfigDataInit $coreId )
+#* *#  /* architecture dependend data */  OS_ARCHKERNELDATA_INIT,  \
+#end
+##
+##
+#macro( VM_ArchOsConfigInterruptInit )
+#end
+##
+##
+#macro( VM_ArchOsConfigTimestampInit )
+#end
+##
+##
+#macro( VM_ArchOsTaskInit $task )
+## !LINKSTO Generator.Output.os_config_h.Tasks.TASKCONFIG.arch, 1
+#* *#    OS_ARCHTASK_INIT(  \
+#* *#      /* Name of task */               "$task.getName()"  \
+#* *#    )  \
+#end
+##
+##
+#macro( VM_ArchOsHwTimerInit $timer )
+#* *#    OS_ARCHHWT_INIT(  \
+#* *#      /* ISR ID to trigger when expires */   $OsModel.getAllInterrupts().getId($timer.getTimerInterrupt()),   \
+#* *#      /* Name of timer */                    "$timer.getName()"  \
+#* *#    )  \
+#end
+##
+##
+#macro( VM_ArchOsInterruptInit $interrupt )
+## !LINKSTO Generator.Output.os_config_h.Interrupts.ISRCONFIG.arch, 1
+#* *#    OS_ARCHISR_INIT(  \
+#* *#      /* Run priority */                  $interrupt.getCalcPriority(),  \
+#* *#      /* Name of ISR */                   "$interrupt.getName()",  \
+#* *##if( $interrupt.isInternalInterrupt() )
+#*    *#      /* Internal ISR */                  OS_TRUE  \
+#* *##else
+#*    *#      /* Internal ISR */                  OS_FALSE  \
+#* *##end
+#* *#    )  \
+#end
+
+ /********************************************************************
+  ********************************************************************
+  * Architecture specific part starts here
+  ********************************************************************
+  *********************************************************************/
+/*===================================================================
+ * Windows Interrupts
+ *==================================================================*/
+#foreach( $interrupt in $AllInterruptsList )
+#* *##set( $vectorNumHex = $ClassOfHelpers.toHexString(2, $interrupt.getVectorNumber()) )
+#* *#\#define OS_IRQ${vectorNumHex}_ISRID  $interrupt.getName()
+#* *##if( $OsOptimize.isCat1DirectCall() &&  ($interrupt.getCategory().toString() == "1") )
+#*   *#\#define OS_IRQ${vectorNumHex}_ENTRY  $interrupt.getIsrFuncName()
+#* *##else
+#*   *#\#define OS_IRQ${vectorNumHex}_ENTRY  OS_Cat$interrupt.getCategory()Handler
+#* *##end
+#* *##if( $interrupt.getCategory() != $null )
+#*   *#\#define OS_IRQ${vectorNumHex}_TYPE   OS_VECTOR_TYPE_CAT$interrupt.getCategory().toString()
+#* *##end
+#end
+
+#if( $OsModel.getNumUsedCores() > 1 )
+#* *##set( $coreIdsLimit = $OsConfig.getNumCPUCoresMax() - 1 )
+#* *##set( $coreIdsRange = [0..$coreIdsLimit] )
+#* *#\#define OS_XCORE_ISR_IDS_INIT {  \
+#* *##foreach( $coreId in $coreIdsRange )
+#*    *##set( $crossCoreInt = $AllInterruptsList.getCrossCoreInterruptOfCore($coreId) )
+#*    *##if( $crossCoreInt == $null )
+#*       *#  /* no cross-core ISR id defined for core $coreId */  OS_NULLISR#if($foreach.hasNext),  \\$newLine#else  \\$newLine#end
+#*    *##else
+#*       *#  /* cross-core ISR id for core $coreId */             $crossCoreInt.getName()#if($foreach.hasNext),  \\$newLine#else  \\$newLine#end
+#*    *##end
+#* *##end
+#* *#}
+#end
+
+/*===================================================================
+ * Time Warping
+ *==================================================================*/
+\#define OS_TIME_WARP_FACTOR  $OsConfig.getTimerWarpFactor()
+
+
+#ifdef __cplusplus
+}
+#endif
+#endif  /* OS_CONFIG_H */

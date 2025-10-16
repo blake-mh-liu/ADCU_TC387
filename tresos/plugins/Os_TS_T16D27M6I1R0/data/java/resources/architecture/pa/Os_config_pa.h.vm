@@ -1,0 +1,140 @@
+########### CORE PART OF THE TEMPLATE - START ###########
+## !LINKSTO Generator.Output.os_config_h, 2
+#parse("include/Os_config.h.vm")
+########### CORE PART OF THE TEMPLATE - END #############
+########### TARGET PART OF THE TEMPLATE - START ###########
+########### Arch specific velocimacros that can be called from the common code parts ###########
+#macro( VM_ArchOsApplication $app )
+## !LINKSTO Generator.Output.os_config_h.Applications.APPCONFIG.archapp, 2
+## !LINKSTO Generator.Output.os_config_h.Applications.APPCONFIG.archapp.PA, 1
+#* *#    OS_ARCHAPP_INIT(  \
+#* *##if( $app.isTrusted() )
+## !LINKSTO Kernel.Autosar.Protection.HardwareProtection.CPU.SupervisorMode, 1
+## !LINKSTO Kernel.Autosar.Protection.HardwareProtection.CPU.UserMode, 1
+## !LINKSTO Generator.Output.os_config_h.Applications.APPCONFIG.PA.psw, 1
+#*    *#      /* Flags */                                   (OS_MSR_TRUSTED)  \
+#* *##elseif( $OsConfig.getDebugMemoryProtection().toString().equals("ON") )
+#*    *#      /* Flags */                                   (OS_MSR_NONTRUSTED)  \
+#* *##else
+#*    *#      /* Flags */                                   (OS_MSR_NONTRUSTED_NOPROT)  \
+#*   *##end
+#* *#    )  \
+#end
+##
+##
+#macro( VM_ArchOsConfigDataInit $coreId )
+#* *#    OS_ARCHKERNDATA_INIT(  \
+#* *#      /* Core ID */                                   $coreId,  \
+#* *#      /* Base address of the interrupt controller */  OS_INT_BASE_ADR_C$coreId,  \
+#* *#      /* Interrupt level register */                  OS_INT_LEVEL_ADR_C$coreId,  \
+#* *#      /* Interrupt vector register */                 OS_INT_VECTOR_ADR_C$coreId,  \
+#* *#      /* Interrupt acknowledge register */            OS_INT_IACK_ADR_C$coreId,  \
+#* *#      /* End of interrupt register */                 OS_INT_EOI_ADR_C$coreId  \
+## ## The rest of the structure will be initialized to zero by OS_ARCHKERNDATA_INIT.
+#* *#    ),  \
+#end
+##
+##
+#macro( VM_ArchOsConfigInterruptInit )
+#* *#  /* inInterrupt */              1,  \
+#end
+##
+##
+#macro( VM_ArchOsConfigTimestampInit )
+#end
+##
+##
+#macro( VM_ArchOsInterruptInit $interrupt )
+## !LINKSTO Generator.Output.os_config_h.Interrupts.ISRCONFIG.arch, 1
+#* *#    OS_ARCHISR_INIT(  \
+#* *##set( $owningApp = $interrupt.getOwningApplication() )
+#* *##set( $coreId = $owningApp.getPhyCoreAssignment() )
+## !LINKSTO Generator.Output.os_config_h.Interrupts.ISRCONFIG.arch.PA.vector, 1
+#* *#      /* Interrupt vector */                          $interrupt.getVectorNumber(),  \
+## !LINKSTO Generator.Output.os_config_h.Interrupts.ISRCONFIG.arch.PA.prio, 1
+#* *#      /* Run priority */                              $interrupt.getCalcPriority(),  \
+## !LINKSTO Generator.Output.os_config_h.Interrupts.ISRCONFIG.arch.PA.stackBase, 1
+#* *#      /* Stack base */                                OS_NULL,  \
+## !LINKSTO Generator.Output.os_config_h.Interrupts.ISRCONFIG.arch.PA.initialSp, 1
+#* *#      /* Initial SP */                                OS_NULL,  \
+#* *##if( $interrupt.getControlReg() != $null )
+#*    *#      /* ISR Control register */                      &$interrupt.getControlReg(),  \
+#* *##else
+#*    *#      /* ISR Control register(not used) */            OS_NULL,  \
+#* *##end
+#* *##if( $interrupt.getDestinationReg() != $null )
+#*    *#      /* ISR destination register */                  &$interrupt.getDestinationReg(),  \
+#* *##else
+#*    *#      /* ISR destination register(not used) */        OS_NULL  \
+#* *##end
+#* *#    )  \
+#end
+##
+##
+#macro( VM_ArchOsHwTimerInit $timer )
+#end
+##
+##
+#macro( VM_ArchOsTaskInit $task )
+## !LINKSTO Generator.Output.os_config_h.Tasks.TASKCONFIG.arch, 1
+    OS_ARCHTASK_INIT(  \
+      0  \
+    )  \
+#end
+
+/*===================================================================
+ * PA Configured Modes
+ *==================================================================*/
+\#define OS_VECTORMODE  OS_$OsConfig.getVectMode().toString()
+#* *##if( $OsConfig.getNumCPUCoresMax() > 1 )
+#*    *##if( $OsConfig.isCacheManagementDisabled() )
+#*       *#\#define OS_CACHE_MANAGEMENT_DISABLED  1
+#*    *##else
+#*       *#\#define OS_CACHE_MANAGEMENT_DISABLED  0
+#*    *##end
+#* *##end
+
+/*===================================================================
+ * PA Interrupts
+ *==================================================================*/
+## !LINKSTO Generator.Output.os_config_h.Interrupts.Vectors, 1
+## !LINKSTO Generator.Output.os_config_h.Interrupts.PA.Vectors,1
+#foreach( $interrupt in $AllInterruptsList )
+#* *##set( $vectorNumInHex = $ClassOfHelpers.toHexString(3, $interrupt.getVectorNumber()) )
+#* *##set( $irqPrefix   = "OS_IRQ${vectorNumInHex}" )
+## !LINKSTO Generator.Output.os_config_h.Interrupts.PA.Vectors.NAME, 1
+#* *#\#define ${irqPrefix}_NAME                      _OS_VECTOR_$interrupt.getVector()
+## !LINKSTO Generator.Output.os_config_h.Interrupts.PA.Vectors.ISRID, 1
+#* *#\#define ${irqPrefix}_ISRID                     $interrupt.getName()
+## !LINKSTO Generator.Output.os_config_h.Interrupts.Vectors.EntryFunction, 1
+## !LINKSTO Generator.Output.os_config_h.Interrupts.PA.Vectors.ENTRY, 1
+#* *##if( $interrupt.getCategory().name().equals("CROSSCORE") )
+#*    *##if( $OsConfig.getVectMode().name().equals("INTC_SOFTWARE") )
+##        ##Software vector mode uses a dispatcher to call the cross-core notify function directly.
+#*        *#\#define ${irqPrefix}_ENTRY                     OS_CrossCoreNotifyIsr
+#*    *##else
+##        ##Hardware vector mode needs an interrupt handler to save the context.
+#*        *#\#define ${irqPrefix}_ENTRY                     OS_CatXCHandler
+#*    *##end
+#* *##elseif( $interrupt.getCategory().name().equals("CAT1") && $OsOptimize.isCat1DirectCall() )
+#*    *#\#define ${irqPrefix}_ENTRY                     $interrupt.getIsrFuncName()
+#* *##else
+#*    *##if( $OsConfig.getVectMode().name().equals("INTC_SOFTWARE") )
+##        ##Software vector mode uses a dispatcher to call the kernel entry function directly
+#*       *#\#define ${irqPrefix}_ENTRY                     OS_Cat${interrupt.getCategory().toString()}Entry
+#*    *##else
+##        ##Hardware vector mode (and presumably all others) provide an interrupt handler
+#*       *#\#define ${irqPrefix}_ENTRY                     OS_Cat${interrupt.getCategory().toString()}Handler
+#*    *##end
+#* *##end
+#* *#\#define ${irqPrefix}_TYPE                      OS_VECTOR_TYPE_CAT$interrupt.getCategory().toString()
+## !LINKSTO Generator.Output.os_config_h.Interrupts.PA.Vectors.WRAPPERS, 1
+#* *#\#define ${irqPrefix}_WRAPPER                   OS_VECTOR_$interrupt.getVector()
+#* *#\#define ${irqPrefix}_NEEDSWRAPPER              1
+#* *#
+#end
+
+#ifdef __cplusplus
+}
+#endif
+#endif  /* OS_CONFIG_H */

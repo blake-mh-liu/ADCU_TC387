@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< tresos Studio Workflow >>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+<workflow xmlns="http://www.tresos.de/_projects/tresos/workflow_1_0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.tresos.de/_projects/tresos/workflow_1_0.xsd http://www.tresos.de/_projects/tresos/workflow_1_0.xsd" id="EBTresosSolutionsMulti-Core_workflow" version="1.0" label="EB tresos Solutions Multi-core" description="The EB tresos workflow is a step-by-step instruction to guide you through the configuration of a project.
+                       The workflow represents a sequence of steps to accomplish the task of building an application.">
+  <group id="EBTresosSolutionsMulti-core" label="EB tresos Solutions Multi-core add on">
+    <description>
+      <![CDATA[     
+       <h2 style="color:#00c400";><b>DESCRIPTION</b></h2>
+       <p>
+       The workflow is intended to help you start a Multi-core project with EB tresos Solutions.
+       </p>
+          <h2 style="color:#00c400";><b>PRECONDITION</b></h2>
+           <p>As the Multi-core workflow extends the EB tresos Solutions workflow, it is required that a project with the EB tresos Solutions workflow has already been executed.</p>
+          
+        ]]>
+    </description>
+
+    <group id="SYSTEM_CFG_UPDATE" label="System Configuration update" type="sequence">
+      <description>
+        <![CDATA[
+        <h2 style="color:#00c400";><b>GOAL</b></h2>
+        <p>To update the system model with the ports required for core synchronization. </p>
+        <h2 style="color:#00c400";><b>PROCEDURE</b></h2>
+          <ol type="1"> 
+<li>Extend the existing <font face="Courier New">SystemExtract_SystemModel</font> importer with the arxml file containing the port definition used for cross-core synchronization.</li> 
+<li>Update the system model.</li> 
+</ol>
+          ]]></description>
+      
+      <action label="Generate swcd" id="MANUAL_GENERATESWCD_1">
+        <description>
+          <![CDATA[
+				   <h2 style="color:#00c400";><b>GOAL</b></h2>
+				   <p>To generate the service component interfaces.</p>
+          ]]>
+        </description>
+        <command description="Generate swcd" serialization="dreisoft.tresos.launcher2.api.plugin.GeneratorCommand(mode=generate_swcd)"/>
+      </action>
+      <action label="Update System Description Importer" id="BSW_UPDATEIMPORTER">
+        <command description="Update Imp_System importer" serialization="dreisoft.tresos.launcher2.api.plugin.ImporterExporterCommand"/>
+        <description>
+          <![CDATA[
+            <h2 style="color:#00c400";><b>GOAL</b></h2>
+            <p>To extend the <font face="Courier New">SystemExtract_SystemModel</font> importer with port prototypes required for core synchronization.</p>
+           <h2 style="color:#00c400";><b>PROCEDURE</b></h2>
+        <ol>
+<li>In the <strong>Workflows</strong> pane, double-click <strong>Update system Description Importer</strong> to open the <strong>Create, manage and run im- and exporters</strong> window.</li>
+<li>Select the <font face="Courier New">SystemExtract_SystemModel</font> and go to the <strong>All Models</strong> tab.</li>
+<li>Select <strong>Add</strong> to add a file and go to <em>Project
+root/system/BswMModeMulticore.arxml</em> or select <strong>New</strong> and go to <em>system/BswMModeMulticore.arxml.</em></li>
+<li>Select <strong>OK</strong>. </li>
+</ol>
+<p>&nbsp;</p>
+<p><strong style="color:#ff9900";>Tip:</strong> Use relative paths for the input files of the importer. Relative paths work regardless of the location of the project.</p>
+         ]]>
+        </description>
+      </action>
+      
+      <action label="Run import" id="MANUAL_RUNIMPORT_1">
+        <description>
+          <![CDATA[
+         <h2 style="color:#00c400";><b>GOAL</b></h2>
+				<p>To run the System Description Import (<font face="Courier New">SystemExtract_SystemModel</font>) and create the ECU extract.</p>
+               ]]>
+        </description>
+        <command description="Open Import batch" type="configure" serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureDialogCommand(triggerId=SystemDescriptionImport_Run)"/>
+        <command description="Run Import batch" serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureTriggerCommand(triggerId=SystemDescriptionImport_Run)"/>
+      </action>
+      
+      
+    </group>
+
+
+    <group id="MULTICORE_CFG" label="Multicore Cfg" type="sequence">
+      <description>
+        <![CDATA[
+        <h2 style="color:#00c400";><b>GOAL</b></h2>
+        <p>To configure the basic software modules.</p>
+        <ul>
+            <li><a href="workflow:///MULTICORE_CFG_OS">Os</a>: extends OS configuration with needed artifacts.</li>
+            <li><a href="workflow:///MULTICORE_CFG_BSWM">BswM</a>: enables Multicore support.</li>
+            <li><a href="workflow:///MULTICORE_CFG_ECUM">EcuM</a>: enables Multicore support.</li>
+          </ul>
+        <h2 style="color:#00c400";><b>PROCEDURE</b></h2>
+          <p>Double-click the respective action step in the <strong>Workflows</strong> view or double-click the module in the <strong>Project Explorer</strong> tree view.</p>
+     <p>&nbsp;</p>     
+<p><strong style="color:#ff9900";>Tip:</strong> To search for configuration parameter names project-wide, use the <strong>Ctrl+T </strong>keys.</p>
+          
+          ]]></description>
+      <action label="Configure the Os module" id="MULTICORE_CFG_OS">
+        <command description="Open Os configuration" serialization="dreisoft.tresos.launcher2.api.plugin.EditConfigurationCommand(moduleType=Os)" autoadvance="false"/>
+        <description>
+          <![CDATA[
+           <h2 style="color:#00c400";><b>GOAL</b></h2>
+            <p>To configure theOs module.</p>
+              <h2 style="color:#00c400";><b>PROCEDURE</b></h2>
+     <ol>
+<li>In the <strong>Workflows</strong> pane, double-click <strong>Configure the Os module</strong> to
+open the Os editor.</li>
+<li>On the <strong><em>OsOS</em></strong> tab, set <em>OsNumberOfCores</em> to <em>2</em>.</li>
+<li>Create <strong>OsCounter</strong> for the second core. A new hardware counter is required for cyclic events executed on the second core:</li>
+<ol>
+<li>Rename the existing <em>HwCounter to HwCounter_C0.</em></li>
+<li>Duplicate <em>HwCounter</em><em>_</em><em>C0</em> <em>to HwCounter_C1.</em></li>
+<li>In <em>HwCounter_C1</em> change <em>OsCounterTricoreTimer</em> to a timer which is not used, for example <em>STM0_T1</em>.</li>
+</ol>
+<li>Create <strong>OsTasks </strong>for the second core. New tasks are needed for core initialization, execution of Rte events, mode switching, and a cyclic task to execute Bsw&rsquo;s main function.
+<ol>
+<li>On the <strong>OsTask</strong> tab, duplicate the existing <em>Init_Task</em>, and change its name, for example <em>Init_Task_C1</em>.</li>
+<li>Duplicate the existing <em>Rte_Time_Task</em>, and change its name, for example <em>Rte_Time_Task_C1</em>.</li>
+<li>Duplicate the existing <em>Rte_Event_Task</em>, and change its name, for example <em>Rte_Event_Task_C1</em>.</li>
+<li>Duplicate the existing <em>SchMDiagStateTask_20ms</em>, and change its name, for example <em>SchMDiagStateTask_20ms_C1</em>.</li>
+<li>Duplicate the already existing <em>TASK_RTE_ModeSwitchEvent</em>, give it a proper name, for example <em>TASK_RTE_ModeSwitchEvent_C1.</em></li>
+<li>Create a new task <em>BSW_Com</em> which will be used by Rte to handle interpretation communication.
+<ol>
+<li>In <strong>BSW_Com</strong><em>, set OsTaskPriority to </em><em>49</em></li>
+<li><em>In </em><strong>BSW_Com</strong><em>, set OsStacksize to </em><em>512</em></li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Remove <em>OsTasks</em> from the first core. The cyclic events are executed on the second core, and the corresponding task can be removed.
+<ol>
+<li>On the <strong>OsTask</strong> tab, delete <em>Rte_Time_Task</em>.</li>
+</ol>
+</li>
+<li>On the <strong>OsApplication</strong> tab, rename the existing <em>OsApplication</em> to <em>C0</em>. This name will be referenced later in the workflow.
+<ol>
+<li>Enable <em>OsApplicationCoreAssignment</em> in <em>C0 OsApplication</em> and set it to <em>0</em>.</li>
+<li>Create a new application named <em>C1</em>.</li>
+<li>Enable and set <em>OsApplicationCoreAssignment</em> to <em>1</em>.</li>
+<li>Set both <em>OsApplications</em> to <em>OsTrusted</em>.</li>
+</ol>
+</li>
+<li>Open the <em>OsApplication</em>, and map each artefact with the corresponding <em>OsApplication</em>.&nbsp;
+<ul>
+<li>The following artefacts must be mapped to the newly created <em>OsApplication C1</em> which belongs to <em>Core 1</em>:
+<ul>
+<li><em>OSAppCounterRef: HwCounter_C1 </em></li>
+<li><em>OSTaskRef: Init_Task_C1, Rte_Event_Task_C1, Rte_Time_Task_C1, SchMDiagStateTask_20ms_C1, RTE_ModeSwitchEvent_Task_C1</em></li>
+</ul>
+</li>
+<li>The following artefact must be mapped to <em>OsApplication C0</em> which belongs to <em>Core 0</em>:&nbsp;<em>OSTaskRef: BSW_Com.</em></li>
+</ul>
+</li>
+</ol>
+            ]]>
+        </description>
+      </action>
+      <action label="Configure the BswM module" id="MULTICORE_CFG_BSWM">
+        <command description="Open BswM configuration" serialization="dreisoft.tresos.launcher2.api.plugin.EditConfigurationCommand(moduleType=BswM)" autoadvance="false"/>
+        <description>
+          <![CDATA[
+           <h2 style="color:#00c400";><b>GOAL</b></h2
+            <p>BswM supports multicore functionality with a module instance for each core. Each BswM instance must have its own configuration.</p>
+             <h2 style="color:#00c400";><b>PROCEDURE</b></h2
+            <p style="padding-left: 30px;">In the <strong>Workflows</strong> pane, double-click <strong>Configure the BswM module</strong> to open the BswM editor.</p>
+<p style="padding-left: 30px;"><strong>For Core 0 BswM configuration</strong>:</p>
+<ol>
+<li>On the <strong>Configuration</strong> tab, rename the existing <em>BswMConfig</em> to <em>BswMConfig_C0</em>.</li>
+<li>On the <strong>General</strong> tab, in <strong>BswMConfig_C0</strong>, enable <em>BswMPartitionRef</em>, and select <em>/Os/Os/C0</em>.</li>
+</ol>
+<p style="padding-left: 30px;">A new <em>BswMSwitchPort</em> is needed to send a mode change
+notification from C0 to C1.</p>
+<ol>
+<li>On <strong>BswMSwitchPort</strong> tab, in <strong>BswMConfig_C0</strong>, create a new <em>BswMSwitchPort</em></li>
+<li>Name it <em>BswMSwitchPort_SchM.</em></li>
+<li>Set <em>BswMModeSwitchInterfaceRef</em> to <em>BwwMMode_CrossCore</em>.</li>
+<li>On the <strong>BswMDataTypeMappingSetRef</strong> tab, in <strong>BswMConfig_C0</strong>, create a new <em>BswMDataTypeMappingSetRef</em> and set it to <em>BswMModeMapping_CrossCore</em></li>
+</ol>
+<p style="padding-left: 30px;">A new <em>BswMAction</em> is needed to switch the mode to <em>C1.</em></p>
+<ol>
+<li>On the <strong>BswMAction</strong> tab, in <strong>BswMConfig_C0</strong>, create a new <em>BswMAction.</em></li>
+<li>Name it <em>BswM_Act_SchMSwitch_Startup.</em></li>
+<li>Set <em>BswMAvailableActions</em> to <em>BwwMSchMSwitch</em>.</li>
+<li>Set <em>BswMSchMSwitchPortRef</em> to BswMSwitchPort_SchM.</li>
+<li>Set BswMSchMSwitchedMode to <em>EB_INTGR_BSWM_CROSS_CORE_STARTUP_TWO_A</em>.</li>
+</ol>
+<p style="padding-left: 30px;"><em>BswM_Act_SchMSwitch_Startup</em> must be triggered from an action list.</p>
+<ol>
+<li>On the <strong>BswMActionList</strong> tab, in <strong>BswMConfig_C0</strong>, open
+<em>BswM_ActLst_StartupTwoA.</em></li>
+<li>On the <strong>BswMActionListItem</strong> tab, create a new entry.</li>
+<li>Right-click the newly created item and select <strong>Move element up</strong> to place it after the item which references <em>BswM_Act_RteStart</em>.</li>
+<li>Set <em>BswMActionListItemRef</em> to <em>BswM_Act_SchMSwitch_Startup.</em></li>
+</ol>
+<p style="padding-left: 30px;"><strong>For Core 1 BswM configuration</strong>:</p>
+<ol>
+<li>On the <strong>Configuration</strong> tab, create new <strong>BswMConfig</strong> and rename it <strong>BswMConfig_C1</strong>.</li>
+<li>On the <strong>General</strong> tab, in <strong>BswMConfig_C1</strong>, enable <em>BswMPartitionRef</em> and select <em>/Os/Os/C1</em>.</li>
+<li>On the <strong>General</strong> tab, in <strong>BswMConfig_C1</strong>, enable
+<em>BswMDataTypeMappingSets.</em></li>
+</ol>
+<p style="padding-left: 30px;">A new <em>BswMModeRequestPort</em> is needed to receive a mode change notification from <em>C0</em>.</p>
+<ol>
+<li>In the <strong>BswMModeRequestPort</strong> tab, in <strong>BswMConfig_C1</strong>, create a new <em>BswMModeRequestPort.</em></li>
+<li>Name it <em>BswM_ModeReqPort_EcuState_CrossCore.</em></li>
+<li>Set <em>BswMRequestProcessing</em> to <em>BSWM_DEFERRED.</em></li>
+<li>Set BswMModeRequestSource to BswMBswMModeNotification.</li>
+<li>Set <em>BswMBswModeDeclarationGroupPrototypeRef</em> to <em>CurrentCrossCoreMode</em></li>
+<li>On the <strong>BswMDataTypeMappingSetRef</strong> tab, in <strong>BswMConfig_C1</strong>, create a new <em>BswMDataTypeMappingSetRef</em> and set it <em>to BswMModeMapping_CrossCore.</em></li>
+</ol>
+<p style="padding-left: 30px;">A new <em>BswMAction</em> is needed to start Rte for <em>C1</em>.</p>
+<ol>
+<li>On the <strong>BswMAction</strong> tab, in <strong>BswMConfig_C1</strong>, create a new <em>BswMAction.</em></li>
+<li>Name it <em>BswM_Act_RteStart.</em></li>
+<li>Set <em>BswMAvailableActions</em> to <em>BswMUserCallout</em>.</li>
+<li>Add <em>Rte_Start()</em> in <em>BswMUserCalloutFunction.</em></li>
+</ol>
+<p style="padding-left: 30px;"><em>BswM_Act_RteStart</em> must be triggered from an action list.</p>
+<ol>
+<li>On the <strong>BswMActionList </strong>tab<em>, in</em> <strong>BswMConfig_C1</strong>, create a new item and name it <em>BswM_ActLst_StartupTwoA</em>.</li>
+<li>On the <strong>General</strong> tab, set <em>BswMActionListExecution</em> to <em>BSWM_TRIGGER</em></li>
+<li>On the <strong>BswMActionListItem</strong> tab, create a new entry.</li>
+<li>Set <em>BswMActionListItemRef</em> to <em>BswM_Act_RteStart.</em></li>
+</ol>
+<p style="padding-left: 30px;">A <em>BswM_ModeCondition</em> is required to detect the mode switch from core <em>C0</em>.</p>
+<ol>
+<li>On the <strong>BswMModeCondition </strong>tab, in <strong>BswMConfig_C1</strong>, create a new item and name it <em>BswM_ModeCond_StartupTwoA</em>.</li>
+<li>Set BswMConditionType to <em>BSWM_EQUALS</em>.</li>
+<li>Set <em>BswMConditionMode</em> to <em>BswM_ModeReqPort_EcuState_CrossCore.</em></li>
+<li>Set <em>BswMConditionValue</em> to <em>BswM_ModeDeclaration.</em></li>
+<li>Set <em>BswMModeValueRef</em> to <em>EB_INTGR_BSWM_CROSS_CORE_STARTUP_TWO_A.</em></li>
+</ol>
+<p style="padding-left: 30px;">Mode arbitration requires a <em>BswMLogicalExpression</em>.</p>
+<ol>
+<li>On the <strong>BswMLogicalExpression</strong> tab, in <strong>BswMConfig_C1</strong>, create a new item and name it <em>BswM_LogEx_StartupTwoA</em>.</li>
+<li>On the <strong>BswMArgumentRef</strong> tab, create a new entry.</li>
+<li>Set the newly created <em>BswMArgumentRef</em> to <em>BswMArbitration/BswM_ModeCond_StartupTwoA.</em></li>
+</ol>
+<p style="padding-left: 30px;">Mode arbitration must be described with a BswMRule.</p>
+<ol>
+<li>On the <strong>BswMRule</strong> tab, in <strong>BswMConfig_C1</strong>, create a new item and name it <em>BswM_Rule_StartupTwoA</em>.</li>
+<li>Set <em>BswMRuleInitState</em> to <em>BSWM_FALSE.</em></li>
+<li>Set <em>BswMRuleExpressionRef</em> to <em>BswM_LogEx_StartupTwoA.</em></li>
+<li>Enable <em>BswMRuleTrueActionList</em> and set it to <em>BswM_ActLst_StartupTwoA.</em></li>
+</ol>
+<p><strong>&nbsp;</strong></p>
+            ]]>
+        </description>
+      </action>
+      <action label="Configure the EcuM module" id="MULTICORE_CFG_ECUM">
+        <command description="Open EcuM configuration" serialization="dreisoft.tresos.launcher2.api.plugin.EditConfigurationCommand(moduleType=EcuM)" autoadvance="false"/>
+        <description>
+          <![CDATA[
+          <h2 style="color:#00c400";><b>GOAL</b></h2
+            <p>To configure the EcuM module.</p>
+            <h2 style="color:#00c400";><b>PROCEDURE</b></h2
+<p>1. Double-click this action step in the <strong>Workflows</strong> view to open the EcuM
+editor.</p>
+<p>2. On the <strong>General</strong> tab, enable <em>EcuMEnableMulticore.</em></p>
+<p>3. On the <strong>General</strong> tab, enable <em>EcuMMasterCoreId</em>, and set it to
+<em>0</em>.</p>
+
+            ]]>
+        </description>
+      </action>
+      
+      <action label="Generate swcd" id="MANUAL_GENERATESWCD_2">
+        <description>
+          <![CDATA[
+            <h2 style="color:#00c400";><b>GOAL</b></h2
+				<p>To generate the service component interfaces.</p>
+          ]]>
+        </description>
+        <command description="Generate swcd" serialization="dreisoft.tresos.launcher2.api.plugin.GeneratorCommand(mode=generate_swcd)"/>
+      </action>
+      
+      <action label="Run import" id="MANUAL_RUNIMPORT_2">
+        <description>
+          <![CDATA[
+            <h2 style="color:#00c400";><b>GOAL</b></h2
+				<p>To run the System Description Import (SystemExtract_SystemModel), and create the ECU extract.</p>
+               ]]>
+        </description>
+        <command description="Open Import batch" type="configure" serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureDialogCommand(triggerId=SystemDescriptionImport_Run)"/>
+        <command description="Run Import batch" serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureTriggerCommand(triggerId=SystemDescriptionImport_Run)"/>
+      </action>
+      <action label="Connect Software Components with Basic Software" id="CONNECT_PORTS_1">
+        <description>
+          <![CDATA[
+          <p><b style="color:#ff9900">Important note:</b> The BswM configuration has changed and the references
+in <em>ConnectionEditor.arxml</em> file are no longer valid. We want the Compositions and
+Connections editor
+to remove the invalid references. This will be redone later in the workflow.</p> 
+				<h2 style="color:#00c400";><b>GOAL</b></h2
+				<p>To connect the software components with basic software.</p>
+<h2 style="color:#00c400";><b>PROCEDURE</b></h2
+				<p>To run the Compositions and Connections editor, double-click this action step in the <strong>Workflows</strong> view, or select <strong>Edit Compositions and Connections</strong> from the <strong>System </strong>category in the <strong>Sidebar</strong> view.</p>
+<p><strong>Adding Component Prototypes</strong>:</p>
+<ol>
+<li>Right-click on <strong>TopLevelComposition</strong> in the <strong>Entity </strong>list and select <strong>Add Prototypes</strong>.</li>
+<li>Select the&nbsp;<em>BswM_C0</em> and <em>BswM_C1&nbsp;</em> component types.</li>
+<li>Select<strong> OK</strong> to add a component prototype for each selected component type.</li>
+</ol>
+<p><strong>Adding connections</strong>:</p>
+<ol>
+<li>To make the assignment, expand a prototype, right-click on the port of the prototype, and select <strong>Add Connector</strong>.</li>
+<li>Expand a component prototype and select a port.</li>
+<li>Select<strong> OK</strong> to add the connection.</li>
+<li>Connect each port for <em>BswM_C0_Prototype</em> with a compatible port. Only one compatible port should be available.</li>
+</ol>
+<p><strong style="color:#ff9900">Note:</strong> If the <strong>OK</strong> button is disabled, the selected port is incompatible. Use the buttons in the <strong>Add Connector</strong>&nbsp;window, you can set the tree to show or hide incompatible and already connected ports. With the <strong>type filter text</strong>&nbsp;textbox, you can filter the ports by name.</p>
+<p style="padding-left: 30px;">&nbsp;</p>
+<p style="padding-left: 30px;">&nbsp;</p>
+<p>&nbsp;</p>
+               ]]>
+        </description>
+        <command serialization="dreisoft.tresos.guidedconfig.api.plugin.SidebarTriggerCommand(triggerId=ConnectionEditor_Trigger)" autoadvance="false"/>
+      </action>
+      
+      <action label="Run import" id="MANUAL_RUNIMPORT_3">
+        <description>
+          <![CDATA[
+          	<h2 style="color:#00c400";><b>GOAL</b></h2
+				<p>To run the System Description Import (<font face="Courier New">SystemExtract_SystemModel</font>) and create the ECU extract.</p>
+               ]]>
+        </description>
+        <command description="Open Import batch" type="configure" serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureDialogCommand(triggerId=SystemDescriptionImport_Run)"/>
+        <command description="Run Import batch" serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureTriggerCommand(triggerId=SystemDescriptionImport_Run)"/>
+      </action>
+      
+      <action label="Configure the Rte module" id="BSW_RTE_1">
+        <command description="Open Rte configuration" serialization="dreisoft.tresos.launcher2.api.plugin.EditConfigurationCommand(moduleType=Rte)" autoadvance="false"/>
+        <description>
+          <![CDATA[
+          	<p><b style="color:#ff9900">Note:</b> This step is <b>optional</b>. If there are new components,
+				some events may have to be mapped.</p>	<h2 style="color:#00c400";><b>GOAL</b></h2
+          	<p>To configure the Rte module.</p>
+          	<h2 style="color:#00c400";><b>PROCEDURE</b></h2
+			
+			<p>&nbsp;</p>
+<ol>
+<li>Double-click this action step in the <strong>Workflows </strong>view.</li>
+<li>Select <strong>Rte Editor</strong>.&nbsp;</li>
+<li>Select the <strong>Implementation Selection</strong> tab.</li>
+<li>In <strong>Basic software module instances</strong>, rename the <em>BSW_BswM</em>&nbsp;with the <em>Bsw module implementation</em> set to <em>BswImplementation_0</em> to <em>BSW_BswM_C0.</em></li>
+<li>In <strong>Basic software module instances</strong>, rename the <em>BSW_BswM_1_C1</em> to <em>BSW_BswM_C1.</em></li>
+<li>Open the <strong>Partitioning </strong>tab, and set <em>Partitioning support</em> to <em>SharedMemory.</em></li>
+<li>Enable <em>BSW Os task required.</em></li>
+<li>Set <em>BSW Os task</em> to <em>BSW_Com.</em></li>
+<li>Set a valid number to <em>BSW send signal queue length</em> and <em>BSW send signal group queue length. </em>For our use case, 2 should be enough.</li>
+<li>In<strong> Software components instance partitioning</strong>&nbsp;map, change the <em>Os application</em> for <em>SWC_CyclicCounter</em> to <em>C1.</em></li>
+<li>In&nbsp;<strong>Software components instance partitioning</strong> map, change&nbsp;<em>Os application</em> for <em>BswM_OsApplication_C0_Prototype</em> to <em>C0.</em></li>
+<li>In <strong>Basic module instance name</strong>, map the <em>Os application</em> for every entry to <em>C0</em> except <em>EcuM</em> and <em>BswM</em> with suffix <em>1.</em></li>
+<li>In&nbsp;<strong>Os counter partition assignment</strong>, map the <em>Os application</em> <em>C0</em> to <em>HwCounter_0</em> suffix.</li>
+<li>In&nbsp;<strong>Os counter partition assignment</strong>, map the <em>Os application</em> <em>C1</em> to <em>HwCounter_1</em> suffix.</li>
+<li>Select the <strong>Event Mapping </strong>tab, and select a task in the <strong>Task</strong> drop-down list box, then select&nbsp;<strong>Map the runnable entity selected above to the task selected below</strong>.
+<ul>
+<li>Map to <em>SchMDiagStateTask_20ms_C1</em>:
+<ul>
+<li><em>EcuM_MainFunction</em></li>
+<li><em>BswM_MainFunction</em></li>
+</ul>
+</li>
+<li>Unmap from <em>Rte_Time_Task_C0</em>:
+<ul>
+<li><em>CyclicEvent...</em></li>
+</ul>
+</li>
+<li>Unmap from <em>Rte_Event_Task_C0</em>:
+<ul>
+<li><em>ModeSwitchedRunTwo</em></li>
+<li><em>ModeSwitchedPrpShutdown</em></li>
+</ul>
+</li>
+<li>Map to <em>TASK_RTE_ModeSwitchEvent_C1</em>:
+<ul>
+<li><em>MSE_BswM_ModeReqPort_EcuState_CrossCore_...</em></li>
+</ul>
+</li>
+<li>Map to <em>Rte_Time_Task_C1</em>:
+<ul>
+<li><em>CyclicEvent_...</em></li>
+</ul>
+</li>
+<li>Map to <em>Rte_Event_Task_C1</em>:
+<ul>
+<li><em>EcuM_UpdateSleepMode</em></li>
+<li><em>ModeSwitchedRunTwo</em></li>
+<li><em>ModeSwitchedPrpShutdown</em></li>
+<li><em>SetCounterOperationInvoked...</em></li>
+</ul>
+</li>
+<li>Map to <em>Rte_Event_Task_C0</em>:
+<ul>
+<li><em>EV_ReportError_SWC_0</em></li>
+<li><em>EV_SetRamBlockStatus_PersistentCounterValue</em></li>
+<li><em>SetDiscreteValueOperationInvoked</em></li>
+</ul>
+</li>
+<li>Map to <em>TASK_RTE_ModeSwitchEvent</em>:
+<ul>
+<li>All <em>MSE_BswM_ModeReqPort_AppState_...</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Close and reopen the RTE editor to see the changes on the <strong>Partitioning</strong>&nbsp;tab.</li>
+<li>Open the&nbsp;<strong>BswModeMapping&nbsp;</strong>tab, and map the following mode groups between Dcm and BswM_C0:
+<ul>
+<li>DiagnosticSessionControl</li>
+<li>EcuReset</li>
+<li>CommunicationControl</li>
+</ul>
+</li>
+<li>Map the following mode groups between BswM_C0 and BswM_C1:&nbsp;<em>BswM_ModeSwitchPort_C0_BswMSwitchPort_SchM</em> on the left to <em>EcuState_CrossCore on the right</em></li>
+</ol>
+
+<p style="padding-left: 30px;">&nbsp;</p>
+<p>&nbsp;</p>
+				]]>
+        </description>
+      </action>
+    </group>
+
+
+      
+      
+      <action label="Code_Update" id="CODE_UPDATE">
+        <description>
+          <![CDATA[
+        
+          <h2 style="color:#00c400";><b>GOAL</b></h2
+<p>To describe the changes in the integration code which are triggered by the multi-core configuration.</p>
+<h2 style="color:#00c400";><b>PROCEDURE</b></h2
+ <p><b style="color:#ff9900">Note:</b> This procedure is not a step-by-step instruction but an overview of the needed modifications.</p>
+<p>Some files and defined names are extended with the OsApplication names because of the multi-core configuration.</p>
+<ol>
+<li><strong>Include files</strong>: Rte generates separate source and header files for each partition, used Rte included files must be updated in the integration code.</li>
+<li><strong>MemMap sections</strong>: separate memory sections are generated for each core. Memory mapping from SWC implementation must be updated based on which core the SWC is located.</li>
+<li><strong>Init Task</strong>: the task names might be changed during the configuration. Check the name for the Init task from C0 and add the implementation for the init task from C1.<br />The implementation of the C1 Init task must contain a call to EcuM_StartupTwo() function.</li>
+<li><strong>EcuM_CalloutStub</strong>s: EcuM provides an additional callout function EcuM_OnCoreSync, the prototype of this function can be found in <em>\output\generated\templates\EcuM_Callout_Stubs.c</em></li>
+</ol>
+          ]]></description>
+      </action>
+      
+    <action label="Imported_arxml_Update" id="ARXML_UPDATE">
+      <description>
+        <![CDATA[
+      <h2 style="color:#00c400";><b>GOAL</b></h2
+        <p>To describe the changes in the imported arxml files which describes the software
+        components. 
+        </p>
+      <h2 style="color:#00c400";><b>PROCEDURE</b></h2
+          <p>The memory section names now contain the OsApplication names, and the memory sections from
+          the arxml must be adapted.</p>
+          <p>Each SWC-IMPLEMENTATION contains MEMORY-SECTION definitions for which the SHORT-NAME
+          must be updated based on the generated section names from the MemMap.</p>
+          <p>&nbsp;</p>
+          <p><b style="color:#ff9900">Tip:</b> The names are the same as the names changed in the previous step for the MemMap sections.</p>
+          ]]></description>
+    </action>
+   
+    <action label="Run EB tresos solutions Workflow" id="SOLUTIONS_WORKFLOW">
+      <description>
+        <![CDATA[
+      <h2 style="color:#00c400";><b>GOAL</b></h2
+        <p>To update the changes in the system model, generate compile and run the application.
+         <h2 style="color:#00c400";><b>PROCEDURE</b></h2
+          <p>Execute the <B>EB tresos Solutions</B> workflow.
+        </p>
+         ]]></description>
+    </action>
+    
+  </group>
+</workflow>

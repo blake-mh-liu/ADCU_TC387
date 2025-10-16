@@ -1,0 +1,643 @@
+<?xml version='1.0'?>
+<datamodel version="7.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/16/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/16/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar" 
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd" 
+         xmlns:f="http://www.tresos.de/_projects/DataModel2/14/formulaexpr.xsd" 
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd" 
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd"  
+         xmlns:variant="http://www.tresos.de/_projects/DataModel2/11/variant.xsd">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="TS_TxDxM1I13R0" type="AR-PACKAGE">
+        <d:lst type="ELEMENTS">
+          <d:chc name="ReProgMemM" type="AR-ELEMENT" value="MODULE-DEF">
+            <v:ctr type="MODULE-DEF">
+              <a:a name="ADMIN-DATA" type="ADMIN-DATA">
+                <ad:ADMIN-DATA>
+                  <ad:LANGUAGE>EN</ad:LANGUAGE>
+                  <ad:DOC-REVISIONS>
+                    <ad:DOC-REVISION>
+                      <ad:REVISION-LABEL>4.3.0</ad:REVISION-LABEL>
+                      <ad:ISSUED-BY>AUTOSAR</ad:ISSUED-BY>
+                    </ad:DOC-REVISION>
+                    <ad:DOC-REVISION>
+                      <ad:REVISION-LABEL>1.13.0</ad:REVISION-LABEL>
+                      <ad:ISSUED-BY>Elektrobit Automotive GmbH</ad:ISSUED-BY>
+                      <ad:DATE>2024-05-02T23:59:59Z</ad:DATE>
+                    </ad:DOC-REVISION>
+                  </ad:DOC-REVISIONS>
+                </ad:ADMIN-DATA>
+              </a:a>
+              <a:a name="DESC" 
+                   value="EN: Configuration of the ReProgMemM (Reprogramming Memory Management)."/>
+              <a:a name="LOWER-MULTIPLICITY" value="1"/>
+              <a:a name="RELEASE" value="asc:4.3"/>
+              <a:a name="UPPER-MULTIPLICITY" value="1"/>
+              <v:ctr name="PublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>EN:
+                    &lt;html&gt;
+                      Additional published parameters not covered by CommonPublishedInformation container.
+                  &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="EB Published Information"/>
+                <a:a name="TAB" value="EB Published Information"/>
+                <a:a name="UUID" 
+                     value="ECUC:cb4128ed-26c1-4ddd-906e-854bed917e07"/>
+                <v:var name="PbcfgMSupport" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Specifies whether or not the ReProgMemM can use the PbcfgM module for post-build support.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="PbcfgM support"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:eb61002e-69c0-4f16-a910-c27adb75f6ee"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>EN:
+                    &lt;html&gt;
+                      Common container, aggregated by all modules. It contains published information about vendor and versions.
+                  &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="Common Published Information"/>
+                <a:a name="UUID" 
+                     value="ECUC:a00be3e0-8783-9123-2d52-1eb616737ca6"/>
+                <v:var name="ArMajorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Major version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Major Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:948f3f2e-f129-4bc5-b4e1-7a7bdb8599e1"/>
+                  <a:da name="DEFAULT" value="4"/>
+                </v:var>
+                <v:var name="ArMinorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Minor version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Minor Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:2893b920-59d5-4ac2-b2c1-e23742e66d70"/>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="ArPatchVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Patch level version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Patch Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:6428eb9b-8790-488a-b9a3-0fba52d0f59e"/>
+                  <a:da name="DEFAULT" value="3"/>
+                </v:var>
+                <v:var name="SwMajorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Major version number of the vendor specific implementation of the module.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Major Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:605b18ae-3f9a-41d4-9225-67c9c5f6fc34"/>
+                  <a:da name="DEFAULT" value="1"/>
+                </v:var>
+                <v:var name="SwMinorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Minor version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Minor Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a7fe44dc-ea25-4b8d-8fad-9fbcae86d56f"/>
+                  <a:da name="DEFAULT" value="13"/>
+                </v:var>
+                <v:var name="SwPatchVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Patch Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a318d2d9-0e75-49da-ac43-e7e4e682e2f9"/>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="ModuleId" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Module ID of this module from Module List
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Numeric Module ID"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:78bc8362-080f-4253-b3da-804ab69a7154"/>
+                  <a:da name="DEFAULT" value="0x800A"/>
+                </v:var>
+                <v:var name="VendorId" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Vendor ID"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:01b0f467-6943-4558-b4f2-3fa1fad28449"/>
+                  <a:da name="DEFAULT" value="1"/>
+                </v:var>
+                <v:var name="Release" type="STRING_LABEL">
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Release Information"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:1c68a547-f24e-4a4e-9540-69fbd533ec89"/>
+                  <a:da name="DEFAULT" value=""/>
+                </v:var>
+              </v:ctr>
+              <v:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt; Select the configuration variant. Currently only PreCompile is
+                    supported. &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="Config Variant"/>
+                <a:da name="DEFAULT" value="VariantPreCompile"/>
+                <a:da name="ENABLE" value="false"/>
+                <a:da name="RANGE" value="VariantPreCompile"/>
+              </v:var>
+              <v:ctr name="General" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                             Contains all configurable parameters of the ReProgMemM plugin.&lt;br/&gt;
+                          &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="Configurable parameters"/>
+                <v:var name="Dual_Memory_Bank_Used" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                              &lt;p&gt;This option allows the usage of dual memory bank feature on the supported hardware.
+                              Please refer to the user manual for details.&lt;/p&gt;
+                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Dual Memory Bank Used"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="Custom_Address_Offset_Used" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                              &lt;p&gt;This option enables the Custom Offset for addresses.
+                              Please refer to the user manual for details.&lt;/p&gt;
+                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Custom Address offset used"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="Copy_ROM_To_RAM" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                              &lt;p&gt;If enabled, the driver will copy the low layer APIs from ROM to RAM.
+                              If disabled, no copy of the low layer APIs will be performed by ReProgMemM module.&lt;/p&gt;
+                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Copy flash routines from ROM to RAM"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="FlashPageSize" type="INTEGER">
+                  <a:a name="DESC" 
+                       value="&lt;html&gt; Define the number of bytes to write per page &lt;/html&gt;"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="32"/>
+                </v:var>
+                <v:var name="FlashPagePaddingValue" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt; Define the padding value which will be applied on the page
+                      progamming &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="255"/>
+                </v:var>
+                <v:var name="SectorsToErasePerTurn" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt; Define the number of sectors to erase per main function turn
+                      &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="1"/>
+                </v:var>
+                <v:ctr name="ReProgMemMServiceAPI" type="IDENTIFIABLE">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                            &lt;p&gt;
+                              Container for configuration of the service API of ReProgMemM.
+                            &lt;/p&gt;
+                          &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="Service API Parameters"/>
+                  <v:var name="ReProgMemMVersionInfoApi" type="BOOLEAN">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                              Activate/Deactivate the version information API.
+                              &lt;ul&gt;
+                                &lt;li&gt;&lt;code&gt;True&lt;/code&gt;: version information activated&lt;/li&gt;
+                                &lt;li&gt;&lt;code&gt;False&lt;/code&gt;: version information deactivated&lt;/li&gt;
+                              &lt;/ul&gt;
+                            &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Enable Version Info API"/>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="false"/>
+                  </v:var>
+                  <v:var name="ReProgMemMDefaultASRServiceAPI" 
+                         type="ENUMERATION">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt; &lt;p&gt;Defines the default AUTOSAR service API.&lt;/p&gt;
+                        &lt;ul&gt; &lt;li&gt;&lt;code&gt;AUTOSAR_40&lt;/code&gt; = AUTOSAR 4.0
+                        service API is the default one.&lt;/li&gt;
+                        &lt;li&gt;&lt;code&gt;AUTOSAR_41&lt;/code&gt; = AUTOSAR 4.1 service API is
+                        the default one.&lt;/li&gt; &lt;li&gt;&lt;code&gt;AUTOSAR_42&lt;/code&gt; =
+                        AUTOSAR 4.2 service API is the default one.&lt;/li&gt; &lt;/ul&gt;
+                        &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Default AUTOSAR service API"/>
+                    <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="AUTOSAR_40"/>
+                    <a:da name="RANGE">
+                      <a:v>AUTOSAR_40</a:v>
+                      <a:v>AUTOSAR_41</a:v>
+                      <a:v>AUTOSAR_42</a:v>
+                    </a:da>
+                  </v:var>
+                  <v:var name="ReProgMemMDevErrorDetect" type="BOOLEAN">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                              &lt;p&gt;Activate/Deactivate the Development Error Detection and Notification&lt;/p&gt;
+                              &lt;p&gt;True: Development Error Detection and Notification activated.&lt;/p&gt;
+                              &lt;p&gt;False: Development Error Detection and Notification deactivated.&lt;/p&gt;
+                            &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="true"/>
+                  </v:var>
+                  <v:var name="ReProgMemMMainFunctionPeriod" type="FLOAT">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                              &lt;p&gt;This parameter defines the schedule period
+                              of &lt;code&gt;ReProgMemM_MainFunction&lt;/code&gt;. Unit: [s]&lt;/p&gt;
+                            &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v vclass="PreCompile">VariantPreCompile</icc:v>
+                    </a:a>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="0.010"/>
+                    <a:da name="INVALID" type="Range">
+                      <a:tst expr="&lt;=1"/>
+                      <a:tst expr="&gt;=0.001"/>
+                    </a:da>
+                  </v:var>
+                </v:ctr>
+              </v:ctr>
+              <v:ctr name="MemoryConfig" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                             Contains the memory configuration.&lt;br/&gt;
+                          &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="TAB" value="Memory Configuration"/>
+                <v:lst name="Memory" type="MAP">
+                  <a:a name="COLUMNS">
+                    <a:v>Memory_Type</a:v>
+                    <a:v>Min_Value_To_Write</a:v>
+                    <a:v>BlockLength</a:v>
+                    <a:v>Addr_Offset</a:v>
+                    <a:v>Erase_Value</a:v>
+                    <a:v>Memory_Start_address</a:v>
+                    <a:v>Memory_Length</a:v>
+                  </a:a>
+                  <a:a name="TAB" value="Memory Configuration"/>
+                  <v:ctr name="Memory" type="IDENTIFIABLE">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                        &lt;p&gt;This container contains the description of the memories used by the software updater.&lt;/p&gt;
+                                    &lt;/html&gt;</a:v>
+                    </a:a>
+                    <v:var name="Memory_Type" type="ENUMERATION">
+                      <a:a name="COLUMN_TITLE" value="Memory_Type"/>
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                                            &lt;p&gt;Type of the memory.&lt;/p&gt;
+                                            &lt;ul&gt;
+                                                &lt;li&gt;&lt;b&gt;FLASH&lt;/b&gt;&lt;/li&gt;
+                                                &lt;li&gt;&lt;b&gt;FLASH_EXT&lt;/b&gt;&lt;/li&gt;
+                                                &lt;li&gt;&lt;b&gt;RAM&lt;/b&gt;&lt;/li&gt;
+                                                &lt;li&gt;&lt;b&gt;CUSTOM&lt;/b&gt;&lt;/li&gt;
+                                            &lt;/ul&gt;
+                                            &lt;p&gt;NOTE: Only one memory of each type can be defined!&lt;/p&gt;
+                                        &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Memory Type"/>
+                      <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:da name="RANGE">
+                        <a:v>FLASH</a:v>
+                        <a:v>FLASH_EXT</a:v>
+                        <a:v>RAM</a:v>
+                        <a:v>CUSTOM</a:v>
+                      </a:da>
+                    </v:var>
+                    <v:var name="Min_Value_To_Write" type="INTEGER">
+                      <a:a name="COLUMN_TITLE" value="Min_Value_To_Write"/>
+                      <a:a name="DEFAULT_RADIX" value="HEX"/>
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                                            &lt;p&gt;Define the minimum size the memory driver could write at a time.&lt;/p&gt;
+                                            &lt;p&gt;Range: [0x00000000 ; 0xFFFFFFFF].&lt;/p&gt;
+                                            &lt;p&gt;Coded on 32 bits.&lt;/p&gt;
+                                        &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Minimum value to write"/>
+                      <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:da name="DEFAULT" value="8"/>
+                      <a:da name="INVALID" type="Range" expr="&gt;=8"/>
+                    </v:var>
+                    <v:var name="BlockLength" type="INTEGER">
+                      <a:a name="COLUMN_TITLE" value="BlockLength"/>
+                      <a:a name="DEFAULT_RADIX" value="HEX"/>
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                                            &lt;p&gt;Define the block length value to be provided in RequestDownload response.&lt;/p&gt;
+                                            &lt;p&gt;Range: [0x00000000 ; 0xFFFFFFFF].&lt;/p&gt;
+                                            &lt;p&gt;Coded on 16 bits.&lt;/p&gt;
+                                        &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Block Length"/>
+                      <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:da name="DEFAULT" value="4090"/>
+                      <a:da name="INVALID" type="Range" expr="&gt;=8"/>
+                    </v:var>
+                    <v:var name="Addr_Offset" type="INTEGER">
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                                            &lt;p&gt;Define the start address offset for the memory.&lt;/p&gt;
+                                            &lt;p&gt;In the case of the EXTERNAL FLASH and CUSTOM this offset is SUBSTRACTED from the received address.&lt;/p&gt;
+                                            &lt;p&gt;In the case of the RAM and INTERNAL FLASH this offset is ADDED to the received address.&lt;/p&gt;
+                                            &lt;p&gt;Range: [0x00000000 ; 0xFFFFFFFF].&lt;/p&gt;
+                                            &lt;p&gt;Coded on 32 bits.&lt;/p&gt;
+                                        &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Address Offset"/>
+                      <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:da name="DEFAULT" value="0"/>
+                      <a:da name="EDITABLE" type="XPath" 
+                            expr="../Memory_Type != &apos;RAM&apos;"/>
+                    </v:var>
+                    <v:var name="Erase_Value" type="INTEGER">
+                      <a:a name="COLUMN_TITLE" value="Erase_Value"/>
+                      <a:a name="DEFAULT_RADIX" value="HEX"/>
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                                        &lt;p&gt;Define the value to set for each byte when the memory is erased&lt;/p&gt;
+                                        &lt;p&gt;Example: 0xFFu will affect the value 0xFF to every byte of the memory when erasure.&lt;/p&gt;
+                                        &lt;p&gt;Range: [0x00 ; 0xFF].&lt;/p&gt;
+                                        &lt;p&gt;Coded on 8 bits.&lt;/p&gt;
+                                    &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Erase Value"/>
+                      <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:da name="DEFAULT" value="255"/>
+                      <a:da name="EDITABLE" type="XPath" 
+                            expr="../Memory_Type != &apos;RAM&apos;"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&gt;=0"/>
+                        <a:tst expr="&lt;=255"/>
+                      </a:da>
+                    </v:var>
+                    <v:var name="Memory_NB_Pages_Size" type="INTEGER">
+                      <a:a name="COLUMN_TITLE" value="Memory_NB_Pages_Size"/>
+                      <a:a name="DEFAULT_RADIX" value="HEX"/>
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                                            &lt;p&gt;Define the size of the number of Pages to write.&lt;/p&gt;
+                                            &lt;p&gt;Range: [0x00000000 ; 0xFFFFFFFF].&lt;/p&gt;
+                                            &lt;p&gt;Coded on 32 bits.&lt;/p&gt;
+                                        &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="NB Pages Size"/>
+                      <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:da name="DEFAULT" value="0"/>
+                      <a:da name="EDITABLE" type="XPath" 
+                            expr="../Memory_Type != &apos;RAM&apos;"/>
+                    </v:var>
+                    <v:var name="Memory_Start_address" type="INTEGER">
+                      <a:a name="DEFAULT_RADIX" value="HEX"/>
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                                            &lt;p&gt;Define the start address of the memory.&lt;/p&gt;
+                                            &lt;p&gt;Range: [0x00000000 ; 0xFFFFFFFF].&lt;/p&gt;
+                                            &lt;p&gt;Coded on 32 bits.&lt;/p&gt;
+                                        &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Memory StartAddress"/>
+                      <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:da name="DEFAULT" value="0"/>
+                      <a:da name="EDITABLE" type="XPath" 
+                            expr="../Memory_Type != &apos;RAM&apos;"/>
+                    </v:var>
+                    <v:var name="Memory_Length" type="INTEGER">
+                      <a:a name="COLUMN_TITLE" value="Memory_Length"/>
+                      <a:a name="DEFAULT_RADIX" value="HEX"/>
+                      <a:a name="DESC">
+                        <a:v>&lt;html&gt;
+                                            &lt;p&gt;Define the length of the memory.&lt;/p&gt;
+                                            &lt;p&gt;Range: [0x00000000 ; 0xFFFFFFFF].&lt;/p&gt;
+                                            &lt;p&gt;Coded on 32 bits.&lt;/p&gt;
+                                        &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="LABEL" value="Memory Length"/>
+                      <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:da name="DEFAULT" value="0"/>
+                      <a:da name="EDITABLE" type="XPath" 
+                            expr="../Memory_Type != &apos;RAM&apos;"/>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="FlashSectors" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>&lt;html&gt;
+                                Contains the description of the sectors.&lt;br/&gt;
+                              &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="TAB" value="Flash Sectors"/>
+                <v:lst name="FlashSectorsTable" type="MAP">
+                  <a:a name="COLUMNS">
+                    <a:v>Start_Address</a:v>
+                    <a:v>Length</a:v>
+                    <a:v>Sector_Size</a:v>
+                    <a:v>Programmable</a:v>
+                  </a:a>
+                  <a:a name="TAB" value="Flash Sectors"/>
+                  <a:da name="MIN" value="1"/>
+                  <v:ctr name="FlashSectorsTable" type="IDENTIFIABLE">
+                    <a:a name="DESC">
+                      <a:v>EN:&lt;html&gt; This container the description of the sectors.&quot;
+                        &lt;/html&gt;</a:v>
+                    </a:a>
+                    <v:var name="Start_Address" type="INTEGER">
+                      <a:a name="DEFAULT_RADIX" value="HEX"/>
+                      <a:a name="DESC">
+                        <a:v>EN:&lt;html&gt; Contains the Flash Start_Address in hexadecimal
+                          &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    </v:var>
+                    <v:var name="Length" type="INTEGER">
+                      <a:a name="DEFAULT_RADIX" value="HEX"/>
+                      <a:a name="DESC">
+                        <a:v>EN:&lt;html&gt; Contains the Length range memory in hexadecimal
+                          &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    </v:var>
+                    <v:var name="Sector_Size" type="INTEGER">
+                      <a:a name="DEFAULT_RADIX" value="HEX"/>
+                      <a:a name="DESC">
+                        <a:v>EN:&lt;html&gt; Contains the sector Length in hexadecimal
+                          &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    </v:var>
+                    <v:var name="Programmable" type="BOOLEAN">
+                      <a:a name="DESC">
+                        <a:v>EN: &lt;html&gt; Specify if the sector is programmable or not
+                          &lt;/html&gt;</a:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:da name="DEFAULT" value="false"/>
+                    </v:var>
+                  </v:ctr>
+                </v:lst>
+              </v:ctr>
+              <v:ctr name="ReProgMemMHeaderFiles" type="IDENTIFIABLE">
+                <a:a name="TAB" value="User Header"/>
+                <v:lst name="ReProgMemMUserHeader">
+                  <a:a name="TAB" value="User Header"/>
+                  <a:da name="MAX" value="255"/>
+                  <a:da name="MIN" value="0"/>
+                  <v:var name="ReProgMemMUserHeader" type="STRING">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                    Inclusion of User Header Files.
+                    &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v class="PreCompile">VariantPreCompile</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                    <a:a name="TAB" value="User Header"/>
+                  </v:var>
+                </v:lst>
+              </v:ctr>
+            </v:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+
+</datamodel>

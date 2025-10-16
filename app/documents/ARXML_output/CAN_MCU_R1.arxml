@@ -1,0 +1,1597 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-3-0.xsd">
+  <ADMIN-DATA>
+    <SDGS>
+      <SDG>
+        <SD GID="ScriptVersion">2024.07.02</SD>
+        <SD GID="InputFile_DBC">FPD1_101.9_CAN_MCU_R1_MCU_B_R_20250422_Fix</SD>
+		<SD GID="InputFile_Msglink">CAN_MessageLinkOut_FPD1_101.9.xlsx</SD>
+      </SDG>
+    </SDGS>
+  </ADMIN-DATA>
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>CAN_MCU_R1</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE>
+		<SHORT-NAME>Frame</SHORT-NAME>
+          <ELEMENTS>
+            <CAN-FRAME>
+              <SHORT-NAME>CAN_MCU_R1_DiagPhysReqToEOP_FVT_R</SHORT-NAME>
+              <FRAME-LENGTH>8</FRAME-LENGTH>
+              <PDU-TO-FRAME-MAPPINGS>
+                <PDU-TO-FRAME-MAPPING>
+                  <SHORT-NAME>CAN_MCU_R1_DiagPhysReqToEOP_FVT_R</SHORT-NAME>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+                  <PDU-REF DEST="N-PDU">/CAN_MCU_R1/PDU/CAN_MCU_R1_DiagPhysReqToEOP_FVT_R</PDU-REF>
+                  <START-POSITION>0</START-POSITION>
+                </PDU-TO-FRAME-MAPPING>
+              </PDU-TO-FRAME-MAPPINGS>
+            </CAN-FRAME>
+            <CAN-FRAME>
+              <SHORT-NAME>CAN_MCU_R1_DiagRespFromEOP_FVT_R</SHORT-NAME>
+              <FRAME-LENGTH>8</FRAME-LENGTH>
+              <PDU-TO-FRAME-MAPPINGS>
+                <PDU-TO-FRAME-MAPPING>
+                  <SHORT-NAME>CAN_MCU_R1_DiagRespFromEOP_FVT_R</SHORT-NAME>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+                  <PDU-REF DEST="N-PDU">/CAN_MCU_R1/PDU/CAN_MCU_R1_DiagRespFromEOP_FVT_R</PDU-REF>
+                  <START-POSITION>0</START-POSITION>
+                </PDU-TO-FRAME-MAPPING>
+              </PDU-TO-FRAME-MAPPINGS>
+            </CAN-FRAME>
+            <CAN-FRAME>
+              <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_Local1</SHORT-NAME>
+              <FRAME-LENGTH>8</FRAME-LENGTH>
+              <PDU-TO-FRAME-MAPPINGS>
+                <PDU-TO-FRAME-MAPPING>
+                  <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_Local1</SHORT-NAME>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+                  <PDU-REF DEST="I-SIGNAL-I-PDU">/CAN_MCU_R1/PDU/CAN_MCU_R1_EOP_FVT_R_Local1</PDU-REF>
+                  <START-POSITION>0</START-POSITION>
+                </PDU-TO-FRAME-MAPPING>
+              </PDU-TO-FRAME-MAPPINGS>
+            </CAN-FRAME>
+            <CAN-FRAME>
+              <SHORT-NAME>CAN_MCU_R1_MCU_FVT_R_Local1</SHORT-NAME>
+              <FRAME-LENGTH>8</FRAME-LENGTH>
+              <PDU-TO-FRAME-MAPPINGS>
+                <PDU-TO-FRAME-MAPPING>
+                  <SHORT-NAME>CAN_MCU_R1_MCU_FVT_R_Local1</SHORT-NAME>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-LAST</PACKING-BYTE-ORDER>
+                  <PDU-REF DEST="I-SIGNAL-I-PDU">/CAN_MCU_R1/PDU/CAN_MCU_R1_MCU_FVT_R_Local1</PDU-REF>
+                  <START-POSITION>0</START-POSITION>
+                </PDU-TO-FRAME-MAPPING>
+              </PDU-TO-FRAME-MAPPINGS>
+            </CAN-FRAME>
+		  </ELEMENTS>
+        </AR-PACKAGE>
+		<AR-PACKAGE>
+          <SHORT-NAME>PDU</SHORT-NAME>
+          <ELEMENTS>
+			<I-SIGNAL-I-PDU>
+              <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_Local1</SHORT-NAME>
+              <LENGTH>8</LENGTH>
+              <I-PDU-TIMING-SPECIFICATIONS>
+                <I-PDU-TIMING>
+                  <MINIMUM-DELAY>0.0</MINIMUM-DELAY>
+                  <TRANSMISSION-MODE-DECLARATION>
+                    <TRANSMISSION-MODE-TRUE-TIMING>
+                      <CYCLIC-TIMING>
+                        <TIME-PERIOD>
+                          <VALUE>0.01</VALUE>
+                        </TIME-PERIOD>
+                      </CYCLIC-TIMING>
+                    </TRANSMISSION-MODE-TRUE-TIMING>
+                  </TRANSMISSION-MODE-DECLARATION>
+                </I-PDU-TIMING>
+              </I-PDU-TIMING-SPECIFICATIONS>
+              <I-SIGNAL-TO-PDU-MAPPINGS>
+                <I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>CAN_MCU_R1_SG_EOP_FVT_R_Local1</SHORT-NAME>
+                  <I-SIGNAL-GROUP-REF DEST="I-SIGNAL-GROUP">/CAN_MCU_R1/ISignalGroup/CAN_MCU_R1_SG_EOP_FVT_R_Local1</I-SIGNAL-GROUP-REF>
+                  <START-POSITION>0</START-POSITION>
+                  <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+				<I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_ActualSpd_Sta</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_ActualSpd_Sta</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-FIRST</PACKING-BYTE-ORDER>
+                  <START-POSITION>52</START-POSITION>
+                  <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+				<I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_CSInvalid_Sta</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_CSInvalid_Sta</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-FIRST</PACKING-BYTE-ORDER>
+                  <START-POSITION>31</START-POSITION>
+                  <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+				<I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_CanLoss_Sta</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_CanLoss_Sta</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-FIRST</PACKING-BYTE-ORDER>
+                  <START-POSITION>29</START-POSITION>
+                  <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+				<I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_EnableOff_Sta</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_EnableOff_Sta</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-FIRST</PACKING-BYTE-ORDER>
+                  <START-POSITION>24</START-POSITION>
+                  <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+				<I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_HallSigErr_Sta</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_HallSigErr_Sta</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-FIRST</PACKING-BYTE-ORDER>
+                  <START-POSITION>27</START-POSITION>
+                  <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+				<I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_Local1_CS_Sta</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_Local1_CS_Sta</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-FIRST</PACKING-BYTE-ORDER>
+                  <START-POSITION>7</START-POSITION>
+                  <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+				<I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_Local1_RC_Sta</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_Local1_RC_Sta</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-FIRST</PACKING-BYTE-ORDER>
+                  <START-POSITION>11</START-POSITION>
+                  <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+				<I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_OverTempBCK_Sta</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_OverTempBCK_Sta</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-FIRST</PACKING-BYTE-ORDER>
+                  <START-POSITION>23</START-POSITION>
+                  <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+				<I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_OverTemp_Sta</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_OverTemp_Sta</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-FIRST</PACKING-BYTE-ORDER>
+                  <START-POSITION>28</START-POSITION>
+                  <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+				<I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_OverVol_Sta</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_OverVol_Sta</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-FIRST</PACKING-BYTE-ORDER>
+                  <START-POSITION>21</START-POSITION>
+                  <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+				<I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_PumpReady_Sta</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_PumpReady_Sta</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-FIRST</PACKING-BYTE-ORDER>
+                  <START-POSITION>25</START-POSITION>
+                  <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+				<I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_RCInvalid_Sta</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_RCInvalid_Sta</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-FIRST</PACKING-BYTE-ORDER>
+                  <START-POSITION>30</START-POSITION>
+                  <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+				<I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_RunStatus_Sta</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_RunStatus_Sta</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-FIRST</PACKING-BYTE-ORDER>
+                  <START-POSITION>17</START-POSITION>
+                  <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+				<I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_StartFailure_Sta</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_StartFailure_Sta</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-FIRST</PACKING-BYTE-ORDER>
+                  <START-POSITION>26</START-POSITION>
+                  <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+				<I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_UnderVol_Sta</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_UnderVol_Sta</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-FIRST</PACKING-BYTE-ORDER>
+                  <START-POSITION>19</START-POSITION>
+                  <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+			  </I-SIGNAL-TO-PDU-MAPPINGS>
+              <UNUSED-BIT-PATTERN>0</UNUSED-BIT-PATTERN>
+            </I-SIGNAL-I-PDU>
+			<I-SIGNAL-I-PDU>
+              <SHORT-NAME>CAN_MCU_R1_MCU_FVT_R_Local1</SHORT-NAME>
+              <LENGTH>8</LENGTH>
+              <I-PDU-TIMING-SPECIFICATIONS>
+                <I-PDU-TIMING>
+                  <MINIMUM-DELAY>0.0</MINIMUM-DELAY>
+                  <TRANSMISSION-MODE-DECLARATION>
+                    <TRANSMISSION-MODE-TRUE-TIMING>
+                      <CYCLIC-TIMING>
+                        <TIME-PERIOD>
+                          <VALUE>0.01</VALUE>
+                        </TIME-PERIOD>
+                      </CYCLIC-TIMING>
+                    </TRANSMISSION-MODE-TRUE-TIMING>
+                  </TRANSMISSION-MODE-DECLARATION>
+                </I-PDU-TIMING>
+              </I-PDU-TIMING-SPECIFICATIONS>
+              <I-SIGNAL-TO-PDU-MAPPINGS>
+                <I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>CAN_MCU_R1_SG_MCU_FVT_R_Local1</SHORT-NAME>
+                  <I-SIGNAL-GROUP-REF DEST="I-SIGNAL-GROUP">/CAN_MCU_R1/ISignalGroup/CAN_MCU_R1_SG_MCU_FVT_R_Local1</I-SIGNAL-GROUP-REF>
+                  <START-POSITION>0</START-POSITION>
+                  <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+				<I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>CAN_MCU_R1_MCU_FVT_R_Local1_CS_Sta</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_MCU_FVT_R_Local1_CS_Sta</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-FIRST</PACKING-BYTE-ORDER>
+                  <START-POSITION>7</START-POSITION>
+                  <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+				<I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>CAN_MCU_R1_MCU_FVT_R_Local1_RC_Sta</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_MCU_FVT_R_Local1_RC_Sta</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-FIRST</PACKING-BYTE-ORDER>
+                  <START-POSITION>11</START-POSITION>
+                  <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+				<I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>CAN_MCU_R1_MCU_FVT_R_OPCStartOn_Req</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_MCU_FVT_R_OPCStartOn_Req</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-FIRST</PACKING-BYTE-ORDER>
+                  <START-POSITION>16</START-POSITION>
+                  <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+				<I-SIGNAL-TO-I-PDU-MAPPING>
+                  <SHORT-NAME>CAN_MCU_R1_MCU_FVT_R_OilPmpTarSpd_Req</SHORT-NAME>
+                  <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_MCU_FVT_R_OilPmpTarSpd_Req</I-SIGNAL-REF>
+                  <PACKING-BYTE-ORDER>MOST-SIGNIFICANT-BYTE-FIRST</PACKING-BYTE-ORDER>
+                  <START-POSITION>52</START-POSITION>
+                  <TRANSFER-PROPERTY>PENDING</TRANSFER-PROPERTY>
+                </I-SIGNAL-TO-I-PDU-MAPPING>
+			  </I-SIGNAL-TO-PDU-MAPPINGS>
+              <UNUSED-BIT-PATTERN>0</UNUSED-BIT-PATTERN>
+            </I-SIGNAL-I-PDU>
+			<N-PDU>
+              <SHORT-NAME>CAN_MCU_R1_DiagPhysReqToEOP_FVT_R</SHORT-NAME>
+              <LENGTH>8</LENGTH>
+            </N-PDU>
+			<N-PDU>
+              <SHORT-NAME>CAN_MCU_R1_DiagRespFromEOP_FVT_R</SHORT-NAME>
+              <LENGTH>8</LENGTH>
+            </N-PDU>
+		   </ELEMENTS>
+        </AR-PACKAGE>
+		<AR-PACKAGE>
+          <SHORT-NAME>ISignal</SHORT-NAME>
+          <ELEMENTS>
+            <I-SIGNAL>
+              <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_ActualSpd_Sta</SHORT-NAME>
+              <DATA-TYPE-POLICY>LEGACY</DATA-TYPE-POLICY>
+              <I-SIGNAL-TYPE>PRIMITIVE</I-SIGNAL-TYPE>
+              <INIT-VALUE>
+                <CONSTANT-REFERENCE>
+                  <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_EOP_FVT_R_ActualSpd_Sta</CONSTANT-REF>
+                </CONSTANT-REFERENCE>
+              </INIT-VALUE>
+              <LENGTH>13</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/AUTOSAR_Platform/BaseTypes/uint16</BASE-TYPE-REF>
+                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint16</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_EOP_FVT_R_ActualSpd_Sta</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_CSInvalid_Sta</SHORT-NAME>
+              <DATA-TYPE-POLICY>LEGACY</DATA-TYPE-POLICY>
+              <I-SIGNAL-TYPE>PRIMITIVE</I-SIGNAL-TYPE>
+              <INIT-VALUE>
+                <CONSTANT-REFERENCE>
+                  <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_EOP_FVT_R_CSInvalid_Sta</CONSTANT-REF>
+                </CONSTANT-REFERENCE>
+              </INIT-VALUE>
+              <LENGTH>1</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/AUTOSAR_Platform/BaseTypes/uint8</BASE-TYPE-REF>
+                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_EOP_FVT_R_CSInvalid_Sta</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_CanLoss_Sta</SHORT-NAME>
+              <DATA-TYPE-POLICY>LEGACY</DATA-TYPE-POLICY>
+              <I-SIGNAL-TYPE>PRIMITIVE</I-SIGNAL-TYPE>
+              <INIT-VALUE>
+                <CONSTANT-REFERENCE>
+                  <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_EOP_FVT_R_CanLoss_Sta</CONSTANT-REF>
+                </CONSTANT-REFERENCE>
+              </INIT-VALUE>
+              <LENGTH>1</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/AUTOSAR_Platform/BaseTypes/uint8</BASE-TYPE-REF>
+                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_EOP_FVT_R_CanLoss_Sta</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_EnableOff_Sta</SHORT-NAME>
+              <DATA-TYPE-POLICY>LEGACY</DATA-TYPE-POLICY>
+              <I-SIGNAL-TYPE>PRIMITIVE</I-SIGNAL-TYPE>
+              <INIT-VALUE>
+                <CONSTANT-REFERENCE>
+                  <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_EOP_FVT_R_EnableOff_Sta</CONSTANT-REF>
+                </CONSTANT-REFERENCE>
+              </INIT-VALUE>
+              <LENGTH>1</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/AUTOSAR_Platform/BaseTypes/uint8</BASE-TYPE-REF>
+                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_EOP_FVT_R_EnableOff_Sta</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_HallSigErr_Sta</SHORT-NAME>
+              <DATA-TYPE-POLICY>LEGACY</DATA-TYPE-POLICY>
+              <I-SIGNAL-TYPE>PRIMITIVE</I-SIGNAL-TYPE>
+              <INIT-VALUE>
+                <CONSTANT-REFERENCE>
+                  <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_EOP_FVT_R_HallSigErr_Sta</CONSTANT-REF>
+                </CONSTANT-REFERENCE>
+              </INIT-VALUE>
+              <LENGTH>1</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/AUTOSAR_Platform/BaseTypes/uint8</BASE-TYPE-REF>
+                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_EOP_FVT_R_HallSigErr_Sta</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_Local1_CS_Sta</SHORT-NAME>
+              <DATA-TYPE-POLICY>LEGACY</DATA-TYPE-POLICY>
+              <I-SIGNAL-TYPE>PRIMITIVE</I-SIGNAL-TYPE>
+              <INIT-VALUE>
+                <CONSTANT-REFERENCE>
+                  <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_EOP_FVT_R_Local1_CS_Sta</CONSTANT-REF>
+                </CONSTANT-REFERENCE>
+              </INIT-VALUE>
+              <LENGTH>8</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/AUTOSAR_Platform/BaseTypes/uint8</BASE-TYPE-REF>
+                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_EOP_FVT_R_Local1_CS_Sta</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_Local1_RC_Sta</SHORT-NAME>
+              <DATA-TYPE-POLICY>LEGACY</DATA-TYPE-POLICY>
+              <I-SIGNAL-TYPE>PRIMITIVE</I-SIGNAL-TYPE>
+              <INIT-VALUE>
+                <CONSTANT-REFERENCE>
+                  <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_EOP_FVT_R_Local1_RC_Sta</CONSTANT-REF>
+                </CONSTANT-REFERENCE>
+              </INIT-VALUE>
+              <LENGTH>4</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/AUTOSAR_Platform/BaseTypes/uint8</BASE-TYPE-REF>
+                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_EOP_FVT_R_Local1_RC_Sta</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_OverTempBCK_Sta</SHORT-NAME>
+              <DATA-TYPE-POLICY>LEGACY</DATA-TYPE-POLICY>
+              <I-SIGNAL-TYPE>PRIMITIVE</I-SIGNAL-TYPE>
+              <INIT-VALUE>
+                <CONSTANT-REFERENCE>
+                  <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_EOP_FVT_R_OverTempBCK_Sta</CONSTANT-REF>
+                </CONSTANT-REFERENCE>
+              </INIT-VALUE>
+              <LENGTH>2</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/AUTOSAR_Platform/BaseTypes/uint8</BASE-TYPE-REF>
+                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_EOP_FVT_R_OverTempBCK_Sta</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_OverTemp_Sta</SHORT-NAME>
+              <DATA-TYPE-POLICY>LEGACY</DATA-TYPE-POLICY>
+              <I-SIGNAL-TYPE>PRIMITIVE</I-SIGNAL-TYPE>
+              <INIT-VALUE>
+                <CONSTANT-REFERENCE>
+                  <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_EOP_FVT_R_OverTemp_Sta</CONSTANT-REF>
+                </CONSTANT-REFERENCE>
+              </INIT-VALUE>
+              <LENGTH>1</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/AUTOSAR_Platform/BaseTypes/uint8</BASE-TYPE-REF>
+                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_EOP_FVT_R_OverTemp_Sta</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_OverVol_Sta</SHORT-NAME>
+              <DATA-TYPE-POLICY>LEGACY</DATA-TYPE-POLICY>
+              <I-SIGNAL-TYPE>PRIMITIVE</I-SIGNAL-TYPE>
+              <INIT-VALUE>
+                <CONSTANT-REFERENCE>
+                  <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_EOP_FVT_R_OverVol_Sta</CONSTANT-REF>
+                </CONSTANT-REFERENCE>
+              </INIT-VALUE>
+              <LENGTH>2</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/AUTOSAR_Platform/BaseTypes/uint8</BASE-TYPE-REF>
+                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_EOP_FVT_R_OverVol_Sta</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_PumpReady_Sta</SHORT-NAME>
+              <DATA-TYPE-POLICY>LEGACY</DATA-TYPE-POLICY>
+              <I-SIGNAL-TYPE>PRIMITIVE</I-SIGNAL-TYPE>
+              <INIT-VALUE>
+                <CONSTANT-REFERENCE>
+                  <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_EOP_FVT_R_PumpReady_Sta</CONSTANT-REF>
+                </CONSTANT-REFERENCE>
+              </INIT-VALUE>
+              <LENGTH>1</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/AUTOSAR_Platform/BaseTypes/uint8</BASE-TYPE-REF>
+                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_EOP_FVT_R_PumpReady_Sta</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_RCInvalid_Sta</SHORT-NAME>
+              <DATA-TYPE-POLICY>LEGACY</DATA-TYPE-POLICY>
+              <I-SIGNAL-TYPE>PRIMITIVE</I-SIGNAL-TYPE>
+              <INIT-VALUE>
+                <CONSTANT-REFERENCE>
+                  <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_EOP_FVT_R_RCInvalid_Sta</CONSTANT-REF>
+                </CONSTANT-REFERENCE>
+              </INIT-VALUE>
+              <LENGTH>1</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/AUTOSAR_Platform/BaseTypes/uint8</BASE-TYPE-REF>
+                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_EOP_FVT_R_RCInvalid_Sta</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_RunStatus_Sta</SHORT-NAME>
+              <DATA-TYPE-POLICY>LEGACY</DATA-TYPE-POLICY>
+              <I-SIGNAL-TYPE>PRIMITIVE</I-SIGNAL-TYPE>
+              <INIT-VALUE>
+                <CONSTANT-REFERENCE>
+                  <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_EOP_FVT_R_RunStatus_Sta</CONSTANT-REF>
+                </CONSTANT-REFERENCE>
+              </INIT-VALUE>
+              <LENGTH>2</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/AUTOSAR_Platform/BaseTypes/uint8</BASE-TYPE-REF>
+                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_EOP_FVT_R_RunStatus_Sta</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_StartFailure_Sta</SHORT-NAME>
+              <DATA-TYPE-POLICY>LEGACY</DATA-TYPE-POLICY>
+              <I-SIGNAL-TYPE>PRIMITIVE</I-SIGNAL-TYPE>
+              <INIT-VALUE>
+                <CONSTANT-REFERENCE>
+                  <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_EOP_FVT_R_StartFailure_Sta</CONSTANT-REF>
+                </CONSTANT-REFERENCE>
+              </INIT-VALUE>
+              <LENGTH>1</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/AUTOSAR_Platform/BaseTypes/uint8</BASE-TYPE-REF>
+                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_EOP_FVT_R_StartFailure_Sta</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_UnderVol_Sta</SHORT-NAME>
+              <DATA-TYPE-POLICY>LEGACY</DATA-TYPE-POLICY>
+              <I-SIGNAL-TYPE>PRIMITIVE</I-SIGNAL-TYPE>
+              <INIT-VALUE>
+                <CONSTANT-REFERENCE>
+                  <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_EOP_FVT_R_UnderVol_Sta</CONSTANT-REF>
+                </CONSTANT-REFERENCE>
+              </INIT-VALUE>
+              <LENGTH>2</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/AUTOSAR_Platform/BaseTypes/uint8</BASE-TYPE-REF>
+                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_EOP_FVT_R_UnderVol_Sta</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>CAN_MCU_R1_MCU_FVT_R_Local1_CS_Sta</SHORT-NAME>
+              <DATA-TYPE-POLICY>LEGACY</DATA-TYPE-POLICY>
+              <I-SIGNAL-TYPE>PRIMITIVE</I-SIGNAL-TYPE>
+              <INIT-VALUE>
+                <CONSTANT-REFERENCE>
+                  <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_MCU_FVT_R_Local1_CS_Sta</CONSTANT-REF>
+                </CONSTANT-REFERENCE>
+              </INIT-VALUE>
+              <LENGTH>8</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/AUTOSAR_Platform/BaseTypes/uint8</BASE-TYPE-REF>
+                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_MCU_FVT_R_Local1_CS_Sta</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>CAN_MCU_R1_MCU_FVT_R_Local1_RC_Sta</SHORT-NAME>
+              <DATA-TYPE-POLICY>LEGACY</DATA-TYPE-POLICY>
+              <I-SIGNAL-TYPE>PRIMITIVE</I-SIGNAL-TYPE>
+              <INIT-VALUE>
+                <CONSTANT-REFERENCE>
+                  <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_MCU_FVT_R_Local1_RC_Sta</CONSTANT-REF>
+                </CONSTANT-REFERENCE>
+              </INIT-VALUE>
+              <LENGTH>4</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/AUTOSAR_Platform/BaseTypes/uint8</BASE-TYPE-REF>
+                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_MCU_FVT_R_Local1_RC_Sta</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>CAN_MCU_R1_MCU_FVT_R_OPCStartOn_Req</SHORT-NAME>
+              <DATA-TYPE-POLICY>LEGACY</DATA-TYPE-POLICY>
+              <I-SIGNAL-TYPE>PRIMITIVE</I-SIGNAL-TYPE>
+              <INIT-VALUE>
+                <CONSTANT-REFERENCE>
+                  <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_MCU_FVT_R_OPCStartOn_Req</CONSTANT-REF>
+                </CONSTANT-REFERENCE>
+              </INIT-VALUE>
+              <LENGTH>1</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/AUTOSAR_Platform/BaseTypes/uint8</BASE-TYPE-REF>
+                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_MCU_FVT_R_OPCStartOn_Req</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+            <I-SIGNAL>
+              <SHORT-NAME>CAN_MCU_R1_MCU_FVT_R_OilPmpTarSpd_Req</SHORT-NAME>
+              <DATA-TYPE-POLICY>LEGACY</DATA-TYPE-POLICY>
+              <I-SIGNAL-TYPE>PRIMITIVE</I-SIGNAL-TYPE>
+              <INIT-VALUE>
+                <CONSTANT-REFERENCE>
+                  <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_MCU_FVT_R_OilPmpTarSpd_Req</CONSTANT-REF>
+                </CONSTANT-REFERENCE>
+              </INIT-VALUE>
+              <LENGTH>13</LENGTH>
+              <NETWORK-REPRESENTATION-PROPS>
+                <SW-DATA-DEF-PROPS-VARIANTS>
+                  <SW-DATA-DEF-PROPS-CONDITIONAL>
+                    <BASE-TYPE-REF DEST="SW-BASE-TYPE">/AUTOSAR_Platform/BaseTypes/uint16</BASE-TYPE-REF>
+                    <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint16</IMPLEMENTATION-DATA-TYPE-REF>
+                  </SW-DATA-DEF-PROPS-CONDITIONAL>
+                </SW-DATA-DEF-PROPS-VARIANTS>
+              </NETWORK-REPRESENTATION-PROPS>
+              <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_MCU_FVT_R_OilPmpTarSpd_Req</SYSTEM-SIGNAL-REF>
+            </I-SIGNAL>
+		  </ELEMENTS>
+        </AR-PACKAGE>
+		<AR-PACKAGE>
+          <SHORT-NAME>ISignalGroup</SHORT-NAME>
+          <ELEMENTS>
+            <I-SIGNAL-GROUP>
+              <SHORT-NAME>CAN_MCU_R1_SG_EOP_FVT_R_Local1</SHORT-NAME>
+              <I-SIGNAL-REFS>
+                <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_ActualSpd_Sta</I-SIGNAL-REF>
+                <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_CSInvalid_Sta</I-SIGNAL-REF>
+                <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_CanLoss_Sta</I-SIGNAL-REF>
+                <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_EnableOff_Sta</I-SIGNAL-REF>
+                <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_HallSigErr_Sta</I-SIGNAL-REF>
+                <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_Local1_CS_Sta</I-SIGNAL-REF>
+                <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_Local1_RC_Sta</I-SIGNAL-REF>
+                <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_OverTempBCK_Sta</I-SIGNAL-REF>
+                <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_OverTemp_Sta</I-SIGNAL-REF>
+                <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_OverVol_Sta</I-SIGNAL-REF>
+                <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_PumpReady_Sta</I-SIGNAL-REF>
+                <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_RCInvalid_Sta</I-SIGNAL-REF>
+                <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_RunStatus_Sta</I-SIGNAL-REF>
+                <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_StartFailure_Sta</I-SIGNAL-REF>
+                <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_UnderVol_Sta</I-SIGNAL-REF>
+			  </I-SIGNAL-REFS>
+              <SYSTEM-SIGNAL-GROUP-REF DEST="SYSTEM-SIGNAL-GROUP">/CAN_MCU_R1/SignalGroup/CAN_MCU_R1_SG_EOP_FVT_R_Local1</SYSTEM-SIGNAL-GROUP-REF>
+            </I-SIGNAL-GROUP>
+            <I-SIGNAL-GROUP>
+              <SHORT-NAME>CAN_MCU_R1_SG_MCU_FVT_R_Local1</SHORT-NAME>
+              <I-SIGNAL-REFS>
+                <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_MCU_FVT_R_Local1_CS_Sta</I-SIGNAL-REF>
+                <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_MCU_FVT_R_Local1_RC_Sta</I-SIGNAL-REF>
+                <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_MCU_FVT_R_OPCStartOn_Req</I-SIGNAL-REF>
+                <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_MCU_FVT_R_OilPmpTarSpd_Req</I-SIGNAL-REF>
+			  </I-SIGNAL-REFS>
+              <SYSTEM-SIGNAL-GROUP-REF DEST="SYSTEM-SIGNAL-GROUP">/CAN_MCU_R1/SignalGroup/CAN_MCU_R1_SG_MCU_FVT_R_Local1</SYSTEM-SIGNAL-GROUP-REF>
+            </I-SIGNAL-GROUP>
+		  </ELEMENTS>
+        </AR-PACKAGE>
+		<AR-PACKAGE>
+          <SHORT-NAME>Signal</SHORT-NAME>
+          <ELEMENTS>
+            <SYSTEM-SIGNAL>
+			<SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_ActualSpd_Sta</SHORT-NAME>
+              <DYNAMIC-LENGTH>false</DYNAMIC-LENGTH>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+			<SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_CSInvalid_Sta</SHORT-NAME>
+              <DYNAMIC-LENGTH>false</DYNAMIC-LENGTH>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+			<SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_CanLoss_Sta</SHORT-NAME>
+              <DYNAMIC-LENGTH>false</DYNAMIC-LENGTH>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+			<SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_EnableOff_Sta</SHORT-NAME>
+              <DYNAMIC-LENGTH>false</DYNAMIC-LENGTH>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+			<SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_HallSigErr_Sta</SHORT-NAME>
+              <DYNAMIC-LENGTH>false</DYNAMIC-LENGTH>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+			<SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_Local1_CS_Sta</SHORT-NAME>
+              <DYNAMIC-LENGTH>false</DYNAMIC-LENGTH>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+			<SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_Local1_RC_Sta</SHORT-NAME>
+              <DYNAMIC-LENGTH>false</DYNAMIC-LENGTH>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+			<SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_OverTempBCK_Sta</SHORT-NAME>
+              <DYNAMIC-LENGTH>false</DYNAMIC-LENGTH>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+			<SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_OverTemp_Sta</SHORT-NAME>
+              <DYNAMIC-LENGTH>false</DYNAMIC-LENGTH>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+			<SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_OverVol_Sta</SHORT-NAME>
+              <DYNAMIC-LENGTH>false</DYNAMIC-LENGTH>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+			<SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_PumpReady_Sta</SHORT-NAME>
+              <DYNAMIC-LENGTH>false</DYNAMIC-LENGTH>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+			<SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_RCInvalid_Sta</SHORT-NAME>
+              <DYNAMIC-LENGTH>false</DYNAMIC-LENGTH>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+			<SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_RunStatus_Sta</SHORT-NAME>
+              <DYNAMIC-LENGTH>false</DYNAMIC-LENGTH>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+			<SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_StartFailure_Sta</SHORT-NAME>
+              <DYNAMIC-LENGTH>false</DYNAMIC-LENGTH>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+			<SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_UnderVol_Sta</SHORT-NAME>
+              <DYNAMIC-LENGTH>false</DYNAMIC-LENGTH>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+			<SHORT-NAME>CAN_MCU_R1_MCU_FVT_R_Local1_CS_Sta</SHORT-NAME>
+              <DYNAMIC-LENGTH>false</DYNAMIC-LENGTH>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+			<SHORT-NAME>CAN_MCU_R1_MCU_FVT_R_Local1_RC_Sta</SHORT-NAME>
+              <DYNAMIC-LENGTH>false</DYNAMIC-LENGTH>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+			<SHORT-NAME>CAN_MCU_R1_MCU_FVT_R_OPCStartOn_Req</SHORT-NAME>
+              <DYNAMIC-LENGTH>false</DYNAMIC-LENGTH>
+            </SYSTEM-SIGNAL>
+            <SYSTEM-SIGNAL>
+			<SHORT-NAME>CAN_MCU_R1_MCU_FVT_R_OilPmpTarSpd_Req</SHORT-NAME>
+              <DYNAMIC-LENGTH>false</DYNAMIC-LENGTH>
+            </SYSTEM-SIGNAL>
+		  </ELEMENTS>
+        </AR-PACKAGE>
+		<AR-PACKAGE>
+          <SHORT-NAME>SignalGroup</SHORT-NAME>
+          <ELEMENTS>
+            <SYSTEM-SIGNAL-GROUP>
+              <SHORT-NAME>CAN_MCU_R1_SG_EOP_FVT_R_Local1</SHORT-NAME>
+              <SYSTEM-SIGNAL-REFS>
+                <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_EOP_FVT_R_ActualSpd_Sta</SYSTEM-SIGNAL-REF>
+                <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_EOP_FVT_R_CSInvalid_Sta</SYSTEM-SIGNAL-REF>
+                <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_EOP_FVT_R_CanLoss_Sta</SYSTEM-SIGNAL-REF>
+                <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_EOP_FVT_R_EnableOff_Sta</SYSTEM-SIGNAL-REF>
+                <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_EOP_FVT_R_HallSigErr_Sta</SYSTEM-SIGNAL-REF>
+                <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_EOP_FVT_R_Local1_CS_Sta</SYSTEM-SIGNAL-REF>
+                <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_EOP_FVT_R_Local1_RC_Sta</SYSTEM-SIGNAL-REF>
+                <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_EOP_FVT_R_OverTempBCK_Sta</SYSTEM-SIGNAL-REF>
+                <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_EOP_FVT_R_OverTemp_Sta</SYSTEM-SIGNAL-REF>
+                <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_EOP_FVT_R_OverVol_Sta</SYSTEM-SIGNAL-REF>
+                <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_EOP_FVT_R_PumpReady_Sta</SYSTEM-SIGNAL-REF>
+                <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_EOP_FVT_R_RCInvalid_Sta</SYSTEM-SIGNAL-REF>
+                <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_EOP_FVT_R_RunStatus_Sta</SYSTEM-SIGNAL-REF>
+                <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_EOP_FVT_R_StartFailure_Sta</SYSTEM-SIGNAL-REF>
+                <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_EOP_FVT_R_UnderVol_Sta</SYSTEM-SIGNAL-REF>
+              </SYSTEM-SIGNAL-REFS>
+            </SYSTEM-SIGNAL-GROUP>
+            <SYSTEM-SIGNAL-GROUP>
+              <SHORT-NAME>CAN_MCU_R1_SG_MCU_FVT_R_Local1</SHORT-NAME>
+              <SYSTEM-SIGNAL-REFS>
+                <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_MCU_FVT_R_Local1_CS_Sta</SYSTEM-SIGNAL-REF>
+                <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_MCU_FVT_R_Local1_RC_Sta</SYSTEM-SIGNAL-REF>
+                <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_MCU_FVT_R_OPCStartOn_Req</SYSTEM-SIGNAL-REF>
+                <SYSTEM-SIGNAL-REF DEST="SYSTEM-SIGNAL">/CAN_MCU_R1/Signal/CAN_MCU_R1_MCU_FVT_R_OilPmpTarSpd_Req</SYSTEM-SIGNAL-REF>
+              </SYSTEM-SIGNAL-REFS>
+            </SYSTEM-SIGNAL-GROUP>
+		   </ELEMENTS>
+        </AR-PACKAGE>
+		<AR-PACKAGE>
+          <SHORT-NAME>Cluster</SHORT-NAME>
+          <ELEMENTS>
+            <CAN-CLUSTER>
+              <SHORT-NAME>CAN_MCU_R1</SHORT-NAME>
+              <CAN-CLUSTER-VARIANTS>
+                <CAN-CLUSTER-CONDITIONAL>
+                  <BAUDRATE>500</BAUDRATE>
+                  <PHYSICAL-CHANNELS>
+                    <CAN-PHYSICAL-CHANNEL>
+                      <SHORT-NAME>CAN_MCU_R1</SHORT-NAME>
+                      <COMM-CONNECTORS>
+                        <COMMUNICATION-CONNECTOR-REF-CONDITIONAL>
+                          <COMMUNICATION-CONNECTOR-REF DEST="CAN-COMMUNICATION-CONNECTOR">/ECU/MCU/ConnCAN_MCU_R1</COMMUNICATION-CONNECTOR-REF>
+                        </COMMUNICATION-CONNECTOR-REF-CONDITIONAL>
+                      </COMM-CONNECTORS>
+					  <FRAME-TRIGGERINGS>
+                        <CAN-FRAME-TRIGGERING>
+                          <SHORT-NAME>FT_CAN_MCU_R1_DiagPhysReqToEOP_FVT_R</SHORT-NAME>
+                          <FRAME-PORT-REFS>
+                            <FRAME-PORT-REF DEST="FRAME-PORT">/ECU/MCU/ConnCAN_MCU_R1/FP_CAN_MCU_R1_DiagPhysReqToEOP_FVT_R_OUT</FRAME-PORT-REF>
+                          </FRAME-PORT-REFS>
+                          <FRAME-REF DEST="CAN-FRAME">/CAN_MCU_R1/Frame/CAN_MCU_R1_DiagPhysReqToEOP_FVT_R</FRAME-REF>
+                          <CAN-ADDRESSING-MODE>STANDARD</CAN-ADDRESSING-MODE>
+                          <CAN-FD-FRAME-SUPPORT>false</CAN-FD-FRAME-SUPPORT>
+                          <CAN-FRAME-RX-BEHAVIOR>CAN-20</CAN-FRAME-RX-BEHAVIOR>
+                          <CAN-FRAME-TX-BEHAVIOR>CAN-20</CAN-FRAME-TX-BEHAVIOR>
+                          <IDENTIFIER>1731</IDENTIFIER>
+                        </CAN-FRAME-TRIGGERING>
+                        <CAN-FRAME-TRIGGERING>
+                          <SHORT-NAME>FT_CAN_MCU_R1_DiagRespFromEOP_FVT_R</SHORT-NAME>
+                          <FRAME-PORT-REFS>
+                            <FRAME-PORT-REF DEST="FRAME-PORT">/ECU/MCU/ConnCAN_MCU_R1/FP_CAN_MCU_R1_DiagRespFromEOP_FVT_R_IN</FRAME-PORT-REF>
+                          </FRAME-PORT-REFS>
+                          <FRAME-REF DEST="CAN-FRAME">/CAN_MCU_R1/Frame/CAN_MCU_R1_DiagRespFromEOP_FVT_R</FRAME-REF>
+                          <CAN-ADDRESSING-MODE>STANDARD</CAN-ADDRESSING-MODE>
+                          <CAN-FD-FRAME-SUPPORT>false</CAN-FD-FRAME-SUPPORT>
+                          <CAN-FRAME-RX-BEHAVIOR>CAN-20</CAN-FRAME-RX-BEHAVIOR>
+                          <CAN-FRAME-TX-BEHAVIOR>CAN-20</CAN-FRAME-TX-BEHAVIOR>
+                          <IDENTIFIER>1603</IDENTIFIER>
+                        </CAN-FRAME-TRIGGERING>
+                        <CAN-FRAME-TRIGGERING>
+                          <SHORT-NAME>FT_CAN_MCU_R1_EOP_FVT_R_Local1</SHORT-NAME>
+                          <FRAME-PORT-REFS>
+                            <FRAME-PORT-REF DEST="FRAME-PORT">/ECU/MCU/ConnCAN_MCU_R1/FP_CAN_MCU_R1_EOP_FVT_R_Local1_IN</FRAME-PORT-REF>
+                          </FRAME-PORT-REFS>
+                          <FRAME-REF DEST="CAN-FRAME">/CAN_MCU_R1/Frame/CAN_MCU_R1_EOP_FVT_R_Local1</FRAME-REF>
+                          <PDU-TRIGGERINGS>
+                            <PDU-TRIGGERING-REF-CONDITIONAL>
+                              <PDU-TRIGGERING-REF DEST="PDU-TRIGGERING">/CAN_MCU_R1/Cluster/CAN_MCU_R1/CAN_MCU_R1/PT_CAN_MCU_R1_EOP_FVT_R_Local1</PDU-TRIGGERING-REF>
+                            </PDU-TRIGGERING-REF-CONDITIONAL>
+                          </PDU-TRIGGERINGS>
+                          <CAN-ADDRESSING-MODE>STANDARD</CAN-ADDRESSING-MODE>
+                          <CAN-FD-FRAME-SUPPORT>false</CAN-FD-FRAME-SUPPORT>
+                          <CAN-FRAME-RX-BEHAVIOR>CAN-20</CAN-FRAME-RX-BEHAVIOR>
+                          <CAN-FRAME-TX-BEHAVIOR>CAN-20</CAN-FRAME-TX-BEHAVIOR>
+                          <IDENTIFIER>1012</IDENTIFIER>
+                        </CAN-FRAME-TRIGGERING>
+                        <CAN-FRAME-TRIGGERING>
+                          <SHORT-NAME>FT_CAN_MCU_R1_MCU_FVT_R_Local1</SHORT-NAME>
+                          <FRAME-PORT-REFS>
+                            <FRAME-PORT-REF DEST="FRAME-PORT">/ECU/MCU/ConnCAN_MCU_R1/FP_CAN_MCU_R1_MCU_FVT_R_Local1_OUT</FRAME-PORT-REF>
+                          </FRAME-PORT-REFS>
+                          <FRAME-REF DEST="CAN-FRAME">/CAN_MCU_R1/Frame/CAN_MCU_R1_MCU_FVT_R_Local1</FRAME-REF>
+                          <PDU-TRIGGERINGS>
+                            <PDU-TRIGGERING-REF-CONDITIONAL>
+                              <PDU-TRIGGERING-REF DEST="PDU-TRIGGERING">/CAN_MCU_R1/Cluster/CAN_MCU_R1/CAN_MCU_R1/PT_CAN_MCU_R1_MCU_FVT_R_Local1</PDU-TRIGGERING-REF>
+                            </PDU-TRIGGERING-REF-CONDITIONAL>
+                          </PDU-TRIGGERINGS>
+                          <CAN-ADDRESSING-MODE>STANDARD</CAN-ADDRESSING-MODE>
+                          <CAN-FD-FRAME-SUPPORT>false</CAN-FD-FRAME-SUPPORT>
+                          <CAN-FRAME-RX-BEHAVIOR>CAN-20</CAN-FRAME-RX-BEHAVIOR>
+                          <CAN-FRAME-TX-BEHAVIOR>CAN-20</CAN-FRAME-TX-BEHAVIOR>
+                          <IDENTIFIER>1008</IDENTIFIER>
+                        </CAN-FRAME-TRIGGERING>
+					  </FRAME-TRIGGERINGS>
+					  <I-SIGNAL-TRIGGERINGS>
+                        <I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>ST_CAN_MCU_R1_SG_EOP_FVT_R_Local1</SHORT-NAME>
+                          <I-SIGNAL-GROUP-REF DEST="I-SIGNAL-GROUP">/CAN_MCU_R1/ISignalGroup/CAN_MCU_R1_SG_EOP_FVT_R_Local1</I-SIGNAL-GROUP-REF>
+                          <I-SIGNAL-PORT-REFS>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ECU/MCU/ConnCAN_MCU_R1/SP_CAN_MCU_R1_SG_EOP_FVT_R_Local1_IN</I-SIGNAL-PORT-REF>
+                          </I-SIGNAL-PORT-REFS>
+                        </I-SIGNAL-TRIGGERING>
+						<I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>ST_CAN_MCU_R1_EOP_FVT_R_ActualSpd_Sta</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ECU/MCU/ConnCAN_MCU_R1/SP_CAN_MCU_R1_EOP_FVT_R_ActualSpd_Sta_IN</I-SIGNAL-PORT-REF>
+                          </I-SIGNAL-PORT-REFS>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_ActualSpd_Sta</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+						<I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>ST_CAN_MCU_R1_EOP_FVT_R_CSInvalid_Sta</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ECU/MCU/ConnCAN_MCU_R1/SP_CAN_MCU_R1_EOP_FVT_R_CSInvalid_Sta_IN</I-SIGNAL-PORT-REF>
+                          </I-SIGNAL-PORT-REFS>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_CSInvalid_Sta</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+						<I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>ST_CAN_MCU_R1_EOP_FVT_R_CanLoss_Sta</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ECU/MCU/ConnCAN_MCU_R1/SP_CAN_MCU_R1_EOP_FVT_R_CanLoss_Sta_IN</I-SIGNAL-PORT-REF>
+                          </I-SIGNAL-PORT-REFS>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_CanLoss_Sta</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+						<I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>ST_CAN_MCU_R1_EOP_FVT_R_EnableOff_Sta</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ECU/MCU/ConnCAN_MCU_R1/SP_CAN_MCU_R1_EOP_FVT_R_EnableOff_Sta_IN</I-SIGNAL-PORT-REF>
+                          </I-SIGNAL-PORT-REFS>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_EnableOff_Sta</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+						<I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>ST_CAN_MCU_R1_EOP_FVT_R_HallSigErr_Sta</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ECU/MCU/ConnCAN_MCU_R1/SP_CAN_MCU_R1_EOP_FVT_R_HallSigErr_Sta_IN</I-SIGNAL-PORT-REF>
+                          </I-SIGNAL-PORT-REFS>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_HallSigErr_Sta</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+						<I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>ST_CAN_MCU_R1_EOP_FVT_R_Local1_CS_Sta</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ECU/MCU/ConnCAN_MCU_R1/SP_CAN_MCU_R1_EOP_FVT_R_Local1_CS_Sta_IN</I-SIGNAL-PORT-REF>
+                          </I-SIGNAL-PORT-REFS>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_Local1_CS_Sta</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+						<I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>ST_CAN_MCU_R1_EOP_FVT_R_Local1_RC_Sta</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ECU/MCU/ConnCAN_MCU_R1/SP_CAN_MCU_R1_EOP_FVT_R_Local1_RC_Sta_IN</I-SIGNAL-PORT-REF>
+                          </I-SIGNAL-PORT-REFS>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_Local1_RC_Sta</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+						<I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>ST_CAN_MCU_R1_EOP_FVT_R_OverTempBCK_Sta</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ECU/MCU/ConnCAN_MCU_R1/SP_CAN_MCU_R1_EOP_FVT_R_OverTempBCK_Sta_IN</I-SIGNAL-PORT-REF>
+                          </I-SIGNAL-PORT-REFS>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_OverTempBCK_Sta</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+						<I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>ST_CAN_MCU_R1_EOP_FVT_R_OverTemp_Sta</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ECU/MCU/ConnCAN_MCU_R1/SP_CAN_MCU_R1_EOP_FVT_R_OverTemp_Sta_IN</I-SIGNAL-PORT-REF>
+                          </I-SIGNAL-PORT-REFS>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_OverTemp_Sta</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+						<I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>ST_CAN_MCU_R1_EOP_FVT_R_OverVol_Sta</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ECU/MCU/ConnCAN_MCU_R1/SP_CAN_MCU_R1_EOP_FVT_R_OverVol_Sta_IN</I-SIGNAL-PORT-REF>
+                          </I-SIGNAL-PORT-REFS>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_OverVol_Sta</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+						<I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>ST_CAN_MCU_R1_EOP_FVT_R_PumpReady_Sta</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ECU/MCU/ConnCAN_MCU_R1/SP_CAN_MCU_R1_EOP_FVT_R_PumpReady_Sta_IN</I-SIGNAL-PORT-REF>
+                          </I-SIGNAL-PORT-REFS>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_PumpReady_Sta</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+						<I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>ST_CAN_MCU_R1_EOP_FVT_R_RCInvalid_Sta</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ECU/MCU/ConnCAN_MCU_R1/SP_CAN_MCU_R1_EOP_FVT_R_RCInvalid_Sta_IN</I-SIGNAL-PORT-REF>
+                          </I-SIGNAL-PORT-REFS>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_RCInvalid_Sta</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+						<I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>ST_CAN_MCU_R1_EOP_FVT_R_RunStatus_Sta</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ECU/MCU/ConnCAN_MCU_R1/SP_CAN_MCU_R1_EOP_FVT_R_RunStatus_Sta_IN</I-SIGNAL-PORT-REF>
+                          </I-SIGNAL-PORT-REFS>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_RunStatus_Sta</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+						<I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>ST_CAN_MCU_R1_EOP_FVT_R_StartFailure_Sta</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ECU/MCU/ConnCAN_MCU_R1/SP_CAN_MCU_R1_EOP_FVT_R_StartFailure_Sta_IN</I-SIGNAL-PORT-REF>
+                          </I-SIGNAL-PORT-REFS>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_StartFailure_Sta</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+						<I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>ST_CAN_MCU_R1_EOP_FVT_R_UnderVol_Sta</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ECU/MCU/ConnCAN_MCU_R1/SP_CAN_MCU_R1_EOP_FVT_R_UnderVol_Sta_IN</I-SIGNAL-PORT-REF>
+                          </I-SIGNAL-PORT-REFS>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_EOP_FVT_R_UnderVol_Sta</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+                        <I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>ST_CAN_MCU_R1_SG_MCU_FVT_R_Local1</SHORT-NAME>
+                          <I-SIGNAL-GROUP-REF DEST="I-SIGNAL-GROUP">/CAN_MCU_R1/ISignalGroup/CAN_MCU_R1_SG_MCU_FVT_R_Local1</I-SIGNAL-GROUP-REF>
+                          <I-SIGNAL-PORT-REFS>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ECU/MCU/ConnCAN_MCU_R1/SP_CAN_MCU_R1_SG_MCU_FVT_R_Local1_OUT</I-SIGNAL-PORT-REF>
+                          </I-SIGNAL-PORT-REFS>
+                        </I-SIGNAL-TRIGGERING>
+						<I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>ST_CAN_MCU_R1_MCU_FVT_R_Local1_CS_Sta</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ECU/MCU/ConnCAN_MCU_R1/SP_CAN_MCU_R1_MCU_FVT_R_Local1_CS_Sta_OUT</I-SIGNAL-PORT-REF>
+                          </I-SIGNAL-PORT-REFS>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_MCU_FVT_R_Local1_CS_Sta</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+						<I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>ST_CAN_MCU_R1_MCU_FVT_R_Local1_RC_Sta</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ECU/MCU/ConnCAN_MCU_R1/SP_CAN_MCU_R1_MCU_FVT_R_Local1_RC_Sta_OUT</I-SIGNAL-PORT-REF>
+                          </I-SIGNAL-PORT-REFS>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_MCU_FVT_R_Local1_RC_Sta</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+						<I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>ST_CAN_MCU_R1_MCU_FVT_R_OPCStartOn_Req</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ECU/MCU/ConnCAN_MCU_R1/SP_CAN_MCU_R1_MCU_FVT_R_OPCStartOn_Req_OUT</I-SIGNAL-PORT-REF>
+                          </I-SIGNAL-PORT-REFS>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_MCU_FVT_R_OPCStartOn_Req</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+						<I-SIGNAL-TRIGGERING>
+                          <SHORT-NAME>ST_CAN_MCU_R1_MCU_FVT_R_OilPmpTarSpd_Req</SHORT-NAME>
+                          <I-SIGNAL-PORT-REFS>
+                            <I-SIGNAL-PORT-REF DEST="I-SIGNAL-PORT">/ECU/MCU/ConnCAN_MCU_R1/SP_CAN_MCU_R1_MCU_FVT_R_OilPmpTarSpd_Req_OUT</I-SIGNAL-PORT-REF>
+                          </I-SIGNAL-PORT-REFS>
+                          <I-SIGNAL-REF DEST="I-SIGNAL">/CAN_MCU_R1/ISignal/CAN_MCU_R1_MCU_FVT_R_OilPmpTarSpd_Req</I-SIGNAL-REF>
+                        </I-SIGNAL-TRIGGERING>
+					  </I-SIGNAL-TRIGGERINGS>					  
+					  <PDU-TRIGGERINGS>
+                        <PDU-TRIGGERING>
+                          <SHORT-NAME>PT_CAN_MCU_R1_DiagPhysReqToEOP_FVT_R</SHORT-NAME>
+                          <I-PDU-PORT-REFS>
+                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/ECU/MCU/ConnCAN_MCU_R1/PP_CAN_MCU_R1_DiagPhysReqToEOP_FVT_R_OUT</I-PDU-PORT-REF>
+                          </I-PDU-PORT-REFS>
+                          <I-PDU-REF DEST="N-PDU">/CAN_MCU_R1/PDU/CAN_MCU_R1_DiagPhysReqToEOP_FVT_R</I-PDU-REF>
+                        </PDU-TRIGGERING>
+                        <PDU-TRIGGERING>
+                          <SHORT-NAME>PT_CAN_MCU_R1_DiagRespFromEOP_FVT_R</SHORT-NAME>
+                          <I-PDU-PORT-REFS>
+                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/ECU/MCU/ConnCAN_MCU_R1/PP_CAN_MCU_R1_DiagRespFromEOP_FVT_R_IN</I-PDU-PORT-REF>
+                          </I-PDU-PORT-REFS>
+                          <I-PDU-REF DEST="N-PDU">/CAN_MCU_R1/PDU/CAN_MCU_R1_DiagRespFromEOP_FVT_R</I-PDU-REF>
+                        </PDU-TRIGGERING>
+                        <PDU-TRIGGERING>
+                          <SHORT-NAME>PT_CAN_MCU_R1_EOP_FVT_R_Local1</SHORT-NAME>
+                          <I-PDU-PORT-REFS>
+                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/ECU/MCU/ConnCAN_MCU_R1/PP_CAN_MCU_R1_EOP_FVT_R_Local1_IN</I-PDU-PORT-REF>
+                          </I-PDU-PORT-REFS>
+                          <I-PDU-REF DEST="I-SIGNAL-I-PDU">/CAN_MCU_R1/PDU/CAN_MCU_R1_EOP_FVT_R_Local1</I-PDU-REF>
+						  <I-SIGNAL-TRIGGERINGS>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/CAN_MCU_R1/Cluster/CAN_MCU_R1/CAN_MCU_R1/ST_CAN_MCU_R1_SG_EOP_FVT_R_Local1</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/CAN_MCU_R1/Cluster/CAN_MCU_R1/CAN_MCU_R1/ST_CAN_MCU_R1_EOP_FVT_R_ActualSpd_Sta</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/CAN_MCU_R1/Cluster/CAN_MCU_R1/CAN_MCU_R1/ST_CAN_MCU_R1_EOP_FVT_R_CSInvalid_Sta</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/CAN_MCU_R1/Cluster/CAN_MCU_R1/CAN_MCU_R1/ST_CAN_MCU_R1_EOP_FVT_R_CanLoss_Sta</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/CAN_MCU_R1/Cluster/CAN_MCU_R1/CAN_MCU_R1/ST_CAN_MCU_R1_EOP_FVT_R_EnableOff_Sta</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/CAN_MCU_R1/Cluster/CAN_MCU_R1/CAN_MCU_R1/ST_CAN_MCU_R1_EOP_FVT_R_HallSigErr_Sta</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/CAN_MCU_R1/Cluster/CAN_MCU_R1/CAN_MCU_R1/ST_CAN_MCU_R1_EOP_FVT_R_Local1_CS_Sta</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/CAN_MCU_R1/Cluster/CAN_MCU_R1/CAN_MCU_R1/ST_CAN_MCU_R1_EOP_FVT_R_Local1_RC_Sta</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/CAN_MCU_R1/Cluster/CAN_MCU_R1/CAN_MCU_R1/ST_CAN_MCU_R1_EOP_FVT_R_OverTempBCK_Sta</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/CAN_MCU_R1/Cluster/CAN_MCU_R1/CAN_MCU_R1/ST_CAN_MCU_R1_EOP_FVT_R_OverTemp_Sta</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/CAN_MCU_R1/Cluster/CAN_MCU_R1/CAN_MCU_R1/ST_CAN_MCU_R1_EOP_FVT_R_OverVol_Sta</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/CAN_MCU_R1/Cluster/CAN_MCU_R1/CAN_MCU_R1/ST_CAN_MCU_R1_EOP_FVT_R_PumpReady_Sta</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/CAN_MCU_R1/Cluster/CAN_MCU_R1/CAN_MCU_R1/ST_CAN_MCU_R1_EOP_FVT_R_RCInvalid_Sta</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/CAN_MCU_R1/Cluster/CAN_MCU_R1/CAN_MCU_R1/ST_CAN_MCU_R1_EOP_FVT_R_RunStatus_Sta</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/CAN_MCU_R1/Cluster/CAN_MCU_R1/CAN_MCU_R1/ST_CAN_MCU_R1_EOP_FVT_R_StartFailure_Sta</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/CAN_MCU_R1/Cluster/CAN_MCU_R1/CAN_MCU_R1/ST_CAN_MCU_R1_EOP_FVT_R_UnderVol_Sta</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+						  </I-SIGNAL-TRIGGERINGS>
+                        </PDU-TRIGGERING>
+                        <PDU-TRIGGERING>
+                          <SHORT-NAME>PT_CAN_MCU_R1_MCU_FVT_R_Local1</SHORT-NAME>
+                          <I-PDU-PORT-REFS>
+                            <I-PDU-PORT-REF DEST="I-PDU-PORT">/ECU/MCU/ConnCAN_MCU_R1/PP_CAN_MCU_R1_MCU_FVT_R_Local1_OUT</I-PDU-PORT-REF>
+                          </I-PDU-PORT-REFS>
+                          <I-PDU-REF DEST="I-SIGNAL-I-PDU">/CAN_MCU_R1/PDU/CAN_MCU_R1_MCU_FVT_R_Local1</I-PDU-REF>
+						  <I-SIGNAL-TRIGGERINGS>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/CAN_MCU_R1/Cluster/CAN_MCU_R1/CAN_MCU_R1/ST_CAN_MCU_R1_SG_MCU_FVT_R_Local1</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/CAN_MCU_R1/Cluster/CAN_MCU_R1/CAN_MCU_R1/ST_CAN_MCU_R1_MCU_FVT_R_Local1_CS_Sta</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/CAN_MCU_R1/Cluster/CAN_MCU_R1/CAN_MCU_R1/ST_CAN_MCU_R1_MCU_FVT_R_Local1_RC_Sta</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/CAN_MCU_R1/Cluster/CAN_MCU_R1/CAN_MCU_R1/ST_CAN_MCU_R1_MCU_FVT_R_OPCStartOn_Req</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                            <I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+                              <I-SIGNAL-TRIGGERING-REF DEST="I-SIGNAL-TRIGGERING">/CAN_MCU_R1/Cluster/CAN_MCU_R1/CAN_MCU_R1/ST_CAN_MCU_R1_MCU_FVT_R_OilPmpTarSpd_Req</I-SIGNAL-TRIGGERING-REF>
+                            </I-SIGNAL-TRIGGERING-REF-CONDITIONAL>
+						  </I-SIGNAL-TRIGGERINGS>
+                        </PDU-TRIGGERING>
+					  </PDU-TRIGGERINGS>
+                    </CAN-PHYSICAL-CHANNEL>
+                  </PHYSICAL-CHANNELS>
+                </CAN-CLUSTER-CONDITIONAL>
+              </CAN-CLUSTER-VARIANTS>
+            </CAN-CLUSTER>
+          </ELEMENTS>
+        </AR-PACKAGE>
+		<AR-PACKAGE>
+          <SHORT-NAME>ConstantSpecification</SHORT-NAME>
+          <ELEMENTS>
+            <CONSTANT-SPECIFICATION>
+              <SHORT-NAME>Init_CAN_MCU_R1_EOP_FVT_R_ActualSpd_Sta</SHORT-NAME>
+              <VALUE-SPEC>
+                <NUMERICAL-VALUE-SPECIFICATION>
+                  <VALUE>0</VALUE>
+                </NUMERICAL-VALUE-SPECIFICATION>
+              </VALUE-SPEC>
+            </CONSTANT-SPECIFICATION>
+            <CONSTANT-SPECIFICATION>
+              <SHORT-NAME>Init_CAN_MCU_R1_EOP_FVT_R_CSInvalid_Sta</SHORT-NAME>
+              <VALUE-SPEC>
+                <NUMERICAL-VALUE-SPECIFICATION>
+                  <VALUE>0</VALUE>
+                </NUMERICAL-VALUE-SPECIFICATION>
+              </VALUE-SPEC>
+            </CONSTANT-SPECIFICATION>
+            <CONSTANT-SPECIFICATION>
+              <SHORT-NAME>Init_CAN_MCU_R1_EOP_FVT_R_CanLoss_Sta</SHORT-NAME>
+              <VALUE-SPEC>
+                <NUMERICAL-VALUE-SPECIFICATION>
+                  <VALUE>0</VALUE>
+                </NUMERICAL-VALUE-SPECIFICATION>
+              </VALUE-SPEC>
+            </CONSTANT-SPECIFICATION>
+            <CONSTANT-SPECIFICATION>
+              <SHORT-NAME>Init_CAN_MCU_R1_EOP_FVT_R_EnableOff_Sta</SHORT-NAME>
+              <VALUE-SPEC>
+                <NUMERICAL-VALUE-SPECIFICATION>
+                  <VALUE>0</VALUE>
+                </NUMERICAL-VALUE-SPECIFICATION>
+              </VALUE-SPEC>
+            </CONSTANT-SPECIFICATION>
+            <CONSTANT-SPECIFICATION>
+              <SHORT-NAME>Init_CAN_MCU_R1_EOP_FVT_R_HallSigErr_Sta</SHORT-NAME>
+              <VALUE-SPEC>
+                <NUMERICAL-VALUE-SPECIFICATION>
+                  <VALUE>0</VALUE>
+                </NUMERICAL-VALUE-SPECIFICATION>
+              </VALUE-SPEC>
+            </CONSTANT-SPECIFICATION>
+            <CONSTANT-SPECIFICATION>
+              <SHORT-NAME>Init_CAN_MCU_R1_EOP_FVT_R_Local1_CS_Sta</SHORT-NAME>
+              <VALUE-SPEC>
+                <NUMERICAL-VALUE-SPECIFICATION>
+                  <VALUE>0</VALUE>
+                </NUMERICAL-VALUE-SPECIFICATION>
+              </VALUE-SPEC>
+            </CONSTANT-SPECIFICATION>
+            <CONSTANT-SPECIFICATION>
+              <SHORT-NAME>Init_CAN_MCU_R1_EOP_FVT_R_Local1_RC_Sta</SHORT-NAME>
+              <VALUE-SPEC>
+                <NUMERICAL-VALUE-SPECIFICATION>
+                  <VALUE>0</VALUE>
+                </NUMERICAL-VALUE-SPECIFICATION>
+              </VALUE-SPEC>
+            </CONSTANT-SPECIFICATION>
+            <CONSTANT-SPECIFICATION>
+              <SHORT-NAME>Init_CAN_MCU_R1_EOP_FVT_R_OverTempBCK_Sta</SHORT-NAME>
+              <VALUE-SPEC>
+                <NUMERICAL-VALUE-SPECIFICATION>
+                  <VALUE>0</VALUE>
+                </NUMERICAL-VALUE-SPECIFICATION>
+              </VALUE-SPEC>
+            </CONSTANT-SPECIFICATION>
+            <CONSTANT-SPECIFICATION>
+              <SHORT-NAME>Init_CAN_MCU_R1_EOP_FVT_R_OverTemp_Sta</SHORT-NAME>
+              <VALUE-SPEC>
+                <NUMERICAL-VALUE-SPECIFICATION>
+                  <VALUE>0</VALUE>
+                </NUMERICAL-VALUE-SPECIFICATION>
+              </VALUE-SPEC>
+            </CONSTANT-SPECIFICATION>
+            <CONSTANT-SPECIFICATION>
+              <SHORT-NAME>Init_CAN_MCU_R1_EOP_FVT_R_OverVol_Sta</SHORT-NAME>
+              <VALUE-SPEC>
+                <NUMERICAL-VALUE-SPECIFICATION>
+                  <VALUE>0</VALUE>
+                </NUMERICAL-VALUE-SPECIFICATION>
+              </VALUE-SPEC>
+            </CONSTANT-SPECIFICATION>
+            <CONSTANT-SPECIFICATION>
+              <SHORT-NAME>Init_CAN_MCU_R1_EOP_FVT_R_PumpReady_Sta</SHORT-NAME>
+              <VALUE-SPEC>
+                <NUMERICAL-VALUE-SPECIFICATION>
+                  <VALUE>0</VALUE>
+                </NUMERICAL-VALUE-SPECIFICATION>
+              </VALUE-SPEC>
+            </CONSTANT-SPECIFICATION>
+            <CONSTANT-SPECIFICATION>
+              <SHORT-NAME>Init_CAN_MCU_R1_EOP_FVT_R_RCInvalid_Sta</SHORT-NAME>
+              <VALUE-SPEC>
+                <NUMERICAL-VALUE-SPECIFICATION>
+                  <VALUE>0</VALUE>
+                </NUMERICAL-VALUE-SPECIFICATION>
+              </VALUE-SPEC>
+            </CONSTANT-SPECIFICATION>
+            <CONSTANT-SPECIFICATION>
+              <SHORT-NAME>Init_CAN_MCU_R1_EOP_FVT_R_RunStatus_Sta</SHORT-NAME>
+              <VALUE-SPEC>
+                <NUMERICAL-VALUE-SPECIFICATION>
+                  <VALUE>0</VALUE>
+                </NUMERICAL-VALUE-SPECIFICATION>
+              </VALUE-SPEC>
+            </CONSTANT-SPECIFICATION>
+            <CONSTANT-SPECIFICATION>
+              <SHORT-NAME>Init_CAN_MCU_R1_EOP_FVT_R_StartFailure_Sta</SHORT-NAME>
+              <VALUE-SPEC>
+                <NUMERICAL-VALUE-SPECIFICATION>
+                  <VALUE>0</VALUE>
+                </NUMERICAL-VALUE-SPECIFICATION>
+              </VALUE-SPEC>
+            </CONSTANT-SPECIFICATION>
+            <CONSTANT-SPECIFICATION>
+              <SHORT-NAME>Init_CAN_MCU_R1_EOP_FVT_R_UnderVol_Sta</SHORT-NAME>
+              <VALUE-SPEC>
+                <NUMERICAL-VALUE-SPECIFICATION>
+                  <VALUE>0</VALUE>
+                </NUMERICAL-VALUE-SPECIFICATION>
+              </VALUE-SPEC>
+            </CONSTANT-SPECIFICATION>
+            <CONSTANT-SPECIFICATION>
+              <SHORT-NAME>Init_CAN_MCU_R1_MCU_FVT_R_Local1_CS_Sta</SHORT-NAME>
+              <VALUE-SPEC>
+                <NUMERICAL-VALUE-SPECIFICATION>
+                  <VALUE>0</VALUE>
+                </NUMERICAL-VALUE-SPECIFICATION>
+              </VALUE-SPEC>
+            </CONSTANT-SPECIFICATION>
+            <CONSTANT-SPECIFICATION>
+              <SHORT-NAME>Init_CAN_MCU_R1_MCU_FVT_R_Local1_RC_Sta</SHORT-NAME>
+              <VALUE-SPEC>
+                <NUMERICAL-VALUE-SPECIFICATION>
+                  <VALUE>0</VALUE>
+                </NUMERICAL-VALUE-SPECIFICATION>
+              </VALUE-SPEC>
+            </CONSTANT-SPECIFICATION>
+            <CONSTANT-SPECIFICATION>
+              <SHORT-NAME>Init_CAN_MCU_R1_MCU_FVT_R_OPCStartOn_Req</SHORT-NAME>
+              <VALUE-SPEC>
+                <NUMERICAL-VALUE-SPECIFICATION>
+                  <VALUE>0</VALUE>
+                </NUMERICAL-VALUE-SPECIFICATION>
+              </VALUE-SPEC>
+            </CONSTANT-SPECIFICATION>
+            <CONSTANT-SPECIFICATION>
+              <SHORT-NAME>Init_CAN_MCU_R1_MCU_FVT_R_OilPmpTarSpd_Req</SHORT-NAME>
+              <VALUE-SPEC>
+                <NUMERICAL-VALUE-SPECIFICATION>
+                  <VALUE>0</VALUE>
+                </NUMERICAL-VALUE-SPECIFICATION>
+              </VALUE-SPEC>
+            </CONSTANT-SPECIFICATION>
+			<CONSTANT-SPECIFICATION>
+              <SHORT-NAME>Init_CAN_MCU_R1_SG_EOP_FVT_R_Local1</SHORT-NAME>
+              <VALUE-SPEC>
+                <RECORD-VALUE-SPECIFICATION>
+                  <FIELDS>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_EOP_FVT_R_ActualSpd_Sta</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_EOP_FVT_R_CSInvalid_Sta</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_EOP_FVT_R_CanLoss_Sta</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_EOP_FVT_R_EnableOff_Sta</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_EOP_FVT_R_HallSigErr_Sta</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_EOP_FVT_R_Local1_CS_Sta</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_EOP_FVT_R_Local1_RC_Sta</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_EOP_FVT_R_OverTempBCK_Sta</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_EOP_FVT_R_OverTemp_Sta</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_EOP_FVT_R_OverVol_Sta</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_EOP_FVT_R_PumpReady_Sta</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_EOP_FVT_R_RCInvalid_Sta</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_EOP_FVT_R_RunStatus_Sta</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_EOP_FVT_R_StartFailure_Sta</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_EOP_FVT_R_UnderVol_Sta</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+				  </FIELDS>
+                </RECORD-VALUE-SPECIFICATION>
+              </VALUE-SPEC>
+            </CONSTANT-SPECIFICATION>
+			<CONSTANT-SPECIFICATION>
+              <SHORT-NAME>Init_CAN_MCU_R1_SG_MCU_FVT_R_Local1</SHORT-NAME>
+              <VALUE-SPEC>
+                <RECORD-VALUE-SPECIFICATION>
+                  <FIELDS>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_MCU_FVT_R_Local1_CS_Sta</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_MCU_FVT_R_Local1_RC_Sta</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_MCU_FVT_R_OPCStartOn_Req</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+                    <CONSTANT-REFERENCE>
+                      <CONSTANT-REF DEST="CONSTANT-SPECIFICATION">/CAN_MCU_R1/ConstantSpecification/Init_CAN_MCU_R1_MCU_FVT_R_OilPmpTarSpd_Req</CONSTANT-REF>
+                    </CONSTANT-REFERENCE>
+				  </FIELDS>
+                </RECORD-VALUE-SPECIFICATION>
+              </VALUE-SPEC>
+            </CONSTANT-SPECIFICATION>
+		   </ELEMENTS>
+        </AR-PACKAGE>
+		<AR-PACKAGE>
+          <SHORT-NAME>ImplementationDataTypes</SHORT-NAME>
+          <ELEMENTS>
+			<IMPLEMENTATION-DATA-TYPE>
+              <SHORT-NAME>DT_CAN_MCU_R1_SG_EOP_FVT_R_Local1</SHORT-NAME>
+              <CATEGORY>STRUCTURE</CATEGORY>
+              <SUB-ELEMENTS>
+                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_ActualSpd_Sta</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint16</IMPLEMENTATION-DATA-TYPE-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_CSInvalid_Sta</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_CanLoss_Sta</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_EnableOff_Sta</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_HallSigErr_Sta</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_Local1_CS_Sta</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_Local1_RC_Sta</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_OverTempBCK_Sta</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_OverTemp_Sta</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_OverVol_Sta</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_PumpReady_Sta</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_RCInvalid_Sta</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_RunStatus_Sta</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_StartFailure_Sta</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  <SHORT-NAME>CAN_MCU_R1_EOP_FVT_R_UnderVol_Sta</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+			  </SUB-ELEMENTS>
+            </IMPLEMENTATION-DATA-TYPE>
+			<IMPLEMENTATION-DATA-TYPE>
+              <SHORT-NAME>DT_CAN_MCU_R1_SG_MCU_FVT_R_Local1</SHORT-NAME>
+              <CATEGORY>STRUCTURE</CATEGORY>
+              <SUB-ELEMENTS>
+                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  <SHORT-NAME>CAN_MCU_R1_MCU_FVT_R_Local1_CS_Sta</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  <SHORT-NAME>CAN_MCU_R1_MCU_FVT_R_Local1_RC_Sta</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  <SHORT-NAME>CAN_MCU_R1_MCU_FVT_R_OPCStartOn_Req</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                <IMPLEMENTATION-DATA-TYPE-ELEMENT>
+                  <SHORT-NAME>CAN_MCU_R1_MCU_FVT_R_OilPmpTarSpd_Req</SHORT-NAME>
+                  <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                  <SW-DATA-DEF-PROPS>
+                    <SW-DATA-DEF-PROPS-VARIANTS>
+                      <SW-DATA-DEF-PROPS-CONDITIONAL>
+                        <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint16</IMPLEMENTATION-DATA-TYPE-REF>
+                      </SW-DATA-DEF-PROPS-CONDITIONAL>
+                    </SW-DATA-DEF-PROPS-VARIANTS>
+                  </SW-DATA-DEF-PROPS>
+                </IMPLEMENTATION-DATA-TYPE-ELEMENT>
+			  </SUB-ELEMENTS>
+            </IMPLEMENTATION-DATA-TYPE>
+		  </ELEMENTS>
+        </AR-PACKAGE>
+	  </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>
+            
+            

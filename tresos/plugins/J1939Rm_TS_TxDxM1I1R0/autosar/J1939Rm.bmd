@@ -1,0 +1,1597 @@
+<?xml version='1.0'?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-1-3.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>TS_TxDxM1I1R0</SHORT-NAME>
+      <ELEMENTS>
+        <ECUC-MODULE-DEF UUID="f98b8e0c-1b30-4ba2-bafa-37504dbe746c">
+          <SHORT-NAME>J1939Rm</SHORT-NAME>
+          <DESC>
+            <L-2 L="FOR-ALL">&lt;html&gt;
+                      &lt;p&gt;Configuration of the J1939 Request Manager.&lt;/p&gt;
+                    &lt;/html&gt;</L-2>
+          </DESC>
+          <ADMIN-DATA>
+            <DOC-REVISIONS>
+              <DOC-REVISION>
+                <REVISION-LABEL>4.5.0</REVISION-LABEL>
+                <ISSUED-BY>AUTOSAR</ISSUED-BY>
+                <DATE>2014-03-31</DATE>
+              </DOC-REVISION>
+            </DOC-REVISIONS>
+          </ADMIN-DATA>
+          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+          <REFINED-MODULE-DEF-REF DEST="ECUC-MODULE-DEF">/AUTOSAR/EcucDefs/J1939Rm</REFINED-MODULE-DEF-REF>
+          <SUPPORTED-CONFIG-VARIANTS>
+            <SUPPORTED-CONFIG-VARIANT>VARIANT-POST-BUILD</SUPPORTED-CONFIG-VARIANT>
+            <SUPPORTED-CONFIG-VARIANT>VARIANT-PRE-COMPILE</SUPPORTED-CONFIG-VARIANT>
+          </SUPPORTED-CONFIG-VARIANTS>
+          <CONTAINERS>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="ECUC:cb4128ed-26c1-4ddd-906e-854bed917e07">
+              <SHORT-NAME>PublishedInformation</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">
+                    &lt;html&gt;
+                      Additional published parameters not covered by CommonPublishedInformation container.
+                  &lt;/html&gt;</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="ECUC:eb61002e-69c0-4f16-a910-c27adb75f6ee">
+                  <SHORT-NAME>PbcfgMSupport</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                      &lt;html&gt;
+                        Specifies whether or not the J1939Rm can use the PbcfgM module for post-build support.
+                    &lt;/html&gt;</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>true</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+              </PARAMETERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="ECUC:a00be3e0-8783-9123-2d52-1eb616737ca6">
+              <SHORT-NAME>CommonPublishedInformation</SHORT-NAME>
+              <DESC>
+                <L-2 L="EN">
+                    &lt;html&gt;
+                      Common container, aggregated by all modules. It contains published information about vendor and versions.
+                  &lt;/html&gt;</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-INTEGER-PARAM-DEF UUID="ECUC:948f3f2e-f129-4bc5-b4e1-7a7bdb8599e1">
+                  <SHORT-NAME>ArMajorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                      &lt;html&gt;
+                        Major version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>4</DEFAULT-VALUE>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="ECUC:2893b920-59d5-4ac2-b2c1-e23742e66d70">
+                  <SHORT-NAME>ArMinorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                      &lt;html&gt;
+                        Minor version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="ECUC:6428eb9b-8790-488a-b9a3-0fba52d0f59e">
+                  <SHORT-NAME>ArPatchVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                      &lt;html&gt;
+                        Patch level version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>3</DEFAULT-VALUE>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="ECUC:605b18ae-3f9a-41d4-9225-67c9c5f6fc34">
+                  <SHORT-NAME>SwMajorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                      &lt;html&gt;
+                        Major version number of the vendor specific implementation of the module.
+                    &lt;/html&gt;</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="a7fe44dc-ea25-4b8d-8fad-9fbcae86d56f">
+                  <SHORT-NAME>SwMinorVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                      &lt;html&gt;
+                        Minor version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                    &lt;/html&gt;</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="a318d2d9-0e75-49da-ac43-e7e4e682e2f9">
+                  <SHORT-NAME>SwPatchVersion</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                      &lt;html&gt;
+                        Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                    &lt;/html&gt;</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>15</DEFAULT-VALUE>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="ECUC:78bc8362-080f-4253-b3da-804ab69a7154">
+                  <SHORT-NAME>ModuleId</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                      &lt;html&gt;
+                        Module ID of this module from Module List
+                    &lt;/html&gt;</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>59</DEFAULT-VALUE>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-INTEGER-PARAM-DEF UUID="ECUC:01b0f467-6943-4558-b4f2-3fa1fad28449">
+                  <SHORT-NAME>VendorId</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="EN">
+                      &lt;html&gt;
+                        Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list
+                    &lt;/html&gt;</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>1</DEFAULT-VALUE>
+                </ECUC-INTEGER-PARAM-DEF>
+                <ECUC-STRING-PARAM-DEF UUID="ECUC:1c68a547-f24e-4a4e-9540-69fbd533ec89">
+                  <SHORT-NAME>Release</SHORT-NAME>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PUBLISHED-INFORMATION</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <ECUC-STRING-PARAM-DEF-VARIANTS>
+                    <ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                      <DEFAULT-VALUE></DEFAULT-VALUE>
+                    </ECUC-STRING-PARAM-DEF-CONDITIONAL>
+                  </ECUC-STRING-PARAM-DEF-VARIANTS>
+                </ECUC-STRING-PARAM-DEF>
+              </PARAMETERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="6fd26a11-ba76-40f2-81e4-f1657c97f29f">
+              <SHORT-NAME>J1939RmConfigSet</SHORT-NAME>
+              <DESC>
+                <L-2 L="FOR-ALL">&lt;html&gt;
+                            &lt;p&gt;Defines the configuration parameters
+                            and sub containers of the J1939Rm module supporting multiple
+                            configuration sets.&lt;/p&gt;
+                            &lt;p&gt;This container is a MultipleConfigurationContainer,
+                            i.e. this container and its sub-containers
+                            exist once per configuration set.&lt;/p&gt;
+                          &lt;/html&gt;</L-2>
+              </DESC>
+              <MULTIPLE-CONFIGURATION-CONTAINER>true</MULTIPLE-CONFIGURATION-CONTAINER>
+              <SUB-CONTAINERS>
+                <ECUC-PARAM-CONF-CONTAINER-DEF UUID="3106e3c5-52ef-4e19-9e29-68be2c1f65e5">
+                  <SHORT-NAME>J1939RmChannel</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                            &lt;p&gt;Defines the parameters for a CAN channel supported by the J1939 Request Manager.&lt;/p&gt;
+                            &lt;p&gt;&lt;strong&gt;Optimization Effect:&lt;/strong&gt;&lt;/p&gt;
+                            &lt;ul&gt;
+                              &lt;li class=&quot;optimization.config.ram.reduction&quot;&gt;
+                                &lt;strong&gt;RAM reduction (config):&lt;/strong&gt;
+                                Configuring less J1939Rm channels reduces the RAM
+                                consumption of the module configuration.
+                              &lt;/li&gt;
+                              &lt;li class=&quot;optimization.config.rom.reduction&quot;&gt;
+                                &lt;strong&gt;ROM reduction (config):&lt;/strong&gt;
+                                Configuring less J1939Rm channels reduces the ROM
+                                consumption of the module configuration.
+                              &lt;/li&gt;
+                              &lt;li class=&quot;optimization.code.exetime.reduction&quot;&gt;
+                                &lt;strong&gt;Execution time reduction (code):&lt;/strong&gt;
+                                Configuring less J1939Rm channels reduces the
+                                execution time of the module code.
+                              &lt;/li&gt;
+                            &lt;/ul&gt;
+                          &lt;/html&gt;</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY-INFINITE>1</UPPER-MULTIPLICITY-INFINITE>
+                  <POST-BUILD-CHANGEABLE>true</POST-BUILD-CHANGEABLE>
+                  <PARAMETERS>
+                    <ECUC-INTEGER-PARAM-DEF UUID="b1477efc-23e1-460b-b004-e04136962b18">
+                      <SHORT-NAME>J1939RmAckQueueSize</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                                &lt;p&gt;
+                                  Defines the number of transmitted acknowledgements that can be stored.
+                                &lt;/p&gt;
+                                &lt;p&gt;
+                                  Contains the size of the queue for the Transmission requests of the
+                                  Acknowledgement PG shall be queued when a previous transmission of
+                                  this PG is still pending.
+                                &lt;/p&gt;
+                              &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SCOPE>LOCAL</SCOPE>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <MAX>255</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="6197d9d1-8dee-459a-85e0-2523ee504589">
+                      <SHORT-NAME>J1939RmRequestQueueSize</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                                &lt;p&gt;
+                                  Defines the number of transmitted requests that can be stored.
+                                &lt;/p&gt;
+                                &lt;p&gt;
+                                  Contains the size of the queue for the Transmission requests for
+                                  the Request PG shall be queued when a previous transmission of this
+                                  PG is still pending.
+                                &lt;/p&gt;
+                              &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SCOPE>LOCAL</SCOPE>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <MAX>255</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                    <ECUC-INTEGER-PARAM-DEF UUID="c4f7fe71-3b07-49e7-afde-781b26ee7848">
+                      <SHORT-NAME>J1939RmRequestTimeoutMonitors</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                                &lt;p&gt;
+                                  Defines the number of transmitted requests that can be monitored for timeout.
+                                &lt;/p&gt;
+                                &lt;p&gt;
+                                  Contains the Number of transmitted requests that can be monitored
+                                  for timeout.
+                                &lt;/p&gt;
+                              &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SCOPE>LOCAL</SCOPE>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                      <MAX>255</MAX>
+                      <MIN>0</MIN>
+                    </ECUC-INTEGER-PARAM-DEF>
+                  </PARAMETERS>
+                  <REFERENCES>
+                    <ECUC-SYMBOLIC-NAME-REFERENCE-DEF UUID="33c6fcaa-ca27-4008-a823-0a61d65fcf53">
+                      <SHORT-NAME>J1939RmComMNetworkHandleRef</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                                &lt;p&gt;
+                                  Reference to the ComM channel.
+                                &lt;/p&gt;
+                                &lt;p&gt;Dependency on parameter(s):&lt;/p&gt;
+                                &lt;ul&gt;
+                                  &lt;li&gt;A valid reference to ComM has to be provided.&lt;/li&gt;
+                                  &lt;li&gt;A Unique channel index ComMChannelId has to be provided as reference for each ComM network channel.&lt;/li&gt;
+                                  &lt;li&gt;It is not allowed to configured the same channel as reference
+                                      for both &lt;code&gt;J1939RmChannel&lt;/code&gt;.&lt;/li&gt;
+                                &lt;/ul&gt;
+                              &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SCOPE>LOCAL</SCOPE>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/ComM/ComMConfigSet/ComMChannel</DESTINATION-REF>
+                    </ECUC-SYMBOLIC-NAME-REFERENCE-DEF>
+                  </REFERENCES>
+                  <SUB-CONTAINERS>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="1acec3cc-7cd2-4b71-91c0-c4d9bf4be776">
+                      <SHORT-NAME>J1939RmAckmRxPdu</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                                &lt;p&gt;
+                                  Defines the configuration of the I-PDU used to receive the Acknowledgment PG.
+                                &lt;/p&gt;
+                              &lt;/html&gt;</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <PARAMETERS>
+                        <ECUC-INTEGER-PARAM-DEF UUID="a06607a8-9308-4854-adbe-87b9b5d0a3c2">
+                          <SHORT-NAME>J1939RmAckmRxPduId</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                  &lt;p&gt;
+                                    Defines the I-PDU identifier used for RxIndication from PduR.
+                                  &lt;/p&gt;
+                                  &lt;p&gt;
+                                    A symbolic value (preprocessor macro) is also generated for each PDU ID.
+                                  &lt;/p&gt;
+                                  &lt;p&gt;
+                                    The J1939RmAckmRxPdu ids has to be zero based and consecutive.
+                                  &lt;/p&gt;
+                                  &lt;p&gt;Range: 0 .. 65535&lt;/p&gt;
+                                &lt;/html&gt;</L-2>
+                          </DESC>
+                          <SCOPE>ECU</SCOPE>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>true</SYMBOLIC-NAME-VALUE>
+                          <MAX>65535</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                      </PARAMETERS>
+                      <REFERENCES>
+                        <ECUC-REFERENCE-DEF UUID="202dfe1a-ccbe-4277-be7c-4b9ea9120dd1">
+                          <SHORT-NAME>J1939RmAckmRxPduRef</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                  &lt;p&gt;Reference to the external Rx PDU definition in the EcuC module.&lt;/p&gt;
+                                  &lt;p&gt;Reference to the Pdu object representing the I-PDU.&lt;/p&gt;
+                                  &lt;p&gt;Dependency on parameter(s):&lt;/p&gt;
+                                  &lt;ul&gt;
+                                    &lt;li&gt;A valid reference to EcuC&apos;s &lt;code&gt;Pdu&lt;/code&gt; parameters has to be provided.&lt;/li&gt;
+                                    &lt;li&gt;Unique EcuC PDU has to be provided as reference for each J1939RmAckmRxPdu.&lt;/li&gt;
+                                    &lt;li&gt;It is not allowed to configured bidirectional J1939Nm PDUs(the same PDU cannot be given
+                                        as reference for both &lt;code&gt;J1939RmAckmRxPdu&lt;/code&gt; and &lt;code&gt;J1939RmAckmTxPdu&lt;/code&gt;).&lt;/li&gt;
+                                  &lt;/ul&gt;
+                                &lt;/html&gt;</L-2>
+                          </DESC>
+                          <SCOPE>LOCAL</SCOPE>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/EcuC/EcucPduCollection/Pdu</DESTINATION-REF>
+                        </ECUC-REFERENCE-DEF>
+                      </REFERENCES>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="ECUC:3dc55eb3-e8d0-4c21-98bf-5e34edce9502">
+                      <SHORT-NAME>J1939RmAckmTxPdu</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                                &lt;p&gt;
+                                  Defines the configuration of the I-PDU used to transmit the
+                                  Acknowledgement PG.
+                                &lt;/p&gt;
+                              &lt;/html&gt;</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <PARAMETERS>
+                        <ECUC-INTEGER-PARAM-DEF UUID="8ffc876d-a5ef-4e49-a4b0-5302166f322a">
+                          <SHORT-NAME>J1939RmAckmTxPduId</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                  &lt;p&gt;
+                                    Defines the I-PDU identifier used for TxConfirmation from PduR.
+                                  &lt;/p&gt;
+                                  &lt;p&gt;
+                                    A symbolic value (preprocessor macro) is also generated for each PDU ID.
+                                  &lt;/p&gt;
+                                  &lt;p&gt;The J1939RmAckmTxPdu ids has to be zero based and consecutive.
+                                  &lt;/p&gt;
+                                  &lt;p&gt;Range: 0 .. 65535&lt;/p&gt;
+                                &lt;/html&gt;</L-2>
+                          </DESC>
+                          <SCOPE>ECU</SCOPE>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>true</SYMBOLIC-NAME-VALUE>
+                          <MAX>65535</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                      </PARAMETERS>
+                      <REFERENCES>
+                        <ECUC-REFERENCE-DEF UUID="6c691e3f-1b99-43e8-8e98-a2b533c12e52">
+                          <SHORT-NAME>J1939RmAckmTxPduRef</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                  &lt;p&gt;Reference to the external Tx PDU definition in the EcuC module.&lt;/p&gt;
+                                  &lt;p&gt;Reference to the Pdu object representing the I-PDU.&lt;/p&gt;
+                                &lt;p&gt;Dependency on parameter(s):&lt;/p&gt;
+                                &lt;ul&gt;
+                                  &lt;li&gt;A valid reference to EcuC&apos;s &lt;code&gt;Pdu&lt;/code&gt; parameters has to be provided.&lt;/li&gt;
+                                  &lt;li&gt;Unique EcuC PDU has to be provided as reference for each J1939RmAckmTxPdu.&lt;/li&gt;
+                                  &lt;li&gt;It is not allowed to configured bidirectional J1939Rm PDUs(the same PDU cannot be given
+                                      as reference for both &lt;code&gt;J1939RmAckmTxPdu&lt;/code&gt; and &lt;code&gt;J1939RmAckmRxPdu&lt;/code&gt;).&lt;/li&gt;
+                                &lt;/ul&gt;
+                                &lt;/html&gt;</L-2>
+                          </DESC>
+                          <SCOPE>LOCAL</SCOPE>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/EcuC/EcucPduCollection/Pdu</DESTINATION-REF>
+                        </ECUC-REFERENCE-DEF>
+                      </REFERENCES>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="ECUC:479965fe-361f-48f3-8cb4-093697565b3f">
+                      <SHORT-NAME>J1939RmRqstRxPdu</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                                &lt;p&gt;
+                                  Defines the configuration of the I-PDU used to receive the Request PG.
+                                &lt;/p&gt;
+                              &lt;/html&gt;</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <PARAMETERS>
+                        <ECUC-INTEGER-PARAM-DEF UUID="bfcde4cf-7af0-4af4-9db0-e34522edaa18">
+                          <SHORT-NAME>J1939RmRqstRxPduId</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                  &lt;p&gt;
+                                    Defines The I-PDU identifier used to receive the Request PG.
+                                  &lt;/p&gt;
+                                  &lt;p&gt;
+                                    A symbolic value (preprocessor macro) is also generated for each PDU ID.
+                                  &lt;/p&gt;
+                                  &lt;p&gt;
+                                    The J1939RmRqstRxPdu ids has to be zero based and consecutive.
+                                  &lt;/p&gt;
+                                  &lt;p&gt;Range: 0 .. 65535&lt;/p&gt;
+                                &lt;/html&gt;</L-2>
+                          </DESC>
+                          <SCOPE>ECU</SCOPE>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>true</SYMBOLIC-NAME-VALUE>
+                          <MAX>65535</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                      </PARAMETERS>
+                      <REFERENCES>
+                        <ECUC-REFERENCE-DEF UUID="608bbd92-3265-4aa3-adc6-0ce87ca56ceb">
+                          <SHORT-NAME>J1939RmRqstRxPduRef</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                  &lt;p&gt;Reference to the external Rx PDU definition in the EcuC module.&lt;/p&gt;
+                                  &lt;p&gt;Reference to the Pdu object representing the I-PDU.&lt;/p&gt;
+                                  &lt;p&gt;Dependency on parameter(s):&lt;/p&gt;
+                                  &lt;ul&gt;
+                                    &lt;li&gt;A valid reference to EcuC&apos;s &lt;code&gt;Pdu&lt;/code&gt; parameters has to be provided.&lt;/li&gt;
+                                    &lt;li&gt;Unique EcuC PDU has to be provided as reference for each J1939RmRqstRxPdu.&lt;/li&gt;
+                                    &lt;li&gt;It is not allowed to configured bidirectional J1939Nm PDUs(the same PDU cannot be given
+                                        as reference for both &lt;code&gt;J1939RmRqstRxPdu&lt;/code&gt; and &lt;code&gt;J1939RmRqstTxPdu&lt;/code&gt;).&lt;/li&gt;
+                                  &lt;/ul&gt;
+                                &lt;/html&gt;</L-2>
+                          </DESC>
+                          <SCOPE>LOCAL</SCOPE>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/EcuC/EcucPduCollection/Pdu</DESTINATION-REF>
+                        </ECUC-REFERENCE-DEF>
+                      </REFERENCES>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="ECUC:58f0f75c-0764-429f-80d7-83187edbee73">
+                      <SHORT-NAME>J1939RmRqstTxPdu</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                                &lt;p&gt;
+                                  Defines the configuration of the I-PDU used to transmit the Request PG.
+                                &lt;/p&gt;
+                              &lt;/html&gt;</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                      <PARAMETERS>
+                        <ECUC-INTEGER-PARAM-DEF UUID="4b355e1d-f3db-43b4-80a3-e9d3d8e0e8e0">
+                          <SHORT-NAME>J1939RmRqstTxPduId</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                  &lt;p&gt;
+                                    Defines the I-PDU identifier used to transmit the Request PG.
+                                  &lt;/p&gt;
+                                  &lt;p&gt;
+                                    A symbolic value (preprocessor macro) is also generated for each PDU ID.&lt;/p&gt;
+                                  &lt;p&gt;Range: 0 .. 65535&lt;/p&gt;
+                                &lt;/html&gt;</L-2>
+                          </DESC>
+                          <SCOPE>ECU</SCOPE>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>true</SYMBOLIC-NAME-VALUE>
+                          <MAX>65535</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                      </PARAMETERS>
+                      <REFERENCES>
+                        <ECUC-REFERENCE-DEF UUID="155f2ee3-d701-4595-b097-8a5211d1178a">
+                          <SHORT-NAME>J1939RmRqstTxPduRef</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                  &lt;p&gt;Reference to the external Tx PDU definition in the EcuC module.&lt;/p&gt;
+                                  &lt;p&gt;Reference to the Pdu object representing the I-PDU.&lt;/p&gt;
+                                  &lt;p&gt;Dependency on parameter(s):&lt;/p&gt;
+                                  &lt;ul&gt;
+                                    &lt;li&gt;A valid reference to EcuC&apos;s &lt;code&gt;Pdu&lt;/code&gt; parameters has to be provided.&lt;/li&gt;
+                                    &lt;li&gt;Unique EcuC PDU has to be provided as reference for each J1939RmRqstTxPdu.&lt;/li&gt;
+                                    &lt;li&gt;It is not allowed to configured bidirectional J1939Rm PDUs(the same PDU cannot be given
+                                        as reference for both &lt;code&gt;J1939RmRqstTxPdu&lt;/code&gt; and &lt;code&gt;J1939RmRqstRxPdu&lt;/code&gt;).&lt;/li&gt;
+                                  &lt;/ul&gt;
+                                &lt;/html&gt;</L-2>
+                          </DESC>
+                          <SCOPE>LOCAL</SCOPE>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/EcuC/EcucPduCollection/Pdu</DESTINATION-REF>
+                        </ECUC-REFERENCE-DEF>
+                      </REFERENCES>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                  </SUB-CONTAINERS>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+                <ECUC-PARAM-CONF-CONTAINER-DEF UUID="330cfbee-f0e0-4f4a-bcc4-9226ee6e8afb">
+                  <SHORT-NAME>J1939RmNode</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                              &lt;p&gt;
+                                Defines logical node representing the parameters for the support of
+                                a logical J1939 node (identified by an ECU address).
+                              &lt;/p&gt;
+                            &lt;/html&gt;</L-2>
+                  </DESC>
+                  <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                  <UPPER-MULTIPLICITY-INFINITE>1</UPPER-MULTIPLICITY-INFINITE>
+                  <POST-BUILD-CHANGEABLE>true</POST-BUILD-CHANGEABLE>
+                  <REFERENCES>
+                    <ECUC-REFERENCE-DEF UUID="bcc53ffc-b9ae-4913-9558-fe217e08821d">
+                      <SHORT-NAME>J1939RmNodeChannelRef</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                                  &lt;p&gt;
+                                    Reference to the J1939Rm channels for this node has access to.
+                                  &lt;/p&gt;
+                                &lt;/html&gt;</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY-INFINITE>1</UPPER-MULTIPLICITY-INFINITE>
+                      <SCOPE>LOCAL</SCOPE>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/J1939Rm/J1939RmConfigSet/J1939RmChannel</DESTINATION-REF>
+                    </ECUC-REFERENCE-DEF>
+                    <ECUC-SYMBOLIC-NAME-REFERENCE-DEF UUID="433315c0-2046-4083-808e-6381e56bfb41">
+                      <SHORT-NAME>J1939RmNmNodeRef</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                                &lt;p&gt;
+                                  Reference to the corresponding J1939Nm node.
+                                &lt;/p&gt;
+                              &lt;/html&gt;</L-2>
+                      </DESC>
+                      <SCOPE>LOCAL</SCOPE>
+                      <IMPLEMENTATION-CONFIG-CLASSES>
+                        <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                          <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                        </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      </IMPLEMENTATION-CONFIG-CLASSES>
+                      <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                      <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/J1939Nm/J1939NmConfigSet/J1939NmNode</DESTINATION-REF>
+                    </ECUC-SYMBOLIC-NAME-REFERENCE-DEF>
+                  </REFERENCES>
+                  <SUB-CONTAINERS>
+                    <ECUC-PARAM-CONF-CONTAINER-DEF UUID="e77db921-40d6-4d46-a176-abf91975f526">
+                      <SHORT-NAME>J1939RmUser</SHORT-NAME>
+                      <DESC>
+                        <L-2 L="FOR-ALL">&lt;html&gt;
+                                  &lt;p&gt;
+                                    Defines the configuration of a module that uses the request and
+                                    acknowledgement interfaces of J1939Rm.
+                                  &lt;/p&gt;
+                                &lt;/html&gt;</L-2>
+                      </DESC>
+                      <LOWER-MULTIPLICITY>1</LOWER-MULTIPLICITY>
+                      <UPPER-MULTIPLICITY-INFINITE>1</UPPER-MULTIPLICITY-INFINITE>
+                      <POST-BUILD-CHANGEABLE>true</POST-BUILD-CHANGEABLE>
+                      <PARAMETERS>
+                        <ECUC-BOOLEAN-PARAM-DEF UUID="f4ab7a87-e63d-42e4-8f62-65b088d8e516">
+                          <SHORT-NAME>J1939RmUserAckIndication</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                    &lt;p&gt;
+                                      Enable the user AckIndication for this module.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      Disable the user AckIndication for this module.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      In case of CDD, the name is &lt;apiServicePrefix&gt;_AckIndication.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      In case of RTE, the port is defined as J1939RmRPort&lt;J1939RmUserId&gt;.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      This parameter shall not be set for J1939RmUserType
+                                      J1939RM_USER_J1939NM,
+                                      J1939RM_USER_J1939DCM, or
+                                      J1939RM_USER_COM.
+                                    &lt;/p&gt;
+                                  &lt;/html&gt;</L-2>
+                          </DESC>
+                          <SCOPE>LOCAL</SCOPE>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                        </ECUC-BOOLEAN-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="ebd69e13-9733-45fe-af67-e32a6560393a">
+                          <SHORT-NAME>J1939RmUserAckPGN</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                      &lt;p&gt;
+                                        Defines the PGN supported to be acknowledged to this module.
+                                        The PGNs supported by different modules should usually be
+                                        disjunctive.
+                                      &lt;/p&gt;
+                                      &lt;p&gt;
+                                        This parameter shall not be set for J1939RmUserType
+                                        J1939RM_USER_J1939NM,
+                                        J1939RM_USER_J1939DCM, and
+                                        J1939RM_USER_COM.
+                                      &lt;/p&gt;
+                                    &lt;/html&gt;</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY-INFINITE>1</UPPER-MULTIPLICITY-INFINITE>
+                          <SCOPE>LOCAL</SCOPE>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <MAX>262143</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="5c396a72-3ce0-4178-85dd-06fc7b1721bc">
+                          <SHORT-NAME>J1939RmUserComIPduRequestQueueSize</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                    &lt;p&gt;
+                                      Defines the number of received requests that can be
+                                      stored for COM I-PDUs of this user. This value is only taken into account if the user is J1939RM_USER_COM. If the user is not J1939RM_USER_COM
+                                      this value will be generated  as 0 regardless of what is configured.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      Value must be at least 1.
+                                    &lt;/p&gt;
+                                  &lt;/html&gt;</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <SCOPE>LOCAL</SCOPE>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <MAX>255</MAX>
+                          <MIN>1</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="c0b57948-d642-428d-8958-9722de87e709">
+                          <SHORT-NAME>J1939RmUserId</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                    &lt;p&gt;
+                                      Defines the User Id of J1939Rm. And This parameter is only
+                                      required when the module uses transmission of requests.
+                                    &lt;/p&gt;
+                                  &lt;/html&gt;</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <SCOPE>ECU</SCOPE>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>true</SYMBOLIC-NAME-VALUE>
+                          <MAX>65535</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-INTEGER-PARAM-DEF UUID="c2aa65cb-7690-4fac-b9d2-8cac7bd09bf5">
+                          <SHORT-NAME>J1939RmUserPGN</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                      &lt;p&gt;
+                                        Defines the PGN supported to be requested from this module.
+                                        The PGNs supported by different modules should usually be disjunctive.
+                                      &lt;/p&gt;
+                                      &lt;p&gt;
+                                        This parameter is predefined to AC (0x0EE00) for J1939RmUserType
+                                        J1939RM_USER_J1939NM and is derived from the J1939Dcm PDUs
+                                        in the system description for J1939RmUserType J1939RM_USER_J1939DCM.
+                                      &lt;/p&gt;
+                                      &lt;p&gt;
+                                        It shall not be set for J1939RmUserType J1939RM_USER_COM.
+                                      &lt;/p&gt;
+                                    &lt;/html&gt;</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY-INFINITE>1</UPPER-MULTIPLICITY-INFINITE>
+                          <SCOPE>LOCAL</SCOPE>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <MAX>262143</MAX>
+                          <MIN>0</MIN>
+                        </ECUC-INTEGER-PARAM-DEF>
+                        <ECUC-BOOLEAN-PARAM-DEF UUID="30b5d0ad-9ec7-469b-b671-164e81daf840">
+                          <SHORT-NAME>J1939RmUserRequestIndication</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                    &lt;p&gt;
+                                      Enable the RequestIndication for this module.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      Disable the RequestIndication for this module.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      In case of J1939Nm or J1939Dcm, the name is fixed.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      In case of CDD, the name is &lt;apiServicePrefix&gt;_RequestIndication.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      In case of RTE, the port is defined as J1939RmRPort&lt;J1939RmUserId&gt;.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      This parameter shall not be set for J1939RmUserType J1939RM_USER_COM.
+                                    &lt;/p&gt;
+                                  &lt;/html&gt;</L-2>
+                          </DESC>
+                          <SCOPE>LOCAL</SCOPE>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                        </ECUC-BOOLEAN-PARAM-DEF>
+                        <ECUC-BOOLEAN-PARAM-DEF UUID="2aa1b4b8-e926-4a09-b002-804d4a1ffa87">
+                          <SHORT-NAME>J1939RmUserSendAck</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                    &lt;p&gt;
+                                      Enable the SendAck API for this module.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      Disable the SendAck API for this module.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      In case of RTE, the port is defined as J1939RmPPort&lt;J1939RmUserId&gt;.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      This parameter shall not be set for J1939RmUserType
+                                      J1939RM_USER_J1939NM or J1939RM_USER_COM.
+                                    &lt;/p&gt;
+                                  &lt;/html&gt;</L-2>
+                          </DESC>
+                          <SCOPE>LOCAL</SCOPE>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                        </ECUC-BOOLEAN-PARAM-DEF>
+                        <ECUC-BOOLEAN-PARAM-DEF UUID="2203df6d-1d97-4992-b275-56386f02fb6f">
+                          <SHORT-NAME>J1939RmUserSendRequest</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                    &lt;p&gt;
+                                      Enable the SendRequest API for this module.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      Disable the SendRequest API for this module.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      In case of RTE, the port is defined as J1939RmPPort&lt;J1939RmUserId&gt;.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      This parameter shall not be set for J1939RmUserType
+                                      J1939RM_USER_J1939NM,
+                                      J1939RM_USER_J1939DCM, or
+                                      J1939RM_USER_COM.
+                                    &lt;/p&gt;
+                                  &lt;/html&gt;</L-2>
+                          </DESC>
+                          <SCOPE>LOCAL</SCOPE>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                        </ECUC-BOOLEAN-PARAM-DEF>
+                        <ECUC-BOOLEAN-PARAM-DEF UUID="7b6403aa-892e-4d91-9045-adcd94c5f0ff">
+                          <SHORT-NAME>J1939RmUserTimeoutSupervision</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                    &lt;p&gt;
+                                      Enable RequestTimeoutIndication and CancelRequestTimeout for this module.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      Disable RequestTimeoutIndication and CancelRequestTimeout for this module.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      RequestTimeoutIndication: In case of CDD, the name is &lt;apiServicePrefix&gt;_RequestTimeoutIndication.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      In case of RTE, the port is defined as J1939RmRPort&lt;J1939RmUserId&gt;.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      CancelRequestTimeout: In case of RTE, the port is defined as J1939RmPPort&lt;J1939RmUserId&gt;.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      This parameter shall not be set for J1939RmUserType
+                                      J1939RM_USER_J1939NM,
+                                      J1939RM_USER_J1939DCM, or
+                                      J1939RM_USER_COM.
+                                    &lt;/p&gt;
+                                  &lt;/html&gt;</L-2>
+                          </DESC>
+                          <SCOPE>LOCAL</SCOPE>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                        </ECUC-BOOLEAN-PARAM-DEF>
+                        <ECUC-ENUMERATION-PARAM-DEF UUID="b1fc86b7-14fa-4ad3-b380-479b81875942">
+                          <SHORT-NAME>J1939RmUserType</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                    &lt;p&gt;
+                                      Defines the type of module using J1939Rm.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      J1939RM_USER_CDD: CDDs may use all APIs provided by J1939Rm.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      J1939RM_USER_COM: J1939Rm only supports requests for COM I-PDUs.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      J1939RM_USER_J1939DCM: J1939Dcm uses only request indication
+                                      and transmission of acknowledgement..
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      J1939RM_USER_J1939NM: J1939Nm uses only request indication.
+                                    &lt;/p&gt;
+                                    &lt;p&gt;
+                                      J1939RM_USER_RTE: Application SW-Cs may use all APIs provided by J1939Rm.
+                                    &lt;/p&gt;
+                                  &lt;/html&gt;</L-2>
+                          </DESC>
+                          <SCOPE>LOCAL</SCOPE>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                          <LITERALS>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>J1939RM_USER_CDD</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>J1939RM_USER_COM</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>J1939RM_USER_J1939DCM</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>J1939RM_USER_J1939NM</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                            <ECUC-ENUMERATION-LITERAL-DEF>
+                              <SHORT-NAME>J1939RM_USER_RTE</SHORT-NAME>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                            </ECUC-ENUMERATION-LITERAL-DEF>
+                          </LITERALS>
+                        </ECUC-ENUMERATION-PARAM-DEF>
+                        <ECUC-STRING-PARAM-DEF UUID="989111d6-d3c5-4e5f-9c2e-1d0f49862fe2">
+                          <SHORT-NAME>J1939RmUserCddName</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                            			&lt;p&gt;
+                            			  Name of the CDD module.
+                            			&lt;/p&gt;
+                            			&lt;p&gt;
+                            			  This parameter is only required for J1939RmUserType J1939RM_USER_CDD.
+                            			&lt;/p&gt;
+                            		  &lt;/html&gt;</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>1</UPPER-MULTIPLICITY>
+                          <SCOPE>LOCAL</SCOPE>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                        </ECUC-STRING-PARAM-DEF>
+                      </PARAMETERS>
+                      <REFERENCES>
+                        <ECUC-FOREIGN-REFERENCE-DEF UUID="0b68a4e0-7e1c-4e61-bed0-3f55f0529590">
+                          <SHORT-NAME>J1939RmUserCddRef</SHORT-NAME>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY>0</UPPER-MULTIPLICITY>
+                          <SCOPE>LOCAL</SCOPE>
+                          <IMPLEMENTATION-CONFIG-CLASSES>
+                            <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                              <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                            </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                          </IMPLEMENTATION-CONFIG-CLASSES>
+                          <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                          <DESTINATION-TYPE>ECUC-MODULE-CONFIGURATION-VALUES</DESTINATION-TYPE>
+                        </ECUC-FOREIGN-REFERENCE-DEF>
+                      </REFERENCES>
+                      <SUB-CONTAINERS>
+                        <ECUC-PARAM-CONF-CONTAINER-DEF UUID="4cfdf0cf-2c08-4c43-81b4-fb4e2359f884">
+                          <SHORT-NAME>J1939RmComIPdu</SHORT-NAME>
+                          <DESC>
+                            <L-2 L="FOR-ALL">&lt;html&gt;
+                                      &lt;p&gt;
+                                        Defines the configuration of an I-PDU that is to be
+                                        transmitted on request by COM.
+                                      &lt;/p&gt;
+                                      &lt;p&gt;
+                                        This configuration container is only relevant for J1939RmUserType J1939RM_USER_COM.
+                                      &lt;/p&gt;
+                                    &lt;/html&gt;</L-2>
+                          </DESC>
+                          <LOWER-MULTIPLICITY>0</LOWER-MULTIPLICITY>
+                          <UPPER-MULTIPLICITY-INFINITE>1</UPPER-MULTIPLICITY-INFINITE>
+                          <POST-BUILD-CHANGEABLE>true</POST-BUILD-CHANGEABLE>
+                          <PARAMETERS>
+                            <ECUC-INTEGER-PARAM-DEF UUID="983294b8-8c09-4246-a33a-59c93b7a9a38">
+                              <SHORT-NAME>J1939RmComIPduDA</SHORT-NAME>
+                              <DESC>
+                                <L-2 L="FOR-ALL">&lt;html&gt;
+                                        &lt;p&gt;
+                                          Defines the destination address of the COM I-PDU.
+                                        &lt;/p&gt;
+                                      &lt;/html&gt;</L-2>
+                              </DESC>
+                              <SCOPE>LOCAL</SCOPE>
+                              <IMPLEMENTATION-CONFIG-CLASSES>
+                                <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                                  <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                                  <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                                </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              </IMPLEMENTATION-CONFIG-CLASSES>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                              <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                              <MAX>253</MAX>
+                              <MIN>0</MIN>
+                            </ECUC-INTEGER-PARAM-DEF>
+                            <ECUC-ENUMERATION-PARAM-DEF>
+                              <SHORT-NAME>ComIPduType</SHORT-NAME>
+                              <IMPLEMENTATION-CONFIG-CLASSES>
+                                <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                                  <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                                  <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                                </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              </IMPLEMENTATION-CONFIG-CLASSES>
+                              <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                              <LITERALS>
+                                <ECUC-ENUMERATION-LITERAL-DEF>
+                                  <SHORT-NAME>ComIPdu_TP</SHORT-NAME>
+                                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                                </ECUC-ENUMERATION-LITERAL-DEF>
+                                <ECUC-ENUMERATION-LITERAL-DEF>
+                                  <SHORT-NAME>ComIPdu_IF</SHORT-NAME>
+                                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                                </ECUC-ENUMERATION-LITERAL-DEF>
+                              </LITERALS>
+                            </ECUC-ENUMERATION-PARAM-DEF>
+                            <ECUC-INTEGER-PARAM-DEF UUID="ee9148dc-34f5-4cc8-b995-bef0ebb5013d">
+                              <SHORT-NAME>J1939RmComIPduPGN</SHORT-NAME>
+                              <DESC>
+                                <L-2 L="FOR-ALL">&lt;html&gt;
+                                        &lt;p&gt;
+                                          Defines the PGN of the COM I-PDU.
+                                        &lt;/p&gt;
+                                      &lt;/html&gt;</L-2>
+                              </DESC>
+                              <SCOPE>LOCAL</SCOPE>
+                              <IMPLEMENTATION-CONFIG-CLASSES>
+                                <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                                  <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                                  <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                                </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              </IMPLEMENTATION-CONFIG-CLASSES>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                              <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                              <MAX>262143</MAX>
+                              <MIN>0</MIN>
+                            </ECUC-INTEGER-PARAM-DEF>
+                            <ECUC-INTEGER-PARAM-DEF UUID="b952313a-e784-4ecf-89ef-7dfcb9bb9a4b">
+                              <SHORT-NAME>J1939RmComIPduSA</SHORT-NAME>
+                              <DESC>
+                                <L-2 L="FOR-ALL">&lt;html&gt;
+                                        &lt;p&gt;
+                                          Defines the Source address of the COM I-PDU.
+                                        &lt;/p&gt;
+                                      &lt;/html&gt;</L-2>
+                              </DESC>
+                              <SCOPE>LOCAL</SCOPE>
+                              <IMPLEMENTATION-CONFIG-CLASSES>
+                                <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                                  <CONFIG-CLASS>POST-BUILD</CONFIG-CLASS>
+                                  <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                                </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                              </IMPLEMENTATION-CONFIG-CLASSES>
+                              <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                              <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                              <MAX>253</MAX>
+                              <MIN>0</MIN>
+                            </ECUC-INTEGER-PARAM-DEF>
+                          </PARAMETERS>
+                          <SUB-CONTAINERS>
+                            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="41b384a3-7302-4339-85ec-8c32e916d9c6">
+                              <SHORT-NAME>J1939RmLowerComIPdu</SHORT-NAME>
+                              <DESC>
+                                <L-2 L="FOR-ALL">&lt;html&gt;
+                                        &lt;p&gt;
+                                          Defines the configuration of the I-PDU that is sent
+                                          from J1939Rm to IF modules (CanIf or IpduM), or Tp module (J1939Tp).
+                                        &lt;/p&gt;
+                                      &lt;/html&gt;</L-2>
+                              </DESC>
+                              <PARAMETERS>
+                                <ECUC-INTEGER-PARAM-DEF UUID="6aea4925-1b79-419d-b10b-47465aa384d9">
+                                  <SHORT-NAME>J1939RmLowerComIPduId</SHORT-NAME>
+                                  <DESC>
+                                    <L-2 L="FOR-ALL">&lt;html&gt;
+                                          &lt;p&gt;
+                                            Defines the configuration of the Lower COM PDU Id to communicate with PduR.
+                                          &lt;/p&gt;
+                                          &lt;p&gt;
+                                            A symbolic value (preprocessor macro) is also generated for each PDU ID.
+                                          &lt;/p&gt;
+                                          &lt;p&gt;
+                                            The J1939RmLowerComIPdu ids has to be zero based and consecutive.
+                                          &lt;/p&gt;
+                                          &lt;p&gt;Range: 0 .. 65535&lt;/p&gt;
+                                        &lt;/html&gt;</L-2>
+                                  </DESC>
+                                  <SCOPE>ECU</SCOPE>
+                                  <IMPLEMENTATION-CONFIG-CLASSES>
+                                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                                  </IMPLEMENTATION-CONFIG-CLASSES>
+                                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                                  <SYMBOLIC-NAME-VALUE>true</SYMBOLIC-NAME-VALUE>
+                                  <MAX>65535</MAX>
+                                  <MIN>0</MIN>
+                                </ECUC-INTEGER-PARAM-DEF>
+                              </PARAMETERS>
+                              <REFERENCES>
+                                <ECUC-REFERENCE-DEF UUID="4cc3639d-54d1-47a1-94eb-67b49e3e3a80">
+                                  <SHORT-NAME>J1939RmLowerComIPduRef</SHORT-NAME>
+                                  <DESC>
+                                    <L-2 L="FOR-ALL">&lt;html&gt;
+                                          &lt;p&gt;
+                                            Reference to the external Lower Com IPdu definition in the EcuC module.
+                                          &lt;/p&gt;
+                                          &lt;p&gt;
+                                            Dependency on parameter(s):
+                                          &lt;/p&gt;
+                                        &lt;ul&gt;
+                                          &lt;li&gt;A valid reference to EcuC&apos;s &lt;code&gt;Pdu&lt;/code&gt; parameters has to be provided.&lt;/li&gt;
+                                          &lt;li&gt;Unique EcuC PDU has to be provided as reference for each J1939RmLowerComIPdu.&lt;/li&gt;
+                                          &lt;li&gt;It is not allowed to configured bidirectional J1939Rm Com PDUs(the same PDU cannot be given
+                                              as reference for both &lt;code&gt;J1939RmLowerComIPdu&lt;/code&gt; and &lt;code&gt;J1939RmUpperComIPdu&lt;/code&gt;).&lt;/li&gt;
+                                        &lt;/ul&gt;
+                                        &lt;/html&gt;</L-2>
+                                  </DESC>
+                                  <SCOPE>LOCAL</SCOPE>
+                                  <IMPLEMENTATION-CONFIG-CLASSES>
+                                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                                  </IMPLEMENTATION-CONFIG-CLASSES>
+                                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                                  <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/EcuC/EcucPduCollection/Pdu</DESTINATION-REF>
+                                </ECUC-REFERENCE-DEF>
+                              </REFERENCES>
+                            </ECUC-PARAM-CONF-CONTAINER-DEF>
+                            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="15a917de-5b9d-41df-bf09-a09f957269db">
+                              <SHORT-NAME>J1939RmUpperComIPdu</SHORT-NAME>
+                              <DESC>
+                                <L-2 L="FOR-ALL">&lt;html&gt;
+                                        &lt;p&gt;
+                                          Defines the configuration of the I-PDU that is sent
+                                          from COM to J1939Rm.
+                                        &lt;/p&gt;
+                                      &lt;/html&gt;</L-2>
+                              </DESC>
+                              <PARAMETERS>
+                                <ECUC-INTEGER-PARAM-DEF UUID="a90fff76-372a-494d-9093-9cb43cecd9ec">
+                                  <SHORT-NAME>J1939RmUpperComIPduId</SHORT-NAME>
+                                  <DESC>
+                                    <L-2 L="FOR-ALL">&lt;html&gt;
+                                          &lt;p&gt;
+                                            Defines the configuration of the Upper COM PDU Id to communicate with PduR.
+                                          &lt;/p&gt;
+                                          &lt;p&gt;
+                                            A symbolic value (preprocessor macro) is also generated for each PDU ID.
+                                          &lt;/p&gt;
+                                          &lt;p&gt;
+                                            The J1939RmUpperComIPdu Ids has to be zero based and consecutive.
+                                          &lt;/p&gt;
+                                          &lt;p&gt;Range: 0 .. 65535&lt;/p&gt;
+                                        &lt;/html&gt;</L-2>
+                                  </DESC>
+                                  <SCOPE>ECU</SCOPE>
+                                  <IMPLEMENTATION-CONFIG-CLASSES>
+                                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                                  </IMPLEMENTATION-CONFIG-CLASSES>
+                                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                                  <SYMBOLIC-NAME-VALUE>true</SYMBOLIC-NAME-VALUE>
+                                  <MAX>65535</MAX>
+                                  <MIN>0</MIN>
+                                </ECUC-INTEGER-PARAM-DEF>
+                              </PARAMETERS>
+                              <REFERENCES>
+                                <ECUC-REFERENCE-DEF UUID="fe622d68-91a1-4879-92f4-26ec07c5f3b0">
+                                  <SHORT-NAME>J1939RmUpperComIPduRef</SHORT-NAME>
+                                  <DESC>
+                                    <L-2 L="FOR-ALL">&lt;html&gt;
+                                          &lt;p&gt;
+                                            Reference to the external Upper Com IPdu definition in the EcuC module.
+                                          &lt;/p&gt;
+                                          &lt;p&gt;
+                                            Dependency on parameter(s):
+                                          &lt;/p&gt;
+                                        &lt;ul&gt;
+                                          &lt;li&gt;A valid reference to EcuC&apos;s &lt;code&gt;Pdu&lt;/code&gt; parameters has to be provided.&lt;/li&gt;
+                                          &lt;li&gt;Unique EcuC PDU has to be provided as reference for each J1939RmUpperComIPdu.&lt;/li&gt;
+                                          &lt;li&gt;It is not allowed to configured bidirectional J1939Rm Com PDUs(the same PDU cannot be given
+                                              as reference for both &lt;code&gt;J1939RmUpperComIPdu&lt;/code&gt; and &lt;code&gt;J1939RmLowerComIPdu&lt;/code&gt;).&lt;/li&gt;
+                                        &lt;/ul&gt;
+                                        &lt;/html&gt;</L-2>
+                                  </DESC>
+                                  <SCOPE>LOCAL</SCOPE>
+                                  <IMPLEMENTATION-CONFIG-CLASSES>
+                                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                                  </IMPLEMENTATION-CONFIG-CLASSES>
+                                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                                  <DESTINATION-REF DEST="ECUC-PARAM-CONF-CONTAINER-DEF">/AUTOSAR/EcucDefs/EcuC/EcucPduCollection/Pdu</DESTINATION-REF>
+                                </ECUC-REFERENCE-DEF>
+                              </REFERENCES>
+                            </ECUC-PARAM-CONF-CONTAINER-DEF>
+                          </SUB-CONTAINERS>
+                        </ECUC-PARAM-CONF-CONTAINER-DEF>
+                      </SUB-CONTAINERS>
+                    </ECUC-PARAM-CONF-CONTAINER-DEF>
+                  </SUB-CONTAINERS>
+                </ECUC-PARAM-CONF-CONTAINER-DEF>
+              </SUB-CONTAINERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+            <ECUC-PARAM-CONF-CONTAINER-DEF UUID="e63d381c-31a2-4e1c-bf24-d1c8152f5e6b">
+              <SHORT-NAME>J1939RmGeneral</SHORT-NAME>
+              <DESC>
+                <L-2 L="FOR-ALL">&lt;html&gt;
+                        &lt;p&gt;
+                          Defines the general configuration parameters of the J1939Rm module.
+                        &lt;/p&gt;
+                      &lt;/html&gt;</L-2>
+              </DESC>
+              <PARAMETERS>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="dc81d450-37d3-11e3-aa6e-0800200c9a66">
+                  <SHORT-NAME>J1939RmRelocatablePbcfgEnable</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                         Enables/disables support for relocatable postbuild configuration.
+                         &lt;ul&gt;
+                           &lt;li&gt;True: Postbuild configuration relocatable in memory.&lt;/li&gt;
+                           &lt;li&gt;False: Postbuild configuration not relocatable in memory.&lt;/li&gt;
+                         &lt;/ul&gt;
+                       &lt;/html&gt;</L-2>
+                  </DESC>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-POST-BUILD</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>Elektrobit Automotive GmbH</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <DEFAULT-VALUE>false</DEFAULT-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="8fd5d644-3235-4221-9418-e8a22aa57e55">
+                  <SHORT-NAME>J1939RmDevErrorDetect</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                          &lt;p&gt;
+                            Enable Switches the Default Error Tracer (Det) detection and
+                            notification ON.
+                          &lt;/p&gt;
+                          &lt;p&gt;
+                            Disable Switches the Default Error Tracer (Det) detection and
+                            notification OFF.
+                          &lt;/p&gt;
+                        &lt;/html&gt;</L-2>
+                  </DESC>
+                  <SCOPE>LOCAL</SCOPE>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-FLOAT-PARAM-DEF UUID="28829025-a1dc-4f4b-b70b-d4282474bd3e">
+                  <SHORT-NAME>J1939RmMainFunctionPeriod</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                          &lt;p&gt;
+                            Defines the execution cycle of J1939Rm_MainFunction in seconds.
+                          &lt;/p&gt;
+                          &lt;p&gt;Range: 0.001 .. 0.255&lt;/p&gt;
+                        &lt;/html&gt;</L-2>
+                  </DESC>
+                  <SCOPE>ECU</SCOPE>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <MAX>0.255</MAX>
+                  <MIN>0.001</MIN>
+                </ECUC-FLOAT-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="e0e2ba9a-86f4-4271-acd1-c84b10dfcdfb">
+                  <SHORT-NAME>J1939RmSupportAckIndication</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                          &lt;p&gt;
+                            Enable support of acknowledgement indications.
+                          &lt;/p&gt;
+                          &lt;p&gt;
+                            Disable support of acknowledgement indications.
+                          &lt;/p&gt;
+                        &lt;/html&gt;</L-2>
+                  </DESC>
+                  <SCOPE>LOCAL</SCOPE>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="03805a0b-ecf3-4e97-9a39-165da78b36b9">
+                  <SHORT-NAME>J1939RmSupportAckTransmission</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                          &lt;p&gt;
+                            Enable support of acknowledgement transmission.
+                          &lt;/p&gt;
+                          &lt;p&gt;
+                            Disable support of acknowledgement transmission.
+                          &lt;/p&gt;
+                        &lt;/html&gt;</L-2>
+                  </DESC>
+                  <SCOPE>LOCAL</SCOPE>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="ad037fc9-a392-4aeb-b67a-72eb5a65670b">
+                  <SHORT-NAME>J1939RmSupportRequestIndication</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                          &lt;p&gt;
+                            Enable support of request indications.
+                          &lt;/p&gt;
+                          &lt;p&gt;
+                            Disable support of request indications.
+                          &lt;/p&gt;
+                        &lt;/html&gt;</L-2>
+                  </DESC>
+                  <SCOPE>LOCAL</SCOPE>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="5bb96677-35f4-4046-8282-5a64d67aa285">
+                  <SHORT-NAME>J1939RmSupportRequestTransmission</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                          &lt;p&gt;
+                            Enable support of request transmission.
+                          &lt;/p&gt;
+                          &lt;p&gt;
+                            Disable support of request transmission.
+                          &lt;/p&gt;
+                        &lt;/html&gt;</L-2>
+                  </DESC>
+                  <SCOPE>LOCAL</SCOPE>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="61f46f72-137a-423f-8c6b-900d192b6714">
+                  <SHORT-NAME>J1939RmSupportTimeoutSupervision</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                          &lt;p&gt;
+                            Enable support of request timeout supervision.
+                          &lt;/p&gt;
+                          &lt;p&gt;
+                            Disable support of request timeout supervision.
+                          &lt;/p&gt;
+                        &lt;/html&gt;</L-2>
+                  </DESC>
+                  <SCOPE>LOCAL</SCOPE>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+                <ECUC-FLOAT-PARAM-DEF UUID="503117fc-2477-4017-b595-a4506bd5a59d">
+                  <SHORT-NAME>J1939RmTxConfirmationTimeout</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                          &lt;p&gt;
+                            Defines the time in seconds to wait for a confirmation after
+                            transmission of a message. The behaviour when the time elapses depends
+                            on the transmitted message.
+                          &lt;/p&gt;
+                          &lt;p&gt;Range: 0.0 .. 65.535&lt;/p&gt;
+                        &lt;/html&gt;</L-2>
+                  </DESC>
+                  <SCOPE>LOCAL</SCOPE>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                  <MAX>65.535</MAX>
+                  <MIN>0.0</MIN>
+                </ECUC-FLOAT-PARAM-DEF>
+                <ECUC-BOOLEAN-PARAM-DEF UUID="36f1ae60-1d7e-4cb0-9735-8a3f4b3b940f">
+                  <SHORT-NAME>J1939RmVersionInfoApi</SHORT-NAME>
+                  <DESC>
+                    <L-2 L="FOR-ALL">&lt;html&gt;
+                          &lt;p&gt;
+                            Enable the Pre-processor switch for version info API support.
+                          &lt;/p&gt;
+                          &lt;p&gt;
+                            Disable the Pre-processor switch for version info API support.
+                          &lt;/p&gt;
+                        &lt;/html&gt;</L-2>
+                  </DESC>
+                  <SCOPE>LOCAL</SCOPE>
+                  <IMPLEMENTATION-CONFIG-CLASSES>
+                    <ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                      <CONFIG-CLASS>PRE-COMPILE</CONFIG-CLASS>
+                      <CONFIG-VARIANT>VARIANT-PRE-COMPILE</CONFIG-VARIANT>
+                    </ECUC-IMPLEMENTATION-CONFIGURATION-CLASS>
+                  </IMPLEMENTATION-CONFIG-CLASSES>
+                  <ORIGIN>AUTOSAR_ECUC</ORIGIN>
+                  <SYMBOLIC-NAME-VALUE>false</SYMBOLIC-NAME-VALUE>
+                </ECUC-BOOLEAN-PARAM-DEF>
+              </PARAMETERS>
+            </ECUC-PARAM-CONF-CONTAINER-DEF>
+          </CONTAINERS>
+        </ECUC-MODULE-DEF>
+      </ELEMENTS>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecum:initFunctions
+    xmlns:ecum="http://www.tresos.de/_project/AutoCore/ecum.initFunctions_1.xsd"
+    xmlns:svc="http://www.tresos.de/_project/AutoCore/svc.base_1.xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.tresos.de/_project/AutoCore/ecum.initFunctions_1.xsd">
+
+    <initFunction name="Wdg_17_Scu_Init">
+        <enable type="XPATH" value="as:modconf('Wdg')[1]/IMPLEMENTATION_CONFIG_VARIANT = 'VariantPostBuild'"/>
+        <moduleId value="Wdg" />
+        <service value="17_Scu_Init" />
+        <initList value="1" />
+        <initConfigStr value ="&amp;Wdg_17_Scu_Config_0"/>
+		<headerFile value="Wdg_17_Scu" />
+        <initializeAfter>
+            <moduleId>Dem</moduleId>
+            <moduleId>Mcu</moduleId>
+            <moduleId>MyMcuArchClockInit</moduleId>
+            <moduleId>Eb_Intgr_McuArchClockInit</moduleId>
+            <moduleId>Mcl</moduleId>
+            <moduleId>Port</moduleId>
+            <moduleId>Dio</moduleId>
+            <moduleId>Gpt</moduleId>
+        </initializeAfter>
+        <initializeBefore>
+            <moduleId>WdgM</moduleId>
+            <moduleId>Adc</moduleId>
+            <moduleId>Icu</moduleId>
+            <moduleId>Pwm</moduleId>
+            <moduleId>Dma</moduleId>
+        </initializeBefore>
+    </initFunction>
+
+</ecum:initFunctions>

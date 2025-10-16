@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+  <!--
+    AUTOSAR ComM_TS_T0D1MxIxRx plugin
+    Project: EB tresos AutoCore
+
+    Copyright 2005-2024 by Elektrobit Automotive GmbH
+    All rights exclusively reserved for Elektrobit Automotive GmbH,
+    unless expressly agreed to otherwise.
+  -->
+  <extension point="dreisoft.tresos.launcher2.plugin.module"
+             id="ComM_TS_T0D1MxIxRx_ModuleId"
+             name="ComM_TS_T0D1MxIxRx Module">
+    <module id="ComM_TS_T0D1MxIxRx"
+            label="ComM"
+            mandatory="false"
+            allowMultiple="false"
+            description="ACG-Stubs:+AUTOSAR+config+stub+to+replace+ComM+module+in+tests"
+            copyright="(c) 2005-2024 Elektrobit Automotive GmbH"
+            swVersionMajor="5"
+            swVersionMinor="21"
+            swVersionPatch="4"
+            swVersionSuffix="B788439"
+            specVersionMajor="4"
+            specVersionMinor="1"
+            specVersionPatch="1"
+            specVersionSuffix="0"
+            relVersionMajor="4"
+            relVersionMinor="1"
+            relVersionPatch="3"
+            categoryType="ComM"
+            categoryLayer="Stub"
+            categoryCategory="Stub"
+            categoryComponent="ECUC">
+      <cluster name="Stubs"/>
+    </module>
+  </extension>
+  <extension point="dreisoft.tresos.launcher2.plugin.configuration"
+             id="ComM_TS_T0D1MxIxRx_ConfigId"
+             name="ComM_TS_T0D1MxIxRx Configuration">
+    <configuration moduleId="ComM_TS_T0D1MxIxRx">
+      <schema>
+        <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarSchemaManager"/>
+        <resource value="config/ComM.xdm" type="xdm" id="res_default"/>
+      </schema>
+
+      <data>
+        <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarConfigManager"/>
+        <schemaNode path="ASPath:/TS_T0D1MxIxRx/ComM"/>
+      </data>
+
+      <editor id="ComM_TS_T0D1MxIxRx_EditorId"
+              label="Default"
+              tooltip="ACG-Stubs:+AUTOSAR+config+stub+to+replace+ComM+module+in+tests">
+        <class class="dreisoft.tresos.launcher2.editor.GenericConfigEditor">
+          <parameter name="schema" value="ASPath:/TS_T0D1MxIxRx/ComM"/>
+          <parameter name="title" value="ComM"/>
+          <parameter name="noTabs" value="false"/>
+          <parameter name="noLinks" value="true"/>
+          <parameter name="groupLinks" value="false"/>
+          <parameter name="groupContainers" value="false"/>
+          <parameter name="groupTables" value="true"/>
+          <parameter name="optionalGeneralTab" value="true"/>
+        </class>
+      </editor>
+    </configuration>
+  </extension>
+
+  <extension point="dreisoft.tresos.comimporter.api.plugin.comtransformer">
+    <comtransformer
+           id="ComTransformer_ComM_TS_T0D1MxIxRx"
+           moduleId="ComM_TS_T0D1MxIxRx">
+      <transformer
+             class="dreisoft.tresos.comimporter.api.transformer.asr40.ComMTransformer">
+      </transformer>
+    </comtransformer>
+  </extension>
+
+</plugin>

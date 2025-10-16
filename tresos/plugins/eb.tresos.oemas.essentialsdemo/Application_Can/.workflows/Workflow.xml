@@ -1,0 +1,755 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<< tresos Studio Workflow >>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
+<workflow xmlns="http://www.tresos.de/_projects/tresos/workflow_1_0.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.tresos.de/_projects/tresos/workflow_1_0.xsd http://www.tresos.de/_projects/tresos/workflow_1_0.xsd"
+  id="EBTresosSolutionsWorflow" version="1.0" label="EB tresos Solutions - Worflow"
+  description="The EB tresos workflow is a step-by-step instruction to guide you through the configuration of a project.
+                       The workflow represents a sequence of steps to accomplish the task of building an application.">
+  <group id="EBTresosSolutions_Workflow" label="EB tresos Solutions - Worflow ">
+    <description>
+      <![CDATA[     
+        <h2 style="color:#00c400";><b>DESCRIPTION</b></h2>
+       <p>
+        The workflows help you start and update a project with EB tresos Solutions.
+       </p>
+         <h2 style="color:#00c400";><b>PRECONDITIONS</b></h2>
+           <p>The workflow requires that all used importers and wizards are configured accordingly
+           in the project.</p>
+           
+     <h2 style="color:#00c400";><b>WORKFLOWS MODES</b></h2>
+        
+          <ul>
+            <li>
+              <p><b>Batch mode</b>: runs automatically in a row all the steps which can be performed.</p>
+              <p>    
+              </p>
+            </li>
+            <li>
+              <p><b>Manual mode</b>: sometimes needed to perform manually only one step of the workflow.
+                </p>
+              <p>
+                
+              </p>
+            </li>
+          </ul>
+        ]]>
+    </description>
+   
+   
+      <action id="SMA_Batch" label="SystemDescriptionImport_Batch">
+        <description>
+          <![CDATA[
+		    <h2 style="color:#00c400";><b>GOAL</b></h2>
+            <p>This mode executes all the steps which can be automated in a defined sequence.</p>
+				<li>	Extract Updater</li>
+				<li>	Splittable export wizard</li>
+				<li>	Splittable import wizard</li>
+				<li>	Generate SWCD only for Base with validation is disabled</li>
+				<li>	System Description Import</li>
+				<li>	Generate SWCD for service SWC's, except BswM and Service Application template with validation disabled</li>
+				<li>	System Description Import</li>
+				<li>	Generate SWCD for BswM and Service Application Template with validation disabled</li>
+				<li>	System Description Import</li> 
+				<li>	Create ECU extract</li>
+				<li>	Import Ecu Configuration</li>
+				<li>	Import Ecu Configuration Post</li>
+				<li>	Tools4OEM Auto configuration</li>	
+				<li>	Calculate service needs.</li>
+				<li>	Calculate derivable values.</li>
+				<li>	Calculate handle ID's.</li>
+				<li>	Generate SWCD for all. Validation is enabled. </li>
+				<li>	System Description Import.</li>
+				<li>	Create ECU extract.</li>
+				<li>	Calculate service needs.</li>
+					
+			
+          ]]></description>
+        <command
+          serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureTriggerCommand(triggerId=SystemDescriptionImport_Batch)"/>
+      </action>
+      
+  
+	     <group id="SMA_Step_1" label="Update System Model Database" type="sequence">
+          <description>
+            <![CDATA[
+             <h2 style="color:#00c400";><b>GOAL</b></h2>
+			   <p>To update Tresos System Model Database.</p>
+    		]]>
+          </description>
+					  <action id="SMD_Batch_1" label="Batch Mode">
+			  <description>
+				<![CDATA[
+				<h2 style="color:#00c400";><b>GOAL</b></h2>
+				<p>     This mode executes all the steps which can be automated in a defined sequence.</p>
+				<li>	Extract Updater</li>
+				<li>	Splittable export wizard</li>
+				<li>	Splittable import wizard</li>
+				<li>	Generate SWCD only for Base with validation is disabled</li>
+				<li>	System Description Import</li>
+				<li>	Generate SWCD for service SWC's, except BswM and Service Application template with validation disabled</li>
+				<li>	System Description Import</li>
+				<li>	Generate SWCD for BswM and Service Application Template with validation disabled</li>
+				<li>	System Description Import</li> 
+			  ]]>
+			  </description>
+			  <command description="Open Import batch" type="configure"
+				serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureDialogCommand(triggerId=Update_System_Model_Database)"/>
+			  <command description="Run Import batch"
+				serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureTriggerCommand(triggerId=Update_System_Model_Database)"/>
+			  </action>	 
+				 
+		  <group id="SMA_Manual_1" label="Manual" type="sequence">
+          <description>
+            <![CDATA[
+             <h2 style="color:#00c400";><b>GOAL</b></h2>
+    		   <p>To perform one step of the workflow manually.</p> 
+			   <p>Here all steps can be executed individually.</p>
+    		]]>
+          </description>
+		   
+		  <action id="Extract_Updater" label="Extract Updater">
+			<description>
+         <![CDATA[
+           <p> The Extract Updater wizard ensures a smoother integration of OEM provided ECU and Diagnostic Extracts by patching them for generic known incompatibility issues.</p>
+           <p> The wizard also provides an environment to fix project-specific incompatibility issues.</p>
+           <p> The availability of the wizard depends on whether such a use case for the OEM is supported by Elektrobit or not.</p>
+          ]]>
+		  </description>
+			<command
+			  serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureTriggerCommand(triggerId=Extract_Updater)"/>
+		  </action>
+		  
+		   <action id="Splittable_export_wizard" label="Splittable export wizard">
+			<description>
+			  <![CDATA[
+			    <li> You can use the splitable ARXML concept to work with customer input files and separate the data into
+                     an own file to avoid merge conflicts. </li>
+			  ]]></description>
+			<command
+			  serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureTriggerCommand(triggerId=SplittableExp)"/>
+		  </action>
+		  
+		  <action id="Splittable_import_wizard" label="Splittable import wizard">
+			<description>
+			  <![CDATA[
+			    <li> You can use the splitable ARXML concept to work with customer input files and separate the data into
+                     an own file to avoid merge conflicts.</li>
+			  ]]></description>
+			<command
+			  serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureTriggerCommand(triggerId=SplittableImp)"/>
+		  </action>
+	  
+		  <action id="Generate_Base_SWCD" label="Generate Base SWCD">
+			<description>
+			   <![CDATA[
+			   <li>	Generate SWCD only for Base</li>
+				]]>
+
+			 </description>
+			<command
+			  serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureTriggerCommand(triggerId=Generate_Base_SWCD)"/>
+		  </action>
+		  
+		  <action label="System Description Import" id="SMA_RUNIMPORT_1">
+            <description>
+          <![CDATA[   
+            <p>To open the <i>System Description Import wizard</i>, double-click this action step in the <i>Workflows</i> view.
+               Alternatively you can open the <i>System Description Import</i> in the menu <i>Project -> Unattended Wizards -> Unattended wizard configuration...</i> 
+               The Unattended Wizards configuration window opens up, select <i>System Description Import (System_Description_Import)</i> entry from the left side list.</p>
+          ]]>
+            </description>
+            <command description="Open Import batch" type="configure"
+              serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureDialogCommand(triggerId=System_Description_Import)"/>
+            <command description="Run Import batch"
+              serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureTriggerCommand(triggerId=System_Description_Import)"/>
+          </action>
+		  
+		  <action id="Generate_SWCD_for_service_SWCs" label="Generate SWCD for service SWCs">
+			<description>
+			 <![CDATA[
+			   <li>	Generate SWCD for service SWC's except BswM and Service Application template</li>
+               ]]>		   
+			 </description>
+			<command
+			  serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureTriggerCommand(triggerId=Generate_SWCD_for_service_SWCs)"/>
+		  </action>
+		   
+          <action label="System Description Import" id="SMA_RUNIMPORT_2">
+            <description>
+          <![CDATA[   
+            <p>To open the <i>System Description Import wizard</i>, double-click this action step in the <i>Workflows</i> view.
+               Alternatively you can open the <i>System Description Import</i> in the menu <i>Project -> Unattended Wizards -> Unattended wizard configuration...</i> 
+               The Unattended Wizards configuration window opens up, select <i>System Description Import (System_Description_Import)</i> entry from the left side list.</p>
+          ]]>
+            </description>
+            <command description="Open Import batch" type="configure"
+              serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureDialogCommand(triggerId=System_Description_Import)"/>
+            <command description="Run Import batch"
+              serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureTriggerCommand(triggerId=System_Description_Import)"/>
+          </action>
+		  
+		  <action id="Generate_SWCD_for_BswM_and_Service_Application_Template" label="Generate SWCD for BswM and Service Application Template">
+			<description>
+			  <![CDATA[
+			   <li>	Generate SWCD for BswM and Service Application Template </li>
+               ]]>
+			   </description>
+			<command
+			  serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureTriggerCommand(triggerId=Generate_SWCD_for_BswM_and_Service_Application_Template)"/>
+		  </action>
+		  	  
+		  <action label="System Description Import" id="SMA_RUNIMPORT3">
+            <description>
+          <![CDATA[   
+            <p>To open the <i>System Description Import wizard</i>, double-click this action step in the <i>Workflows</i> view.
+               Alternatively you can open the <i>System Description Import</i> in the menu <i>Project -> Unattended Wizards -> Unattended wizard configuration...</i> 
+               The Unattended Wizards configuration window opens up, select <i>System Description Import (System_Description_Import)</i> entry from the left side list.</p>
+          ]]>
+            </description>
+            <command description="Open Import batch" type="configure"
+              serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureDialogCommand(triggerId=System_Description_Import)"/>
+            <command description="Run Import batch"
+              serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureTriggerCommand(triggerId=System_Description_Import)"/>
+          </action>
+		  
+		  </group>
+		  
+		   <action label="Connect Software Components with Basic Software" id="SMA_CONNECT_PORTS">
+            <description>
+              <![CDATA[
+               <h2 style="color:#00c400";><b>GOAL</b></h2>
+				<p>This step is optional. It must be executed only in case of new components.</p>
+				 <h2 style="color:#00c400";><b>PROCEDURE</b></h2>
+<p><strong>Running the Compositions and Connections Editor</strong>:</p>
+<ol>
+<li>Double-click this action step in the <strong>Workflows </strong>view, or select <strong>Edit Compositions and Connections</strong> from the <strong>System </strong>category. If the System and EcuInstance have not been selected for the given project yet, the <strong>Select system and ecuInstance</strong>&nbsp;window opens.</li>
+<li>In the <strong>System </strong>drop-down list, select a system from the system description.</li>
+<li>In the <strong>EcuInstance </strong>drop-down list, select an ECU from the system description.</li>
+<li>Select<strong> OK</strong>.</li>
+</ol>
+<p><strong>Adding Component Prototypes</strong>:</p>
+<ol>
+<li>In the <em>Entity</em> list, right-click on <strong>TopLevelComposition</strong>,<strong>&nbsp;</strong>and select <strong>Add Prototypes</strong>.</li>
+<li>Select the checkbox for the needed component types.</li>
+<li>Select<strong> OK</strong> to add a component prototype for each selected component type.</li>
+</ol>
+<p><strong>Adding connections</strong>:</p>
+<ol>
+<li>To make the assignment, expand a prototype.</li>
+<li>Right-click on the port of the prototype, and select <strong>Add Connector</strong>.</li>
+<li>Expand a component prototype and select a port.<br />If the <strong>OK</strong> button is not enabled, the selected port is not compatible. Use the buttons to restrict the entities of the tree to show or hide incompatible ports and already connected ports. With the type filter text you can restrict the shown ports by name.</li>
+<li>Select<strong> OK</strong> to add the connection.</li>
+</ol>
+               ]]>
+            </description>
+            <command
+              serialization="dreisoft.tresos.guidedconfig.api.plugin.SidebarTriggerCommand(triggerId=ConnectionEditor_Trigger)"
+              autoadvance="false"/>
+          </action>
+		  
+          <action label="Map System Signals to Ports" id="SMA_MAP_SIGNALS">
+            <description>
+ <![CDATA[
+<h2 style="color:#00c400";><b>GOAL</b></h2>
+<p>This step is <strong>optional</strong>. It must be executed only in case of new components.</p>
+ <h2 style="color:#00c400";><b>GOAL</b></h2>
+<p><strong>Creating sender receiver to signal mapping</strong></p>
+<ol>
+<li>In the <strong>System Signal Mapping</strong> editor, select a data element for which it is needed to create a data mapping in the tree table displayed in the <strong>Edit System Signal Mappings</strong> section.</li>
+<li>Right-click on the data element to open the context menu.</li>
+<li>Select the <strong>Add System signal mapping</strong> menu item. The <strong>Add Sender/Receiver System signal mapping</strong> dialog opens.</li>
+<li>In the <strong>Add Sender/Receiver System signal mapping</strong> dialog, select a system signal in the tree table.</li>
+<li>Select&nbsp;<strong>OK</strong>.</li>
+</ol>
+<p><strong style="color:#ff9900">Note:</strong> OK is enabled only if a system signal is selected.</p>
+<p>&nbsp;<strong>Creating sender receiver to signal group mapping</strong></p>
+<ol>
+<li>In the <strong>System Signal Mapping</strong> editor, select a data element for which is needed to create a data mapping in the tree table displayed in the <strong>Edit System Signal Mappings</strong></li>
+<li>Right-click on the data element to open the context menu.</li>
+<li>Select the <strong>Add System signal mapping</strong> menu item to open the&nbsp;<strong>Add SenderReceiverToSignalGroupMapping</strong>
+<ul>
+<li>The table in the <strong>System Signal Groups</strong> section&nbsp;displays all the <em>SystemSignalGroup</em> elements in the system model.</li>
+<li>The first table in the <strong>Sub Element Mapping</strong> section&nbsp;displays all the <em>SystemSignal</em> elements that are part of the selected system signal group.</li>
+<li>The second table in the <strong>Sub Element Mapping</strong> section&nbsp;displays all the sub-elements of the selected complex data element in a hierarchical way.</li>
+</ul>
+</li>
+<li>In the <strong>Add SenderReceiverToSignalGroupMapping</strong>window, select a system signal group in the <strong>System Signal Groups</strong>
+<ul>
+<li>To set a system signal from a sub-element, proceed in the following way:
+<ol>
+<li>In the <strong>Sub Element Mapping</strong> section, select a system signal and a sub-element.</li>
+<li>In the <strong>Sub Element Mapping</strong> section located between the <strong>System Signal Table</strong> and <strong>Sub Element Table</strong>, select the button with the green icon.</li>
+</ol>
+</li>
+<li>To clear a system signal from a sub-element, proceed in the following way:
+<ol>
+<li>Select a sub-element in the <strong>Sub Element Mapping</strong></li>
+<li>In the&nbsp;<strong>Sub Element Mapping</strong>section located between the&nbsp;<strong>System Signal Table</strong>&nbsp;and&nbsp;<strong>Sub Element Table</strong>, select&nbsp;the button with the green icon.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<ol start="5">
+<li>To clear all the system signals from the sub-elements, in the <strong>Sub Element Mapping</strong> section which is located between the <strong>System Signal Table</strong> and <strong>Sub Element Table,&nbsp;</strong>select the button with red icon.</li>
+<li>Select&nbsp;<strong>OK</strong>.</li>
+</ol>
+<p><strong style="color:#ff9900">Note:</strong> OK is enabled only if a system signal group is selected.</p>
+<p>The Add <strong>SenderReceiverToSignalGroupMapping</strong>&nbsp;window only displays the first 100 sub-elements of any data element of type array or nested composite data elements. This means that you can assign signals only to the first 100 sub-elements.</p>
+<p><strong>&nbsp;Creating client server to signal mapping</strong></p>
+<p>A <em>ClientServerToSignalMapping</em> can only be created for <em>ClientServerOperation</em> instances of a <em>PortPrototype</em> typed by a <em>ClientServerInterface</em>.</p>
+<ol>
+<li>Select a client server operation for which a data mapping needs to be created in the tree table displayed in the <strong>Edit System Signal Mappings</strong></li>
+<li>Right-click on the client server operation to open the context menu.</li>
+<li>Select the <strong>Add System signal mapping</strong> menu item.&nbsp;</li>
+<li>In the <strong>Add ClientServerToSignalMapping</strong>window, select a call signal and a return signal in the tree table.</li>
+<li>Select&nbsp;<strong>OK</strong>.</li>
+</ol>
+<p><strong style="color:#ff9900">Note:</strong> OK is enabled only if a return signal is selected.</p>
+			     ]]>
+            </description>
+            <command description="Unattended wizards dialog"
+              serialization="dreisoft.tresos.guidedconfig.api.plugin.SidebarTriggerCommand(triggerId=SystemSignalMapping_Trigger)"/>
+          </action>  
+	      </group>
+
+
+
+	     <group id="SMA_Step_2" label="Update ECU configuration" type="sequence">
+          <description>
+            <![CDATA[
+             <h2 style="color:#00c400";><b>GOAL</b></h2>
+    		   <p>To update ECU configuration.</p> 
+    		]]>
+          </description>
+	 
+			<action id="SMD_Batch2" label="Batch Mode">
+			  <description>
+				<![CDATA[
+				  <![CDATA[
+				    <h2 style="color:#00c400";><b>GOAL</b></h2>
+				    <p>     This mode executes all the steps which can be automated in a defined sequence.</p>
+					<li>	Create ECU extract</li>
+					<li>	Import Ecu Configuration</li>
+					<li>	Import Ecu Configuration Post</li>
+					<li>	Tools4OEM Auto configuration</li>	
+			  ]]></description>
+			  <command description="Open Import batch" type="configure"
+				serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureDialogCommand(triggerId=Update_ECU_configuration)"/>
+			  <command description="Run Import batch"
+				serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureTriggerCommand(triggerId=Update_ECU_configuration)"/>
+			</action>
+		
+		  <group id="SMA_Manual_2" label="Manual" type="sequence">
+          <description>
+            <![CDATA[
+             <h2 style="color:#00c400";><b>GOAL</b></h2>
+    		   <p>To perform one step of the workflow manually.</p> 
+			   <p>Here all steps can be executed individually.</p>
+    		]]>
+          </description>
+		  
+          <action id="Ecu_Extract_Creator" label="Create Ecu Extract">
+			<description>
+		  <![CDATA[
+            <p>To run the <i>Ecu Extract Creator wizard</i>, double-click this action step in the <i>Workflows</i> view.
+               Alternatively you can run the <i>EcuExtractCreator wizard</i> in the menu <i>Project -> Unattended Wizards -> Creates
+              an ecu extract (EcuExtractCreator)</i></p>
+          ]]></description>
+			<command
+			  serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureTriggerCommand(triggerId=EcuExtractCreator)"/>
+		  </action>
+
+          <action id="Import_Ecu_Configuration" label="Import Ecu Configuration">
+			<description>
+		  <![CDATA[
+            <ol>
+            <li>To open the <i>Import Ecu Configuration wizard</i>, double-click this action step in the <i>Workflows</i> view.
+               Alternatively you can open the <i>Import_Ecu_Configuration wizard</i> in the menu <i>Project -> Unattended Wizards -> Unattended wizard configuration...</i> 
+               The Unattended Wizards configuration window opens up, select <i>Create ECU Configuration(Import_Ecu_Configuration)</i> entry from the left side list.</li>
+            <li>Select the module configurations you want to import.</li>
+            <li>Click the <b>Close</b> button to close the wizard configuration dialog</li>
+            </ol>
+          ]]>
+		  </description>
+			<command
+			  serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureTriggerCommand(triggerId=Import_Ecu_Configuration)"/>
+		  </action>
+
+          <action id="Import_Ecu_Configuration_Post" label="Import Ecu Configuration Post">
+			<description>
+		  <![CDATA[
+            <ol>
+            <li>To open the <i>Import Ecu Configuration Post wizard</i>, double-click this action step in the <i>Workflows</i> view.
+               Alternatively you can open the <i>Import Ecu Configuration Post wizard</i> in the menu <i>Project -> Unattended Wizards -> Unattended wizard configuration...</i> 
+               The Unattended Wizards configuration window opens up, select <i>Execute multiple tasks(ImportEcuConfigurationPost)</i> entry from the left side list.</li>
+            <li>Select the module configurations you want to import.</li>
+            <li>Click the <b>Close</b> button to close the wizard configuration dialog</li>
+            </ol>
+            ]]></description>
+			<command
+			  serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureTriggerCommand(triggerId=ImportEcuConfigurationPost)"/>
+		  </action>
+
+          <action id="Tools4OEM_Auto_configuration" label="Tools4OEM Auto configuration">
+			<description>
+			  <![CDATA[
+				<li>	Tools4OEM Auto configuration </li>
+			  ]]></description>
+			<command
+			  serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureTriggerCommand(triggerId=Tools4OEM_Auto_configuration)"/>
+		  </action>
+		  </group>
+		  <action label="Edit Can buffer assignment" id="CAN__BUFF_EDIT">
+          <command
+            serialization="dreisoft.tresos.guidedconfig.api.plugin.SidebarTriggerCommand(triggerId=BufferAssignmentPage)"/>
+          <description>
+            <![CDATA[
+           <h2 style="color:#00c400";><b>GOAL</b></h2>
+<p>To assign PDUs to hardware buffers of the CAN controller.</p>
+<p>The CAN Buffer Assignment Editor assigns transmit and receive PDUs (i.e. CAN messages) to hardware buffers that are located in the CAN controller. If two or more PDUs are assigned to the same buffer, the CAN Buffer Assignment Editor automatically calculates a filter mask and compares the CAN-IDs of the PDUs.</p>
+<p>The upper pane of the CAN Buffer Assignment Editor displays a list of PDUs. In the lower pane of the CAN Buffer Assignment Editor&nbsp;is a list of available Hardware Object Handles (HOHs) (i.e. the CAN hardware buffers).</p>
+<p>If you open the CAN Buffer Assignment Editor, a default buffer configuration is set, which assigns all received PDUs and all transmitted PDUs to a single buffer.</p>
+  <h2 style="color:#00c400";><b>PROCEDURE</b></h2>
+<ol>
+<li>Double-click this action step in the <strong>Workflows </strong>view to open the <strong>CAN Buffer Assignment Editor</strong>.</li>
+<li>Select all PDUs and select&nbsp;<strong>Clear selected PDUs</strong>.</li>
+<li>In the lower left corner of the <strong>CAN Buffer Assignment Editor</strong>, select&nbsp;<strong>Assign</strong>. All unassigned PDUs are assigned automatically to a buffer.</li>
+<li>Select <strong>Finish</strong>.</li>
+</ol>
+<p><strong style="color:#ff9900">Note:</strong> The automatic assignment of PDUs is the most efficient way to assign PDUs to
+buffers and the recommended way. For very complex configurations, no valid assignment may be possible. In this case, you have to assign the PDUs manually to the Hardware Object Handles.</p>
+            ]]>
+          </description>
+         </action>
+		 
+		 <action label="Edit FrIf Joblist" id="FLEXRAY_ASS_FRAS">
+          <command
+            serialization="dreisoft.tresos.guidedconfig.api.plugin.SidebarTriggerCommand(triggerId=frifwizard_trigger)"/>
+          <description>
+            <![CDATA[
+          <h2 style="color:#00c400";><b>GOAL</b></h2>
+          <p>To edit the job list of the FlexRay interface (FrIf).</p>
+            <p>The <b>FlexRay Interface (FrIf) Joblist Editor</b> creates job triggers and
+            communication operations to manage the reception, the indication, and the transmission
+            of PDUs (FlexRay messages). The configuration is performed on <b>Frame Triggering</b> granularity.</p>
+            <p>The upper half of the <b>FlexRay Interface (FrIf) Joblist Editor</b> displays a list of all
+              <b>Frame Triggerings</b> (containing the PDUs).</p>
+              <p>The lower half of the <b>FlexRay Interface (FrIf) Joblist Editor</b> displays all
+              created <b>Job Triggers</b> (defining when the actions can potentially be performed in
+              the FlexRay communication cycle) and the created <i>Communication Operations</i>
+              (defining what action must be performed).</p>
+           <h2 style="color:#00c400";><b>GOAL</b></h2>
+          
+            <p>
+            <ol>
+              <li>In the <b>Workflows</b> view, double-click this action step to open the <b>FlexRay
+              Interface (FrIf) Joblist Editor</b>.</li>
+              <li>Select the <b>FrIf Cluster</b>, and select <b>Next</b>.</li>
+              <li>In the lower left corner of the <b>FlexRay Interface (FrIf) Joblist Editor</b>,
+              select the number of Job Triggers per FlexRay communication cycle, and then select
+              <b>AUTO JT</b> to create the number of <b>Job Triggers</b> and spread them in the FlexRay communication cycle.</li>
+              <li>In the lower left corner of the <b>FlexRay Interface (FrIf) Joblist Editor</b>,
+              select <b>AUTO Assign</b> to assign all the Frame Triggerings available in the upper
+              part of the <b>FlexRay Interface (FrIf) Joblist Editor</b> to the created <b>Job Triggers</b>.</p>
+              <p> This ensures a minimum transmission/reception latency, and automatically selects
+              the appropriate <i>Communication Operations</i>.</p></li>
+              <li>Select <b>Finish</b>.</li>
+            </ol>
+            </p>
+            <p><b style="color:#ff9900">Note:</b> The automatic creation of <b>Job Triggers</b> and the automatic
+            assignment of Frame Triggerings to the <b>Job Triggers</b> is recommended as it is the most efficient way to
+              create a valid job list. For very complex
+              configurations, you can manually create <b>Job Triggers</b> and manually assign the Frame
+              Triggerings to the created <b>Job Triggers</b>.</p>
+            ]]>
+          </description>
+        </action>
+
+		 <action label="Edit Memory Stack" id="MEM_EDIT">
+			<command 
+              serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureTriggerCommand(triggerId=MemoryStackAutomation)"/>
+			<description>
+          <![CDATA[
+          <h2 style="color:#00c400";><b>GOAL</b></h2>
+<p>To configure the required NvM blocks and Ea/Fee blocks.</p>
+<p>The Memory Stack Editor supports you in adding/editing NvM blocks, and it automatically configures the underlying <em>Ea</em> and <em>Fee</em> module(s). It also finds inconsistencies in your configuration and can automatically fix these issues.</p>
+   <h2 style="color:#00c400";><b>PROCEDURE</b></h2>
+<p><strong>To automatically configure the memory stack</strong>:</p>
+<p>Double-click this action step in the <strong>Workflows </strong>view to launch the&nbsp;<em>Execute MEmoryStackEditorActions(MemoryStackAutomation)</em> wizard, or launch the wizard from the <strong>Unattended Wizards</strong> menu.</p>
+<p><strong>To manually configure the memory</strong>:</p>
+<ol>
+<li>In the <strong>ECU&nbsp;</strong>category of the <strong>Sidebar</strong> view, select <strong>Edit Memory Stack</strong>.</li>
+<li>Select&nbsp;<strong>Evaluate NV block needs</strong>&nbsp;to automatically add the NvM blocks which are specified in the service needs of your application software components.</li>
+<li>Set the <strong>Size </strong>of the newly added blocks to a correct value. <br />The size is not specified in the service needs and must be set manually. If you don't know the size yet, you first have to compile the project, read the size from the linker map file and reconfigure/recompile the project later.</li>
+<li>Add/edit the required NvM blocks which are not specified in the service needs.</li>
+<li>Select&nbsp;<strong>Memory Stack Configurator</strong><em>.&nbsp;</em>This step automatically configures the Ea and/or Fee blocks.</li>
+<li>Specify the approximate <strong>No. of Write Cycles</strong> for the Ea/Fee blocks.</li>
+<li>Select<strong> Finish</strong>.</li>
+</ol>
+            ]]>
+			</description>
+		  </action> 
+		  </group>
+		  
+		  <group id="SMA_Step_3" label="Extend ECU configuration" type="sequence">
+          <description>
+            <![CDATA[
+             <h2 style="color:#00c400";><b>GOAL</b></h2>
+    		   <p>To extend ECU configuration.</p> 
+    		]]>
+          </description>
+         
+			  <action id="SMD_Batch3" label="Batch Mode">
+			  <description>
+				<![CDATA[
+				  	<h2     style="color:#00c400";><b>GOAL</b></h2>
+				    <p>     This mode executes all the steps which can be automated in a defined sequence.</p>
+					<li>	Calculate service needs.</li>
+					<li>	Calculate derivable values.</li>
+					<li>	Calculate handle ID's.</li>
+					<li>	Generate SWCD for all. Validation is enabled. </li>
+					<li>	System Description Import.</li>
+					<li>	Create ECU extract.</li>
+					<li>	Calculate service needs.</li>
+			  ]]></description>
+			  <command description="Open Import batch" type="configure"
+				serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureDialogCommand(triggerId=Extend_ECU_configuration)"/>
+			  <command description="Run Import batch"
+				serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureTriggerCommand(triggerId=Extend_ECU_configuration)"/>
+			  </action>	 
+			  
+		  <group id="SMA_Manual_3" label="Manual" type="sequence">
+          <description>
+            <![CDATA[
+             <h2 style="color:#00c400";><b>GOAL</b></h2>
+    		   <p>To perform one step of the workflow manually.</p> 
+			   <p>Here all steps can be executed individually.</p>
+    		]]>
+          </description>
+		   <action label="Calculate service needs" id="SMA_SVCAS">
+            <description>
+  <![CDATA[
+         <p>It is recommended that you run the <i>Service Needs Calculator</i> again to add the Os
+            objects required by the <i>Rte</i> module to the <i>Os</i> configuration.</p>
+        <ul>
+            <li>To open the configuration dialog of the <i>Service Needs Calculator</i>, click the
+                book icon in the tool bar of the <i>Workflows</i> view.
+                Alternatively you can find the configuration dialog in the menu <i>Project -> Unattended Wizards -> Unattended wizard configuration</li>
+            <li>To run the <i>Service Needs Calculator</i>, double-click this action step in the <i>Workflows</i> view.
+                Alternatively you can run the <i>Service Needs Calculator</i> in the menu <i>Project -> Unattended Wizards -> Calculate Service Needs</li>
+        </ul>
+            ]]>
+            </description>
+            <command description="Open the Service Needs Calculator configuration" type="configure"
+              serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureDialogCommand(triggerId=SvcAs_Trigger)"/>
+            <command description="Run the Service Needs Calculator"
+              serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureTriggerCommand(triggerId=SvcAs_Trigger)"/>
+          </action>
+		  
+		  <action label="Calculate derivable values" id="SMA_AutoCalc">
+			<command
+			  serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureTriggerCommand(triggerId=AutoCalc)"/>
+			<description>
+			  <![CDATA[
+                  <p>	The Calculate Derivable Values recalculates the value of nodes which must have a default value. If you
+choose this wizard, the Error Log view displays a list of all values that have been recalculated or changed. </p>
+			  ]]>
+			</description>
+		  </action>
+
+          <action id="SMA_HID" label="Calculate Handle IDs">
+            <description>
+              <![CDATA[
+            <h2 style="color:#00c400";><b>GOAL</b></h2>
+                <p>To calculate the handle-IDs (i.e the PDU-IDs and controller-IDs) for the modules of the communication stack.</p>
+ <h2 style="color:#00c400";><b>GOAL</b></h2>
+<ol>
+<li>To open the configuration dialog of the<em> Handle ID Calculator</em>, select the book icon in the tool bar of the <strong>Workflows&nbsp;</strong>view.</li>
+<li>To calculate the handle-IDs, double-click this action step in the Workflows view. The Handle ID Calculator opens up and calculates automatically all handle-IDs.</li>
+</ol>
+<p><strong style="color: #ff9900;">Note:</strong> By default, the Handle ID Calculator calculates all handle-IDs of the loaded modules.</p>
+                  ]]></description>
+            <command description="Unattended wizards dialog" type="configure"
+              serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureDialogCommand(triggerType=HandleId)"/>
+            <command description="Calculate Handle IDs"
+              serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureTriggerCommand(triggerType=HandleId)"/>
+          </action>
+
+		  <action id="Generate_SWCD" label="Generate SWCD">
+			<description>
+			  <![CDATA[
+				  <li>	Generate SWCD for all. </li>
+			  ]]></description>
+			<command
+			  serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureTriggerCommand(triggerId=Generate_SWCD)"/>
+		  </action>
+
+		  <action label="System Description Import" id="SMA_RUNIMPORT_4">
+            <description>
+          <![CDATA[   
+            <p>To open the <i>System Description Import wizard</i>, double-click this action step in the <i>Workflows</i> view.
+               Alternatively you can open the <i>System Description Import</i> in the menu <i>Project -> Unattended Wizards -> Unattended wizard configuration...</i> 
+               The Unattended Wizards configuration window opens up, select <i>System Description Import (System_Description_Import)</i> entry from the left side list.</p>
+          ]]>
+            </description>
+            <command description="Open Import batch" type="configure"
+              serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureDialogCommand(triggerId=System_Description_Import)"/>
+            <command description="Run Import batch"
+              serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureTriggerCommand(triggerId=System_Description_Import)"/>
+          </action>
+
+          <action id="Ecu_Extract_Creator2" label="Create Ecu Extract">
+			<description>
+		  <![CDATA[
+            <p>To run the <i>Ecu Extract Creator wizard</i>, double-click this action step in the <i>Workflows</i> view.
+               Alternatively you can run the <i>EcuExtractCreator wizard</i> in the menu <i>Project -> Unattended Wizards -> Creates
+              an ecu extract (EcuExtractCreator)</i></p>
+           ]]></description>
+			<command
+			  serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureTriggerCommand(triggerId=EcuExtractCreator)"/>
+		  </action>
+		  </group>
+					  
+		  <action label="Configure the Rte module" id="SMA_BSW_RTE">
+            <command description="Open Rte configuration"
+              serialization="dreisoft.tresos.launcher2.api.plugin.EditConfigurationCommand(moduleType=Rte)"
+              autoadvance="false"/>
+            <description>
+ <![CDATA[
+                <h2 style="color:#00c400";><b>GOAL</b></h2>
+				<p>This step is optional. If there are new components, it may be required to do the event mappings.</p>
+				<p>
+				   <h2 style="color:#00c400";><b>PROCEDURE</b></h2>
+					<ol>
+						<li>Double-click this action step in the <B>Workflows</B> view to open the <b>Select
+						Editor</b> window. </li>
+						<li>Select <b>Rte Editor</b>.</li>
+						<li>Select the <b>Event Mapping</b> tab.
+							<ul>
+								<li>Auto-map all Bsw main functions that are triggered by Bsw timing events.</li>
+								<li>To auto-map all Bsw main functions, select <b>Auto-map all Bsw main
+									functions that are triggered by Bsw timing events.</b></li>
+								<li>Map all remaining events that have the <tt>Required</tt> flag set to <tt>true</tt> to a
+									task.</li>
+								<li>To map an event to a task, select a task in the <b>Task</b> drop-down
+									list box and select <b>Map the runnable entity selected above
+									to the task selected below</b>.</li>
+								<li>Map timing events and non-timing events to separate tasks.</li>
+							</ul>
+						</li>
+						<li>Select the <b>BswModeMapping</b> tab to check if the following ports are mapped between BswM and Dcm:
+							<ul>
+								<li>SessionControl</li>
+								<li>Reset</li>
+								<li>CommunicationControl</li>
+							</ul>
+						</li>
+					</ol>
+				</p>
+				]]>
+            </description>
+		  </action>
+		
+		 <group id="SMA_Service_needs" label="Service Needs Calculator " type="sequence">
+          <description>
+            <![CDATA[
+             <h2 style="color:#00c400";><b>GOAL</b></h2>
+    		   <p>To Calculate Os service needs. </p>
+    		]]>
+          </description>
+			  
+		<action label="Calculate Os service needs" id="SMA_SVCAS2">
+        <command description="Open the Service Needs Calculator configuration" type="configure"
+          serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureDialogCommand(triggerId=SvcAs_Trigger)"/>
+        <command description="Run the Service Needs Calculator"
+          serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureTriggerCommand(triggerId=SvcAs_Trigger)"/>
+        <description>
+          <![CDATA[
+         <p>It is recommended that you run the <i>Service Needs Calculator</i> again to add the Os
+            objects required by the <i>Rte</i> module to the <i>Os</i> configuration.
+            Since this requires a consistent Rte</i> configuration, this step is recommended
+            after you have completed the step <a href="workflow:///SMA_BSW_RTE">Configure Rte
+                module</a>.</p>
+        <ul>
+            <li>To open the configuration dialog of the <i>Service Needs Calculator</i>, click the
+                book icon in the tool bar of the <i>Workflows</i> view.
+                Alternatively you can find the configuration dialog in the menu <i>Project -> Unattended Wizards -> Unattended wizard configuration</li>
+            <li>To run the <i>Service Needs Calculator</i>, double-click this action step in the <i>Workflows</i> view.
+                Alternatively you can run the <i>Service Needs Calculator</i> in the menu <i>Project -> Unattended Wizards -> Calculate Service Needs</li>
+        </ul>
+            ]]>
+        </description>
+      </action>
+	    
+          </group>		  
+		</group>	
+	
+	
+    <group id="APP" label="Generate and Build" type="sequence">
+      <description>
+        <![CDATA[
+            <h2 style="color:#00c400";><b>GOAL</b></h2>
+          <p>To generate code, build your application and run your application.</p>
+               <h2 style="color:#00c400";><b>PROCEDURE</b></h2>
+          <ol>
+          <li><a href="workflow:///APP_GENERATE">Generate code.</a></li>
+           <li><a href="workflow:///APP_BUILD">Build your application.</a></li>
+          <li><a href="workflow:///APP_RUN">Run your application.</a></li>
+          </ol>
+             <h2 style="color:#00c400";><b>OUTPUT</b></h2>
+        <p>The application code will be located in the <i>Project
+                  Explorer</i> view in the <tt>source\application</tt> directory. This application code belongs to your project.</p>
+              ]]>
+      </description>
+      <action label="Generate code" id="APP_GENERATE" repeatable="true">
+        <command description="Generate code"
+          serialization="dreisoft.tresos.launcher2.api.plugin.GeneratorCommand()"/>
+        <description>
+          <![CDATA[
+           <h2 style="color:#00c400";><b>PROCEDURE</b></h2>
+                <p>Start the generation of your project configuration code
+                    by double-clicking this action step in the <b>Workflows</b> view, or by selecting
+                    the hammer icon in the tool bar of EB tresos Studio.
+                </p>
+                ]]>
+        </description>
+      </action>
+      <action label="Build project" id="APP_BUILD" repeatable="true">
+        <command description="Unattended wizards dialog" type="configure"
+          serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureDialogCommand(triggerId=BuildProject)"/>
+        <command description="BuildProject"
+          serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureTriggerCommand(triggerId=BuildProject)"
+        />
+        <description>
+          <![CDATA[
+           <h2 style="color:#00c400";><b>GOAL</b></h2>
+                <p>To create a binary for your target platform.</p>
+                 <h2 style="color:#00c400";><b>PROCEDURE</b></h2>
+                 
+                <ol>
+                  <li>Execute <tt>launch.bat</tt>.</li>
+                  <li>Type <tt>make</tt> to compile and link your software components.</li>
+                </ol>
+                ]]>
+        </description>
+      </action>
+      <action label="Run application" id="APP_RUN" repeatable="true">
+        <command description="Unattended wizards dialog" type="configure"
+          serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureDialogCommand(triggerId=DebugProject)"/>
+        <command description="DebugProject"
+          serialization="dreisoft.tresos.guidedconfig.api.plugin.AutoConfigureTriggerCommand(triggerId=DebugProject)"
+        />
+        <description>
+          <![CDATA[
+          <h2 style="color:#00c400";><b>PROCEDURE</b></h2>
+            <p>You can use a debugger (for example Lauterbach) to download the outputs to your
+              target ECU.</p>
+            ]]>
+        </description>
+      </action>
+    </group>
+  </group>
+</workflow>

@@ -1,0 +1,311 @@
+<?xml version='1.0'?>
+<datamodel version="7.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/16/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/16/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar" 
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd" 
+         xmlns:f="http://www.tresos.de/_projects/DataModel2/14/formulaexpr.xsd" 
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd" 
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd"  
+         xmlns:variant="http://www.tresos.de/_projects/DataModel2/11/variant.xsd">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="EthSwt" type="AR-PACKAGE">
+        <d:lst type="ELEMENTS">
+          <d:chc name="EthSwt" type="AR-ELEMENT" value="MODULE-CONFIGURATION">
+            <d:ctr type="MODULE-CONFIGURATION">
+              <a:a name="DEF" value="ASPath:/AUTOSAR/EcucDefs/EthSwt"/>
+              <d:var name="POST_BUILD_VARIANT_USED" type="BOOLEAN" value="false">
+                <a:a name="IMPORTER_INFO" value="@DEF"/>
+              </d:var>
+              <d:var name="IMPLEMENTATION_CONFIG_VARIANT" type="ENUMERATION" 
+                     value="VariantLinkTime">
+                <a:a name="IMPORTER_INFO" value="@DEF"/>
+              </d:var>
+              <d:lst name="EthSwtConfig" type="MAP">
+                <d:ctr name="EthSwtConfig_0" type="IDENTIFIABLE">
+                  <d:lst name="EthSwtArlTableEntryTimeout"/>
+                  <d:var name="EthSwtClockSynchronizationSupport" 
+                         type="BOOLEAN" value="false">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="EthSwtDropDoubleTagged" type="BOOLEAN" 
+                         value="false">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:var name="EthSwtIdx" type="INTEGER" value="0">
+                    <a:a name="IMPORTER_INFO" value="@DEF"/>
+                  </d:var>
+                  <d:lst name="EthSwtConfigEcucPartitionRef"/>
+                  <d:lst name="EthSwtManagementEthCtrlRef"/>
+                  <d:lst name="EthSwtManagementPortRef"/>
+                  <d:lst name="EthSwtDemEventParameterRefs" type="MAP"/>
+                  <d:lst name="EthSwtNvm" type="MAP"/>
+                  <d:lst name="EthSwtPort" type="MAP">
+                    <d:ctr name="EthSwtPort_0" type="IDENTIFIABLE">
+                      <d:var name="EthSwtPortIdx" type="INTEGER" value="0">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:lst name="EthSwtPortMacLayerSpeed"/>
+                      <d:lst name="EthSwtPortMacLayerSubType"/>
+                      <d:lst name="EthSwtPortMacLayerType"/>
+                      <d:lst name="EthSwtPortPhysicalLayerType"/>
+                      <d:lst name="EthSwtPortPredefinedMacAddresses"/>
+                      <d:lst name="EthSwtPortRole"/>
+                      <d:var name="EthSwtPortTimeStampSupport" type="BOOLEAN" 
+                             value="false">
+                        <a:a name="IMPORTER_INFO" value="@DEF"/>
+                      </d:var>
+                      <d:lst name="EthSwtPortTrcvRef"/>
+                      <d:ctr name="EthSwtPortEgress" type="IDENTIFIABLE">
+                        <d:ref name="EthSwtPortEgressLastSchedulerRef" 
+                               type="REFERENCE" >
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:ref>
+                        <d:lst name="EthSwtPortFifo" type="MAP">
+                          <d:ctr name="EthSwtPortFifo_0" type="IDENTIFIABLE">
+                            <d:var name="EthSwtPortEgressFifoIdx" 
+                                   type="INTEGER" value="0">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:lst name="EthSwtPortFifoMinimumLength"/>
+                            <d:lst name="EthSwtPortFifoTrafficClassAssignment"/>
+                          </d:ctr>
+                        </d:lst>
+                        <d:lst name="EthSwtPortScheduler" type="MAP">
+                          <d:ctr name="EthSwtPortScheduler_0" 
+                                 type="IDENTIFIABLE">
+                            <d:var name="EthSwtPortSchedulerAlgorithm" 
+                                   type="ENUMERATION" 
+                                   value="ETHSWT_SCHEDULER_DEFICIT_ROUND_ROBIN">
+                              <a:a name="IMPORTER_INFO" value="@DEF"/>
+                            </d:var>
+                            <d:lst name="EthSwtPortSchedulerPredecessor" 
+                                   type="MAP">
+                              <d:ctr name="EthSwtPortSchedulerPredecessor_0" 
+                                     type="IDENTIFIABLE">
+                                <d:var 
+                                       name="EthSwtPortSchedulerPredecessorOrder" 
+                                       type="INTEGER" value="0">
+                                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                                </d:var>
+                                <d:ref name="EthSwtPortEgressPredecessorRef" 
+                                       type="REFERENCE" >
+                                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                                </d:ref>
+                              </d:ctr>
+                            </d:lst>
+                          </d:ctr>
+                        </d:lst>
+                        <d:lst name="EthSwtPortShaper" type="MAP"/>
+                      </d:ctr>
+                      <d:ctr name="EthSwtPortIngress" type="IDENTIFIABLE">
+                        <d:lst name="EthSwtPortIngressDefaultPriority"/>
+                        <d:lst name="EthSwtPortIngressDefaultVlan"/>
+                        <d:var name="EthSwtPortIngressDropUntagged" 
+                               type="BOOLEAN" value="false">
+                          <a:a name="IMPORTER_INFO" value="@DEF"/>
+                        </d:var>
+                        <d:lst name="EthSwtPortIngressVlanModification"/>
+                        <d:lst name="EthSwtPortTrafficClassAssignment"/>
+                        <d:lst name="EthSwtPortPolicer" type="MAP"/>
+                        <d:lst name="EthSwtPriorityRegeneration" type="MAP"/>
+                        <d:lst name="EthSwtPriorityTrafficClassAssignment" 
+                               type="MAP"/>
+                      </d:ctr>
+                      <d:lst name="EthSwtPortVlanMembership" type="MAP"/>
+                    </d:ctr>
+                  </d:lst>
+                  <d:lst name="EthSwtSpi" type="MAP"/>
+                </d:ctr>
+              </d:lst>
+              <d:ctr name="EthSwtGeneral" type="IDENTIFIABLE">
+                <d:var name="EthSwtDeletePortMirrorConfigurationApi" 
+                       type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtDevErrorDetect" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtEnableCableDiagnosticApi" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtEnableVlanApi" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtGetArlTableApi" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtGetBaudRateApi" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:lst name="EthSwtGetCfgDataRawDone"/>
+                <d:var name="EthSwtGetCfgRaw" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtGetCounterValuesApi" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtGetDuplexModeApi" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtGetLinkStateApi" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtGetMacLearningModeApi" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtGetMaxFIFOBufferFillLevelApi" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtGetPortCableDiagnosticsResultApi" 
+                       type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtGetPortIdentifierApi" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtGetPortMacAddrApi" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtGetPortMirrorStateApi" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtGetPortSignalQualityApi" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtGetRxStatsApi" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtGetSwitchIdentifierApi" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtGetSwitchPortModeApi" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtGetSwitchRegApi" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtGetTxErrorCounterValuesApi" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtGetTxStatsApi" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtGlobalTimeSupportApi" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtIndex" type="INTEGER" value="0">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:lst name="EthSwtLinkDownCallout"/>
+                <d:lst name="EthSwtLinkUpCallout"/>
+                <d:lst name="EthSwtLowPowerModeSupport"/>
+                <d:var name="EthSwtMainFunctionPeriod" type="FLOAT" value="1.0">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtManagementSupportApi" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtMgmtInfoIndicationTimeout" type="FLOAT" 
+                       value="1.0">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtPersistentConfigurationResult" 
+                       type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:lst name="EthSwtPersistentConfigurationResultUser"/>
+                <d:lst name="EthSwtPublicCddHeaderFile"/>
+                <d:var name="EthSwtReadPortMirrorConfigurationApi" 
+                       type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtReadTrcvRegisterApi" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtResetConfigurationApi" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtSetForwardingModeApi" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtSetMacLearningModeApi" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtSetPortLoopbackModeApi" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtSetPortMirrorStateApi" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtSetPortTestModeApi" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtSetPortTxModeApi" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtSetSwitchPortModeApi" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtSetSwitchRegApi" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtStartSwitchPortAutoNegotiationApi" 
+                       type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtStoreConfigurationApi" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtVerifyConfigApi" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtVersionInfoApi" type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtWritePortMirrorConfigurationApi" 
+                       type="BOOLEAN" value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:var name="EthSwtWriteTrcvRegisterApi" type="BOOLEAN" 
+                       value="false">
+                  <a:a name="IMPORTER_INFO" value="@DEF"/>
+                </d:var>
+                <d:lst name="EthSwtEcucPartitionRef"/>
+              </d:ctr>
+            </d:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+
+</datamodel>

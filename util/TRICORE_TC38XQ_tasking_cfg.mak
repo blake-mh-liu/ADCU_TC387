@@ -1,0 +1,31 @@
+# *****************************************************************************
+TOOLPATH_COMPILER ?= 
+# *********************Compiler Options******************************************
+CC_OPT += --fp-model="cfLNRSTZ"
+CC_OPT += --switch=auto 
+CC_OPT += --eabi=BCfHNSW 
+CC_OPT += --iso=99 
+CC_OPT += --global-type-checking 
+CC_OPT += --default-near-size=0 
+CC_OPT += -DOSB_TOOL=OSB_tasking 
+CC_OPT += -AGKpvX 
+CC_OPT += --core=tc1.6.2 
+CC_OPT += --integer-enumeration 
+CC_OPT += --tradeoff=2 
+CC_OPT += -O2 
+CC_OPT += --debug-info 
+CC_OPT += --warnings-as-errors
+# *********************Linker Options******************************************
+LINK_OPT += -OcLtXY 
+LINK_OPT += --core=mpe:vtc 
+LINK_OPT += --global-type-checking 
+LINK_OPT += --user-provided-initialization-code 
+LINK_OPT += --map-file
+LINK_OPT += -lcs_fpu
+LINK_OPT += -lfp_fpu
+LINK_OPT += -lrt
+LINK_OPT += --warnings-as-errors
+# *********************Assembler Options******************************************
+ASM_OPT += --list-format=1 
+ASM_OPT += --core=tc1.6.2 
+ASM_OPT += --optimize=gs 

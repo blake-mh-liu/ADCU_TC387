@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schm:mainFunctions
+    xmlns:schm="http://www.tresos.de/_project/AutoCore/schm.mainFunctions_1.xsd"
+    xmlns:svc="http://www.tresos.de/_project/AutoCore/svc.base_1.xsd"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.tresos.de/_project/AutoCore/schm.mainFunctions_1.xsd">
+
+    <mainFunction name="CanTrcv_17_W9255_MainFunction"
+        base="as:modconf('CanTrcv')[1]/CanTrcvGeneral/CanTrcvMainFunctionPeriod/*"
+        suffix="node:when(count(as:modconf('CanTrcv')[1]/CanTrcvGeneral/CanTrcvMainFunctionPeriod/*)=1,'',concat( '_', num:i( ./@index )) )">
+        <enable type="XPATH" value="count(as:modconf('CanTrcv')[1]/CanTrcvGeneral/CanTrcvMainFunctionPeriod/*)>0"/>
+        <header value="CanTrcv_17_W9255.h" />   
+        <cycleTime type="XPATH" value="./CanTrcvMainFunctionPeriod" />
+        <taskPrefix value="SchMComTask" />
+        <taskPriority value="150" />
+        <callBefore>
+            <mainFunction>Can_MainFunction_Read</mainFunction>
+            <mainFunction>Com_MainFunctionRx</mainFunction>
+            <mainFunction>Com_MainFunctionRouteSignals</mainFunction>
+            <mainFunction>Dcm_MainFunction</mainFunction>
+            <mainFunction>CanTp_MainFunction</mainFunction>
+            <mainFunction>FrTp_MainFunction</mainFunction>
+            <mainFunction>IpduM_MainFunction</mainFunction>
+            <mainFunction>Com_MainFunctionTx</mainFunction>
+            <mainFunction>Can_MainFunction_Write</mainFunction>				
+            <mainFunction>FrIf_MainFunction</mainFunction>
+            <mainFunction>LinIf_MainFunction</mainFunction>
+            <mainFunction>Xcp_MainFunction</mainFunction>
+            <mainFunction>Spi_MainFunction_Handling</mainFunction>
+        </callBefore>
+        <callAfter>	
+            <mainFunction>Can_MainFunction_BusOff</mainFunction>
+            <mainFunction>Can_MainFunction_Wakeup</mainFunction>
+            <mainFunction>Can_MainFunction_Mode</mainFunction>
+        </callAfter>
+    </mainFunction>
+</schm:mainFunctions>

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+/*******************************************************************************
+**                                                                            **
+** Copyright (C) Infineon Technologies (2023)                                 **
+**                                                                            **
+** All rights reserved.                                                       **
+**                                                                            **
+** This document contains proprietary information belonging to Infineon       **
+** Technologies. Passing on and copying of this document, and communication   **
+** of its contents is not permitted without prior written authorization.      **
+**                                                                            **
+********************************************************************************
+**                                                                            **
+**  FILENAME  : plugin.xml                                                    **
+**                                                                            **
+**  VERSION   : 19.0.0                                                        **
+**                                                                            **
+**  DATE      : 2023-05-22                                                    **
+**                                                                            **
+**  VARIANT   : Variant PB                                                    **
+**                                                                            **
+**  PLATFORM  : Infineon AURIX2G                                              **
+**                                                                            **
+**  AUTHOR    : DL-AUTOSAR-Engineering                                        **
+**                                                                            **
+**  VENDOR    : Infineon Technologies                                         **
+**                                                                            **
+**  TRACEABILITY : [cover parentID=]                                          **
+**                                                                            **
+**  DESCRIPTION  : Tresos plugin for Mcu Driver                               **
+**                                                                            **
+**  [/cover]                                                                  **
+**                                                                            **
+**  SPECIFICATION(S) : Specification of <Mod> Driver, AUTOSAR Release 4.2.2   **
+**                                                                            **
+**  MAY BE CHANGED BY USER : no                                               **
+**                                                                            **
+*******************************************************************************/
+-->
+<!--[cover parentID={DBE40D15-24A7-478b-A811-AE60E393259A}][/cover]-->
+<!--[cover parentID={09C5B6D8-9892-41d6-AAD1-B632B7325D13}][/cover]-->
+<!--[cover parentID={5F62F774-4727-49cf-B21D-2425DA0677C1}][/cover]-->
+<!--[cover parentID={1BCC40D6-224C-43e1-9564-18C3C4F34869}][/cover]-->
+<!--[cover parentID={F5CF0050-FA3F-4e14-8C3E-FD0E8CB08831}][/cover]-->
+<plugin>
+
+  <!--
+    ** brief AUTOSAR Mcu_Aurix plugin
+    ** project AUTOSAR Standard Core
+    **
+    ** All rights exclusively reserved for Elektrobit Automotive GmbH,
+    ** unless expressly agreed to otherwise.
+  -->
+
+  <extension point="dreisoft.tresos.launcher2.plugin.module"
+             id="Mcu_Aurix2GAS440_ModuleExt"
+             name="Mcu Module with template generator">
+
+    <module id="Mcu_Aurix2GAS440"
+            label="%ModuleLabel"
+            mandatory="false"
+            allowMultiple="true"
+            description="%ModuleDesc"
+            copyright="(c) 2023 Infineon Technologies"
+            swVersionMajor="20"
+            swVersionMinor="25"
+            swVersionPatch="0"
+            specVersionMajor="4"
+            specVersionMinor="4"
+            specVersionPatch="0"
+            relVersionMajor="4"
+            relVersionMinor="4"
+            relVersionPatch="0"
+            categoryType="%ModuleName"
+            categoryLayer="MCAL"
+            categoryCategory="ECU Firmware"
+            categoryComponent="ECUC">
+      <cluster name="MCAL"/>
+      <ecuType target="AURIX2G" derivate="TC387"/>
+      <ecuType target="AURIX2G" derivate="TC389"/>
+      <ecuType target="AURIX2G" derivate="TC397"/>
+      <ecuType target="AURIX2G" derivate="TC397_ADAS"/>
+      <ecuType target="AURIX2G" derivate="TC399"/>
+      <ecuType target="AURIX2G" derivate="TC356_ADAS"/>
+      <ecuType target="AURIX2G" derivate="TC357_ADAS"/>
+      <ecuType target="AURIX2G" derivate="TC375"/>
+      <ecuType target="AURIX2G" derivate="TC375_ED"/>
+      <ecuType target="AURIX2G" derivate="TC377"/>
+      <ecuType target="AURIX2G" derivate="TC377_ED"/>
+      <ecuType target="AURIX2G" derivate="TC377_ED_EX"/>
+      <ecuType target="AURIX2G" derivate="TC364_LQFP"/>
+      <ecuType target="AURIX2G" derivate="TC364_TQFP"/>
+      <ecuType target="AURIX2G" derivate="TC365"/>
+      <ecuType target="AURIX2G" derivate="TC366"/>
+      <ecuType target="AURIX2G" derivate="TC367"/>
+      <ecuType target="AURIX2G" derivate="TC332"/>
+      <ecuType target="AURIX2G" derivate="TC333"/>
+      <ecuType target="AURIX2G" derivate="TC334"/>
+      <ecuType target="AURIX2G" derivate="TC336"/>
+      <ecuType target="AURIX2G" derivate="TC337"/>
+      <ecuType target="AURIX2G" derivate="TC336_ED_ADAS"/>
+      <ecuType target="AURIX2G" derivate="TC337_ED_ADAS"/>
+      <ecuType target="AURIX2G" derivate="TC322"/>
+      <ecuType target="AURIX2G" derivate="TC323"/>
+      <ecuType target="AURIX2G" derivate="TC324"/>
+      <ecuType target="AURIX2G" derivate="TC327"/>
+      <ecuType target="AURIX2G" derivate="TC374_ED"/>
+      <ecuType target="AURIX2G" derivate="TC3E7"/>
+    </module>
+  </extension>
+
+  <extension point="dreisoft.tresos.launcher2.plugin.configuration"
+             id="Mcu_Aurix2GAS440_ConfigExt"
+             name="Mcu_Aurix2G Configuration">
+    <configuration moduleId="Mcu_Aurix2GAS440">
+      <schema>
+        <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarSchemaManager"/>
+        <resource value="config/AS440/Mcu.xdm" type="xdm"/>
+        <resource value="config/AS440/McuPreConfiguration.xdm"
+                    id="res_McuPreConfiguration"
+                    type="xdm"/>
+        <preconfig name="McuPreConfiguration"
+                     default="true"
+                     description="MCU Reset Reason settings"
+                     resourceId="res_McuPreConfiguration"
+                     path="ASPath:/AURIX2G/EcucDefs/McuPreConfiguration"/>
+      </schema>
+
+      <data>
+        <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarConfigManager"/>
+        <schemaNode path="ASPath:/AURIX2G/EcucDefs/Mcu"/>
+      </data>
+
+      <editor id="Mcu_Aurix2GAS440_Edit"
+              label="%ModuleName"
+              tooltip="%ModuleDesc">
+        <class class="dreisoft.tresos.launcher2.editor.GenericConfigEditor">
+          <parameter name="schema" value="ASPath:/AURIX2G/EcucDefs/Mcu"/>
+          <parameter name="title" value="Mcu"/>
+          <parameter name="noTabs" value="false"/>
+          <parameter name="noLinks" value="true"/>
+          <parameter name="groupLinks" value="false"/>
+          <parameter name="groupContainers" value="false"/>
+          <parameter name="groupTables" value="true"/>
+          <parameter name="optionalGeneralTab" value="true"/>
+        </class>
+      </editor>
+    </configuration>
+  </extension>
+
+  <extension
+      point="dreisoft.tresos.autosar2.api.plugin.postbuildSetup"
+      id="Mcu_Aurix2GAS440_PostBuildExt">
+    <configuration
+         activeLoadableRef="ASPath:/AURIX2G/EcucDefs/EcuC/EcucSelectedLoadableVariant/EcucSelectedLoadableRef"
+         activeSelectableRef="ASPath:/AURIX2G/EcucDefs/EcuC/EcucPostBuildVariants/EcucSelectedPostBuildVariantRef"
+         selectableRefs="ASPath:/AURIX2G/EcucDefs/EcuC/EcucPostBuildVariants/EcucPostBuildVariantRef">
+    </configuration>
+  </extension>
+  <extension point="dreisoft.tresos.launcher2.plugin.generator"
+              id="Mcu_Aurix2GAS440_GenExt"
+              name="Mcu_Aurix2G Generator">
+    <generator moduleId="Mcu_Aurix2GAS440"
+               class="dreisoft.tresos.launcher2.generator.TemplateBasedCodeGenerator">
+
+      <!-- common template path parameters -->
+      <parameter name="templates"
+                 mode="generate,verify" value="generate/template"/>
+
+      <!-- swcd modes and template path parameters -->
+      <parameter name="mode_type"
+                 mode="generate_swcd" value="generate/template"/>
+
+      <parameter name="mode_type"
+                 mode="verify_swcd" value="verify"/>
+
+      <parameter name="templates"
+                 mode="generate_swcd,verify_swcd" value="generate_swcd"/>
+
+      <!-- only having this parameter set to true, a generator is called once for each variant! -->
+      <parameter name="variantAware" value="true"/>
+
+    </generator>
+
+  </extension>
+
+
+  <!-- this post-generator just calls an ant script which renames the file created by the TemplateBasedCodeGenerator defined above
+       otherwise the next run of the TemplateBasedCodeGenerator for another variant would overwrite the file -->
+  <extension point="dreisoft.tresos.generator.api.plugin.generator"
+             id="Mcu_Aurix2GAS440_Gen_Template_MoveFile">
+    <generator moduleId="Mcu_Aurix2GAS440"
+               id="Mcu_Aurix2GAS440_Gen_Template_MoveFile"
+               class="dreisoft.tresos.generator.ng.api.NGGenerator"
+               modes="generate,Template_withPostRename"
+               step="post">
+      <!-- Specify the ant build script as parameter to the NGGenerator. -->
+      <parameter name="buildfile"  value="generate/template_ant/ant_generator.xml"/>
+
+      <!-- only having this parameter set to true, a generator is called once for each variant! -->
+      <parameter name="variantAware" value="true"/>
+    </generator>
+  </extension>
+
+</plugin>
+
+
+
+

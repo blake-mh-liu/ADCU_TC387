@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="UTF-8"?>
+[!SKIPFILE "not(node:exists(J1939RmConfigSet/eb-list::*/J1939RmNode/eb-list::*/J1939RmUser/eb-list::*[J1939RmUserType = 'J1939RM_USER_RTE']))"!]
+[!AUTOSPACING!]
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-1-3.xsd">
+    <AR-PACKAGES>
+        <AR-PACKAGE>
+            <SHORT-NAME>AUTOSAR_J1939Rm</SHORT-NAME>
+            <AR-PACKAGES>
+                <AR-PACKAGE>
+                    <SHORT-NAME>ASR40</SHORT-NAME>
+                    <AR-PACKAGES>
+[!CODE!]
+[!VAR "SendRequest_RTE" = "'0'"!]
+[!VAR "RequestIndication_RTE" = "'0'"!]
+[!VAR "SendAck_RTE" = "'0'"!]
+[!VAR "AckIndication_RTE" = "'0'"!]
+[!VAR "TimeoutSupervision_RTE" = "'0'"!]
+
+[!LOOP "(util:distinct(node:order(J1939RmConfigSet/eb-list::*[1]/J1939RmNode/eb-list::*)))"!]
+  [!LOOP "(util:distinct(node:order(J1939RmUser/eb-list::*)))"!]
+    [!IF "(node:value(J1939RmUserType) = 'J1939RM_USER_RTE')"!]
+      [!IF "node:existsAndTrue(J1939RmUserSendAck)"!]
+        [!VAR "SendAck_RTE" = "$SendAck_RTE + 1"!]
+      [!ENDIF!]
+      [!IF "node:existsAndTrue(J1939RmUserAckIndication)"!]
+        [!VAR "AckIndication_RTE" = "$AckIndication_RTE + 1"!]
+      [!ENDIF!]
+      [!IF "node:existsAndTrue(J1939RmUserSendRequest)"!]
+        [!VAR "SendRequest_RTE" = "$SendRequest_RTE + 1"!]
+      [!ENDIF!]
+      [!IF "node:existsAndTrue(J1939RmUserRequestIndication)"!]
+        [!VAR "RequestIndication_RTE" = "$RequestIndication_RTE + 1"!]
+      [!ENDIF!]
+      [!IF "node:existsAndTrue(J1939RmUserTimeoutSupervision)"!]
+        [!VAR "TimeoutSupervision_RTE" = "$TimeoutSupervision_RTE + 1"!]
+      [!ENDIF!]
+    [!ENDIF!]
+  [!ENDLOOP!]
+[!ENDLOOP!]
+
+[!IF "($AckIndication_RTE > 0) or ($SendAck_RTE > 0)"!]
+                        <AR-PACKAGE> <!-- CompuMethods -->
+                            <SHORT-NAME>CompuMethods</SHORT-NAME>
+                            <ELEMENTS>
+                                <COMPU-METHOD>
+                                    <!-- !LINKSTO J1939Rm.ASR41.SWS_J1939Rm_00109,1 -->
+                                    <SHORT-NAME>J1939Rm_ASR40_AckCode</SHORT-NAME>
+                                    <CATEGORY>TEXTTABLE</CATEGORY>
+                                    <COMPU-INTERNAL-TO-PHYS>
+                                        <COMPU-SCALES>
+                                            <COMPU-SCALE>
+                                                <LOWER-LIMIT INTERVAL-TYPE="CLOSED">0</LOWER-LIMIT>
+                                                <UPPER-LIMIT INTERVAL-TYPE="CLOSED">0</UPPER-LIMIT>
+                                                <COMPU-CONST>
+                                                    <VT>J1939RM_ACK_POSITIVE</VT>
+                                                </COMPU-CONST>
+                                            </COMPU-SCALE>
+                                            <COMPU-SCALE>
+                                                <LOWER-LIMIT INTERVAL-TYPE="CLOSED">1</LOWER-LIMIT>
+                                                <UPPER-LIMIT INTERVAL-TYPE="CLOSED">1</UPPER-LIMIT>
+                                                <COMPU-CONST>
+                                                    <VT>J1939RM_ACK_NEGATIVE</VT>
+                                                </COMPU-CONST>
+                                            </COMPU-SCALE>
+                                            <COMPU-SCALE>
+                                                <LOWER-LIMIT INTERVAL-TYPE="CLOSED">2</LOWER-LIMIT>
+                                                <UPPER-LIMIT INTERVAL-TYPE="CLOSED">2</UPPER-LIMIT>
+                                                <COMPU-CONST>
+                                                    <VT>J1939RM_ACK_ACCESS_DENIED</VT>
+                                                </COMPU-CONST>
+                                            </COMPU-SCALE>
+                                            <COMPU-SCALE>
+                                                <LOWER-LIMIT INTERVAL-TYPE="CLOSED">3</LOWER-LIMIT>
+                                                <UPPER-LIMIT INTERVAL-TYPE="CLOSED">3</UPPER-LIMIT>
+                                                <COMPU-CONST>
+                                                    <VT>J1939RM_ACK_CANNOT_RESPOND</VT>
+                                                </COMPU-CONST>
+                                            </COMPU-SCALE>
+                                        </COMPU-SCALES>
+                                    </COMPU-INTERNAL-TO-PHYS>
+                                </COMPU-METHOD>
+                            </ELEMENTS>
+                        </AR-PACKAGE>
+                        <AR-PACKAGE> <!-- ImplementationDataTypes -->
+                            <SHORT-NAME>ImplementationDataTypes</SHORT-NAME>
+                            <ELEMENTS>
+                                <IMPLEMENTATION-DATA-TYPE>
+                                    <SHORT-NAME>J1939Rm_AckCode</SHORT-NAME>
+                                    <CATEGORY>TYPE_REFERENCE</CATEGORY>
+                                    <SW-DATA-DEF-PROPS>
+                                        <SW-DATA-DEF-PROPS-VARIANTS>
+                                            <SW-DATA-DEF-PROPS-CONDITIONAL>
+                                                <COMPU-METHOD-REF DEST="COMPU-METHOD">/AUTOSAR_J1939Rm/ASR40/CompuMethods/J1939Rm_ASR40_AckCode</COMPU-METHOD-REF>
+                                                <IMPLEMENTATION-DATA-TYPE-REF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</IMPLEMENTATION-DATA-TYPE-REF>
+                                            </SW-DATA-DEF-PROPS-CONDITIONAL>
+                                        </SW-DATA-DEF-PROPS-VARIANTS>
+                                    </SW-DATA-DEF-PROPS>
+                                </IMPLEMENTATION-DATA-TYPE>
+                            </ELEMENTS>
+                        </AR-PACKAGE>
+[!ENDIF!]
+                        <AR-PACKAGE> <!-- PortInterfaces -->
+                            <SHORT-NAME>PortInterfaces</SHORT-NAME>
+                            <ELEMENTS>
+[!IF "($SendAck_RTE > 0)"!]
+                                <CLIENT-SERVER-INTERFACE>
+                                    <!-- Service Interface AppSendAck -->
+                                    <!-- !LINKSTO EB_Ref.SWS_J1939Rm_00103.AppSendAckAppSendAckAPI,1 -->
+                                    <SHORT-NAME>AppSendAck</SHORT-NAME>
+                                    <IS-SERVICE>true</IS-SERVICE>
+                                    <OPERATIONS>
+                                        <!-- Operation SendAck -->
+                                        <CLIENT-SERVER-OPERATION>
+                                            <SHORT-NAME>SendAck</SHORT-NAME>
+                                            <ARGUMENTS>
+                                                <ARGUMENT-DATA-PROTOTYPE>
+                                                    <SHORT-NAME>channel</SHORT-NAME>
+                                                    <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Comtype/ImplementationDataTypes/NetworkHandleType</TYPE-TREF>
+                                                    <DIRECTION>IN</DIRECTION>
+                                                </ARGUMENT-DATA-PROTOTYPE>
+                                                <ARGUMENT-DATA-PROTOTYPE>
+                                                    <SHORT-NAME>ackPgn</SHORT-NAME>
+                                                    <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint32</TYPE-TREF>
+                                                    <DIRECTION>IN</DIRECTION>
+                                                </ARGUMENT-DATA-PROTOTYPE>
+                                                <ARGUMENT-DATA-PROTOTYPE>
+                                                    <SHORT-NAME>ackCode</SHORT-NAME>
+                                                    <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_J1939Rm/ASR40/ImplementationDataTypes/J1939Rm_AckCode</TYPE-TREF>
+                                                    <DIRECTION>IN</DIRECTION>
+                                                </ARGUMENT-DATA-PROTOTYPE>
+                                                <ARGUMENT-DATA-PROTOTYPE>
+                                                    <SHORT-NAME>ackAddress</SHORT-NAME>
+                                                    <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</TYPE-TREF>
+                                                    <DIRECTION>IN</DIRECTION>
+                                                </ARGUMENT-DATA-PROTOTYPE>
+                                                <ARGUMENT-DATA-PROTOTYPE>
+                                                    <SHORT-NAME>priority</SHORT-NAME>
+                                                    <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</TYPE-TREF>
+                                                    <DIRECTION>IN</DIRECTION>
+                                                </ARGUMENT-DATA-PROTOTYPE>
+                                            </ARGUMENTS>
+                                            <POSSIBLE-ERROR-REFS>
+                                                <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/AUTOSAR_J1939Rm/ASR40/PortInterfaces/AppSendAck/E_OK</POSSIBLE-ERROR-REF>
+                                                <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/AUTOSAR_J1939Rm/ASR40/PortInterfaces/AppSendAck/E_NOT_OK</POSSIBLE-ERROR-REF>
+                                            </POSSIBLE-ERROR-REFS>
+                                        </CLIENT-SERVER-OPERATION>
+
+                                    </OPERATIONS>
+                                    <!-- Possible Errors -->
+                                    <POSSIBLE-ERRORS>
+                                        <APPLICATION-ERROR>
+                                            <SHORT-NAME>E_OK</SHORT-NAME>
+                                            <ERROR-CODE>0</ERROR-CODE>
+                                        </APPLICATION-ERROR>
+                                        <APPLICATION-ERROR>
+                                            <SHORT-NAME>E_NOT_OK</SHORT-NAME>
+                                            <ERROR-CODE>1</ERROR-CODE>
+                                        </APPLICATION-ERROR>
+                                    </POSSIBLE-ERRORS>
+                                </CLIENT-SERVER-INTERFACE>
+[!ENDIF!]
+[!IF "($SendRequest_RTE > 0)"!]
+                                <CLIENT-SERVER-INTERFACE>
+                                    <!-- !LINKSTO J1939Rm.ASR41.SWS_J1939Rm_00104,1 -->
+                                    <SHORT-NAME>AppSendRequest</SHORT-NAME>
+                                    <IS-SERVICE>true</IS-SERVICE>
+                                    <OPERATIONS>
+                                        <!-- Operation SendAck -->
+                                        <CLIENT-SERVER-OPERATION>
+                                            <SHORT-NAME>SendRequest</SHORT-NAME>
+                                            <ARGUMENTS>
+                                                <ARGUMENT-DATA-PROTOTYPE>
+                                                    <SHORT-NAME>channel</SHORT-NAME>
+                                                    <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Comtype/ImplementationDataTypes/NetworkHandleType</TYPE-TREF>
+                                                    <DIRECTION>IN</DIRECTION>
+                                                </ARGUMENT-DATA-PROTOTYPE>
+                                                <ARGUMENT-DATA-PROTOTYPE>
+                                                    <SHORT-NAME>requestedPgn</SHORT-NAME>
+                                                    <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint32</TYPE-TREF>
+                                                    <DIRECTION>IN</DIRECTION>
+                                                </ARGUMENT-DATA-PROTOTYPE>
+                                                <ARGUMENT-DATA-PROTOTYPE>
+                                                    <SHORT-NAME>destAddress</SHORT-NAME>
+                                                    <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</TYPE-TREF>
+                                                    <DIRECTION>IN</DIRECTION>
+                                                </ARGUMENT-DATA-PROTOTYPE>
+                                                <ARGUMENT-DATA-PROTOTYPE>
+                                                    <SHORT-NAME>priority</SHORT-NAME>
+                                                    <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</TYPE-TREF>
+                                                    <DIRECTION>IN</DIRECTION>
+                                                </ARGUMENT-DATA-PROTOTYPE>
+                                                <ARGUMENT-DATA-PROTOTYPE>
+                                                    <SHORT-NAME>checkTimeout</SHORT-NAME>
+                                                    <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/boolean</TYPE-TREF>
+                                                    <DIRECTION>IN</DIRECTION>
+                                                </ARGUMENT-DATA-PROTOTYPE>
+                                            </ARGUMENTS>
+                                            <POSSIBLE-ERROR-REFS>
+                                                <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/AUTOSAR_J1939Rm/ASR40/PortInterfaces/AppSendRequest/E_OK</POSSIBLE-ERROR-REF>
+                                                <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/AUTOSAR_J1939Rm/ASR40/PortInterfaces/AppSendRequest/E_NOT_OK</POSSIBLE-ERROR-REF>
+                                            </POSSIBLE-ERROR-REFS>
+                                        </CLIENT-SERVER-OPERATION>
+
+                                    </OPERATIONS>
+                                    <!-- Possible Errors -->
+                                    <POSSIBLE-ERRORS>
+                                        <APPLICATION-ERROR>
+                                            <SHORT-NAME>E_OK</SHORT-NAME>
+                                            <ERROR-CODE>0</ERROR-CODE>
+                                        </APPLICATION-ERROR>
+                                        <APPLICATION-ERROR>
+                                            <SHORT-NAME>E_NOT_OK</SHORT-NAME>
+                                            <ERROR-CODE>1</ERROR-CODE>
+                                        </APPLICATION-ERROR>
+                                    </POSSIBLE-ERRORS>
+                                </CLIENT-SERVER-INTERFACE>
+[!ENDIF!]
+[!IF "($TimeoutSupervision_RTE > 0)"!]
+                                <CLIENT-SERVER-INTERFACE>
+                                    <!-- !LINKSTO J1939Rm.ASR41.SWS_J1939Rm_00105,1 -->
+                                    <SHORT-NAME>AppCancelRequestTimeout</SHORT-NAME>
+                                    <IS-SERVICE>true</IS-SERVICE>
+                                    <OPERATIONS>
+                                        <!-- Operation SendAck -->
+                                        <CLIENT-SERVER-OPERATION>
+                                            <SHORT-NAME>CancelRequestTimeout</SHORT-NAME>
+                                            <ARGUMENTS>
+                                                <ARGUMENT-DATA-PROTOTYPE>
+                                                    <SHORT-NAME>channel</SHORT-NAME>
+                                                    <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Comtype/ImplementationDataTypes/NetworkHandleType</TYPE-TREF>
+                                                    <DIRECTION>IN</DIRECTION>
+                                                </ARGUMENT-DATA-PROTOTYPE>
+                                                <ARGUMENT-DATA-PROTOTYPE>
+                                                    <SHORT-NAME>requestedPgn</SHORT-NAME>
+                                                    <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint32</TYPE-TREF>
+                                                    <DIRECTION>IN</DIRECTION>
+                                                </ARGUMENT-DATA-PROTOTYPE>
+                                                <ARGUMENT-DATA-PROTOTYPE>
+                                                    <SHORT-NAME>destAddress</SHORT-NAME>
+                                                    <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</TYPE-TREF>
+                                                    <DIRECTION>IN</DIRECTION>
+                                                </ARGUMENT-DATA-PROTOTYPE>
+                                            </ARGUMENTS>
+                                            <POSSIBLE-ERROR-REFS>
+                                                <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/AUTOSAR_J1939Rm/ASR40/PortInterfaces/AppCancelRequestTimeout/E_OK</POSSIBLE-ERROR-REF>
+                                                <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/AUTOSAR_J1939Rm/ASR40/PortInterfaces/AppCancelRequestTimeout/E_NOT_OK</POSSIBLE-ERROR-REF>
+                                            </POSSIBLE-ERROR-REFS>
+                                        </CLIENT-SERVER-OPERATION>
+
+                                    </OPERATIONS>
+                                    <!-- Possible Errors -->
+                                    <POSSIBLE-ERRORS>
+                                        <APPLICATION-ERROR>
+                                            <SHORT-NAME>E_OK</SHORT-NAME>
+                                            <ERROR-CODE>0</ERROR-CODE>
+                                        </APPLICATION-ERROR>
+                                        <APPLICATION-ERROR>
+                                            <SHORT-NAME>E_NOT_OK</SHORT-NAME>
+                                            <ERROR-CODE>1</ERROR-CODE>
+                                        </APPLICATION-ERROR>
+                                    </POSSIBLE-ERRORS>
+                                </CLIENT-SERVER-INTERFACE>
+[!ENDIF!]
+[!IF "($AckIndication_RTE > 0)"!]
+                                <CLIENT-SERVER-INTERFACE>
+                                    <!-- !LINKSTO J1939Rm.ASR41.SWS_J1939Rm_00106,1 -->
+                                    <SHORT-NAME>AppAckIndication</SHORT-NAME>
+                                    <IS-SERVICE>true</IS-SERVICE>
+                                    <OPERATIONS>
+                                        <CLIENT-SERVER-OPERATION>
+                                            <SHORT-NAME>AckIndication</SHORT-NAME>
+                                            <ARGUMENTS>
+                                                <ARGUMENT-DATA-PROTOTYPE>
+                                                <SHORT-NAME>node</SHORT-NAME>
+                                                <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</TYPE-TREF>
+                                                <DIRECTION>IN</DIRECTION>
+                                                </ARGUMENT-DATA-PROTOTYPE>
+                                                <ARGUMENT-DATA-PROTOTYPE>
+                                                    <SHORT-NAME>channel</SHORT-NAME>
+                                                    <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Comtype/ImplementationDataTypes/NetworkHandleType</TYPE-TREF>
+                                                    <DIRECTION>IN</DIRECTION>
+                                                </ARGUMENT-DATA-PROTOTYPE>
+                                                <ARGUMENT-DATA-PROTOTYPE>
+                                                    <SHORT-NAME>ackPgn</SHORT-NAME>
+                                                    <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint32</TYPE-TREF>
+                                                    <DIRECTION>IN</DIRECTION>
+                                                </ARGUMENT-DATA-PROTOTYPE>
+                                                <ARGUMENT-DATA-PROTOTYPE>
+                                                    <SHORT-NAME>ackCode</SHORT-NAME>
+                                                    <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_J1939Rm/ASR40/ImplementationDataTypes/J1939Rm_AckCode</TYPE-TREF>
+                                                    <DIRECTION>IN</DIRECTION>
+                                                </ARGUMENT-DATA-PROTOTYPE>
+                                                <ARGUMENT-DATA-PROTOTYPE>
+                                                    <SHORT-NAME>ackAddress</SHORT-NAME>
+                                                    <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</TYPE-TREF>
+                                                    <DIRECTION>IN</DIRECTION>
+                                                </ARGUMENT-DATA-PROTOTYPE>
+                                                <ARGUMENT-DATA-PROTOTYPE>
+                                                    <SHORT-NAME>sourceAddress</SHORT-NAME>
+                                                    <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</TYPE-TREF>
+                                                    <DIRECTION>IN</DIRECTION>
+                                                </ARGUMENT-DATA-PROTOTYPE>
+                                                <ARGUMENT-DATA-PROTOTYPE>
+                                                    <SHORT-NAME>priority</SHORT-NAME>
+                                                    <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</TYPE-TREF>
+                                                    <DIRECTION>IN</DIRECTION>
+                                                </ARGUMENT-DATA-PROTOTYPE>
+                                            </ARGUMENTS>
+                                            <POSSIBLE-ERROR-REFS>
+                                                <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/AUTOSAR_J1939Rm/ASR40/PortInterfaces/AppAckIndication/E_OK</POSSIBLE-ERROR-REF>
+                                                <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/AUTOSAR_J1939Rm/ASR40/PortInterfaces/AppAckIndication/E_NOT_OK</POSSIBLE-ERROR-REF>
+                                            </POSSIBLE-ERROR-REFS>
+                                        </CLIENT-SERVER-OPERATION>
+
+                                    </OPERATIONS>
+                                    <!-- Possible Errors -->
+                                    <POSSIBLE-ERRORS>
+                                        <APPLICATION-ERROR>
+                                            <SHORT-NAME>E_OK</SHORT-NAME>
+                                            <ERROR-CODE>0</ERROR-CODE>
+                                        </APPLICATION-ERROR>
+                                        <APPLICATION-ERROR>
+                                            <SHORT-NAME>E_NOT_OK</SHORT-NAME>
+                                            <ERROR-CODE>1</ERROR-CODE>
+                                        </APPLICATION-ERROR>
+                                    </POSSIBLE-ERRORS>
+                                </CLIENT-SERVER-INTERFACE>
+[!ENDIF!]
+[!IF "($RequestIndication_RTE > 0)"!]
+                                <CLIENT-SERVER-INTERFACE>
+                                    <!-- !LINKSTO J1939Rm.ASR41.SWS_J1939Rm_00107,1 -->
+                                    <SHORT-NAME>AppRequestIndication</SHORT-NAME>
+                                    <IS-SERVICE>true</IS-SERVICE>
+                                    <OPERATIONS>
+                                        <!-- Operation SendAck -->
+                                        <CLIENT-SERVER-OPERATION>
+                                        <SHORT-NAME>RequestIndication</SHORT-NAME>
+                                        <ARGUMENTS>
+                                            <ARGUMENT-DATA-PROTOTYPE>
+                                                    <SHORT-NAME>node</SHORT-NAME>
+                                                    <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</TYPE-TREF>
+                                                    <DIRECTION>IN</DIRECTION>
+                                                </ARGUMENT-DATA-PROTOTYPE>
+                                            <ARGUMENT-DATA-PROTOTYPE>
+                                                <SHORT-NAME>channel</SHORT-NAME>
+                                                <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Comtype/ImplementationDataTypes/NetworkHandleType</TYPE-TREF>
+                                                <DIRECTION>IN</DIRECTION>
+                                            </ARGUMENT-DATA-PROTOTYPE>
+                                            <ARGUMENT-DATA-PROTOTYPE>
+                                                <SHORT-NAME>requestedPgn</SHORT-NAME>
+                                                <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint32</TYPE-TREF>
+                                                <DIRECTION>IN</DIRECTION>
+                                            </ARGUMENT-DATA-PROTOTYPE>
+                                            <ARGUMENT-DATA-PROTOTYPE>
+                                                <SHORT-NAME>sourceAddress</SHORT-NAME>
+                                                <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</TYPE-TREF>
+                                                <DIRECTION>IN</DIRECTION>
+                                            </ARGUMENT-DATA-PROTOTYPE>
+                                            <ARGUMENT-DATA-PROTOTYPE>
+                                                <SHORT-NAME>destAddress</SHORT-NAME>
+                                                <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</TYPE-TREF>
+                                                <DIRECTION>IN</DIRECTION>
+                                            </ARGUMENT-DATA-PROTOTYPE>
+                                            <ARGUMENT-DATA-PROTOTYPE>
+                                                <SHORT-NAME>priority</SHORT-NAME>
+                                                <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</TYPE-TREF>
+                                                <DIRECTION>IN</DIRECTION>
+                                            </ARGUMENT-DATA-PROTOTYPE>
+                                        </ARGUMENTS>
+                                        <POSSIBLE-ERROR-REFS>
+                                            <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/AUTOSAR_J1939Rm/ASR40/PortInterfaces/AppRequestIndication/E_OK</POSSIBLE-ERROR-REF>
+                                            <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/AUTOSAR_J1939Rm/ASR40/PortInterfaces/AppRequestIndication/E_NOT_OK</POSSIBLE-ERROR-REF>
+                                        </POSSIBLE-ERROR-REFS>
+                                        </CLIENT-SERVER-OPERATION>
+
+                                    </OPERATIONS>
+                                    <!-- Possible Errors -->
+                                    <POSSIBLE-ERRORS>
+                                        <APPLICATION-ERROR>
+                                            <SHORT-NAME>E_OK</SHORT-NAME>
+                                            <ERROR-CODE>0</ERROR-CODE>
+                                        </APPLICATION-ERROR>
+                                        <APPLICATION-ERROR>
+                                            <SHORT-NAME>E_NOT_OK</SHORT-NAME>
+                                            <ERROR-CODE>1</ERROR-CODE>
+                                        </APPLICATION-ERROR>
+                                    </POSSIBLE-ERRORS>
+                                </CLIENT-SERVER-INTERFACE>
+[!ENDIF!]
+[!IF "($TimeoutSupervision_RTE > 0)"!]
+                                <CLIENT-SERVER-INTERFACE>
+                                    <!-- !LINKSTO J1939Rm.ASR41.SWS_J1939Rm_00108,1 -->
+                                    <SHORT-NAME>AppRequestTimeoutIndication</SHORT-NAME>
+                                    <IS-SERVICE>true</IS-SERVICE>
+                                    <OPERATIONS>
+                                        <!-- Operation SendAck -->
+                                        <CLIENT-SERVER-OPERATION>
+                                        <SHORT-NAME>RequestTimeoutIndication</SHORT-NAME>
+                                        <ARGUMENTS>
+                                            <ARGUMENT-DATA-PROTOTYPE>
+                                            <SHORT-NAME>node</SHORT-NAME>
+                                            <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</TYPE-TREF>
+                                            <DIRECTION>IN</DIRECTION>
+                                            </ARGUMENT-DATA-PROTOTYPE>
+                                            <ARGUMENT-DATA-PROTOTYPE>
+                                                <SHORT-NAME>channel</SHORT-NAME>
+                                                <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Comtype/ImplementationDataTypes/NetworkHandleType</TYPE-TREF>
+                                                <DIRECTION>IN</DIRECTION>
+                                            </ARGUMENT-DATA-PROTOTYPE>
+                                                <ARGUMENT-DATA-PROTOTYPE>
+                                                    <SHORT-NAME>requestedPgn</SHORT-NAME>
+                                                    <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint32</TYPE-TREF>
+                                                    <DIRECTION>IN</DIRECTION>
+                                                </ARGUMENT-DATA-PROTOTYPE>
+                                                <ARGUMENT-DATA-PROTOTYPE>
+                                                    <SHORT-NAME>destAddress</SHORT-NAME>
+                                                    <TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Platform/ImplementationDataTypes/uint8</TYPE-TREF>
+                                                    <DIRECTION>IN</DIRECTION>
+                                                </ARGUMENT-DATA-PROTOTYPE>
+                                        </ARGUMENTS>
+                                        <POSSIBLE-ERROR-REFS>
+                                                <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/AUTOSAR_J1939Rm/ASR40/PortInterfaces/AppRequestTimeoutIndication/E_OK</POSSIBLE-ERROR-REF>
+                                                <POSSIBLE-ERROR-REF DEST="APPLICATION-ERROR">/AUTOSAR_J1939Rm/ASR40/PortInterfaces/AppRequestTimeoutIndication/E_NOT_OK</POSSIBLE-ERROR-REF>
+                                        </POSSIBLE-ERROR-REFS>
+                                        </CLIENT-SERVER-OPERATION>
+
+                                    </OPERATIONS>
+                                    <!-- Possible Errors -->
+                                    <POSSIBLE-ERRORS>
+                                        <APPLICATION-ERROR>
+                                            <SHORT-NAME>E_OK</SHORT-NAME>
+                                            <ERROR-CODE>0</ERROR-CODE>
+                                        </APPLICATION-ERROR>
+                                        <APPLICATION-ERROR>
+                                            <SHORT-NAME>E_NOT_OK</SHORT-NAME>
+                                            <ERROR-CODE>1</ERROR-CODE>
+                                        </APPLICATION-ERROR>
+                                    </POSSIBLE-ERRORS>
+                                </CLIENT-SERVER-INTERFACE>
+[!ENDIF!]
+                            </ELEMENTS>
+                        </AR-PACKAGE>
+[!ENDCODE!]
+					</AR-PACKAGES>
+                </AR-PACKAGE>
+            </AR-PACKAGES>
+        </AR-PACKAGE>
+    </AR-PACKAGES>
+</AUTOSAR>

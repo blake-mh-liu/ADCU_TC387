@@ -1,0 +1,21 @@
+########### CORE PART OF THE TEMPLATE - START ###########
+#parse("make/Os_objects.make.vm")
+########### CORE PART OF THE TEMPLATE - END #############
+########### TARGET PART OF THE TEMPLATE - START ###########
+########### Arch specific velocimacros that can be called from the common code parts ###########
+
+$hashChars#* ################################################################### *#
+# Stacks
+$hashChars#* ################################################################### *#
+#if( $OsModel.needMakeMemoryRegionSizes() )
+#* *## This variable tells the build process the name of the task stack sections
+#* *##foreach( $stack in $AllTasksList.getStacks() )
+#*     *#OS_STACKS += #foreach( $slot in $stack ) $stack.getSlotVarName($slot).toLowerCase()#end$newLine
+#* *##end
+#* *## This variable tells the build process the name of the kernel/interrupt stack sections
+#* *##foreach( $stack in $AllInterruptsList.getStacks() )
+#*     *#OS_STACKS += #foreach( $slot in $stack ) $stack.getSlotVarName($slot).toLowerCase()#end$newLine
+#* *##end
+#end
+
+endif

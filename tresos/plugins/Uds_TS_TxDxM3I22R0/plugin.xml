@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+  <!--
+    AUTOSAR Uds_TS_TxDxM3I22R0 plugin
+    Project: EB tresos AutoCore
+
+    Copyright 2005-2024 by Elektrobit Automotive GmbH
+    All rights exclusively reserved for Elektrobit Automotive GmbH,
+    unless expressly agreed to otherwise.
+  -->
+  <extension point="dreisoft.tresos.launcher2.plugin.module"
+             id="Uds_TS_TxDxM3I22R0_ModuleId"
+             name="Uds_TS_TxDxM3I22R0 Module">
+    <module id="Uds_TS_TxDxM3I22R0"
+            label="Uds"
+            mandatory="false"
+            allowMultiple="false"
+            description="BL-Core: Bootloader UDS (Unified Diagnostic Services) module"
+            copyright="(c) 2005-2024 Elektrobit Automotive GmbH"
+            swVersionMajor="3"
+            swVersionMinor="22"
+            swVersionPatch="0"
+            swVersionSuffix="BL3"
+            specVersionMajor="4"
+            specVersionMinor="0"
+            specVersionPatch="3"
+            specVersionSuffix="0000"
+            relVersionMajor="4"
+            relVersionMinor="0"
+            relVersionPatch="3"
+            categoryType="Uds"
+            categoryLayer="System Services"
+            categoryCategory="Diagnostic"
+            categoryComponent="ECUC">
+      <cluster name="Diagnostic"/>
+    </module>
+  </extension>
+  <extension point="dreisoft.tresos.launcher2.plugin.configuration"
+             id="Uds_TS_TxDxM3I22R0_ConfigId"
+             name="Uds_TS_TxDxM3I22R0 Configuration">
+    <configuration moduleId="Uds_TS_TxDxM3I22R0">
+      <schema>
+        <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarSchemaManager"/>
+        <resource value="config/Uds.xdm" type="xdm" id="res_default"/>
+      </schema>
+
+      <data>
+        <manager class="dreisoft.tresos.autosar2.resourcehandling.AutosarConfigManager"/>
+        <schemaNode path="ASPath:/TS_TxDxM3I22R0/Uds"/>
+      </data>
+
+      <editor id="Uds_TS_TxDxM3I22R0_EditorId"
+              label="Default"
+              tooltip="BL-Core: Bootloader UDS (Unified Diagnostic Services) module">
+        <class class="dreisoft.tresos.launcher2.editor.GenericConfigEditor">
+          <parameter name="schema" value="ASPath:/TS_TxDxM3I22R0/Uds"/>
+          <parameter name="title" value="Uds"/>
+          <parameter name="noTabs" value="false"/>
+          <parameter name="noLinks" value="true"/>
+          <parameter name="groupLinks" value="false"/>
+          <parameter name="groupContainers" value="false"/>
+          <parameter name="groupTables" value="true"/>
+          <parameter name="optionalGeneralTab" value="true"/>
+        </class>
+      </editor>
+    </configuration>
+  </extension>
+
+  <extension point="dreisoft.tresos.launcher2.plugin.generator"
+             id="Uds_TS_TxDxM3I22R0_GeneratorId"
+             name="Uds_TS_TxDxM3I22R0 Generator">
+    <generator class="dreisoft.tresos.launcher2.generator.TemplateBasedCodeGenerator"
+               id="Uds_TS_TxDxM3I22R0_TemplateBasedCodeGeneratorId"
+               moduleId="Uds_TS_TxDxM3I22R0">
+      <!-- common template path parameters -->
+      <parameter name="templates"
+                 mode="generate,verify" value="generate"/>
+    </generator>
+  </extension>
+</plugin>
+

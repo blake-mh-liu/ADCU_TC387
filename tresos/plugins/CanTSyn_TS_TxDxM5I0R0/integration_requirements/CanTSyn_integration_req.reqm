@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<specdocument>
+  <specobjects doctype="lim">
+
+    <specobject>
+      <id>lim.CanTSyn.EB_INTREQ_CanTSyn_0001</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+      
+      
+       A certain <application>CanTSyn</application> time domain needs to be configured to a partition
+       that is on the same core as the Can controller that handles the PDU for that time domain. 
+      </description>
+      <rationale>
+       Both the MainFunctions and the indications from the CanDrv need to be executed on the same core
+       to ensure data consistency.
+      </rationale>
+      
+    </specobject>
+    
+    <specobject>
+      <id>lim.CanTSyn.EB_INTREQ_CanTSyn_0002</id>
+      <status>approved</status>
+      <source>EB integration requirement</source>
+      <version>1</version>
+      <description>
+      
+      
+       The <application>Csm</application> Main function must not interrupt the <application>CanTSyn</application> 
+       Main function.
+      </description>
+      <rationale>
+        The CanTSyn_IcvGenerationIndication() API triggered by the Csm main function should not interrupt the CanTSyn_GenerateIcv() function
+        execution triggered by the CanTSyn main function because an unwanted state transition might occur.
+        The two main functions could be configured to run on the same OS task or have the same priority.
+      </rationale>
+    </specobject>
+
+
+  </specobjects>
+</specdocument>

@@ -1,0 +1,1559 @@
+<?xml version='1.0'?>
+<datamodel version="8.0" 
+           xmlns="http://www.tresos.de/_projects/DataModel2/18/root.xsd" 
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/18/attribute.xsd" 
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd" 
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar" 
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd" 
+         xmlns:ce="http://www.tresos.de/_projects/DataModel2/18/childenable.xsd" 
+         xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd" 
+         xmlns:f="http://www.tresos.de/_projects/DataModel2/14/formulaexpr.xsd" 
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd" 
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd"  
+         xmlns:variant="http://www.tresos.de/_projects/DataModel2/11/variant.xsd">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="TS_TxDxM3I22R0" type="AR-PACKAGE">
+        <d:lst type="ELEMENTS">
+          <d:chc name="Uds" type="AR-ELEMENT" value="MODULE-DEF">
+            <v:ctr type="MODULE-DEF">
+              <a:a name="ADMIN-DATA" type="ADMIN-DATA">
+                <ad:ADMIN-DATA>
+                  <ad:LANGUAGE>EN</ad:LANGUAGE>
+                  <ad:DOC-REVISIONS>
+                    <ad:DOC-REVISION>
+                      <ad:REVISION-LABEL>4.0.3</ad:REVISION-LABEL>
+                      <ad:ISSUED-BY>AUTOSAR</ad:ISSUED-BY>
+                    </ad:DOC-REVISION>
+                    <ad:DOC-REVISION>
+                      <ad:REVISION-LABEL>3.22.0</ad:REVISION-LABEL>
+                      <ad:ISSUED-BY>Elektrobit Automotive GmbH</ad:ISSUED-BY>
+                      <ad:DATE>2024-05-02T23:59:59Z</ad:DATE>
+                    </ad:DOC-REVISION>
+                  </ad:DOC-REVISIONS>
+                </ad:ADMIN-DATA>
+              </a:a>
+              <a:a name="DESC">
+                <a:v>&lt;html&gt;
+                            Configuration of the Uds module.
+                        &lt;/html&gt;</a:v>
+              </a:a>
+              <a:a name="LOWER-MULTIPLICITY" value="1"/>
+              <a:a name="RELEASE" value="asc:4.0"/>
+              <a:a name="UPPER-MULTIPLICITY" value="1"/>
+              <a:a name="UUID" value="3d92ddc5-303e-4648-927e-0d2f27850c98"/>
+              <v:ctr name="PublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>EN:
+                    &lt;html&gt;
+                      Additional published parameters not covered by CommonPublishedInformation container.
+                  &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="EB Published Information"/>
+                <a:a name="TAB" value="EB Published Information"/>
+                <a:a name="UUID" 
+                     value="ECUC:cb4128ed-26c1-4ddd-906e-854bed917e07"/>
+                <v:var name="PbcfgMSupport" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Specifies whether or not the Uds can use the PbcfgM module for post-build support.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="PbcfgM support"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:eb61002e-69c0-4f16-a910-c27adb75f6ee"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                <a:a name="DESC">
+                  <a:v>EN:
+                    &lt;html&gt;
+                      Common container, aggregated by all modules. It contains published information about vendor and versions.
+                  &lt;/html&gt;</a:v>
+                </a:a>
+                <a:a name="LABEL" value="Common Published Information"/>
+                <a:a name="UUID" 
+                     value="ECUC:a00be3e0-8783-9123-2d52-1eb616737ca6"/>
+                <v:var name="ArMajorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Major version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Major Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:948f3f2e-f129-4bc5-b4e1-7a7bdb8599e1"/>
+                  <a:da name="DEFAULT" value="4"/>
+                </v:var>
+                <v:var name="ArMinorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Minor version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Minor Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:2893b920-59d5-4ac2-b2c1-e23742e66d70"/>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="ArPatchVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Patch level version number of AUTOSAR specification on which the appropriate implementation is based on.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="AUTOSAR Patch Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:6428eb9b-8790-488a-b9a3-0fba52d0f59e"/>
+                  <a:da name="DEFAULT" value="3"/>
+                </v:var>
+                <v:var name="SwMajorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Major version number of the vendor specific implementation of the module.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Major Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:605b18ae-3f9a-41d4-9225-67c9c5f6fc34"/>
+                  <a:da name="DEFAULT" value="3"/>
+                </v:var>
+                <v:var name="SwMinorVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Minor version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Minor Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a7fe44dc-ea25-4b8d-8fad-9fbcae86d56f"/>
+                  <a:da name="DEFAULT" value="22"/>
+                </v:var>
+                <v:var name="SwPatchVersion" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific.
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Software Patch Version"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" value="a318d2d9-0e75-49da-ac43-e7e4e682e2f9"/>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="ModuleId" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Module ID of this module from Module List
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Numeric Module ID"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:78bc8362-080f-4253-b3da-804ab69a7154"/>
+                  <a:da name="DEFAULT" value="0"/>
+                </v:var>
+                <v:var name="VendorId" type="INTEGER_LABEL">
+                  <a:a name="DESC">
+                    <a:v>EN:
+                      &lt;html&gt;
+                        Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list
+                    &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Vendor ID"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:01b0f467-6943-4558-b4f2-3fa1fad28449"/>
+                  <a:da name="DEFAULT" value="1"/>
+                </v:var>
+                <v:var name="Release" type="STRING_LABEL">
+                  <a:a name="IMPLEMENTATIONCONFIGCLASS" 
+                       value="PublishedInformation"/>
+                  <a:a name="LABEL" value="Release Information"/>
+                  <a:a name="ORIGIN" value="Elektrobit Automotive GmbH"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:a name="UUID" 
+                       value="ECUC:1c68a547-f24e-4a4e-9540-69fbd533ec89"/>
+                  <a:da name="DEFAULT" value=""/>
+                </v:var>
+              </v:ctr>
+              <v:ctr name="General" type="IDENTIFIABLE">
+                <v:var name="Standard" type="STRING">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                              &lt;p&gt;Notify the variants OEM in which the plugin is used.&lt;/p&gt;
+                                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="ISO"/>
+                  <a:da name="RANGE" value="ISO"/>
+                </v:var>
+                <v:var name="UDS_MANAGE_PERIOD" type="INTEGER">
+                  <a:a name="COLUMN_TITLE" value="UDS MANAGE PERIOD"/>
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                                &lt;p&gt;Specifies the period of the manage task in ms.&lt;/p&gt;
+                                                &lt;p&gt;This period must be multiple of EB periodical value in EB module configuration.&lt;/p&gt;
+                                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="2"/>
+                  <a:da name="INVALID" type="Range" expr="&gt;=1"/>
+                </v:var>
+                <v:var name="RDBI_MAX_RESPONSE_LENGTH" type="INTEGER">
+                  <a:a name="COLUMN_TITLE" value="RDBI MAX RESPONSE LENGTH"/>
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                                &lt;p&gt;Specifies the max response length of any DID configured.&lt;/p&gt;
+                                                &lt;p&gt;This must be less the configured reception buffer length configured in BlPduR.&lt;/p&gt;
+                                                &lt;p&gt;Note: This parameter affects the stack size.&lt;/p&gt;
+                                                &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="255"/>
+                  <a:da name="INVALID" type="Range" expr="&gt;=1"/>
+                </v:var>
+                <v:var name="SecurityCheck" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                                &lt;p&gt;&lt;b&gt;Security check feature:&lt;/b&gt;&lt;/p&gt;
+                                                &lt;ul&gt;
+                                                    &lt;li&gt;&lt;code&gt;Activated&lt;/code&gt;: Enable API and internal code to manage NRC_33 (Security Access Denied)&lt;/li&gt;
+                                                    &lt;li&gt;&lt;code&gt;Deactivated&lt;/code&gt;: Disable API and internal code to manage NRC_33 (Security Access Denied)&lt;/li&gt;
+                                                &lt;/ul&gt;
+                                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="UDS_TIMEOUT_CHECK" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                          This entry defines if a delay has to be waited before checking the application Validity.&lt;br/&gt;
+                                          Note:
+                                          &lt;ul&gt;
+                                            &lt;li&gt;it allows to  start a new reprog session even if the application is valid, by receiving a DSC02 during this delay.&lt;/li&gt;
+                                          &lt;/ul&gt;
+                                        &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="node:exists(as:modconf(&apos;ProgFord&apos;))"/>
+                </v:var>
+                <v:var name="SecurityFunction" type="STRING">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                                    &lt;p&gt;The name of the function which will be in charge to get the current security level.&lt;/p&gt;
+                                                    &lt;p&gt;Note:
+                                                        &lt;ul&gt;
+                                                            &lt;li&gt;Its prototype shall be: u8 SecurityFunction_Name(void);&lt;/li&gt;
+                                                        &lt;/ul&gt;
+                                                    &lt;/p&gt;
+                                                    &lt;p&gt;Example:
+                                                        &lt;ul&gt;
+                                                            &lt;li&gt;PROG_GetSecurityLevel&lt;/li&gt;
+                                                            &lt;li&gt;TELE_GetSecurityLevel&lt;/li&gt;
+                                                            &lt;li&gt;...&lt;/li&gt;
+                                                        &lt;/ul&gt;
+                                                    &lt;/p&gt;
+                                                &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="../SecurityCheck = &apos;true&apos; "/>
+                  <a:da name="INVALID" type="XPath" 
+                        expr="string-length(.) &lt; &apos;1&apos; " 
+                        true="A security function shall be defined."/>
+                </v:var>
+                <v:var name="RC_NRC_IMPLEMENTATION" type="INTEGER">
+                  <a:a name="DEFAULT_RADIX" value="HEX"/>
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                                    &lt;p&gt;Only for Routine Control service ($31)&lt;/p&gt;
+                                                    &lt;p&gt;Define NRC used in case of Service and Sub-service are implemented but not in current session&lt;/p&gt;
+                                                    &lt;p&gt;Range: [0x00 ; 0xFF]&lt;/p&gt;
+                                                    &lt;p&gt;Default: NRC_31&lt;/p&gt;
+                                                &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="49"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=255"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                </v:var>
+                <v:var name="DID_NRC_IMPLEMENTATION" type="INTEGER">
+                  <a:a name="DEFAULT_RADIX" value="HEX"/>
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                                    &lt;p&gt;Only for service with DID&lt;/p&gt;
+                                                    &lt;p&gt;Define NRC used in case of Service and DID are implemented but not in current session&lt;/p&gt;
+                                                    &lt;p&gt;Range: [0x00 ; 0xFF]&lt;/p&gt;
+                                                    &lt;p&gt;Default: NRC_31&lt;/p&gt;
+                                                &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="49"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=255"/>
+                    <a:tst expr="&gt;=0"/>
+                  </a:da>
+                </v:var>
+                <v:var name="UDS_MAX_DID_MULTI_RDBI" type="INTEGER">
+                  <a:a name="COLUMN_TITLE" value="DEFAULT"/>
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                                    &lt;p&gt;Define the maximum number of DIDs allowed into a request.&lt;/p&gt;
+                                                    &lt;p&gt;Example:
+                                                        &lt;ul&gt;
+                                                            &lt;li&gt;If a maximum of 4 DID is accepted into a request, then UDS_MAX_DID_MULTI_RDBI shall be set to 4.&lt;/li&gt;
+                                                        &lt;/ul&gt;
+                                                    &lt;/p&gt;
+                                                &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="1"/>
+                  <a:da name="INVALID" type="Range">
+                    <a:tst expr="&lt;=1000"/>
+                    <a:tst expr="&gt;=1"/>
+                  </a:da>
+                </v:var>
+                <v:var name="SPREC_IN_RESPONSE" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                                &lt;p&gt;&lt;b&gt;SPREC (Session Parameter RECord) functionality&lt;/b&gt;&lt;/p&gt;
+                                                &lt;p&gt;SPREC (Session Parameter RECord) refers to UDS_P2 and UDS_P2STAR values &lt;/p&gt;
+                                                &lt;ul&gt;
+                                                    &lt;li&gt;&lt;code&gt;Activated&lt;/code&gt;: SPREC parameter is sent within the DSC ($10) positive response&lt;/li&gt;
+                                                    &lt;li&gt;&lt;code&gt;Deactivated&lt;/code&gt;: SPREC parameter not present in DSC ($10) positive response&lt;/li&gt;
+                                                &lt;/ul&gt;
+                                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                  <a:da name="DEFAULT" value="true"/>
+                </v:var>
+                <v:var name="RESPONSE_PENDING" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                                &lt;p&gt;&lt;b&gt;Response pending functionality&lt;/b&gt;&lt;/p&gt;
+                                                &lt;ul&gt;
+                                                    &lt;li&gt;&lt;code&gt;Activated&lt;/code&gt;: Enable API and internal code to manage NRC_78 (response pending)&lt;/li&gt;
+                                                    &lt;li&gt;&lt;code&gt;Deactivated&lt;/code&gt;: Disable API and internal code to manage NRC_78 (response pending)&lt;/li&gt;
+                                                &lt;/ul&gt;
+                                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="true"/>
+                </v:var>
+                <v:var name="TIMER_RESPONSE_PENDING_CHECK" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                                &lt;p&gt;&lt;b&gt;External NRC_78 (response pending) timeout increment, allowing increment under interrupt using hardware timer&lt;/b&gt;&lt;/p&gt;
+                                                &lt;ul&gt;
+                                                    &lt;li&gt;&lt;code&gt;Activated&lt;/code&gt;: NRC_78 timeout increment is managed externally by calling UDS_ResponsePending_TimCntManage() function&lt;/li&gt;
+                                                    &lt;li&gt;&lt;code&gt;Deactivated&lt;/code&gt;: NRC_78 timeout increment is managed internally in UDS_Manage call &lt;/li&gt;
+                                                &lt;/ul&gt;
+                                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="RELOAD_TSTOPDIAG" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                                &lt;p&gt;&lt;b&gt;Reload session timeout functionality&lt;/b&gt;&lt;/p&gt;
+                                                &lt;p&gt;API: &lt;code&gt;void UDS_ReloadTStopDiag (void)&lt;/code&gt;&lt;/p&gt;
+                                                &lt;p&gt;This function can be called by the customer application, in order to maintain a non standard session opened&lt;/p&gt;
+                                                &lt;p&gt;It allows the ECU to maintain the current session for a duration equal to T_Stop_Diag (5 s).&lt;/p&gt;
+                                                &lt;p&gt;This functionality can be used for the NRC78 periodic answers, if the request duration is very long.&lt;/p&gt;
+                                                &lt;ul&gt;
+                                                    &lt;li&gt;&lt;code&gt;Activated&lt;/code&gt;: API UDS_ReloadTStopDiag available&lt;/li&gt;
+                                                    &lt;li&gt;&lt;code&gt;Deactivated&lt;/code&gt;: API UDS_ReloadTStopDiag unavailable&lt;/li&gt;
+                                                &lt;/ul&gt;
+                                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="Ext_ResponsePending_Manage_Call" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                                &lt;p&gt;This parameter allow the user to call the API UDS_ResponsePending_Manage by himself&lt;/p&gt;
+                                                &lt;p&gt;This allow to manage the response pending timer separatly than the basic scheduling (e.g specific os task with higher priority)&lt;/p&gt;
+                                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" 
+                       value="External Response Pending Manage Call"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="false"/>
+                  <a:da name="ENABLE" type="XPath" 
+                        expr="../RESPONSE_PENDING = &apos;true&apos;"/>
+                </v:var>
+                <v:var name="UDS_P2_ADJUST" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                      &lt;p&gt;This parameter is used to guarantee that the diagnostic response is available on the bus before reaching P2 by adjusting the current P2ServerMax&lt;/p&gt;
+                                      &lt;p&gt;P2Timing = P2ServerMax - P2Adjust&lt;/p&gt;
+                                      &lt;p&gt;Bootloader will send a response within P2Timing ms after receiving the request.&lt;/p&gt;
+                                      &lt;p&gt;The parameter value is defined in ms and must be a multiple of UDS_MANAGE_PERIOD.&lt;/p&gt;
+                                                      &lt;p&gt;This timing is common to all sessions.&lt;/p&gt;
+                                                &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="P2 Adjust"/>
+                  <a:a name="OPTIONAL" value="true"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="0"/>
+                  <a:da name="ENABLE" value="false"/>
+                  <a:da name="INVALID" type="XPath">
+                    <a:tst expr="(. mod ../UDS_MANAGE_PERIOD)=0" 
+                           false="UDS_P2 has to be a multiple of UDS_MANAGE_PERIOD."/>
+                    <a:tst expr="(. &gt;=65535)" 
+                           true="Value shall be between 0 and 65535."/>
+                    <a:tst expr="(. &gt; num:min(../../Session/*/UDS_P2))" 
+                           true="Value shall be lower than UDS_P2 defined in your sessions or deactivated."/>
+                  </a:da>
+                </v:var>
+                <v:var name="P2STAR_ADJUST" type="INTEGER">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                        &lt;p&gt;This parameter is used to guarantee that the diagnostic response is available on the bus before reaching P2Star by adjusting the current P2StarServerMax&lt;/p&gt;
+                                        &lt;p&gt;P2StarTiming = P2StarServerMax - P2StarAdjust&lt;/p&gt;
+                                        &lt;p&gt;Bootloader will send a response within P2StarTiming ms after the previous NRC78.&lt;/p&gt;
+                                        &lt;p&gt;The parameter value is defined in ms and must be a multiple of UDS_MANAGE_PERIOD.&lt;/p&gt;
+                                                &lt;p&gt;This timing is common to all sessions.&lt;/p&gt;
+                                                &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="LABEL" value="P2* Adjust"/>
+                  <a:a name="OPTIONAL" value="true"/>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="0"/>
+                  <a:da name="ENABLE" value="false"/>
+                  <a:da name="INVALID" type="XPath">
+                    <a:tst expr="(. mod ../UDS_MANAGE_PERIOD)=0" 
+                           false="UDS_P2 has to be a multiple of UDS_MANAGE_PERIOD."/>
+                    <a:tst expr="(. &gt;=655350)" 
+                           true="Value shall be between 0 and 655350."/>
+                    <a:tst expr="(. &gt; num:min(../../Session/*/UDS_P2STAR))" 
+                           true="Value shall be lower than UDS_P2STAR defined in your sessions or deactivated."/>
+                  </a:da>
+                </v:var>
+              </v:ctr>
+              <v:lst name="Session" type="MAP">
+                <a:da name="MAX" value="8"/>
+                <a:da name="MIN" value="8"/>
+                <v:ctr name="Session" type="IDENTIFIABLE">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                               &lt;p&gt;Allows the configuration of 8 sessions. The &quot;Name&quot; column is a fixed value which has to be compliant with naming below:&lt;/p&gt;
+                                               &lt;ul&gt;
+                                                 &lt;li&gt;DEFAULT&lt;/li&gt;
+                                                 &lt;li&gt;PROGRAMMING&lt;/li&gt;
+                                                 &lt;li&gt;EXTENDED&lt;/li&gt;
+                                                 &lt;li&gt;SUPPLIER&lt;/li&gt;
+                                                 &lt;li&gt;OTHER_01&lt;/li&gt;
+                                                 &lt;li&gt;OTHER_02&lt;/li&gt;
+                                                 &lt;li&gt;OTHER_03&lt;/li&gt;
+                                                 &lt;li&gt;OTHER_04&lt;/li&gt;
+                                                &lt;/ul&gt;
+                                               &lt;p&gt;A total of 8 sessions can be configured. It is mandatory that these sessions are defined in the list.&lt;/p&gt;
+                                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:da name="INVALID" type="XPath" 
+                        expr="(name(.) = &apos;DEFAULT&apos; or (name(.) = &apos;PROGRAMMING&apos;) or (name(.) = &apos;EXTENDED&apos;) or (name(.) = &apos;SUPPLIER&apos;)                               or (name(.) = &apos;OTHER_01&apos;) or (name(.) = &apos;OTHER_02&apos;) or (name(.) = &apos;OTHER_03&apos;) or (name(.) = &apos;OTHER_04&apos;))" 
+                        false="Please refer to the description view. Sessions have a name constraint."/>
+                  <v:var name="Identifier" type="INTEGER">
+                    <a:a name="COLUMN_TITLE" value="Identifier"/>
+                    <a:a name="DEFAULT_RADIX" value="HEX"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                                              &lt;p&gt;Specifies the hexadecimal value of the session&lt;/p&gt;
+                                                              &lt;p&gt;Range:[0x00 ; 0xFF]&lt;/p&gt;
+                                                  &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="INVALID" type="XPath">
+                      <a:tst expr="text:uniq(../../*/Identifier, .)" 
+                             false="Session Id should be unique."/>
+                      <a:tst expr="(. &lt;=0) or (. &gt;=255)" 
+                             true="Value shall be between 0 and 255."/>
+                    </a:da>
+                  </v:var>
+                  <v:var name="UDS_P2" type="INTEGER">
+                    <a:a name="COLUMN_TITLE" value="UDS_P2"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                                              &lt;p&gt;First transmission timing of the NRC78 after the diagnostic request. (ms)&lt;/p&gt;
+                                                              &lt;p&gt;This time must be a multiple of UDS_MANAGE_PERIOD.&lt;/p&gt;
+                                      &lt;p&gt;This timing is common to all sessions.&lt;/p&gt;
+                                                  &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="50"/>
+                    <a:da name="INVALID" type="XPath">
+                      <a:tst 
+                             expr="(. mod ../../../General/UDS_MANAGE_PERIOD)=0" 
+                             false="UDS_P2 has to be a multiple of UDS_MANAGE_PERIOD."/>
+                      <a:tst expr="(. &lt;=0) or (. &gt;=65535)" 
+                             true="Value shall be between 0 and 65535."/>
+                    </a:da>
+                  </v:var>
+                  <v:var name="UDS_P2STAR" type="INTEGER">
+                    <a:a name="COLUMN_TITLE" value="UDS_P2STAR"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                                              &lt;p&gt;Periodic transmission of the NRC78. (ms)&lt;/p&gt;
+                                                              &lt;p&gt;This time must be a multiple of UDS_MANAGE_PERIOD.&lt;/p&gt;
+                                      &lt;p&gt;This timing is common to all sessions.&lt;/p&gt;
+                                                  &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="5000"/>
+                    <a:da name="INVALID" type="XPath">
+                      <a:tst 
+                             expr="(. mod ../../../General/UDS_MANAGE_PERIOD)=0" 
+                             false="UDS_P2 has to be a multiple of UDS_MANAGE_PERIOD."/>
+                      <a:tst expr="(. &lt;=1) or (. &gt;=655350)" 
+                             true="Value shall be between 0 and 655350."/>
+                    </a:da>
+                  </v:var>
+                </v:ctr>
+              </v:lst>
+              <v:lst name="Service" type="MAP">
+                <a:a name="COLUMNS">
+                  <a:v>Service</a:v>
+                  <a:v>SubService</a:v>
+                  <a:v>Mode</a:v>
+                  <a:v>Default</a:v>
+                  <a:v>Programming</a:v>
+                  <a:v>Extended</a:v>
+                  <a:v>Supplier</a:v>
+                  <a:v>Other_1</a:v>
+                  <a:v>Other_2</a:v>
+                  <a:v>Other_3</a:v>
+                  <a:v>Other_4</a:v>
+                  <a:v>Length</a:v>
+                  <a:v>SecurityLevel</a:v>
+                  <a:v>Callback</a:v>
+                  <a:v>Callback_Origin</a:v>
+                </a:a>
+                <v:ctr name="Service" type="IDENTIFIABLE">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                                &lt;p&gt;This container contains the standard service configuration&lt;/p&gt;
+                                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <v:var name="Service" type="ENUMERATION">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                                    &lt;p&gt;Specifies the service.&lt;/p&gt;
+                                                    &lt;ul&gt;
+                                                        &lt;li&gt;DSC:Diagnostic Session Control ($10)&lt;/li&gt;
+                                                        &lt;li&gt;ER:ECU Reset ($11)&lt;/li&gt;
+                                                        &lt;li&gt;SA:Security Access ($27)&lt;/li&gt;
+                                                        &lt;li&gt;CC:Communication Control ($28)&lt;/li&gt;
+                                                        &lt;li&gt;TP:Tester Present ($3E)&lt;/li&gt;
+                                                        &lt;li&gt;RTE:Request Transfert Exit ($37)&lt;/li&gt;
+                                                        &lt;li&gt;TD:Transfert Data ($36)&lt;/li&gt;
+                                                        &lt;li&gt;RU:Request Upload ($35)&lt;/li&gt;
+                                                        &lt;li&gt;RD:Request Download ($34)&lt;/li&gt;
+                                                        &lt;li&gt;RMBA:Read Memory By Address ($23)&lt;/li&gt;
+                                                        &lt;li&gt;WMBA:Write Memory By Address ($3D)&lt;/li&gt;
+                                                        &lt;li&gt;RDTCI:Read DTC Information ($19)&lt;/li&gt;
+                                                        &lt;li&gt;CDTCI:Clear Diagnostic Information ($14)&lt;/li&gt;
+                                                        &lt;li&gt;CDTCS:Control DTC Setting ($85)&lt;/li&gt;
+                                                        &lt;li&gt;LC:Link Control ($87)&lt;/li&gt;
+                                                        &lt;li&gt;ARS:Authentiction Service ($29)&lt;/li&gt;
+                                                    &lt;/ul&gt;
+                                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="DSC"/>
+                    <a:da name="RANGE">
+                      <a:v>DSC</a:v>
+                      <a:v>ER</a:v>
+                      <a:v>SA</a:v>
+                      <a:v>CC</a:v>
+                      <a:v>TP</a:v>
+                      <a:v>RTE</a:v>
+                      <a:v>TD</a:v>
+                      <a:v>RU</a:v>
+                      <a:v>RD</a:v>
+                      <a:v>RMBA</a:v>
+                      <a:v>WMBA</a:v>
+                      <a:v>RDTCI</a:v>
+                      <a:v>CDTCI</a:v>
+                      <a:v>CDTCS</a:v>
+                      <a:v>LC</a:v>
+                      <a:v>ARS</a:v>
+                    </a:da>
+                  </v:var>
+                  <v:var name="SubService" type="INTEGER">
+                    <a:a name="COLUMN_TITLE" value="SubService"/>
+                    <a:a name="DEFAULT_RADIX" value="HEX"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                                    &lt;p&gt;Specifies the sub-service.&lt;/p&gt;
+                                                    &lt;p&gt;Range:[0x00 ; 0xFF]&lt;/p&gt;
+                                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="0"/>
+                    <a:da name="ENABLE" type="XPath" 
+                          expr="../Service = &apos;DSC&apos; or ../Service = &apos;ER&apos; or ../Service = &apos;SA&apos; or ../Service = &apos;CC&apos; or ../Service = &apos;TP&apos; or ../Service = &apos;RDTCI&apos; or ../Service = &apos;CDTCS&apos; or ../Service = &apos;LC&apos; or ../Service = &apos;ARS&apos;"/>
+                    <a:da name="INVALID" type="Range">
+                      <a:tst expr="&gt;=0"/>
+                      <a:tst expr="&lt;=0xFF"/>
+                    </a:da>
+                  </v:var>
+                  <v:var name="Mode" type="STRING">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                                    &lt;p&gt;&lt;b&gt;Addressing mode&lt;/b&gt;&lt;/p&gt;
+                                                    &lt;ul&gt;
+                                                        &lt;li&gt;&lt;code&gt;Physical&lt;/code&gt;: only physical addressing available for this request&lt;/li&gt;
+                                                        &lt;li&gt;&lt;code&gt;Functional&lt;/code&gt;: only functional addressing available for this request (broadcast)&lt;/li&gt;
+                                                        &lt;li&gt;&lt;code&gt;Both&lt;/code&gt;: physical and functional addressing available for this request&lt;/li&gt;
+                                                    &lt;/ul&gt;
+                                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="Physical"/>
+                    <a:da name="RANGE">
+                      <a:v>Physical</a:v>
+                      <a:v>Functional</a:v>
+                      <a:v>Both</a:v>
+                    </a:da>
+                  </v:var>
+                  <v:var name="Default" type="BOOLEAN">
+                    <a:a name="COLUMN_TITLE" value="Default"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                                    &lt;p&gt;Switches ON if the Service/sub-service is implemented in default session.&lt;/p&gt;
+                                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC V1.0.0"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="false"/>
+                    <a:da name="INVALID" type="XPath" 
+                          expr="(. = &apos;false&apos;) and (../Programming = &apos;false&apos;) and (../Extended = &apos;false&apos;) and (../Supplier = &apos;false&apos;) and (../Other_1 = &apos;false&apos;) and (../Other_2 = &apos;false&apos;) and (../Other_3 = &apos;false&apos;) and (../Other_4 = &apos;false&apos;)" 
+                          true="Please set at least one session where this service shall be accessible"/>
+                  </v:var>
+                  <v:var name="Programming" type="BOOLEAN">
+                    <a:a name="COLUMN_TITLE" value="Programming"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                                    &lt;p&gt;Switches ON if the Service/sub-service is implemented in Programming session.&lt;/p&gt;
+                                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC V1.0.0"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="false"/>
+                    <a:da name="INVALID" type="XPath" 
+                          expr="(../Default = &apos;false&apos;) and (../Programming = &apos;false&apos;) and (../Extended = &apos;false&apos;) and (../Supplier = &apos;false&apos;) and (../Other_1 = &apos;false&apos;) and (../Other_2 = &apos;false&apos;) and (../Other_3 = &apos;false&apos;) and (../Other_4 = &apos;false&apos;)" 
+                          true="Please set at least one session where this service shall be accessible"/>
+                  </v:var>
+                  <v:var name="Extended" type="BOOLEAN">
+                    <a:a name="COLUMN_TITLE" value="Extended"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                                    &lt;p&gt;Switches ON if the Service/sub-service is implemented in Extended session.&lt;/p&gt;
+                                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC V1.0.0"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="false"/>
+                    <a:da name="INVALID" type="XPath" 
+                          expr="(../Default = &apos;false&apos;) and (../Programming = &apos;false&apos;) and (../Extended = &apos;false&apos;) and (../Supplier = &apos;false&apos;) and (../Other_1 = &apos;false&apos;) and (../Other_2 = &apos;false&apos;) and (../Other_3 = &apos;false&apos;) and (../Other_4 = &apos;false&apos;)" 
+                          true="Please set at least one session where this service shall be accessible"/>
+                  </v:var>
+                  <v:var name="Supplier" type="BOOLEAN">
+                    <a:a name="COLUMN_TITLE" value="Supplier"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                                    &lt;p&gt;Switches ON if the Service/sub-service is implemented in Supplier session.&lt;/p&gt;
+                                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC V1.0.0"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="false"/>
+                    <a:da name="INVALID" type="XPath" 
+                          expr="(../Default = &apos;false&apos;) and (../Programming = &apos;false&apos;) and (../Extended = &apos;false&apos;) and (../Supplier = &apos;false&apos;) and (../Other_1 = &apos;false&apos;) and (../Other_2 = &apos;false&apos;) and (../Other_3 = &apos;false&apos;) and (../Other_4 = &apos;false&apos;)" 
+                          true="Please set at least one session where this service shall be accessible"/>
+                  </v:var>
+                  <v:var name="Other_1" type="BOOLEAN">
+                    <a:a name="COLUMN_TITLE" value="Other_1"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                                    &lt;p&gt;Switches ON if the Service/sub-service is implemented in Other_1 session.&lt;/p&gt;
+                                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC V1.0.0"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="false"/>
+                    <a:da name="INVALID" type="XPath" 
+                          expr="(../Default = &apos;false&apos;) and (../Programming = &apos;false&apos;) and (../Extended = &apos;false&apos;) and (../Supplier = &apos;false&apos;) and (../Other_1 = &apos;false&apos;) and (../Other_2 = &apos;false&apos;) and (../Other_3 = &apos;false&apos;) and (../Other_4 = &apos;false&apos;)" 
+                          true="Please set at least one session where this service shall be accessible"/>
+                  </v:var>
+                  <v:var name="Other_2" type="BOOLEAN">
+                    <a:a name="COLUMN_TITLE" value="Other_2"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Switches ON if the Service/sub-service is implemented in Other_2 session.&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC V1.0.0"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="false"/>
+                    <a:da name="INVALID" type="XPath" 
+                          expr="(../Default = &apos;false&apos;) and (../Programming = &apos;false&apos;) and (../Extended = &apos;false&apos;) and (../Supplier = &apos;false&apos;) and (../Other_1 = &apos;false&apos;) and (../Other_2 = &apos;false&apos;) and (../Other_3 = &apos;false&apos;) and (../Other_4 = &apos;false&apos;)" 
+                          true="Please set at least one session where this service shall be accessible"/>
+                  </v:var>
+                  <v:var name="Other_3" type="BOOLEAN">
+                    <a:a name="COLUMN_TITLE" value="Other_3"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Switches ON if the Service/sub-service is implemented in Other_3 session.&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC V1.0.0"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="false"/>
+                    <a:da name="INVALID" type="XPath" 
+                          expr="(../Default = &apos;false&apos;) and (../Programming = &apos;false&apos;) and (../Extended = &apos;false&apos;) and (../Supplier = &apos;false&apos;) and (../Other_1 = &apos;false&apos;) and (../Other_2 = &apos;false&apos;) and (../Other_3 = &apos;false&apos;) and (../Other_4 = &apos;false&apos;)" 
+                          true="Please set at least one session where this service shall be accessible"/>
+                  </v:var>
+                  <v:var name="Other_4" type="BOOLEAN">
+                    <a:a name="COLUMN_TITLE" value="Other_4"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Switches ON if the Service/sub-service is implemented in Other_4 session.&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC V1.0.0"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="false"/>
+                    <a:da name="INVALID" type="XPath" 
+                          expr="(../Default = &apos;false&apos;) and (../Programming = &apos;false&apos;) and (../Extended = &apos;false&apos;) and (../Supplier = &apos;false&apos;) and (../Other_1 = &apos;false&apos;) and (../Other_2 = &apos;false&apos;) and (../Other_3 = &apos;false&apos;) and (../Other_4 = &apos;false&apos;)" 
+                          true="Please set at least one session where this service shall be accessible"/>
+                  </v:var>
+                  <v:var name="Length" type="INTEGER">
+                    <a:a name="COLUMN_TITLE" value="Length"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Specifies the length of the request.&lt;/p&gt;
+                                    &lt;p&gt;A null length disable the length filtering.&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="0"/>
+                    <a:da name="INVALID" type="Range" expr="&gt;=0"/>
+                  </v:var>
+                  <v:var name="SecurityLevel" type="INTEGER">
+                    <a:a name="COLUMN_TITLE" value="SecurityLevel"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Specifies the security level required for the request.&lt;/p&gt;
+                                    &lt;ul&gt;
+                                        &lt;li&gt;0: no check required&lt;/li&gt;
+                                        &lt;li&gt;1: SA1 / SA2&lt;/li&gt;
+                                        &lt;li&gt;2: SA3 / SA4&lt;/li&gt;
+                                        &lt;li&gt;...&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="0"/>
+                    <a:da name="EDITABLE" type="XPath" 
+                          expr="../../../General/SecurityCheck = &apos;true&apos;"/>
+                    <a:da name="INVALID" type="Range">
+                      <a:tst expr="&gt;=0"/>
+                      <a:tst expr="&lt;=63"/>
+                    </a:da>
+                  </v:var>
+                  <v:var name="Callback" type="STRING">
+                    <a:a name="COLUMN_TITLE" value="Callback"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Specifies the callback name.&lt;/p&gt;
+                                    &lt;p&gt;this callback will be called by UDS if the request is valid (session allowed + length correct + parameters correct)&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value=""/>
+                  </v:var>
+                  <v:var name="Callback_Origin" type="STRING">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                  &lt;p&gt;Select the layer where the callback is defined: EB_cbk, APP_cbk or other one.&lt;/p&gt;
+                                  &lt;ul&gt;
+                                    &lt;li&gt;EB: callback is defined in EB_Prg.c&lt;/li&gt;
+                                    &lt;li&gt;APP: callback is defined in APP_Prg.c&lt;/li&gt;
+                                    &lt;li&gt;OTHER: callback is defined in other file (not APP or EB)&lt;/li&gt;
+                                  &lt;/ul&gt;
+                              &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="APP"/>
+                    <a:da name="RANGE">
+                      <a:v>EB</a:v>
+                      <a:v>APP</a:v>
+                      <a:v>OTHER</a:v>
+                    </a:da>
+                  </v:var>
+                </v:ctr>
+              </v:lst>
+              <v:ctr name="Supplier_Services" type="IDENTIFIABLE">
+                <a:a name="TAB" value="Supplier Services"/>
+                <v:var name="BA" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                                &lt;p&gt;The service with SID (service identifier) 0xBA is supplier defined.&lt;/p&gt;
+                                                &lt;p&gt;If you need to use this service, activate the current configuration variable. Then the UDS_CustomSupplier_BA callback will be provided to manage it.&lt;/p&gt;
+                                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="BB" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                                &lt;p&gt;The service with SID (service identifier) 0xBB is supplier defined.&lt;/p&gt;
+                                                &lt;p&gt;If you need to use this service, activate the current configuration variable. Then the UDS_CustomSupplier_BB callback will be provided to manage it.&lt;/p&gt;
+                                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="BC" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                                &lt;p&gt;The service with SID (service identifier) 0xBC is supplier defined.&lt;/p&gt;
+                                                &lt;p&gt;If you need to use this service, activate the current configuration variable. Then the UDS_CustomSupplier_BC callback will be provided to manage it.&lt;/p&gt;
+                                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="BD" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                                &lt;p&gt;The service with SID (service identifier) 0xBD is supplier defined.&lt;/p&gt;
+                                                &lt;p&gt;If you need to use this service, activate the current configuration variable. Then the UDS_CustomSupplier_BD callback will be provided to manage it.&lt;/p&gt;
+                                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+                <v:var name="BE" type="BOOLEAN">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                                &lt;p&gt;The service with SID (service identifier) 0xBE is supplier defined.&lt;/p&gt;
+                                                &lt;p&gt;If you need to use this service, activate the current configuration variable. Then the UDS_CustomSupplier_BE callback will be provided to manage it.&lt;/p&gt;
+                                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <a:a name="ORIGIN" value="EB"/>
+                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                  <a:da name="DEFAULT" value="false"/>
+                </v:var>
+              </v:ctr>
+              <v:lst name="Service_DID" type="MAP">
+                <a:a name="COLUMNS">
+                  <a:v>Service</a:v>
+                  <a:v>DID</a:v>
+                  <a:v>Mode</a:v>
+                  <a:v>Default</a:v>
+                  <a:v>Programming</a:v>
+                  <a:v>Extended</a:v>
+                  <a:v>Supplier</a:v>
+                  <a:v>Other_1</a:v>
+                  <a:v>Other_2</a:v>
+                  <a:v>Other_3</a:v>
+                  <a:v>Other_4</a:v>
+                  <a:v>Length</a:v>
+                  <a:v>SecurityLevel</a:v>
+                  <a:v>Callback</a:v>
+                  <a:v>Callback_Origin</a:v>
+                </a:a>
+                <v:ctr name="Service_DID" type="IDENTIFIABLE">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                &lt;p&gt;This container contains the RDBI, WDBI, IOCBI and RSDBI service configuration.&lt;/p&gt;
+                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <v:var name="Service" type="ENUMERATION">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Specifies the service.&lt;/p&gt;
+                                    &lt;ul&gt;
+                                        &lt;li&gt;RDBI:ReadDataByIdentifier ($22)&lt;/li&gt;
+                                        &lt;li&gt;WDBI:WriteDataByIdentifier ($2E)&lt;/li&gt;
+                                        &lt;li&gt;IOCBI:InputOutputControlByIdentifier ($2F)&lt;/li&gt;
+                                        &lt;li&gt;RSDBI:ReadScalingDataByIdentifier ($24)&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="RDBI"/>
+                    <a:da name="RANGE">
+                      <a:v>RDBI</a:v>
+                      <a:v>WDBI</a:v>
+                      <a:v>IOCBI</a:v>
+                      <a:v>RSDBI</a:v>
+                    </a:da>
+                  </v:var>
+                  <v:var name="DID" type="INTEGER">
+                    <a:a name="COLUMN_TITLE" value="DID"/>
+                    <a:a name="DEFAULT_RADIX" value="HEX"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Specifies the DID.&lt;/p&gt;
+                                    &lt;p&gt;Range:[0x0000 ; 0xFFFF]&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="0"/>
+                    <a:da name="INVALID" type="Range">
+                      <a:tst expr="&gt;=0"/>
+                      <a:tst expr="&lt;=0xFFFF"/>
+                    </a:da>
+                  </v:var>
+                  <v:var name="Mode" type="STRING">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;&lt;b&gt;Addressing mode&lt;/b&gt;&lt;/p&gt;
+                                    &lt;ul&gt;
+                                        &lt;li&gt;&lt;code&gt;Physical&lt;/code&gt;: only physical addressing available for this request&lt;/li&gt;
+                                        &lt;li&gt;&lt;code&gt;Functional&lt;/code&gt;: only functional addressing available for this request (broadcast)&lt;/li&gt;
+                                        &lt;li&gt;&lt;code&gt;Both&lt;/code&gt;: physical and functional addressing available for this request&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="Physical"/>
+                    <a:da name="RANGE">
+                      <a:v>Physical</a:v>
+                      <a:v>Functional</a:v>
+                      <a:v>Both</a:v>
+                    </a:da>
+                  </v:var>
+                  <v:var name="Default" type="BOOLEAN">
+                    <a:a name="COLUMN_TITLE" value="Default"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Switches ON if the Service/sub-service is implemented in default session.&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC V1.0.0"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="false"/>
+                  </v:var>
+                  <v:var name="Programming" type="BOOLEAN">
+                    <a:a name="COLUMN_TITLE" value="Programming"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Switches ON if the Service/sub-service is implemented in Programming session.&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC V1.0.0"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="false"/>
+                  </v:var>
+                  <v:var name="Extended" type="BOOLEAN">
+                    <a:a name="COLUMN_TITLE" value="Extended"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Switches ON if the Service/sub-service is implemented in Extended session.&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC V1.0.0"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="false"/>
+                  </v:var>
+                  <v:var name="Supplier" type="BOOLEAN">
+                    <a:a name="COLUMN_TITLE" value="Supplier"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Switches ON if the Service/sub-service is implemented in Supplier session.&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC V1.0.0"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="false"/>
+                  </v:var>
+                  <v:var name="Other_1" type="BOOLEAN">
+                    <a:a name="COLUMN_TITLE" value="Other_1"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Switches ON if the Service/sub-service is implemented in Other_1 session.&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC V1.0.0"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="false"/>
+                  </v:var>
+                  <v:var name="Other_2" type="BOOLEAN">
+                    <a:a name="COLUMN_TITLE" value="Other_2"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Switches ON if the Service/sub-service is implemented in Other_2 session.&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC V1.0.0"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="false"/>
+                  </v:var>
+                  <v:var name="Other_3" type="BOOLEAN">
+                    <a:a name="COLUMN_TITLE" value="Other_3"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Switches ON if the Service/sub-service is implemented in Other_3 session.&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC V1.0.0"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="false"/>
+                  </v:var>
+                  <v:var name="Other_4" type="BOOLEAN">
+                    <a:a name="COLUMN_TITLE" value="Other_4"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Switches ON if the Service/sub-service is implemented in Other_4 session.&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC V1.0.0"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="false"/>
+                  </v:var>
+                  <v:var name="Length" type="INTEGER">
+                    <a:a name="COLUMN_TITLE" value="Length"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Specifies the expected length to accept the request (SID + DID = 3).&lt;/p&gt;
+                                    &lt;p&gt;A null length disable the length filtering.&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="3"/>
+                    <a:da name="INVALID" type="Range" expr="&gt;=0"/>
+                  </v:var>
+                  <v:var name="SecurityLevel" type="INTEGER">
+                    <a:a name="COLUMN_TITLE" value="SecurityLevel"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Specifies the security level required for the request.&lt;/p&gt;
+                                    &lt;ul&gt;
+                                        &lt;li&gt;0: no check required&lt;/li&gt;
+                                        &lt;li&gt;1: SA1 / SA2&lt;/li&gt;
+                                        &lt;li&gt;2: SA3 / SA4&lt;/li&gt;
+                                        &lt;li&gt;...&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="0"/>
+                    <a:da name="EDITABLE" type="XPath" 
+                          expr="../../../General/SecurityCheck = &apos;true&apos;"/>
+                    <a:da name="INVALID" type="Range">
+                      <a:tst expr="&gt;=0"/>
+                      <a:tst expr="&lt;=63"/>
+                    </a:da>
+                  </v:var>
+                  <v:var name="Callback" type="STRING">
+                    <a:a name="COLUMN_TITLE" value="Callback"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Specifies the callback name.&lt;/p&gt;
+                                    &lt;p&gt;this callback will be called by UDS if the request is valid (session allowed + length correct + parameters correct)&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value=""/>
+                  </v:var>
+                  <v:var name="Callback_Origin" type="STRING">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                  &lt;p&gt;Select the layer where the callback is defined: EB_cbk, APP_cbk or other one.&lt;/p&gt;
+                                  &lt;ul&gt;
+                                    &lt;li&gt;EB: callback is defined in EB_Prg.c&lt;/li&gt;
+                                    &lt;li&gt;APP: callback is defined in APP_Prg.c&lt;/li&gt;
+                                    &lt;li&gt;OTHER: callback is defined in other file (not APP or EB)&lt;/li&gt;
+                                  &lt;/ul&gt;
+                              &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="APP"/>
+                    <a:da name="RANGE">
+                      <a:v>EB</a:v>
+                      <a:v>APP</a:v>
+                      <a:v>OTHER</a:v>
+                    </a:da>
+                  </v:var>
+                </v:ctr>
+              </v:lst>
+              <v:lst name="Routine_Control" type="MAP">
+                <a:a name="COLUMNS">
+                  <a:v>Service</a:v>
+                  <a:v>SubService</a:v>
+                  <a:v>Mode</a:v>
+                  <a:v>Routine_Identifier</a:v>
+                  <a:v>Default</a:v>
+                  <a:v>Programming</a:v>
+                  <a:v>Extended</a:v>
+                  <a:v>Supplier</a:v>
+                  <a:v>Other_1</a:v>
+                  <a:v>Other_2</a:v>
+                  <a:v>Other_3</a:v>
+                  <a:v>Other_4</a:v>
+                  <a:v>Length</a:v>
+                  <a:v>SecurityLevel</a:v>
+                  <a:v>Callback</a:v>
+                  <a:v>Callback_Origin</a:v>
+                </a:a>
+                <v:ctr name="Routine_Control" type="IDENTIFIABLE">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                &lt;p&gt;This container contains the Routine Control services configuration.&lt;/p&gt;
+                            &lt;/html&gt;</a:v>
+                    <a:v>EN:&lt;html&gt; This container contains the Routine
+                                            Control services configuration. &lt;/html&gt;</a:v>
+                  </a:a>
+                  <v:var name="SubService" type="INTEGER">
+                    <a:a name="COLUMN_TITLE" value="SubService"/>
+                    <a:a name="DEFAULT_RADIX" value="HEX"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Only for PSA&lt;/p&gt;
+                                    &lt;p&gt;RoutineControlType&lt;/p&gt;
+                                    &lt;ul&gt;
+                                        &lt;li&gt;&lt;code&gt;0x01&lt;/code&gt;: Start Routine&lt;/li&gt;
+                                        &lt;li&gt;&lt;code&gt;0x02&lt;/code&gt;: Stop Routine&lt;/li&gt;
+                                        &lt;li&gt;&lt;code&gt;0x03&lt;/code&gt;: Status Request&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="0"/>
+                    <a:da name="INVALID" type="Range" expr="&gt;=0"/>
+                  </v:var>
+                  <v:var name="Mode" type="STRING">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;&lt;b&gt;Addressing mode&lt;/b&gt;&lt;/p&gt;
+                                    &lt;ul&gt;
+                                        &lt;li&gt;&lt;code&gt;Physical&lt;/code&gt;: only physical addressing available for this request&lt;/li&gt;
+                                        &lt;li&gt;&lt;code&gt;Functional&lt;/code&gt;: only functional addressing available for this request (broadcast)&lt;/li&gt;
+                                        &lt;li&gt;&lt;code&gt;Both&lt;/code&gt;: physical and functional addressing available for this request&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="Physical"/>
+                    <a:da name="RANGE">
+                      <a:v>Physical</a:v>
+                      <a:v>Functional</a:v>
+                      <a:v>Both</a:v>
+                    </a:da>
+                  </v:var>
+                  <v:var name="Routine_Identifier" type="INTEGER">
+                    <a:a name="COLUMN_TITLE" value="Routine_Identifier"/>
+                    <a:a name="DEFAULT_RADIX" value="HEX"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Specifies the routine identifier.&lt;/p&gt;
+                                    &lt;p&gt;Range:[0x0000 ; 0xFFFF]&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                      <a:v>EN:&lt;html&gt; Specifies the routine identifier.
+                                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="0"/>
+                    <a:da name="INVALID" type="Range">
+                      <a:tst expr="&gt;=0"/>
+                      <a:tst expr="&lt;=0xFFFF"/>
+                    </a:da>
+                  </v:var>
+                  <v:var name="Default" type="BOOLEAN">
+                    <a:a name="COLUMN_TITLE" value="Default"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Switches ON if the Service/sub-service is implemented in default session.&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC V1.0.0"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="false"/>
+                  </v:var>
+                  <v:var name="Programming" type="BOOLEAN">
+                    <a:a name="COLUMN_TITLE" value="Programming"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Switches ON if the Service/sub-service is implemented in Programming session.&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC V1.0.0"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="false"/>
+                  </v:var>
+                  <v:var name="Extended" type="BOOLEAN">
+                    <a:a name="COLUMN_TITLE" value="Extended"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Switches ON if the Service/sub-service is implemented in Extended session.&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC V1.0.0"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="false"/>
+                  </v:var>
+                  <v:var name="Supplier" type="BOOLEAN">
+                    <a:a name="COLUMN_TITLE" value="Supplier"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Switches ON if the Service/sub-service is implemented in Supplier session.&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC V1.0.0"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="false"/>
+                  </v:var>
+                  <v:var name="Other_1" type="BOOLEAN">
+                    <a:a name="COLUMN_TITLE" value="Other_1"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Switches ON if the Service/sub-service is implemented in Other_1 session.&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC V1.0.0"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="false"/>
+                  </v:var>
+                  <v:var name="Other_2" type="BOOLEAN">
+                    <a:a name="COLUMN_TITLE" value="Other_2"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Switches ON if the Service/sub-service is implemented in Other_2 session.&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC V1.0.0"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="false"/>
+                  </v:var>
+                  <v:var name="Other_3" type="BOOLEAN">
+                    <a:a name="COLUMN_TITLE" value="Other_3"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Switches ON if the Service/sub-service is implemented in Other_3 session.&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC V1.0.0"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="false"/>
+                  </v:var>
+                  <v:var name="Other_4" type="BOOLEAN">
+                    <a:a name="COLUMN_TITLE" value="Other_4"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Switches ON if the Service/sub-service is implemented in Other_4 session.&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="AUTOSAR_ECUC V1.0.0"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="false"/>
+                  </v:var>
+                  <v:var name="Length" type="INTEGER">
+                    <a:a name="COLUMN_TITLE" value="Length"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Specifies the routine control length to accept the request (SID + subfonction + RI = 4).&lt;/p&gt;
+                                    &lt;p&gt;A null length disable the length filtering.&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="4"/>
+                    <a:da name="INVALID" type="Range" expr="&gt;=0"/>
+                  </v:var>
+                  <v:var name="SecurityLevel" type="INTEGER">
+                    <a:a name="COLUMN_TITLE" value="SecurityLevel"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Specifies the security level required for the request.&lt;/p&gt;
+                                    &lt;ul&gt;
+                                        &lt;li&gt;0: no check required&lt;/li&gt;
+                                        &lt;li&gt;1: SA1 / SA2&lt;/li&gt;
+                                        &lt;li&gt;2: SA3 / SA4&lt;/li&gt;
+                                        &lt;li&gt;...&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="0"/>
+                    <a:da name="EDITABLE" type="XPath" 
+                          expr="../../../General/SecurityCheck = &apos;true&apos;"/>
+                    <a:da name="INVALID" type="Range">
+                      <a:tst expr="&gt;=0"/>
+                      <a:tst expr="&lt;=63"/>
+                    </a:da>
+                  </v:var>
+                  <v:var name="Callback" type="STRING">
+                    <a:a name="COLUMN_TITLE" value="Callback"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Specifies the callback name.&lt;/p&gt;
+                                    &lt;p&gt;this callback will be called by UDS if the request is valid (session allowed + length correct + parameters correct)&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value=""/>
+                  </v:var>
+                  <v:var name="Callback_Origin" type="STRING">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                  &lt;p&gt;Select the layer where the callback is defined: EB_cbk, APP_cbk or other one.&lt;/p&gt;
+                                  &lt;ul&gt;
+                                    &lt;li&gt;EB: callback is defined in EB_Prg.c&lt;/li&gt;
+                                    &lt;li&gt;APP: callback is defined in APP_Prg.c&lt;/li&gt;
+                                    &lt;li&gt;OTHER: callback is defined in other file (not APP or EB)&lt;/li&gt;
+                                  &lt;/ul&gt;
+                              &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="APP"/>
+                    <a:da name="RANGE">
+                      <a:v>EB</a:v>
+                      <a:v>APP</a:v>
+                      <a:v>OTHER</a:v>
+                    </a:da>
+                  </v:var>
+                </v:ctr>
+              </v:lst>
+              <v:lst name="Service_OBD" type="MAP">
+                <a:a name="COLUMNS">
+                  <a:v>Service</a:v>
+                  <a:v>Mode</a:v>
+                  <a:v>Length</a:v>
+                  <a:v>Callback</a:v>
+                  <a:v>Callback_Origin</a:v>
+                </a:a>
+                <v:ctr name="Service_OBD" type="IDENTIFIABLE">
+                  <a:a name="DESC">
+                    <a:v>&lt;html&gt;
+                                &lt;p&gt;This container contains the OBD services configuration.&lt;/p&gt;
+                            &lt;/html&gt;</a:v>
+                  </a:a>
+                  <v:var name="Service" type="ENUMERATION">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Specifies the OBD service.&lt;/p&gt;
+                                    &lt;ul&gt;
+                                        &lt;li&gt;OBD_SID_00 ($00)&lt;/li&gt;
+                                        &lt;li&gt;OBD_SID_01 ($01)&lt;/li&gt;
+                                        &lt;li&gt;OBD_SID_02 ($02)&lt;/li&gt;
+                                        &lt;li&gt;OBD_SID_03 ($03)&lt;/li&gt;
+                                        &lt;li&gt;OBD_SID_04 ($04)&lt;/li&gt;
+                                        &lt;li&gt;OBD_SID_05 ($05)&lt;/li&gt;
+                                        &lt;li&gt;OBD_SID_06 ($06)&lt;/li&gt;
+                                        &lt;li&gt;OBD_SID_07 ($07)&lt;/li&gt;
+                                        &lt;li&gt;OBD_SID_08 ($08)&lt;/li&gt;
+                                        &lt;li&gt;OBD_SID_09 ($09)&lt;/li&gt;
+                                        &lt;li&gt;OBD_SID_0A ($0A)&lt;/li&gt;
+                                        &lt;li&gt;OBD_SID_0B ($0B)&lt;/li&gt;
+                                        &lt;li&gt;OBD_SID_0C ($0C)&lt;/li&gt;
+                                        &lt;li&gt;OBD_SID_0D ($0D)&lt;/li&gt;
+                                        &lt;li&gt;OBD_SID_0E ($0E)&lt;/li&gt;
+                                        &lt;li&gt;OBD_SID_0F ($0F)&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="OBD_SID_00"/>
+                    <a:da name="RANGE">
+                      <a:v>OBD_SID_00</a:v>
+                      <a:v>OBD_SID_01</a:v>
+                      <a:v>OBD_SID_02</a:v>
+                      <a:v>OBD_SID_03</a:v>
+                      <a:v>OBD_SID_04</a:v>
+                      <a:v>OBD_SID_05</a:v>
+                      <a:v>OBD_SID_06</a:v>
+                      <a:v>OBD_SID_07</a:v>
+                      <a:v>OBD_SID_08</a:v>
+                      <a:v>OBD_SID_09</a:v>
+                      <a:v>OBD_SID_10</a:v>
+                      <a:v>OBD_SID_11</a:v>
+                      <a:v>OBD_SID_12</a:v>
+                      <a:v>OBD_SID_13</a:v>
+                      <a:v>OBD_SID_14</a:v>
+                      <a:v>OBD_SID_15</a:v>
+                    </a:da>
+                  </v:var>
+                  <v:var name="Mode" type="STRING">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;&lt;b&gt;Addressing mode&lt;/b&gt;&lt;/p&gt;
+                                    &lt;ul&gt;
+                                        &lt;li&gt;&lt;code&gt;Physical&lt;/code&gt;: only physical addressing available for this request&lt;/li&gt;
+                                        &lt;li&gt;&lt;code&gt;Functional&lt;/code&gt;: only functional addressing available for this request (broadcast)&lt;/li&gt;
+                                        &lt;li&gt;&lt;code&gt;Both&lt;/code&gt;: physical and functional addressing available for this request&lt;/li&gt;
+                                    &lt;/ul&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="Physical"/>
+                    <a:da name="RANGE">
+                      <a:v>Physical</a:v>
+                      <a:v>Functional</a:v>
+                      <a:v>Both</a:v>
+                    </a:da>
+                  </v:var>
+                  <v:var name="Length" type="INTEGER">
+                    <a:a name="COLUMN_TITLE" value="Length"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Specifies the exact length to accept the request.&lt;/p&gt;
+                                    &lt;p&gt;A null length disable the length filtering.&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="0"/>
+                    <a:da name="INVALID" type="Range" expr="&gt;=0"/>
+                  </v:var>
+                  <v:var name="Callback" type="STRING">
+                    <a:a name="COLUMN_TITLE" value="Callback"/>
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                    &lt;p&gt;Specifies the callback name.&lt;/p&gt;
+                                    &lt;p&gt;this callback will be called by UDS if the request is valid (session allowed + length correct + parameters correct)&lt;/p&gt;
+                                &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value=""/>
+                  </v:var>
+                  <v:var name="Callback_Origin" type="STRING">
+                    <a:a name="DESC">
+                      <a:v>&lt;html&gt;
+                                  &lt;p&gt;Select the layer where the callback is defined: EB_cbk, APP_cbk or other one.&lt;/p&gt;
+                                  &lt;ul&gt;
+                                    &lt;li&gt;EB: callback is defined in EB_Prg.c&lt;/li&gt;
+                                    &lt;li&gt;APP: callback is defined in APP_Prg.c&lt;/li&gt;
+                                    &lt;li&gt;OTHER: callback is defined in other file (not APP or EB)&lt;/li&gt;
+                                  &lt;/ul&gt;
+                              &lt;/html&gt;</a:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="APP"/>
+                    <a:da name="RANGE">
+                      <a:v>EB</a:v>
+                      <a:v>APP</a:v>
+                      <a:v>OTHER</a:v>
+                    </a:da>
+                  </v:var>
+                </v:ctr>
+              </v:lst>
+            </v:ctr>
+          </d:chc>
+          <d:chc name="myEcuParameterDefinition" type="AR-ELEMENT" 
+                 value="ECU_PARAMETER_DEFINITION">
+            <d:ctr type="AR-ELEMENT">
+              <a:a name="DEF" 
+                   value="ASPath:/AR_PACKAGE_SCHEMA/ECU_PARAMETER_DEFINITION"/>
+              <d:lst name="MODULE_REF">
+                <d:ref type="MODULE_REF" value="ASPath:/TS_TxDxM3I22R0/Uds"/>
+              </d:lst>
+            </d:ctr>
+          </d:chc>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+
+</datamodel>

@@ -1,0 +1,48 @@
+// memdefs-tasking.ldscript - part of the linker-script file for the 2G Aurix chips (TC3)
+//
+// This file defines the specifics for the TC38XQ, used by the more generic linker script.
+//
+// (c) Elektrobit Automotive GmbH
+//
+// $Id: memdefs-tasking.ldscript 43072 2021-05-03 11:16:56Z miwi261726 $
+
+// size of the DSPR RAM for each core
+#define DSPR_CORE0 240k
+#define DSPR_CORE1 240k
+#define DSPR_CORE2 96k
+#define DSPR_CORE3 96k
+
+
+// B-step will have more memory on the first two cores
+// #define DSPR_CORE0 240k
+// #define DSPR_CORE1 240k
+
+
+/* Usage of flash:
+ *
+ * There's 3*3MiB flash in PF0 to PF2.
+ * There's   1MiB flash in PF3.
+ *
+ * Note that some of this flash might be used by the HSM.
+ * Sectors 0 to 64 of PF0 are located at 0x80000000 .. 0x800fffff.
+ * Sector size is 0x4000 B = 16 kiB.
+ * PF0 logical sectors S0 to S39 may be configured as "HSM_exclusive".
+ * In this example we don't expect that this memory is reserved for HSM.
+*/
+
+// size of the PFLASH
+#define PFLASH_SIZE 10M
+
+// reserved sections in PFLASH
+section_setup mpe:vtc:linear
+{
+    // According to Tasking compiler user guide the reserved keyword is used, like
+    // reserved start_address .. end_address;
+    // The end address is not part of the range
+
+    // Let's claim that sector 16 is reserved for the HSM (this is just a demo).
+    // reserved 0x80040000 .. 0x80044000;
+}
+
+// Editor settings: DO NOT DELETE
+// vi:set ts=4:

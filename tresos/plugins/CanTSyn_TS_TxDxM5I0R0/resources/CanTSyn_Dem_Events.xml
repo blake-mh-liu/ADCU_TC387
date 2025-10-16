@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dem:events xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.tresos.de/_project/AutoCore/dem.events_1.xsd"
+    xmlns:dem="http://www.tresos.de/_project/AutoCore/dem.events_1.xsd">
+
+    <!-- !LINKSTO CanTSyn.EB.DemEventIDGeneration,1 -->
+    <event name="CANTSYN_E_SYNC_FAILED"
+           base="as:modconf('CanTSyn')[1]/CanTSynGlobalTimeDomain/*/CanTSynGlobalTimeSlave[node:exists(CanTSynDemEventParameterRefs)]"
+           suffix="concat( '_',./CanTSynGlobalTimeSlavePdu/CanTSynGlobalTimeSlaveHandleId)">
+        <enable type="XPATH"
+            value="(as:modconf('CanTSyn')[1]/CanTSynReportError/CanTSynSyncFailedReportError='DEM')" />
+        <updateReference
+            value="./CanTSynDemEventParameterRefs/CANTSYN_E_SYNC_FAILED" />
+        <diagEventDebounceAlgorithm value="DiagEventDebounceCounterBased" />
+        <counterDecrementStepSize value="1" />
+        <counterIncrementStepSize value="1" />
+        <counterJumpDown value="true" />
+        <counterJumpDownValue value="0" />
+        <counterJumpUp value="true" />
+        <counterFailedThreshold value="5" />
+        <counterPassedThreshold value="-1" />
+    </event>
+
+</dem:events>

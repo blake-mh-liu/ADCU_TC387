@@ -1,0 +1,2150 @@
+<?xml version='1.0'?>
+<!--
+/*******************************************************************************
+**                                                                            **
+** Copyright (C) Infineon Technologies (2023)                                 **
+**                                                                            **
+** All rights reserved.                                                       **
+**                                                                            **
+** This document contains proprietary information belonging to Infineon       **
+** Technologies. Passing on and copying of this document, and communication   **
+** of its contents is not permitted without prior written authorization.      **
+**                                                                            **
+********************************************************************************
+**                                                                            **
+**  FILENAME  : Eth_17_GEthMacV2.xdm                                          **
+**                                                                            **
+**  VERSION   : 8.0.0                                                         **
+**                                                                            **
+**  DATE      : 2023-05-22                                                    **
+**                                                                            **
+**  VARIANT   : Variant PB                                                    **
+**                                                                            **
+**  PLATFORM  : Infineon AURIX2G                                              **
+**                                                                            **
+**  AUTHOR    : DL-AUTOSAR-Engineering                                        **
+**                                                                            **
+**  VENDOR    : Infineon Technologies                                         **
+**                                                                            **
+**  TRACEABILITY : [cover parentID={7AD63B49-7D34-4508-9D60-9C54EAFC40D9},
+                                   {3496D1BD-8F16-41ec-B860-1186C63F3525}]    **
+**                                                                            **
+**  DESCRIPTION  : XML data model for Ethernet driver                         **
+**                                                                            **
+**  [/cover]                                                                  **
+**                                                                            **
+**  SPECIFICATION(S) : Specification of Ethernet Driver,AUTOSAR Release 4.4.0 **
+**                                                                            **
+**  MAY BE CHANGED BY USER : no                                               **
+**                                                                            **
+*******************************************************************************/
+-->
+<datamodel version="7.0"
+           xmlns="http://www.tresos.de/_projects/DataModel2/16/root.xsd"
+           xmlns:a="http://www.tresos.de/_projects/DataModel2/16/attribute.xsd"
+           xmlns:v="http://www.tresos.de/_projects/DataModel2/06/schema.xsd"
+           xmlns:d="http://www.tresos.de/_projects/DataModel2/06/data.xsd">
+
+  <d:ctr type="AUTOSAR" factory="autosar"
+         xmlns:ad="http://www.tresos.de/_projects/DataModel2/08/admindata.xsd"
+         xmlns:cd="http://www.tresos.de/_projects/DataModel2/08/customdata.xsd"
+         xmlns:f="http://www.tresos.de/_projects/DataModel2/14/formulaexpr.xsd"
+         xmlns:icc="http://www.tresos.de/_projects/DataModel2/08/implconfigclass.xsd"
+         xmlns:mt="http://www.tresos.de/_projects/DataModel2/11/multitest.xsd"
+         xmlns:variant="http://www.tresos.de/_projects/DataModel2/11/variant.xsd">
+    <d:lst type="TOP-LEVEL-PACKAGES">
+      <d:ctr name="AURIX2G" type="AR-PACKAGE">
+        <a:a name="UUID" value="ECUC:AUTOSAR"/>
+        <d:lst type="TOP-LEVEL-PACKAGES">
+          <d:ctr name="EcucDefs" type="AR-PACKAGE">
+            <a:a name="UUID" value="ECUC:ECUCDEFS"/>
+            <d:lst type="ELEMENTS">
+              <!-- [cover parentID={4C89EEA8-E729-4630-9FF6-35705DEDE185}] Eth [/cover] -->
+              <d:chc name="Eth" type="AR-ELEMENT" value="MODULE-DEF">
+                <v:ctr type="MODULE-DEF">
+                  <a:a name="ADMIN-DATA" type="ADMIN-DATA">
+                    <ad:ADMIN-DATA>
+                      <ad:DOC-REVISIONS>
+                        <ad:DOC-REVISION>
+                          <ad:REVISION-LABEL>4.4.0</ad:REVISION-LABEL>
+                          <ad:ISSUED-BY>AUTOSAR</ad:ISSUED-BY>
+                        </ad:DOC-REVISION>
+                      </ad:DOC-REVISIONS>
+                    </ad:ADMIN-DATA>
+                  </a:a>
+                  <a:a name="DESC"
+                       value="EN: Configuration of the Eth (Ethernet Driver) module."/>
+                  <a:a name="LOWER-MULTIPLICITY" value="0"/>
+                  <a:a name="POSTBUILDVARIANTSUPPORT" value="true"/>
+                  <a:a name="RELEASE" value="asc:4.4.0"/>
+                  <a:a name="UPPER-MULTIPLICITY" value="1"/>
+                  <d:ref type="REFINED_MODULE_DEF" value="ASPath:/AUTOSAR/EcucDefs/Eth"/>
+                  <a:a name="UUID"
+                       value="ECUC:7330314e-e986-4763-8446-4fea1ec1f9db"/>
+                  <v:var name="POST_BUILD_VARIANT_USED" type="BOOLEAN">
+                    <a:a name="DESC"
+                         value="Indicates whether a module implementation has or plans to have (i.e., introduced at link or post-build time) new post-build variation points."/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Post Build Variant Used"/>
+                    <a:a name="ORIGIN" value="EB"/>
+                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                    <a:da name="DEFAULT" value="false"/>
+                    <a:da name="READONLY" value="FALSE"/>
+                  </v:var>
+                  <v:var name="IMPLEMENTATION_CONFIG_VARIANT"
+                         type="ENUMERATION">
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                      <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                    </a:a>
+                    <a:a name="LABEL" value="Config Variant"/>
+                    <a:da name="DEFAULT" value="VariantPostBuild"/>
+                    <a:da name="RANGE">
+                      <a:v>VariantPostBuild</a:v>
+                    </a:da>
+                  </v:var>
+                 <!-- [cover parentID={B1921E43-6388-427c-A92C-0CB227007EE0}] EthConfigSet [/cover] -->
+                 <v:lst name="EthConfigSet" type="MAP">
+                 <a:da name="MIN" value="1"/>
+                 <a:da name="MAX" value="1"/>
+                  <v:ctr name="EthConfigSet" type="IDENTIFIABLE">
+                    <a:a name="DESC"
+                         value="EN: This container contains the configuration parameters and sub containers of the AUTOSAR Eth module."/>
+                    <a:a name="UUID"
+                         value="ECUC:5038b196-90f1-4b1e-991a-59d361bf33c9"/>
+                    <!-- [cover parentID={A68D78F4-51AF-4bbe-918D-DC8B10C9D57B}] EthCtrlConfig [/cover] -->
+                    <v:lst name="EthCtrlConfig" type="MAP">
+                      <a:da name="MIN" value="1"/>
+                      <a:da name="MAX" type="XPath" expr="ecu:get('Eth.EthAvaliableNodes')"/>
+                      <v:ctr name="EthCtrlConfig" type="IDENTIFIABLE">
+                        <a:a name="DESC"
+                             value="EN: Configuration of the individual controller"/>
+                        <a:a name="UUID"
+                             value="ECUC:56cd8c81-2738-4e37-9187-eb8d6838c4c6"/>
+                        <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="false"/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                        type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v mclass="PreCompile">VariantPostBuild</icc:v>
+                        </a:a>
+                        <!-- [cover parentID={F5BF32D8-DC9C-45d5-9814-9727A1003721}] EthCtrlIdx [/cover] -->
+                        <v:var name="EthCtrlIdx" type="INTEGER">
+                          <a:a name="DESC"
+                               value="EN: Specifies the instance ID of the configured controller."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SCOPE" value="ECU"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                          <a:a name="UUID"
+                               value="ECUC:57bc491e-62f2-4d20-943a-0bf28cca2ac1"/>
+                          <a:da name="DEFAULT" type="XPath" expr="num:i(node:fallback((node:current()/../@index),0))"/>
+                          <a:da name="INVALID" type="Multi">
+                           <mt:xpath expr="text:uniq(../../*/EthCtrlIdx,.)" false="EthCtrlIdx should be unique.Enter diff Number"/>
+                           <mt:range>
+                            <mt:tst expr="&lt;ecu:get('Eth.EthAvaliableNodes')"/>
+                            <mt:tst expr="&gt;=0"/>
+                           </mt:range>
+                          </a:da>
+                        </v:var>
+                        <!-- [cover parentID={17DF2606-0763-47a3-BF2D-26ACC5C9BF59}] EthCtrlEnableMii [/cover] -->
+                        <v:var name="EthCtrlEnableMii" type="BOOLEAN">
+                          <a:a name="DESC"
+                               value="EN: Enables / Disables Media Independent Interface (MII) for transceiver access"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID"
+                               value="ECUC:5292ca43-a021-40dc-ad36-08a935433941"/>
+                          <a:da name="DEFAULT" value="false"/>
+                        </v:var>
+                        <!-- [cover parentID={631DDFFC-3FD9-4504-96CD-E7B98216674D}] EthCtrlEnableRxInterrupt [/cover] -->
+                        <v:var name="EthCtrlEnableRxInterrupt" type="BOOLEAN">
+                          <a:a name="DESC"
+                               value="EN: Enables / Disables receive interrupt"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID"
+                               value="ECUC:1750d5cc-afcb-4d21-93b0-e29e9a41ea26"/>
+                          <a:da name="DEFAULT" value="false"/>
+                        </v:var>
+                        <!-- [cover parentID={CF807EB5-21FA-439e-AC34-501AF1DDBE2C}] EthCtrlEnableTxInterrupt [/cover] -->
+                        <v:var name="EthCtrlEnableTxInterrupt" type="BOOLEAN">
+                          <a:a name="DESC"
+                               value="EN: Enables / Disables transmit interrupt"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID"
+                               value="ECUC:064b39a9-dca2-4886-a425-973de461e3d7"/>
+                          <a:da name="DEFAULT" value="false"/>
+                        </v:var>
+                        <!-- [cover parentID={0C523C44-C770-4b49-929C-641C3E8DB6F6}] EthCtrlMacLayerSpeed [/cover] -->
+                        <v:lst name="EthCtrlMacLayerSpeed">
+                          <a:da name="MIN" value="1"/>
+                          <a:da name="MAX" value="1"/>
+                          <v:var name="EthCtrlMacLayerSpeed" type="ENUMERATION">
+                            <a:a name="DESC"
+                                 value="EN: Defines the baud rate of the MAC layer."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                            <a:a name="SCOPE" value="ECU"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="ECUC:de2c7156-3213-4115-81ce-350f76d3fab9"/>
+                            <a:da name="DEFAULT" value="ETH_MAC_LAYER_SPEED_100M"/>
+                            <a:da name="RANGE">
+                              <a:v>ETH_MAC_LAYER_SPEED_100M</a:v>
+                              <a:v>ETH_MAC_LAYER_SPEED_10M</a:v>
+                              <a:v>ETH_MAC_LAYER_SPEED_1G</a:v>
+                            </a:da>
+                            <a:da name="INVALID" type="XPath">
+                              <a:tst expr="((node:value(../../EthCtrlMacLayerType) = 'ETH_MAC_LAYER_TYPE_XMII') and (node:value(.) = 'ETH_MAC_LAYER_SPEED_1G'))"
+                                     true="ETH_MAC_LAYER_SPEED_100M and ETH_MAC_LAYER_SPEED_10M is supported only in ETH_MAC_LAYER_TYPE_XMII interface"/>
+                            </a:da>
+                          </v:var>
+                        </v:lst>
+                        <!-- [cover parentID={D392D5DA-C896-496e-93DA-D2A1CBF096E7}] EthCtrlMacLayerSubType [/cover] -->
+                        <v:lst name="EthCtrlMacLayerSubType">
+                          <a:da name="MIN" value="1"/>
+                          <a:da name="MAX" value="1"/>
+                          <v:var name="EthCtrlMacLayerSubType"
+                                 type="ENUMERATION">
+                            <a:a name="DESC"
+                                 value="EN: Defines the MAC layer subtype of the interface."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                            <a:a name="SCOPE" value="ECU"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="ECUC:ce06cd75-cb53-4301-8a44-cb67c2a62b81"/>
+                            <a:da name="DEFAULT" value="REDUCED"/>
+                            <a:da name="RANGE">
+                              <a:v>REDUCED</a:v>
+                              <a:v>STANDARD</a:v>
+                            </a:da>
+                            <a:da name="INVALID" type="XPath">
+                              <a:tst expr="((node:value(../../EthCtrlMacLayerType) = 'ETH_MAC_LAYER_TYPE_XGMII') and (node:value(.) = 'STANDARD'))"
+                                     true="GMII mode is not supported in Hardware"/>
+                            </a:da>
+                          </v:var>
+                        </v:lst>
+                        <!-- [cover parentID={4B776CE8-695E-4f67-B0DA-9123858F4F3D}] EthCtrlMacLayerType [/cover] -->
+                        <v:var name="EthCtrlMacLayerType" type="ENUMERATION">
+                          <a:a name="DESC"
+                               value="EN: Defines the MAC layer type of the ethernet controller."/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                          <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                          <a:a name="SCOPE" value="ECU"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID"
+                               value="ECUC:e0aee2a0-fdeb-4688-80c0-c899d85fe1f0"/>
+                          <a:da name="DEFAULT" value="ETH_MAC_LAYER_TYPE_XMII"/>
+                          <a:da name="RANGE">
+                            <a:v>ETH_MAC_LAYER_TYPE_XGMII</a:v>
+                            <a:v>ETH_MAC_LAYER_TYPE_XMII</a:v>
+                          </a:da>
+                        </v:var>
+                        <!-- [cover parentID={1D6D241D-3DA2-462b-BD31-C43707CD7D9B}] EthCtrlPhyAddress [/cover] -->
+                        <v:lst name="EthCtrlPhyAddress">
+                          <a:da name="MIN" value="1"/>
+                          <a:da name="MAX" value="1"/>
+                          <v:var name="EthCtrlPhyAddress" type="STRING">
+                            <a:a name="DESC"
+                                 value="EN: Specifies the unique 48-bit physical address (MAC address) of the controller in network byte order."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                            <a:a name="SCOPE" value="LOCAL"/>
+                            <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                            <a:a name="UUID"
+                                 value="ECUC:b7e156c0-3a45-42f1-b2f9-feb287415200"/>
+                            <a:da name="DEFAULT" value="00:03:19:00:00:01"/>
+                            <a:da name="INVALID" type="Multi">
+                              <mt:length>
+                                <mt:tst expr="&lt;=17"/>
+                                <mt:tst expr="&gt;=17"/>
+                              </mt:length>
+                              <mt:xpath expr="text:match(., '^[a-fA-F0-9]{2}[-][a-fA-F0-9]{2}[-][a-fA-F0-9]{2}[-][a-fA-F0-9]{2}[-][a-fA-F0-9]{2}[-][a-fA-F0-9]{2}$') or
+                              text:match(., '^[a-fA-F0-9]{2}[:][a-fA-F0-9]{2}[:][a-fA-F0-9]{2}[:][a-fA-F0-9]{2}[:][a-fA-F0-9]{2}[:][a-fA-F0-9]{2}$')"
+                              false="EN: Invalid MAC address. Allowed characters are [a-f, A-F, 0-9] and each pair should be separated by symbols ':' or '-'  Example :  00:A0:C9:14:C8:29 or 00-A0-C9-14-C8-29"/>
+                            </a:da>
+                          </v:var>
+                        </v:lst>
+                        <!-- [cover parentID={45BE1EB7-2425-48b9-A863-5471B056E9E2}] EthOpMode [/cover] -->
+                        <v:var name="EthOpMode" type="ENUMERATION">
+                          <a:a name="DESC">
+                            <a:v>EN: This parameter selects Duplex mode (Half or Full Duplex)for Ethernet bus.
+                            </a:v>
+                          </a:a>
+                          <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID"
+                               value="b209c80f-87bd-422e-8f00-fa776f6649ea"/>
+                          <a:da name="DEFAULT" value="FULLDUPLEX"/>
+                          <a:da name="RANGE">
+                            <a:v>HALFDUPLEX</a:v>
+                            <a:v>FULLDUPLEX</a:v>
+                          </a:da>
+                        </v:var>
+                        <!-- [cover parentID={53BAB1E8-1B20-455e-BC1E-B195E031EF85}] EthMdioAlternateInput [/cover] -->
+                        <v:var name="EthMdioAlternateInput" type="ENUMERATION">
+                          <a:a name="DESC">
+                            <a:v>EN: This parameter selects alternate input for MDIO Input Signal.
+                            </a:v>
+                          </a:a>
+                          <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID"
+                               value="b209c80f-87bd-415e-8ab0-fa776766e9fa"/>
+                          <a:da name="DEFAULT" value="ALT1_SELECT_NONE"/>
+                          <a:da name="RANGE" type="XPath" expr="ecu:list(concat('Eth.EthMdioAltInputCntrl',node:fallback(../EthCtrlIdx,node:when(ecu:get('Rel.Derivate')='_TRICORE_TC377_ED_EX','BMD','0'))))"/>
+                        </v:var>
+                        <!-- [cover parentID={F1955CC0-68DC-4f65-BA50-9656CF7ADE87}] EthRxClkInput [/cover] -->
+                        <v:var name="EthRxClkInput" type="ENUMERATION">
+                          <a:a name="DESC">
+                            <a:v>EN: This parameter selects alternate input for Receive Clock for MII and RGMII (RGMII can use ALT0 only).
+                            </a:v>
+                          </a:a>
+                          <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID"
+                               value="b209c80f-87bd-415e-8ab1-fa776766e9fa"/>
+                          <a:da name="DEFAULT" value="ALT3_SELECT_NONE"/>
+                          <a:da name="RANGE" type="XPath" expr="ecu:list(concat('Eth.EthRxclkInputCntrl',node:fallback(../EthCtrlIdx,node:when(ecu:get('Rel.Derivate')='_TRICORE_TC377_ED_EX','BMD','0'))))"/>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="not((../EthCtrlMacLayerType = 'ETH_MAC_LAYER_TYPE_XMII') and (../EthCtrlMacLayerSubType/*[1] = 'REDUCED'))"/>
+                          </a:da>
+                          <a:da name="INVALID" type="XPath">
+                            <a:tst expr="node:value(../EthCtrlMacLayerType) = 'ETH_MAC_LAYER_TYPE_XGMII' and node:value(../EthCtrlIdx) = num:i(0) and substring(.,1,4) != 'ALT0'"
+                            true="In RGMII mode, Alternate input for Receive Clock can use only ALT0 option"/>
+                          </a:da>
+                        </v:var>
+                        <!-- [cover parentID={182C4644-5D07-4250-B922-AD3F7CB2987A}] EthRxErrMIIInput [/cover] -->
+                        <v:var name="EthRxErrMIIInput" type="ENUMERATION">
+                          <a:a name="DESC">
+                            <a:v>EN: This parameter selects alternate input for Receive Error for MII.
+                            </a:v>
+                          </a:a>
+                          <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID"
+                               value="b209c80f-87bd-415e-8ab2-fa776766e9fa"/>
+                          <a:da name="DEFAULT" value="ALT3_SELECT_NONE"/>
+                          <a:da name="RANGE" type="XPath" expr="ecu:list(concat('Eth.EthRxErrMIIInputCntrl',node:fallback(../EthCtrlIdx,node:when(ecu:get('Rel.Derivate')='_TRICORE_TC377_ED_EX','BMD','0'))))"/>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../EthCtrlMacLayerType = 'ETH_MAC_LAYER_TYPE_XMII') and (../EthCtrlMacLayerSubType/*[1] = 'STANDARD')"/>
+                          </a:da>
+                        </v:var>
+                        <!-- [cover parentID={0CF9E130-AFCE-4326-8D9C-8FBE8887C16C}] EthCarrierSenseMIIInput [/cover] -->
+                        <v:var name="EthCarrierSenseMIIInput" type="ENUMERATION">
+                          <a:a name="DESC">
+                            <a:v>EN: This parameter selects alternate input for Carrier Sense for MII.
+                            </a:v>
+                          </a:a>
+                          <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID"
+                               value="b209c80f-87bd-415e-8ab3-fa776766e9fa"/>
+                          <a:da name="DEFAULT" value="ALT3_SELECT_NONE"/>
+                          <a:da name="RANGE" type="XPath" expr="ecu:list(concat('Eth.EthCarrierSenseMIIInputCntrl',node:fallback(../EthCtrlIdx,node:when(ecu:get('Rel.Derivate')='_TRICORE_TC377_ED_EX','BMD','0'))))"/>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../EthCtrlMacLayerType = 'ETH_MAC_LAYER_TYPE_XMII') and (../EthCtrlMacLayerSubType/*[1] = 'STANDARD')"/>
+                          </a:da>
+                        </v:var>
+                        <!-- [cover parentID={08A1545A-FC4F-489a-BF97-EB2C64EED96F}] EthRecDataValidMIIInput [/cover] -->
+                        <v:var name="EthRecDataValidMIIInput" type="ENUMERATION">
+                          <a:a name="DESC">
+                            <a:v>EN: This parameter selects alternate input for Receive Data valid for MII.
+                            </a:v>
+                          </a:a>
+                          <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID"
+                               value="b209c80f-87bd-415e-8ab4-fa776766e9fa"/>
+                          <a:da name="DEFAULT" value="ALT3_SELECT_NONE"/>
+                          <a:da name="RANGE" type="XPath" expr="ecu:list(concat('Eth.EthRecDataValidMIIInputCntrl',node:fallback(../EthCtrlIdx,node:when(ecu:get('Rel.Derivate')='_TRICORE_TC377_ED_EX','BMD','0'))))"/>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../EthCtrlMacLayerType = 'ETH_MAC_LAYER_TYPE_XMII') and (../EthCtrlMacLayerSubType/*[1] = 'STANDARD')"/>
+                          </a:da>
+                          <a:da name="INVALID" type="XPath">
+                            <a:tst expr="((node:value(../EthCarrierSenseMIIInput) = 'ALT0_SELECT_P11_14' and node:value(.) = 'ALT1_SELECT_P11_14')
+                            or
+                            (node:value(../EthCarrierSenseMIIInput) = 'ALT1_SELECT_P11_11' and node:value(.) = 'ALT0_SELECT_P11_11'))"
+                            true="Same hardware pin is selected for both EthCarrierSenseMIIInput and EthRecDataValidMIIInput"/>
+                          </a:da>
+                        </v:var>
+                        <!-- [cover parentID={F461C4F5-9F13-479f-9C44-F239D057EE4A}] EthTxClockMIIInput [/cover] -->
+                        <v:var name="EthTxClockMIIInput" type="ENUMERATION">
+                          <a:a name="DESC">
+                            <a:v>EN: This parameter selects alternate input for Transmit clock input for MII.
+                            </a:v>
+                          </a:a>
+                          <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID"
+                               value="b209c80f-87bd-415e-8ab5-fa776766e9fa"/>
+                          <a:da name="DEFAULT" value="ALT3_SELECT_NONE"/>
+                          <a:da name="RANGE" type="XPath" expr="ecu:list(concat('Eth.EthTxClockMIIInputCntrl',node:fallback(../EthCtrlIdx,node:when(ecu:get('Rel.Derivate')='_TRICORE_TC377_ED_EX','BMD','0'))))"/>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../EthCtrlMacLayerType = 'ETH_MAC_LAYER_TYPE_XMII') and (../EthCtrlMacLayerSubType/*[1] = 'STANDARD')"/>
+                          </a:da>
+                          <a:da name="INVALID" type="XPath">
+                            <a:tst expr="(node:value(../EthRxClkInput) = 'ALT0_SELECT_P11_12' and node:value(.) = 'ALT1_SELECT_P11_12')"
+                            true="Same hardware pin is selected for both EthRxClkInput and EthTxClockMIIInput"/>
+                          </a:da>
+                        </v:var>
+                        <!-- [cover parentID={727631FD-C5FC-46fd-865A-57F5603C41CF}] EthCollisionMII [/cover] -->
+                        <v:var name="EthCollisionMII" type="ENUMERATION">
+                          <a:a name="DESC">
+                            <a:v>EN: This parameter selects alternate input for Collision input for MII.
+                            </a:v>
+                          </a:a>
+                          <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID"
+                               value="b209c80f-87bd-415e-8ab6-fa776766e9fa"/>
+                          <a:da name="DEFAULT" value="ALT3_SELECT_NONE"/>
+                          <a:da name="RANGE" type="XPath" expr="ecu:list(concat('Eth.EthCollisionMIICntrl',node:fallback(../EthCtrlIdx,node:when(ecu:get('Rel.Derivate')='_TRICORE_TC377_ED_EX','BMD','0'))))"/>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../EthCtrlMacLayerType = 'ETH_MAC_LAYER_TYPE_XMII') and (../EthCtrlMacLayerSubType/*[1] = 'STANDARD')"/>
+                          </a:da>
+                        </v:var>
+                        <!-- [cover parentID={D92C3807-6631-466e-A50A-7942D9451AFD}] EthRefClkRMIIInput [/cover] -->
+                        <v:var name="EthRefClkRMIIInput" type="ENUMERATION">
+                          <a:a name="DESC">
+                            <a:v>EN: This parameter selects alternate input for Reference clock input for RMII(50MHz).
+                            </a:v>
+                          </a:a>
+                          <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID"
+                               value="b209c80f-87bd-415e-8ab7-fa776766e9fa"/>
+                          <a:da name="DEFAULT" value="ALT3_SELECT_NONE"/>
+                          <a:da name="RANGE" type="XPath" expr="ecu:list(concat('Eth.EthRefClkRMIIInputCntrl',node:fallback(../EthCtrlIdx,node:when(ecu:get('Rel.Derivate')='_TRICORE_TC377_ED_EX','BMD','0'))))"/>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../EthCtrlMacLayerType = 'ETH_MAC_LAYER_TYPE_XMII') and (../EthCtrlMacLayerSubType/*[1] = 'REDUCED')"/>
+                          </a:da>
+                        </v:var>
+                        <!-- [cover parentID={B03C0E24-ECAC-4be1-A118-02758A553B94}] EthCRSDVRMIIInput [/cover] -->
+                        <v:var name="EthCRSDVRMIIInput" type="ENUMERATION">
+                          <a:a name="DESC">
+                            <a:v>EN: This parameter selects alternate input for Carrier Sense / Data Valid combi-signal for RMII.
+                            </a:v>
+                          </a:a>
+                          <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID"
+                               value="b209c80f-87bd-415e-8ab8-fa776766e9fa"/>
+                          <a:da name="DEFAULT" value="ALT3_SELECT_NONE"/>
+                          <a:da name="RANGE" type="XPath" expr="ecu:list(concat('Eth.EthCRSDVRMIIInputCntrl',node:fallback(../EthCtrlIdx,node:when(ecu:get('Rel.Derivate')='_TRICORE_TC377_ED_EX','BMD','0'))))"/>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../EthCtrlMacLayerType = 'ETH_MAC_LAYER_TYPE_XMII') and (../EthCtrlMacLayerSubType/*[1] = 'REDUCED')"/>
+                          </a:da>
+                        </v:var>
+                        <!-- [cover parentID={54A7861B-D37B-4907-8B02-DA1D31338C03}] EthReceiveData0Input [/cover] -->
+                        <v:var name="EthReceiveData0Input" type="ENUMERATION">
+                          <a:a name="DESC">
+                            <a:v>EN: This parameter selects alternate input for Receive Data 0 for MII, RMII and RGMII (RGMII can use ALT0 only).
+                            </a:v>
+                          </a:a>
+                          <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID"
+                               value="b209c80f-87bd-415e-8ab9-fa776766e9fa"/>
+                          <a:da name="DEFAULT" value="ALT3_SELECT_NONE"/>
+                          <a:da name="RANGE" type="XPath" expr="ecu:list(concat('Eth.EthReceiveData0InputCntrl',node:fallback(../EthCtrlIdx,node:when(ecu:get('Rel.Derivate')='_TRICORE_TC377_ED_EX','BMD','0'))))"/>
+                        </v:var>
+                        <!-- [cover parentID={5E574190-BB74-44f0-B669-7F111139F4AC}] EthReceiveData1Input [/cover] -->
+                        <v:var name="EthReceiveData1Input" type="ENUMERATION">
+                          <a:a name="DESC">
+                            <a:v>EN: This parameter selects alternate input for Receive Data 1 for MII, RMII and RGMII (RGMII can use ALT0 only).
+                            </a:v>
+                          </a:a>
+                          <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID"
+                               value="b209c80f-87bd-415e-8aba-fa776766e9fa"/>
+                          <a:da name="DEFAULT" value="ALT3_SELECT_NONE"/>
+                          <a:da name="RANGE" type="XPath" expr="ecu:list(concat('Eth.EthReceiveData1InputCntrl',node:fallback(../EthCtrlIdx,node:when(ecu:get('Rel.Derivate')='_TRICORE_TC377_ED_EX','BMD','0'))))"/>
+                        </v:var>
+                        <!-- [cover parentID={34FB07EE-2CBC-4e97-92AD-F40788AF569D}] EthReceiveData2Input [/cover] -->
+                        <v:var name="EthReceiveData2Input" type="ENUMERATION">
+                          <a:a name="DESC">
+                            <a:v>EN: This parameter selects alternate input for Receive Data 2 for MII and RGMII (RGMII can use ALT0 only).
+                            </a:v>
+                          </a:a>
+                          <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID"
+                               value="b209c80f-87bd-415e-8abb-fa776766e9fa"/>
+                          <a:da name="DEFAULT" value="ALT3_SELECT_NONE"/>
+                          <a:da name="RANGE" type="XPath" expr="ecu:list(concat('Eth.EthReceiveData2InputCntrl',node:fallback(../EthCtrlIdx,node:when(ecu:get('Rel.Derivate')='_TRICORE_TC377_ED_EX','BMD','0'))))"/>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="not((../EthCtrlMacLayerType = 'ETH_MAC_LAYER_TYPE_XMII') and (../EthCtrlMacLayerSubType/*[1] = 'REDUCED'))"/>
+                          </a:da>
+                        </v:var>
+                        <!-- [cover parentID={E78D72C4-DD55-4b64-9446-688E4D1AE65B}] EthReceiveData3Input [/cover] -->
+                        <v:var name="EthReceiveData3Input" type="ENUMERATION">
+                          <a:a name="DESC">
+                            <a:v>EN: This parameter selects alternate input for Receive Data 3 for MII and RGMII (RGMII can use ALT0 only).
+                            </a:v>
+                          </a:a>
+                          <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID"
+                               value="b209c80f-87bd-415e-8abc-fa776766e9fa"/>
+                          <a:da name="DEFAULT" value="ALT3_SELECT_NONE"/>
+                          <a:da name="RANGE" type="XPath" expr="ecu:list(concat('Eth.EthReceiveData3InputCntrl',node:fallback(../EthCtrlIdx,node:when(ecu:get('Rel.Derivate')='_TRICORE_TC377_ED_EX','BMD','0'))))"/>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="not((../EthCtrlMacLayerType = 'ETH_MAC_LAYER_TYPE_XMII') and (../EthCtrlMacLayerSubType/*[1] = 'REDUCED'))"/>
+                          </a:da>
+                        </v:var>
+                        <!-- [cover parentID={8E4597F5-33B2-48c2-BD19-76B544DA7091}] EthSkewTxClockDelay [/cover] -->
+                        <v:var name="EthSkewTxClockDelay" type="INTEGER">
+                          <a:a name="DESC"
+                               value="EN: Specifies the transmit clock delay in RGMII mode for transmit skew timing."/>
+                          <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID"
+                               value="ECUC:b209c80f-87bd-415e-8abd-fa776766e9fa"/>
+                          <a:da name="DEFAULT" value="0"/>
+                          <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=15"/>
+                            <a:tst expr="&gt;=0"/>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../EthCtrlMacLayerType = 'ETH_MAC_LAYER_TYPE_XGMII') and (../EthCtrlMacLayerSubType/*[1] = 'REDUCED')"/>
+                          </a:da>
+                        </v:var>
+                        <!-- [cover parentID={DAC60EB1-21E2-47d8-B81B-E6BEA3C88ECD}] EthSkewRxClockDelay [/cover] -->
+                        <v:var name="EthSkewRxClockDelay" type="INTEGER">
+                          <a:a name="DESC"
+                               value="EN: Specifies the receive clock delay in RGMII mode for receive skew timing."/>
+                          <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID"
+                               value="ECUC:b209c80f-87bd-415e-8abe-fa776766e9fa"/>
+                          <a:da name="DEFAULT" value="0"/>
+                          <a:da name="INVALID" type="Range">
+                            <a:tst expr="&lt;=15"/>
+                            <a:tst expr="&gt;=0"/>
+                          </a:da>
+                          <a:da name="EDITABLE" type="XPath">
+                            <a:tst expr="(../EthCtrlMacLayerType = 'ETH_MAC_LAYER_TYPE_XGMII') and (../EthCtrlMacLayerSubType/*[1] = 'REDUCED')"/>
+                          </a:da>
+                        </v:var>
+                        <!-- [cover parentID={502D4C6E-C399-4cff-8CE1-FD7C215CDB44}] EthCtrlEnableCrcStripping [/cover] -->
+                        <v:var name="EthCtrlEnableCrcStripping" type="BOOLEAN">
+                          <a:a name="DESC"
+                               value="EN: Include or exclude the length of the checksum in the received frame length reported to upper layer."/>
+                          <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID"
+                               value="ECUC:e9f29dc0-4z38-4y7a-89x6-67505a301506"/>
+                          <a:da name="DEFAULT" value="false"/>
+                        </v:var>
+                        <!-- [cover parentID={3CC433E8-3032-46c2-9B93-4C84C59E6AAB}] EthMDCClockFrequency [/cover] -->
+                        <v:var name="EthMDCClockFrequency" type="INTEGER">
+                          <a:a name="DESC">
+                          <a:v>MDC clock frequency in Hz. As specified in IEEE 802.3, the maximum value of MDC clock is 2.5 MHz. However, there are PHY devices, which support higher than 2.5 MHz. The exact MDC clock frequency value, that can be generated is dependent on fSPB value and clock divider values programmable in Ethernet controller.
+                          </a:v>
+                          </a:a>
+                          <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                               type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                          </a:a>
+                          <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                          <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                          <a:a name="SCOPE" value="LOCAL"/>
+                          <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                          <a:a name="UUID"
+                           value="ECUC:f4b834a6-9fce-4cf9-9f80-98e4a6ad9ef0"/>
+                          <a:da name="DEFAULT" value="2500000"/>
+                          <a:da name="INVALID" type="Range">
+                          <a:tst expr="&lt;=num:i(num:i(ecu:get('Mcu.fSPBMaxFrequency')) div num:i(4))"/>
+                          <a:tst expr="&gt;=2500000"/>
+                          </a:da>
+                        </v:var>
+                        <!-- [cover parentID={93BB5863-66A8-4532-BCE8-B8BA89930B64}] EthCtrlEcucPartitionRef [/cover] -->
+                        <v:lst name="EthCtrlEcucPartitionRef">
+                          <a:da name="MIN" value="0"/>
+                          <a:da name="MAX" value="1"/>
+                          <a:da name="EDITABLE" value="false"/>
+                          <v:ref name="EthCtrlEcucPartitionRef"
+                                 type="REFERENCE">
+                            <a:a name="DESC">
+                              <a:v>EN: Maps the Ethernet controller to zero or one ECUC partitions. The ECUC partition referenced is a subset of the ECUC partitions where the Ethernet driver is mapped to.</a:v>
+                              <a:v>EN: Tags: atp.Status=draft</a:v>
+                            </a:a>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v mclass="PreCompile">VariantPostBuild</icc:v>
+                              <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="POSTBUILDVARIANTMULTIPLICITY"
+                                 value="true"/>
+                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                            <a:a name="SCOPE" value="ECU"/>
+                            <a:a name="UUID"
+                                 value="ECUC:74255c0c-9557-4815-a863-78191125437f"/>
+                            <a:da name="EDITABLE" value="false"/>
+                            <a:da name="REF"
+                                  value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/EcuC/EcucPartitionCollection/EcucPartition"/>
+                          </v:ref>
+                        </v:lst>
+                        <!-- [cover parentID={3A02817E-89F1-4f52-AF44-D79A3547783E}] EthCtrlConfigEgress [/cover] -->
+                        <v:ctr name="EthCtrlConfigEgress" type="IDENTIFIABLE">
+                          <a:a name="DESC"
+                               value="EN: Configuration of one Ethernet controller egress behavior."/>
+                          <a:a name="UUID"
+                               value="ECUC:be6a7b08-4a28-432f-a0af-ff4e15c60533"/>
+                          <!-- [cover parentID={CB568102-DB6C-41df-A705-A8A83A943411}] EthCtrlConfigEgressLastSchedulerRef [/cover] -->
+                          <v:ref name="EthCtrlConfigEgressLastSchedulerRef"
+                                 type="REFERENCE">
+                            <a:a name="DESC"
+                                 value="EN: Reference to the scheduler which is the last in the egress structure."/>
+                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                            <a:a name="SCOPE" value="LOCAL"/>
+                            <a:a name="UUID"
+                                 value="ECUC:f0893bf2-9ed0-4bed-bbee-77ba1893ff72"/>
+                            <a:da name="REF"
+                                  value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Eth/EthConfigSet/EthCtrlConfig/EthCtrlConfigEgress/EthCtrlConfigScheduler"/>
+                          </v:ref>
+                          <!-- [cover parentID={90DFC004-E76E-408a-8B3F-C85FBF881682}] EthCtrlConfigEgressFifo [/cover] -->
+                          <v:lst name="EthCtrlConfigEgressFifo" type="MAP">
+                            <a:da name="MIN" value="0"/>
+                            <a:da name="MAX" value="4"/>
+                            <v:ctr name="EthCtrlConfigEgressFifo"
+                                   type="IDENTIFIABLE">
+                              <a:a name="DESC"
+                                   value="EN: Represents a Fifo at the egress side."/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v mclass="PreCompile">VariantPostBuild</icc:v>
+                              </a:a>
+                              <a:a name="POSTBUILDVARIANTMULTIPLICITY"
+                                   value="false"/>
+                              <a:a name="UUID"
+                                   value="ECUC:60b3196e-df38-4511-acc6-9212c294c658"/>
+                              <!-- [cover parentID={DE8495EF-590B-4dfb-8E45-44983597CA74}] EthCtrlConfigEgressFifoBufLenByte [/cover] -->
+                              <v:var name="EthCtrlConfigEgressFifoBufLenByte"
+                                     type="INTEGER">
+                                <a:a name="DESC"
+                                     value="EN: Length of Fifo elements in bytes."/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                     type="IMPLEMENTATIONCONFIGCLASS">
+                                  <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                <a:a name="UUID"
+                                     value="ECUC:714bb7d2-db19-4469-95ce-f33da32f5b9f"/>
+                                <a:da name="DEFAULT" value="64"/>
+                                <a:da name="INVALID" type="Range">
+                                  <a:tst expr="&lt;=1522"/>
+                                  <a:tst expr="&gt;=0"/>
+                                </a:da>
+                              </v:var>
+                              <!-- [cover parentID={97FB2863-4A26-4ea5-B688-96614A2C6857}] EthCtrlConfigEgressFifoBufTotal [/cover] -->
+                              <v:var name="EthCtrlConfigEgressFifoBufTotal"
+                                     type="INTEGER">
+                                <a:a name="DESC" value="EN: Fifo buffer count."/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                     type="IMPLEMENTATIONCONFIGCLASS">
+                                  <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                <a:a name="UUID"
+                                     value="ECUC:5628ea6e-d69a-459d-9923-4e4fd18b25de"/>
+                                <a:da name="DEFAULT" value="4"/>
+                                <a:da name="INVALID" type="Range">
+                                  <a:tst expr="&lt;=8191"/>
+                                  <a:tst expr="&gt;=0"/>
+                                </a:da>
+                              </v:var>
+                              <!-- [cover parentID={ADC29BA3-D87F-4f1d-949D-01F5223E28B5}] EthCtrlConfigEgressFifoIdx [/cover] -->
+                              <v:var name="EthCtrlConfigEgressFifoIdx"
+                                     type="INTEGER">
+                                <a:a name="DESC" value="EN: Egress Fifo index."/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                     type="IMPLEMENTATIONCONFIGCLASS">
+                                  <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                <a:a name="UUID"
+                                     value="ECUC:846c5c0a-6899-4fca-b6e4-507488cf7a9f"/>
+                                <a:da name="DEFAULT" type="XPath" expr="num:i(node:fallback((node:current()/../@index),0))"/>
+                                <a:da name="INVALID" type="Multi">
+                                  <mt:xpath expr="text:uniq(../../*/EthCtrlConfigEgressFifoIdx,.)" false="EthCtrlConfigEgressFifoIdx should be unique.Enter diff Number"/>
+                                  <mt:range>
+                                    <mt:tst expr="&lt;=3"/>
+                                    <mt:tst expr="&gt;=0"/>
+                                  </mt:range>
+                                </a:da>
+                              </v:var>
+                              <!-- [cover parentID={1CFFE322-BF98-4bd9-A7D1-BC3268130788}] EthCtrlConfigEgressFifoPriorityAssignment [/cover] -->
+                              <v:lst
+                                     name="EthCtrlConfigEgressFifoPriorityAssignment">
+                              <a:da name="MIN" value="0"/>
+                              <a:da name="MAX" value="8"/>
+                                <v:var
+                                       name="EthCtrlConfigEgressFifoPriorityAssignment"
+                                       type="INTEGER">
+                                  <a:a name="DESC"
+                                       value="EN: Message egress prority assignment."/>
+                                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                       type="IMPLEMENTATIONCONFIGCLASS">
+                                    <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                                    <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                  </a:a>
+                                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                  <a:a name="POSTBUILDVARIANTMULTIPLICITY"
+                                       value="true"/>
+                                  <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                  <a:a name="SCOPE" value="LOCAL"/>
+                                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                  <a:a name="UUID"
+                                       value="ECUC:14e62bc3-25ea-4397-8d69-349f0d0e2ed3"/>
+                                  <a:da name="DEFAULT" type="XPath" expr="num:i(node:fallback((node:current()/@index),0))"/>
+                                  <a:da name="INVALID" type="Multi">
+                                    <mt:xpath expr="text:uniq(../../../*/EthCtrlConfigEgressFifoPriorityAssignment/*,.)" false="EthCtrlConfigEgressFifoPriorityAssignment should be unique.Enter diff Number"/>
+                                    <mt:range>
+                                      <mt:tst expr="&lt;=7"/>
+                                      <mt:tst expr="&gt;=0"/>
+                                    </mt:range>
+                                  </a:da>
+                                </v:var>
+                              </v:lst>
+                            </v:ctr>
+                          </v:lst>
+                          <v:lst name="EthCtrlConfigScheduler" type="MAP">
+                            <a:da name="MIN" value="1"/>
+                            <a:da name="MAX" value="1"/>
+                            <!-- [cover parentID={917319C0-58F3-4307-89D4-6B451A05FAD7}] EthCtrlConfigScheduler [/cover] -->
+                            <v:ctr name="EthCtrlConfigScheduler"
+                                   type="IDENTIFIABLE">
+                              <a:a name="DESC"
+                                   value="EN: Represents a Scheduler on the egress side."/>
+                              <a:a name="UUID"
+                                   value="ECUC:c78e78c9-8c69-44be-b22e-485cdb6af312"/>
+                              <!-- [cover parentID={5851E637-AB51-4f45-8A43-6C9226A12AD0}] EthCtrlConfigSchedulerAlgorithm [/cover] -->
+                              <v:var name="EthCtrlConfigSchedulerAlgorithm" type="ENUMERATION">
+                                <a:a name="DESC"
+                                     value="EN: Configures the Tx scheduling algorithm at the MTL layer."/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                     type="IMPLEMENTATIONCONFIGCLASS">
+                                  <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                <a:a name="UUID"
+                                     value="ECUC:e0aee2a0-fdeb-4688-80c0-c899d85fe3f2"/>
+                                <a:da name="DEFAULT" value="ETH_SCHEDULER_STRICT_PRIORITY"/>
+                                <a:da name="RANGE">
+                                  <a:v>ETH_SCHEDULER_STRICT_PRIORITY</a:v>
+                                  <a:v>ETH_SCHEDULER_WEIGHTED_ROUND_ROBIN</a:v>
+                                </a:da>
+                              </v:var>
+                              <v:lst name="EthCtrlConfigSchedulerPredecessor"
+                                     type="MAP">
+                                <a:da name="MIN" value="1"/>
+                                <a:da name="MAX" value="4"/>
+                                <!-- [cover parentID={D8D6FE82-FF35-4a41-B09E-6CBE452E8310}] EthCtrlConfigSchedulerPredecessor [/cover] -->
+                                <v:ctr name="EthCtrlConfigSchedulerPredecessor"
+                                       type="IDENTIFIABLE">
+                                  <a:a name="DESC"
+                                       value="EN: Defines an ordered list of predecessors for this scheduler."/>
+                                  <a:a name="UUID"
+                                       value="ECUC:f5ab566b-f4b3-4448-b7f1-7fc38a6217fb"/>
+                                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                     type="IMPLEMENTATIONCONFIGCLASS">
+                                    <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                                  </a:a>
+                                  <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="true"/>
+                                  <!-- [cover parentID={2D9E1D75-4714-40e5-9956-749294BA750C}] EthCtrlConfigSchedulerPredecessorOrder [/cover] -->
+                                  <v:var
+                                         name="EthCtrlConfigSchedulerPredecessorOrder"
+                                         type="INTEGER">
+                                    <a:a name="DESC"
+                                         value="EN: Defines the order of the scheduler predecessors."/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                         type="IMPLEMENTATIONCONFIGCLASS">
+                                      <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                    <a:a name="POSTBUILDVARIANTVALUE"
+                                         value="true"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID"
+                                         value="ECUC:38486277-8bd9-4ab6-990f-f87322059e56"/>
+                                    <a:da name="DEFAULT" value="0"/>
+                                    <a:da name="INVALID" type="Range">
+                                      <a:tst expr="&lt;=100"/>
+                                      <a:tst expr="&gt;=0"/>
+                                    </a:da>
+                                  </v:var>
+                                  <!-- [cover parentID={D6B00EB1-0614-4919-BDE1-BFC0CA41BFD5}] EthCtrlConfigSchedulerPredecessorRef [/cover] -->
+                                  <v:ref
+                                         name="EthCtrlConfigSchedulerPredecessorRef"
+                                         type="CHOICE-REFERENCE">
+                                    <a:a name="DESC"
+                                         value="EN: Choice reference to the scheduler predecessor."/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                         type="IMPLEMENTATIONCONFIGCLASS">
+                                      <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="POSTBUILDVARIANTVALUE"
+                                         value="true"/>
+                                    <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="UUID"
+                                         value="ECUC:915050e6-983c-4dec-aba2-46a2cc98b263"/>
+                                    <a:da name="REF">
+                                      <a:v>ASPathDataOfSchema:/AUTOSAR/EcucDefs/Eth/EthConfigSet/EthCtrlConfig/EthCtrlConfigEgress/EthCtrlConfigEgressFifo</a:v>
+                                      <a:v>ASPathDataOfSchema:/AUTOSAR/EcucDefs/Eth/EthConfigSet/EthCtrlConfig/EthCtrlConfigEgress/EthCtrlConfigShaper</a:v>
+                                      <a:v>ASPathDataOfSchema:/AUTOSAR/EcucDefs/Eth/EthConfigSet/EthCtrlConfig/EthCtrlConfigEgress/EthCtrlConfigScheduler</a:v>
+                                    </a:da>
+                                    <a:da name="INVALID" type="XPath">
+                                      <a:tst expr="text:uniq(../../*/EthCtrlConfigSchedulerPredecessorRef,.)" false="ETH - Each scheduler reference should be unique."/>
+                                    </a:da>
+                                  </v:ref>
+                                </v:ctr>
+                              </v:lst>
+                            </v:ctr>
+                          </v:lst>
+                          <v:lst name="EthCtrlConfigShaper" type="MAP">
+                            <a:da name="MIN" value="0"/>
+                            <a:da name="MAX" value="3"/>
+                            <!-- [cover parentID={40B94C49-2E6B-4db5-A54E-857BF9C2D3D1}] EthCtrlConfigShaper [/cover] -->
+                            <v:ctr name="EthCtrlConfigShaper"
+                                   type="IDENTIFIABLE">
+                              <a:a name="DESC"
+                                   value="EN: Represents a Shaper at the egress side."/>
+                              <a:a name="UUID"
+                                   value="ECUC:3c8587ab-a652-49cd-a4b4-c93db87d8b25"/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                              </a:a>
+                              <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="true"/>
+                              <v:lst name="EthCtrlConfigShaperIdleSlope">
+                                <a:da name="MAX" value="1"/>
+                                <a:da name="MIN" value="0"/>
+                                <a:da name="INVALID" type="XPath">
+                                  <a:tst expr="num:i(count(./*)) = num:i(0)" true="EthCtrlConfigShaperIdleSlope value not configured" />
+                                </a:da>
+                                <!-- [cover parentID={57400837-0D56-42c1-8A3D-45C4861EA332}] EthCtrlConfigShaperIdleSlope [/cover] -->
+                                <v:var name="EthCtrlConfigShaperIdleSlope"
+                                       type="INTEGER">
+                                  <a:a name="DESC"
+                                       value="EN: Defines the increase of credit in bits per second for the AVB shaper."/>
+                                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                       type="IMPLEMENTATIONCONFIGCLASS">
+                                    <icc:v mclass="PreCompile">VariantPostBuild</icc:v>
+                                    <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                  </a:a>
+                                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                  <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="false"/>
+                                  <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                  <a:a name="SCOPE" value="LOCAL"/>
+                                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                  <a:a name="UUID"
+                                       value="ECUC:c3c28cf6-243a-4473-bd20-a2c176573f73"/>
+                                  <a:da name="DEFAULT" value="0"/>
+                                  <a:da name="INVALID" type="Range">
+                                    <a:tst expr="&lt;=1000000000"/>
+                                    <a:tst expr="&gt;=0"/>
+                                  </a:da>
+                                </v:var>
+                              </v:lst>
+                              <!-- [cover parentID={0902B66A-9DAC-410e-AD9D-52A09563DD72}] EthCtrlConfigShaperPredecessorFifoRef [/cover] -->
+                              <v:ref
+                                     name="EthCtrlConfigShaperPredecessorFifoRef"
+                                     type="REFERENCE">
+                                <a:a name="DESC"
+                                     value="EN: Reference to the fifo which is the predecessor for this shaper."/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                     type="IMPLEMENTATIONCONFIGCLASS">
+                                  <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="UUID"
+                                     value="ECUC:cf04f5bf-80ad-44ba-b69d-e783e51d5cb6"/>
+                                <a:da name="REF"
+                                      value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Eth/EthConfigSet/EthCtrlConfig/EthCtrlConfigEgress/EthCtrlConfigEgressFifo"/>
+                                <a:da name="INVALID" type="XPath">
+                                      <a:tst expr="node:refvalid(.)" false="ETH - The configured node does not exist or may not be referenced."/>
+                                      <a:tst expr="text:uniq(../../*/EthCtrlConfigShaperPredecessorFifoRef,.)" false="ETH - Fifo reference should be unique."/>
+                                </a:da>
+                              </v:ref>
+                              <!-- [cover parentID={3320E1D5-B8CA-4a43-9B11-44647FEC9631}] EthCtrlConfigShaperHiCredit [/cover] -->
+                              <v:var name="EthCtrlConfigShaperHiCredit"
+                                     type="INTEGER">
+                                <a:a name="DESC"
+                                     value="EN: The maximum value that can be accumulated in the credit parameter."/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                       type="IMPLEMENTATIONCONFIGCLASS">
+                                    <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                <a:a name="UUID"
+                                     value="ECUC:c3c28cf6-243a-4473-bd20-a2c176573f78"/>
+                                <a:da name="DEFAULT" value="0"/>
+                                <a:da name="INVALID" type="Range">
+                                  <a:tst expr="&lt;=131072"/>
+                                  <a:tst expr="&gt;=0"/>
+                                </a:da>
+                              </v:var>
+                              <!-- [cover parentID={3FB6B911-CFD7-477b-98C3-A7EABAFA23F3}] EthCtrlConfigShaperLoCredit [/cover] -->
+                              <v:var name="EthCtrlConfigShaperLoCredit"
+                                     type="INTEGER">
+                                <a:a name="DESC"
+                                     value="EN: The minimum value that can be accumulated in the credit parameter."/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                     type="IMPLEMENTATIONCONFIGCLASS">
+                                  <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                <a:a name="UUID"
+                                     value="ECUC:c3c28cf6-243a-4473-bd20-a2c176573f80"/>
+                                <a:da name="DEFAULT" value="0"/>
+                                <a:da name="INVALID" type="Range">
+                                  <a:tst expr="&lt;=131072"/>
+                                  <a:tst expr="&gt;=0"/>
+                                </a:da>
+                              </v:var>
+                            </v:ctr>
+                          </v:lst>
+                          <v:lst name="EthCtrlConfigDMAArbitration" type="MAP">
+                            <a:da name="MIN" value="1"/>
+                            <a:da name="MAX" value="1"/>
+                            <!-- [cover parentID={48E3AC38-BDBB-4b72-95BC-0EDA074FF523}] EthCtrlConfigDMAArbitration [/cover] -->
+                            <v:ctr name="EthCtrlConfigDMAArbitration"
+                                   type="IDENTIFIABLE">
+                              <a:a name="DESC"
+                                   value="EN: Contains the configuration of the arbitration for the transmit DMA channels."/>
+                              <a:a name="UUID"
+                                   value="ECUC:c78e78c9-8c69-44be-b22e-485cdb6af316"/>
+                              <!-- [cover parentID={5D1969F7-D3E4-46a0-A46D-96C112279637}] EthCtrlConfigDMAArbitrationAlgorithm [/cover] -->
+                              <v:var name="EthCtrlConfigDMAArbitrationAlgorithm" type="ENUMERATION">
+                                <a:a name="DESC"
+                                     value="EN: Configures the arbitration algorithm for the Tx DMA channels."/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                     type="IMPLEMENTATIONCONFIGCLASS">
+                                  <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                <a:a name="UUID"
+                                     value="ECUC:e0aee2a0-fdeb-4688-80c0-c899d85fe3f6"/>
+                                <a:da name="DEFAULT" value="ETH_DMA_ARBITRATION_FIXED_PRIORITY"/>
+                                <a:da name="RANGE">
+                                  <a:v>ETH_DMA_ARBITRATION_FIXED_PRIORITY</a:v>
+                                  <a:v>ETH_DMA_ARBITRATION_WEIGHTED_ROUND_ROBIN</a:v>
+                                  <a:v>ETH_DMA_ARBITRATION_WEIGHTED_STRICT_PRIORITY</a:v>
+                                </a:da>
+                              </v:var>
+                              <v:lst name="EthCtrlConfigDMAWeightAssignment"
+                                     type="MAP">
+                                <a:da name="MIN" value="0"/>
+                                <a:da name="MAX" value="4"/>
+                                <!-- [cover parentID={5B9ABFDA-5FD9-4601-AB0F-A41AD19C1981}] EthCtrlConfigDMAWeightAssignment [/cover] -->
+                                <v:ctr name="EthCtrlConfigDMAWeightAssignment"
+                                       type="IDENTIFIABLE">
+                                  <a:a name="DESC"
+                                       value="EN: Configuration of the Tx DMA weights mapped to the egress FIFOs."/>
+                                  <a:a name="UUID"
+                                       value="ECUC:f5ab566b-f4b3-4448-b7f1-7fc38a6217ff"/>
+                                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                     type="IMPLEMENTATIONCONFIGCLASS">
+                                    <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                                  </a:a>
+                                  <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="true"/>
+                                  <!-- [cover parentID={ED82F899-4343-46d4-8609-8318511E433E}] EthCtrlConfigDMAArbitrationWeight [/cover] -->
+                                  <v:var
+                                         name="EthCtrlConfigDMAArbitrationWeight"
+                                         type="INTEGER">
+                                    <a:a name="DESC"
+                                         value="EN: Specifies the weight to be configured for a DMA channel that is mapped to an egress FIFO."/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                         type="IMPLEMENTATIONCONFIGCLASS">
+                                      <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                    <a:a name="UUID"
+                                         value="ECUC:38486277-8bd9-4ab6-990f-f87322059e60"/>
+                                    <a:da name="DEFAULT" value="1"/>
+                                    <a:da name="INVALID" type="Range">
+                                      <a:tst expr="&lt;=8"/>
+                                      <a:tst expr="&gt;=1"/>
+                                    </a:da>
+                                    <a:da name="INVALID" type="XPath">
+                                      <a:tst expr="((node:value(../../../EthCtrlConfigDMAArbitrationAlgorithm) = 'ETH_DMA_ARBITRATION_FIXED_PRIORITY'))"
+                                             true="Weights are not to be configured for Fixed Priority scheduling. Delete the EthCtrlConfigDMAWeightAssignment containers"/>
+                                    </a:da>
+                                  </v:var>
+                                  <!-- [cover parentID={5027AE47-4565-4720-B02E-7B4B2A809BD8}] EthCtrlConfigDMAEgressFifoRef [/cover] -->
+                                  <v:ref
+                                         name="EthCtrlConfigDMAEgressFifoRef"
+                                         type="REFERENCE">
+                                    <a:a name="DESC"
+                                         value="EN: Reference to the configured egress FIFO."/>
+                                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                         type="IMPLEMENTATIONCONFIGCLASS">
+                                      <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                    </a:a>
+                                    <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                                    <a:a name="SCOPE" value="LOCAL"/>
+                                    <a:a name="UUID"
+                                         value="ECUC:915050e6-983c-4dec-aba2-46a2cc98b267"/>
+                                    <a:da name="REF">
+                                      <a:v>ASPathDataOfSchema:/AUTOSAR/EcucDefs/Eth/EthConfigSet/EthCtrlConfig/EthCtrlConfigEgress/EthCtrlConfigEgressFifo</a:v>
+                                    </a:da>
+                                    <a:da name="INVALID" type="XPath">
+                                      <a:tst expr="node:refvalid(.)" false="ETH - The configured node does not exist or may not be referenced."/>
+                                      <a:tst expr="text:uniq(../../*/EthCtrlConfigDMAEgressFifoRef,.)" false="ETH - Each egress FIFO reference should be unique."/>
+                                    </a:da>
+                                  </v:ref>
+                                </v:ctr>
+                              </v:lst>
+                            </v:ctr>
+                          </v:lst>
+                        </v:ctr>
+                        <!-- [cover parentID={76EE0895-C871-4b41-909D-89A12EE001EF}] EthCtrlConfigIngress [/cover] -->
+                        <v:ctr name="EthCtrlConfigIngress" type="IDENTIFIABLE">
+                          <a:a name="DESC"
+                               value="EN: Configuration of one Ethernet controler ingress behavior."/>
+                          <a:a name="UUID"
+                               value="ECUC:3cc2c4cd-ef0e-4855-90c3-e35257bc7c9c"/>
+                          <v:lst name="EthCtrlConfigIngressFifo" type="MAP">
+                          <a:da name="MIN" value="0"/>
+                          <a:da name="MAX" value="4"/>
+                            <!-- [cover parentID={B4D51D84-2BAD-4cd2-AF98-4FAF8E158978}] EthCtrlConfigIngressFifo [/cover] -->
+                            <v:ctr name="EthCtrlConfigIngressFifo"
+                                   type="IDENTIFIABLE">
+                              <a:a name="DESC"
+                                   value="EN: Represents a Fifo at the ingress side."/>
+                              <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                   type="IMPLEMENTATIONCONFIGCLASS">
+                                <icc:v mclass="PreCompile">VariantPostBuild</icc:v>
+                              </a:a>
+                              <a:a name="POSTBUILDVARIANTMULTIPLICITY"
+                                   value="false"/>
+                              <a:a name="UUID"
+                                   value="ECUC:69d408cb-0614-4646-953f-40379db2894b"/>
+                              <!-- [cover parentID={9208CBF9-1484-4734-9309-E85EA4B28CB4}] EthCtrlConfigIngressFifoBufLenByte [/cover] -->
+                              <v:var name="EthCtrlConfigIngressFifoBufLenByte"
+                                     type="INTEGER">
+                                <a:a name="DESC"
+                                     value="EN: Length of Fifo elements in bytes."/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                     type="IMPLEMENTATIONCONFIGCLASS">
+                                  <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                <a:a name="UUID"
+                                     value="ECUC:a3e276fd-ce9d-4b16-aaae-9320c8dec7f9"/>
+                                <a:da name="DEFAULT" value="64"/>
+                                <a:da name="INVALID" type="Range">
+                                  <a:tst expr="&lt;=1522"/>
+                                  <a:tst expr="&gt;=0"/>
+                                </a:da>
+                              </v:var>
+                              <!-- [cover parentID={81F6951E-2712-4d4c-91AD-27AA2E95FE81}] EthCtrlConfigIngressFifoBufTotal [/cover] -->
+                              <v:var name="EthCtrlConfigIngressFifoBufTotal"
+                                     type="INTEGER">
+                                <a:a name="DESC" value="EN: Fifo buffer count."/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                     type="IMPLEMENTATIONCONFIGCLASS">
+                                  <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                <a:a name="UUID"
+                                     value="ECUC:6188cf4b-b670-42db-a75f-de9da8593272"/>
+                                <a:da name="DEFAULT" value="4"/>
+                                <a:da name="INVALID" type="Range">
+                                  <a:tst expr="&lt;=65535"/>
+                                  <a:tst expr="&gt;=0"/>
+                                </a:da>
+                              </v:var>
+                              <!-- [cover parentID={78955E22-FC94-442d-9254-1ACF66360E9A}] EthCtrlConfigIngressFifoIdx [/cover] -->
+                              <v:var name="EthCtrlConfigIngressFifoIdx"
+                                     type="INTEGER">
+                                <a:a name="DESC" value="EN: Ingress Fifo index."/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                     type="IMPLEMENTATIONCONFIGCLASS">
+                                  <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="SYMBOLICNAMEVALUE" value="true"/>
+                                <a:a name="UUID"
+                                     value="ECUC:09722312-2523-41cb-a7f2-8510fa3ec4de"/>
+                                <a:da name="DEFAULT" type="XPath" expr="num:i(node:fallback((node:current()/../@index),0))"/>
+                                <a:da name="INVALID" type="Multi">
+                                  <mt:xpath expr="text:uniq(../../*/EthCtrlConfigIngressFifoIdx,.)" false="EthCtrlConfigIngressFifoIdx should be unique.Enter diff Number"/>
+                                  <mt:range>
+                                    <mt:tst expr="&lt;=3"/>
+                                    <mt:tst expr="&gt;=0"/>
+                                  </mt:range>
+                                </a:da>
+                              </v:var>
+                              <v:lst
+                                     name="EthCtrlConfigIngressFifoPriorityAssignment">
+                              <a:da name="MIN" value="0"/>
+                              <a:da name="MAX" value="8"/>
+                                <!-- [cover parentID={6E49C167-6EA3-4d04-A070-9C5AAC509436}] EthCtrlConfigIngressFifoPriorityAssignment [/cover] -->
+                                <v:var
+                                       name="EthCtrlConfigIngressFifoPriorityAssignment"
+                                       type="INTEGER">
+                                  <a:a name="DESC"
+                                       value="EN: Message ingress prority assignment."/>
+                                  <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                       type="IMPLEMENTATIONCONFIGCLASS">
+                                    <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                                    <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                  </a:a>
+                                  <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                  <a:a name="POSTBUILDVARIANTMULTIPLICITY"
+                                       value="true"/>
+                                  <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                  <a:a name="SCOPE" value="LOCAL"/>
+                                  <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                                  <a:a name="UUID"
+                                       value="ECUC:9847985f-c5fd-4916-9a8e-82ca3b8cb06a"/>
+                                  <a:da name="DEFAULT" type="XPath" expr="num:i(node:fallback((node:current()/@index),0))"/>
+                                  <a:da name="INVALID" type="Multi">
+                                    <mt:xpath expr="text:uniq(../../../*/EthCtrlConfigIngressFifoPriorityAssignment/*,.)" false="EthCtrlConfigIngressFifoPriorityAssignment should be unique.Enter diff Number"/>
+                                    <mt:range>
+                                      <mt:tst expr="&lt;=7"/>
+                                      <mt:tst expr="&gt;=0"/>
+                                    </mt:range>
+                                  </a:da>
+                                </v:var>
+                              </v:lst>
+                            </v:ctr>
+                          </v:lst>
+                          <!-- [cover parentID={D56CDD66-88A9-4b47-AEC8-AE325AB4556D}] EthCtrlConfigIngressUntaggedPktsFifoRef [/cover] -->
+                          <v:ref
+                                 name="EthCtrlConfigIngressUntaggedPktsFifoRef"
+                                 type="REFERENCE">
+                            <a:a name="DESC"
+                                 value="EN: Reference to the ingress FIFO to which all the untagged Rx packets are to be routed."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                            </a:a>
+                            <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                            <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                            <a:a name="SCOPE" value="LOCAL"/>
+                            <a:a name="UUID"
+                                 value="ECUC:cf04f5bf-80ad-44ba-b69d-e783e51d5cba"/>
+                            <a:da name="REF"
+                                  value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Eth/EthConfigSet/EthCtrlConfig/EthCtrlConfigIngress/EthCtrlConfigIngressFifo"/>
+                          </v:ref>
+                        </v:ctr>
+                        <v:lst name="EthDemEventParameterRefs" type="MAP">
+                          <a:da name="MAX" value="1"/>
+                          <!-- [cover parentID={F6898A4C-8AF4-473c-9166-68143E965047}] EthDemEventParameterRefs [/cover] -->
+                          <v:ctr name="EthDemEventParameterRefs"
+                                 type="IDENTIFIABLE">
+                            <a:a name="DESC"
+                                 value="EN: Container for the references to DemEventParameter elements which shall be invoked using the API Mcal_Wrapper_Dem_SetEventStatus in case the corresponding error occurs. The EventId is taken from the referenced DemEventParameter&apos;s DemEventId symbolic value. The standardized errors are provided in this container and can be extended by vendor-specific error references."/>
+                            <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                 type="IMPLEMENTATIONCONFIGCLASS">
+                              <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                            </a:a>
+                            <a:a name="POSTBUILDVARIANTMULTIPLICITY"
+                                       value="true"/>
+                            <a:a name="UUID"
+                                 value="ECUC:6c163108-f8fb-4e94-aee0-19a511446ffc"/>
+                            <v:lst name="ETH_E_ACCESS">
+                              <a:da name="MAX" value="1"/>
+                              <v:ref name="ETH_E_ACCESS" type="REFERENCE">
+                                <a:a name="DESC"
+                                     value="EN: Reference to the DemEventParameter which shall be issued when the error &quot;Controller access failed&quot; has occured."/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                     type="IMPLEMENTATIONCONFIGCLASS">
+                                  <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                                  <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                <a:a name="POSTBUILDVARIANTMULTIPLICITY"
+                                     value="true"/>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                <a:a name="REQUIRES-SYMBOLIC-NAME-VALUE"
+                                     value="true"/>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="UUID"
+                                     value="ECUC:b4651d05-f83d-44c9-9d1e-21089a781293"/>
+                                <a:da name="REF"
+                                      value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter"/>
+                              </v:ref>
+                            </v:lst>
+                            <v:lst name="ETH_E_ALIGNMENT">
+                              <a:da name="MAX" value="1"/>
+                              <v:ref name="ETH_E_ALIGNMENT" type="REFERENCE">
+                                <a:a name="DESC"
+                                     value="EN: Reference to the DemEventParameter which shall be issued when the error &quot;Alignment Error&quot; has occured."/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                     type="IMPLEMENTATIONCONFIGCLASS">
+                                  <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                                  <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                <a:a name="POSTBUILDVARIANTMULTIPLICITY"
+                                     value="true"/>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                <a:a name="REQUIRES-SYMBOLIC-NAME-VALUE"
+                                     value="true"/>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="UUID"
+                                     value="ECUC:632e47af-42fb-4224-8fbb-7909494d6151"/>
+                                <a:da name="REF"
+                                      value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter"/>
+                              </v:ref>
+                            </v:lst>
+                            <v:lst name="ETH_E_CRC">
+                              <a:da name="MAX" value="1"/>
+                              <v:ref name="ETH_E_CRC" type="REFERENCE">
+                                <a:a name="DESC"
+                                     value="EN: Reference to the DemEventParameter which shall be issued when the error &quot;CRC Failure&quot; has occured."/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                     type="IMPLEMENTATIONCONFIGCLASS">
+                                  <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                                  <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                <a:a name="POSTBUILDVARIANTMULTIPLICITY"
+                                     value="true"/>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                <a:a name="REQUIRES-SYMBOLIC-NAME-VALUE"
+                                     value="true"/>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="UUID"
+                                     value="ECUC:a08dd4d7-e2ac-4afc-83e9-71b18bd82675"/>
+                                <a:da name="REF"
+                                      value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter"/>
+                              </v:ref>
+                            </v:lst>
+                            <v:lst name="ETH_E_LATECOLLISION">
+                              <a:da name="MAX" value="1"/>
+                              <v:ref name="ETH_E_LATECOLLISION"
+                                     type="REFERENCE">
+                                <a:a name="DESC"
+                                     value="EN: Reference to the DemEventParameter which shall be issued when the error &quot;Late Collisions&quot; has occured."/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                     type="IMPLEMENTATIONCONFIGCLASS">
+                                  <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                                  <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                <a:a name="POSTBUILDVARIANTMULTIPLICITY"
+                                     value="true"/>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                <a:a name="REQUIRES-SYMBOLIC-NAME-VALUE"
+                                     value="true"/>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="UUID"
+                                     value="ECUC:a6f98810-856a-422f-8f20-5af275bd96b2"/>
+                                <a:da name="REF"
+                                      value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter"/>
+                              </v:ref>
+                            </v:lst>
+                            <v:lst name="ETH_E_MULTIPLECOLLISION">
+                              <a:da name="MAX" value="1"/>
+                              <v:ref name="ETH_E_MULTIPLECOLLISION"
+                                     type="REFERENCE">
+                                <a:a name="DESC"
+                                     value="EN: Reference to the DemEventParameter which shall be issued when the error &quot;Multiple Collisions&quot; has occured."/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                     type="IMPLEMENTATIONCONFIGCLASS">
+                                  <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                                  <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                <a:a name="POSTBUILDVARIANTMULTIPLICITY"
+                                     value="true"/>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                <a:a name="REQUIRES-SYMBOLIC-NAME-VALUE"
+                                     value="true"/>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="UUID"
+                                     value="ECUC:d2e620f0-7f00-4c5d-a2bb-cec828a2786a"/>
+                                <a:da name="REF"
+                                      value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter"/>
+                              </v:ref>
+                            </v:lst>
+                            <v:lst name="ETH_E_OVERSIZEFRAME">
+                              <a:da name="MAX" value="1"/>
+                              <v:ref name="ETH_E_OVERSIZEFRAME"
+                                     type="REFERENCE">
+                                <a:a name="DESC"
+                                     value="EN: Reference to the DemEventParameter which shall be issued when the error &quot;Oversized Frame&quot; has occured."/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                     type="IMPLEMENTATIONCONFIGCLASS">
+                                  <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                                  <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                <a:a name="POSTBUILDVARIANTMULTIPLICITY"
+                                     value="true"/>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                <a:a name="REQUIRES-SYMBOLIC-NAME-VALUE"
+                                     value="true"/>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="UUID"
+                                     value="ECUC:71866e3f-ce4b-418a-9115-cf80032d67ec"/>
+                                <a:da name="REF"
+                                      value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter"/>
+                              </v:ref>
+                            </v:lst>
+                            <v:lst name="ETH_E_RX_FRAMES_LOST">
+                              <a:da name="MAX" value="1"/>
+                              <v:ref name="ETH_E_RX_FRAMES_LOST"
+                                     type="REFERENCE">
+                                <a:a name="DESC"
+                                     value="EN: Reference to the DemEventParameter which shall be issued when the error &quot;receive frames lost&quot; has occured."/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                     type="IMPLEMENTATIONCONFIGCLASS">
+                                  <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                                  <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                <a:a name="POSTBUILDVARIANTMULTIPLICITY"
+                                     value="true"/>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                <a:a name="REQUIRES-SYMBOLIC-NAME-VALUE"
+                                     value="true"/>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="UUID"
+                                     value="ECUC:58dc8751-6779-4cf2-a369-71007d00354c"/>
+                                <a:da name="REF"
+                                      value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter"/>
+                              </v:ref>
+                            </v:lst>
+                            <v:lst name="ETH_E_SINGLECOLLISION">
+                              <a:da name="MAX" value="1"/>
+                              <v:ref name="ETH_E_SINGLECOLLISION"
+                                     type="REFERENCE">
+                                <a:a name="DESC"
+                                     value="EN: Reference to the DemEventParameter which shall be issued when the error &quot;Single Collisions&quot; has occured."/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                     type="IMPLEMENTATIONCONFIGCLASS">
+                                  <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                                  <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                <a:a name="POSTBUILDVARIANTMULTIPLICITY"
+                                     value="true"/>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                <a:a name="REQUIRES-SYMBOLIC-NAME-VALUE"
+                                     value="true"/>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="UUID"
+                                     value="ECUC:191bedeb-c2b9-413d-9fe2-e0974c5712c9"/>
+                                <a:da name="REF"
+                                      value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter"/>
+                              </v:ref>
+                            </v:lst>
+                            <v:lst name="ETH_E_UNDERSIZEFRAME">
+                              <a:da name="MAX" value="1"/>
+                              <v:ref name="ETH_E_UNDERSIZEFRAME"
+                                     type="REFERENCE">
+                                <a:a name="DESC"
+                                     value="EN: Reference to the DemEventParameter which shall be issued when the error &quot;Undersized Frame&quot; has occured."/>
+                                <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                                     type="IMPLEMENTATIONCONFIGCLASS">
+                                  <icc:v mclass="PostBuild">VariantPostBuild</icc:v>
+                                  <icc:v vclass="PostBuild">VariantPostBuild</icc:v>
+                                </a:a>
+                                <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                                <a:a name="POSTBUILDVARIANTMULTIPLICITY"
+                                     value="true"/>
+                                <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                                <a:a name="REQUIRES-SYMBOLIC-NAME-VALUE"
+                                     value="true"/>
+                                <a:a name="SCOPE" value="LOCAL"/>
+                                <a:a name="UUID"
+                                     value="ECUC:c82783ce-7229-4673-97db-0a7b539ef538"/>
+                                <a:da name="REF"
+                                      value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/Dem/DemConfigSet/DemEventParameter"/>
+                              </v:ref>
+                            </v:lst>
+                          </v:ctr>
+                        </v:lst>
+                      </v:ctr>
+                    </v:lst>
+                  </v:ctr>
+                  </v:lst>
+                  <!-- [cover parentID={FF700463-62EF-4a19-8A60-AB672292B587}] EthGeneral [/cover] -->
+                  <v:ctr name="EthGeneral" type="IDENTIFIABLE">
+                    <a:a name="DESC"
+                         value="EN: General configuration of Ethernet Driver module"/>
+                    <a:a name="UUID"
+                         value="ECUC:6f42d612-0b76-4acc-a377-9a35f3decf57"/>
+                    <!-- [cover parentID={5EF1F177-C437-4222-AC2C-A6D90FA88AA2}] EthDevErrorDetect [/cover] -->
+                    <v:var name="EthDevErrorDetect" type="BOOLEAN">
+                      <a:a name="DESC"
+                           value="EN: Switches the development error detection and notification on or off."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID"
+                           value="ECUC:e9f29dc0-4e38-4c7a-89f6-67505e301506"/>
+                      <a:da name="DEFAULT" value="false"/>
+                    </v:var>
+                    <!-- [cover parentID={29C14DB6-3328-4211-A6AC-FF8B9726E070}] EthPeripheralBusClock [/cover] -->
+                    <v:ref name="EthPeripheralBusClock" type="REFERENCE">
+                      <a:a name="DESC"
+                           value="EN: Reference to a container of MCU Clock settings, to read  SPB frequency."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="UUID"
+                           value="ECUC:ff94d0f2-e4d4-4b60-b980-6ea07438f2bc"/>
+                      <a:da name="REF"
+                             value="ASPathDataOfSchema:/AURIX2G/EcucDefs/Mcu/McuModuleConfiguration/McuClockSettingConfig/McuClockReferencePointConfig"/>
+                      <a:da name="EDITABLE" value="true"/>
+                    </v:ref>
+                    <!-- [cover parentID={F6ABC49A-C1BF-4c35-9E49-0A5DF98F1294}] EthOperationFrequency [/cover] -->
+                    <v:ref name="EthOperationFrequency" type="REFERENCE">
+                      <a:a name="DESC"
+                           value="EN: Reference to a container of the MCU Clock settings, to read Ethernet operation frequency."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="UUID"
+                           value="ECUC:ff94d0f2-e8d8-4b60-b980-6ea07438f2bc"/>
+                      <a:da name="REF"
+                             value="ASPathDataOfSchema:/AURIX2G/EcucDefs/Mcu/McuModuleConfiguration/McuClockSettingConfig/McuClockReferencePointConfig"/>
+                      <a:da name="EDITABLE" value="true"/>
+                    </v:ref>
+                    <!-- [cover parentID={E1993D6F-C27B-4e8d-9A9D-025CCEF600C5}] EthGetDropCountApi [/cover] -->
+                    <v:var name="EthGetDropCountApi" type="BOOLEAN">
+                      <a:a name="DESC"
+                           value="EN: Enables / Disables Eth_GetCounterValues API."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID"
+                           value="ECUC:e0c4707b-44a4-45ac-b02a-03c0c5eb92a2"/>
+                      <a:da name="DEFAULT" value="false"/>
+                    </v:var>
+                    <!-- [cover parentID={E1993D6F-C27B-4e8d-9A9D-025CCEF600C5}] EthGetEtherStatsApi [/cover] -->
+                    <v:var name="EthGetEtherStatsApi" type="BOOLEAN">
+                      <a:a name="DESC"
+                           value="EN: Enables / Disables Eth_GetRxStats API."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID"
+                           value="ECUC:159a77b6-3904-4bd6-84f5-77417e699ec4"/>
+                      <a:da name="DEFAULT" value="false"/>
+                    </v:var>
+                    <!-- [cover parentID={1998ED9E-4E34-4457-A57B-847A134C8261}] EthGetTxErrorCounterValuesApi [/cover] -->
+                    <v:var name="EthGetTxErrorCounterValuesApi" type="BOOLEAN">
+                      <a:a name="DESC"
+                           value="EN: Enables/Disables Eth_GetTxErrorCounterValues API."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID"
+                           value="ECUC:1b4a4737-f9b3-4d3a-a1c5-5a4f9f7eca65"/>
+                      <a:da name="DEFAULT" value="false"/>
+                    </v:var>
+                    <!-- [cover parentID={37461010-D578-4111-8F9D-C0E5D75BA421}] EthGetTxStatsApi [/cover] -->
+                    <v:var name="EthGetTxStatsApi" type="BOOLEAN">
+                      <a:a name="DESC"
+                           value="EN: Enables/Disables Eth_GetTxStats API."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID"
+                           value="ECUC:e8099400-2051-4743-a5b4-61d920eae69a"/>
+                      <a:da name="DEFAULT" value="false"/>
+                    </v:var>
+                    <!-- [cover parentID={17CF0646-8793-43fb-BFEF-B45D7D4FF7C0}] EthGlobalTimeSupport [/cover] -->
+                    <v:var name="EthGlobalTimeSupport" type="BOOLEAN">
+                      <a:a name="DESC"
+                           value="EN: Enables/Disables the GlobalTime APIs used amongst others by Global Time Synchronization over Ethernet."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID"
+                           value="ECUC:64fab11f-9698-4408-961d-e08197101883"/>
+                      <a:da name="DEFAULT" value="false"/>
+                    </v:var>
+                    <!-- [cover parentID={51E21FFE-9298-48b3-844A-5C54E0F81649}] EthIndex [/cover] -->
+                    <v:var name="EthIndex" type="INTEGER">
+                      <a:a name="DESC"
+                           value="EN: Specifies the InstanceId of this module instance. If only one instance is present it shall have the Id 0."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID"
+                           value="ECUC:8f9f2801-a733-45ba-92c1-4f76e7239397"/>
+                      <a:da name="DEFAULT" value="0"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=255"/>
+                        <a:tst expr="&gt;=0"/>
+                      </a:da>
+                    </v:var>
+                    <!-- [cover parentID={9C1600B4-A3C8-47ef-8DF4-BF53B955CAB5}] EthMainFunctionPeriod [/cover] -->
+                    <v:var name="EthMainFunctionPeriod" type="FLOAT">
+                      <a:a name="DESC"
+                           value="EN: Specifies the period of main function Eth_MainFunction in seconds. Ethernet driver does not require this information but the BSW scheduler."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID"
+                           value="ECUC:ca545039-b3f3-4a63-8b04-29ebac136e9d"/>
+                      <a:da name="DEFAULT" value="0.005"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=10.0"/>
+                        <a:tst expr="&gt;0.0"/>
+                      </a:da>
+                    </v:var>
+                    <!-- [cover parentID={D23B48F5-BD1C-474a-A201-F41463FADDA9}] EthMaxCtrlsSupported [/cover] -->
+                    <v:var name="EthMaxCtrlsSupported" type="INTEGER">
+                      <a:a name="DESC"
+                           value="EN: Limits the total number of supported controllers."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID"
+                           value="ECUC:5dd19540-c70f-4e65-b839-510b53e355c7"/>
+                      <a:da name="DEFAULT" type="XPath" expr="ecu:get('Eth.EthAvaliableNodes')"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=255"/>
+                        <a:tst expr="&gt;=1"/>
+                      </a:da>
+                      <a:da name="EDITABLE" value="false"/>
+                    </v:var>
+                    <!-- [cover parentID={3E27E343-8A44-4222-925F-8C4C13C9B764}] EthVersionInfoApi [/cover] -->
+                    <v:var name="EthVersionInfoApi" type="BOOLEAN">
+                      <a:a name="DESC"
+                           value="EN: Enables / Disables version info API"/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID"
+                           value="ECUC:aec58ac0-ad1c-4331-a535-7f4301e98577"/>
+                      <a:da name="DEFAULT" value="false"/>
+                    </v:var>
+                    <!-- [cover parentID={B8988DB2-EA26-4a09-8E7C-2B5499EB4DA7}] EthMultiCoreErrorDetect [/cover] -->
+                    <v:var name="EthMultiCoreErrorDetect" type="BOOLEAN">
+                      <a:a name="DESC"
+                           value="EN: Switches the Multicore error detection and notification ON or OFF."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                          type="IMPLEMENTATIONCONFIGCLASS">
+                            <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                      </a:a>
+                      <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID"
+                           value="ECUC:7ee4dbf7-92ca-43f8-bedf-cd912b1d5f01"/>
+                      <a:da name="DEFAULT" value="false"/>
+                      <a:da name="INVALID" type="XPath">
+                       <a:tst expr="../EthDevErrorDetect != 'true'  and .='true'"
+                                true="DET should be ON when EthMultiCoreErrorDetect is ON "/>
+                      </a:da>
+                    </v:var>
+                    <!-- [cover parentID={316BCBAC-6CD0-4cf0-89F3-5BA6EB5C683B}] EthRuntimeApiMode [/cover] -->
+                    <v:var name="EthRuntimeApiMode" type="ENUMERATION">
+                      <a:a name="DESC">
+                        <a:v>EN: This parameter selects the operating modes for Ethernet driver run time APIs
+                        </a:v>
+                      </a:a>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                       <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                      <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID"
+                           value="bd0a8d38-4d8c-4eab-cdfe-1166b2583008"/>
+                      <a:da name="DEFAULT" value="ETH_MCAL_SUPERVISOR"/>
+                      <a:da name="RANGE">
+                        <a:v>ETH_MCAL_SUPERVISOR</a:v>
+                        <a:v>ETH_MCAL_USER1</a:v>
+                      </a:da>
+                    </v:var>
+                    <!-- [cover parentID={C510CD2D-C859-44d0-AC33-03057392A58B}] EthInitApiMode [/cover] -->
+                    <v:var name="EthInitApiMode" type="ENUMERATION">
+                      <a:a name="DESC">
+                        <a:v>EN: This parameter selects the operating modes for Ethernet driver initialization
+                        </a:v>
+                      </a:a>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                       <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                      <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID"
+                           value="bd0a8d38-4d8c-4eab-cdfe-1166b2583007"/>
+                      <a:da name="DEFAULT" value="ETH_MCAL_SUPERVISOR"/>
+                      <a:da name="RANGE">
+                        <a:v>ETH_MCAL_SUPERVISOR</a:v>
+                        <a:v>ETH_MCAL_USER1</a:v>
+                      </a:da>
+                      <a:da name="INVALID" type="XPath">
+                        <a:tst expr="node:value(../EthRuntimeApiMode) = 'ETH_MCAL_SUPERVISOR' and node:value(.) = 'ETH_MCAL_USER1'"
+                        true="Eth Runtime API in SUPERVISOR mode, choose EthInitApiMode as SUPERVISOR mode "/>
+                      </a:da>
+                    </v:var>
+                    <!-- [cover parentID={86494BE9-D2A2-410e-BB31-6A22964BBDD3}] EthTimeoutCount [/cover] -->
+                    <v:var name="EthTimeoutCount" type="INTEGER">
+                      <a:a name="DESC"
+                           value="EN: Specifies the maximum time in nanoseconds to wait for hardware timeout errors(Reported as hardware access error)."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID"
+                           value="ECUC:f4b834a6-9fce-4cf9-9f80-98e4a6ad9eed"/>
+                      <a:da name="DEFAULT" value="100000"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=4294967295"/>
+                        <a:tst expr="&gt;=100"/>
+                      </a:da>
+                    </v:var>
+                    <!-- [cover parentID={E8CDCD6E-8765-4dee-9966-FE40A567083D}] EthDmaSwResetWaitCycle [/cover] -->
+                    <v:var name="EthDmaSwResetWaitCycle" type="INTEGER">
+                      <a:a name="DESC"
+                           value="EN: Specifies the number of fSPB cycles to wait after a DMA software reset."/>
+                      <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                           type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                      </a:a>
+                      <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                      <a:a name="SCOPE" value="LOCAL"/>
+                      <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                      <a:a name="UUID"
+                           value="ECUC:f4b834a6-9fce-4cf9-9f80-98e4a6ad9ef2"/>
+                      <a:da name="DEFAULT" value="4"/>
+                      <a:da name="INVALID" type="Range">
+                        <a:tst expr="&lt;=255"/>
+                        <a:tst expr="&gt;=4"/>
+                      </a:da>
+                    </v:var>
+                    <v:lst name="EthEcucPartitionRef">
+                    <!-- [cover parentID={A1E87A28-95E6-4443-8303-B4E2952DD3E7}] EthEcucPartitionRef [/cover] -->
+                      <v:ref name="EthEcucPartitionRef" type="REFERENCE">
+                        <a:a name="DESC">
+                          <a:v>EN: Maps the Ethernet driver to zero or multiple ECUC partitions to make the modules API available in this partition. The Ethernet driver will operate as an independent instance in each of the partitions.</a:v>
+                          <a:v>EN: Tags: atp.Status=draft</a:v>
+                        </a:a>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v mclass="PreCompile">VariantPostBuild</icc:v>
+                          <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="POSTBUILDVARIANTMULTIPLICITY" value="true"/>
+                        <a:a name="POSTBUILDVARIANTVALUE" value="true"/>
+                        <a:a name="SCOPE" value="ECU"/>
+                        <a:a name="UUID"
+                             value="ECUC:ec2e160d-fd07-47d6-9f75-55489128a338"/>
+                        <a:da name="EDITABLE" value="false"/>
+                        <a:da name="REF"
+                              value="ASPathDataOfSchema:/AUTOSAR/EcucDefs/EcuC/EcucPartitionCollection/EcucPartition"/>
+                      </v:ref>
+                    </v:lst>
+                    <!-- [cover parentID={91382188-2D9E-47f6-9222-80CD7CC3AF34}] EthCtrlOffloading [/cover] -->
+                    <v:ctr name="EthCtrlOffloading" type="IDENTIFIABLE">
+                      <a:a name="DESC"
+                           value="EN: Configuration of hardware offloading features."/>
+                      <a:a name="UUID"
+                           value="ECUC:44ab9e6d-ad97-4fd3-b26c-b2620681a83b"/>
+                      <!-- [cover parentID={B9CBF4DD-1636-4335-8AC8-F6AC27D712CC}] EthCtrlEnableOffloadChecksumICMP [/cover] -->
+                      <v:var name="EthCtrlEnableOffloadChecksumICMP"
+                             type="BOOLEAN">
+                        <a:a name="DESC"
+                             value="EN: Enables / Disables hardware offloading for ICMP checksums."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID"
+                             value="ECUC:39ceb7ae-86fb-4a40-a65e-fa797e0daf7a"/>
+                        <a:da name="DEFAULT" value="false"/>
+                        <a:da name="INVALID" type="XPath">
+                          <a:tst expr=". = ../EthCtrlEnableOffloadChecksumUDP" false="Select or Unselect all Offload parameters , individual enable/disable not supported"/>
+                          <a:tst expr=". = ../EthCtrlEnableOffloadChecksumTCP" false="Select or Unselect all Offload parameters , individual enable/disable not supported"/>
+                          <a:tst expr=". = ../EthCtrlEnableOffloadChecksumIPv4" false="Select or Unselect all Offload parameters, individual enable/disable not supported"/>
+                        </a:da>
+                      </v:var>
+                      <!-- [cover parentID={1F49A155-140A-471c-AB9E-D75DE6B59C4C}] EthCtrlEnableOffloadChecksumIPv4 [/cover] -->
+                      <v:var name="EthCtrlEnableOffloadChecksumIPv4"
+                             type="BOOLEAN">
+                        <a:a name="DESC"
+                             value="EN: Enables / Disables hardware offloading for IPv4 checksums."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID"
+                             value="ECUC:710505ff-ac85-45fe-a1c9-c8c5ac860ee3"/>
+                        <a:da name="DEFAULT" value="false"/>
+                        <a:da name="INVALID" type="XPath">
+                          <a:tst expr=". = ../EthCtrlEnableOffloadChecksumUDP" false="Select or Unselect all Offload parameters, individual enable/disable not supported"/>
+                          <a:tst expr=". = ../EthCtrlEnableOffloadChecksumICMP" false="Select or Unselect all Offload parameters, individual enable/disable not supported"/>
+                          <a:tst expr=". = ../EthCtrlEnableOffloadChecksumTCP" false="Select or Unselect all Offload parameters , individual enable/disable not supported"/>
+                        </a:da>
+                      </v:var>
+                      <!-- [cover parentID={C1150495-57CF-48b2-8BED-AFC0FC263EBF}] EthCtrlEnableOffloadChecksumTCP [/cover] -->
+                      <v:var name="EthCtrlEnableOffloadChecksumTCP"
+                             type="BOOLEAN">
+                        <a:a name="DESC"
+                             value="EN: Enables / Disables hardware offloading for TCP checksums."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID"
+                             value="ECUC:bd7596bc-d545-4b56-a46f-35eaf7bf3c8a"/>
+                        <a:da name="DEFAULT" value="false"/>
+                        <a:da name="INVALID" type="XPath">
+                          <a:tst expr=". = ../EthCtrlEnableOffloadChecksumUDP" false="Select or Unselect all Offload parameters, individual enable/disable not supported"/>
+                          <a:tst expr=". = ../EthCtrlEnableOffloadChecksumICMP" false="Select or Unselect all Offload parameters, individual enable/disable not supported"/>
+                          <a:tst expr=". = ../EthCtrlEnableOffloadChecksumIPv4" false="Select or Unselect all Offload parameters, individual enable/disable not supported"/>
+                        </a:da>
+                      </v:var>
+                      <!-- [cover parentID={55D5913D-B334-4e01-ABDB-EF0CC6CE5E0F}] EthCtrlEnableOffloadChecksumUDP [/cover] -->
+                      <v:var name="EthCtrlEnableOffloadChecksumUDP"
+                             type="BOOLEAN">
+                        <a:a name="DESC"
+                             value="EN: Enables / Disables hardware offloading for UDP checksums."/>
+                        <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                             type="IMPLEMENTATIONCONFIGCLASS">
+                          <icc:v vclass="PreCompile">VariantPostBuild</icc:v>
+                        </a:a>
+                        <a:a name="ORIGIN" value="AUTOSAR_ECUC"/>
+                        <a:a name="SCOPE" value="LOCAL"/>
+                        <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                        <a:a name="UUID"
+                             value="ECUC:f386414c-101f-4f4f-8838-41b35cfe74c7"/>
+                        <a:da name="DEFAULT" value="false"/>
+                        <a:da name="INVALID" type="XPath">
+                          <a:tst expr=". = ../EthCtrlEnableOffloadChecksumTCP" false="Select or Unselect all Offload parameters, individual enable/disable not supported"/>
+                          <a:tst expr=". = ../EthCtrlEnableOffloadChecksumICMP" false="Select or Unselect all Offload parameters, individual enable/disable not supported"/>
+                          <a:tst expr=". = ../EthCtrlEnableOffloadChecksumIPv4" false="Select or Unselect all Offload parameters, individual enable/disable not supported"/>
+                        </a:da>
+                      </v:var>
+                    </v:ctr>
+                  </v:ctr>
+                  <!-- [cover parentID={92645879-CDEB-439a-84B4-C9D3C2872022}] CommonPublishedInformation [/cover] -->
+                  <v:ctr name="CommonPublishedInformation" type="IDENTIFIABLE">
+                  <a:a name="DESC" value="EN: Common container, aggregated by all modules. It contains published information about vendor and versions."/>
+                  <a:a name="UUID" value="492f8482-3e2c-4bf1-b27f-01fd7ac35788"/>
+                  <!-- [cover parentID={14AB78D5-0930-4030-B543-77961DB6989A}] ArMajorVersion [/cover] -->
+                  <v:var name="ArMajorVersion" type="INTEGER_LABEL">
+                    <a:a name="DESC" value="EN: Major version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                         <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:a name="UUID" value="bd0a8d38-4d8c-4ee9-88fe-1166b258bb8a"/>
+                    <a:da name="INVALID" type="Range">
+                      <a:tst expr="&lt;=255"/>
+                      <a:tst expr="&gt;=0"/>
+                    </a:da>
+                    <a:da name="DEFAULT" value="4"/>
+                  </v:var>
+                  <!-- [cover parentID={29A06569-2EE3-4148-9D57-0CB1D5DD32F0}] ArMinorVersion [/cover] -->
+                  <v:var name="ArMinorVersion" type="INTEGER_LABEL">
+                    <a:a name="DESC" value="EN: Minor version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                         <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:a name="UUID" value="73f87c7f-e230-4178-bff0-eb2704aae656"/>
+                    <a:da name="INVALID" type="Range">
+                      <a:tst expr="&lt;=255"/>
+                      <a:tst expr="&gt;=0"/>
+                    </a:da>
+                    <a:da name="DEFAULT" value="4"/>
+                  </v:var>
+                  <!-- [cover parentID={99109110-BED0-403a-8EAD-1A0F6009F185}] ArPatchVersion [/cover] -->
+                  <v:var name="ArPatchVersion" type="INTEGER_LABEL">
+                    <a:a name="DESC" value="EN: Patch level version number of AUTOSAR specification on which the appropriate implementation is based on."/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                         <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:a name="UUID" value="2380135d-6778-417a-a34b-e10017d4dd54"/>
+                    <a:da name="INVALID" type="Range">
+                      <a:tst expr="&lt;=255"/>
+                      <a:tst expr="&gt;=0"/>
+                    </a:da>
+                    <a:da name="DEFAULT" value="0"/>
+                  </v:var>
+                  <!-- [cover parentID={BE8B1EB6-7AE6-4710-9FC1-8C3EF5383CFE}] SwMajorVersion [/cover] -->
+                  <v:var name="SwMajorVersion" type="INTEGER_LABEL">
+                    <a:a name="DESC" value="EN: Major version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                         <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:a name="UUID" value="fca015e3-5f28-4cbe-8949-8f4b87d86827"/>
+                    <a:da name="INVALID" type="Range">
+                      <a:tst expr="&lt;=255"/>
+                      <a:tst expr="&gt;=0"/>
+                    </a:da>
+                    <a:da name="DEFAULT" value="20"/>
+                  </v:var>
+                  <!-- [cover parentID={0607F5CE-AAB5-47b8-8290-3C8AB316B0B3}] SwMinorVersion [/cover] -->
+                  <v:var name="SwMinorVersion" type="INTEGER_LABEL">
+                    <a:a name="DESC" value="EN: Minor version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                         <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:a name="UUID" value="14ab81e0-3d80-43dc-8b92-247e5a542df9"/>
+                    <a:da name="INVALID" type="Range">
+                      <a:tst expr="&lt;=255"/>
+                      <a:tst expr="&gt;=0"/>
+                    </a:da>
+                    <a:da name="DEFAULT" value="25"/>
+                  </v:var>
+                  <!-- [cover parentID={675303C6-62AE-432f-A59A-F543E49E42A7}] SwPatchVersion [/cover] -->
+                  <v:var name="SwPatchVersion" type="INTEGER_LABEL">
+                    <a:a name="DESC" value="EN: Patch level version number of the vendor specific implementation of the module. The numbering is vendor specific."/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                         <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:a name="UUID" value="32e37bfd-18b6-41d1-9248-a81dbe0fe4c5"/>
+                    <a:da name="INVALID" type="Range">
+                      <a:tst expr="&lt;=255"/>
+                      <a:tst expr="&gt;=0"/>
+                    </a:da>
+                    <a:da name="DEFAULT" value="0"/>
+                  </v:var>
+                  <!-- [cover parentID={F0DFA898-F5BE-4f58-9A44-8066DB0B7014}] ModuleId [/cover] -->
+                  <v:var name="ModuleId" type="INTEGER_LABEL">
+                    <a:a name="DESC" value="EN: Module ID of this module from Module List"/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                         <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:a name="UUID" value="3b407478-6902-4f80-b7cf-f33b0854e638"/>
+                    <a:da name="INVALID" type="Range">
+                      <a:tst expr="&lt;=65535"/>
+                      <a:tst expr="&gt;=0"/>
+                    </a:da>
+                    <a:da name="DEFAULT" value="88"/>
+                  </v:var>
+                  <!-- [cover parentID={0846D35B-F433-43e1-AAAE-2DAF54BEBEC5}] VendorId [/cover] -->
+                  <v:var name="VendorId" type="INTEGER_LABEL">
+                    <a:a name="DESC" value="EN: Vendor ID of the dedicated implementation of this module according to the AUTOSAR vendor list"/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                         <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:a name="UUID" value="7d650b2d-4adb-41f0-a68e-5f0c416501d1"/>
+                    <a:da name="INVALID" type="Range">
+                      <a:tst expr="&lt;=65535"/>
+                      <a:tst expr="&gt;=0"/>
+                    </a:da>
+                    <a:da name="DEFAULT" value="17"/>
+                  </v:var>
+                  <!-- [cover parentID={96D4A084-3D23-44c5-ADD8-44FE27BB8769}] VendorApiInfix [/cover] -->
+                  <v:var name="VendorApiInfix" type="STRING_LABEL">
+                    <a:a name="DESC">
+                      <a:v>EN: In driver modules which can be instantiated several times on a single ECU, BSW00347 requires that the name of APIs is extended by the VendorId and a vendor specific name.
+                               This parameter is used to specify the vendor specific name. In total, the implementation specific name is generated as follows:
+                               &lt;ModuleName&gt;_&gt;VendorId&gt;_&lt;VendorApiInfix&gt;&lt;Api name from SWS&gt;.
+
+                               E.g.  assuming that the VendorId of the implementor is 17 and the implementer chose a VendorApiInfix of &quot;EthMac&quot; a api name Eth_Write defined in the SWS will translate to Eth_17_GEthMac_Write.
+
+                              This parameter is mandatory for all modules with upper multiplicity &gt; 1. It shall not be used for modules with upper multiplicity =1.</a:v>
+                    </a:a>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                         type="IMPLEMENTATIONCONFIGCLASS">
+                         <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                    </a:a>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:a name="UUID" value="ad363b41-e945-4717-b12f-c2f800ef138e"/>
+                    <a:da name="DEFAULT" value="GEthMacV2"/>
+                  </v:var>
+                  <!-- [cover parentID={7942CE99-F8E4-4743-8FA8-B9A9D92FE2E7}] Release [/cover] -->
+                  <v:var name="Release" type="STRING_LABEL">
+                    <a:a name="DESC" value="EN: Aurix2G derivative used for the implementation"/>
+                    <a:a name="IMPLEMENTATIONCONFIGCLASS"
+                        type="IMPLEMENTATIONCONFIGCLASS">
+                        <icc:v vclass="PublishedInformation">VariantPostBuild</icc:v>
+                    </a:a>
+                    <a:a name="POSTBUILDVARIANTVALUE" value="false"/>
+                    <a:a name="ORIGIN" value="INFINEON_AURIX2G"/>
+                    <a:a name="SYMBOLICNAMEVALUE" value="false"/>
+                    <a:a name="UUID" value="ad363b50-e945-4717-b12f-b2f800ef138a"/>
+                    <a:da name="DEFAULT" type="XPath" expr="ecu:get('Rel.Derivate')"/>
+                  </v:var>
+                 </v:ctr>
+                </v:ctr>
+              </d:chc>
+            </d:lst>
+          </d:ctr>
+        </d:lst>
+      </d:ctr>
+    </d:lst>
+  </d:ctr>
+
+</datamodel>

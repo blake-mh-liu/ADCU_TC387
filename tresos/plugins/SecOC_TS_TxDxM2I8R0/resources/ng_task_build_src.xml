@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<project name="SecOC" default="all" basedir=".">
+
+  <!-- include ant-contrib -->
+  <taskdef resource="net/sf/antcontrib/antlib.xml">
+    <classpath>
+      <fileset dir="../../dreisoft.tresos.generator.ng.api" />
+    </classpath>
+  </taskdef>
+
+  <!-- set properties -->
+  <ng.getgeneratorvar name="tresosBase" property="genTresosBase" />
+  <ng.getgeneratorvar name="module"     property="genModule"     />
+  <ng.getgeneratorvar name="pluginPath" property="genPluginDir"  />
+  <ng.getgeneratorvar name="outputDir"  property="genOutputDir"  />
+  <ng.getgeneratorvar name="datetime"   property="genDateTime"   />
+  <ng.getgeneratorvar name="project"    property="genProject"    />
+
+  <ng.property name="org.rte.enabled.all" xpath="as:modconf('SecOC')/SecOCEbGeneral/SecOCRteUsage = 'true'" />
+
+  <property environment="env"                                               />
+  <property name="genPluginDirGenerateSrc" value="${genPluginDir}/generate" />
+
+  <!-- process -->
+  <target name="all" depends="Process.Generate_Src" />
+
+  <target name="Process.Generate_Src">
+    <sequential>
+      <for list="include,src,make" param="dir">
+        <sequential>
+          <for param="file">
+            <path>
+              <fileset dir="${genPluginDirGenerateSrc}/@{dir}/" excludes="*.m" />
+            </path>
+            <sequential>
+              <basename property="org.file.basename" file="@{file}" />
+              <echo level="info" message="FILE: @{file} // @{dir}/${org.file.basename}" />
+              <if>
+                <or>
+                  <equals arg1="${org.file.basename}" arg2="SecOC_Rx_xPARTITIONx.h" />
+                  <equals arg1="${org.file.basename}" arg2="SecOC_Rx_xPARTITIONx.c" />
+                  <equals arg1="${org.file.basename}" arg2="SecOC_Tx_xPARTITIONx.h" />
+                  <equals arg1="${org.file.basename}" arg2="SecOC_Tx_xPARTITIONx.c" />
+                </or>
+                <then>
+                  <if>
+                    <equals arg1="${org.rte.enabled.all}" arg2="true" />
+                    <then>
+                      <if>
+                        <or>
+                          <equals arg1="${org.file.basename}" arg2="SecOC_Rx_xPARTITIONx.h" />
+                          <equals arg1="${org.file.basename}" arg2="SecOC_Rx_xPARTITIONx.c" />
+                        </or>
+                        <then>
+                        <ng.property name="org.partition.paths" xpath="text:join(node:paths(node:refs(as:modconf('SecOC')/SecOCMainFunctionRx/eb-list::*/SecOCMainFunctionRxPartitionRef)))" />
+                        <for param="org.partition.path" list="${org.partition.paths}" delimiter=" ">
+                          <sequential>
+                            <propertyregex property="org.partition.name" input="@{org.partition.path}" regexp=".*/(\w+)$"   select="\1" />
+                            <propertyregex property="new.file.basename"  input="${org.file.basename}"  regexp="xPARTITIONx" replace="${org.partition.name}" global="true" />
+                            <ng.property name="org.partition.necessary" xpath="count(as:modconf('SecOC')/SecOCMainFunctionRx/eb-list::*[node:name(node:ref(./SecOCMainFunctionRxPartitionRef)) = ${org.partition.name})" />
+                            <echo level="info" message="PARTITION: ${org.partition.necessary}" />
+                            <ng.tmplgen template="@{file}" file="@{dir}/${new.file.basename}" failonerror="true">
+                              <include path="generate"        />
+                              <include path="generate_macros" />
+                              <variable name="partition.name" value="${org.partition.name}" />
+                              <variable name="partition.path" value="@{org.partition.path}" />
+                              <variable name="project"        value="${genProject}"         />
+                            </ng.tmplgen>
+                            <var name="org.partition.name" unset="true" />
+                            <var name="new.file.basename"  unset="true" />
+                            <var name="partition.name"     unset="true" />
+                            <var name="partition.path"     unset="true" />
+                          </sequential>
+                        </for>
+                        </then>
+                      </if>
+                      <if>
+                        <or>
+                          <equals arg1="${org.file.basename}" arg2="SecOC_Tx_xPARTITIONx.h" />
+                          <equals arg1="${org.file.basename}" arg2="SecOC_Tx_xPARTITIONx.c" />
+                        </or>
+                        <then>
+                        <ng.property name="org.partition.paths" xpath="text:join(node:paths(node:refs(as:modconf('SecOC')/SecOCMainFunctionTx/eb-list::*/SecOCMainFunctionTxPartitionRef)))" />
+                        <for param="org.partition.path" list="${org.partition.paths}" delimiter=" ">
+                          <sequential>
+                            <propertyregex property="org.partition.name" input="@{org.partition.path}" regexp=".*/(\w+)$"   select="\1" />
+                            <propertyregex property="new.file.basename"  input="${org.file.basename}"  regexp="xPARTITIONx" replace="${org.partition.name}" global="true" />
+                            <ng.property name="org.partition.necessary" xpath="count(as:modconf('SecOC')/SecOCMainFunctionTx/eb-list::*[node:name(node:ref(./SecOCMainFunctionTxPartitionRef)) = ${org.partition.name})" />
+                            <echo level="info" message="PARTITION: ${org.partition.necessary}" />
+                            <ng.tmplgen template="@{file}" file="@{dir}/${new.file.basename}" failonerror="true">
+                              <include path="generate"        />
+                              <include path="generate_macros" />
+                              <variable name="partition.name" value="${org.partition.name}" />
+                              <variable name="partition.path" value="@{org.partition.path}" />
+                              <variable name="project"        value="${genProject}"         />
+                            </ng.tmplgen>
+                            <var name="org.partition.name" unset="true" />
+                            <var name="new.file.basename"  unset="true" />
+                            <var name="partition.name"     unset="true" />
+                            <var name="partition.path"     unset="true" />
+                          </sequential>
+                        </for>
+                        </then>
+                      </if>
+                    </then>
+                  </if>
+                </then>
+                <else>
+                  <ng.tmplgen template="@{file}" file="@{dir}/${org.file.basename}" failonerror="true">
+                    <include path="generate"        />
+                    <include path="generate_macros" />
+                    <variable name="project" value="${genProject}" />
+                  </ng.tmplgen>
+                </else>
+              </if>
+              <var name="org.file.basename" unset="true" />
+            </sequential>
+          </for>
+        </sequential>
+      </for>
+    </sequential>
+  </target>
+
+</project>

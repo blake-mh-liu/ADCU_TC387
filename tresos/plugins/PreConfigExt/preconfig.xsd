@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="configuration-check-list">
+    <xsd:sequence>
+      <xsd:element name="configuration-check" type="configuration-check" minOccurs="1" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="configuration-check">
+    <xsd:sequence>
+      <xsd:element name="id" type="autosar-short-name"/>
+      <xsd:element name="requirement-id" type="requirement-id"/>
+      <xsd:element name="requirement-text" type="not-whitespace-only-string"/>
+      <xsd:element name="check-parameters" type="not-whitespace-only-string"/>
+      <xsd:element name="check-value" type="not-whitespace-only-string"/>
+      <xsd:element name="set-parameters" type="not-whitespace-only-string"/>
+      <xsd:element name="set-to-value" type="not-whitespace-only-string"/>
+      <xsd:element name="required-or-recommended">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="required"/>
+            <xsd:enumeration value="recommended"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element name="options">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+             <!-- xmllint does not like empty branches such as in |ImporterHasPriority=(true|false), so we need a workaround -->
+            <xsd:pattern value="(ImporterHasPriority=(true|false))?"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="not-whitespace-only-string">
+    <xsd:restriction base="xsd:string">
+       <xsd:pattern value="(.|\n)*\S(.|\n)*"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="configuration-check-group">
+    <xsd:sequence>
+       <xsd:element name="name" type="autosar-short-name"/>
+      <xsd:element name="enabled-condition" type="not-whitespace-only-string"/>
+      <xsd:element name="configuration-checks" type="configuration-check-list"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="preconfig" type="document-root-configuration-check-group-list"/>
+  <xsd:complexType name="document-root-configuration-check-group-list">
+    <xsd:sequence>
+      <xsd:element name="group" type="configuration-check-group" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+    <xsd:attribute name="schema-version" use="required">
+      <xsd:simpleType>
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="1"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+    </xsd:attribute>
+  </xsd:complexType>
+  <xsd:simpleType name="requirement-id">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="\S+"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="autosar-short-name">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="[A-Za-z_]+[0-9A-Za-z_]*"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

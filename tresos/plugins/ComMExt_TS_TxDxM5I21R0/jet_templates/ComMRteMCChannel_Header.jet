@@ -1,0 +1,50 @@
+<%@ jet
+    package="com.elektrobit.comm.generated.templates"
+    class="ComMRteMCChannelHeader"
+    imports="java.io.IOException
+	         dreisoft.tresos.datamodel2.api.model.DCtxt
+             dreisoft.tresos.generator.ng.api.ant.JavaGenContext
+             com.elektrobit.comm.generator.ComMGenContext
+             com.elektrobit.comm.generator.ComMJetContext
+             com.elektrobit.comm.generator.ComMModel" %>
+<%
+    JavaGenContext javaGenContext = (JavaGenContext) argument;
+    ComMGenContext comMGenContext = (ComMGenContext) javaGenContext.gen.getVariable(ComMGenContext.COMM_GEN_CONTEXT, ComMGenContext.class, null);
+    comMGenContext.getWriter().startRedirect(stringBuffer);
+    ComMJetContext comMJetContext = comMGenContext.getComMJetContext();
+%><%@ include file="file-comment.c.txt" %>
+
+#ifndef ComM_Rte_MC_Channel_<%=comMJetContext.getOsAppNameForChannel()%>_H
+#define ComM_Rte_MC_Channel_<%=comMJetContext.getOsAppNameForChannel()%>_H
+
+#define COMM_START_SEC_CODE
+#include <ComM_MemMap.h>
+
+<%
+    for(DCtxt channel : comMJetContext.getChannels())
+    {
+        final DCtxt comMFullCommRequestNotificationEnabled = channel.get(ComMModel.COMM_FULL_COMM_REQUEST_NOTIFICATION_ENABLE);
+        if(comMFullCommRequestNotificationEnabled.var.getBool())
+        {
+%>
+extern FUNC(Std_ReturnType, COMM_CODE) ComM_Wrapper_Write_ComM_Channel_<%=comMJetContext.getOsAppNameForChannel()%>_CR_<%=channel.getName()%>_fullComRequestors (P2CONST(ComM_UserHandleArrayType, AUTOMATIC, COMM_APPL_DATA) data);
+<%
+        }
+    }
+%>
+
+#define COMM_STOP_SEC_CODE
+#include <ComM_MemMap.h>
+
+#endif /*ComM_Rte_MC_Channel_<%=comMJetContext.getOsAppNameForChannel()%>_H*/
+
+<%
+    try
+    {
+        comMGenContext.getWriter().stopRedirected(false);
+    }
+    catch (IOException e)
+    {
+        e.printStackTrace();
+    }
+%>

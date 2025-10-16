@@ -1,0 +1,146 @@
+/* --------{ EB Automotive C Source File }-------- */
+
+/* !LINKSTO EB_CRY_0001,1, CS_SECURE_CRY_0001_CMACVrfy,1 */
+
+#ifndef CRY_CMACVRFY_H
+#define CRY_CMACVRFY_H
+
+/*==[Includes]================================================================*/
+
+#include <Std_Types.h>
+#include <Csm.h>                 /* !LINKSTO EB_CRY_0002,1 */
+#include <Cry_CMACVrfyConfig.h>  /* !LINKSTO EB_CRY_0002,1 */
+
+#if (CRY_CMAC_VRFY_ENABLED == STD_ON)
+
+/*==[Macros]==================================================================*/
+
+/*==[Types]===================================================================*/
+
+/*==[Constants with external linkage]=========================================*/
+
+/*==[Variables with external linkage]=========================================*/
+
+/*==[Declaration of functions with external linkage]==========================*/
+
+#define CRY_START_SEC_CODE
+#include <MemMap.h>
+
+/**
+ *
+ * \brief Start CMAC verification.
+ *
+ * This function requests the start of the CMAC verification for the given configuration
+ * and key. The start is performed in Cry_CMACVrfyMainFunction().
+ *
+ * \param[in]  cfgPtr a pointer to the configuration for which the start of the CMAC
+ *                    verification is requested.
+ *
+ * \param[in]  keyPtr a pointer to the key which will be used in the CMAC
+ *                    verification.
+ *
+ * \return Error code
+ *
+ * \retval CSM_E_OK   If the start was successfully requested.
+ * \retval CSM_E_BUSY If a service of the CMAC verification is already running.
+ *
+ * \Reentrancy{Not reentrant}
+ * \Synchronicity{Asynchronous}
+ */
+extern FUNC(Csm_ReturnType, CRY_CODE) Cry_CMACVrfyStart
+(
+  P2CONST(void,           AUTOMATIC, CRY_APPL_DATA) cfgPtr,
+  P2CONST(Csm_SymKeyType, AUTOMATIC, CRY_APPL_DATA) keyPtr
+);
+
+/**
+ *
+ * \brief Update CMAC verification.
+ *
+ * This function requests the update of the CMAC verification for the given data.
+ * The update is performed in Cry_CMACVrfyMainFunction().
+ *
+ * \param[in]  dataPtr A pointer to the start of an array which contains a part of the
+ *                     data for which the CMAC will be verified.
+ *
+ * \param[in]  dataLength The amount of data in bytes.
+ *
+ * \return Error code
+ *
+ * \retval CSM_E_OK     If the update was successfully requested.
+ * \retval CSM_E_BUSY   If the main function is processing a requested service at the
+ *                      moment.
+ * \retval CSM_E_NOT_OK If no CMAC verification has been started via
+ *                      Cry_CMACVrfyStart() yet or if the finishing of the CMAC computation is
+ *                      already requested.
+ *
+ * \Reentrancy{Not reentrant}
+ * \Synchronicity{Asynchronous}
+ */
+extern FUNC(Csm_ReturnType, CRY_CODE) Cry_CMACVrfyUpdate
+(
+  P2CONST(uint8, AUTOMATIC, CRY_APPL_DATA) dataPtr,
+  uint32                                   dataLength
+);
+
+/**
+ *
+ * \brief Finish CMAC verification.
+ *
+ * This function requests the finishing of the CMAC
+ * verification. The finishing is performed in Cry_CMACVrfyMainFunction().
+ *
+ * \param[in]   authenticationPtr A pointer to the start of a buffer where the CMAC to verify
+ *                                is stored.
+ *
+ * \param[in]   authenticationLength The length of the CMAC to verify in bits.
+ *
+ * \param[out]  resultPtr A pointer to a variable where the result of the CMAC verification will
+ *                        be stored.
+ *
+ * \return Error code
+ *
+ * \retval CSM_E_OK     If the finishing was successfully requested.
+ * \retval CSM_E_BUSY   If the main function is processing a requested service at the
+ *                      moment.
+ * \retval CSM_E_NOT_OK If no CMAC verification has been started via
+ *                      Cry_CMACVrfyStart() yet or if the finishing of the CMAC computation is
+ *                      already requested.
+ *
+ * \Reentrancy{Not reentrant}
+ * \Synchronicity{Asynchronous}
+ */
+extern FUNC(Csm_ReturnType, CRY_CODE) Cry_CMACVrfyFinish
+(
+  P2CONST(uint8, AUTOMATIC, CRY_APPL_DATA)              authenticationPtr,
+  uint32                                                authenticationLength,
+  P2VAR(Csm_VerifyResultType, AUTOMATIC, CRY_APPL_DATA) resultPtr
+);
+
+/**
+ *
+ * \brief Perform the CMAC verification tasks.
+ *
+ * This function performs the actual CMAC verification
+ * tasks which have been requested by the service functions. When a task has
+ * finished, the function Csm_MacVerifyServiceCallbackNotification() is
+ * called to inform the CSM of the result. If the complete CMAC verification
+ * has finished, additionally the function
+ * Csm_MacVerifyServiceFinishNotification() is called.
+ *
+ *
+ * \Reentrancy{Not reentrant}
+ * \Synchronicity{Asynchronous}
+ */
+extern FUNC(void, CRY_CODE) Cry_CMACVrfyMainFunction
+(
+  void
+);
+
+
+#define CRY_STOP_SEC_CODE
+#include <MemMap.h>
+
+#endif /* #if (CRY_CMAC_VRFY_ENABLED == STD_ON) */
+
+#endif /* CRY_CMACVRFY_H */

@@ -1,0 +1,2324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_4-0-3_STRICT_COMPACT.xsd">
+[!/* do not generate this file if RTE is not used */!][!//
+[!IF "CsmGeneral/CsmRteUsage = 'false'"!][!//
+  [!SKIPFILE!][!//
+[!ELSE!][!//
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>AUTOSAR_Csm</SHORT-NAME>
+      <ELEMENTS/>
+      <AR-PACKAGES>
+        <AR-PACKAGE>
+          <SHORT-NAME>SwComponentTypes</SHORT-NAME>
+          <ELEMENTS>
+            <SERVICE-SW-COMPONENT-TYPE>
+              <SHORT-NAME>Csm</SHORT-NAME>
+              <PORTS>
+[!LOOP "CsmAsymPrivateKeyWrapAsym/CsmAsymPrivateKeyWrapAsymConfig/*[CsmAsymPrivateKeyWrapAsymEnableRteInterface='true']"!][!//
+                <P-PORT-PROTOTYPE>
+                  <SHORT-NAME>PS_CsmAsymPrivateKeyWrapAsym_[!"name(.)"!]</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmAsymPrivateKeyWrapAsym/AsymPrivateKeyWrapAsymStart</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmAsymPrivateKeyWrapAsym/AsymPrivateKeyWrapAsymUpdate</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmAsymPrivateKeyWrapAsym/AsymPrivateKeyWrapAsymFinish</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmAsymPrivateKeyWrapAsym</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+[!IF "../../../CsmGeneral/CsmUseSyncJobProcessing = 'false'"!][!//
+                <R-PORT-PROTOTYPE>
+                  <SHORT-NAME>PNJobFinished_CsmAsymPrivateKeyWrapAsym_[!"name(.)"!]</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmCallback</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+[!ENDIF!][!//
+[!ENDLOOP!][!//
+[!LOOP "CsmAsymPrivateKeyWrapSym/CsmAsymPrivateKeyWrapSymConfig/*[CsmAsymPrivateKeyWrapSymEnableRteInterface='true']"!][!//
+                <P-PORT-PROTOTYPE>
+                  <SHORT-NAME>PS_CsmAsymPrivateKeyWrapSym_[!"name(.)"!]</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmAsymPrivateKeyWrapSym/AsymPrivateKeyWrapSymStart</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmAsymPrivateKeyWrapSym/AsymPrivateKeyWrapSymUpdate</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmAsymPrivateKeyWrapSym/AsymPrivateKeyWrapSymFinish</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmAsymPrivateKeyWrapSym</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+[!IF "../../../CsmGeneral/CsmUseSyncJobProcessing = 'false'"!][!//
+                <R-PORT-PROTOTYPE>
+                  <SHORT-NAME>PNJobFinished_CsmAsymPrivateKeyWrapSym_[!"name(.)"!]</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmCallback</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+[!ENDIF!][!//
+[!ENDLOOP!][!//
+[!LOOP "CsmAsymPublicKeyExtract/CsmAsymPublicKeyExtractConfig/*[CsmAsymPublicKeyExtractEnableRteInterface='true']"!][!//
+                <P-PORT-PROTOTYPE>
+                  <SHORT-NAME>PS_CsmAsymPublicKeyExtract_[!"name(.)"!]</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmAsymPublicKeyExtract/AsymPublicKeyExtractStart</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmAsymPublicKeyExtract/AsymPublicKeyExtractUpdate</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmAsymPublicKeyExtract/AsymPublicKeyExtractFinish</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmAsymPublicKeyExtract</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+[!IF "../../../CsmGeneral/CsmUseSyncJobProcessing = 'false'"!][!//
+                <R-PORT-PROTOTYPE>
+                  <SHORT-NAME>PNJobFinished_CsmAsymPublicKeyExtract_[!"name(.)"!]</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmCallback</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+[!ENDIF!][!//
+[!ENDLOOP!][!//
+[!LOOP "CsmChecksum/CsmChecksumConfig/*[CsmChecksumEnableRteInterface='true']"!][!//
+                <P-PORT-PROTOTYPE>
+                  <SHORT-NAME>PS_CsmChecksum_[!"name(.)"!]</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmChecksum/ChecksumStart</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmChecksum/ChecksumUpdate</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmChecksum/ChecksumFinish</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmChecksum</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+[!IF "../../../CsmGeneral/CsmUseSyncJobProcessing = 'false'"!][!//
+                <R-PORT-PROTOTYPE>
+                  <SHORT-NAME>PNJobFinished_CsmChecksum_[!"name(.)"!]</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmCallback</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+[!ENDIF!][!//
+[!ENDLOOP!][!//
+[!LOOP "CsmHash/CsmHashConfig/*[CsmHashEnableRteInterface='true']"!][!//
+                <P-PORT-PROTOTYPE>
+                  <SHORT-NAME>PS_CsmHash_[!"name(.)"!]</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmHash/HashStart</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmHash/HashUpdate</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmHash/HashFinish</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmHash</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+[!IF "../../../CsmGeneral/CsmUseSyncJobProcessing = 'false'"!][!//
+                <R-PORT-PROTOTYPE>
+                  <SHORT-NAME>PNJobFinished_CsmHash_[!"name(.)"!]</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmCallback</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+[!ENDIF!][!//
+[!ENDLOOP!][!//
+[!LOOP "CsmMacGenerate/CsmMacGenerateConfig/*[CsmMacGenerateEnableRteInterface='true']"!][!//
+                <P-PORT-PROTOTYPE>
+                  <SHORT-NAME>PS_CsmMacGenerate_[!"name(.)"!]</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmMacGenerate/MacGenerateStart</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmMacGenerate/MacGenerateUpdate</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmMacGenerate/MacGenerateFinish</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmMacGenerate</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+[!IF "../../../CsmGeneral/CsmUseSyncJobProcessing = 'false'"!][!//
+                <R-PORT-PROTOTYPE>
+                  <SHORT-NAME>PNJobFinished_CsmMacGenerate_[!"name(.)"!]</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmCallback</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+[!ENDIF!][!//
+[!ENDLOOP!][!//
+[!LOOP "CsmMacVerify/CsmMacVerifyConfig/*[CsmMacVerifyEnableRteInterface='true']"!][!//
+                <P-PORT-PROTOTYPE>
+                  <SHORT-NAME>PS_CsmMacVerify_[!"name(.)"!]</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmMacVerify/MacVerifyStart</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmMacVerify/MacVerifyUpdate</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmMacVerify/MacVerifyFinish</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmMacVerify</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+[!IF "../../../CsmGeneral/CsmUseSyncJobProcessing = 'false'"!][!//
+                <R-PORT-PROTOTYPE>
+                  <SHORT-NAME>PNJobFinished_CsmMacVerify_[!"name(.)"!]</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmCallback</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+[!ENDIF!][!//
+[!ENDLOOP!][!//
+[!LOOP "CsmRandomGenerate/CsmRandomGenerateConfig/*[CsmRandomGenerateEnableRteInterface='true']"!][!//
+                <P-PORT-PROTOTYPE>
+                  <SHORT-NAME>PS_CsmRandomGenerate_[!"name(.)"!]</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmRandomGenerate/RandomGenerate</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmRandomGenerate</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+[!IF "../../../CsmGeneral/CsmUseSyncJobProcessing = 'false'"!][!//
+                <R-PORT-PROTOTYPE>
+                  <SHORT-NAME>PNJobFinished_CsmRandomGenerate_[!"name(.)"!]</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmCallback</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+[!ENDIF!][!//
+[!ENDLOOP!][!//
+[!LOOP "CsmRandomSeed/CsmRandomSeedConfig/*[CsmRandomSeedEnableRteInterface='true']"!][!//
+                <P-PORT-PROTOTYPE>
+                  <SHORT-NAME>PS_CsmRandomSeed_[!"name(.)"!]</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmRandomSeed/RandomSeedStart</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmRandomSeed/RandomSeedUpdate</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmRandomSeed/RandomSeedFinish</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmRandomSeed</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+[!IF "../../../CsmGeneral/CsmUseSyncJobProcessing = 'false'"!][!//
+                <R-PORT-PROTOTYPE>
+                  <SHORT-NAME>PNJobFinished_CsmRandomSeed_[!"name(.)"!]</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmCallback</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+[!ENDIF!][!//
+[!ENDLOOP!][!//
+[!LOOP "CsmSignatureGenerate/CsmSignatureGenerateConfig/*[CsmSignatureGenerateEnableRteInterface='true']"!][!//
+                <P-PORT-PROTOTYPE>
+                  <SHORT-NAME>PS_CsmSignatureGenerate_[!"name(.)"!]</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSignatureGenerate/SignatureGenerateStart</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSignatureGenerate/SignatureGenerateUpdate</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSignatureGenerate/SignatureGenerateFinish</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmSignatureGenerate</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+[!IF "../../../CsmGeneral/CsmUseSyncJobProcessing = 'false'"!][!//
+                <R-PORT-PROTOTYPE>
+                  <SHORT-NAME>PNJobFinished_CsmSignatureGenerate_[!"name(.)"!]</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmCallback</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+[!ENDIF!][!//
+[!ENDLOOP!][!//
+[!LOOP "CsmSignatureVerify/CsmSignatureVerifyConfig/*[CsmSignatureVerifyEnableRteInterface='true']"!][!//
+                <P-PORT-PROTOTYPE>
+                  <SHORT-NAME>PS_CsmSignatureVerify_[!"name(.)"!]</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSignatureVerify/SignatureVerifyStart</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSignatureVerify/SignatureVerifyUpdate</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSignatureVerify/SignatureVerifyFinish</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmSignatureVerify</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+[!IF "../../../CsmGeneral/CsmUseSyncJobProcessing = 'false'"!][!//
+                <R-PORT-PROTOTYPE>
+                  <SHORT-NAME>PNJobFinished_CsmSignatureVerify_[!"name(.)"!]</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmCallback</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+[!ENDIF!][!//
+[!ENDLOOP!][!//
+[!LOOP "CsmSymBlockEncrypt/CsmSymBlockEncryptConfig/*[CsmSymBlockEncryptEnableRteInterface='true']"!][!//
+                <P-PORT-PROTOTYPE>
+                  <SHORT-NAME>PS_CsmSymBlockEncrypt_[!"name(.)"!]</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymBlockEncrypt/SymBlockEncryptStart</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymBlockEncrypt/SymBlockEncryptUpdate</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymBlockEncrypt/SymBlockEncryptFinish</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmSymBlockEncrypt</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+[!IF "../../../CsmGeneral/CsmUseSyncJobProcessing = 'false'"!][!//
+                <R-PORT-PROTOTYPE>
+                  <SHORT-NAME>PNJobFinished_CsmSymBlockEncrypt_[!"name(.)"!]</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmCallback</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+[!ENDIF!][!//
+[!ENDLOOP!][!//
+[!LOOP "CsmSymBlockDecrypt/CsmSymBlockDecryptConfig/*[CsmSymBlockDecryptEnableRteInterface='true']"!][!//
+                <P-PORT-PROTOTYPE>
+                  <SHORT-NAME>PS_CsmSymBlockDecrypt_[!"name(.)"!]</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymBlockDecrypt/SymBlockDecryptStart</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymBlockDecrypt/SymBlockDecryptUpdate</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymBlockDecrypt/SymBlockDecryptFinish</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmSymBlockDecrypt</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+[!IF "../../../CsmGeneral/CsmUseSyncJobProcessing = 'false'"!][!//
+                <R-PORT-PROTOTYPE>
+                  <SHORT-NAME>PNJobFinished_CsmSymBlockDecrypt_[!"name(.)"!]</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmCallback</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+[!ENDIF!][!//
+[!ENDLOOP!][!//
+[!LOOP "CsmSymEncrypt/CsmSymEncryptConfig/*[CsmSymEncryptEnableRteInterface='true']"!][!//
+                <P-PORT-PROTOTYPE>
+                  <SHORT-NAME>PS_CsmSymEncrypt_[!"name(.)"!]</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymEncrypt/SymEncryptStart</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymEncrypt/SymEncryptUpdate</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymEncrypt/SymEncryptFinish</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmSymEncrypt</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+[!IF "../../../CsmGeneral/CsmUseSyncJobProcessing = 'false'"!][!//
+                <R-PORT-PROTOTYPE>
+                  <SHORT-NAME>PNJobFinished_CsmSymEncrypt_[!"name(.)"!]</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmCallback</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+[!ENDIF!][!//
+[!ENDLOOP!][!//
+[!LOOP "CsmSymDecrypt/CsmSymDecryptConfig/*[CsmSymDecryptEnableRteInterface='true']"!][!//
+                <P-PORT-PROTOTYPE>
+                  <SHORT-NAME>PS_CsmSymDecrypt_[!"name(.)"!]</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymDecrypt/SymDecryptStart</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymDecrypt/SymDecryptUpdate</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymDecrypt/SymDecryptFinish</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmSymDecrypt</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+[!IF "../../../CsmGeneral/CsmUseSyncJobProcessing = 'false'"!][!//
+                <R-PORT-PROTOTYPE>
+                  <SHORT-NAME>PNJobFinished_CsmSymDecrypt_[!"name(.)"!]</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmCallback</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+[!ENDIF!][!//
+[!ENDLOOP!][!//
+[!LOOP "CsmSymKeyExtract/CsmSymKeyExtractConfig/*[CsmSymKeyExtractEnableRteInterface='true']"!][!//
+                <P-PORT-PROTOTYPE>
+                  <SHORT-NAME>PS_CsmSymKeyExtract_[!"name(.)"!]</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymKeyExtract/SymKeyExtractStart</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymKeyExtract/SymKeyExtractUpdate</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymKeyExtract/SymKeyExtractFinish</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmSymKeyExtract</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+[!IF "../../../CsmGeneral/CsmUseSyncJobProcessing = 'false'"!][!//
+                <R-PORT-PROTOTYPE>
+                  <SHORT-NAME>PNJobFinished_CsmSymKeyExtract_[!"name(.)"!]</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmCallback</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+[!ENDIF!][!//
+[!ENDLOOP!][!//
+[!LOOP "CsmSymKeyWrapAsym/CsmSymKeyWrapAsymConfig/*[CsmSymKeyWrapAsymEnableRteInterface='true']"!][!//
+                <P-PORT-PROTOTYPE>
+                  <SHORT-NAME>PS_CsmSymKeyWrapAsym_[!"name(.)"!]</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymKeyWrapAsym/SymKeyWrapAsymStart</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymKeyWrapAsym/SymKeyWrapAsymUpdate</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymKeyWrapAsym/SymKeyWrapAsymFinish</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmSymKeyWrapAsym</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+[!IF "../../../CsmGeneral/CsmUseSyncJobProcessing = 'false'"!][!//
+                <R-PORT-PROTOTYPE>
+                  <SHORT-NAME>PNJobFinished_CsmSymKeyWrapAsym_[!"name(.)"!]</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmCallback</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+[!ENDIF!][!//
+[!ENDLOOP!][!//
+[!LOOP "CsmSymKeyWrapSym/CsmSymKeyWrapSymConfig/*[CsmSymKeyWrapSymEnableRteInterface='true']"!][!//
+                <P-PORT-PROTOTYPE>
+                  <SHORT-NAME>PS_CsmSymKeyWrapSym_[!"name(.)"!]</SHORT-NAME>
+                  <PROVIDED-COM-SPECS>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymKeyWrapSym/SymKeyWrapSymStart</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymKeyWrapSym/SymKeyWrapSymUpdate</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                    <SERVER-COM-SPEC>
+                      <OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymKeyWrapSym/SymKeyWrapSymFinish</OPERATION-REF>
+                      <QUEUE-LENGTH>1</QUEUE-LENGTH>
+                    </SERVER-COM-SPEC>
+                  </PROVIDED-COM-SPECS>
+                  <PROVIDED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmSymKeyWrapSym</PROVIDED-INTERFACE-TREF>
+                </P-PORT-PROTOTYPE>
+[!IF "../../../CsmGeneral/CsmUseSyncJobProcessing = 'false'"!][!//
+                <R-PORT-PROTOTYPE>
+                  <SHORT-NAME>PNJobFinished_CsmSymKeyWrapSym_[!"name(.)"!]</SHORT-NAME>
+                  <REQUIRED-INTERFACE-TREF DEST="CLIENT-SERVER-INTERFACE">/AUTOSAR_Csm/PortInterfaces/CsmCallback</REQUIRED-INTERFACE-TREF>
+                </R-PORT-PROTOTYPE>
+[!ENDIF!][!//
+[!ENDLOOP!][!//
+              </PORTS>
+
+              <INTERNAL-BEHAVIORS>
+                <SWC-INTERNAL-BEHAVIOR>
+                  <SHORT-NAME>CsmIntBeh</SHORT-NAME>
+                  <EVENTS>
+[!LOOP "CsmAsymPrivateKeyWrapAsym/CsmAsymPrivateKeyWrapAsymConfig/*[CsmAsymPrivateKeyWrapAsymEnableRteInterface='true']"!][!//
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_AsymPrivateKeyWrapAsymStart_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_AsymPrivateKeyWrapAsymStart</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmAsymPrivateKeyWrapAsym_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmAsymPrivateKeyWrapAsym/AsymPrivateKeyWrapAsymStart</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_AsymPrivateKeyWrapAsymUpdate_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_AsymPrivateKeyWrapAsymUpdate</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmAsymPrivateKeyWrapAsym_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmAsymPrivateKeyWrapAsym/AsymPrivateKeyWrapAsymUpdate</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_AsymPrivateKeyWrapAsymFinish_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_AsymPrivateKeyWrapAsymFinish</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmAsymPrivateKeyWrapAsym_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmAsymPrivateKeyWrapAsym/AsymPrivateKeyWrapAsymFinish</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+[!ENDLOOP!][!//
+[!LOOP "CsmAsymPrivateKeyWrapSym/CsmAsymPrivateKeyWrapSymConfig/*[CsmAsymPrivateKeyWrapSymEnableRteInterface='true']"!][!//
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_AsymPrivateKeyWrapSymStart_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_AsymPrivateKeyWrapSymStart</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmAsymPrivateKeyWrapSym_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmAsymPrivateKeyWrapSym/AsymPrivateKeyWrapSymStart</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_AsymPrivateKeyWrapSymUpdate_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_AsymPrivateKeyWrapSymUpdate</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmAsymPrivateKeyWrapSym_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmAsymPrivateKeyWrapSym/AsymPrivateKeyWrapSymUpdate</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_AsymPrivateKeyWrapSymFinish_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_AsymPrivateKeyWrapSymFinish</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmAsymPrivateKeyWrapSym_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmAsymPrivateKeyWrapSym/AsymPrivateKeyWrapSymFinish</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+[!ENDLOOP!][!//
+[!LOOP "CsmAsymPublicKeyExtract/CsmAsymPublicKeyExtractConfig/*[CsmAsymPublicKeyExtractEnableRteInterface='true']"!][!//
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_AsymPublicKeyExtractStart_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_AsymPublicKeyExtractStart</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmAsymPublicKeyExtract_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmAsymPublicKeyExtract/AsymPublicKeyExtractStart</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_AsymPublicKeyExtractUpdate_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_AsymPublicKeyExtractUpdate</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmAsymPublicKeyExtract_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmAsymPublicKeyExtract/AsymPublicKeyExtractUpdate</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_AsymPublicKeyExtractFinish_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_AsymPublicKeyExtractFinish</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmAsymPublicKeyExtract_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmAsymPublicKeyExtract/AsymPublicKeyExtractFinish</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+[!ENDLOOP!][!//
+[!LOOP "CsmChecksum/CsmChecksumConfig/*[CsmChecksumEnableRteInterface='true']"!][!//
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_ChecksumStart_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_ChecksumStart</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmChecksum_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmChecksum/ChecksumStart</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_ChecksumUpdate_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_ChecksumUpdate</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmChecksum_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmChecksum/ChecksumUpdate</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_ChecksumFinish_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_ChecksumFinish</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmChecksum_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmChecksum/ChecksumFinish</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+[!ENDLOOP!][!//
+[!LOOP "CsmHash/CsmHashConfig/*[CsmHashEnableRteInterface='true']"!][!//
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_HashStart_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_HashStart</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmHash_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmHash/HashStart</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_HashUpdate_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_HashUpdate</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmHash_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmHash/HashUpdate</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_HashFinish_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_HashFinish</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmHash_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmHash/HashFinish</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+[!ENDLOOP!][!//
+[!LOOP "CsmMacGenerate/CsmMacGenerateConfig/*[CsmMacGenerateEnableRteInterface='true']"!][!//
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_MacGenerateStart_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_MacGenerateStart</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmMacGenerate_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmMacGenerate/MacGenerateStart</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_MacGenerateUpdate_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_MacGenerateUpdate</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmMacGenerate_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmMacGenerate/MacGenerateUpdate</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_MacGenerateFinish_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_MacGenerateFinish</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmMacGenerate_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmMacGenerate/MacGenerateFinish</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+[!ENDLOOP!][!//
+[!LOOP "CsmMacVerify/CsmMacVerifyConfig/*[CsmMacVerifyEnableRteInterface='true']"!][!//
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_MacVerifyStart_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_MacVerifyStart</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmMacVerify_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmMacVerify/MacVerifyStart</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_MacVerifyUpdate_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_MacVerifyUpdate</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmMacVerify_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmMacVerify/MacVerifyUpdate</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_MacVerifyFinish_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_MacVerifyFinish</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmMacVerify_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmMacVerify/MacVerifyFinish</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+[!ENDLOOP!][!//
+[!LOOP "CsmRandomGenerate/CsmRandomGenerateConfig/*[CsmRandomGenerateEnableRteInterface='true']"!][!//
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_RandomGenerate_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_RandomGenerate</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmRandomGenerate_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmRandomGenerate/RandomGenerate</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+[!ENDLOOP!][!//
+[!LOOP "CsmRandomSeed/CsmRandomSeedConfig/*[CsmRandomSeedEnableRteInterface='true']"!][!//
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_RandomSeedStart_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_RandomSeedStart</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmRandomSeed_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmRandomSeed/RandomSeedStart</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_RandomSeedUpdate_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_RandomSeedUpdate</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmRandomSeed_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmRandomSeed/RandomSeedUpdate</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_RandomSeedFinish_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_RandomSeedFinish</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmRandomSeed_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmRandomSeed/RandomSeedFinish</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+[!ENDLOOP!][!//
+[!LOOP "CsmSignatureGenerate/CsmSignatureGenerateConfig/*[CsmSignatureGenerateEnableRteInterface='true']"!][!//
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_SignatureGenerateStart_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_SignatureGenerateStart</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSignatureGenerate_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSignatureGenerate/SignatureGenerateStart</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_SignatureGenerateUpdate_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_SignatureGenerateUpdate</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSignatureGenerate_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSignatureGenerate/SignatureGenerateUpdate</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_SignatureGenerateFinish_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_SignatureGenerateFinish</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSignatureGenerate_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSignatureGenerate/SignatureGenerateFinish</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+[!ENDLOOP!][!//
+[!LOOP "CsmSignatureVerify/CsmSignatureVerifyConfig/*[CsmSignatureVerifyEnableRteInterface='true']"!][!//
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_SignatureVerifyStart_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_SignatureVerifyStart</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSignatureVerify_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSignatureVerify/SignatureVerifyStart</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_SignatureVerifyUpdate_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_SignatureVerifyUpdate</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSignatureVerify_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSignatureVerify/SignatureVerifyUpdate</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_SignatureVerifyFinish_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_SignatureVerifyFinish</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSignatureVerify_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSignatureVerify/SignatureVerifyFinish</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+[!ENDLOOP!][!//
+[!LOOP "CsmSymBlockEncrypt/CsmSymBlockEncryptConfig/*[CsmSymBlockEncryptEnableRteInterface='true']"!][!//
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_SymBlockEncryptStart_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_SymBlockEncryptStart</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSymBlockEncrypt_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymBlockEncrypt/SymBlockEncryptStart</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_SymBlockEncryptUpdate_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_SymBlockEncryptUpdate</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSymBlockEncrypt_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymBlockEncrypt/SymBlockEncryptUpdate</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_SymBlockEncryptFinish_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_SymBlockEncryptFinish</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSymBlockEncrypt_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymBlockEncrypt/SymBlockEncryptFinish</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+[!ENDLOOP!][!//
+[!LOOP "CsmSymBlockDecrypt/CsmSymBlockDecryptConfig/*[CsmSymBlockDecryptEnableRteInterface='true']"!][!//
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_SymBlockDecryptStart_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_SymBlockDecryptStart</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSymBlockDecrypt_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymBlockDecrypt/SymBlockDecryptStart</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_SymBlockDecryptUpdate_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_SymBlockDecryptUpdate</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSymBlockDecrypt_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymBlockDecrypt/SymBlockDecryptUpdate</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_SymBlockDecryptFinish_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_SymBlockDecryptFinish</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSymBlockDecrypt_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymBlockDecrypt/SymBlockDecryptFinish</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+[!ENDLOOP!][!//
+[!LOOP "CsmSymEncrypt/CsmSymEncryptConfig/*[CsmSymEncryptEnableRteInterface='true']"!][!//
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_SymEncryptStart_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_SymEncryptStart</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSymEncrypt_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymEncrypt/SymEncryptStart</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_SymEncryptUpdate_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_SymEncryptUpdate</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSymEncrypt_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymEncrypt/SymEncryptUpdate</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_SymEncryptFinish_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_SymEncryptFinish</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSymEncrypt_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymEncrypt/SymEncryptFinish</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+[!ENDLOOP!][!//
+[!LOOP "CsmSymDecrypt/CsmSymDecryptConfig/*[CsmSymDecryptEnableRteInterface='true']"!][!//
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_SymDecryptStart_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_SymDecryptStart</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSymDecrypt_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymDecrypt/SymDecryptStart</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_SymDecryptUpdate_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_SymDecryptUpdate</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSymDecrypt_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymDecrypt/SymDecryptUpdate</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_SymDecryptFinish_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_SymDecryptFinish</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSymDecrypt_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymDecrypt/SymDecryptFinish</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+[!ENDLOOP!][!//
+[!LOOP "CsmSymKeyExtract/CsmSymKeyExtractConfig/*[CsmSymKeyExtractEnableRteInterface='true']"!][!//
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_SymKeyExtractStart_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_SymKeyExtractStart</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSymKeyExtract_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymKeyExtract/SymKeyExtractStart</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_SymKeyExtractUpdate_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_SymKeyExtractUpdate</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSymKeyExtract_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymKeyExtract/SymKeyExtractUpdate</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_SymKeyExtractFinish_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_SymKeyExtractFinish</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSymKeyExtract_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymKeyExtract/SymKeyExtractFinish</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+[!ENDLOOP!][!//
+[!LOOP "CsmSymKeyWrapAsym/CsmSymKeyWrapAsymConfig/*[CsmSymKeyWrapAsymEnableRteInterface='true']"!][!//
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_SymKeyWrapAsymStart_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_SymKeyWrapAsymStart</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSymKeyWrapAsym_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymKeyWrapAsym/SymKeyWrapAsymStart</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_SymKeyWrapAsymUpdate_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_SymKeyWrapAsymUpdate</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSymKeyWrapAsym_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymKeyWrapAsym/SymKeyWrapAsymUpdate</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_SymKeyWrapAsymFinish_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_SymKeyWrapAsymFinish</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSymKeyWrapAsym_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymKeyWrapAsym/SymKeyWrapAsymFinish</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+[!ENDLOOP!][!//
+[!LOOP "CsmSymKeyWrapSym/CsmSymKeyWrapSymConfig/*[CsmSymKeyWrapSymEnableRteInterface='true']"!][!//
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_SymKeyWrapSymStart_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_SymKeyWrapSymStart</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSymKeyWrapSym_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymKeyWrapSym/SymKeyWrapSymStart</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_SymKeyWrapSymUpdate_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_SymKeyWrapSymUpdate</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSymKeyWrapSym_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymKeyWrapSym/SymKeyWrapSymUpdate</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+                    <OPERATION-INVOKED-EVENT>
+                      <SHORT-NAME>EV_SymKeyWrapSymFinish_[!"name(.)"!]</SHORT-NAME>
+                      <START-ON-EVENT-REF DEST="RUNNABLE-ENTITY">/AUTOSAR_Csm/SwComponentTypes/Csm/CsmIntBeh/RE_SymKeyWrapSymFinish</START-ON-EVENT-REF>
+                      <OPERATION-IREF>
+                        <CONTEXT-P-PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSymKeyWrapSym_[!"name(.)"!]</CONTEXT-P-PORT-REF>
+                        <TARGET-PROVIDED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmSymKeyWrapSym/SymKeyWrapSymFinish</TARGET-PROVIDED-OPERATION-REF>
+                      </OPERATION-IREF>
+                    </OPERATION-INVOKED-EVENT>
+[!ENDLOOP!][!//
+                  </EVENTS>
+                  <HANDLE-TERMINATION-AND-RESTART>NO-SUPPORT</HANDLE-TERMINATION-AND-RESTART>
+                  <PORT-API-OPTIONS>
+[!LOOP "CsmAsymPrivateKeyWrapAsym/CsmAsymPrivateKeyWrapAsymConfig/*[CsmAsymPrivateKeyWrapAsymEnableRteInterface='true']"!][!//
+                    <PORT-API-OPTION>
+                      <ENABLE-TAKE-ADDRESS>true</ENABLE-TAKE-ADDRESS>
+                      <INDIRECT-API>false</INDIRECT-API>
+                      <PORT-ARG-VALUES>
+                        <PORT-DEFINED-ARGUMENT-VALUE>
+                          <VALUE>
+                            <NUMERICAL-VALUE-SPECIFICATION>
+                              <VALUE>[!"num:i(@index)"!]</VALUE>
+                            </NUMERICAL-VALUE-SPECIFICATION>
+                          </VALUE>
+                          <VALUE-TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Csm/ImplementationDataTypes/Csm_ConfigIdType</VALUE-TYPE-TREF>
+                        </PORT-DEFINED-ARGUMENT-VALUE>
+                      </PORT-ARG-VALUES>
+                      <PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmAsymPrivateKeyWrapAsym_[!"name(.)"!]</PORT-REF>
+                    </PORT-API-OPTION>
+[!ENDLOOP!][!//
+[!LOOP "CsmAsymPrivateKeyWrapSym/CsmAsymPrivateKeyWrapSymConfig/*[CsmAsymPrivateKeyWrapSymEnableRteInterface='true']"!][!//
+                    <PORT-API-OPTION>
+                      <ENABLE-TAKE-ADDRESS>true</ENABLE-TAKE-ADDRESS>
+                      <INDIRECT-API>false</INDIRECT-API>
+                      <PORT-ARG-VALUES>
+                        <PORT-DEFINED-ARGUMENT-VALUE>
+                          <VALUE>
+                            <NUMERICAL-VALUE-SPECIFICATION>
+                              <VALUE>[!"num:i(@index)"!]</VALUE>
+                            </NUMERICAL-VALUE-SPECIFICATION>
+                          </VALUE>
+                          <VALUE-TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Csm/ImplementationDataTypes/Csm_ConfigIdType</VALUE-TYPE-TREF>
+                        </PORT-DEFINED-ARGUMENT-VALUE>
+                      </PORT-ARG-VALUES>
+                      <PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmAsymPrivateKeyWrapSym_[!"name(.)"!]</PORT-REF>
+                    </PORT-API-OPTION>
+[!ENDLOOP!][!//
+[!LOOP "CsmAsymPublicKeyExtract/CsmAsymPublicKeyExtractConfig/*[CsmAsymPublicKeyExtractEnableRteInterface='true']"!][!//
+                    <PORT-API-OPTION>
+                      <ENABLE-TAKE-ADDRESS>true</ENABLE-TAKE-ADDRESS>
+                      <INDIRECT-API>false</INDIRECT-API>
+                      <PORT-ARG-VALUES>
+                        <PORT-DEFINED-ARGUMENT-VALUE>
+                          <VALUE>
+                            <NUMERICAL-VALUE-SPECIFICATION>
+                              <VALUE>[!"num:i(@index)"!]</VALUE>
+                            </NUMERICAL-VALUE-SPECIFICATION>
+                          </VALUE>
+                          <VALUE-TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Csm/ImplementationDataTypes/Csm_ConfigIdType</VALUE-TYPE-TREF>
+                        </PORT-DEFINED-ARGUMENT-VALUE>
+                      </PORT-ARG-VALUES>
+                      <PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmAsymPublicKeyExtract_[!"name(.)"!]</PORT-REF>
+                    </PORT-API-OPTION>
+[!ENDLOOP!][!//
+[!LOOP "CsmChecksum/CsmChecksumConfig/*[CsmChecksumEnableRteInterface='true']"!][!//
+                    <PORT-API-OPTION>
+                      <ENABLE-TAKE-ADDRESS>true</ENABLE-TAKE-ADDRESS>
+                      <INDIRECT-API>false</INDIRECT-API>
+                      <PORT-ARG-VALUES>
+                        <PORT-DEFINED-ARGUMENT-VALUE>
+                          <VALUE>
+                            <NUMERICAL-VALUE-SPECIFICATION>
+                              <VALUE>[!"num:i(@index)"!]</VALUE>
+                            </NUMERICAL-VALUE-SPECIFICATION>
+                          </VALUE>
+                          <VALUE-TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Csm/ImplementationDataTypes/Csm_ConfigIdType</VALUE-TYPE-TREF>
+                        </PORT-DEFINED-ARGUMENT-VALUE>
+                      </PORT-ARG-VALUES>
+                      <PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmChecksum_[!"name(.)"!]</PORT-REF>
+                    </PORT-API-OPTION>
+[!ENDLOOP!][!//
+[!LOOP "CsmHash/CsmHashConfig/*[CsmHashEnableRteInterface='true']"!][!//
+                    <PORT-API-OPTION>
+                      <ENABLE-TAKE-ADDRESS>true</ENABLE-TAKE-ADDRESS>
+                      <INDIRECT-API>false</INDIRECT-API>
+                      <PORT-ARG-VALUES>
+                        <PORT-DEFINED-ARGUMENT-VALUE>
+                          <VALUE>
+                            <NUMERICAL-VALUE-SPECIFICATION>
+                              <VALUE>[!"num:i(@index)"!]</VALUE>
+                            </NUMERICAL-VALUE-SPECIFICATION>
+                          </VALUE>
+                          <VALUE-TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Csm/ImplementationDataTypes/Csm_ConfigIdType</VALUE-TYPE-TREF>
+                        </PORT-DEFINED-ARGUMENT-VALUE>
+                      </PORT-ARG-VALUES>
+                      <PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmHash_[!"name(.)"!]</PORT-REF>
+                    </PORT-API-OPTION>
+[!ENDLOOP!][!//
+[!LOOP "CsmMacGenerate/CsmMacGenerateConfig/*[CsmMacGenerateEnableRteInterface='true']"!][!//
+                    <PORT-API-OPTION>
+                      <ENABLE-TAKE-ADDRESS>true</ENABLE-TAKE-ADDRESS>
+                      <INDIRECT-API>false</INDIRECT-API>
+                      <PORT-ARG-VALUES>
+                        <PORT-DEFINED-ARGUMENT-VALUE>
+                          <VALUE>
+                            <NUMERICAL-VALUE-SPECIFICATION>
+                              <VALUE>[!"num:i(@index)"!]</VALUE>
+                            </NUMERICAL-VALUE-SPECIFICATION>
+                          </VALUE>
+                          <VALUE-TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Csm/ImplementationDataTypes/Csm_ConfigIdType</VALUE-TYPE-TREF>
+                        </PORT-DEFINED-ARGUMENT-VALUE>
+                      </PORT-ARG-VALUES>
+                      <PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmMacGenerate_[!"name(.)"!]</PORT-REF>
+                    </PORT-API-OPTION>
+[!ENDLOOP!][!//
+[!LOOP "CsmMacVerify/CsmMacVerifyConfig/*[CsmMacVerifyEnableRteInterface='true']"!][!//
+                    <PORT-API-OPTION>
+                      <ENABLE-TAKE-ADDRESS>true</ENABLE-TAKE-ADDRESS>
+                      <INDIRECT-API>false</INDIRECT-API>
+                      <PORT-ARG-VALUES>
+                        <PORT-DEFINED-ARGUMENT-VALUE>
+                          <VALUE>
+                            <NUMERICAL-VALUE-SPECIFICATION>
+                              <VALUE>[!"num:i(@index)"!]</VALUE>
+                            </NUMERICAL-VALUE-SPECIFICATION>
+                          </VALUE>
+                          <VALUE-TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Csm/ImplementationDataTypes/Csm_ConfigIdType</VALUE-TYPE-TREF>
+                        </PORT-DEFINED-ARGUMENT-VALUE>
+                      </PORT-ARG-VALUES>
+                      <PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmMacVerify_[!"name(.)"!]</PORT-REF>
+                    </PORT-API-OPTION>
+[!ENDLOOP!][!//
+[!LOOP "CsmRandomGenerate/CsmRandomGenerateConfig/*[CsmRandomGenerateEnableRteInterface='true']"!][!//
+                    <PORT-API-OPTION>
+                      <ENABLE-TAKE-ADDRESS>true</ENABLE-TAKE-ADDRESS>
+                      <INDIRECT-API>false</INDIRECT-API>
+                      <PORT-ARG-VALUES>
+                        <PORT-DEFINED-ARGUMENT-VALUE>
+                          <VALUE>
+                            <NUMERICAL-VALUE-SPECIFICATION>
+                              <VALUE>[!"num:i(@index)"!]</VALUE>
+                            </NUMERICAL-VALUE-SPECIFICATION>
+                          </VALUE>
+                          <VALUE-TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Csm/ImplementationDataTypes/Csm_ConfigIdType</VALUE-TYPE-TREF>
+                        </PORT-DEFINED-ARGUMENT-VALUE>
+                      </PORT-ARG-VALUES>
+                      <PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmRandomGenerate_[!"name(.)"!]</PORT-REF>
+                    </PORT-API-OPTION>
+[!ENDLOOP!][!//
+[!LOOP "CsmRandomSeed/CsmRandomSeedConfig/*[CsmRandomSeedEnableRteInterface='true']"!][!//
+                    <PORT-API-OPTION>
+                      <ENABLE-TAKE-ADDRESS>true</ENABLE-TAKE-ADDRESS>
+                      <INDIRECT-API>false</INDIRECT-API>
+                      <PORT-ARG-VALUES>
+                        <PORT-DEFINED-ARGUMENT-VALUE>
+                          <VALUE>
+                            <NUMERICAL-VALUE-SPECIFICATION>
+                              <VALUE>[!"num:i(@index)"!]</VALUE>
+                            </NUMERICAL-VALUE-SPECIFICATION>
+                          </VALUE>
+                          <VALUE-TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Csm/ImplementationDataTypes/Csm_ConfigIdType</VALUE-TYPE-TREF>
+                        </PORT-DEFINED-ARGUMENT-VALUE>
+                      </PORT-ARG-VALUES>
+                      <PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmRandomSeed_[!"name(.)"!]</PORT-REF>
+                    </PORT-API-OPTION>
+[!ENDLOOP!][!//
+[!LOOP "CsmSignatureGenerate/CsmSignatureGenerateConfig/*[CsmSignatureGenerateEnableRteInterface='true']"!][!//
+                    <PORT-API-OPTION>
+                      <ENABLE-TAKE-ADDRESS>true</ENABLE-TAKE-ADDRESS>
+                      <INDIRECT-API>false</INDIRECT-API>
+                      <PORT-ARG-VALUES>
+                        <PORT-DEFINED-ARGUMENT-VALUE>
+                          <VALUE>
+                            <NUMERICAL-VALUE-SPECIFICATION>
+                              <VALUE>[!"num:i(@index)"!]</VALUE>
+                            </NUMERICAL-VALUE-SPECIFICATION>
+                          </VALUE>
+                          <VALUE-TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Csm/ImplementationDataTypes/Csm_ConfigIdType</VALUE-TYPE-TREF>
+                        </PORT-DEFINED-ARGUMENT-VALUE>
+                      </PORT-ARG-VALUES>
+                      <PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSignatureGenerate_[!"name(.)"!]</PORT-REF>
+                    </PORT-API-OPTION>
+[!ENDLOOP!][!//
+[!LOOP "CsmSignatureVerify/CsmSignatureVerifyConfig/*[CsmSignatureVerifyEnableRteInterface='true']"!][!//
+                    <PORT-API-OPTION>
+                      <ENABLE-TAKE-ADDRESS>true</ENABLE-TAKE-ADDRESS>
+                      <INDIRECT-API>false</INDIRECT-API>
+                      <PORT-ARG-VALUES>
+                        <PORT-DEFINED-ARGUMENT-VALUE>
+                          <VALUE>
+                            <NUMERICAL-VALUE-SPECIFICATION>
+                              <VALUE>[!"num:i(@index)"!]</VALUE>
+                            </NUMERICAL-VALUE-SPECIFICATION>
+                          </VALUE>
+                          <VALUE-TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Csm/ImplementationDataTypes/Csm_ConfigIdType</VALUE-TYPE-TREF>
+                        </PORT-DEFINED-ARGUMENT-VALUE>
+                      </PORT-ARG-VALUES>
+                      <PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSignatureVerify_[!"name(.)"!]</PORT-REF>
+                    </PORT-API-OPTION>
+[!ENDLOOP!][!//
+[!LOOP "CsmSymBlockEncrypt/CsmSymBlockEncryptConfig/*[CsmSymBlockEncryptEnableRteInterface='true']"!][!//
+                    <PORT-API-OPTION>
+                      <ENABLE-TAKE-ADDRESS>true</ENABLE-TAKE-ADDRESS>
+                      <INDIRECT-API>false</INDIRECT-API>
+                      <PORT-ARG-VALUES>
+                        <PORT-DEFINED-ARGUMENT-VALUE>
+                          <VALUE>
+                            <NUMERICAL-VALUE-SPECIFICATION>
+                              <VALUE>[!"num:i(@index)"!]</VALUE>
+                            </NUMERICAL-VALUE-SPECIFICATION>
+                          </VALUE>
+                          <VALUE-TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Csm/ImplementationDataTypes/Csm_ConfigIdType</VALUE-TYPE-TREF>
+                        </PORT-DEFINED-ARGUMENT-VALUE>
+                      </PORT-ARG-VALUES>
+                      <PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSymBlockEncrypt_[!"name(.)"!]</PORT-REF>
+                    </PORT-API-OPTION>
+[!ENDLOOP!][!//
+[!LOOP "CsmSymBlockDecrypt/CsmSymBlockDecryptConfig/*[CsmSymBlockDecryptEnableRteInterface='true']"!][!//
+                    <PORT-API-OPTION>
+                      <ENABLE-TAKE-ADDRESS>true</ENABLE-TAKE-ADDRESS>
+                      <INDIRECT-API>false</INDIRECT-API>
+                      <PORT-ARG-VALUES>
+                        <PORT-DEFINED-ARGUMENT-VALUE>
+                          <VALUE>
+                            <NUMERICAL-VALUE-SPECIFICATION>
+                              <VALUE>[!"num:i(@index)"!]</VALUE>
+                            </NUMERICAL-VALUE-SPECIFICATION>
+                          </VALUE>
+                          <VALUE-TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Csm/ImplementationDataTypes/Csm_ConfigIdType</VALUE-TYPE-TREF>
+                        </PORT-DEFINED-ARGUMENT-VALUE>
+                      </PORT-ARG-VALUES>
+                      <PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSymBlockDecrypt_[!"name(.)"!]</PORT-REF>
+                    </PORT-API-OPTION>
+[!ENDLOOP!][!//
+[!LOOP "CsmSymEncrypt/CsmSymEncryptConfig/*[CsmSymEncryptEnableRteInterface='true']"!][!//
+                    <PORT-API-OPTION>
+                      <ENABLE-TAKE-ADDRESS>true</ENABLE-TAKE-ADDRESS>
+                      <INDIRECT-API>false</INDIRECT-API>
+                      <PORT-ARG-VALUES>
+                        <PORT-DEFINED-ARGUMENT-VALUE>
+                          <VALUE>
+                            <NUMERICAL-VALUE-SPECIFICATION>
+                              <VALUE>[!"num:i(@index)"!]</VALUE>
+                            </NUMERICAL-VALUE-SPECIFICATION>
+                          </VALUE>
+                          <VALUE-TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Csm/ImplementationDataTypes/Csm_ConfigIdType</VALUE-TYPE-TREF>
+                        </PORT-DEFINED-ARGUMENT-VALUE>
+                      </PORT-ARG-VALUES>
+                      <PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSymEncrypt_[!"name(.)"!]</PORT-REF>
+                    </PORT-API-OPTION>
+[!ENDLOOP!][!//
+[!LOOP "CsmSymDecrypt/CsmSymDecryptConfig/*[CsmSymDecryptEnableRteInterface='true']"!][!//
+                    <PORT-API-OPTION>
+                      <ENABLE-TAKE-ADDRESS>true</ENABLE-TAKE-ADDRESS>
+                      <INDIRECT-API>false</INDIRECT-API>
+                      <PORT-ARG-VALUES>
+                        <PORT-DEFINED-ARGUMENT-VALUE>
+                          <VALUE>
+                            <NUMERICAL-VALUE-SPECIFICATION>
+                              <VALUE>[!"num:i(@index)"!]</VALUE>
+                            </NUMERICAL-VALUE-SPECIFICATION>
+                          </VALUE>
+                          <VALUE-TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Csm/ImplementationDataTypes/Csm_ConfigIdType</VALUE-TYPE-TREF>
+                        </PORT-DEFINED-ARGUMENT-VALUE>
+                      </PORT-ARG-VALUES>
+                      <PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSymDecrypt_[!"name(.)"!]</PORT-REF>
+                    </PORT-API-OPTION>
+[!ENDLOOP!][!//
+[!LOOP "CsmSymKeyExtract/CsmSymKeyExtractConfig/*[CsmSymKeyExtractEnableRteInterface='true']"!][!//
+                    <PORT-API-OPTION>
+                      <ENABLE-TAKE-ADDRESS>true</ENABLE-TAKE-ADDRESS>
+                      <INDIRECT-API>false</INDIRECT-API>
+                      <PORT-ARG-VALUES>
+                        <PORT-DEFINED-ARGUMENT-VALUE>
+                          <VALUE>
+                            <NUMERICAL-VALUE-SPECIFICATION>
+                              <VALUE>[!"num:i(@index)"!]</VALUE>
+                            </NUMERICAL-VALUE-SPECIFICATION>
+                          </VALUE>
+                          <VALUE-TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Csm/ImplementationDataTypes/Csm_ConfigIdType</VALUE-TYPE-TREF>
+                        </PORT-DEFINED-ARGUMENT-VALUE>
+                      </PORT-ARG-VALUES>
+                      <PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSymKeyExtract_[!"name(.)"!]</PORT-REF>
+                    </PORT-API-OPTION>
+[!ENDLOOP!][!//
+[!LOOP "CsmSymKeyWrapAsym/CsmSymKeyWrapAsymConfig/*[CsmSymKeyWrapAsymEnableRteInterface='true']"!][!//
+                    <PORT-API-OPTION>
+                      <ENABLE-TAKE-ADDRESS>true</ENABLE-TAKE-ADDRESS>
+                      <INDIRECT-API>false</INDIRECT-API>
+                      <PORT-ARG-VALUES>
+                        <PORT-DEFINED-ARGUMENT-VALUE>
+                          <VALUE>
+                            <NUMERICAL-VALUE-SPECIFICATION>
+                              <VALUE>[!"num:i(@index)"!]</VALUE>
+                            </NUMERICAL-VALUE-SPECIFICATION>
+                          </VALUE>
+                          <VALUE-TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Csm/ImplementationDataTypes/Csm_ConfigIdType</VALUE-TYPE-TREF>
+                        </PORT-DEFINED-ARGUMENT-VALUE>
+                      </PORT-ARG-VALUES>
+                      <PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSymKeyWrapAsym_[!"name(.)"!]</PORT-REF>
+                    </PORT-API-OPTION>
+[!ENDLOOP!][!//
+[!LOOP "CsmSymKeyWrapSym/CsmSymKeyWrapSymConfig/*[CsmSymKeyWrapSymEnableRteInterface='true']"!][!//
+                    <PORT-API-OPTION>
+                      <ENABLE-TAKE-ADDRESS>true</ENABLE-TAKE-ADDRESS>
+                      <INDIRECT-API>false</INDIRECT-API>
+                      <PORT-ARG-VALUES>
+                        <PORT-DEFINED-ARGUMENT-VALUE>
+                          <VALUE>
+                            <NUMERICAL-VALUE-SPECIFICATION>
+                              <VALUE>[!"num:i(@index)"!]</VALUE>
+                            </NUMERICAL-VALUE-SPECIFICATION>
+                          </VALUE>
+                          <VALUE-TYPE-TREF DEST="IMPLEMENTATION-DATA-TYPE">/AUTOSAR_Csm/ImplementationDataTypes/Csm_ConfigIdType</VALUE-TYPE-TREF>
+                        </PORT-DEFINED-ARGUMENT-VALUE>
+                      </PORT-ARG-VALUES>
+                      <PORT-REF DEST="P-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PS_CsmSymKeyWrapSym_[!"name(.)"!]</PORT-REF>
+                    </PORT-API-OPTION>
+[!ENDLOOP!][!//
+                  </PORT-API-OPTIONS>
+                  <RUNNABLES>
+[!IF "count(CsmAsymPrivateKeyWrapAsym/CsmAsymPrivateKeyWrapAsymConfig/*[CsmAsymPrivateKeyWrapAsymEnableRteInterface='true']) > 0"!][!//
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_AsymPrivateKeyWrapAsymStart</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>key</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>wrappingKey</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteAsymPrivateKeyWrapAsymStart</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_AsymPrivateKeyWrapAsymUpdate</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>dataBuffer</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>dataLength</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteAsymPrivateKeyWrapAsymUpdate</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_AsymPrivateKeyWrapAsymFinish</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteAsymPrivateKeyWrapAsymFinish</SYMBOL>
+                    </RUNNABLE-ENTITY>
+[!ENDIF!][!//
+[!IF "count(CsmAsymPrivateKeyWrapSym/CsmAsymPrivateKeyWrapSymConfig/*[CsmAsymPrivateKeyWrapSymEnableRteInterface='true']) > 0"!][!//
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_AsymPrivateKeyWrapSymStart</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>key</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>wrappingKey</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteAsymPrivateKeyWrapSymStart</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_AsymPrivateKeyWrapSymUpdate</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>dataBuffer</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>dataLength</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteAsymPrivateKeyWrapSymUpdate</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_AsymPrivateKeyWrapSymFinish</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteAsymPrivateKeyWrapSymFinish</SYMBOL>
+                    </RUNNABLE-ENTITY>
+[!ENDIF!][!//
+[!IF "count(CsmAsymPublicKeyExtract/CsmAsymPublicKeyExtractConfig/*[CsmAsymPublicKeyExtractEnableRteInterface='true']) > 0"!][!//
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_AsymPublicKeyExtractStart</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteAsymPublicKeyExtractStart</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_AsymPublicKeyExtractUpdate</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>dataBuffer</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>dataLength</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteAsymPublicKeyExtractUpdate</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_AsymPublicKeyExtractFinish</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>key</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteAsymPublicKeyExtractFinish</SYMBOL>
+                    </RUNNABLE-ENTITY>
+[!ENDIF!][!//
+[!IF "count(CsmChecksum/CsmChecksumConfig/*[CsmChecksumEnableRteInterface='true']) > 0"!][!//
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_ChecksumStart</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteChecksumStart</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_ChecksumUpdate</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>dataBuffer</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>dataLength</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteChecksumUpdate</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_ChecksumFinish</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>resultBuffer</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>resultLength</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>TruncationIsAllowed</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteChecksumFinish</SYMBOL>
+                    </RUNNABLE-ENTITY>
+[!ENDIF!][!//
+[!IF "count(CsmHash/CsmHashConfig/*[CsmHashEnableRteInterface='true']) > 0"!][!//
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_HashStart</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteHashStart</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_HashUpdate</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>dataBuffer</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>dataLength</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteHashUpdate</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_HashFinish</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>resultBuffer</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>resultLength</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>TruncationIsAllowed</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteHashFinish</SYMBOL>
+                    </RUNNABLE-ENTITY>
+[!ENDIF!][!//
+[!IF "count(CsmMacGenerate/CsmMacGenerateConfig/*[CsmMacGenerateEnableRteInterface='true']) > 0"!][!//
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_MacGenerateStart</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>key</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteMacGenerateStart</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_MacGenerateUpdate</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>dataBuffer</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>dataLength</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteMacGenerateUpdate</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_MacGenerateFinish</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>resultBuffer</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>resultLength</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>TruncationIsAllowed</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteMacGenerateFinish</SYMBOL>
+                    </RUNNABLE-ENTITY>
+[!ENDIF!][!//
+[!IF "count(CsmMacVerify/CsmMacVerifyConfig/*[CsmMacVerifyEnableRteInterface='true']) > 0"!][!//
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_MacVerifyStart</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>key</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteMacVerifyStart</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_MacVerifyUpdate</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>dataBuffer</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>dataLength</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteMacVerifyUpdate</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_MacVerifyFinish</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>MacBuffer</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>MacLength</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>resultBuffer</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteMacVerifyFinish</SYMBOL>
+                    </RUNNABLE-ENTITY>
+[!ENDIF!][!//
+[!IF "count(CsmRandomGenerate/CsmRandomGenerateConfig/*[CsmRandomGenerateEnableRteInterface='true']) > 0"!][!//
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_RandomGenerate</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>resultBuffer</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>resultLength</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteRandomGenerate</SYMBOL>
+                    </RUNNABLE-ENTITY>
+[!ENDIF!][!//
+[!IF "count(CsmRandomSeed/CsmRandomSeedConfig/*[CsmRandomSeedEnableRteInterface='true']) > 0"!][!//
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_RandomSeedStart</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteRandomSeedStart</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_RandomSeedUpdate</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>seedBuffer</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>seedLength</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteRandomSeedUpdate</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_RandomSeedFinish</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteRandomSeedFinish</SYMBOL>
+                    </RUNNABLE-ENTITY>
+[!ENDIF!][!//
+[!IF "count(CsmSignatureGenerate/CsmSignatureGenerateConfig/*[CsmSignatureGenerateEnableRteInterface='true']) > 0"!][!//
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_SignatureGenerateStart</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>key</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteSignatureGenerateStart</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_SignatureGenerateUpdate</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>dataBuffer</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>dataLength</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteSignatureGenerateUpdate</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_SignatureGenerateFinish</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>resultBuffer</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>resultLength</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteSignatureGenerateFinish</SYMBOL>
+                    </RUNNABLE-ENTITY>
+[!ENDIF!][!//
+[!IF "count(CsmSignatureVerify/CsmSignatureVerifyConfig/*[CsmSignatureVerifyEnableRteInterface='true']) > 0"!][!//
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_SignatureVerifyStart</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>key</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteSignatureVerifyStart</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_SignatureVerifyUpdate</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>dataBuffer</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>dataLength</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteSignatureVerifyUpdate</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_SignatureVerifyFinish</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>signatureBuffer</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>signatureLength</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>resultBuffer</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteSignatureVerifyFinish</SYMBOL>
+                    </RUNNABLE-ENTITY>
+[!ENDIF!][!//
+[!IF "count(CsmSymBlockEncrypt/CsmSymBlockEncryptConfig/*[CsmSymBlockEncryptEnableRteInterface='true']) > 0"!][!//
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_SymBlockEncryptStart</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>key</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteSymBlockEncryptStart</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_SymBlockEncryptUpdate</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>plainTextBuffer</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>plainTextLength</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>cipherTextBuffer</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>cipherTextLength</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteSymBlockEncryptUpdate</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_SymBlockEncryptFinish</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteSymBlockEncryptFinish</SYMBOL>
+                    </RUNNABLE-ENTITY>
+[!ENDIF!][!//
+[!IF "count(CsmSymBlockDecrypt/CsmSymBlockDecryptConfig/*[CsmSymBlockDecryptEnableRteInterface='true']) > 0"!][!//
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_SymBlockDecryptStart</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>key</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteSymBlockDecryptStart</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_SymBlockDecryptUpdate</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>cipherTextBuffer</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>cipherTextLength</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>plainTextBuffer</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>plainTextLength</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteSymBlockDecryptUpdate</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_SymBlockDecryptFinish</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteSymBlockDecryptFinish</SYMBOL>
+                    </RUNNABLE-ENTITY>
+[!ENDIF!][!//
+[!IF "count(CsmSymEncrypt/CsmSymEncryptConfig/*[CsmSymEncryptEnableRteInterface='true']) > 0"!][!//
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_SymEncryptStart</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>key</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>InitVectorBuffer</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>InitVectorLength</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteSymEncryptStart</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_SymEncryptUpdate</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>plainTextBuffer</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>plainTextLength</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>cipherTextBuffer</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>cipherTextLength</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteSymEncryptUpdate</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_SymEncryptFinish</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>cipherTextBuffer</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>cipherTextLength</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteSymEncryptFinish</SYMBOL>
+                    </RUNNABLE-ENTITY>
+[!ENDIF!][!//
+[!IF "count(CsmSymDecrypt/CsmSymDecryptConfig/*[CsmSymDecryptEnableRteInterface='true']) > 0"!][!//
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_SymDecryptStart</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>key</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>InitVectorBuffer</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>InitVectorLength</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteSymDecryptStart</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_SymDecryptUpdate</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>cipherTextBuffer</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>cipherTextLength</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>plainTextBuffer</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>plainTextLength</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteSymDecryptUpdate</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_SymDecryptFinish</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>plainTextBuffer</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>plainTextLength</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteSymDecryptFinish</SYMBOL>
+                    </RUNNABLE-ENTITY>
+[!ENDIF!][!//
+[!IF "count(CsmSymKeyExtract/CsmSymKeyExtractConfig/*[CsmSymKeyExtractEnableRteInterface='true']) > 0"!][!//
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_SymKeyExtractStart</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteSymKeyExtractStart</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_SymKeyExtractUpdate</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>dataBuffer</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>dataLength</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteSymKeyExtractUpdate</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_SymKeyExtractFinish</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>key</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteSymKeyExtractFinish</SYMBOL>
+                    </RUNNABLE-ENTITY>
+[!ENDIF!][!//
+[!IF "count(CsmSymKeyWrapAsym/CsmSymKeyWrapAsymConfig/*[CsmSymKeyWrapAsymEnableRteInterface='true']) > 0"!][!//
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_SymKeyWrapAsymStart</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>key</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>wrappingKey</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteSymKeyWrapAsymStart</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_SymKeyWrapAsymUpdate</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>dataBuffer</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>dataLength</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteSymKeyWrapAsymUpdate</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_SymKeyWrapAsymFinish</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteSymKeyWrapAsymFinish</SYMBOL>
+                    </RUNNABLE-ENTITY>
+[!ENDIF!][!//
+[!IF "count(CsmSymKeyWrapSym/CsmSymKeyWrapSymConfig/*[CsmSymKeyWrapSymEnableRteInterface='true']) > 0"!][!//
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_SymKeyWrapSymStart</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>key</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>wrappingKey</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteSymKeyWrapSymStart</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_SymKeyWrapSymUpdate</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>dataBuffer</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>dataLength</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteSymKeyWrapSymUpdate</SYMBOL>
+                    </RUNNABLE-ENTITY>
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_SymKeyWrapSymFinish</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <ARGUMENTS>
+                        <RUNNABLE-ENTITY-ARGUMENT>
+                          <SYMBOL>pdav0</SYMBOL>
+                        </RUNNABLE-ENTITY-ARGUMENT>
+                      </ARGUMENTS>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <SYMBOL>Csm_RteSymKeyWrapSymFinish</SYMBOL>
+                    </RUNNABLE-ENTITY>
+[!ENDIF!][!//
+[!IF "CsmGeneral/CsmUseSyncJobProcessing = 'false'"!][!//
+                    <RUNNABLE-ENTITY>
+                      <SHORT-NAME>RE_MainFunction</SHORT-NAME>
+                      <MINIMUM-START-INTERVAL>0</MINIMUM-START-INTERVAL>
+                      <CAN-BE-INVOKED-CONCURRENTLY>false</CAN-BE-INVOKED-CONCURRENTLY>
+                      <DATA-READ-ACCESSS/>
+                      <DATA-RECEIVE-POINT-BY-ARGUMENTS/>
+                      <DATA-SEND-POINTS/>
+                      <DATA-WRITE-ACCESSS/>
+                      <SERVER-CALL-POINTS>
+[!LOOP "CsmAsymPrivateKeyWrapAsym/CsmAsymPrivateKeyWrapAsymConfig/*[CsmAsymPrivateKeyWrapAsymEnableRteInterface='true']"!][!//
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>sscp_JobFinished_[!"name(.)"!]</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PNJobFinished_CsmAsymPrivateKeyWrapAsym_[!"name(.)"!]</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmCallback/JobFinished</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0.0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+[!ENDLOOP!][!//
+[!LOOP "CsmAsymPrivateKeyWrapSym/CsmAsymPrivateKeyWrapSymConfig/*[CsmAsymPrivateKeyWrapSymEnableRteInterface='true']"!][!//
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>sscp_JobFinished_[!"name(.)"!]</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PNJobFinished_CsmAsymPrivateKeyWrapSym_[!"name(.)"!]</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmCallback/JobFinished</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0.0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+[!ENDLOOP!][!//
+[!LOOP "CsmAsymPublicKeyExtract/CsmAsymPublicKeyExtractConfig/*[CsmAsymPublicKeyExtractEnableRteInterface='true']"!][!//
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>sscp_JobFinished_[!"name(.)"!]</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PNJobFinished_CsmAsymPublicKeyExtract_[!"name(.)"!]</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmCallback/JobFinished</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0.0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+[!ENDLOOP!][!//
+[!LOOP "CsmChecksum/CsmChecksumConfig/*[CsmChecksumEnableRteInterface='true']"!][!//
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>sscp_JobFinished_[!"name(.)"!]</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PNJobFinished_CsmChecksum_[!"name(.)"!]</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmCallback/JobFinished</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0.0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+[!ENDLOOP!][!//
+[!LOOP "CsmHash/CsmHashConfig/*[CsmHashEnableRteInterface='true']"!][!//
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>sscp_JobFinished_[!"name(.)"!]</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PNJobFinished_CsmHash_[!"name(.)"!]</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmCallback/JobFinished</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0.0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+[!ENDLOOP!][!//
+[!LOOP "CsmMacGenerate/CsmMacGenerateConfig/*[CsmMacGenerateEnableRteInterface='true']"!][!//
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>sscp_JobFinished_[!"name(.)"!]</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PNJobFinished_CsmMacGenerate_[!"name(.)"!]</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmCallback/JobFinished</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0.0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+[!ENDLOOP!][!//
+[!LOOP "CsmMacVerify/CsmMacVerifyConfig/*[CsmMacVerifyEnableRteInterface='true']"!][!//
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>sscp_JobFinished_[!"name(.)"!]</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PNJobFinished_CsmMacVerify_[!"name(.)"!]</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmCallback/JobFinished</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0.0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+[!ENDLOOP!][!//
+[!LOOP "CsmRandomGenerate/CsmRandomGenerateConfig/*[CsmRandomGenerateEnableRteInterface='true']"!][!//
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>sscp_JobFinished_[!"name(.)"!]</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PNJobFinished_CsmRandomGenerate_[!"name(.)"!]</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmCallback/JobFinished</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0.0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+[!ENDLOOP!][!//
+[!LOOP "CsmRandomSeed/CsmRandomSeedConfig/*[CsmRandomSeedEnableRteInterface='true']"!][!//
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>sscp_JobFinished_[!"name(.)"!]</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PNJobFinished_CsmRandomSeed_[!"name(.)"!]</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmCallback/JobFinished</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0.0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+[!ENDLOOP!][!//
+[!LOOP "CsmSignatureGenerate/CsmSignatureGenerateConfig/*[CsmSignatureGenerateEnableRteInterface='true']"!][!//
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>sscp_JobFinished_[!"name(.)"!]</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PNJobFinished_CsmSignatureGenerate_[!"name(.)"!]</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmCallback/JobFinished</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0.0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+[!ENDLOOP!][!//
+[!LOOP "CsmSignatureVerify/CsmSignatureVerifyConfig/*[CsmSignatureVerifyEnableRteInterface='true']"!][!//
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>sscp_JobFinished_[!"name(.)"!]</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PNJobFinished_CsmSignatureVerify_[!"name(.)"!]</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmCallback/JobFinished</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0.0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+[!ENDLOOP!][!//
+[!LOOP "CsmSymBlockEncrypt/CsmSymBlockEncryptConfig/*[CsmSymBlockEncryptEnableRteInterface='true']"!][!//
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>sscp_JobFinished_[!"name(.)"!]</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PNJobFinished_CsmSymBlockEncrypt_[!"name(.)"!]</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmCallback/JobFinished</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0.0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+[!ENDLOOP!][!//
+[!LOOP "CsmSymBlockDecrypt/CsmSymBlockDecryptConfig/*[CsmSymBlockDecryptEnableRteInterface='true']"!][!//
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>sscp_JobFinished_[!"name(.)"!]</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PNJobFinished_CsmSymBlockDecrypt_[!"name(.)"!]</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmCallback/JobFinished</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0.0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+[!ENDLOOP!][!//
+[!LOOP "CsmSymEncrypt/CsmSymEncryptConfig/*[CsmSymEncryptEnableRteInterface='true']"!][!//
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>sscp_JobFinished_[!"name(.)"!]</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PNJobFinished_CsmSymEncrypt_[!"name(.)"!]</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmCallback/JobFinished</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0.0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+[!ENDLOOP!][!//
+[!LOOP "CsmSymDecrypt/CsmSymDecryptConfig/*[CsmSymDecryptEnableRteInterface='true']"!][!//
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>sscp_JobFinished_[!"name(.)"!]</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PNJobFinished_CsmSymDecrypt_[!"name(.)"!]</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmCallback/JobFinished</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0.0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+[!ENDLOOP!][!//
+[!LOOP "CsmSymKeyExtract/CsmSymKeyExtractConfig/*[CsmSymKeyExtractEnableRteInterface='true']"!][!//
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>sscp_JobFinished_[!"name(.)"!]</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PNJobFinished_CsmSymKeyExtract_[!"name(.)"!]</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmCallback/JobFinished</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0.0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+[!ENDLOOP!][!//
+[!LOOP "CsmSymKeyWrapAsym/CsmSymKeyWrapAsymConfig/*[CsmSymKeyWrapAsymEnableRteInterface='true']"!][!//
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>sscp_JobFinished_[!"name(.)"!]</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PNJobFinished_CsmSymKeyWrapAsym_[!"name(.)"!]</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmCallback/JobFinished</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0.0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+[!ENDLOOP!][!//
+[!LOOP "CsmSymKeyWrapSym/CsmSymKeyWrapSymConfig/*[CsmSymKeyWrapSymEnableRteInterface='true']"!][!//
+                        <SYNCHRONOUS-SERVER-CALL-POINT>
+                          <SHORT-NAME>sscp_JobFinished_[!"name(.)"!]</SHORT-NAME>
+                          <OPERATION-IREF>
+                            <CONTEXT-R-PORT-REF DEST="R-PORT-PROTOTYPE">/AUTOSAR_Csm/SwComponentTypes/Csm/PNJobFinished_CsmSymKeyWrapSym_[!"name(.)"!]</CONTEXT-R-PORT-REF>
+                            <TARGET-REQUIRED-OPERATION-REF DEST="CLIENT-SERVER-OPERATION">/AUTOSAR_Csm/PortInterfaces/CsmCallback/JobFinished</TARGET-REQUIRED-OPERATION-REF>
+                          </OPERATION-IREF>
+                          <TIMEOUT>0.0</TIMEOUT>
+                        </SYNCHRONOUS-SERVER-CALL-POINT>
+[!ENDLOOP!][!//
+                      </SERVER-CALL-POINTS>
+                      <SYMBOL>Csm_MainFunction</SYMBOL>
+                    </RUNNABLE-ENTITY>
+[!ENDIF!][!//
+                  </RUNNABLES>
+                  <SUPPORTS-MULTIPLE-INSTANTIATION>false</SUPPORTS-MULTIPLE-INSTANTIATION>
+                </SWC-INTERNAL-BEHAVIOR>
+              </INTERNAL-BEHAVIORS>
+            </SERVICE-SW-COMPONENT-TYPE>
+          </ELEMENTS>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>
+[!ENDIF!][!//
+
