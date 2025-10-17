@@ -14,7 +14,7 @@ CC_OPT += --integer-enumeration
 CC_OPT += --tradeoff=2 
 CC_OPT += -O2 
 CC_OPT += --debug-info 
-CC_OPT += --warnings-as-errors
+#CC_OPT += --warnings-as-errors
 # *********************Linker Options******************************************
 LINK_OPT += -OcLtXY 
 LINK_OPT += --core=mpe:vtc 

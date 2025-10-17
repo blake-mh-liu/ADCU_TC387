@@ -47,9 +47,7 @@
                       <a:a name="IMPORTER_INFO" value="@DEF"/>
                     </d:var>
                     <d:lst name="EthCtrlMacLayerSpeed">
-                      <d:var type="ENUMERATION" value="ETH_MAC_LAYER_SPEED_100M">
-                        <a:a name="IMPORTER_INFO" value="@DEF"/>
-                      </d:var>
+                      <d:var type="ENUMERATION" value="ETH_MAC_LAYER_SPEED_1G"/>
                     </d:lst>
                     <d:lst name="EthCtrlMacLayerSubType">
                       <d:var type="ENUMERATION" value="REDUCED">
@@ -57,9 +55,7 @@
                       </d:var>
                     </d:lst>
                     <d:var name="EthCtrlMacLayerType" type="ENUMERATION" 
-                           value="ETH_MAC_LAYER_TYPE_XMII">
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
+                           value="ETH_MAC_LAYER_TYPE_XGMII"/>
                     <d:lst name="EthCtrlPhyAddress">
                       <d:var type="STRING" value="00:03:19:00:00:01">
                         <a:a name="IMPORTER_INFO" value="@DEF"/>
@@ -70,13 +66,9 @@
                       <a:a name="IMPORTER_INFO" value="@DEF"/>
                     </d:var>
                     <d:var name="EthMdioAlternateInput" type="ENUMERATION" 
-                           value="ALT1_SELECT_NONE">
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
+                           value="ALT2_SELECT_P12_1"/>
                     <d:var name="EthRxClkInput" type="ENUMERATION" 
-                           value="ALT3_SELECT_NONE">
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
+                           value="ALT0_SELECT_P11_12"/>
                     <d:var name="EthRxErrMIIInput" type="ENUMERATION" 
                            value="ALT3_SELECT_NONE">
                       <a:a name="IMPORTER_INFO" value="@DEF"/>
@@ -106,21 +98,13 @@
                       <a:a name="IMPORTER_INFO" value="@DEF"/>
                     </d:var>
                     <d:var name="EthReceiveData0Input" type="ENUMERATION" 
-                           value="ALT3_SELECT_NONE">
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
+                           value="ALT0_SELECT_P11_10"/>
                     <d:var name="EthReceiveData1Input" type="ENUMERATION" 
-                           value="ALT3_SELECT_NONE">
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
+                           value="ALT0_SELECT_P11_9"/>
                     <d:var name="EthReceiveData2Input" type="ENUMERATION" 
-                           value="ALT3_SELECT_NONE">
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
+                           value="ALT0_SELECT_P11_8"/>
                     <d:var name="EthReceiveData3Input" type="ENUMERATION" 
-                           value="ALT3_SELECT_NONE">
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
-                    </d:var>
+                           value="ALT0_SELECT_P11_7"/>
                     <d:var name="EthSkewTxClockDelay" type="INTEGER" value="0">
                       <a:a name="IMPORTER_INFO" value="@DEF"/>
                     </d:var>
@@ -138,10 +122,103 @@
                     <d:lst name="EthCtrlEcucPartitionRef"/>
                     <d:ctr name="EthCtrlConfigEgress" type="IDENTIFIABLE">
                       <d:ref name="EthCtrlConfigEgressLastSchedulerRef" 
-                             type="REFERENCE" >
-                        <a:a name="IMPORTER_INFO" value="@DEF"/>
-                      </d:ref>
-                      <d:lst name="EthCtrlConfigEgressFifo" type="MAP"/>
+                             type="REFERENCE" 
+                             value="ASPath:/Eth/Eth/EthConfigSet/EthCtrlConfig_0/EthCtrlConfigEgress/EthCtrlConfigScheduler_0"/>
+                      <d:lst name="EthCtrlConfigEgressFifo" type="MAP">
+                        <d:ctr name="EthCtrlConfigEgressFifo_0" 
+                               type="IDENTIFIABLE">
+                          <d:var name="EthCtrlConfigEgressFifoBufLenByte" 
+                                 type="INTEGER" value="64">
+                            <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          </d:var>
+                          <d:var name="EthCtrlConfigEgressFifoBufTotal" 
+                                 type="INTEGER" value="4">
+                            <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          </d:var>
+                          <d:var name="EthCtrlConfigEgressFifoIdx" 
+                                 type="INTEGER" value="0">
+                            <a:a name="IMPORTER_INFO">
+                              <a:v>@DEF</a:v>
+                              <a:v>@CALC</a:v>
+                            </a:a>
+                          </d:var>
+                          <d:lst 
+                                 name="EthCtrlConfigEgressFifoPriorityAssignment">
+                            <d:var type="INTEGER" value="0">
+                              <a:a name="IMPORTER_INFO">
+                                <a:v>@DEF</a:v>
+                                <a:v>@CALC</a:v>
+                              </a:a>
+                            </d:var>
+                          </d:lst>
+                        </d:ctr>
+                        <d:ctr name="EthCtrlConfigEgressFifo_1" 
+                               type="IDENTIFIABLE">
+                          <d:var name="EthCtrlConfigEgressFifoBufLenByte" 
+                                 type="INTEGER" value="64">
+                            <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          </d:var>
+                          <d:var name="EthCtrlConfigEgressFifoBufTotal" 
+                                 type="INTEGER" value="4">
+                            <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          </d:var>
+                          <d:var name="EthCtrlConfigEgressFifoIdx" 
+                                 type="INTEGER" value="1">
+                            <a:a name="IMPORTER_INFO">
+                              <a:v>@DEF</a:v>
+                              <a:v>@CALC</a:v>
+                            </a:a>
+                          </d:var>
+                          <d:lst 
+                                 name="EthCtrlConfigEgressFifoPriorityAssignment">
+                            <d:var type="INTEGER" value="1"/>
+                          </d:lst>
+                        </d:ctr>
+                        <d:ctr name="EthCtrlConfigEgressFifo_2" 
+                               type="IDENTIFIABLE">
+                          <d:var name="EthCtrlConfigEgressFifoBufLenByte" 
+                                 type="INTEGER" value="64">
+                            <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          </d:var>
+                          <d:var name="EthCtrlConfigEgressFifoBufTotal" 
+                                 type="INTEGER" value="4">
+                            <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          </d:var>
+                          <d:var name="EthCtrlConfigEgressFifoIdx" 
+                                 type="INTEGER" value="2">
+                            <a:a name="IMPORTER_INFO">
+                              <a:v>@DEF</a:v>
+                              <a:v>@CALC</a:v>
+                            </a:a>
+                          </d:var>
+                          <d:lst 
+                                 name="EthCtrlConfigEgressFifoPriorityAssignment">
+                            <d:var type="INTEGER" value="2"/>
+                          </d:lst>
+                        </d:ctr>
+                        <d:ctr name="EthCtrlConfigEgressFifo_3" 
+                               type="IDENTIFIABLE">
+                          <d:var name="EthCtrlConfigEgressFifoBufLenByte" 
+                                 type="INTEGER" value="64">
+                            <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          </d:var>
+                          <d:var name="EthCtrlConfigEgressFifoBufTotal" 
+                                 type="INTEGER" value="4">
+                            <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          </d:var>
+                          <d:var name="EthCtrlConfigEgressFifoIdx" 
+                                 type="INTEGER" value="3">
+                            <a:a name="IMPORTER_INFO">
+                              <a:v>@DEF</a:v>
+                              <a:v>@CALC</a:v>
+                            </a:a>
+                          </d:var>
+                          <d:lst 
+                                 name="EthCtrlConfigEgressFifoPriorityAssignment">
+                            <d:var type="INTEGER" value="3"/>
+                          </d:lst>
+                        </d:ctr>
+                      </d:lst>
                       <d:lst name="EthCtrlConfigScheduler" type="MAP">
                         <d:ctr name="EthCtrlConfigScheduler_0" 
                                type="IDENTIFIABLE">
@@ -161,9 +238,38 @@
                               </d:var>
                               <d:ref 
                                      name="EthCtrlConfigSchedulerPredecessorRef" 
-                                     type="REFERENCE" >
-                                <a:a name="IMPORTER_INFO" value="@DEF"/>
-                              </d:ref>
+                                     type="REFERENCE" 
+                                     value="ASPath:/Eth/Eth/EthConfigSet/EthCtrlConfig_0/EthCtrlConfigEgress/EthCtrlConfigEgressFifo_0"/>
+                            </d:ctr>
+                            <d:ctr name="EthCtrlConfigSchedulerPredecessor_1" 
+                                   type="IDENTIFIABLE">
+                              <d:var 
+                                     name="EthCtrlConfigSchedulerPredecessorOrder" 
+                                     type="INTEGER" value="1"/>
+                              <d:ref 
+                                     name="EthCtrlConfigSchedulerPredecessorRef" 
+                                     type="REFERENCE" 
+                                     value="ASPath:/Eth/Eth/EthConfigSet/EthCtrlConfig_0/EthCtrlConfigEgress/EthCtrlConfigEgressFifo_1"/>
+                            </d:ctr>
+                            <d:ctr name="EthCtrlConfigSchedulerPredecessor_2" 
+                                   type="IDENTIFIABLE">
+                              <d:var 
+                                     name="EthCtrlConfigSchedulerPredecessorOrder" 
+                                     type="INTEGER" value="2"/>
+                              <d:ref 
+                                     name="EthCtrlConfigSchedulerPredecessorRef" 
+                                     type="REFERENCE" 
+                                     value="ASPath:/Eth/Eth/EthConfigSet/EthCtrlConfig_0/EthCtrlConfigEgress/EthCtrlConfigEgressFifo_2"/>
+                            </d:ctr>
+                            <d:ctr name="EthCtrlConfigSchedulerPredecessor_3" 
+                                   type="IDENTIFIABLE">
+                              <d:var 
+                                     name="EthCtrlConfigSchedulerPredecessorOrder" 
+                                     type="INTEGER" value="3"/>
+                              <d:ref 
+                                     name="EthCtrlConfigSchedulerPredecessorRef" 
+                                     type="REFERENCE" 
+                                     value="ASPath:/Eth/Eth/EthConfigSet/EthCtrlConfig_0/EthCtrlConfigEgress/EthCtrlConfigEgressFifo_3"/>
                             </d:ctr>
                           </d:lst>
                         </d:ctr>
@@ -183,13 +289,175 @@
                       </d:lst>
                     </d:ctr>
                     <d:ctr name="EthCtrlConfigIngress" type="IDENTIFIABLE">
-                      <d:lst name="EthCtrlConfigIngressFifo" type="MAP"/>
+                      <d:lst name="EthCtrlConfigIngressFifo" type="MAP">
+                        <d:ctr name="EthCtrlConfigIngressFifo_0" 
+                               type="IDENTIFIABLE">
+                          <d:var name="EthCtrlConfigIngressFifoBufLenByte" 
+                                 type="INTEGER" value="64">
+                            <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          </d:var>
+                          <d:var name="EthCtrlConfigIngressFifoBufTotal" 
+                                 type="INTEGER" value="4">
+                            <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          </d:var>
+                          <d:var name="EthCtrlConfigIngressFifoIdx" 
+                                 type="INTEGER" value="0">
+                            <a:a name="IMPORTER_INFO">
+                              <a:v>@DEF</a:v>
+                              <a:v>@CALC</a:v>
+                            </a:a>
+                          </d:var>
+                          <d:lst 
+                                 name="EthCtrlConfigIngressFifoPriorityAssignment">
+                            <d:var type="INTEGER" value="0">
+                              <a:a name="IMPORTER_INFO">
+                                <a:v>@DEF</a:v>
+                                <a:v>@CALC</a:v>
+                              </a:a>
+                            </d:var>
+                            <d:var type="INTEGER" value="1">
+                              <a:a name="IMPORTER_INFO">
+                                <a:v>@DEF</a:v>
+                                <a:v>@CALC</a:v>
+                              </a:a>
+                            </d:var>
+                          </d:lst>
+                        </d:ctr>
+                        <d:ctr name="EthCtrlConfigIngressFifo_1" 
+                               type="IDENTIFIABLE">
+                          <d:var name="EthCtrlConfigIngressFifoBufLenByte" 
+                                 type="INTEGER" value="64">
+                            <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          </d:var>
+                          <d:var name="EthCtrlConfigIngressFifoBufTotal" 
+                                 type="INTEGER" value="4">
+                            <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          </d:var>
+                          <d:var name="EthCtrlConfigIngressFifoIdx" 
+                                 type="INTEGER" value="1">
+                            <a:a name="IMPORTER_INFO">
+                              <a:v>@DEF</a:v>
+                              <a:v>@CALC</a:v>
+                            </a:a>
+                          </d:var>
+                          <d:lst 
+                                 name="EthCtrlConfigIngressFifoPriorityAssignment">
+                            <d:var type="INTEGER" value="2"/>
+                            <d:var type="INTEGER" value="3"/>
+                          </d:lst>
+                        </d:ctr>
+                        <d:ctr name="EthCtrlConfigIngressFifo_2" 
+                               type="IDENTIFIABLE">
+                          <d:var name="EthCtrlConfigIngressFifoBufLenByte" 
+                                 type="INTEGER" value="64">
+                            <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          </d:var>
+                          <d:var name="EthCtrlConfigIngressFifoBufTotal" 
+                                 type="INTEGER" value="4">
+                            <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          </d:var>
+                          <d:var name="EthCtrlConfigIngressFifoIdx" 
+                                 type="INTEGER" value="2">
+                            <a:a name="IMPORTER_INFO">
+                              <a:v>@DEF</a:v>
+                              <a:v>@CALC</a:v>
+                            </a:a>
+                          </d:var>
+                          <d:lst 
+                                 name="EthCtrlConfigIngressFifoPriorityAssignment">
+                            <d:var type="INTEGER" value="4"/>
+                            <d:var type="INTEGER" value="5"/>
+                          </d:lst>
+                        </d:ctr>
+                        <d:ctr name="EthCtrlConfigIngressFifo_3" 
+                               type="IDENTIFIABLE">
+                          <d:var name="EthCtrlConfigIngressFifoBufLenByte" 
+                                 type="INTEGER" value="64">
+                            <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          </d:var>
+                          <d:var name="EthCtrlConfigIngressFifoBufTotal" 
+                                 type="INTEGER" value="4">
+                            <a:a name="IMPORTER_INFO" value="@DEF"/>
+                          </d:var>
+                          <d:var name="EthCtrlConfigIngressFifoIdx" 
+                                 type="INTEGER" value="3">
+                            <a:a name="IMPORTER_INFO">
+                              <a:v>@DEF</a:v>
+                              <a:v>@CALC</a:v>
+                            </a:a>
+                          </d:var>
+                          <d:lst 
+                                 name="EthCtrlConfigIngressFifoPriorityAssignment">
+                            <d:var type="INTEGER" value="6"/>
+                            <d:var type="INTEGER" value="7"/>
+                          </d:lst>
+                        </d:ctr>
+                      </d:lst>
                       <d:ref name="EthCtrlConfigIngressUntaggedPktsFifoRef" 
-                             type="REFERENCE" >
-                        <a:a name="IMPORTER_INFO" value="@DEF"/>
-                      </d:ref>
+                             type="REFERENCE" 
+                             value="ASPath:/Eth/Eth/EthConfigSet/EthCtrlConfig_0/EthCtrlConfigIngress/EthCtrlConfigIngressFifo_0"/>
                     </d:ctr>
-                    <d:lst name="EthDemEventParameterRefs" type="MAP"/>
+                    <d:lst name="EthDemEventParameterRefs" type="MAP">
+                      <d:ctr name="EthDemEventParameterRefs_0" 
+                             type="IDENTIFIABLE">
+                        <a:a name="IMPORTER_INFO" 
+                             value="@CALC(SvcAs,dem.events,1)"/>
+                        <d:lst name="ETH_E_ACCESS">
+                          <d:ref type="REFERENCE" 
+                                 value="ASPath:/Dem/Dem/DemConfigSet/ETH_E_ACCESS">
+                            <a:a name="IMPORTER_INFO" value="@CALC"/>
+                          </d:ref>
+                        </d:lst>
+                        <d:lst name="ETH_E_ALIGNMENT">
+                          <d:ref type="REFERENCE" 
+                                 value="ASPath:/Dem/Dem/DemConfigSet/ETH_E_ALIGNMENT">
+                            <a:a name="IMPORTER_INFO" value="@CALC"/>
+                          </d:ref>
+                        </d:lst>
+                        <d:lst name="ETH_E_CRC">
+                          <d:ref type="REFERENCE" 
+                                 value="ASPath:/Dem/Dem/DemConfigSet/ETH_E_CRC">
+                            <a:a name="IMPORTER_INFO" value="@CALC"/>
+                          </d:ref>
+                        </d:lst>
+                        <d:lst name="ETH_E_LATECOLLISION">
+                          <d:ref type="REFERENCE" 
+                                 value="ASPath:/Dem/Dem/DemConfigSet/ETH_E_LATECOLLISION">
+                            <a:a name="IMPORTER_INFO" value="@CALC"/>
+                          </d:ref>
+                        </d:lst>
+                        <d:lst name="ETH_E_MULTIPLECOLLISION">
+                          <d:ref type="REFERENCE" 
+                                 value="ASPath:/Dem/Dem/DemConfigSet/ETH_E_MULTIPLECOLLISION">
+                            <a:a name="IMPORTER_INFO" value="@CALC"/>
+                          </d:ref>
+                        </d:lst>
+                        <d:lst name="ETH_E_OVERSIZEFRAME">
+                          <d:ref type="REFERENCE" 
+                                 value="ASPath:/Dem/Dem/DemConfigSet/ETH_E_OVERSIZEFRAME">
+                            <a:a name="IMPORTER_INFO" value="@CALC"/>
+                          </d:ref>
+                        </d:lst>
+                        <d:lst name="ETH_E_RX_FRAMES_LOST">
+                          <d:ref type="REFERENCE" 
+                                 value="ASPath:/Dem/Dem/DemConfigSet/ETH_E_RX_FRAMES_LOST">
+                            <a:a name="IMPORTER_INFO" value="@CALC"/>
+                          </d:ref>
+                        </d:lst>
+                        <d:lst name="ETH_E_SINGLECOLLISION">
+                          <d:ref type="REFERENCE" 
+                                 value="ASPath:/Dem/Dem/DemConfigSet/ETH_E_SINGLECOLLISION">
+                            <a:a name="IMPORTER_INFO" value="@CALC"/>
+                          </d:ref>
+                        </d:lst>
+                        <d:lst name="ETH_E_UNDERSIZEFRAME">
+                          <d:ref type="REFERENCE" 
+                                 value="ASPath:/Dem/Dem/DemConfigSet/ETH_E_UNDERSIZEFRAME">
+                            <a:a name="IMPORTER_INFO" value="@CALC"/>
+                          </d:ref>
+                        </d:lst>
+                      </d:ctr>
+                    </d:lst>
                   </d:ctr>
                 </d:lst>
               </d:ctr>
@@ -197,12 +465,10 @@
                 <d:var name="EthDevErrorDetect" type="BOOLEAN" value="false">
                   <a:a name="IMPORTER_INFO" value="@DEF"/>
                 </d:var>
-                <d:ref name="EthPeripheralBusClock" type="REFERENCE" >
-                  <a:a name="IMPORTER_INFO" value="@DEF"/>
-                </d:ref>
-                <d:ref name="EthOperationFrequency" type="REFERENCE" >
-                  <a:a name="IMPORTER_INFO" value="@DEF"/>
-                </d:ref>
+                <d:ref name="EthPeripheralBusClock" type="REFERENCE" 
+                       value="ASPath:/Mcu/Mcu/McuModuleConfiguration/McuClockSettingConfig_0/McuClockReferencePointConfig"/>
+                <d:ref name="EthOperationFrequency" type="REFERENCE" 
+                       value="ASPath:/Mcu/Mcu/McuModuleConfiguration/McuClockSettingConfig_0/McuClockReferencePointConfig"/>
                 <d:var name="EthGetDropCountApi" type="BOOLEAN" value="false">
                   <a:a name="IMPORTER_INFO" value="@DEF"/>
                 </d:var>

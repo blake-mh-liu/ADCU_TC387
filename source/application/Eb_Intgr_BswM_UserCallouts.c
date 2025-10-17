@@ -34,7 +34,7 @@
 /*ETHTRCV_INIT_INTEGRATION is configured in McalExt and will be generated in Platforms_Modules.h 
 this need to be configured if */
 #if (ETHTRCV_INIT_INTEGRATION==STD_ON)
-#include <Eb_Intgr_EthTrcvInit.h>
+/* #include <Eb_Intgr_EthTrcvInit.h> */
 #endif
 #endif
 #endif
@@ -765,7 +765,7 @@ FUNC(void, BSWM_APPL_CODE) Eb_Intgr_BswM_DriverInitTwo(void)
 ETHTRCV_INIT_FUNC is configured in McalExt and will be generated in Platforms_Modules.h file
 e.g #define EB_INTGR_ETHTRCV_INIT_FUNC Eb_Intgr_EthTrcvInitialization()
 */
-  EB_INTGR_ETHTRCV_INIT_FUNC;
+  /* EB_INTGR_ETHTRCV_INIT_FUNC; */
 #endif
 #endif
 #endif
@@ -882,7 +882,7 @@ FUNC(void, BSWM_APPL_CODE) Eb_Intgr_BswM_OnRunTwo(void)
 #if (BASE_COMM_ENABLED==STD_ON)
 	#if defined(BASE_ETH_ENABLED)
 	#if (BASE_ETH_ENABLED==STD_ON)
-  	ComM_CommunicationAllowed(ComMConf_ComMChannel_EthChannel, TRUE);
+  	/* ComM_CommunicationAllowed(ComMConf_ComMChannel_EthChannel, TRUE); */
 	#endif
 	#endif
 	#if defined(BASE_CAN_ENABLED)
