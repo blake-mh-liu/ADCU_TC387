@@ -86,7 +86,12 @@
                 <d:lst name="UartChannel" type="MAP">
                   <d:ctr name="UartChannel_0" type="IDENTIFIABLE">
                     <d:var name="UartBaudRate" type="INTEGER" value="115200"/>
-                    <d:var name="UartHwUnit" type="ENUMERATION" value="ASCLIN1"/>
+                    <d:var name="UartHwUnit" type="ENUMERATION" value="ASCLIN0">
+                      <a:a name="IMPORTER_INFO">
+                        <a:v>@CALC</a:v>
+                        <a:v>@DEF</a:v>
+                      </a:a>
+                    </d:var>
                     <d:var name="UartChannelId" type="INTEGER" value="0">
                       <a:a name="IMPORTER_INFO">
                         <a:v>@DEF</a:v>
@@ -113,12 +118,15 @@
                       <a:a name="IMPORTER_INFO" value="@DEF"/>
                     </d:var>
                     <d:var name="UartRxPinSelection" type="ENUMERATION" 
-                           value="SELECT_B_PORT15_PIN5"/>
-                    <d:var name="UartCTSEnable" type="BOOLEAN" value="false">
-                      <a:a name="IMPORTER_INFO" value="@DEF"/>
+                           value="SELECT_A_PORT14_PIN1">
+                      <a:a name="IMPORTER_INFO">
+                        <a:v>@CALC</a:v>
+                        <a:v>@DEF</a:v>
+                      </a:a>
                     </d:var>
+                    <d:var name="UartCTSEnable" type="BOOLEAN" value="false"/>
                     <d:var name="UartCTSPinSelection" type="ENUMERATION" 
-                           value="SELECT_CTS_A_PORT20_PIN7">
+                           value="SELECT_CTS_A_PORT14_PIN9">
                       <a:a name="IMPORTER_INFO">
                         <a:v>@CALC</a:v>
                         <a:v>@DEF</a:v>

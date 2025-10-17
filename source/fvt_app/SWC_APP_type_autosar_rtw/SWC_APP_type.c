@@ -2774,6 +2774,8 @@ static void exit_internal_PowerDownProcedur(void)
   SWC_APP_type_ARID_DEF.is_PowerDownProcedure = 0;
 }
 
+#include "logging.h"
+uint32 uart_count = 0;
 /* Model step function for TID1 */
 void run_SWC_APP(void)                 /* Explicit Task: run_SWC_APP */
 {
@@ -2854,6 +2856,16 @@ void run_SWC_APP(void)                 /* Explicit Task: run_SWC_APP */
   boolean rtb_UnitDelay_ch;
   boolean rtb_UnitDelay_f3;
   boolean rtb_UnitDelay_nm;
+
+  if(uart_count == 1000)
+  {
+    Logging_Printf("hellow world!\n");
+    uart_count = 0;
+  }
+  else
+  {
+    uart_count++;
+  }
 
   /* RootInportFunctionCallGenerator generated from: '<Root>/run_SWC_APP' incorporates:
    *  SubSystem: '<Root>/run_SWC_APP_sys'
