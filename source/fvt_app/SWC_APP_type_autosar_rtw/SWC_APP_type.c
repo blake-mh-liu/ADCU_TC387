@@ -2774,6 +2774,47 @@ static void exit_internal_PowerDownProcedur(void)
   SWC_APP_type_ARID_DEF.is_PowerDownProcedure = 0;
 }
 
+#include "Eth_17_GEthMacV2.h"
+#include "EthIf.h"
+
+uint16 count = 0;
+
+static Eth_BufIdxType TmpBuffIdx;
+static uint8 MacDestArpaddress[6] =
+{0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
+
+uint8 provideResult = 0xff, transmitResult = 0xff;
+
+void Tx_EthFrame (void)
+{
+  volatile uint32 TimeoutCntr;
+  uint16 TmpTxlength, i;
+  uint8 *TmpEthTxBuffPtr;
+  uint8 Test_Priority = 0;
+
+  Test_EthTxConfirmCount[0] = 0;
+
+  TmpTxlength = 80;
+  provideResult = Eth_17_GEthMacV2_ProvideTxBuffer(0, Test_Priority, &TmpBuffIdx, \
+   &TmpEthTxBuffPtr, &TmpTxlength);
+
+  for (i = 0; i < TmpTxlength ; i++)
+  {
+    *TmpEthTxBuffPtr = i + 1;
+    TmpEthTxBuffPtr += 1;
+  }
+  transmitResult = Eth_17_GEthMacV2_Transmit(0, TmpBuffIdx, 0xABCDU, \
+   1, TmpTxlength, &MacDestArpaddress[0]);
+
+  TimeoutCntr = 0x7FFFFF;
+
+  do
+  {
+    Eth_17_GEthMacV2_TxConfirmation(0);
+  }
+  while((!Test_EthTxConfirmCount[0])&&(TimeoutCntr--));
+}
+
 /* Model step function for TID1 */
 void run_SWC_APP(void)                 /* Explicit Task: run_SWC_APP */
 {
@@ -2861,6 +2902,13 @@ void run_SWC_APP(void)                 /* Explicit Task: run_SWC_APP */
   /* SignalConversion generated from: '<S2>/R_HiRateTxLoRateRx_HiRateTxLoRateRx' incorporates:
    *  Inport: '<Root>/R_HiRateTxLoRateRx_HiRateTxLoRateRx'
    */
+
+   if(++count > 200)
+   {
+    Tx_EthFrame();
+    count = 0;
+   }
+
   (void)Rte_Read_R_HiRateTxLoRateRx_HiRateTxLoRateRx
     (&SWC_APP_type_ARID_DEF.TmpSignalConversionAtR_HiRateTx);
 

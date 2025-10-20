@@ -125,6 +125,137 @@ static float32 calculate_adc_phase_with_zero_drift(uint8 phase, float32 phaseVol
 /*==================================================================================================
 *                                       GLOBAL FUNCTIONS
 ==================================================================================================*/
+#include "Eth_17_GEthMacV2.h"
+
+sint32 RTL8211F_IsPhyIdValid(void)
+{
+  uint16 phy_id1=0;
+  uint16 phy_id2=0;
+  /* Read PHY device Identification ID1. */
+  if(Eth_17_GEthMacV2_ReadMii(0, 1, 0x02, &phy_id1)!= 0)
+  {
+      return -2;
+  }
+   /* Read PHY Device Identification ID2. */
+  if(Eth_17_GEthMacV2_ReadMii(0, 1, 0x03, &phy_id2)!= 0)
+  {
+      return -2;
+  }
+  /* Verify PHY Device ID1 & ID2. */
+  if((phy_id1 == 0x001cU) && (phy_id2 == 0xc916U))
+  {
+      return 0x00;
+  }
+
+  return 0x01;
+}
+
+sint32 RTL8211F_PhyReset(void)
+{
+  uint16 reg_bmcr;
+  /* Reset PHY*/
+  if(Eth_17_GEthMacV2_ReadMii(0, 1, 0x00, &reg_bmcr)!= 0)
+  {
+     return -2; 
+  }
+    
+  reg_bmcr |= 0x8000;
+  if(Eth_17_GEthMacV2_WriteMii(0, 1, 0x00, reg_bmcr)!= 0)
+  {
+     return -2;  
+  }
+
+  return 0;
+}
+
+sint32 RTL8211F_PhyResetCheck(void)
+{
+  uint16 reg_bmcr;
+  /*Check PHY reset status*/
+  if(Eth_17_GEthMacV2_ReadMii(0, 1, 0x00, &reg_bmcr)!= 0)
+  {
+      return -2; 
+  }
+  if((reg_bmcr & 0x8000) == 0x00)
+  {
+      return 0x00;
+  }
+
+  return 0x01;
+}
+
+sint32 RTL8211F_PhyInit(void)
+{
+  uint16 reg_value = 0;
+  uint16 reg_bmcr = 0;
+  uint32 retries = 0xffffffff;
+
+  while ((RTL8211F_IsPhyIdValid() != 0x00) && (--retries)){}
+
+  if (retries == 0)
+  {
+    return -3;
+  }
+
+  /*Enable CLKOUT @125MHz */
+  /*Select the PHY page for the register PHY_CR2_ADDRESS*/
+  Eth_17_GEthMacV2_WriteMii(0, 1, 0x1f, 0xa43);
+  Eth_17_GEthMacV2_ReadMii(0, 1, 0x19, &reg_value);
+  reg_value |= 0x1;
+  Eth_17_GEthMacV2_WriteMii(0, 1, 0x19, reg_value);
+
+  /* restore to default page 0 */
+  Eth_17_GEthMacV2_WriteMii(0, 1, 0x1f, 0x0);
+
+  /* A PHY reset should be issued after setting this bits in PHY_CR2_ADDRESS */
+  RTL8211F_PhyReset();
+
+  /*Veirfy the phy reset is ok or not*/
+  while (RTL8211F_PhyResetCheck() != 0x00){}
+
+  /*RTL8211F_TX_DELAY delay to be added*/
+  Eth_17_GEthMacV2_WriteMii(0, 1, 0x1f, 0xd08);
+  Eth_17_GEthMacV2_ReadMii(0, 1, 0x11, &reg_value);
+  reg_value |= 0x100;  
+  Eth_17_GEthMacV2_WriteMii(0, 1, 0x11, reg_value);	
+
+  /*restore to default page 0 */
+  Eth_17_GEthMacV2_WriteMii(0, 1, 0x1f, 0x0);
+
+  /*Reading the value of Basic mode control register*/
+  Eth_17_GEthMacV2_ReadMii(0, 1, 0x00, &reg_bmcr);
+ 
+  reg_value |= 0x2000;
+  
+  reg_value |= 0x0100;
+  
+  /*Setting the value to Basic mode control register*/
+  Eth_17_GEthMacV2_WriteMii(0, 1, 0x00, reg_value);
+
+  /*Enable Auto Negotiation*/
+  reg_bmcr |= 0x1000;
+  Eth_17_GEthMacV2_WriteMii(0, 1, 0x00, reg_bmcr);
+
+  /*Software reset is asserted, Restart AN or power mode transition*/
+  reg_bmcr |= 0x0200;
+  Eth_17_GEthMacV2_WriteMii(0, 1, 0x00, reg_bmcr);
+  
+  return 0;
+}
+
+sint32 RTL8211F_GetPhyLinkStatus(void)
+{
+  uint16 reg_value = 0;
+   Eth_17_GEthMacV2_WriteMii(0, 1, 0x1F, 0xa43);
+   Eth_17_GEthMacV2_ReadMii(0, 1, 0x1a, &reg_value);
+  
+   /* restore to default page 0 */
+   Eth_17_GEthMacV2_WriteMii(0, 1, 0x1f, 0);
+  return ((reg_value & 0x0004) ? 0x01 : 0x00);
+}
+
+uint8 initStatus = 0xFF, sysStatus = 0xFF;
+
 void start_core0_system_adc_hw_trigger(void)
 {
     Adc_SetupResultBuffer(AdcConf_AdcGroup_ADCGROUP3_1MS, &group3_1msBuffer[0]);
@@ -137,6 +268,8 @@ void start_core0_system_adc_hw_trigger(void)
     Adc_EnableHardwareTrigger(AdcConf_AdcGroup_ADCGROUP9_1MS);
     Adc_EnableHardwareTrigger(AdcConf_AdcGroup_ADCGROUP10_1MS);
     Adc_EnableHardwareTrigger(AdcConf_AdcGroup_ADCGROUP11_1MS);
+    RTL8211F_PhyInit();
+    Eth_17_GEthMacV2_SetControllerMode(0, ETH_MODE_ACTIVE);
 }
 
 void stop_core0_system_adc_hw_trigger(void)
